@@ -1,0 +1,846 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta charset="utf-8">
+<meta name="generator" content="ReSpec 35.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+    
+    
+<title>Legal technology model</title>
+    
+    
+    
+  
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<meta name="color-scheme" content="light">
+<meta name="description" content="Samenvatting">
+<style>
+var:hover{text-decoration:underline;cursor:pointer}
+var.respec-hl{color:var(--color,#000);background-color:var(--bg-color);box-shadow:0 0 0 2px var(--bg-color)}
+@media (prefers-color-scheme:dark){
+var.respec-hl{filter:saturate(.9) brightness(.9)}
+}
+var.respec-hl-c1{--bg-color:#f4d200}
+var.respec-hl-c2{--bg-color:#ff87a2}
+var.respec-hl-c3{--bg-color:#96e885}
+var.respec-hl-c4{--bg-color:#3eeed2}
+var.respec-hl-c5{--bg-color:#eacfb6}
+var.respec-hl-c6{--bg-color:#82ddff}
+var.respec-hl-c7{--bg-color:#ffbcf2}
+@media print{
+var.respec-hl{background:0 0;color:#000;box-shadow:unset}
+}
+</style>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "specStatus": "base",
+  "shortName": "dpia",
+  "subtitle": "model for describing legal technology",
+  "publishDate": "2025-12-18",
+  "latestVersion": "https://../legal-technology",
+  "editors": [
+    {
+      "name": "Werkgroep challenge 1"
+    }
+  ],
+  "authors": [
+    {
+      "name": "MB",
+      "company": "Ministerie van Justitie en Veiligheid",
+      "companyURL": "https://minjenv.nl"
+    }
+  ],
+  "lint": false,
+  "publishISODate": "2025-12-18T00:00:00.000Z",
+  "generatedSubtitle": "18 december 2025"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/base.css"></head>
+  <body class="h-entry informative toc-inline"><div class="head">
+    
+    <h1 id="title" class="title">Legal technology model</h1> <h2 id="subtitle" class="subtitle">model for describing legal technology</h2>
+    <p id="w3c-state"> <time class="dt-published" datetime="2025-12-18">18 december 2025</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        
+        <dt>Laatst gepubliceerde versie:</dt><dd>
+                <a href="https://../legal-technology">https://../legal-technology</a>
+              </dd>
+        
+        
+        
+        
+        
+        
+        
+        <dt>Redacteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Werkgroep challenge 1</span>
+  </dd>
+        
+        <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">MB</span> (<a class="p-org org h-org" href="https://minjenv.nl">Ministerie van Justitie en Veiligheid</a>)
+  </dd>
+        
+        
+        
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">
+    </p>
+    <hr title="Separator for header">
+  </div>
+    <section id="abstract" data-format="markdown" class="introductory"><h2>Samenvatting</h2><p>Samenvatting</p>
+</section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a></li><li class="tocline"><a class="tocxref" href="#begrippen"><bdi class="secno">1. </bdi>Begrippen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#legal-technology-vocabulary"><bdi class="secno">1.1 </bdi>Legal technology vocabulary</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#juridische-technologie"><bdi class="secno">1.1.1 </bdi>Juridische technologie</a></li><li class="tocline"><a class="tocxref" href="#methode"><bdi class="secno">1.1.2 </bdi>Methode</a></li><li class="tocline"><a class="tocxref" href="#standaard"><bdi class="secno">1.1.3 </bdi>Standaard</a></li><li class="tocline"><a class="tocxref" href="#taak"><bdi class="secno">1.1.4 </bdi>Taak</a></li><li class="tocline"><a class="tocxref" href="#taakinvulling"><bdi class="secno">1.1.5 </bdi>Taakinvulling</a></li><li class="tocline"><a class="tocxref" href="#tool"><bdi class="secno">1.1.6 </bdi>Tool</a></li></ol></li><li class="tocline"><a class="tocxref" href="#taken"><bdi class="secno">1.2 </bdi>Taken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#afbakenen-reikwijdte"><bdi class="secno">1.2.1 </bdi>Afbakenen reikwijdte</a></li><li class="tocline"><a class="tocxref" href="#analyseren"><bdi class="secno">1.2.2 </bdi>Analyseren</a></li><li class="tocline"><a class="tocxref" href="#opstellen-regeltekst"><bdi class="secno">1.2.3 </bdi>Opstellen regeltekst</a></li><li class="tocline"><a class="tocxref" href="#verzamelen-bronmateriaal"><bdi class="secno">1.2.4 </bdi>Verzamelen bronmateriaal</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#ontologie"><bdi class="secno">2. </bdi>Ontologie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#klassen"><bdi class="secno">2.1 </bdi>Klassen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#juridische-technologie-0"><bdi class="secno">2.1.1 </bdi>Juridische technologie</a></li><li class="tocline"><a class="tocxref" href="#methode-0"><bdi class="secno">2.1.2 </bdi>Methode</a></li><li class="tocline"><a class="tocxref" href="#standaard-0"><bdi class="secno">2.1.3 </bdi>Standaard</a></li><li class="tocline"><a class="tocxref" href="#taakinvulling-0"><bdi class="secno">2.1.4 </bdi>Taakinvulling</a></li><li class="tocline"><a class="tocxref" href="#tool-0"><bdi class="secno">2.1.5 </bdi>Tool</a></li></ol></li><li class="tocline"><a class="tocxref" href="#eigenschappen-relaties"><bdi class="secno">2.2 </bdi>Eigenschappen (relaties)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#beheerder"><bdi class="secno">2.2.1 </bdi>beheerder</a></li><li class="tocline"><a class="tocxref" href="#beoogde-gebruikers"><bdi class="secno">2.2.2 </bdi>beoogde gebruikers</a></li><li class="tocline"><a class="tocxref" href="#beschouwingsniveau"><bdi class="secno">2.2.3 </bdi>beschouwingsniveau</a></li><li class="tocline"><a class="tocxref" href="#geboden-functionaliteit"><bdi class="secno">2.2.4 </bdi>geboden functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#gebruiksstatus"><bdi class="secno">2.2.5 </bdi>gebruiksstatus</a></li><li class="tocline"><a class="tocxref" href="#leverancier"><bdi class="secno">2.2.6 </bdi>leverancier</a></li><li class="tocline"><a class="tocxref" href="#licentievorm"><bdi class="secno">2.2.7 </bdi>licentievorm</a></li><li class="tocline"><a class="tocxref" href="#modelsoort"><bdi class="secno">2.2.8 </bdi>modelsoort</a></li><li class="tocline"><a class="tocxref" href="#normstatus"><bdi class="secno">2.2.9 </bdi>normstatus</a></li><li class="tocline"><a class="tocxref" href="#ondersteuning-voor"><bdi class="secno">2.2.10 </bdi>ondersteuning voor</a></li><li class="tocline"><a class="tocxref" href="#type-technologie"><bdi class="secno">2.2.11 </bdi>type technologie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#eigenschappen-waarden"><bdi class="secno">2.3 </bdi>Eigenschappen (waarden)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#naam"><bdi class="secno">2.3.1 </bdi>naam</a></li><li class="tocline"><a class="tocxref" href="#omschrijving"><bdi class="secno">2.3.2 </bdi>omschrijving</a></li></ol></li></ol></li></ol></nav>
+    <section id="begrippen"><div class="header-wrapper"><h2 id="x1-begrippen"><bdi class="secno">1. </bdi>Begrippen</h2><a class="self-link" href="#begrippen" aria-label="Permalink for Section 1."></a></div>
+<section id="legal-technology-vocabulary"><div class="header-wrapper"><h3 id="x1-1-legal-technology-vocabulary"><bdi class="secno">1.1 </bdi>Legal technology vocabulary</h3><a class="self-link" href="#legal-technology-vocabulary" aria-label="Permalink for Section 1.1"></a></div>
+<section id="juridische-technologie"><div class="header-wrapper"><h4 id="x1-1-1-juridische-technologie"><bdi class="secno">1.1.1 </bdi>Juridische technologie</h4><a class="self-link" href="#juridische-technologie" aria-label="Permalink for Section 1.1.1"></a></div>
+<blockquote>
+<p>Een juridische technologie is een methode, <a href="#standaard">standaard</a> of <a href="#tool">tool</a> die gebruikt wordt in het proces van wetgeving en/of wetsuitvoering</p>
+</blockquote>
+<p>Generalisatie van: <a href="#tool">Tool</a>, <a href="#methode">Methode</a>, <a href="#standaard">Standaard</a></p>
+</section><section id="methode"><div class="header-wrapper"><h4 id="x1-1-2-methode"><bdi class="secno">1.1.2 </bdi>Methode</h4><a class="self-link" href="#methode" aria-label="Permalink for Section 1.1.2"></a></div>
+<blockquote>
+<p>Een methode is een gestructureerde, herhaalbare aanpak (stappenplan met technieken en keuzes) om een doel te bereiken of een <a href="#taak">taak</a> uit te voeren. Een methode beschrijft hoe je te werk gaat (en evt. In welke volgorde) en kan verwijzen naar standaarden als hulpmiddel</p>
+</blockquote>
+<p>Toelichting: Een methode beschrijft HOE een taak wordt uitgevoerd</p>
+<p><em>We beperken ons tot methoden die gezien kunnen worden als juridische technologie, dwz: bruikbaar zijn voor taken die passen binnen wendbaar wetgeven en wendbare wetsuitvoering</em></p>
+<p>Gerelateerd: <a href="#taak">Taak</a></p>
+</section><section id="standaard"><div class="header-wrapper"><h4 id="x1-1-3-standaard"><bdi class="secno">1.1.3 </bdi>Standaard</h4><a class="self-link" href="#standaard" aria-label="Permalink for Section 1.1.3"></a></div>
+<blockquote>
+<p>Een (informatie)standaard is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een <a href="#taak">taak</a> uit te voeren. Een (informatie)standaard beschrijft wat het resultaat is.</p>
+</blockquote>
+<p>Toelichting: Een standaard beschrijft WAT een taak opleverd</p>
+<p><em>In de context van dit begrippenkader, beschouwen we slechts iets als standaard als deze het WAT beschrijven. De termen 'standaard' en 'informatiestandaard' kunnen daarbij als synoniem worden beschouwd. Mocht een standaard ook een methodisch karakter hebben, dan splitsen we het methodische deel af van de (informatie)standaard.</em></p>
+<p>Gerelateerd: <a href="#taak">Taak</a></p>
+</section><section id="taak"><div class="header-wrapper"><h4 id="x1-1-4-taak"><bdi class="secno">1.1.4 </bdi>Taak</h4><a class="self-link" href="#taak" aria-label="Permalink for Section 1.1.4"></a></div>
+<blockquote>
+<p>Een taak is een afgebakende hoeveelheid werk die leidt tot een overdraagbaar resultaat en die bijdraagt aan het behalen van een doel</p>
+</blockquote>
+<p><em>In de context van dit begrippenkader, beschouwen we slechts taken die passen binnen wendbaar wetgeven en wendbare wetsuitvoering</em></p>
+</section><section id="taakinvulling"><div class="header-wrapper"><h4 id="x1-1-5-taakinvulling"><bdi class="secno">1.1.5 </bdi>Taakinvulling</h4><a class="self-link" href="#taakinvulling" aria-label="Permalink for Section 1.1.5"></a></div>
+<blockquote>
+<p>Een taakinvulling is een aanduiding voor de manier waarop een <a href="#taak">taak</a> in een specifieke juridische technologie wordt ingevuld of ondersteund</p>
+</blockquote>
+<p>Gerelateerd: , <a href="#taak">Taak</a></p>
+</section><section id="tool"><div class="header-wrapper"><h4 id="x1-1-6-tool"><bdi class="secno">1.1.6 </bdi>Tool</h4><a class="self-link" href="#tool" aria-label="Permalink for Section 1.1.6"></a></div>
+<blockquote>
+<p>Een tool is een informatievoorziening die ondersteuning biedt om een doel te bereiken of een <a href="#taak">taak</a> uit te voeren. De beschrijving van een tool geeft aan WAARMEE een <a href="#taak">taak</a> wordt uitgevoerd</p>
+</blockquote>
+<p>Toelichting: Een tool is een hulpmiddel WAARMEE een taak wordt uitgevoerd</p>
+<p>Gerelateerd: <a href="#taak">Taak</a></p>
+</section></section><section id="taken"><div class="header-wrapper"><h3 id="x1-2-taken"><bdi class="secno">1.2 </bdi>Taken</h3><a class="self-link" href="#taken" aria-label="Permalink for Section 1.2"></a></div>
+<section id="afbakenen-reikwijdte"><div class="header-wrapper"><h4 id="x1-2-1-afbakenen-reikwijdte"><bdi class="secno">1.2.1 </bdi>Afbakenen reikwijdte</h4><a class="self-link" href="#afbakenen-reikwijdte" aria-label="Permalink for Section 1.2.1"></a></div>
+<p>Alternatieve aanduiding: <em>Scope definition</em></p>
+<blockquote>
+<p>Afbakenen reikwijdte is een <a href="#taak">taak</a> waarin wordt bepaald waaruit de opgave bestaat</p>
+</blockquote>
+<p>Toelichting: Een 'opgave' kan gelezen worden als het doel waarvoor de wetgeving c.q. wetsuitvoering is bedoeld, en het effect dat hiermee wordt beoogd</p>
+<p>Specialisatie van: <a href="#taak">Taak</a></p>
+</section><section id="analyseren"><div class="header-wrapper"><h4 id="x1-2-2-analyseren"><bdi class="secno">1.2.2 </bdi>Analyseren</h4><a class="self-link" href="#analyseren" aria-label="Permalink for Section 1.2.2"></a></div>
+<blockquote>
+<p>Analyseren is een <a href="#taak">taak</a> waarin op een gestructureerde manier de betekenis, structuur en bedoeling van een juridische tekst wordt onderzocht</p>
+</blockquote>
+<p>Toelichting: Interpreteren van een juridische tekst valt expliciet niet onder deze taak. De analyse beoogd een zo feitelijk mogelijk onderzoek</p>
+<p>Specialisatie van: <a href="#taak">Taak</a></p>
+</section><section id="opstellen-regeltekst"><div class="header-wrapper"><h4 id="x1-2-3-opstellen-regeltekst"><bdi class="secno">1.2.3 </bdi>Opstellen regeltekst</h4><a class="self-link" href="#opstellen-regeltekst" aria-label="Permalink for Section 1.2.3"></a></div>
+<p>Alternatieve aanduiding: <em>Drafting legislation</em></p>
+<blockquote>
+<p>Opstellen regeltekst is een <a href="#taak">taak</a> waarbij tekst wordt opgesteld als onderdeel van het geschreven recht</p>
+</blockquote>
+<p>Toelichting: Het gaat hier zowel om algemeen verbindende voorwaarden (Wet in formele zin, AmvB's, Ministeriële regelingen), beleidsregels (zoals bedoeld in de Awb) en ook (intern) geschreven uitvoeringsbeleid.</p>
+<p><em>Nog af te stemmen: omvat het ook de wet in formele zin, en wat is de reikwijdte: waar begint opstellen regeltekst (valt de beleidsvorming er ook onder) en waar eindigt opstellen regeltekst (valt het vaststellings- en publicatieproces er ook onder)?</em></p>
+<p>Specialisatie van: <a href="#taak">Taak</a></p>
+</section><section id="verzamelen-bronmateriaal"><div class="header-wrapper"><h4 id="x1-2-4-verzamelen-bronmateriaal"><bdi class="secno">1.2.4 </bdi>Verzamelen bronmateriaal</h4><a class="self-link" href="#verzamelen-bronmateriaal" aria-label="Permalink for Section 1.2.4"></a></div>
+<p>Alternatieve aanduiding: <em>Acquire source material</em></p>
+<blockquote>
+<p>Verzamelen bronmateriaal is een <a href="#taak">taak</a> waarin de relevante bronnen worden verzameld die nodig zijn voor de gegeven opgave</p>
+</blockquote>
+<p>Toelichting: Het gaat hier om de bronnen van het positieve recht, het geschreven recht (zowel intern, nationaal als internationaal), inclusief uitspraken van rechters (jurisprudentie), parlementaire geschiedenis, toelichtingen en annotaties vanuit de rechtswetenschap</p>
+<p><em>Mogelijk nog aandacht voor het ongeschreven recht: gewoonte recht en algemene rechtsbeginselen. Deze kunnen niet echt als bronmateriaal worden gezien, maar kunnen mogelijk wel bijdragen, mits er iets van op papier staat?</em></p>
+<p>Specialisatie van: <a href="#taak">Taak</a></p>
+</section></section></section>
+    <section id="ontologie"><div class="header-wrapper"><h2 id="x2-ontologie"><bdi class="secno">2. </bdi>Ontologie</h2><a class="self-link" href="#ontologie" aria-label="Permalink for Section 2."></a></div>
+<section id="klassen"><div class="header-wrapper"><h3 id="x2-1-klassen"><bdi class="secno">2.1 </bdi>Klassen</h3><a class="self-link" href="#klassen" aria-label="Permalink for Section 2.1"></a></div>
+<ul>
+<li><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a><ul>
+<li><a href="http://bp4mc2.org/lto#Methode">Methode</a></li>
+<li><a href="http://bp4mc2.org/lto#Standaard">Standaard</a></li>
+<li><a href="http://bp4mc2.org/lto#Tool">Tool</a></li>
+</ul>
+</li>
+<li><a href="http://bp4mc2.org/lto#Taakinvulling">Taakinvulling</a></li>
+</ul>
+<section id="juridische-technologie-0"><div class="header-wrapper"><h4 id="x2-1-1-juridische-technologie"><bdi class="secno">2.1.1 </bdi>Juridische technologie</h4><a class="self-link" href="#juridische-technologie-0" aria-label="Permalink for Section 2.1.1"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#JuridischeTechnologie">http://bp4mc2.org/lto#JuridischeTechnologie</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Definitie</td>
+<td>Een juridische technologie is een methode, standaard of tool die gebruikt wordt in het proces van wetgeving en/of wetsuitvoering</td>
+</tr>
+<tr>
+<td>Eigenschappen</td>
+<td><a href="http://bp4mc2.org/lto#gebodenFunctionaliteit">geboden functionaliteit</a>, <a href="http://bp4mc2.org/lto#omschrijving">omschrijving</a>, <a href="http://bp4mc2.org/lto#bijgewerktOp">bijgewerkt op</a>, <a href="http://bp4mc2.org/lto#naam">naam</a>, <a href="http://bp4mc2.org/lto#beschrijving">beschrijving</a>, <a href="http://bp4mc2.org/lto#licentievorm">licentievorm</a>, <a href="http://bp4mc2.org/lto#gebruiksstatus">gebruiksstatus</a>, <a href="http://bp4mc2.org/lto#beoogdeGebruikers">beoogde gebruikers</a>, <a href="http://bp4mc2.org/lto#ondersteuningVoor">ondersteuning voor</a>, <a href="http://bp4mc2.org/lto#geschiktVoorTaak">geschikt voor taak</a>, <a href="http://bp4mc2.org/lto#bron">aanvullende documentatie</a></td>
+</tr>
+</tbody></table>
+</section><section id="methode-0"><div class="header-wrapper"><h4 id="x2-1-2-methode"><bdi class="secno">2.1.2 </bdi>Methode</h4><a class="self-link" href="#methode-0" aria-label="Permalink for Section 2.1.2"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#Methode">http://bp4mc2.org/lto#Methode</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Specialisatie van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a></td>
+</tr>
+<tr>
+<td>Definitie</td>
+<td>Een methode is een gestructureerde, herhaalbare aanpak (stappenplan met technieken en keuzes) om een doel te bereiken of een taak uit te voeren. Een methode beschrijft hoe je te werk gaat (en evt. In welke volgorde) en kan verwijzen naar standaarden als hulpmiddel</td>
+</tr>
+<tr>
+<td>Eigenschappen</td>
+<td><a href="http://bp4mc2.org/lto#beheerder">beheerder</a></td>
+</tr>
+</tbody></table>
+</section><section id="standaard-0"><div class="header-wrapper"><h4 id="x2-1-3-standaard"><bdi class="secno">2.1.3 </bdi>Standaard</h4><a class="self-link" href="#standaard-0" aria-label="Permalink for Section 2.1.3"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#Standaard">http://bp4mc2.org/lto#Standaard</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Specialisatie van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a></td>
+</tr>
+<tr>
+<td>Definitie</td>
+<td>Een (informatie)standaard is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een taak uit te voeren. Een (informatie)standaard beschrijft wat het resultaat is.</td>
+</tr>
+<tr>
+<td>Eigenschappen</td>
+<td><a href="http://bp4mc2.org/lto#beheerder">beheerder</a>, <a href="http://bp4mc2.org/lto#normstatus">normstatus</a></td>
+</tr>
+</tbody></table>
+</section><section id="taakinvulling-0"><div class="header-wrapper"><h4 id="x2-1-4-taakinvulling"><bdi class="secno">2.1.4 </bdi>Taakinvulling</h4><a class="self-link" href="#taakinvulling-0" aria-label="Permalink for Section 2.1.4"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#Taakinvulling">http://bp4mc2.org/lto#Taakinvulling</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschappen</td>
+<td><a href="http://bp4mc2.org/lto#omschrijving">omschrijving</a>, <a href="http://bp4mc2.org/lto#taaktype">type</a></td>
+</tr>
+</tbody></table>
+</section><section id="tool-0"><div class="header-wrapper"><h4 id="x2-1-5-tool"><bdi class="secno">2.1.5 </bdi>Tool</h4><a class="self-link" href="#tool-0" aria-label="Permalink for Section 2.1.5"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#Tool">http://bp4mc2.org/lto#Tool</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Specialisatie van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a></td>
+</tr>
+<tr>
+<td>Definitie</td>
+<td>Een (informatie)standaard is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een taak uit te voeren. Een (informatie)standaard beschrijft wat het resultaat is.</td>
+</tr>
+<tr>
+<td>Eigenschappen</td>
+<td><a href="http://bp4mc2.org/lto#typeTechnologie">type technologie</a>, <a href="http://bp4mc2.org/lto#leverancier">leverancier</a></td>
+</tr>
+</tbody></table>
+</section></section><section id="eigenschappen-relaties"><div class="header-wrapper"><h3 id="x2-2-eigenschappen-relaties"><bdi class="secno">2.2 </bdi>Eigenschappen (relaties)</h3><a class="self-link" href="#eigenschappen-relaties" aria-label="Permalink for Section 2.2"></a></div>
+<section id="beheerder"><div class="header-wrapper"><h4 id="x2-2-1-beheerder"><bdi class="secno">2.2.1 </bdi>beheerder</h4><a class="self-link" href="#beheerder" aria-label="Permalink for Section 2.2.1"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#beheerder">http://bp4mc2.org/lto#beheerder</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#Methode">Methode</a><a href="http://bp4mc2.org/lto#Standaard">Standaard</a></td>
+</tr>
+<tr>
+<td>Gerelateerde klasse</td>
+<td></td>
+</tr>
+</tbody></table>
+</section><section id="beoogde-gebruikers"><div class="header-wrapper"><h4 id="x2-2-2-beoogde-gebruikers"><bdi class="secno">2.2.2 </bdi>beoogde gebruikers</h4><a class="self-link" href="#beoogde-gebruikers" aria-label="Permalink for Section 2.2.2"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#beoogdeGebruikers">http://bp4mc2.org/lto#beoogdeGebruikers</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a></td>
+</tr>
+</tbody></table>
+</section><section id="beschouwingsniveau"><div class="header-wrapper"><h4 id="x2-2-3-beschouwingsniveau"><bdi class="secno">2.2.3 </bdi>beschouwingsniveau</h4><a class="self-link" href="#beschouwingsniveau" aria-label="Permalink for Section 2.2.3"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#beschouwingsniveau">http://bp4mc2.org/lto#beschouwingsniveau</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td></td>
+</tr>
+</tbody></table>
+</section><section id="geboden-functionaliteit"><div class="header-wrapper"><h4 id="x2-2-4-geboden-functionaliteit"><bdi class="secno">2.2.4 </bdi>geboden functionaliteit</h4><a class="self-link" href="#geboden-functionaliteit" aria-label="Permalink for Section 2.2.4"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#gebodenFunctionaliteit">http://bp4mc2.org/lto#gebodenFunctionaliteit</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a></td>
+</tr>
+</tbody></table>
+</section><section id="gebruiksstatus"><div class="header-wrapper"><h4 id="x2-2-5-gebruiksstatus"><bdi class="secno">2.2.5 </bdi>gebruiksstatus</h4><a class="self-link" href="#gebruiksstatus" aria-label="Permalink for Section 2.2.5"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#gebruiksstatus">http://bp4mc2.org/lto#gebruiksstatus</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a></td>
+</tr>
+</tbody></table>
+</section><section id="leverancier"><div class="header-wrapper"><h4 id="x2-2-6-leverancier"><bdi class="secno">2.2.6 </bdi>leverancier</h4><a class="self-link" href="#leverancier" aria-label="Permalink for Section 2.2.6"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#leverancier">http://bp4mc2.org/lto#leverancier</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#Tool">Tool</a></td>
+</tr>
+<tr>
+<td>Gerelateerde klasse</td>
+<td></td>
+</tr>
+</tbody></table>
+</section><section id="licentievorm"><div class="header-wrapper"><h4 id="x2-2-7-licentievorm"><bdi class="secno">2.2.7 </bdi>licentievorm</h4><a class="self-link" href="#licentievorm" aria-label="Permalink for Section 2.2.7"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#licentievorm">http://bp4mc2.org/lto#licentievorm</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a></td>
+</tr>
+</tbody></table>
+</section><section id="modelsoort"><div class="header-wrapper"><h4 id="x2-2-8-modelsoort"><bdi class="secno">2.2.8 </bdi>modelsoort</h4><a class="self-link" href="#modelsoort" aria-label="Permalink for Section 2.2.8"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#modelsoort">http://bp4mc2.org/lto#modelsoort</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td></td>
+</tr>
+</tbody></table>
+</section><section id="normstatus"><div class="header-wrapper"><h4 id="x2-2-9-normstatus"><bdi class="secno">2.2.9 </bdi>normstatus</h4><a class="self-link" href="#normstatus" aria-label="Permalink for Section 2.2.9"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#normstatus">http://bp4mc2.org/lto#normstatus</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#Standaard">Standaard</a></td>
+</tr>
+</tbody></table>
+</section><section id="ondersteuning-voor"><div class="header-wrapper"><h4 id="x2-2-10-ondersteuning-voor"><bdi class="secno">2.2.10 </bdi>ondersteuning voor</h4><a class="self-link" href="#ondersteuning-voor" aria-label="Permalink for Section 2.2.10"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#ondersteuningVoor">http://bp4mc2.org/lto#ondersteuningVoor</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a></td>
+</tr>
+</tbody></table>
+</section><section id="type-technologie"><div class="header-wrapper"><h4 id="x2-2-11-type-technologie"><bdi class="secno">2.2.11 </bdi>type technologie</h4><a class="self-link" href="#type-technologie" aria-label="Permalink for Section 2.2.11"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#typeTechnologie">http://bp4mc2.org/lto#typeTechnologie</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#Tool">Tool</a></td>
+</tr>
+</tbody></table>
+</section></section><section id="eigenschappen-waarden"><div class="header-wrapper"><h3 id="x2-3-eigenschappen-waarden"><bdi class="secno">2.3 </bdi>Eigenschappen (waarden)</h3><a class="self-link" href="#eigenschappen-waarden" aria-label="Permalink for Section 2.3"></a></div>
+<section id="naam"><div class="header-wrapper"><h4 id="x2-3-1-naam"><bdi class="secno">2.3.1 </bdi>naam</h4><a class="self-link" href="#naam" aria-label="Permalink for Section 2.3.1"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#naam">http://bp4mc2.org/lto#naam</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Datatype</td>
+<td><a href="http://www.w3.org/2001/XMLSchema#string">string</a></td>
+</tr>
+<tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a></td>
+</tr>
+</tbody></table>
+</section><section id="omschrijving"><div class="header-wrapper"><h4 id="x2-3-2-omschrijving"><bdi class="secno">2.3.2 </bdi>omschrijving</h4><a class="self-link" href="#omschrijving" aria-label="Permalink for Section 2.3.2"></a></div>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th><a href="http://bp4mc2.org/lto#omschrijving">http://bp4mc2.org/lto#omschrijving</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Datatype</td>
+<td><a href="http://www.w3.org/2001/XMLSchema#string">string</a></td>
+</tr>
+<tr>
+<td>Eigenschap van</td>
+<td><a href="http://bp4mc2.org/lto#JuridischeTechnologie">Juridische technologie</a><a href="http://bp4mc2.org/lto#Taakinvulling">Taakinvulling</a></td>
+</tr>
+</tbody></table>
+</section></section></section>
+  
+
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Terug naar boven">↑</abbr></a>
+  </p><script id="respec-highlight-vars">(() => {
+// @ts-check
+
+if (document.respec) {
+  document.respec.ready.then(setupVarHighlighter);
+} else {
+  setupVarHighlighter();
+}
+
+function setupVarHighlighter() {
+  document
+    .querySelectorAll("var")
+    .forEach(varElem => varElem.addEventListener("click", highlightListener));
+}
+
+function highlightListener(ev) {
+  ev.stopPropagation();
+  const { target: varElem } = ev;
+  const hightligtedElems = highlightVars(varElem);
+  const resetListener = () => {
+    const hlColor = getHighlightColor(varElem);
+    hightligtedElems.forEach(el => removeHighlight(el, hlColor));
+    [...HL_COLORS.keys()].forEach(key => HL_COLORS.set(key, true));
+  };
+  if (hightligtedElems.length) {
+    document.body.addEventListener("click", resetListener, { once: true });
+  }
+}
+
+// availability of highlight colors. colors from var.css
+const HL_COLORS = new Map([
+  ["respec-hl-c1", true],
+  ["respec-hl-c2", true],
+  ["respec-hl-c3", true],
+  ["respec-hl-c4", true],
+  ["respec-hl-c5", true],
+  ["respec-hl-c6", true],
+  ["respec-hl-c7", true],
+]);
+
+function getHighlightColor(target) {
+  // return current colors if applicable
+  const { value } = target.classList;
+  const re = /respec-hl-\w+/;
+  const activeClass = re.test(value) && value.match(re);
+  if (activeClass) return activeClass[0];
+
+  // first color preference
+  if (HL_COLORS.get("respec-hl-c1") === true) return "respec-hl-c1";
+
+  // otherwise get some other available color
+  return [...HL_COLORS.keys()].find(c => HL_COLORS.get(c)) || "respec-hl-c1";
+}
+
+function highlightVars(varElem) {
+  const textContent = norm(varElem.textContent);
+  const parent = varElem.closest(".algorithm, section");
+  const highlightColor = getHighlightColor(varElem);
+
+  const varsToHighlight = [...parent.querySelectorAll("var")].filter(
+    el =>
+      norm(el.textContent) === textContent &&
+      el.closest(".algorithm, section") === parent
+  );
+
+  // update availability of highlight color
+  const colorStatus = varsToHighlight[0].classList.contains("respec-hl");
+  HL_COLORS.set(highlightColor, colorStatus);
+
+  // highlight vars
+  if (colorStatus) {
+    varsToHighlight.forEach(el => removeHighlight(el, highlightColor));
+    return [];
+  } else {
+    varsToHighlight.forEach(el => addHighlight(el, highlightColor));
+  }
+  return varsToHighlight;
+}
+
+function removeHighlight(el, highlightColor) {
+  el.classList.remove("respec-hl", highlightColor);
+  // clean up empty class attributes so they don't come in export
+  if (!el.classList.length) el.removeAttribute("class");
+}
+
+function addHighlight(elem, highlightColor) {
+  elem.classList.add("respec-hl", highlightColor);
+}
+
+/**
+ * Same as `norm` from src/core/utils, but our build process doesn't allow
+ * imports in runtime scripts, so duplicated here.
+ * @param {string} str
+ */
+function norm(str) {
+  return str.trim().replace(/\s+/g, " ");
+}
+})()</script><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

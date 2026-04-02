@@ -1,0 +1,108 @@
+title: Convert RDF data to RDF model (SHACL and RDFS)
+version: 1.0
+prefixes:
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  sh: http://www.w3.org/ns/shacl#
+  owl: http://www.w3.org/2002/07/owl#
+  xsd: http://www.w3.org/2001/XMLSchema#
+queries:
+  - title: veronderstel sh:PropertyShape als object van sh:property
+    query: >
+      prefix sh: <http://www.w3.org/ns/shacl#>
+      insert {
+        graph <urn:input> {
+          ?ps a sh:PropertyShape
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s sh:property ?ps
+        }
+      }
+  - title: veronderstel sh:targetClass at punning
+    query: >
+      prefix sh: <http://www.w3.org/ns/shacl#>
+      prefix owl: <http://www.w3.org/2002/07/owl#>
+      insert {
+        graph <urn:input> {
+          ?s sh:targetClass ?s
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s a sh:NodeShape.
+          ?s a owl:Class.
+        }
+      }
+  - title: copy relevant input to output
+    query: >
+      prefix sh: <http://www.w3.org/ns/shacl#>
+      prefix owl: <http://www.w3.org/2002/07/owl#>
+      insert {
+        graph <urn:output> {
+          ?s?p?o
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s?p?o.
+          ?s a ?t
+          FILTER (?t = owl:Class || ?t = sh:NodeShape || ?t = owl:DatatypeProperty || ?t = owl:ObjectProperty || ?t = sh:PropertyShape)
+        }
+      }
+  - title: definitie uit begrippen overnemen
+    query: >
+      prefix dct: <http://purl.org/dc/terms/>
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      insert {
+        graph <urn:output> {
+          ?s rdfs:comment ?def
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s dct:subject ?b.
+          ?b a skos:Concept.
+          ?b skos:definition ?def.
+        }
+      }
+  - title: gebruikte begrippen ook toevoegen
+    query: >
+      prefix dct: <http://purl.org/dc/terms/>
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      insert {
+        graph <urn:output> {
+          ?b a skos:Concept.
+          ?b rdfs:label ?blabel
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s dct:subject ?b.
+          ?b a skos:Concept.
+          ?b rdfs:label ?blabel
+        }
+      }
+  - title: gebruikte begrippen ook toevoegen, vanuit waardelijsten
+    query: >
+      prefix sh: <http://www.w3.org/ns/shacl#>
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      insert {
+        graph <urn:output> {
+          ?b a skos:Concept.
+          ?b skos:inScheme ?scheme.
+          ?b rdfs:label ?blabel
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s sh:hasValue ?scheme.
+          ?b a skos:Concept.
+          ?b skos:inScheme ?scheme.
+          ?b rdfs:label ?blabel
+        }
+      }
