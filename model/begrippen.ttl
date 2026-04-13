@@ -2,13 +2,16 @@
 @prefix skosthes: <http://purl.org/iso25964/skos-thes#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 
-@prefix lt: <http://bp4mc2.org/lt/>.
+@prefix lt: <http://bp4mc2.org/lt#>.
 
-<http://bp4mc2.org/lt> a skos:ConceptScheme;
-  rdfs:label "Legal technology vocabulary";
+lt:BegrippenkaderJuridischeTechnologie a skos:ConceptScheme;
+  rdfs:label "Legal technology vocabulary"@en;
+  rdfs:label "Begrippenkader juridische technologie"@nl
 .
-<http://bp4mc2.org/ltt> a skos:ConceptScheme;
-  rdfs:label "Taken";
+
+lt:Taken a skos:ConceptScheme;
+  rdfs:label "Taken"@nl;
+  rdfs:label "Tasks"@en;
 .
 
 #
@@ -17,7 +20,8 @@
 
 lt:JuridischeTechnologie a skos:Concept;
   rdfs:label "Juridische technologie"@nl;
-  skos:inScheme <http://bp4mc2.org/lt>;
+  skos:prefLabel "Juridische technologie"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:definition "Een juridische technologie is een methode, standaard of tool die gebruikt wordt in het proces van wetgeving en/of wetsuitvoering";
   skosthes:narrowerGeneric lt:Standaard;
   skosthes:narrowerGeneric lt:Methode;
@@ -26,7 +30,8 @@ lt:JuridischeTechnologie a skos:Concept;
 
 lt:Methode a skos:Concept;
   rdfs:label "Methode"@nl;
-  skos:inScheme <http://bp4mc2.org/lt>;
+  skos:prefLabel "Methode"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:definition "Een methode is een gestructureerde, herhaalbare aanpak (stappenplan met technieken en keuzes) om een doel te bereiken of een taak uit te voeren. Een methode beschrijft hoe je te werk gaat (en evt. In welke volgorde) en kan verwijzen naar standaarden als hulpmiddel";
   skos:scopeNote "Een methode beschrijft HOE een taak wordt uitgevoerd";
   skos:editorialNote "We beperken ons tot methoden die gezien kunnen worden als juridische technologie, dwz: bruikbaar zijn voor taken die passen binnen wendbaar wetgeven en wendbare wetsuitvoering";
@@ -35,33 +40,37 @@ lt:Methode a skos:Concept;
 
 lt:Standaard a skos:Concept;
   rdfs:label "Standaard"@nl;
-  skos:inScheme <http://bp4mc2.org/lt>;
+  skos:prefLabel "Standaard"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:definition "Een (informatie)standaard is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een taak uit te voeren. Een (informatie)standaard beschrijft wat het resultaat is.";
   skos:scopeNote "Een standaard beschrijft WAT een taak opleverd";
   skos:editorialNote "In de context van dit begrippenkader, beschouwen we slechts iets als standaard als deze het WAT beschrijven. De termen 'standaard' en 'informatiestandaard' kunnen daarbij als synoniem worden beschouwd. Mocht een standaard ook een methodisch karakter hebben, dan splitsen we het methodische deel af van de (informatie)standaard.";
-  skos:broaderGeneric lt:LegalTechnology;
+  skos:broaderGeneric lt:JuridischeTechnologie;
   skos:related lt:Taak;
 .
 
 lt:Tool a skos:Concept;
   rdfs:label "Tool"@nl;
-  skos:inScheme <http://bp4mc2.org/lt>;
+  skos:prefLabel "Tool"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:definition "Een tool is een informatievoorziening die ondersteuning biedt om een doel te bereiken of een taak uit te voeren. De beschrijving van een tool geeft aan WAARMEE een taak wordt uitgevoerd";
   skos:scopeNote "Een tool is een hulpmiddel WAARMEE een taak wordt uitgevoerd";
-  skos:broaderGeneric lt:LegalTechnology;
+  skos:broaderGeneric lt:JuridischeTechnologie;
   skos:related lt:Taak;
 .
 
 lt:TaakInvulling a skos:Concept;
   rdfs:label "Taakinvulling"@nl;
-  skos:inScheme <http://bp4mc2.org/lt>;
+  skos:prefLabel "Taakinvulling"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:definition "Een taakinvulling is een aanduiding voor de manier waarop een taak in een specifieke juridische technologie wordt ingevuld of ondersteund";
-  skos:related lt:Taak, lt:LegalTechnology;
+  skos:related lt:Taak, lt:JuridischeTechnologie;
 .
 
 lt:Taak a skos:Concept;
   rdfs:label "Taak"@nl;
-  skos:inScheme <http://bp4mc2.org/lt>;
+  skos:prefLabel "Taak"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:definition "Een taak is een afgebakende hoeveelheid werk die leidt tot een overdraagbaar resultaat en die bijdraagt aan het behalen van een doel";
   skos:editorialNote "In de context van dit begrippenkader, beschouwen we slechts taken die passen binnen wendbaar wetgeven en wendbare wetsuitvoering";
 .
@@ -72,7 +81,8 @@ lt:Taak a skos:Concept;
 
 lt:OpstellenRegeltekst a skos:Concept;
   rdfs:label "Opstellen regeltekst"@nl;
-  skos:inScheme <http://bp4mc2.org/ltt>;
+  skos:prefLabel "Opstellen regeltekst"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:altLabel "Drafting legislation"@en;
   skos:definition "Opstellen regeltekst is een taak waarbij tekst wordt opgesteld als onderdeel van het geschreven recht";
   skos:scopeNote "Het gaat hier zowel om algemeen verbindende voorwaarden (Wet in formele zin, AmvB's, Ministeriële regelingen), beleidsregels (zoals bedoeld in de Awb) en ook (intern) geschreven uitvoeringsbeleid.";
@@ -81,8 +91,9 @@ lt:OpstellenRegeltekst a skos:Concept;
 .
 
 lt:ScopeDefinition a skos:Concept;
-  rdfs:label "Afbakenen reikwijdte";
-  skos:inScheme <http://bp4mc2.org/ltt>;
+  rdfs:label "Afbakenen reikwijdte"@nl;
+  skos:prefLabel "Afbakenen reikwijdte"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:altLabel "Scope definition"@en;
   skos:definition "Afbakenen reikwijdte is een taak waarin wordt bepaald waaruit de opgave bestaat";
   skos:scopeNote "Een 'opgave' kan gelezen worden als het doel waarvoor de wetgeving c.q. wetsuitvoering is bedoeld, en het effect dat hiermee wordt beoogd";
@@ -90,9 +101,10 @@ lt:ScopeDefinition a skos:Concept;
 .
 
 lt:AcquireSourceMaterial a skos:Concept;
-  rdfs:label "Verzamelen bronmateriaal";
-  skos:inScheme <http://bp4mc2.org/ltt>;
-  skos:altLabel "Acquire source material";
+  rdfs:label "Verzamelen bronmateriaal"@nl;
+  skos:prefLabel "Verzamelen bronmateriaal"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
+  skos:altLabel "Acquire source material"@en;
   skos:definition "Verzamelen bronmateriaal is een taak waarin de relevante bronnen worden verzameld die nodig zijn voor de gegeven opgave";
   skos:scopeNote "Het gaat hier om de bronnen van het positieve recht, het geschreven recht (zowel intern, nationaal als internationaal), inclusief uitspraken van rechters (jurisprudentie), parlementaire geschiedenis, toelichtingen en annotaties vanuit de rechtswetenschap";
   skos:editorialNote "Mogelijk nog aandacht voor het ongeschreven recht: gewoonte recht en algemene rechtsbeginselen. Deze kunnen niet echt als bronmateriaal worden gezien, maar kunnen mogelijk wel bijdragen, mits er iets van op papier staat?";
@@ -100,8 +112,9 @@ lt:AcquireSourceMaterial a skos:Concept;
 .
 
 lt:AnalysingLegislation a skos:Concept;
-  rdfs:label "Analyseren";
-  skos:inScheme <http://bp4mc2.org/ltt>;
+  rdfs:label "Analyseren"@nl;
+  skos:prefLabel "Analyseren"@nl;
+  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:definition "Analyseren is een taak waarin op een gestructureerde manier de betekenis, structuur en bedoeling van een juridische tekst wordt onderzocht";
   skos:scopeNote "Interpreteren van een juridische tekst valt expliciet niet onder deze taak. De analyse beoogd een zo feitelijk mogelijk onderzoek";
   skosthes:broaderGeneric lt:Taak;

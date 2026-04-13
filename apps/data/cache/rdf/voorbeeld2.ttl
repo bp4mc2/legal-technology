@@ -1,0 +1,36 @@
+<https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1> a <http://bp4mc2.org/lto#JuridischeTechnologie> ;
+  <http://bp4mc2.org/lto#naam> "Standaard voor verwijzing (ECLI)@nl" ;
+  rdfs:label "Standaard voor verwijzing (ECLI)"@nl ;
+  <http://bp4mc2.org/lto#omschrijving> "De European Case Law Identifier (ECLI) is een Europese standaard voor het uniek nummeren van rechterlijke uitspraken. De standaard is eind 2010 vastgesteld door de Raad van Ministers van de Europese Unie. In ieder land waar de ECLI wordt gebruikt, is deze altijd op dezelfde manier opgebouwd: ECLI:landcode:gerechtscode:jaar:nummer@nl" ;
+  <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt:InGebruik> ;
+  <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt:VolledigOpen> ;
+  <http://bp4mc2.org/lto#bijgewerktOp> "2026-03-31" ;
+  <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt:ComplianceOndersteuning> ;
+  <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt:Rechtbanken> ;
+  <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt:Juristen> ;
+  <http://bp4mc2.org/lto#ondersteuningVoor> <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/ondersteuning/1> ;
+  <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/taakinvulling/1> ;
+  <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/beschrijving/1> ;
+  <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/bronvermelding/1> ;
+  <http://bp4mc2.org/lto#normstatus> <http://bp4mc2.org/lt:Wettelijk> ;
+  <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/juriconnect/v/1> ;
+  <http://bp4mc2.org/lto#leverancier> <https://data.bp4mc2.org/id/lto/organisatie/juriconnect/v/1> .
+
+<https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/beschrijving/1> a <http://bp4mc2.org/lto#Documentatie> .
+  <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/beschrijving/1> <http://bp4mc2.org/lto#beoogdGebruik> "##" .
+  <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/beschrijving/1> <http://bp4mc2.org/lto#toegevoegdeWaarde> "Intereroperabel in Europe mbt rechtszaken" .
+
+<https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/bronvermelding/1> a <http://bp4mc2.org/lto#Bronverwijzing> .
+  <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/bronvermelding/1> <http://purl.org/dc/terms/title> "Beheerplan juriconnect" .
+  
+<https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/ondersteuning/1> a <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+  <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/ondersteuning/1> <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lt:Ontologisch> .
+  <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/ondersteuning/1> <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lt:Normatief> .
+
+<https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/taakinvulling/1> a <http://bp4mc2.org/lto#Taakinvulling> .
+  <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/taakinvulling/1> <http://bp4mc2.org/lto#omschrijving> "Bij het verzamelen van bronmateriaal kan met behulp van ECLI aanvullende bronnen gevonden worden." .
+  <https://data.bp4mc2.org/id/lto/legaltech/standaard/ecli/v/1/taakinvulling/1> <http://bp4mc2.org/lto#taaktype> "" .
+
+<https://data.bp4mc2.org/id/lto/organisatie/juriconnect/v/1> a <http://bp4mc2.org/lto#Organisatie> .
+  <https://data.bp4mc2.org/id/lto/organisatie/juriconnect/v/1> <http://bp4mc2.org/lto#naam> "Juriconnect" .
+  <https://data.bp4mc2.org/id/lto/organisatie/juriconnect/v/1> <http://bp4mc2.org/lto#contactinformatie> " info@juriconnect.nl" .

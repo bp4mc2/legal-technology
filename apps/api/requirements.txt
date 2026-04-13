@@ -1,0 +1,6 @@
+flask>=3.0.2,<4.0.0
+werkzeug>=3.0.1,<4.0.0
+requests
+pytest==7.2.0
+# flasgger==0.9.7.1
+flask-smorest==0.44.0

@@ -1,0 +1,1009 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+
+@prefix lt: <http://bp4mc2.org/lt#>.
+@prefix lto: <http://bp4mc2.org/lto#>.
+
+# Ontology metadata
+<http://bp4mc2.org/lt#ontology>
+  a owl:Ontology ;
+  dct:title "Juridische technologie ontologie"@nl ;
+  dct:creator "Brattinga, Van Dijk, Straver"@nl ;
+  dct:created "2026-03-31"^^xsd:date ;
+  owl:versionInfo "0.1.0" ;
+  rdfs:comment "Deze ontologie beschrijft juridische technologieën, hun eigenschappen, relaties en relevante enumeraties."@nl .
+
+
+############################################################################################################
+## Legal technology ontology
+## Organized by classes, properties, and enumerations (lists)
+############################################################################################################
+
+## ---------------------------------------------------------------------------------------------------------
+## Juridische technologie
+## ---------------------------------------------------------------------------------------------------------
+
+lto:JuridischeTechnologie a sh:NodeShape, owl:Class;
+  rdfs:label "Juridische technologie";
+  dct:subject lt:JuridischeTechnologie;
+  # Multiple combinations of Ondersteuningsvorm (beschouwingsniveau + modelsoort) can be entered for each juridische technologie.
+  # Each value of lto:ondersteuningVoor is a blank node with its own beschouwingsniveau and modelsoort.
+  sh:property [
+    sh:order 1;
+    rdfs:label "naam"@nl;
+    sh:path lto:naam;
+    sh:description "De naam van de technologie"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string;
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "omschrijving"@nl;
+    sh:path lto:omschrijving;
+    sh:description "Een omschrijving van de technologie"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string;
+  ];
+  sh:property [
+    sh:order 3;
+    rdfs:label "gebruiksstatus"@nl;
+    sh:path lto:gebruiksstatus;
+    sh:description "De status  van het gebruik van de technologie (nog in ontwikkeling, een voorstel, in gebruik, etc)"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:node lt:Gebruiksstatussen;    
+  ];
+  sh:property [
+    sh:order 4;
+    rdfs:label "licentievorm"@nl;
+    sh:path lto:licentievorm;
+    sh:description "De mate waarin de technologie vrij is te gebruiken"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:node lt:Licentievormen;
+  ];
+  sh:property [
+    sh:order 5;
+    rdfs:label "geboden functionaliteit"@nl;
+    sh:path lto:gebodenFunctionaliteit;
+    sh:description "Het soort functionaliteit dat de technologie biedt"@nl;
+    sh:minCount 1;
+    sh:node lt:Functionaliteiten;
+  ];
+  sh:property [
+    sh:order 6;
+    rdfs:label "beoogde gebruikers"@nl;
+    sh:path lto:beoogdeGebruikers;
+    sh:description "De groep van gebruikers die van deze technologie gebruik zou kunnen maken"@nl;
+    sh:minCount 1;
+    sh:node lt:Gebruikersgroepen;
+  ];
+  sh:property [
+    sh:order 7;
+    rdfs:label "bijgewerkt op"@nl;
+    sh:path lto:bijgewerktOp;
+    sh:description "De datum waarop de beschrijving van de technologie voor het laatst is bijgewerkt"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:date;
+  ];
+  sh:property [
+    sh:order 8;
+    rdfs:label "ondersteuning voor"@nl;
+    sh:path lto:ondersteuningVoor;
+    sh:description "Het beschouwingsniveau en de modelsoort waarvoor de technologie ondersteuning biedt"@nl;
+    sh:minCount 1;
+    sh:node lto:Ondersteuningsvorm;
+    sh:nodeKind sh:BlankNode;
+  ];
+  sh:property [
+    sh:order 100;
+    rdfs:label "geschikt voor taak"@nl;
+    sh:path lto:geschiktVoorTaak;
+    sh:description "Relateert de technologie aan het taaktype waarvoor de technologie kan worden ingezet"@nl;
+    sh:minCount 1;
+    sh:class lto:Taakinvulling
+  ];
+  sh:property [
+    sh:order 101;
+    rdfs:label "beschrijving"@nl;
+    sh:path lto:documentatie;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:nodeKind sh:BlankNode;
+    sh:node lto:Documentatie
+  ];
+  sh:property [
+    sh:order 102;
+    rdfs:label "aanvullende documentatie"@nl;
+    sh:path lto:bron;    
+    sh:class lto:Bronverwijzing
+  ];
+  sh:property [
+    sh:order 103;
+    rdfs:label "relatie"@nl;
+    sh:path lto:relatie;
+    sh:class lto:Relatie
+  ];
+  sh:property [
+    sh:order 104;
+    rdfs:label "versiebeschrijving"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:path lto:versiebeschrijving;
+    sh:node lto:Versiebeschrijving
+  ]
+.
+
+## Ondersteuningsvorm (combinatie van beschouwingsniveau en modelsoort)
+
+lto:Ondersteuningsvorm a sh:NodeShape;
+  sh:name "Ondersteuningsvorm"@nl;
+  sh:property [
+    sh:order 1;
+    rdfs:label "beschouwingsniveau"@nl;
+    sh:path lto:beschouwingsniveau;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:node lt:Beschouwingsniveaus
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "modelsoort"@nl;
+    sh:path lto:modelsoort;
+    sh:maxCount 1;
+    sh:node lt:Modelsoorten;
+  ]
+.
+
+## Data properties (Juridische technologie attributes)
+
+
+lto:naam a owl:DatatypeProperty;
+  rdfs:label "naam"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range xsd:string
+.
+lto:omschrijving a owl:DatatypeProperty;
+  rdfs:label "omschrijving"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range xsd:string
+.
+lto:bijgewerktOp a owl:DatatypeProperty;
+  rdfs:label "bijgewerkt op"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range xsd:date
+.
+
+## Object properties (Juridische technologie relationships)
+
+
+lto:gebruiksstatus a owl:ObjectProperty;
+  rdfs:label "gebruiksstatus"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range lt:Gebruiksstatussen;
+.
+lto:licentievorm a owl:ObjectProperty;
+  rdfs:label "licentievorm"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range lt:Licentievormen;
+.
+lto:gebodenFunctionaliteit a owl:ObjectProperty;
+  rdfs:label "geboden functionaliteit"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range lt:Functionaliteiten;
+.
+lto:beoogdeGebruikers a owl:ObjectProperty;
+  rdfs:label "beoogde gebruikers"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range lt:Gebruikersgroepen;
+.
+lto:ondersteuningVoor a owl:ObjectProperty;
+  rdfs:label "ondersteuning voor"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+.
+lto:beschouwingsniveau a owl:ObjectProperty;
+  rdfs:label "beschouwingsniveau"@nl;
+  rdfs:domain lto:Ondersteuningsvorm;
+  rdfs:range lt:Beschouwingsniveaus;
+.
+lto:modelsoort a owl:ObjectProperty;
+  rdfs:label "modelsoort"@nl;
+  rdfs:domain lto:Ondersteuningsvorm;
+  rdfs:range lt:Modelsoorten;
+.
+lto:bron a owl:ObjectProperty;
+  rdfs:label "bron"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range lto:Bronverwijzing
+.
+lto:documentatie a owl:ObjectProperty;
+  rdfs:label "documentatie"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range lto:Documentatie
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Methode (verbijzondering van Juridische technologie)
+## ---------------------------------------------------------------------------------------------------------
+
+lto:Methode a sh:NodeShape, owl:Class;
+  rdfs:label "Methode"@nl;
+  rdfs:comment "Subklasse van JuridischeTechnologie. Beschrijft een methode met een beheerder-relatie naar een Organisatie."@nl;
+  rdfs:subClassOf lto:JuridischeTechnologie;
+  dct:subject lt:Methode;
+  sh:property [
+    sh:order 1;
+    rdfs:label "beheerder"@nl;
+    sh:path lto:beheerder;
+    sh:description "De organisatie die verantwoordelijk is voor het beheer van de methode."@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:class lto:Organisatie;
+    sh:nodeKind sh:IRI
+  ]
+.
+
+lto:beheerder a owl:ObjectProperty;
+  rdfs:label "beheerder"@nl;
+  rdfs:comment "Predicate tussen Methode/Standaard en een herbruikbare Organisatie-resource."@nl;
+  rdfs:range lto:Organisatie
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Standaard (verbijzondering van Juridische technologie)
+## ---------------------------------------------------------------------------------------------------------
+
+lto:Standaard a sh:NodeShape, owl:Class;
+  rdfs:label "Standaard"@nl;
+  rdfs:comment "Subklasse van JuridischeTechnologie. Beschrijft een standaard met een beheerder-relatie naar een Organisatie en normstatus."@nl;
+  rdfs:subClassOf lto:JuridischeTechnologie;
+  dct:subject lt:Standaard;
+  sh:property [
+    sh:order 1;
+    rdfs:label "beheerder"@nl;
+    sh:path lto:beheerder;
+    sh:description "De organisatie die verantwoordelijk is voor het beheer van de standaard."@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:class lto:Organisatie;
+    sh:nodeKind sh:IRI
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "normstatus"@nl;
+    sh:path lto:normstatus;
+    sh:description "De status van de standaard (bijv. idee, voorstel, best practice, wettelijk)."@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:node lt:Normstatussen
+  ]
+.
+
+lto:normstatus a owl:ObjectProperty;
+  rdfs:label "normstatus"@nl;
+  rdfs:comment "Predicate tussen Standaard en een normstatus uit de Normstatussen-lijst."@nl;
+  rdfs:domain lto:Standaard;
+  rdfs:range lt:Normstatussen
+  
+.
+## ---------------------------------------------------------------------------------------------------------
+## Tool (verbijzondering van Juridische technologie)
+## ---------------------------------------------------------------------------------------------------------
+lto:Tool a sh:NodeShape, owl:Class;
+  rdfs:label "Tool"@nl;
+  rdfs:comment "Subklasse van JuridischeTechnologie. Beschrijft een tool met een leverancier-relatie naar een Organisatie en type technologie."@nl;
+  rdfs:subClassOf lto:JuridischeTechnologie;
+  dct:subject lt:Tool;
+  sh:property [
+    sh:order 1;
+    rdfs:label "leverancier"@nl;
+    sh:path lto:leverancier;
+    sh:description "De organisatie die de tool levert."@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:class lto:Organisatie;
+    sh:nodeKind sh:IRI
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "type technologie"@nl;
+    sh:path lto:typeTechnologie;
+    sh:description "Het type technologie van de tool (bijv. Markup, DSL, Machine learning)."@nl;
+    sh:minCount 1;
+    sh:node lto:Technologietypen;
+  ]
+.
+
+lto:leverancier a owl:ObjectProperty;
+  rdfs:label "leverancier"@nl;
+  rdfs:comment "Predicate tussen Tool en een herbruikbare Organisatie-resource."@nl;
+  rdfs:range lto:Organisatie
+.
+
+lto:typeTechnologie a owl:ObjectProperty;
+  rdfs:label "type technologie"@nl;
+  rdfs:range skos:Concept
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Relatie (samenhang tussen juridische technologieën)
+## ---------------------------------------------------------------------------------------------------------
+lto:Relatie a sh:NodeShape;
+  rdfs:label "Relatie"@nl;
+  sh:property [
+    sh:order 1;
+    rdfs:label "type relatie"@nl;
+    sh:path lto:typeRelatie;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:node lt:Relatietypen
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "beschrijving"@nl;
+    sh:path lto:beschrijvingRelatie;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 3;
+    rdfs:label "gerelateerde technologie"@nl;
+    sh:path lto:gerelateerdeTechnologie;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:class lto:JuridischeTechnologie
+  ]
+.
+
+lto:typeRelatie a owl:ObjectProperty;
+  rdfs:label "type relatie"@nl;
+  rdfs:range lt:Relatietypen
+.
+
+lto:beschrijvingRelatie a owl:DatatypeProperty;
+  rdfs:label "beschrijving"@nl;
+  rdfs:range xsd:string
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Versiebeschrijving
+## ---------------------------------------------------------------------------------------------------------
+lto:Versiebeschrijving a sh:NodeShape;
+  rdfs:label "Versiebeschrijving"@nl;
+  sh:property [
+    sh:order 1;
+    rdfs:label "versienummer"@nl;
+    sh:path lto:versienummer;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "versiedatum"@nl;
+    sh:path lto:versiedatum;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ]
+.
+
+lto:versienummer a owl:DatatypeProperty;
+  rdfs:label "versienummer"@nl;
+  rdfs:comment "Het versienummer van deze technologieversie, bijv. '1.0', '2.1', etc."@nl;
+  rdfs:domain lto:Versiebeschrijving;
+  rdfs:range xsd:string
+.
+
+lto:versiedatum a owl:DatatypeProperty;
+  rdfs:label "versiedatum"@nl;
+  rdfs:comment "Datum waarop deze versie van de technologie is uitgebracht"@nl;
+  rdfs:domain lto:Versiebeschrijving;
+  rdfs:range xsd:string
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Organisatie
+## ---------------------------------------------------------------------------------------------------------
+lto:Organisatie a sh:NodeShape, owl:Class;
+  rdfs:label "Organisatie"@nl;
+  rdfs:comment "Organisatie-instanties worden als herbruikbare resources (IRIs) gemodelleerd en kunnen door meerdere technologieen worden hergebruikt."@nl;
+  dct:subject lt:Organisatie;
+  sh:property [
+    sh:order 1;
+    rdfs:label "naam"@nl;
+    sh:path lto:naamOrganisatie;
+    sh:description "De naam van de organisatie"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string;
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "contactinformatie"@nl;
+    sh:path lto:contactinformatie;
+    sh:description "De contactinformatie van de organisatie"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string;
+  ]
+.
+
+lto:naamOrganisatie a owl:DatatypeProperty;
+  rdfs:label "naam"@nl;
+  rdfs:domain lto:Organisatie;
+  rdfs:range xsd:string
+.
+
+lto:contactinformatie a owl:DatatypeProperty;
+  rdfs:label "contactinformatie"@nl;
+  rdfs:domain lto:Organisatie;
+  rdfs:range xsd:string
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Taakinvulling
+## ---------------------------------------------------------------------------------------------------------
+lto:Taakinvulling a sh:NodeShape, owl:Class;
+  rdfs:label "Taakinvulling"@nl;
+  dct:subject lt:Taakinvulling;
+  sh:property [
+    sh:order 1;
+    rdfs:label "omschrijving"@nl  ;
+    sh:path lto:omschrijving;
+    sh:description "Een omschrijving hoe de taak wordt ingevuld met behulp van de betreffende technologie"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string;
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "type"@nl;
+    sh:path lto:taaktype;
+    sh:description "Het type taak van deze taakinvulling"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:node lt:Taaktypen;
+  ]
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Documentatie
+## ---------------------------------------------------------------------------------------------------------
+
+lto:Documentatie a sh:NodeShape;
+  rdfs:label "Documentatie"@nl;
+  sh:property [
+    sh:order 1;
+    rdfs:label "Beoogd gebruik"@nl;
+    sh:path lto:beoogdGebruik;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:markdown
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "Toegevoegde waarde"@nl;
+    sh:path lto:toegevoegdeWaarde;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 3;
+    rdfs:label "onderdelen"@nl;
+    sh:path lto:onderdelen;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 4;
+    rdfs:label "Ontwikkeling en beheer"@nl;
+    sh:path lto:ontwikkelingEnBeheer;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ]
+.
+
+lto:beoogdGebruik a owl:DatatypeProperty;
+  rdfs:label "beoogd gebruik"@nl;
+  rdfs:range xsd:markdown
+.
+
+lto:toegevoegdeWaarde a owl:DatatypeProperty;
+  rdfs:label "toegevoegde waarde"@nl;
+  rdfs:range xsd:string
+.
+
+lto:onderdelen a owl:DatatypeProperty;
+  rdfs:label "onderdelen"@nl;
+  rdfs:range xsd:string
+.
+
+lto:ontwikkelingEnBeheer a owl:DatatypeProperty;
+  rdfs:label "ontwikkeling en beheer"@nl;
+  rdfs:range xsd:string
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Bronverwijzing
+## ---------------------------------------------------------------------------------------------------------
+
+lto:Bronverwijzing a sh:NodeShape;
+  rdfs:label "Bronverwijzing"@nl;
+  sh:property [
+    sh:order 1;
+    rdfs:label "titel"@nl;
+    sh:path dct:title;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 2;
+    rdfs:label "locatie"@nl;
+    sh:path foaf:page;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:anyURI
+  ];
+  sh:property [
+    sh:order 3;
+    rdfs:label "verwijzing"@nl;
+    sh:path dct:bibliographicCitation;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+.
+
+########################################################################################################
+## Enumerations (lists)
+########################################################################################################
+
+##
+## Licentievormen enumeration
+##
+lt:Licentievormen a skos:ConceptScheme;
+  rdfs:label "Licentievormen"@nl;
+  skos:prefLabel "Licentievormen"@nl;
+  skos:definition "Enumeratie van mogelijke licentievormen voor juridische technologie."@nl.
+
+# Define the concepts (enumeration values)
+lt:VolledigOpen a skos:Concept;
+  skos:inScheme lt:Licentievormen;
+  skos:prefLabel "Volledig open"@nl.
+
+lt:OpenOnderVoorwaarden a skos:Concept;
+  skos:inScheme lt:Licentievormen;
+  skos:prefLabel "Open onder voorwaarden"@nl.
+
+lt:Gesloten a skos:Concept;
+  skos:inScheme lt:Licentievormen;
+  skos:prefLabel "Gesloten"@nl.
+
+# SHACL shape to validate usage of licentievorm property
+lt:LicentievormShape a sh:NodeShape;
+  sh:targetObjectsOf lt:licentievorm;
+  sh:property [
+    sh:path lt:licentievorm;
+    sh:class skos:Concept;
+    sh:in (lt:VolledigOpen lt:OpenOnderVoorwaarden lt:Gesloten);
+  ].
+
+##
+## Gebruikersgroepen enumeration
+##
+lt:Gebruikersgroepen a skos:ConceptScheme;
+  rdfs:label "Gebruikersgroepen"@nl;
+  skos:prefLabel "Gebruikersgroepen"@nl;
+  skos:definition "Enumeratie van mogelijke gebruikersgroepen voor juridische technologie."@nl.
+
+lt:BurgersEnBedrijven a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Burgers en bedrijven"@nl.
+
+lt:Rechtbanken a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Rechtbanken"@nl.
+
+lt:Opsporingsinstanties a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Opsporingsinstanties"@nl.
+
+lt:Juristen a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Juristen"@nl.
+
+lt:Beleidsmedewerkers a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Beleidsmedewerkers"@nl.
+
+lt:Wetgevers a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Wetgevers"@nl.
+
+lt:Advocaten a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Advocaten"@nl.
+
+lt:Uitvoeringsorganisaties a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Uitvoeringsorganisaties"@nl.
+
+lt:CommercieleOrganisaties a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Commerciële organisaties"@nl.
+
+lt:Regelanalist a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Regelanalist"@nl.
+
+lt:SoftwareOntwikkelaars a skos:Concept;
+  skos:inScheme lt:Gebruikersgroepen;
+  skos:prefLabel "Softwareontwikkelaars"@nl.
+
+# SHACL shape for gebruikersgroepen
+lt:GebruikersgroepenShape a sh:NodeShape;
+  sh:targetObjectsOf lto:beoogdeGebruikers;
+  sh:property [
+    sh:path lto:beoogdeGebruikers;
+    sh:class skos:Concept;
+    sh:in (
+      lt:BurgersEnBedrijven
+      lt:Rechtbanken
+      lt:Opsporingsinstanties
+      lt:Juristen
+      lt:Beleidsmedewerkers
+      lt:Wetgevers
+      lt:Advocaten
+      lt:Uitvoeringsorganisaties
+      lt:CommercieleOrganisaties
+      lt:Regelanalist
+      lt:SoftwareOntwikkelaars
+    );
+  ].
+
+##
+## Gebruiksstatussen enumeration
+##
+lt:Gebruiksstatussen a skos:ConceptScheme;
+  rdfs:label "Gebruiksstatussen"@nl;
+  skos:prefLabel "Gebruiksstatussen"@nl;
+  skos:definition "Enumeratie van mogelijke gebruiksstatussen voor juridische technologie."@nl.
+
+lt:WorkInProgress a skos:Concept;
+  skos:inScheme lt:Gebruiksstatussen;
+  skos:prefLabel "Work in progress"@nl.
+
+lt:Voorstel a skos:Concept;
+  skos:inScheme lt:Gebruiksstatussen;
+  skos:prefLabel "Voorstel"@nl.
+
+lt:InGebruik a skos:Concept;
+  skos:inScheme lt:Gebruiksstatussen;
+  skos:prefLabel "In gebruik"@nl.
+
+# SHACL shape to validate usage of gebruiksstatus property
+lt:GebruiksstatusShape a sh:NodeShape;
+  sh:targetObjectsOf lto:gebruiksstatus;
+  sh:property [
+    sh:path lto:gebruiksstatus;
+    sh:class skos:Concept;
+    sh:in (lt:WorkInProgress lt:Voorstel lt:InGebruik);
+  ].
+
+##
+## Functionaliteiten enumeration
+##
+lt:Functionaliteiten a skos:ConceptScheme;
+  rdfs:label "Functionaliteiten"@nl;
+  skos:prefLabel "Functionaliteiten"@nl;
+  skos:definition "Enumeratie van mogelijke functionaliteiten voor juridische technologie."@nl.
+
+
+lt:GeautomatiseerdBeslissen a skos:Concept;
+  skos:inScheme lt:Functionaliteiten;
+  skos:prefLabel "Geautomatiseerd beslissen"@nl.
+
+lt:ComplianceOndersteuning a skos:Concept;
+  skos:inScheme lt:Functionaliteiten;
+  skos:prefLabel "Compliance ondersteuning"@nl.
+
+# SHACL shape for functionaliteiten
+lt:FunctionaliteitenShape a sh:NodeShape;
+  sh:targetObjectsOf lto:gebodenFunctionaliteit;
+  sh:property [
+    sh:path lto:gebodenFunctionaliteit;
+    sh:class skos:Concept;
+    sh:in (
+      lt:GeautomatiseerdBeslissen
+      lt:ComplianceOndersteuning
+    );
+  ].
+
+##
+## Technologietypen enumeration
+##
+
+lt:Technologietypen a skos:ConceptScheme;
+  rdfs:label "Technologietypen"@nl;
+  skos:prefLabel "Technologietypen"@nl;
+  skos:definition "Enumeratie van mogelijke technologietypen voor juridische technologie."@nl.
+
+lt:MarkupAnnotatie a skos:Concept;
+  skos:inScheme lt:Technologietypen;
+  skos:prefLabel "Markup (annotatie)"@nl.
+
+lt:MarkupPublicatie a skos:Concept;
+  skos:inScheme lt:Technologietypen;
+  skos:prefLabel "Markup (publicatie)"@nl.
+
+lt:DSL a skos:Concept;
+  skos:inScheme lt:Technologietypen;
+  skos:prefLabel "DSL"@nl.
+
+lt:MachineLearning a skos:Concept;
+  skos:inScheme lt:Technologietypen;
+  skos:prefLabel "Machine learning"@nl.
+
+lt:Regelexecutie a skos:Concept;
+  skos:inScheme lt:Technologietypen;
+  skos:prefLabel "Regelexecutie"@nl.
+
+# SHACL shape for technologietypen
+lt:TechnologietypenShape a sh:NodeShape;
+  sh:targetObjectsOf lto:typeTechnologie;
+  sh:property [
+    sh:path lto:typeTechnologie;
+    sh:class skos:Concept;
+    sh:in (
+      lt:MarkupAnnotatie
+      lt:MarkupPublicatie
+      lt:DSL
+      lt:MachineLearning
+      lt:Regelexecutie
+    );
+  ].
+
+## 
+## Normstatussen enumeration
+##
+lt:Normstatussen a skos:ConceptScheme;
+  rdfs:label "Normstatussen"@nl;
+  skos:prefLabel "Normstatussen"@nl;
+  skos:definition "Enumeratie van mogelijke normstatussen voor juridische technologie."@nl.
+
+lt:Idee a skos:Concept;
+  skos:inScheme lt:Normstatussen;
+  skos:prefLabel "Idee"@nl.
+
+lt:Voorstel a skos:Concept;
+  skos:inScheme lt:Normstatussen;
+  skos:prefLabel "Voorstel"@nl.
+
+lt:BestPractice a skos:Concept;
+  skos:inScheme lt:Normstatussen;
+  skos:prefLabel "BestPractice"@nl.
+
+lt:Industrie a skos:Concept;
+  skos:inScheme lt:Normstatussen;
+  skos:prefLabel "Industrie"@nl.
+
+lt:Wettelijk a skos:Concept;
+  skos:inScheme lt:Normstatussen;
+  skos:prefLabel "Wettelijk"@nl.
+
+# SHACL shape for normstatussen
+lt:NormstatussenShape a sh:NodeShape;
+  sh:targetObjectsOf lto:normstatus;
+  sh:property [
+    sh:path lto:normstatus;
+    sh:class skos:Concept;
+    sh:in (
+      lt:Idee
+      lt:Voorstel
+      lt:BestPractice
+      lt:Industrie
+      lt:Wettelijk
+    );
+  ].
+
+##
+## Beschouwingsniveaus enumeration
+##
+lt:Beschouwingsniveaus a skos:ConceptScheme;
+  rdfs:label "Beschouwingsniveaus"@nl;
+  skos:prefLabel "Beschouwingsniveaus"@nl;
+  skos:definition "Enumeratie van mogelijke beschouwingsniveaus voor juridische technologie."@nl.
+
+lt:Tekstueel a skos:Concept;
+  skos:inScheme lt:Beschouwingsniveaus;
+  skos:prefLabel "Tekstueel"@nl.
+
+lt:Semantisch a skos:Concept;
+  skos:inScheme lt:Beschouwingsniveaus;
+  skos:prefLabel "Semantisch"@nl.
+
+lt:Ontologisch a skos:Concept;
+  skos:inScheme lt:Beschouwingsniveaus;
+  skos:prefLabel "Ontologisch"@nl.
+
+lt:Logisch a skos:Concept;
+  skos:inScheme lt:Beschouwingsniveaus;
+  skos:prefLabel "Logisch"@nl.
+
+lt:Technisch a skos:Concept;
+  skos:inScheme lt:Beschouwingsniveaus;
+  skos:prefLabel "Technisch"@nl.
+
+# SHACL shape for beschouwingsniveaus
+lt:BeschouwingsniveausShape a sh:NodeShape;
+  sh:targetObjectsOf lto:beschouwingsniveau;
+  sh:property [
+    sh:path lto:beschouwingsniveau;
+    sh:class skos:Concept;
+    sh:in (
+      lt:Tekstueel
+      lt:Semantisch
+      lt:Ontologisch
+      lt:Logisch
+      lt:Technisch
+    );
+  ].
+
+
+##
+## Modelsoorten enumeration
+##
+lt:Modelsoorten a skos:ConceptScheme;
+  rdfs:label "Modelsoorten"@nl;
+  skos:prefLabel "Modelsoorten"@nl;
+  skos:definition "Enumeratie van mogelijke modelsoorten voor juridische technologie."@nl.
+
+lt:Descriptief a skos:Concept;
+  skos:inScheme lt:Modelsoorten;
+  skos:prefLabel "Descriptief"@nl.
+
+lt:Normatief a skos:Concept;
+  skos:inScheme lt:Modelsoorten;
+  skos:prefLabel "Normatief"@nl.
+
+# SHACL shape for modelsoorten
+lt:ModelsoortenShape a sh:NodeShape;
+  sh:targetObjectsOf lto:modelsoort;
+  sh:property [
+    sh:path lto:modelsoort;
+    sh:class skos:Concept;
+    sh:in (
+      lt:Descriptief
+      lt:Normatief
+    );
+  ].
+
+
+##
+## Taaktypen enumeration
+##
+lt:Taaktypen a skos:ConceptScheme;
+  rdfs:label "Taaktypen"@nl;
+  skos:prefLabel "Taaktypen"@nl;
+  skos:definition "Enumeratie van mogelijke taaktypen voor juridische technologie."@nl.
+
+lt:OpstellenRegeltekst a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Opstellen regeltekst"@nl.
+
+lt:AnalyserenRegeltekst a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Analyseren regeltekst"@nl.
+
+lt:Opdrachtorientering a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Opdrachtorientering"@nl.
+
+lt:VerzamelenBronmateriaal a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Verzamelen bronmateriaal"@nl.
+
+lt:InterpreterenEnExpliciteren a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Interpreteren en expliciteren"@nl.
+
+lt:BegripDefinieren a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Begrip definiëren"@nl.
+
+lt:SpecificerenGegevensbehoefte a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Specificeren gegevens(behoefte)"@nl.
+  
+lt:SpecificerenRegels a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Specificeren regels"@nl.
+
+lt:SpecificerenProcessen a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Specificeren processen"@nl.
+
+lt:ValiderenSpecificaties a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Valideren specificaties"@nl.
+
+lt:GeautomatitseerdeRegeluitvoering a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Geautomatiseerde regeluitvoering"@nl.
+
+lt:Beslisondersteuning a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Beslisondersteuning"@nl.
+
+lt:Evaluatie a skos:Concept;
+  skos:inScheme lt:Taaktypen;
+  skos:prefLabel "Evaluatie"@nl.
+
+# SHACL shape for taaktypen
+lt:TaaktypenShape a sh:NodeShape;
+  sh:targetObjectsOf lto:taaktype;
+  sh:property [
+    sh:path lto:taaktype;
+    sh:class skos:Concept;
+    sh:in (
+      lt:OpstellenRegeltekst
+      lt:AnalyserenRegeltekst
+      lt:Opdrachtorientering
+      lt:VerzamelenBronmateriaal
+      lt:InterpreterenEnExpliciteren
+      lt:BegripDefinieren
+      lt:SpecificerenGegevensbehoefte
+      lt:SpecificerenRegels
+      lt:SpecificerenProcessen
+      lt:ValiderenSpecificaties
+      lt:GeautomatitseerdeRegeluitvoering
+      lt:Beslisondersteuning
+      lt:Evaluatie
+    )];
+.
+
+# Relatietypen enumeration
+lt:Relatietypen a skos:ConceptScheme;
+  rdfs:label "Relatietypen"@nl;
+  skos:prefLabel "Relatietypen"@nl;
+  skos:definition "Enumeratie van mogelijke relatietypen tussen juridische technologieën."@nl.
+
+lt:Vervangt a skos:Concept;
+  skos:inScheme lt:Relatietypen;
+  skos:prefLabel "Vervangt"@nl.
+
+lt:VervolgOp a skos:Concept;
+  skos:inScheme lt:Relatietypen;
+  skos:prefLabel "Vervolg op"@nl. 
+
+lt:AlternatiefVoor a skos:Concept;
+  skos:inScheme lt:Relatietypen;
+  skos:prefLabel "Alternatief voor"@nl. 
+
+lt:GerelateerdAan a skos:Concept; 
+  skos:inScheme lt:Relatietypen;
+  skos:prefLabel "Gerelateerd aan"@nl.
+
+# SHACL shape for relatietypen
+lt:RelatietypenShape a sh:NodeShape;
+  sh:targetObjectsOf lto:typeRelatie;
+  sh:property [
+    sh:path lto:typeRelatie;
+    sh:class skos:Concept;
+    sh:in ( lt:Vervangt lt:VervolgOp lt:AlternatiefVoor lt:GerelateerdAan);
+  ].

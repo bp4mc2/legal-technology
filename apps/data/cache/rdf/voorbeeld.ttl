@@ -1,0 +1,25 @@
+<https://data.bp4mc2.org/id/lto/legaltech/9b8a9c51-54ba-4696-b132-58a716862980> a <http://bp4mc2.org/lto#JuridischeTechnologie> ;
+    <http://bp4mc2.org/lto#naam> "Standaard voor verwijzing (ECLI)@nl" ;
+    rdfs:label "Standaard voor verwijzing (ECLI)"@nl ;
+    <http://bp4mc2.org/lto#omschrijving> "De European Case Law Identifier (ECLI) is een Europese standaard voor het uniek nummeren van rechterlijke uitspraken. De standaard is eind 2010 vastgesteld door de Raad van Ministers van de Europese Unie. In ieder land waar de ECLI wordt gebruikt, is deze altijd op dezelfde manier opgebouwd: ECLI:landcode:gerechtscode:jaar:nummer@nl" ;
+    <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt:InGebruik> ;
+    <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt:VolledigOpen> ;
+    <http://bp4mc2.org/lto#geschiktVoorTaak> _:2d412b36 ;
+    <http://bp4mc2.org/lto#beschrijving> _:3ad11e49 ;
+    <http://bp4mc2.org/lto#bron> _:ac64cd89 ;
+    <http://bp4mc2.org/lto#normstatus> <http://bp4mc2.org/lt:Wettelijk> ;
+    <http://bp4mc2.org/lto#beheerder> "Juriconnect:: info@juriconnect.nl" ;
+    <http://bp4mc2.org/lto#leverancier> "::" .
+
+_:dba04b99 a <http://bp4mc2.org/lto#Documentatie> .
+    _:dba04b99 <http://bp4mc2.org/lto#beoogdGebruik> "##" .
+    _:dba04b99 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidige verwijzingen naar rechrtszaken binnen Europa" .
+    _:dba04b99 <http://bp4mc2.org/lto#ontwikkelingEnBeheer> "Europese Commissie" .
+_:ac64cd89 a <http://bp4mc2.org/lto#Bronverwijzing> .
+    _:ac64cd89 <http://purl.org/dc/terms/title> "Beheerplan Juriconnect" .
+_:784d3616 a <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+    _:784d3616 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lt:Ontologisch> .
+    _:784d3616 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lt:Normatief> .
+_:2d412b36 a <http://bp4mc2.org/lto#Taakinvulling> .
+    _:2d412b36 <http://bp4mc2.org/lto#omschrijving> "Bij het verzamelen van bronmateriaal kan met behulp van ECLI aanvullende bronnen gevonden worden." .
+    _:2d412b36 <http://bp4mc2.org/lto#taaktype> "" .
