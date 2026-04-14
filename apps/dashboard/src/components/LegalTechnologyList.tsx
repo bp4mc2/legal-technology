@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { apiFetch, apiFetchText } from '../utils/api';
 import LegalTechnologyForm, { selectForEdit } from './LegalTechnologyForm';
 
@@ -78,14 +79,13 @@ type LegalTechnologyListProps = {
 };
 
 const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'cards' }) => {
+  const navigate = useNavigate();
   const [items, setItems] = useState<LegalTechnology[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState('');
   const [formMode, setFormMode] = useState<'add' | 'edit'>('add');
-  const [detailItem, setDetailItem] = useState<LegalTechnology | null>(null);
-  const [detailLoading, setDetailLoading] = useState(false);
   const [selectedForComparison, setSelectedForComparison] = useState<Set<string>>(new Set());
 
   const triggerDownload = (content: string, filename: string, contentType: string) => {
@@ -192,30 +192,7 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
 
   const handleView = (id?: string) => {
     if (!id) return;
-    setDetailLoading(true);
-    setError(null);
-    apiFetch<LegalTechnology>(`/api/legaltechnologies/${id}`)
-      .then(async tech => {
-        if (tech.beheerder) {
-          try {
-            const org = await apiFetch<Organisation>(`/api/organisations/${encodeURIComponent(tech.beheerder)}`);
-            tech.beheerder_org = org;
-          } catch {
-            // Keep IRI fallback
-          }
-        }
-        if (tech.leverancier) {
-          try {
-            const org = await apiFetch<Organisation>(`/api/organisations/${encodeURIComponent(tech.leverancier)}`);
-            tech.leverancier_org = org;
-          } catch {
-            // Keep IRI fallback
-          }
-        }
-        setDetailItem(tech);
-      })
-      .catch(e => setError(e.message))
-      .finally(() => setDetailLoading(false));
+    navigate(`/legaltechnologies/${encodeURIComponent(id)}`);
   };
 
   const downloadTechTurtle = async (id?: string) => {
@@ -345,48 +322,6 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      )}
-
-      {detailLoading && (
-        <div className="alert alert-info d-flex align-items-center gap-2 mb-3">
-          <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
-          Details laden...
-        </div>
-      )}
-
-      {detailItem && !detailLoading && (
-        <div className="card mb-3 border-0 shadow-sm">
-          <div className="card-header d-flex justify-content-between align-items-center bg-primary bg-opacity-10">
-            <div>
-              <div className="fw-semibold">{detailItem.naam}</div>
-              <small className="text-muted">{detailItem.id}</small>
-            </div>
-            <button className="btn btn-sm btn-outline-secondary" onClick={() => setDetailItem(null)}>
-              Sluiten
-            </button>
-          </div>
-          <div className="card-body">
-            <p className="mb-3">{detailItem.omschrijving || '-'}</p>
-            <div className="row g-3 mb-3">
-              <div className="col-md-4"><strong>Type:</strong> {detailItem.subtype || '-'}</div>
-              <div className="col-md-4"><strong>Status:</strong> {detailItem.gebruiksstatus || '-'}</div>
-              <div className="col-md-4"><strong>Licentie:</strong> {detailItem.licentievorm || '-'}</div>
-              <div className="col-md-4"><strong>Versie:</strong> {detailItem.versienummer || '-'}</div>
-              <div className="col-md-4"><strong>Versiedatum:</strong> {detailItem.versiedatum || '-'}</div>
-              <div className="col-md-4"><strong>Bijgewerkt op:</strong> {detailItem.bijgewerkt_op || '-'}</div>
-              <div className="col-md-6"><strong>Beheerder:</strong> {detailItem.beheerder_org?.naam || detailItem.beheerder || '-'}</div>
-              <div className="col-md-6"><strong>Leverancier:</strong> {detailItem.leverancier_org?.naam || detailItem.leverancier || '-'}</div>
-            </div>
-            <div className="d-flex gap-2">
-              <button className="btn btn-sm btn-outline-primary" onClick={() => downloadTechTurtle(detailItem.id)}>
-                Download Turtle
-              </button>
-              <button className="btn btn-sm btn-outline-success" onClick={() => downloadTechMarkdown(detailItem.id)}>
-                Download Markdown
-              </button>
-            </div>
           </div>
         </div>
       )}

@@ -26,6 +26,7 @@ import ReactDOM from 'react-dom/client';
 import NavBar from './components/NavBar';
 import LegalTechnologyList from './components/LegalTechnologyList';
 import LegalTechnologyForm from './components/LegalTechnologyForm';
+import LegalTechnologyDetailPage from './components/LegalTechnologyDetailPage';
 import StatisticsPanel from './components/StatisticsPanel';
 import EnumerationsFilter from './components/EnumerationsFilter';
 import AssistantPanel from './components/AssistantPanel';
@@ -95,6 +96,7 @@ function App() {
           <Routes>
             <Route path="/" element={<OverviewPage />} />
             <Route path="/legaltechnologies" element={<LegalTechnologiesPage />} />
+            <Route path="/legaltechnologies/:id" element={<LegalTechnologyDetailPage />} />
             <Route path="/organisations" element={<OrganisatiesPage />} />
             <Route path="/assistant" element={<AssistantPage />} />
             <Route path="/enumerations" element={<EnumerationsPage />} />

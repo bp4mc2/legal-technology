@@ -120,6 +120,10 @@ def update(data, id):
         200:
             description: The updated legal technology
     """
+    payload_id = data.pop("id", None)
+    if payload_id is not None and payload_id != id:
+        abort(400, message="Payload id must match URL id")
+
     result = update_legal_technology(id, data)
     if not result:
         abort(404, message="Not found")

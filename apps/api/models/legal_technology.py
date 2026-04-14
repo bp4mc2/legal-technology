@@ -84,6 +84,7 @@ class LegalTechnologyCreateSchema(Schema):
 
 
 class LegalTechnologyUpdateSchema(Schema):
+    id = fields.Str(required=False)
     abbrevation = fields.Str(required=False)
     versienummer = fields.Str(required=False)
     versiedatum = fields.Str(required=False)

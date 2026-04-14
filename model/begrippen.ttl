@@ -100,7 +100,7 @@ lt:ScopeDefinition a skos:Concept;
   skosthes:broaderGeneric lt:Taak;
 .
 
-lt:AcquireSourceMaterial a skos:Concept;
+lt:VerzamelenBronmateriaal a skos:Concept;
   rdfs:label "Verzamelen bronmateriaal"@nl;
   skos:prefLabel "Verzamelen bronmateriaal"@nl;
   skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
@@ -111,7 +111,7 @@ lt:AcquireSourceMaterial a skos:Concept;
   skosthes:broaderGeneric lt:Taak;
 .
 
-lt:AnalysingLegislation a skos:Concept;
+lt:Analyseren a skos:Concept;
   rdfs:label "Analyseren"@nl;
   skos:prefLabel "Analyseren"@nl;
   skos:inScheme lt:BegrippenkaderJuridischeTechnologie;

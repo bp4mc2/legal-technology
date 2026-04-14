@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "api.routes.app",
+            "cwd": "${workspaceFolder}/apps",
+            "python": "${workspaceFolder}/apps/.venv/Scripts/python.exe",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/apps",
+                "FLASK_DEBUG_TRAP_HTTP": "1"
+            },
+            "subProcess": false,
+            "justMyCode": false
+        },
+        {
+            "name": "Python Debugger: Attach Flask (manual start)",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "127.0.0.1",
+                "port": 5678
+            },
+            "justMyCode": false
+        }
+    ]
+}

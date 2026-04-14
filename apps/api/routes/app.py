@@ -1,3 +1,6 @@
+import sys
+import os
+
 from flask import Flask, jsonify, request
 from flask_smorest import Api, Blueprint
 
@@ -15,6 +18,10 @@ app.config["OPENAPI_VERSION"] = "3.0.3"
 app.config["OPENAPI_URL_PREFIX"] = "/api/docs"
 app.config["OPENAPI_SWAGGER_UI_PATH"] = "/"
 app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
+# Optional debug aid: turn HTTP 4xx/5xx into debuggable exceptions.
+if os.getenv("FLASK_DEBUG_TRAP_HTTP") == "1":
+    app.config["TRAP_HTTP_EXCEPTIONS"] = True
+    app.config["TRAP_BAD_REQUEST_ERRORS"] = True
 api = Api(app)
 
 blp = Blueprint("health", "health", url_prefix="/api")
@@ -62,4 +69,5 @@ def root():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Avoid Werkzeug reloader spawning a second process while debugging.
+    app.run(debug=True, use_reloader="debugpy" not in sys.modules)

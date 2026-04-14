@@ -5,6 +5,7 @@ from datetime import date
 
 
 _CONCEPT_LABEL_CACHE = {}
+_CONCEPT_IRI_BY_LABEL_CACHE = {}
 _LEGALTECH_BASE_IRI = "https://data.bp4mc2.org/id/lto/legaltech"
 _SUBTYPE_CLASS_MAP = {
     "Methode": "http://bp4mc2.org/lto#Methode",
@@ -130,6 +131,43 @@ def _get_concept_label(concept_iri):
         return ''
 
 
+def _lookup_concept_iri_by_label(label):
+    """Reverse lookup: given a Dutch concept label, return '<IRI>' string for use in SPARQL INSERT."""
+    if not label:
+        return None
+    if label in _CONCEPT_IRI_BY_LABEL_CACHE:
+        return _CONCEPT_IRI_BY_LABEL_CACHE[label]
+    escaped = label.replace('\\', '\\\\').replace('"', '\\"')
+    sparql = f'''
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    SELECT ?concept WHERE {{
+        ?concept a skos:Concept .
+        {{ ?concept skos:prefLabel ?pl . FILTER(STR(?pl) = "{escaped}") }}
+        UNION
+        {{ ?concept rdfs:label ?rl . FILTER(STR(?rl) = "{escaped}") }}
+    }}
+    LIMIT 1
+    '''
+    try:
+        result = sparql_query(sparql)
+        bindings = result.get('results', {}).get('bindings', [])
+        iri = bindings[0].get('concept', {}).get('value', '') if bindings else ''
+        value = f'<{iri}>' if iri else None
+        _CONCEPT_IRI_BY_LABEL_CACHE[label] = value
+        return value
+    except Exception:
+        return None
+
+
+def _enum_lookup(enum_map_section, label):
+    """Look up label in enum_map; fall back to GraphDB reverse-IRI lookup, then literal."""
+    if label in enum_map_section:
+        return enum_map_section[label]
+    iri = _lookup_concept_iri_by_label(label)
+    return iri if iri else f'"{label}"'
+
+
 def _get_object_values(subject_iri, predicate):
     sparql = f'''
     PREFIX lto: <http://bp4mc2.org/lto#>
@@ -186,9 +224,17 @@ def _get_geschikt_voor_taak(tech_iri):
         bindings = result.get('results', {}).get('bindings', [])
         geschikt = []
         for binding in bindings:
+            taaktype_binding = binding.get('taaktype', {})
+            taaktype_type = taaktype_binding.get('type', '')
+            taaktype_val = taaktype_binding.get('value', '')
+            if taaktype_type == 'uri':
+                taaktype_label = _get_concept_label(taaktype_val)
+            else:
+                # Stored as plain literal (legacy data) — return as-is.
+                taaktype_label = taaktype_val
             geschikt.append({
                 'omschrijving': binding.get('omschrijving', {}).get('value', ''),
-                'taaktype': _get_concept_label(binding.get('taaktype', {}).get('value', '')),
+                'taaktype': taaktype_label,
             })
         return geschikt
     except Exception as e:
@@ -434,7 +480,7 @@ def add_legal_technology(data):
         omschrijving = gt.get("omschrijving", "")
         geschikt_triples.append(f'<{gt_uri}> a <http://bp4mc2.org/lto#Taakinvulling> .')
         geschikt_triples.append(f'<{gt_uri}> <http://bp4mc2.org/lto#omschrijving> "{omschrijving}" .')
-        geschikt_triples.append(f'<{gt_uri}> <http://bp4mc2.org/lto#taaktype> {enum_map["taaktype"].get(taaktype, f"\"{taaktype}\"")} .')
+        geschikt_triples.append(f'<{gt_uri}> <http://bp4mc2.org/lto#taaktype> {_enum_lookup(enum_map["taaktype"], taaktype)} .')
     # Add triples for documentatie
     doc_triples = []
     if doc and doc_uri:

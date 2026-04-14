@@ -156,7 +156,7 @@ Open **PowerShell** en ga naar de root van de repository:
 ```powershell
 New-Item -ItemType SymbolicLink `
   -Path apps\ontology `
-  -Target ..\mode
+  -Target .\model
 
 Activeer daarna de omgeving:
 
