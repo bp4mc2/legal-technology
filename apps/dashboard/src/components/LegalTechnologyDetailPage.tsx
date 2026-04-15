@@ -75,19 +75,33 @@ function TagList({ items, bg = 'primary' }: { items: string[]; bg?: string }) {
   );
 }
 
-function Section({ title, id, children }: { title: string; id?: string; children: React.ReactNode }) {
+function Section({
+  title,
+  id,
+  children,
+  badge,
+}: {
+  title: string;
+  id?: string;
+  children: React.ReactNode;
+  badge?: string;
+}) {
   const [open, setOpen] = useState(true);
   return (
-    <div id={id} className="mb-4">
-      <button
-        className="btn btn-link text-decoration-none p-0 w-100 text-start d-flex justify-content-between align-items-center border-bottom pb-1 mb-3"
-        style={{ color: 'inherit' }}
-        onClick={() => setOpen(o => !o)}
-      >
-        <h5 className="mb-0 fw-semibold text-uppercase text-primary" style={{ fontSize: '0.85rem', letterSpacing: '0.06em' }}>{title}</h5>
-        <span className="text-muted small">{open ? '▲' : '▼'}</span>
-      </button>
-      {open && <div>{children}</div>}
+    <div id={id} className="accordion-item mb-3">
+      <h2 className="accordion-header">
+        <button
+          className={`accordion-button ${open ? '' : 'collapsed'} fw-semibold`}
+          type="button"
+          onClick={() => setOpen(o => !o)}
+        >
+          <span className="fw-semibold me-2">{title}</span>
+          {badge && <span className="badge bg-primary-subtle text-primary-emphasis">{badge}</span>}
+        </button>
+      </h2>
+      <div className={`accordion-collapse collapse ${open ? 'show' : ''}`}>
+        <div className="accordion-body">{children}</div>
+      </div>
     </div>
   );
 }
@@ -217,13 +231,23 @@ export default function LegalTechnologyDetailPage() {
         <div className="col-lg-8">
 
           {/* Inhoudsopgave */}
-          <div className="alert alert-primary py-2 px-3 mb-4 small">
-            <div className="fw-semibold mb-1">Inhoud</div>
-            <ul className="mb-0 ps-3">
-              {sections.map(s => (
-                <li key={s.id}><a href={`#${s.id}`} className="text-primary text-decoration-none">■ {s.label}</a></li>
-              ))}
-            </ul>
+          <div className="card border-0 shadow-sm mb-4">
+            <div className="card-header bg-primary bg-opacity-10 text-primary fw-semibold">
+              Inhoud
+            </div>
+            <div className="card-body">
+              <div className="d-flex flex-wrap gap-2">
+                {sections.map(s => (
+                  <a
+                    key={s.id}
+                    href={`#${s.id}`}
+                    className="btn btn-sm btn-outline-primary"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Omschrijving */}
@@ -232,7 +256,11 @@ export default function LegalTechnologyDetailPage() {
           </Section>
 
           {/* Functionaliteiten */}
-          <Section title="Functionaliteiten" id="functionaliteiten">
+          <Section
+            title="Functionaliteiten"
+            id="functionaliteiten"
+            badge={`${tech.geboden_functionaliteit?.filter(Boolean).length ?? 0} item${(tech.geboden_functionaliteit?.filter(Boolean).length ?? 0) !== 1 ? 's' : ''}`}
+          >
             {tech.geboden_functionaliteit?.filter(Boolean).length > 0 ? (
               <ul className="mb-2">
                 {tech.geboden_functionaliteit.filter(Boolean).map((v, i) => <li key={i}>{v}</li>)}
@@ -247,7 +275,11 @@ export default function LegalTechnologyDetailPage() {
           </Section>
 
           {/* Ondersteuning voor */}
-          <Section title="Ondersteuning voor" id="ondersteuning">
+          <Section
+            title="Ondersteuning voor"
+            id="ondersteuning"
+            badge={`${tech.ondersteuning_voor?.length ?? 0} item${(tech.ondersteuning_voor?.length ?? 0) !== 1 ? 's' : ''}`}
+          >
             {tech.ondersteuning_voor?.length > 0 ? (
               <div className="table-responsive">
                 <table className="table table-sm table-hover align-middle mb-0">
@@ -271,7 +303,11 @@ export default function LegalTechnologyDetailPage() {
           </Section>
 
           {/* Geschikt voor taak */}
-          <Section title="Geschikt voor taak" id="taken">
+          <Section
+            title="Geschikt voor taak"
+            id="taken"
+            badge={`${tech.geschikt_voor_taak?.filter(t => t.taaktype).length ?? 0} taaktype${(tech.geschikt_voor_taak?.filter(t => t.taaktype).length ?? 0) !== 1 ? 'n' : ''}`}
+          >
             {tech.geschikt_voor_taak?.length > 0 ? (
               <div className="d-flex flex-column gap-2">
                 {tech.geschikt_voor_taak.map((t, i) => (
@@ -285,7 +321,11 @@ export default function LegalTechnologyDetailPage() {
           </Section>
 
           {/* Documentatie */}
-          <Section title="Documentatie" id="documentatie">
+          <Section
+            title="Documentatie"
+            id="documentatie"
+            badge={tech.documentatie && Object.values(tech.documentatie).some(Boolean) ? 'beschikbaar' : 'leeg'}
+          >
             {tech.documentatie && Object.values(tech.documentatie).some(Boolean) ? (
               <div className="d-flex flex-column gap-3">
                 {tech.documentatie.beoogdGebruik && (
@@ -317,10 +357,14 @@ export default function LegalTechnologyDetailPage() {
           </Section>
 
           {/* Bronverwijzingen */}
-          <Section title="Bronverwijzingen" id="bronverwijzingen">
-            {tech.bronverwijzing?.length > 0 ? (
+          <Section
+            title="Bronverwijzingen"
+            id="bronverwijzingen"
+            badge={`${tech.bronverwijzing?.length ?? 0} bron${(tech.bronverwijzing?.length ?? 0) !== 1 ? 'nen' : ''}`}
+          >
+            {(tech.bronverwijzing?.length ?? 0) > 0 ? (
               <ul className="mb-0">
-                {tech.bronverwijzing.map((b, i) => (
+                {tech.bronverwijzing?.map((b, i) => (
                   <li key={i}>
                     {b.locatie
                       ? <a href={b.locatie} target="_blank" rel="noopener noreferrer" className="text-primary">{b.titel || b.locatie}</a>
@@ -360,7 +404,7 @@ export default function LegalTechnologyDetailPage() {
                       <td className="small pe-3">{tech.technologietype}</td>
                     </tr>
                   )}
-                  {tech.type_technologie?.filter(Boolean).length > 0 && (
+                  {(tech.type_technologie?.filter(Boolean).length ?? 0) > 0 && (
                     <tr>
                       <th className="text-muted fw-normal small ps-3">Type technologie</th>
                       <td className="small pe-3">{tech.type_technologie!.filter(Boolean).join(', ')}</td>

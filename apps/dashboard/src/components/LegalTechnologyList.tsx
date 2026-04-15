@@ -87,6 +87,7 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
   const [search, setSearch] = useState('');
   const [formMode, setFormMode] = useState<'add' | 'edit'>('add');
   const [selectedForComparison, setSelectedForComparison] = useState<Set<string>>(new Set());
+  const [comparisonDetails, setComparisonDetails] = useState<Record<string, LegalTechnology>>({});
 
   const triggerDownload = (content: string, filename: string, contentType: string) => {
     const blob = new Blob([content], { type: contentType });
@@ -178,7 +179,6 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
     });
     setFormMode('add');
     setShowForm(true);
-    setDetailItem(null);
   };
 
   const closeFormModal = () => {
@@ -235,14 +235,59 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
 
   const resetComparison = () => {
     setSelectedForComparison(new Set());
+    setComparisonDetails({});
   };
+
+  useEffect(() => {
+    const ids = Array.from(selectedForComparison).filter(Boolean);
+    if (ids.length === 0) {
+      setComparisonDetails({});
+      return;
+    }
+
+    let cancelled = false;
+
+    const loadComparisonDetails = async () => {
+      const detailEntries = await Promise.all(
+        ids.map(async selectedId => {
+          try {
+            const detail = await apiFetch<LegalTechnology>(`/api/legaltechnologies/${encodeURIComponent(selectedId)}`);
+            return [selectedId, detail] as const;
+          } catch {
+            return null;
+          }
+        }),
+      );
+
+      if (cancelled) return;
+
+      setComparisonDetails(prev => {
+        const next: Record<string, LegalTechnology> = {};
+        ids.forEach(selectedId => {
+          if (prev[selectedId]) next[selectedId] = prev[selectedId];
+        });
+        detailEntries.forEach(entry => {
+          if (!entry) return;
+          const [selectedId, detail] = entry;
+          next[selectedId] = detail;
+        });
+        return next;
+      });
+    };
+
+    loadComparisonDetails();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedForComparison]);
 
   const comparisonItems = useMemo(
     () =>
       Array.from(selectedForComparison)
-        .map(id => items.find(item => item.id === id))
+        .map(id => comparisonDetails[id] ?? items.find(item => item.id === id))
         .filter((item): item is LegalTechnology => item !== undefined),
-    [selectedForComparison, items],
+    [selectedForComparison, comparisonDetails, items],
   );
 
   return (
@@ -314,10 +359,24 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                     <small className="text-muted">{tech.abbrevation || tech.id}</small>
                   </div>
                   <div className="card-body small">
-                    <div className="mb-2"><strong>Type:</strong> <SubtypeBadge value={tech.subtype} /></div>
-                    <div className="mb-2"><strong>Status:</strong> <StatusBadge value={tech.gebruiksstatus} /></div>
-                    <div className="mb-2"><strong>Versie:</strong> {tech.versienummer || '-'}</div>
-                    <div className="mb-0"><strong>Licentie:</strong> {tech.licentievorm || '-'}</div>
+                    <div className="mb-2"><strong>Naam:</strong> {tech.naam || '-'}</div>
+                    <div className="mb-2"><strong>Gebruiksstatus:</strong> <StatusBadge value={tech.gebruiksstatus} /></div>
+                    <div className="mb-2"><strong>Licentievorm:</strong> {tech.licentievorm || '-'}</div>
+                    <div className="mb-2">
+                      <strong>Beoogde gebruikers:</strong>{' '}
+                      {tech.beoogde_gebruikers?.filter(Boolean).join(', ') || '-'}
+                    </div>
+                    <div className="mb-2">
+                      <strong>Geboden functionaliteit:</strong>{' '}
+                      {tech.geboden_functionaliteit?.filter(Boolean).join(', ') || '-'}
+                    </div>
+                    <div className="mb-0">
+                      <strong>Geschikt voor taak:</strong>{' '}
+                      {(
+                        tech.geschikt_voor_taak?.map(t => t.taaktype).filter(Boolean) ??
+                        (tech.taaktype ? [tech.taaktype] : [])
+                      ).join(', ') || '-'}
+                    </div>
                   </div>
                 </div>
               </div>
