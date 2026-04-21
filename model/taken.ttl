@@ -59,36 +59,54 @@ ltt:AnalyserenRegeltekst a skos:Concept;
 
 ltt:InterpreterenEnExpliciteren a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
-  skos:prefLabel "Interpreteren en expliciteren"@nl.
+  rdfs:label "Interpreteren en expliciteren"@nl;
+  skos:prefLabel "Interpreteren en expliciteren"@nl
+.
 
 ltt:BegripDefinieren a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
-  skos:prefLabel "Begrip definiëren"@nl.
+  rdfs:label "Begrip definiëren"@nl;
+  skos:prefLabel "Begrip definiëren"@nl;
+.
 
 ltt:SpecificerenGegevensbehoefte a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
-  skos:prefLabel "Specificeren gegevens(behoefte)"@nl.
+  rdfs:label "Specificeren gegevens(behoefte)"@nl;
+  skos:prefLabel "Specificeren gegevens(behoefte)"@nl;
+.
 
 ltt:SpecificerenRegels a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
-  skos:prefLabel "Specificeren regels"@nl.
+  rdfs:label "Specificeren regels"@nl;
+  skos:prefLabel "Specificeren regels"@nl;
+.
 
 ltt:SpecificerenProcessen a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
-  skos:prefLabel "Specificeren processen"@nl.
+  rdfs:label "Specificeren processen"@nl;
+  skos:prefLabel "Specificeren processen"@nl;
+.
 
 ltt:ValiderenSpecificaties a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
-  skos:prefLabel "Valideren specificaties"@nl.
+  rdfs:label "Valideren specificaties"@nl;
+  skos:prefLabel "Valideren specificaties"@nl;
+.
 
 ltt:GeautomatitseerdeRegeluitvoering a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
-  skos:prefLabel "Geautomatiseerde regeluitvoering"@nl.
+  rdfs:label "Geautomatiseerde regeluitvoering"@nl;
+  skos:prefLabel "Geautomatiseerde regeluitvoering"@nl;
+.
 
 ltt:Beslisondersteuning a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
-  skos:prefLabel "Beslisondersteuning"@nl.
+  rdfs:label "Beslisondersteuning"@nl;
+  skos:prefLabel "Beslisondersteuning"@nl;
+.
 
 ltt:Evaluatie a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
-  skos:prefLabel "Evaluatie"@nl.
+  rdfs:label "Evaluatie"@nl;
+  skos:prefLabel "Evaluatie"@nl;
+.

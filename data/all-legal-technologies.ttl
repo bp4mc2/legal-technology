@@ -2146,229 +2146,229 @@
   lto:taaktype "Opstellen regeltekst" .
 
 <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/taakinvulling/c641934f-fa66-4bac-94df-80dc966c9dcd>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/eci/v/1.0/taakinvulling/f51d9ac5-1948-42d7-ae5b-d9364618f6a6>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0/taakinvulling/2fbe66b7-1587-46e5-aee7-3e73714c2cee>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0/taakinvulling/fa31d79c-d799-4c39-889c-51c82d8ff5d2>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0/taakinvulling/b8676a24-1687-4c5d-b32e-2791869d88af>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0/taakinvulling/9f50abb4-e921-450d-b248-8d3c28830ed5>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0/taakinvulling/933ffea1-4fb8-466c-a24a-230ef117a180>
-  lto:taaktype <http://bp4mc2.org/lt#Opdrachtorientering> .
+  lto:taaktype <http://bp4mc2.org/ltt#Opdrachtorientering> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0/taakinvulling/968d064e-bc3f-4e1f-8976-1e389e053fd1>
-  lto:taaktype <http://bp4mc2.org/lt#Opdrachtorientering> .
+  lto:taaktype <http://bp4mc2.org/ltt#Opdrachtorientering> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0/taakinvulling/442c3974-2015-42c0-bfe9-b792bc1b4303>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.0/taakinvulling/437563e2-ad0d-42c0-8349-e38782d6c292>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.0/taakinvulling/ed2ccb37-8a80-421b-a841-f16f3dcb9154>
-  lto:taaktype <http://bp4mc2.org/lt#VerzamelenBronmateriaal> .
+  lto:taaktype <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/b465158f-f42e-4030-bcba-d9d53a00dfcd>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/5752b739-b793-457f-83a9-0f53cb9543c8>
-  lto:taaktype <http://bp4mc2.org/lt#VerzamelenBronmateriaal> .
+  lto:taaktype <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0/taakinvulling/c0f22614-7ead-47ef-8227-a653bfa1ff7a>
-  lto:taaktype <http://bp4mc2.org/lt#VerzamelenBronmateriaal> .
+  lto:taaktype <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0/taakinvulling/88d0f767-1610-4e16-82d8-e4882f5bbf00>
-  lto:taaktype <http://bp4mc2.org/lt#VerzamelenBronmateriaal> .
+  lto:taaktype <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0/taakinvulling/fbf9d43a-a1fd-4dac-9930-200aa83092db>
-  lto:taaktype <http://bp4mc2.org/lt#AnalyserenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/1.0/taakinvulling/9fcde8ba-af50-40f6-bef3-f7eae131991e>
-  lto:taaktype <http://bp4mc2.org/lt#OpstellenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/1.0/taakinvulling/ee917f51-e0e9-4e3b-a3c7-fc8ef97cc4b8>
-  lto:taaktype <http://bp4mc2.org/lt#AnalyserenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0/taakinvulling/c614da4e-d671-4fcf-b7b1-722a1e5b7ca5>
-  lto:taaktype <http://bp4mc2.org/lt#InterpreterenEnExpliciteren> .
+  lto:taaktype <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/c2204c39-8714-465a-b89a-f102c5205549>
-  lto:taaktype <http://bp4mc2.org/lt#Opdrachtorientering> .
+  lto:taaktype <http://bp4mc2.org/ltt#Opdrachtorientering> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/24fe26e3-5bb3-417d-9a27-c7c942bebac2>
-  lto:taaktype <http://bp4mc2.org/lt#AnalyserenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/12de1caa-eb1e-4b0e-af8b-eb8940b8dde8>
-  lto:taaktype <http://bp4mc2.org/lt#InterpreterenEnExpliciteren> .
+  lto:taaktype <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0/taakinvulling/2a533d9c-b141-4985-97ca-48638150ff31>
-  lto:taaktype <http://bp4mc2.org/lt#InterpreterenEnExpliciteren> .
+  lto:taaktype <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0/taakinvulling/036764c6-527b-44a5-a21d-cda708ac2a28>
-  lto:taaktype <http://bp4mc2.org/lt#InterpreterenEnExpliciteren> .
+  lto:taaktype <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0/taakinvulling/0312bdd8-aef2-4695-9030-9d13a3812a89>
-  lto:taaktype <http://bp4mc2.org/lt#BegripDefinieren> .
+  lto:taaktype <http://bp4mc2.org/ltt#BegripDefinieren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0/taakinvulling/68a0cfd0-fc7f-4de6-8652-a27322c07059>
-  lto:taaktype <http://bp4mc2.org/lt#BegripDefinieren> .
+  lto:taaktype <http://bp4mc2.org/ltt#BegripDefinieren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0/taakinvulling/05cae341-5aed-46e2-a763-2787e4f4df98>
-  lto:taaktype <http://bp4mc2.org/lt#InterpreterenEnExpliciteren> .
+  lto:taaktype <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0/taakinvulling/d40808b4-2f40-4aff-ab36-67732e7fb52e>
-  lto:taaktype <http://bp4mc2.org/lt#BegripDefinieren> .
+  lto:taaktype <http://bp4mc2.org/ltt#BegripDefinieren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0/taakinvulling/7153a0df-3b40-42f0-9147-4b9accaa58dc>
-  lto:taaktype <http://bp4mc2.org/lt#BegripDefinieren> .
+  lto:taaktype <http://bp4mc2.org/ltt#BegripDefinieren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/ab5f9824-a322-440d-8c93-91af01f5fa7d>
-  lto:taaktype <http://bp4mc2.org/lt#BegripDefinieren> .
+  lto:taaktype <http://bp4mc2.org/ltt#BegripDefinieren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/b5c05ecc-b05e-412b-99d4-82a96f5e1364>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0/taakinvulling/a12d402c-4140-474a-a556-7389e13e04f0>
-  lto:taaktype <http://bp4mc2.org/lt#InterpreterenEnExpliciteren> .
+  lto:taaktype <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0/taakinvulling/d612a520-758e-4e97-85a1-dbd08b022173>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0/taakinvulling/3c8ac747-6d53-4e56-b6e5-164c11938b81>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/2cb0af76-f420-49dd-bb71-e2e220f9992a>
-  lto:taaktype <http://bp4mc2.org/lt#BegripDefinieren> .
+  lto:taaktype <http://bp4mc2.org/ltt#BegripDefinieren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/cffc724e-d330-4fd5-ab79-5888c15319b7>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0/taakinvulling/5a66746f-f44d-4f44-9c0f-bd996be10407>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0/taakinvulling/f5c8d335-e7af-4f71-8637-85717df30a86>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0/taakinvulling/2a3c8343-dd08-4ffa-b4df-914f474e2921>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720/taakinvulling/6793e2f9-09e1-425c-ae9a-58665a215340>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0/taakinvulling/07736294-304d-417c-8fac-87cb968bfd56>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0/taakinvulling/1118c005-9fee-486d-9548-41f0694735b5>
-  lto:taaktype <http://bp4mc2.org/lt#InterpreterenEnExpliciteren> .
+  lto:taaktype <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0/taakinvulling/0b5cc0b0-2336-425c-a716-be40fff8df44>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0/taakinvulling/0c1dc04f-639f-4317-8a93-a01eabacf5d9>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0/taakinvulling/8d9800d8-a8c6-4d3a-bbc6-46f87ac64d4f>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0/taakinvulling/c94030ff-4680-4581-bf27-e5e9226edb65>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0/taakinvulling/5494fb54-8d6b-4afd-a223-2e3adaeb1af5>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0/taakinvulling/93950e91-38b8-443a-93aa-6bb7c5b45ad6>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0/taakinvulling/4ba5d1b5-8cf7-4bde-85b4-cb0d180903a3>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/1.0/taakinvulling/9b714b74-2e2b-45e6-8782-ea0f2fefa658>
-  lto:taaktype <http://bp4mc2.org/lt#VerzamelenBronmateriaal> .
+  lto:taaktype <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/taakinvulling/c18cd442-cfba-4188-9dbf-177b748a8096>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0/taakinvulling/891d8347-ada9-436f-ae2e-03871e1061cf>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0/taakinvulling/fa2d8ce3-fca3-483e-a07e-81c4b9b0d74d>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0/taakinvulling/aa7dc954-91c1-44b6-b8b6-6ddb513ed1dd>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0/taakinvulling/71d67cb4-74e1-4760-b1ab-5274a65b5f17>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/taakinvulling/f19ad636-9b6e-450e-a56d-03826787b125>
-  lto:taaktype <http://bp4mc2.org/lt#BegripDefinieren> .
+  lto:taaktype <http://bp4mc2.org/ltt#BegripDefinieren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/taakinvulling/71e99571-fe7d-4cf7-992e-f815cde6a31b>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/taakinvulling/e677f0fd-403a-4f04-a543-8b0a15bc3380>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenProcessen> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenProcessen> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0/taakinvulling/349ecf8c-637a-400c-bb54-7bc996d9aa1b>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenGegevensbehoefte> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0/taakinvulling/e81bd0e9-9a73-44be-aa21-b36f5a31127a>
-  lto:taaktype <http://bp4mc2.org/lt#BegripDefinieren> .
+  lto:taaktype <http://bp4mc2.org/ltt#BegripDefinieren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0/taakinvulling/f82e9f01-f411-4f51-a9db-a95b5f1d0891>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenProcessen> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenProcessen> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0/taakinvulling/b7080179-1ca8-48ac-859d-9c7bace53c83>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenProcessen> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenProcessen> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0/taakinvulling/327f2f94-83b5-4cb3-b65d-31ca7c3c2f43>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenProcessen> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenProcessen> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/0ac30dc8-d9b9-4d83-862f-c66c9d39b353>
-  lto:taaktype <http://bp4mc2.org/lt#InterpreterenEnExpliciteren> .
+  lto:taaktype <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/a91bcd22-8461-42e6-90b5-1d3626a6b246>
-  lto:taaktype <http://bp4mc2.org/lt#Opdrachtorientering> .
+  lto:taaktype <http://bp4mc2.org/ltt#Opdrachtorientering> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/5b4b6c3b-93a1-476f-9cf7-57a377abb18c>
-  lto:taaktype <http://bp4mc2.org/lt#AnalyserenRegeltekst> .
+  lto:taaktype <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/746462b4-74bb-4406-94da-30c7d59d8e8a>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenProcessen> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenProcessen> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0/taakinvulling/9eff20ec-a0b3-446c-855c-baf41e6f48ad>
-  lto:taaktype <http://bp4mc2.org/lt#ValiderenSpecificaties> .
+  lto:taaktype <http://bp4mc2.org/ltt#ValiderenSpecificaties> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/0620e3da-8a11-4470-91cb-c22377588d1d>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenProcessen> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenProcessen> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063>
-  lto:taaktype <http://bp4mc2.org/lt#GeautomatitseerdeRegeluitvoering> .
+  lto:taaktype <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0/taakinvulling/d7fb9f1e-2b36-4c3c-8438-65aa759c9b5e>
-  lto:taaktype <http://bp4mc2.org/lt#GeautomatitseerdeRegeluitvoering> .
+  lto:taaktype <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0/taakinvulling/a46f407c-5b16-47ad-8ce1-a4806d46fcb7>
-  lto:taaktype <http://bp4mc2.org/lt#GeautomatitseerdeRegeluitvoering> .
+  lto:taaktype <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0/taakinvulling/3757c1d5-d9cc-4312-ab04-9d3d74577843>
-  lto:taaktype <http://bp4mc2.org/lt#Beslisondersteuning> .
+  lto:taaktype <http://bp4mc2.org/ltt#Beslisondersteuning> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/7a29d5e5-f600-43c2-9789-668f208e3d55>
-  lto:taaktype <http://bp4mc2.org/lt#SpecificerenRegels> .
+  lto:taaktype <http://bp4mc2.org/ltt#SpecificerenRegels> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/c8a1fed7-b897-40c1-8209-ed6ac71ede32>
-  lto:taaktype <http://bp4mc2.org/lt#Beslisondersteuning> .
+  lto:taaktype <http://bp4mc2.org/ltt#Beslisondersteuning> .
 
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/1.0/bronverwijzing/b34e99b0-0a12-4361-bd7d-b93ff9f318c7>
   dct:title "Raadsconclusies waarin de invoering wordt aanbevolen van een Europese identificatiecode voor jurisprudentie (ECLI),";
