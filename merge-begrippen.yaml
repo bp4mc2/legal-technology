@@ -1,0 +1,89 @@
+title: Merge content for concept scheme publication
+version: 1.0
+prefixes:
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  skos: http://www.w3.org/2004/02/skos/core#
+queries:
+  - title: alle begrippenkaders overzetten
+    query: >
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      insert {
+        graph <urn:output> {
+          ?s a skos:ConceptScheme.
+          ?s ?p ?o
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s a skos:ConceptScheme.
+          ?s ?p ?o.
+          FILTER (isLiteral(?o))
+        }
+      }
+  - title: alle begrippen overzetten (literals)
+    query: >
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      insert {
+        graph <urn:output> {
+          ?s a skos:Concept.
+          ?s ?p ?o
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s a skos:Concept.
+          ?s ?p ?o.
+          FILTER (isLiteral(?o))
+        }
+      }
+  - title: alle begrippen overzetten (resources)
+    query: >
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      insert {
+        graph <urn:output> {
+          ?s a skos:Concept.
+          ?s ?p ?o
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s a skos:Concept.
+          ?s ?p ?o.
+          ?o a ?ot.
+          FILTER (?ot=skos:ConceptScheme || ?ot=skos:Concept)
+        }
+      }
+  - title: alle collecties overzetten (literals)
+    query: >
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      insert {
+        graph <urn:output> {
+          ?s a skos:Collection.
+          ?s ?p ?o
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s a skos:Collection.
+          ?s ?p ?o.
+          FILTER (isLiteral(?o))
+        }
+      }
+  - title: alle collecties overzetten (resources)
+    query: >
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      insert {
+        graph <urn:output> {
+          ?s a skos:Collection.
+          ?s ?p ?o
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s a skos:Collection.
+          ?s ?p ?o.
+          ?o a ?ot.
+          FILTER (?ot=skos:ConceptScheme || ?ot=skos:Concept)
+        }
+      }

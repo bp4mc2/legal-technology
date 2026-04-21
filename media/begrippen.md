@@ -1,6 +1,6 @@
 # Begrippen
 
-## Legal technology vocabulary
+## Begrippenkader juridische technologie
 
 ### Juridische technologie
 
@@ -38,7 +38,7 @@ Gerelateerd: [Taak](#taak)
 
 > Een taakinvulling is een aanduiding voor de manier waarop een [taak](#taak) in een specifieke juridische technologie wordt ingevuld of ondersteund
 
-Gerelateerd: , [Taak](#taak)
+Gerelateerd: [Taak](#taak), [Juridische technologie](#juridische-technologie)
 
 ### Tool
 
@@ -48,47 +48,157 @@ Toelichting: Een tool is een hulpmiddel WAARMEE een taak wordt uitgevoerd
 
 Gerelateerd: [Taak](#taak)
 
+## Categorieën
+
+### Beschouwingsniveaus
+
+#### Logisch
+
+#### Ontologisch
+
+#### Semantisch
+
+#### Technisch
+
+#### Tekstueel
+
+### Functionaliteiten
+
+#### Compliance ondersteuning
+
+#### Geautomatiseerd beslissen
+
+### Gebruikersgroepen
+
+#### Advocaten
+
+#### Beleidsmedewerkers
+
+#### Burgers en bedrijven
+
+#### Commerciële organisaties
+
+#### Juristen
+
+#### Opsporingsinstanties
+
+#### Rechtbanken
+
+#### Regelanalist
+
+#### Softwareontwikkelaars
+
+#### Uitvoeringsorganisaties
+
+#### Wetgevers
+
+### Gebruiksstatussen
+
+#### In gebruik
+
+#### Voorstel
+
+#### Work in progress
+
+### Licentievormen
+
+#### Gesloten
+
+#### Open onder voorwaarden
+
+#### Volledig open
+
+### Modelsoorten
+
+#### Descriptief
+
+#### Normatief
+
+### Normstatussen
+
+#### Best practice
+
+#### Idee
+
+#### Industrie
+
+#### Voorstel
+
+#### Wettelijk
+
+### Relatietypen
+
+#### Alternatief voor
+
+#### Gerelateerd aan
+
+#### Vervangt
+
+#### Vervolg op
+
+### Technologietypen
+
+#### DSL
+
+#### Machine learning
+
+#### Markup (annotatie)
+
+#### Markup (publicatie)
+
+#### Regelexecutie
+
 ## Taken
 
-### Afbakenen reikwijdte
+### Analyseren regeltekst
 
-Alternatieve aanduiding: *Scope definition*
-
-> Afbakenen reikwijdte is een [taak](#taak) waarin wordt bepaald waaruit de opgave bestaat
-
-Toelichting: Een 'opgave' kan gelezen worden als het doel waarvoor de wetgeving c.q. wetsuitvoering is bedoeld, en het effect dat hiermee wordt beoogd
-
-Specialisatie van: [Taak](#taak)
-
-### Analyseren
-
-> Analyseren is een [taak](#taak) waarin op een gestructureerde manier de betekenis, structuur en bedoeling van een juridische tekst wordt onderzocht
+> Analyseren is een taak waarin op een gestructureerde manier de betekenis, structuur en bedoeling van een juridische tekst wordt onderzocht
 
 Toelichting: Interpreteren van een juridische tekst valt expliciet niet onder deze taak. De analyse beoogd een zo feitelijk mogelijk onderzoek
 
-Specialisatie van: [Taak](#taak)
+### Begrip definiëren
+
+### Beslisondersteuning
+
+### Evaluatie
+
+### Geautomatiseerde regeluitvoering
+
+### Interpreteren en expliciteren
+
+### Opdracht orientering
+
+Alternatieve aanduiding: *Scope definition*
+
+> Afbakenen reikwijdte is een taak waarin wordt bepaald waaruit de opgave bestaat
+
+Toelichting: Een 'opgave' kan gelezen worden als het doel waarvoor de wetgeving c.q. wetsuitvoering is bedoeld, en het effect dat hiermee wordt beoogd
 
 ### Opstellen regeltekst
 
 Alternatieve aanduiding: *Drafting legislation*
 
-> Opstellen regeltekst is een [taak](#taak) waarbij tekst wordt opgesteld als onderdeel van het geschreven recht
+> Opstellen regeltekst is een taak waarbij tekst wordt opgesteld als onderdeel van het geschreven recht
 
 Toelichting: Het gaat hier zowel om algemeen verbindende voorwaarden (Wet in formele zin, AmvB's, Ministeriële regelingen), beleidsregels (zoals bedoeld in de Awb) en ook (intern) geschreven uitvoeringsbeleid.
 
 *Nog af te stemmen: omvat het ook de wet in formele zin, en wat is de reikwijdte: waar begint opstellen regeltekst (valt de beleidsvorming er ook onder) en waar eindigt opstellen regeltekst (valt het vaststellings- en publicatieproces er ook onder)?*
 
-Specialisatie van: [Taak](#taak)
+### Specificeren gegevens(behoefte)
+
+### Specificeren processen
+
+### Specificeren regels
+
+### Valideren specificaties
 
 ### Verzamelen bronmateriaal
 
 Alternatieve aanduiding: *Acquire source material*
 
-> Verzamelen bronmateriaal is een [taak](#taak) waarin de relevante bronnen worden verzameld die nodig zijn voor de gegeven opgave
+> Verzamelen bronmateriaal is een taak waarin de relevante bronnen worden verzameld die nodig zijn voor de gegeven opgave
 
 Toelichting: Het gaat hier om de bronnen van het positieve recht, het geschreven recht (zowel intern, nationaal als internationaal), inclusief uitspraken van rechters (jurisprudentie), parlementaire geschiedenis, toelichtingen en annotaties vanuit de rechtswetenschap
 
 *Mogelijk nog aandacht voor het ongeschreven recht: gewoonte recht en algemene rechtsbeginselen. Deze kunnen niet echt als bronmateriaal worden gezien, maar kunnen mogelijk wel bijdragen, mits er iets van op papier staat?*
-
-Specialisatie van: [Taak](#taak)
 
