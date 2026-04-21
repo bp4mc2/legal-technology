@@ -9,11 +9,6 @@ lt:BegrippenkaderJuridischeTechnologie a skos:ConceptScheme;
   rdfs:label "Begrippenkader juridische technologie"@nl
 .
 
-lt:Taken a skos:ConceptScheme;
-  rdfs:label "Taken"@nl;
-  rdfs:label "Tasks"@en;
-.
-
 #
 # Kernbegrippen (waarover gegevens worden vastgelegd)
 #
@@ -73,49 +68,4 @@ lt:Taak a skos:Concept;
   skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
   skos:definition "Een taak is een afgebakende hoeveelheid werk die leidt tot een overdraagbaar resultaat en die bijdraagt aan het behalen van een doel";
   skos:editorialNote "In de context van dit begrippenkader, beschouwen we slechts taken die passen binnen wendbaar wetgeven en wendbare wetsuitvoering";
-.
-
-#
-# Taken
-#
-
-lt:OpstellenRegeltekst a skos:Concept;
-  rdfs:label "Opstellen regeltekst"@nl;
-  skos:prefLabel "Opstellen regeltekst"@nl;
-  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
-  skos:altLabel "Drafting legislation"@en;
-  skos:definition "Opstellen regeltekst is een taak waarbij tekst wordt opgesteld als onderdeel van het geschreven recht";
-  skos:scopeNote "Het gaat hier zowel om algemeen verbindende voorwaarden (Wet in formele zin, AmvB's, Ministeriële regelingen), beleidsregels (zoals bedoeld in de Awb) en ook (intern) geschreven uitvoeringsbeleid.";
-  skos:editorialNote "Nog af te stemmen: omvat het ook de wet in formele zin, en wat is de reikwijdte: waar begint opstellen regeltekst (valt de beleidsvorming er ook onder) en waar eindigt opstellen regeltekst (valt het vaststellings- en publicatieproces er ook onder)?";
-  skosthes:broaderGeneric lt:Taak;
-.
-
-lt:ScopeDefinition a skos:Concept;
-  rdfs:label "Afbakenen reikwijdte"@nl;
-  skos:prefLabel "Afbakenen reikwijdte"@nl;
-  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
-  skos:altLabel "Scope definition"@en;
-  skos:definition "Afbakenen reikwijdte is een taak waarin wordt bepaald waaruit de opgave bestaat";
-  skos:scopeNote "Een 'opgave' kan gelezen worden als het doel waarvoor de wetgeving c.q. wetsuitvoering is bedoeld, en het effect dat hiermee wordt beoogd";
-  skosthes:broaderGeneric lt:Taak;
-.
-
-lt:VerzamelenBronmateriaal a skos:Concept;
-  rdfs:label "Verzamelen bronmateriaal"@nl;
-  skos:prefLabel "Verzamelen bronmateriaal"@nl;
-  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
-  skos:altLabel "Acquire source material"@en;
-  skos:definition "Verzamelen bronmateriaal is een taak waarin de relevante bronnen worden verzameld die nodig zijn voor de gegeven opgave";
-  skos:scopeNote "Het gaat hier om de bronnen van het positieve recht, het geschreven recht (zowel intern, nationaal als internationaal), inclusief uitspraken van rechters (jurisprudentie), parlementaire geschiedenis, toelichtingen en annotaties vanuit de rechtswetenschap";
-  skos:editorialNote "Mogelijk nog aandacht voor het ongeschreven recht: gewoonte recht en algemene rechtsbeginselen. Deze kunnen niet echt als bronmateriaal worden gezien, maar kunnen mogelijk wel bijdragen, mits er iets van op papier staat?";
-  skosthes:broaderGeneric lt:Taak;
-.
-
-lt:Analyseren a skos:Concept;
-  rdfs:label "Analyseren"@nl;
-  skos:prefLabel "Analyseren"@nl;
-  skos:inScheme lt:BegrippenkaderJuridischeTechnologie;
-  skos:definition "Analyseren is een taak waarin op een gestructureerde manier de betekenis, structuur en bedoeling van een juridische tekst wordt onderzocht";
-  skos:scopeNote "Interpreteren van een juridische tekst valt expliciet niet onder deze taak. De analyse beoogd een zo feitelijk mogelijk onderzoek";
-  skosthes:broaderGeneric lt:Taak;
 .

@@ -7,8 +7,9 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
 
-@prefix lt: <http://bp4mc2.org/lt#>.
-@prefix lto: <http://bp4mc2.org/lto#>.
+@prefix lt: <http://bp4mc2.org/lt#>. # Legal technology core
+@prefix ltt: <http://bp4mc2.org/ltt#>. # Legal technology tasks
+@prefix lto: <http://bp4mc2.org/lto#>. # Legal technology ontology
 
 # Ontology metadata
 <http://bp4mc2.org/lt#ontology>
@@ -59,7 +60,7 @@ lto:JuridischeTechnologie a sh:NodeShape, owl:Class;
     sh:description "De status  van het gebruik van de technologie (nog in ontwikkeling, een voorstel, in gebruik, etc)"@nl;
     sh:minCount 1;
     sh:maxCount 1;
-    sh:node lt:Gebruiksstatussen;    
+    sh:node lt:Gebruiksstatussen;
   ];
   sh:property [
     sh:order 4;
@@ -124,7 +125,7 @@ lto:JuridischeTechnologie a sh:NodeShape, owl:Class;
   sh:property [
     sh:order 102;
     rdfs:label "aanvullende documentatie"@nl;
-    sh:path lto:bron;    
+    sh:path lto:bron;
     sh:class lto:Bronverwijzing
   ];
   sh:property [
@@ -293,7 +294,7 @@ lto:normstatus a owl:ObjectProperty;
   rdfs:comment "Predicate tussen Standaard en een normstatus uit de Normstatussen-lijst."@nl;
   rdfs:domain lto:Standaard;
   rdfs:range lt:Normstatussen
-  
+
 .
 ## ---------------------------------------------------------------------------------------------------------
 ## Tool (verbijzondering van Juridische technologie)
@@ -570,28 +571,36 @@ lto:Bronverwijzing a sh:NodeShape;
 .
 
 ########################################################################################################
-## Enumerations (lists)
+## Categorisations (lists)
 ########################################################################################################
+
+lt:BegrippenkaderCategorieen a skos:ConceptScheme;
+  skos:prefLabel "Categorieën"@nl;
+  rdfs:label "Categorieën"@nl;
+.
 
 ##
 ## Licentievormen enumeration
 ##
-lt:Licentievormen a skos:ConceptScheme;
+lt:Licentievormen a skos:Collection;
   rdfs:label "Licentievormen"@nl;
   skos:prefLabel "Licentievormen"@nl;
-  skos:definition "Enumeratie van mogelijke licentievormen voor juridische technologie."@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke licentievormen voor juridische technologie."@nl;
+  skos:member lt:VolledigOpen, lt:OpenOnderVoorwaarden, lt:Gesloten
+.
 
 # Define the concepts (enumeration values)
 lt:VolledigOpen a skos:Concept;
-  skos:inScheme lt:Licentievormen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Volledig open"@nl.
 
 lt:OpenOnderVoorwaarden a skos:Concept;
-  skos:inScheme lt:Licentievormen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Open onder voorwaarden"@nl.
 
 lt:Gesloten a skos:Concept;
-  skos:inScheme lt:Licentievormen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Gesloten"@nl.
 
 # SHACL shape to validate usage of licentievorm property
@@ -606,53 +615,56 @@ lt:LicentievormShape a sh:NodeShape;
 ##
 ## Gebruikersgroepen enumeration
 ##
-lt:Gebruikersgroepen a skos:ConceptScheme;
+lt:Gebruikersgroepen a skos:Collection;
   rdfs:label "Gebruikersgroepen"@nl;
   skos:prefLabel "Gebruikersgroepen"@nl;
-  skos:definition "Enumeratie van mogelijke gebruikersgroepen voor juridische technologie."@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke gebruikersgroepen voor juridische technologie."@nl;
+  skos:member lt:BurgersEnBedrijven, lt:Rechtbanken, lt:Opsporingsinstanties, lt:Juristen, lt:Beleidsmedewerkers, lt:Wetgevers, lt:Advocaten, lt:Uitvoeringsorganisaties, lt:CommercieleOrganisaties, lt:Regelanalist, lt:SoftwareOntwikkelaars
+.
 
 lt:BurgersEnBedrijven a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Burgers en bedrijven"@nl.
 
 lt:Rechtbanken a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Rechtbanken"@nl.
 
 lt:Opsporingsinstanties a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Opsporingsinstanties"@nl.
 
 lt:Juristen a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Juristen"@nl.
 
 lt:Beleidsmedewerkers a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Beleidsmedewerkers"@nl.
 
 lt:Wetgevers a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Wetgevers"@nl.
 
 lt:Advocaten a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Advocaten"@nl.
 
 lt:Uitvoeringsorganisaties a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Uitvoeringsorganisaties"@nl.
 
 lt:CommercieleOrganisaties a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Commerciële organisaties"@nl.
 
 lt:Regelanalist a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Regelanalist"@nl.
 
 lt:SoftwareOntwikkelaars a skos:Concept;
-  skos:inScheme lt:Gebruikersgroepen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Softwareontwikkelaars"@nl.
 
 # SHACL shape for gebruikersgroepen
@@ -679,21 +691,24 @@ lt:GebruikersgroepenShape a sh:NodeShape;
 ##
 ## Gebruiksstatussen enumeration
 ##
-lt:Gebruiksstatussen a skos:ConceptScheme;
+lt:Gebruiksstatussen a skos:Collection;
   rdfs:label "Gebruiksstatussen"@nl;
   skos:prefLabel "Gebruiksstatussen"@nl;
-  skos:definition "Enumeratie van mogelijke gebruiksstatussen voor juridische technologie."@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke gebruiksstatussen voor juridische technologie."@nl;
+  skos:member lt:WorkInProgress, lt:Voorstel, lt:InGebruik
+.
 
 lt:WorkInProgress a skos:Concept;
-  skos:inScheme lt:Gebruiksstatussen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Work in progress"@nl.
 
 lt:Voorstel a skos:Concept;
-  skos:inScheme lt:Gebruiksstatussen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Voorstel"@nl.
 
 lt:InGebruik a skos:Concept;
-  skos:inScheme lt:Gebruiksstatussen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "In gebruik"@nl.
 
 # SHACL shape to validate usage of gebruiksstatus property
@@ -708,18 +723,21 @@ lt:GebruiksstatusShape a sh:NodeShape;
 ##
 ## Functionaliteiten enumeration
 ##
-lt:Functionaliteiten a skos:ConceptScheme;
+lt:Functionaliteiten a skos:Collection;
   rdfs:label "Functionaliteiten"@nl;
   skos:prefLabel "Functionaliteiten"@nl;
-  skos:definition "Enumeratie van mogelijke functionaliteiten voor juridische technologie."@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke functionaliteiten voor juridische technologie."@nl;
+  skos:member lt:GeautomatiseerdBeslissen, lt:ComplianceOndersteuning
+.
 
 
 lt:GeautomatiseerdBeslissen a skos:Concept;
-  skos:inScheme lt:Functionaliteiten;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Geautomatiseerd beslissen"@nl.
 
 lt:ComplianceOndersteuning a skos:Concept;
-  skos:inScheme lt:Functionaliteiten;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Compliance ondersteuning"@nl.
 
 # SHACL shape for functionaliteiten
@@ -738,29 +756,32 @@ lt:FunctionaliteitenShape a sh:NodeShape;
 ## Technologietypen enumeration
 ##
 
-lt:Technologietypen a skos:ConceptScheme;
+lt:Technologietypen a skos:Collection;
   rdfs:label "Technologietypen"@nl;
   skos:prefLabel "Technologietypen"@nl;
-  skos:definition "Enumeratie van mogelijke technologietypen voor juridische technologie."@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke technologietypen voor juridische technologie."@nl;
+  skos:member lt:MarkupAnnotatie, lt:MarkupPublicatie, lt:DSL, lt:MachineLearning, lt:Regelexecutie
+.
 
 lt:MarkupAnnotatie a skos:Concept;
-  skos:inScheme lt:Technologietypen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Markup (annotatie)"@nl.
 
 lt:MarkupPublicatie a skos:Concept;
-  skos:inScheme lt:Technologietypen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Markup (publicatie)"@nl.
 
 lt:DSL a skos:Concept;
-  skos:inScheme lt:Technologietypen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "DSL"@nl.
 
 lt:MachineLearning a skos:Concept;
-  skos:inScheme lt:Technologietypen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Machine learning"@nl.
 
 lt:Regelexecutie a skos:Concept;
-  skos:inScheme lt:Technologietypen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Regelexecutie"@nl.
 
 # SHACL shape for technologietypen
@@ -778,32 +799,35 @@ lt:TechnologietypenShape a sh:NodeShape;
     );
   ].
 
-## 
+##
 ## Normstatussen enumeration
 ##
-lt:Normstatussen a skos:ConceptScheme;
+lt:Normstatussen a skos:Collection;
   rdfs:label "Normstatussen"@nl;
   skos:prefLabel "Normstatussen"@nl;
-  skos:definition "Enumeratie van mogelijke normstatussen voor juridische technologie."@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke normstatussen voor juridische technologie."@nl;
+  skos:member lt:Idee, lt:Voorstel, lt:BestPractice, lt:Industrie, lt:Wettelijk
+.
 
 lt:Idee a skos:Concept;
-  skos:inScheme lt:Normstatussen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Idee"@nl.
 
 lt:Voorstel a skos:Concept;
-  skos:inScheme lt:Normstatussen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Voorstel"@nl.
 
 lt:BestPractice a skos:Concept;
-  skos:inScheme lt:Normstatussen;
-  skos:prefLabel "BestPractice"@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:prefLabel "Best practice"@nl.
 
 lt:Industrie a skos:Concept;
-  skos:inScheme lt:Normstatussen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Industrie"@nl.
 
 lt:Wettelijk a skos:Concept;
-  skos:inScheme lt:Normstatussen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Wettelijk"@nl.
 
 # SHACL shape for normstatussen
@@ -824,29 +848,32 @@ lt:NormstatussenShape a sh:NodeShape;
 ##
 ## Beschouwingsniveaus enumeration
 ##
-lt:Beschouwingsniveaus a skos:ConceptScheme;
+lt:Beschouwingsniveaus a skos:Collection;
   rdfs:label "Beschouwingsniveaus"@nl;
   skos:prefLabel "Beschouwingsniveaus"@nl;
-  skos:definition "Enumeratie van mogelijke beschouwingsniveaus voor juridische technologie."@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke beschouwingsniveaus voor juridische technologie."@nl;
+  skos:member lt:Tekstueel, lt:Semantisch, lt:Ontologisch, lt:Logisch, lt:Technisch
+.
 
 lt:Tekstueel a skos:Concept;
-  skos:inScheme lt:Beschouwingsniveaus;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Tekstueel"@nl.
 
 lt:Semantisch a skos:Concept;
-  skos:inScheme lt:Beschouwingsniveaus;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Semantisch"@nl.
 
 lt:Ontologisch a skos:Concept;
-  skos:inScheme lt:Beschouwingsniveaus;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Ontologisch"@nl.
 
 lt:Logisch a skos:Concept;
-  skos:inScheme lt:Beschouwingsniveaus;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Logisch"@nl.
 
 lt:Technisch a skos:Concept;
-  skos:inScheme lt:Beschouwingsniveaus;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Technisch"@nl.
 
 # SHACL shape for beschouwingsniveaus
@@ -868,17 +895,20 @@ lt:BeschouwingsniveausShape a sh:NodeShape;
 ##
 ## Modelsoorten enumeration
 ##
-lt:Modelsoorten a skos:ConceptScheme;
+lt:Modelsoorten a skos:Collection;
   rdfs:label "Modelsoorten"@nl;
   skos:prefLabel "Modelsoorten"@nl;
-  skos:definition "Enumeratie van mogelijke modelsoorten voor juridische technologie."@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke modelsoorten voor juridische technologie."@nl;
+  skos:member lt:Descriptief, lt:Normatief
+.
 
 lt:Descriptief a skos:Concept;
-  skos:inScheme lt:Modelsoorten;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Descriptief"@nl.
 
 lt:Normatief a skos:Concept;
-  skos:inScheme lt:Modelsoorten;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Normatief"@nl.
 
 # SHACL shape for modelsoorten
@@ -893,67 +923,6 @@ lt:ModelsoortenShape a sh:NodeShape;
     );
   ].
 
-
-##
-## Taaktypen enumeration
-##
-lt:Taaktypen a skos:ConceptScheme;
-  rdfs:label "Taaktypen"@nl;
-  skos:prefLabel "Taaktypen"@nl;
-  skos:definition "Enumeratie van mogelijke taaktypen voor juridische technologie."@nl.
-
-lt:OpstellenRegeltekst a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Opstellen regeltekst"@nl.
-
-lt:AnalyserenRegeltekst a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Analyseren regeltekst"@nl.
-
-lt:Opdrachtorientering a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Opdrachtorientering"@nl.
-
-lt:VerzamelenBronmateriaal a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Verzamelen bronmateriaal"@nl.
-
-lt:InterpreterenEnExpliciteren a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Interpreteren en expliciteren"@nl.
-
-lt:BegripDefinieren a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Begrip definiëren"@nl.
-
-lt:SpecificerenGegevensbehoefte a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Specificeren gegevens(behoefte)"@nl.
-  
-lt:SpecificerenRegels a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Specificeren regels"@nl.
-
-lt:SpecificerenProcessen a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Specificeren processen"@nl.
-
-lt:ValiderenSpecificaties a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Valideren specificaties"@nl.
-
-lt:GeautomatitseerdeRegeluitvoering a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Geautomatiseerde regeluitvoering"@nl.
-
-lt:Beslisondersteuning a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Beslisondersteuning"@nl.
-
-lt:Evaluatie a skos:Concept;
-  skos:inScheme lt:Taaktypen;
-  skos:prefLabel "Evaluatie"@nl.
-
 # SHACL shape for taaktypen
 lt:TaaktypenShape a sh:NodeShape;
   sh:targetObjectsOf lto:taaktype;
@@ -961,42 +930,45 @@ lt:TaaktypenShape a sh:NodeShape;
     sh:path lto:taaktype;
     sh:class skos:Concept;
     sh:in (
-      lt:OpstellenRegeltekst
-      lt:AnalyserenRegeltekst
-      lt:Opdrachtorientering
-      lt:VerzamelenBronmateriaal
-      lt:InterpreterenEnExpliciteren
-      lt:BegripDefinieren
-      lt:SpecificerenGegevensbehoefte
-      lt:SpecificerenRegels
-      lt:SpecificerenProcessen
-      lt:ValiderenSpecificaties
-      lt:GeautomatitseerdeRegeluitvoering
-      lt:Beslisondersteuning
-      lt:Evaluatie
+      ltt:OpstellenRegeltekst
+      ltt:AnalyserenRegeltekst
+      ltt:Opdrachtorientering
+      ltt:VerzamelenBronmateriaal
+      ltt:InterpreterenEnExpliciteren
+      ltt:BegripDefinieren
+      ltt:SpecificerenGegevensbehoefte
+      ltt:SpecificerenRegels
+      ltt:SpecificerenProcessen
+      ltt:ValiderenSpecificaties
+      ltt:GeautomatitseerdeRegeluitvoering
+      ltt:Beslisondersteuning
+      ltt:Evaluatie
     )];
 .
 
 # Relatietypen enumeration
-lt:Relatietypen a skos:ConceptScheme;
+lt:Relatietypen a skos:Collection;
   rdfs:label "Relatietypen"@nl;
   skos:prefLabel "Relatietypen"@nl;
-  skos:definition "Enumeratie van mogelijke relatietypen tussen juridische technologieën."@nl.
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke relatietypen tussen juridische technologieën."@nl;
+  skos:member lt:Vervangt, lt:VervolgOp, lt:AlternatiefVoor, lt:GerelateerdAan
+.
 
 lt:Vervangt a skos:Concept;
-  skos:inScheme lt:Relatietypen;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Vervangt"@nl.
 
 lt:VervolgOp a skos:Concept;
-  skos:inScheme lt:Relatietypen;
-  skos:prefLabel "Vervolg op"@nl. 
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:prefLabel "Vervolg op"@nl.
 
 lt:AlternatiefVoor a skos:Concept;
-  skos:inScheme lt:Relatietypen;
-  skos:prefLabel "Alternatief voor"@nl. 
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:prefLabel "Alternatief voor"@nl.
 
-lt:GerelateerdAan a skos:Concept; 
-  skos:inScheme lt:Relatietypen;
+lt:GerelateerdAan a skos:Concept;
+  skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Gerelateerd aan"@nl.
 
 # SHACL shape for relatietypen

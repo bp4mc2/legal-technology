@@ -1,0 +1,94 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix skosthes: <http://purl.org/iso25964/skos-thes#>.
+
+
+@prefix ltt: <http://bp4mc2.org/ltt#>. # Legal technology task (types)
+
+
+ltt:BegrippenkaderTaken a skos:ConceptScheme;
+  rdfs:label "Taken"@nl;
+  rdfs:label "Tasks"@en;
+  skos:prefLabel "Taken"@nl;
+  skos:definition "Begrippenkader met alle mogelijke taken"@nl
+.
+
+##
+## Taken
+##
+ltt:OpstellenRegeltekst a skos:Concept;
+  rdfs:label "Opstellen regeltekst"@nl;
+  skos:prefLabel "Opstellen regeltekst"@nl;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:altLabel "Drafting legislation"@en;
+  skos:definition "Opstellen regeltekst is een taak waarbij tekst wordt opgesteld als onderdeel van het geschreven recht";
+  skos:scopeNote "Het gaat hier zowel om algemeen verbindende voorwaarden (Wet in formele zin, AmvB's, Ministeriële regelingen), beleidsregels (zoals bedoeld in de Awb) en ook (intern) geschreven uitvoeringsbeleid.";
+  skos:editorialNote "Nog af te stemmen: omvat het ook de wet in formele zin, en wat is de reikwijdte: waar begint opstellen regeltekst (valt de beleidsvorming er ook onder) en waar eindigt opstellen regeltekst (valt het vaststellings- en publicatieproces er ook onder)?";
+  skosthes:broaderGeneric ltt:Taak;
+.
+
+ltt:Opdrachtorientering a skos:Concept;
+  rdfs:label "Opdracht orientering"@nl;
+  skos:prefLabel "Opdracht orientering"@nl;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:altLabel "Scope definition"@en;
+  skos:definition "Afbakenen reikwijdte is een taak waarin wordt bepaald waaruit de opgave bestaat";
+  skos:scopeNote "Een 'opgave' kan gelezen worden als het doel waarvoor de wetgeving c.q. wetsuitvoering is bedoeld, en het effect dat hiermee wordt beoogd";
+  skosthes:broaderGeneric ltt:Taak;
+.
+
+ltt:VerzamelenBronmateriaal a skos:Concept;
+  rdfs:label "Verzamelen bronmateriaal"@nl;
+  skos:prefLabel "Verzamelen bronmateriaal"@nl;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:altLabel "Acquire source material"@en;
+  skos:definition "Verzamelen bronmateriaal is een taak waarin de relevante bronnen worden verzameld die nodig zijn voor de gegeven opgave";
+  skos:scopeNote "Het gaat hier om de bronnen van het positieve recht, het geschreven recht (zowel intern, nationaal als internationaal), inclusief uitspraken van rechters (jurisprudentie), parlementaire geschiedenis, toelichtingen en annotaties vanuit de rechtswetenschap";
+  skos:editorialNote "Mogelijk nog aandacht voor het ongeschreven recht: gewoonte recht en algemene rechtsbeginselen. Deze kunnen niet echt als bronmateriaal worden gezien, maar kunnen mogelijk wel bijdragen, mits er iets van op papier staat?";
+  skosthes:broaderGeneric ltt:Taak;
+.
+
+ltt:AnalyserenRegeltekst a skos:Concept;
+  rdfs:label "Analyseren regeltekst"@nl;
+  skos:prefLabel "Analyseren regeltekst"@nl;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:definition "Analyseren is een taak waarin op een gestructureerde manier de betekenis, structuur en bedoeling van een juridische tekst wordt onderzocht";
+  skos:scopeNote "Interpreteren van een juridische tekst valt expliciet niet onder deze taak. De analyse beoogd een zo feitelijk mogelijk onderzoek";
+  skosthes:broaderGeneric ltt:Taak;
+.
+
+ltt:InterpreterenEnExpliciteren a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:prefLabel "Interpreteren en expliciteren"@nl.
+
+ltt:BegripDefinieren a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:prefLabel "Begrip definiëren"@nl.
+
+ltt:SpecificerenGegevensbehoefte a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:prefLabel "Specificeren gegevens(behoefte)"@nl.
+
+ltt:SpecificerenRegels a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:prefLabel "Specificeren regels"@nl.
+
+ltt:SpecificerenProcessen a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:prefLabel "Specificeren processen"@nl.
+
+ltt:ValiderenSpecificaties a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:prefLabel "Valideren specificaties"@nl.
+
+ltt:GeautomatitseerdeRegeluitvoering a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:prefLabel "Geautomatiseerde regeluitvoering"@nl.
+
+ltt:Beslisondersteuning a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:prefLabel "Beslisondersteuning"@nl.
+
+ltt:Evaluatie a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:prefLabel "Evaluatie"@nl.
