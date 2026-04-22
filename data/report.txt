@@ -1,0 +1,8 @@
+Node=<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.0/taakinvulling/8a2e525e-02dd-422a-a71a-95bdea992a30>
+  Path=<http://bp4mc2.org/lto#taaktype>
+  Value: "Opstellen regeltekst"
+  Message: Node[<http://bp4mc2.org/lto#TaaktypenShape>] at focusNode "Opstellen regeltekst"
+Node=<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/1.0/taakinvulling/b6a6767d-ea32-4523-8576-692824d73cc0>
+  Path=<http://bp4mc2.org/lto#taaktype>
+  Value: "Opstellen regeltekst"
+  Message: Node[<http://bp4mc2.org/lto#TaaktypenShape>] at focusNode "Opstellen regeltekst"

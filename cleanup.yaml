@@ -1,0 +1,398 @@
+title: Cleanup for ontology validation
+version: 1.0
+prefixes:
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  skos: http://www.w3.org/2004/02/skos/core#
+  xsd: http://www.w3.org/2001/XMLSchema#
+queries:
+  - title: alle normale data overzetten
+    query: >
+      prefix owl: <http://www.w3.org/2002/07/owl#>
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      prefix sh: <http://www.w3.org/ns/shacl#>
+      insert {
+        graph <urn:output> {
+          ?s ?p ?o
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s a ?t.
+          ?s ?p ?o.
+          FILTER (?t!=owl:Class && ?t!=sh:NodeShape && ?t!=sh:PropertyShape && ?t!=skos:Concept && ?t!=skos:ConceptScheme && ?t!=skos:Collection)
+        }
+      }
+  - title: classes en rdfs:subClassOf axioms overzetten
+    query: >
+      prefix owl: <http://www.w3.org/2002/07/owl#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      insert {
+        graph <urn:output> {
+          ?c a owl:Class.
+          ?c rdfs:subClassOf ?pc
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?c a owl:Class.
+          OPTIONAL {?c rdfs:subClassOf ?pc}
+        }
+      }
+  - title: collecties en skos:member axioms overzetten
+    query: >
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      insert {
+        graph <urn:output> {
+          ?c a skos:Collection.
+          ?c skos:member ?m
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?c a skos:Collection.
+          ?c skos:member ?m
+        }
+      }
+  - title: begrippen en skos:inScheme axioms overzetten
+    query: >
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      insert {
+        graph <urn:output> {
+          ?c a skos:Concept.
+          ?c skos:inScheme ?s
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?c a skos:Concept.
+          ?c skos:inScheme ?s
+        }
+      }
+  - title: fix errors - empty values
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      delete {
+        graph <urn:output> {
+          ?s ?p ?o
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?s ?p ?o
+          FILTER (?o="")
+        }
+      }
+  - title: fix errors - beoogdeGebruikers
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      insert {
+        graph <urn:output> {
+          ?lt lto:beoogdeGebruikers lt:SoftwareOntwikkelaars
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt a ?t.
+          ?t rdfs:subClassOf lto:JuridischeTechnologie
+          FILTER NOT EXISTS {?lt lto:beoogdeGebruikers ?bg}
+        }
+      }
+  - title: fix errors - gebodenFunctionaliteit
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      insert {
+        graph <urn:output> {
+          ?lt lto:gebodenFunctionaliteit lt:ComplianceOndersteuning
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt a ?t.
+          ?t rdfs:subClassOf lto:JuridischeTechnologie
+          FILTER NOT EXISTS {?lt lto:gebodenFunctionaliteit ?gf}
+        }
+      }
+  - title: fix errors - bijgewerktOp (string vs date)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?lt lto:bijgewerktOp ?value
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?lt lto:bijgewerktOp ?date
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt a ?t.
+          ?t rdfs:subClassOf lto:JuridischeTechnologie.
+          ?lt lto:bijgewerktOp ?value.
+          BIND(xsd:date(?value) as ?date)
+        }
+      }
+  - title: fix errors - bijgewerktOp (missing values)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      insert {
+        graph <urn:output> {
+          ?lt lto:bijgewerktOp "2026-04-22"^^xsd:date
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt a ?t.
+          ?t rdfs:subClassOf lto:JuridischeTechnologie
+          FILTER NOT EXISTS {?lt lto:bijgewerktOp ?date}
+        }
+      }
+  - title: fix errors - versiebeschrijving (non-blank node 1/2)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?lt lto:versiebeschrijving ?iri.
+          ?iri ?p ?o
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?lt lto:versiebeschrijving [rdfs:seeAlso ?iri]
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt lto:versiebeschrijving ?iri.
+        }
+      }
+  - title: fix errors - versiebeschrijving (non-blank node 2/2)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?blank rdfs:seeAlso ?iri.
+          ?iri ?p ?o
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?blank ?p ?o
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt lto:versiebeschrijving ?blank.
+          ?blank rdfs:seeAlso ?iri.
+          ?iri ?p ?o
+        }
+      }
+  - title: fix errors - ondersteuningVoor (non-blank node 1/2)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?lt lto:ondersteuningVoor ?iri.
+          ?iri ?p ?o
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?lt lto:ondersteuningVoor [rdfs:seeAlso ?iri]
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt lto:ondersteuningVoor ?iri.
+        }
+      }
+  - title: fix errors - ondersteuningVoor (non-blank node 2/2)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?blank rdfs:seeAlso ?iri.
+          ?iri ?p ?o
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?blank ?p ?o
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt lto:ondersteuningVoor ?blank.
+          ?blank rdfs:seeAlso ?iri.
+          ?iri ?p ?o
+        }
+      }
+  - title: fix errors - normstatus
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      insert {
+        graph <urn:output> {
+          ?lt lto:normstatus lt:Idee
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt a lto:Standaard.
+          FILTER NOT EXISTS {?lt lto:normstatus ?ns}
+        }
+      }
+  - title: fix errors - beheerder
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      insert {
+        graph <urn:output> {
+          ?lt lto:beheerder <urn:name:OnbekendeBeheerder>.
+          <urn:name:OnbekendeBeheerder> a lto:Organisatie
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt a ?t.
+          FILTER (?t=lto:Standaard || ?t=lto:Methode)
+          FILTER NOT EXISTS {?lt lto:beheerder ?org}
+        }
+      }
+  - title: fix errors - typeTechnologie
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      insert {
+        graph <urn:output> {
+          ?lt lto:typeTechnologie lt:Regelexecutie
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt a lto:Tool.
+          FILTER NOT EXISTS {?lt lto:typeTechnologie ?ns}
+        }
+      }
+  - title: fix errors - leverancier
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      insert {
+        graph <urn:output> {
+          ?lt lto:leverancier <urn:name:OnbekendeLeverancier>.
+          <urn:name:OnbekendeLeverancier> a lto:Organisatie
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt a lto:Tool.
+          FILTER NOT EXISTS {?lt lto:leverancier ?org}
+        }
+      }
+  - title: fix errors - versiedatum
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      insert {
+        graph <urn:output> {
+          ?vb lto:versiedatum "2026-04-22"^^xsd:date.
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?vb a lto:Versiebeschrijving.
+          FILTER NOT EXISTS {?vb lto:versiedatum ?vd}
+        }
+      }
+  - title: fix errors - versiedatum (string vs date)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?vb lto:versiedatum ?value
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?vb lto:versiedatum ?date
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?vb a lto:Versiebeschrijving.
+          ?vb lto:versiedatum ?value.
+          BIND(xsd:date(?value) as ?date)
+        }
+      }
+  - title: fix errors - ondersteuningVoor (beschouwingsniveau)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      insert {
+        graph <urn:output> {
+          ?support lto:beschouwingsniveau lto:Tekstueel;
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt lto:ondersteuningVoor ?support.
+          FILTER NOT EXISTS {?support lto:beschouwingsniveau ?bn}
+        }
+      }
+  - title: fix errors - ondersteuningVoor (modelsoort)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      insert {
+        graph <urn:output> {
+          ?support lto:modelsoort lto:Descriptief;
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt lto:ondersteuningVoor ?support.
+          FILTER NOT EXISTS {?support lto:modelsoort ?ms}
+        }
+      }
+  - title: fix errors - taakinvulling (omschrijving)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      insert {
+        graph <urn:output> {
+          ?ti lto:omschrijving "gebruikt";
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt lto:geschiktVoorTaak ?ti.
+          FILTER NOT EXISTS {?ti lto:omschrijving ?o}
+        }
+      }

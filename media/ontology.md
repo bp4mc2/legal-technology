@@ -13,21 +13,20 @@
 |URI|http://bp4mc2.org/lto#JuridischeTechnologie|
 |-|-|
 |Definitie|Een juridische technologie is een methode, standaard of tool die gebruikt wordt in het proces van wetgeving en/of wetsuitvoering|
-|Eigenschappen|[naam](http://bp4mc2.org/lto#naam), [aanvullende documentatie](http://bp4mc2.org/lto#bron), [geschikt voor taak](http://bp4mc2.org/lto#geschiktVoorTaak), [beschrijving](http://bp4mc2.org/lto#documentatie), [ondersteuning voor](http://bp4mc2.org/lto#ondersteuningVoor), [bijgewerkt op](http://bp4mc2.org/lto#bijgewerktOp), [versiebeschrijving](http://bp4mc2.org/lto#versiebeschrijving), [beoogde gebruikers](http://bp4mc2.org/lto#beoogdeGebruikers), [relatie](http://bp4mc2.org/lto#relatie), [geboden functionaliteit](http://bp4mc2.org/lto#gebodenFunctionaliteit), [omschrijving](http://bp4mc2.org/lto#omschrijving), [licentievorm](http://bp4mc2.org/lto#licentievorm), [gebruiksstatus](http://bp4mc2.org/lto#gebruiksstatus)|
+|Eigenschappen|[geschikt voor taak](http://bp4mc2.org/lto#geschiktVoorTaak), [aanvullende documentatie](http://bp4mc2.org/lto#bron), [licentievorm](http://bp4mc2.org/lto#licentievorm), [gebruiksstatus](http://bp4mc2.org/lto#gebruiksstatus), [beoogde gebruikers](http://bp4mc2.org/lto#beoogdeGebruikers), [versiebeschrijving](http://bp4mc2.org/lto#versiebeschrijving), [relatie](http://bp4mc2.org/lto#relatie), [omschrijving](http://bp4mc2.org/lto#omschrijving), [bijgewerkt op](http://bp4mc2.org/lto#bijgewerktOp), [ondersteuning voor](http://bp4mc2.org/lto#ondersteuningVoor), [geboden functionaliteit](http://bp4mc2.org/lto#gebodenFunctionaliteit), [naam](http://bp4mc2.org/lto#naam), [beschrijving](http://bp4mc2.org/lto#documentatie)|
 
 ### Methode
 
 |URI|http://bp4mc2.org/lto#Methode|
 |-|-|
 |Specialisatie van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
-|Definitie|Subklasse van JuridischeTechnologie. Beschrijft een methode met een beheerder-relatie naar een Organisatie. Een methode is een gestructureerde, herhaalbare aanpak (stappenplan met technieken en keuzes) om een doel te bereiken of een taak uit te voeren. Een methode beschrijft hoe je te werk gaat (en evt. In welke volgorde) en kan verwijzen naar standaarden als hulpmiddel|
+|Definitie|Een methode is een gestructureerde, herhaalbare aanpak (stappenplan met technieken en keuzes) om een doel te bereiken of een taak uit te voeren. Een methode beschrijft hoe je te werk gaat (en evt. In welke volgorde) en kan verwijzen naar standaarden als hulpmiddel|
 |Eigenschappen|[beheerder](http://bp4mc2.org/lto#beheerder)|
 
 ### Organisatie
 
 |URI|http://bp4mc2.org/lto#Organisatie|
 |-|-|
-|Definitie|Organisatie-instanties worden als herbruikbare resources (IRIs) gemodelleerd en kunnen door meerdere technologieen worden hergebruikt.|
 |Eigenschappen|[contactinformatie](http://bp4mc2.org/lto#contactinformatie), [naam](http://bp4mc2.org/lto#naamOrganisatie)|
 
 ### Standaard
@@ -35,22 +34,22 @@
 |URI|http://bp4mc2.org/lto#Standaard|
 |-|-|
 |Specialisatie van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
-|Definitie|Subklasse van JuridischeTechnologie. Beschrijft een standaard met een beheerder-relatie naar een Organisatie en normstatus. Een (informatie)standaard is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een taak uit te voeren. Een (informatie)standaard beschrijft wat het resultaat is.|
+|Definitie|Een (informatie)standaard is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een taak uit te voeren. Een (informatie)standaard beschrijft wat het resultaat is.|
 |Eigenschappen|[beheerder](http://bp4mc2.org/lto#beheerder), [normstatus](http://bp4mc2.org/lto#normstatus)|
 
 ### Taakinvulling
 
 |URI|http://bp4mc2.org/lto#Taakinvulling|
 |-|-|
-|Eigenschappen|[type](http://bp4mc2.org/lto#taaktype), [omschrijving](http://bp4mc2.org/lto#omschrijving)|
+|Eigenschappen|[omschrijving](http://bp4mc2.org/lto#omschrijving), [taaktype](http://bp4mc2.org/lto#taaktype)|
 
 ### Tool
 
 |URI|http://bp4mc2.org/lto#Tool|
 |-|-|
 |Specialisatie van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
-|Definitie|Een tool is een informatievoorziening die ondersteuning biedt om een doel te bereiken of een taak uit te voeren. De beschrijving van een tool geeft aan WAARMEE een taak wordt uitgevoerd Subklasse van JuridischeTechnologie. Beschrijft een tool met een leverancier-relatie naar een Organisatie en type technologie.|
-|Eigenschappen|[leverancier](http://bp4mc2.org/lto#leverancier), [type technologie](http://bp4mc2.org/lto#typeTechnologie)|
+|Definitie|Een tool is een informatievoorziening die ondersteuning biedt om een doel te bereiken of een taak uit te voeren. De beschrijving van een tool geeft aan WAARMEE een taak wordt uitgevoerd|
+|Eigenschappen|[type technologie](http://bp4mc2.org/lto#typeTechnologie), [leverancier](http://bp4mc2.org/lto#leverancier)|
 
 ## Eigenschappen (relaties)
 
@@ -59,7 +58,7 @@
 |URI|http://bp4mc2.org/lto#beheerder|
 |-|-|
 |Definitie|Predicate tussen Methode/Standaard en een herbruikbare Organisatie-resource.|
-|Eigenschap van|[Methode](http://bp4mc2.org/lto#Methode)[Standaard](http://bp4mc2.org/lto#Standaard)|
+|Eigenschap van|[Standaard](http://bp4mc2.org/lto#Standaard)[Methode](http://bp4mc2.org/lto#Methode)|
 |Gerelateerde klasse|[Organisatie](http://bp4mc2.org/lto#Organisatie)|
 
 ### beoogde gebruikers
@@ -67,14 +66,12 @@
 |URI|http://bp4mc2.org/lto#beoogdeGebruikers|
 |-|-|
 |Eigenschap van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
-|Gerelateerde klasse||
 
 ### beschouwingsniveau
 
 |URI|http://bp4mc2.org/lto#beschouwingsniveau|
 |-|-|
-|Eigenschap van||
-|Gerelateerde klasse||
+|Eigenschap van|[Ondersteuningsvorm](http://bp4mc2.org/lto#Ondersteuningsvorm)|
 
 ### aanvullende documentatie
 
@@ -94,14 +91,12 @@
 |URI|http://bp4mc2.org/lto#gebodenFunctionaliteit|
 |-|-|
 |Eigenschap van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
-|Gerelateerde klasse||
 
 ### gebruiksstatus
 
 |URI|http://bp4mc2.org/lto#gebruiksstatus|
 |-|-|
 |Eigenschap van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
-|Gerelateerde klasse||
 
 ### leverancier
 
@@ -121,8 +116,7 @@
 
 |URI|http://bp4mc2.org/lto#modelsoort|
 |-|-|
-|Eigenschap van||
-|Gerelateerde klasse||
+|Eigenschap van|[Ondersteuningsvorm](http://bp4mc2.org/lto#Ondersteuningsvorm)|
 
 ### normstatus
 
@@ -130,7 +124,6 @@
 |-|-|
 |Definitie|Predicate tussen Standaard en een normstatus uit de Normstatussen-lijst.|
 |Eigenschap van|[Standaard](http://bp4mc2.org/lto#Standaard)|
-|Gerelateerde klasse||
 
 ### ondersteuning voor
 
@@ -143,14 +136,12 @@
 |URI|http://bp4mc2.org/lto#typeRelatie|
 |-|-|
 |Eigenschap van||
-|Gerelateerde klasse||
 
 ### type technologie
 
 |URI|http://bp4mc2.org/lto#typeTechnologie|
 |-|-|
 |Eigenschap van|[Tool](http://bp4mc2.org/lto#Tool)|
-|Gerelateerde klasse||
 
 ## Eigenschappen (waarden)
 
@@ -229,7 +220,7 @@
 |URI|http://bp4mc2.org/lto#versiedatum|
 |-|-|
 |Definitie|Datum waarop deze versie van de technologie is uitgebracht|
-|Datatype|[string](http://www.w3.org/2001/XMLSchema#string)|
+|Datatype|[date](http://www.w3.org/2001/XMLSchema#date)|
 |Eigenschap van||
 
 ### versienummer
