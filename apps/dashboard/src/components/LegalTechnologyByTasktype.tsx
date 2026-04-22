@@ -32,6 +32,12 @@ type LegalTechnologySummary = {
   naam: string;
 };
 
+type TaskType = {
+  iri: string;
+  label: string;
+  description?: string;
+};
+
 type EnumerationGroup = {
   name: string;
   values: string[];
@@ -65,6 +71,7 @@ const SubtypeBadge: React.FC<{ value?: string }> = ({ value }) => {
 const LegalTechnologyByTasktype: React.FC = () => {
   const navigate = useNavigate();
   const [items, setItems] = useState<LegalTechnology[]>([]);
+  const [taskTypes, setTaskTypes] = useState<TaskType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTasktype, setActiveTasktype] = useState<string | null>(null);
@@ -83,6 +90,14 @@ const LegalTechnologyByTasktype: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
+        let taskTypeValues: TaskType[] = [];
+        try {
+          taskTypeValues = await apiFetch<TaskType[]>(`/api/legaltechnologies/tasktypes`);
+          setTaskTypes(taskTypeValues);
+        } catch {
+          // Keep UI functional if task type metadata is unavailable.
+        }
+
         try {
           const groups = await apiFetch<EnumerationGroup[]>(`/api/legaltechnologies/enumerations`);
           const byName = new Map(groups.map(group => [group.name, group.values ?? []]));
@@ -108,8 +123,10 @@ const LegalTechnologyByTasktype: React.FC = () => {
         const resolved = details.filter((item): item is LegalTechnology => item !== null);
         setItems(resolved);
 
-        const firstTasktype = resolved
-          .flatMap(item => (item.geschikt_voor_taak ?? []).map(entry => entry.taaktype).filter(Boolean))[0] ?? null;
+        const firstTasktype =
+          taskTypeValues?.[0]?.label ??
+          resolved.flatMap(item => (item.geschikt_voor_taak ?? []).map(entry => entry.taaktype).filter(Boolean))[0] ??
+          null;
         setActiveTasktype(firstTasktype);
       } catch (e: any) {
         setError(e.message);
@@ -158,56 +175,74 @@ const LegalTechnologyByTasktype: React.FC = () => {
     [items, enumBeschouwingsniveaus],
   );
 
-  const filteredItems = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    return items.filter(item => {
-      const taaktypen = (item.geschikt_voor_taak ?? []).map(t => t.taaktype).filter(Boolean);
-      const matchesSearch =
-        !q ||
-        item.naam?.toLowerCase().includes(q) ||
-        item.omschrijving?.toLowerCase().includes(q) ||
-        taaktypen.some(taaktype => taaktype.toLowerCase().includes(q));
+  const matchesTechnologyFilters = (item: LegalTechnology, q: string) => {
+    const taaktypen = (item.geschikt_voor_taak ?? []).map(t => t.taaktype).filter(Boolean);
+    const matchesSearch =
+      !q ||
+      item.naam?.toLowerCase().includes(q) ||
+      item.omschrijving?.toLowerCase().includes(q) ||
+      taaktypen.some(taaktype => taaktype.toLowerCase().includes(q));
 
-      const matchesGebruikersgroep =
-        !gebruikersgroepFilter ||
-        (item.beoogde_gebruikers ?? []).includes(gebruikersgroepFilter);
+    const matchesGebruikersgroep =
+      !gebruikersgroepFilter ||
+      (item.beoogde_gebruikers ?? []).includes(gebruikersgroepFilter);
 
-      const matchesLicentievorm =
-        !licentievormFilter || item.licentievorm === licentievormFilter;
+    const matchesLicentievorm =
+      !licentievormFilter || item.licentievorm === licentievormFilter;
 
-      const matchesBeschouwingsniveau =
-        !beschouwingsniveauFilter ||
-        (item.ondersteuning_voor ?? []).some(
-          ov => ov.beschouwingsniveau === beschouwingsniveauFilter,
-        );
-
-      return (
-        matchesSearch &&
-        matchesGebruikersgroep &&
-        matchesLicentievorm &&
-        matchesBeschouwingsniveau
+    const matchesBeschouwingsniveau =
+      !beschouwingsniveauFilter ||
+      (item.ondersteuning_voor ?? []).some(
+        ov => ov.beschouwingsniveau === beschouwingsniveauFilter,
       );
-    });
-  }, [items, search, gebruikersgroepFilter, licentievormFilter, beschouwingsniveauFilter]);
+
+    return (
+      matchesSearch &&
+      matchesGebruikersgroep &&
+      matchesLicentievorm &&
+      matchesBeschouwingsniveau
+    );
+  };
 
   const groupedByTasktype = useMemo(() => {
-    const groups: Record<string, LegalTechnology[]> = {};
+    const q = search.trim().toLowerCase();
+    const filteredItems = items.filter(item => matchesTechnologyFilters(item, q));
+    const knownTaskTypes = new Map(taskTypes.map(taskType => [taskType.label, taskType]));
 
     filteredItems.forEach(item => {
       const taaktypen = (item.geschikt_voor_taak ?? []).map(t => t.taaktype).filter(Boolean);
       taaktypen.forEach(taaktype => {
-        if (!groups[taaktype]) groups[taaktype] = [];
-        groups[taaktype].push(item);
+        if (!knownTaskTypes.has(taaktype)) {
+          knownTaskTypes.set(taaktype, {
+            iri: taaktype,
+            label: taaktype,
+            description: '',
+          });
+        }
       });
     });
 
-    return Object.entries(groups)
-      .map(([taaktype, technologies]) => ({
-        taaktype,
-        technologies: technologies.sort((a, b) => a.naam.localeCompare(b.naam)),
-      }))
+    return Array.from(knownTaskTypes.values())
+      .map(taskType => {
+        const technologies = filteredItems
+          .filter(item => (item.geschikt_voor_taak ?? []).some(entry => entry.taaktype === taskType.label))
+          .sort((a, b) => a.naam.localeCompare(b.naam));
+
+        const taskTypeMatchesSearch =
+          !q ||
+          taskType.label.toLowerCase().includes(q) ||
+          (taskType.description ?? '').toLowerCase().includes(q);
+
+        return {
+          taaktype: taskType.label,
+          description: taskType.description ?? '',
+          technologies,
+          visible: taskTypeMatchesSearch || technologies.length > 0,
+        };
+      })
+      .filter(group => group.visible)
       .sort((a, b) => a.taaktype.localeCompare(b.taaktype));
-  }, [filteredItems]);
+  }, [items, taskTypes, search, gebruikersgroepFilter, licentievormFilter, beschouwingsniveauFilter]);
 
   if (loading) {
     return (
@@ -306,6 +341,12 @@ const LegalTechnologyByTasktype: React.FC = () => {
                   aria-labelledby={headingId}
                 >
                   <div className="accordion-body p-0">
+                    <div className="px-3 pt-3 pb-2 border-bottom bg-light-subtle">
+                      <div className="fw-semibold text-secondary small mb-1">Taakomschrijving</div>
+                      <div className="small text-muted mb-0">
+                        {group.description || 'Geen taakomschrijving beschikbaar.'}
+                      </div>
+                    </div>
                     <div className="table-responsive">
                       <table className="table table-sm table-hover align-middle mb-0">
                         <thead className="table-light">
@@ -319,7 +360,13 @@ const LegalTechnologyByTasktype: React.FC = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {group.technologies.map((tech, techIdx) => (
+                          {group.technologies.length === 0 ? (
+                            <tr>
+                              <td colSpan={6} className="text-center text-muted py-3">
+                                Geen juridische technologieën gevonden voor dit taaktype met de huidige filters.
+                              </td>
+                            </tr>
+                          ) : group.technologies.map((tech, techIdx) => (
                             <tr key={tech.id || `${group.taaktype}-${techIdx}`}>
                               <td>
                                 <div className="fw-semibold">{tech.naam}</div>

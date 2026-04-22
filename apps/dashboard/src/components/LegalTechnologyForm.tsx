@@ -21,6 +21,12 @@ type Documentatie = {
   onderdelen: string;
   ontwikkelingEnBeheer: string;
 };
+
+type Versiebeschrijving = {
+  versienummer: string;
+  versiedatum: string;
+};
+
 type Bronverwijzing = {
   titel: string;
   locatie: string;
@@ -32,6 +38,7 @@ type LegalTechnology = {
   abbrevation?: string;
   versienummer?: string;
   versiedatum?: string;
+  versiebeschrijving: Versiebeschrijving;
   naam: string;
   omschrijving: string;
   gebruiksstatus: string;
@@ -55,11 +62,22 @@ type EditLegalTechnology = Omit<Partial<LegalTechnology>, 'documentatie'> & {
   documentatie?: Partial<Documentatie> | null;
 };
 
+const normalizeDateValue = (value?: string) => {
+  if (!value) {
+    return '';
+  }
+  return value.slice(0, 10);
+};
+
 const initialState: LegalTechnology = {
   subtype: 'Methode',
   abbrevation: '',
   versienummer: '1.0',
   versiedatum: '',
+  versiebeschrijving: {
+    versienummer: '1.0',
+    versiedatum: '',
+  },
   naam: '',
   omschrijving: '',
   gebruiksstatus: '',
@@ -91,23 +109,73 @@ const withFallbackArray = <T,>(arr: T[] | undefined, fallback: T): T[] => {
   return arr;
 };
 
-const normalizeForForm = (tech: EditLegalTechnology): LegalTechnology => ({
-  ...initialState,
-  ...tech,
-  subtype: tech.subtype ?? initialState.subtype,
-  documentatie: {
-    ...initialState.documentatie,
-    ...(tech.documentatie ?? {}),
-  },
-  beheerder: tech.beheerder ?? '',
-  leverancier: tech.leverancier ?? '',
-  geboden_functionaliteit: withFallbackArray(tech.geboden_functionaliteit, ''),
-  beoogde_gebruikers: withFallbackArray(tech.beoogde_gebruikers, ''),
-  ondersteuning_voor: withFallbackArray(tech.ondersteuning_voor, { beschouwingsniveau: '', modelsoort: '' }),
-  geschikt_voor_taak: withFallbackArray(tech.geschikt_voor_taak, { omschrijving: '', taaktype: '' }),
-  bronverwijzing: withFallbackArray(tech.bronverwijzing, { titel: '', locatie: '', verwijzing: '' }),
-  type_technologie: withFallbackArray(tech.type_technologie, ''),
-});
+const normalizeOndersteuning = (
+  arr: { beschouwingsniveau: string; modelsoort: string }[] | undefined,
+): { beschouwingsniveau: string; modelsoort: string }[] => {
+  if (!Array.isArray(arr)) {
+    return [];
+  }
+  return arr.filter(item => {
+    const besch = (item?.beschouwingsniveau || '').trim();
+    const model = (item?.modelsoort || '').trim();
+    return Boolean(besch || model);
+  });
+};
+
+const normalizeTaakinvulling = (
+  arr: { omschrijving: string; taaktype: string }[] | undefined,
+): { omschrijving: string; taaktype: string }[] => {
+  if (!Array.isArray(arr)) {
+    return [];
+  }
+  const unique = new Set<string>();
+  const cleaned: { omschrijving: string; taaktype: string }[] = [];
+  for (const item of arr) {
+    const omschrijving = (item?.omschrijving || '').trim();
+    const taaktype = (item?.taaktype || '').trim();
+    if (!omschrijving && !taaktype) {
+      continue;
+    }
+    const key = `${omschrijving}||${taaktype}`;
+    if (unique.has(key)) {
+      continue;
+    }
+    unique.add(key);
+    cleaned.push({ omschrijving, taaktype });
+  }
+  return cleaned;
+};
+
+const normalizeForForm = (tech: EditLegalTechnology): LegalTechnology => {
+  const versiebeschrijving = tech.versiebeschrijving ?? {
+    versienummer: tech.versienummer ?? initialState.versiebeschrijving.versienummer,
+    versiedatum: normalizeDateValue(tech.versiedatum),
+  };
+
+  return {
+    ...initialState,
+    ...tech,
+    subtype: tech.subtype ?? initialState.subtype,
+    versienummer: tech.versienummer ?? versiebeschrijving.versienummer,
+    versiedatum: normalizeDateValue(tech.versiedatum ?? versiebeschrijving.versiedatum),
+    versiebeschrijving: {
+      versienummer: versiebeschrijving.versienummer || initialState.versiebeschrijving.versienummer,
+      versiedatum: normalizeDateValue(versiebeschrijving.versiedatum),
+    },
+    documentatie: {
+      ...initialState.documentatie,
+      ...(tech.documentatie ?? {}),
+    },
+    beheerder: tech.beheerder ?? '',
+    leverancier: tech.leverancier ?? '',
+    geboden_functionaliteit: withFallbackArray(tech.geboden_functionaliteit, ''),
+    beoogde_gebruikers: withFallbackArray(tech.beoogde_gebruikers, ''),
+    ondersteuning_voor: normalizeOndersteuning(tech.ondersteuning_voor),
+    geschikt_voor_taak: normalizeTaakinvulling(tech.geschikt_voor_taak),
+    bronverwijzing: withFallbackArray(tech.bronverwijzing, { titel: '', locatie: '', verwijzing: '' }),
+    type_technologie: withFallbackArray(tech.type_technologie, ''),
+  };
+};
 
 // Use a simple event system for demo purposes.
 // Keep the latest payload so conditionally mounted forms can still prefill.
@@ -173,6 +241,22 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm(f => ({ ...f, [name]: value }));
+  };
+
+  const handleVersiebeschrijvingChange = (field: keyof Versiebeschrijving, value: string) => {
+    setForm(f => {
+      const nextVersiebeschrijving = {
+        ...f.versiebeschrijving,
+        [field]: field === 'versiedatum' ? normalizeDateValue(value) : value,
+      };
+
+      return {
+        ...f,
+        versienummer: nextVersiebeschrijving.versienummer,
+        versiedatum: nextVersiebeschrijving.versiedatum,
+        versiebeschrijving: nextVersiebeschrijving,
+      };
+    });
   };
 
   // For multi-select type_technologie
@@ -271,18 +355,28 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
     setError(null);
     setSuccess(null);
     try {
+      const payload = {
+        ...form,
+        versienummer: form.versiebeschrijving.versienummer,
+        versiedatum: form.versiebeschrijving.versiedatum,
+        versiebeschrijving: {
+          versienummer: form.versiebeschrijving.versienummer,
+          versiedatum: form.versiebeschrijving.versiedatum,
+        },
+      };
+
       if (form.id) {
         await apiFetch<LegalTechnology>(`/api/legaltechnologies/${form.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(form),
+          body: JSON.stringify(payload),
         });
         setSuccess('Bewerkt!');
       } else {
         await apiFetch<LegalTechnology>('/api/legaltechnologies', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(form),
+          body: JSON.stringify(payload),
         });
         setSuccess('Toegevoegd!');
       }
@@ -344,7 +438,7 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
       <div className="card mb-3">
         <div className="card-header d-flex align-items-center gap-2 py-2 bg-light">
           <span className="text-primary">&#9670;</span>
-          <span className="fw-semibold">Identificatie &amp; Versie</span>
+          <span className="fw-semibold">Identificatie</span>
         </div>
         <div className="card-body">
           <div className="row g-3">
@@ -362,27 +456,37 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
               />
               <div className="form-text">Wordt gebruikt voor de technologie-IRI.</div>
             </div>
-            <div className="col-md-4">
-              <label htmlFor="versienummer" className="form-label">Versienummer</label>
+          </div>
+        </div>
+      </div>
+
+      <div className="card mb-3">
+        <div className="card-header d-flex align-items-center gap-2 py-2 bg-light">
+          <span className="text-primary">&#9670;</span>
+          <span className="fw-semibold">Versiebeschrijving</span>
+        </div>
+        <div className="card-body">
+          <div className="row g-3">
+            <div className="col-md-6">
+              <label htmlFor="versiebeschrijving-versienummer" className="form-label">Versienummer</label>
               <input
-                id="versienummer"
-                name="versienummer"
+                id="versiebeschrijving-versienummer"
                 className="form-control"
                 placeholder="bijv. 1.0"
-                value={form.versienummer || ''}
-                onChange={handleChange}
+                value={form.versiebeschrijving.versienummer}
+                onChange={e => handleVersiebeschrijvingChange('versienummer', e.target.value)}
               />
             </div>
-            <div className="col-md-4">
-              <label htmlFor="versiedatum" className="form-label">Versiedatum</label>
+            <div className="col-md-6">
+              <label htmlFor="versiebeschrijving-versiedatum" className="form-label">Versiedatum</label>
               <input
-                id="versiedatum"
-                name="versiedatum"
+                id="versiebeschrijving-versiedatum"
                 type="date"
                 className="form-control"
-                value={form.versiedatum || ''}
-                onChange={handleChange}
+                value={form.versiebeschrijving.versiedatum}
+                onChange={e => handleVersiebeschrijvingChange('versiedatum', e.target.value)}
               />
+              <div className="form-text">Wordt als ISO-datum verzonden in de versiebeschrijving.</div>
             </div>
           </div>
         </div>

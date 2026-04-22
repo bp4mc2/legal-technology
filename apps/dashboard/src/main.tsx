@@ -53,32 +53,19 @@ function OverviewPage() {
 }
 
 function LegalTechnologiesPage() {
-  const [view, setView] = React.useState<'list' | 'tasktype'>('list');
-
   return (
     <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 900, margin: '2rem auto' }}>
       <h2 style={{ marginTop: 0 }}>Juridische Technologieën</h2>
-      <div className="d-flex gap-2 mb-3">
-        <button
-          type="button"
-          className={`btn btn-sm ${view === 'list' ? 'btn-primary' : 'btn-outline-primary'}`}
-          onClick={() => setView('list')}
-        >
-          Huidig overzicht
-        </button>
-        <button
-          type="button"
-          className={`btn btn-sm ${view === 'tasktype' ? 'btn-primary' : 'btn-outline-primary'}`}
-          onClick={() => setView('tasktype')}
-        >
-          Overzicht per taaktype
-        </button>
-      </div>
-      {view === 'list' ? (
-        <LegalTechnologyList variant="list" />
-      ) : (
-        <LegalTechnologyByTasktype />
-      )}
+      <LegalTechnologyList variant="list" />
+    </div>
+  );
+}
+
+function TaskTypesPage() {
+  return (
+    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 1100, margin: '2rem auto' }}>
+      <h2 style={{ marginTop: 0 }}>Taaktypen</h2>
+      <LegalTechnologyByTasktype />
     </div>
   );
 }
@@ -119,6 +106,7 @@ function App() {
           <Routes>
             <Route path="/" element={<OverviewPage />} />
             <Route path="/legaltechnologies" element={<LegalTechnologiesPage />} />
+            <Route path="/tasktypes" element={<TaskTypesPage />} />
             <Route path="/legaltechnologies/:id" element={<LegalTechnologyDetailPage />} />
             <Route path="/organisations" element={<OrganisatiesPage />} />
             <Route path="/assistant" element={<AssistantPage />} />

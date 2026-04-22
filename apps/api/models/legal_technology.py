@@ -1,7 +1,20 @@
+from datetime import date as dt_date
+
 from marshmallow import Schema, fields
 
 
+class ISODateField(fields.Date):
+    def _serialize(self, value, attr, obj, **kwargs):
+        if value is None:
+            return None
+        if isinstance(value, str):
+            return value
+        return super()._serialize(value, attr, obj, **kwargs)
 
+    def deserialize(self, value, attr=None, data=None, **kwargs):
+        if value == '':
+            value = None
+        return super().deserialize(value, attr=attr, data=data, **kwargs)
 
 class OndersteuningVoorSchema(Schema):
     beschouwingsniveau = fields.Str(required=True)
@@ -24,16 +37,23 @@ class DocumentatieSchema(Schema):
     ontwikkelingEnBeheer = fields.Str(required=False)
 
 
+class RelatieSchema(Schema):
+    type_relatie = fields.Str(required=True)
+    beschrijving_relatie = fields.Str(required=True)
+    gerelateerde_technologie = fields.Str(required=True)
+
+
 class VersiebeschrijvingSchema(Schema):
     versienummer = fields.Str(required=False)
-    versiedatum = fields.Str(required=False)
+    versiedatum = ISODateField(required=False, allow_none=True)
 
 
 class LegalTechnologySchema(Schema):
     id = fields.Str(required=True)
     abbrevation = fields.Str(required=False)
     versienummer = fields.Str(required=False)
-    versiedatum = fields.Str(required=False)
+    versiedatum = ISODateField(required=False, allow_none=True)
+    versiebeschrijving = fields.Nested(VersiebeschrijvingSchema, required=False)
     subtype = fields.Str(required=False)
     naam = fields.Str(required=True)
     omschrijving = fields.Str(required=True)
@@ -48,9 +68,10 @@ class LegalTechnologySchema(Schema):
     geschikt_voor_taak = fields.List(fields.Nested(GeschiktVoorTaakSchema), required=True)
     documentatie = fields.Nested(DocumentatieSchema, required=False)
     bronverwijzing = fields.List(fields.Nested(BronverwijzingSchema), required=False)
+    relaties = fields.List(fields.Nested(RelatieSchema), required=False)
     normstatus = fields.Str(required=False, description="Normstatus (SKOS concept)")
-    beheerder = fields.Str(required=False, description="IRI van bestaande lto:Organisatie (herbruikbare resource)")
-    leverancier = fields.Str(required=False, description="IRI van bestaande lto:Organisatie (herbruikbare resource)")
+    beheerder = fields.Str(required=False, allow_none=True, description="IRI van bestaande lto:Organisatie (herbruikbare resource)")
+    leverancier = fields.Str(required=False, allow_none=True, description="IRI van bestaande lto:Organisatie (herbruikbare resource)")
     type_technologie = fields.List(fields.Str(), required=False, description="Type technologie (SKOS concepten)")
 
 
@@ -60,7 +81,8 @@ class LegalTechnologySchema(Schema):
 class LegalTechnologyCreateSchema(Schema):
     abbrevation = fields.Str(required=False)
     versienummer = fields.Str(required=False)
-    versiedatum = fields.Str(required=False)
+    versiedatum = ISODateField(required=False, allow_none=True)
+    versiebeschrijving = fields.Nested(VersiebeschrijvingSchema, required=False)
     subtype = fields.Str(required=False)
     naam = fields.Str(required=True)
     omschrijving = fields.Str(required=True)
@@ -75,9 +97,10 @@ class LegalTechnologyCreateSchema(Schema):
     geschikt_voor_taak = fields.List(fields.Nested(GeschiktVoorTaakSchema), required=True)
     documentatie = fields.Nested(DocumentatieSchema, required=False)
     bronverwijzing = fields.List(fields.Nested(BronverwijzingSchema), required=False)
+    relaties = fields.List(fields.Nested(RelatieSchema), required=False)
     normstatus = fields.Str(required=False)
-    beheerder = fields.Str(required=False)
-    leverancier = fields.Str(required=False)
+    beheerder = fields.Str(required=False, allow_none=True)
+    leverancier = fields.Str(required=False, allow_none=True)
     type_technologie = fields.List(fields.Str(), required=False)
 
 
@@ -87,7 +110,8 @@ class LegalTechnologyUpdateSchema(Schema):
     id = fields.Str(required=False)
     abbrevation = fields.Str(required=False)
     versienummer = fields.Str(required=False)
-    versiedatum = fields.Str(required=False)
+    versiedatum = ISODateField(required=False, allow_none=True)
+    versiebeschrijving = fields.Nested(VersiebeschrijvingSchema, required=False)
     subtype = fields.Str(required=False)
     naam = fields.Str()
     omschrijving = fields.Str()
@@ -102,7 +126,8 @@ class LegalTechnologyUpdateSchema(Schema):
     geschikt_voor_taak = fields.List(fields.Nested(GeschiktVoorTaakSchema))
     documentatie = fields.Nested(DocumentatieSchema, required=False)
     bronverwijzing = fields.List(fields.Nested(BronverwijzingSchema), required=False)
+    relaties = fields.List(fields.Nested(RelatieSchema), required=False)
     normstatus = fields.Str()
-    beheerder = fields.Str()
-    leverancier = fields.Str()
+    beheerder = fields.Str(allow_none=True)
+    leverancier = fields.Str(allow_none=True)
     type_technologie = fields.List(fields.Str())

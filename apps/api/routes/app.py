@@ -58,6 +58,7 @@ def root():
             '/api/legaltechnologies': 'Voeg toe (POST), lijst (GET)',
             '/api/legaltechnologies/<id>': 'Ophalen (GET), bijwerken (PUT), verwijderen (DELETE)',
             '/api/legaltechnologies/enumerations': 'Lijst van enumeraties',
+            '/api/legaltechnologies/tasktypes': 'Lijst van taaktypen met beschrijving',
             '/api/organisations': 'Voeg toe (POST), lijst (GET)',
             '/api/organisations/<iri>': 'Ophalen (GET), bijwerken (PUT), verwijderen (DELETE)',
             '/api/definitions': 'Lijst, toevoegen van SKOS-definities',
@@ -69,5 +70,5 @@ def root():
 
 
 if __name__ == "__main__":
-    # Avoid Werkzeug reloader spawning a second process while debugging.
-    app.run(debug=True, use_reloader="debugpy" not in sys.modules)
+    # Keep a single process for stable VS Code/debugpy sessions.
+    app.run(debug=True, use_reloader=False)

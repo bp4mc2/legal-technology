@@ -13,7 +13,7 @@
             "python": "${workspaceFolder}/apps/.venv/Scripts/python.exe",
             "env": {
                 "PYTHONPATH": "${workspaceFolder}/apps",
-                "FLASK_DEBUG_TRAP_HTTP": "1"
+                "FLASK_DEBUG_TRAP_HTTP": "0"
             },
             "subProcess": false,
             "justMyCode": false

@@ -14,6 +14,7 @@ const NavBar: React.FC = () => {
       <span style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>Juridische Technologie Dashboard</span>
       <Link to="/" style={linkStyle('/')}>Overzicht</Link>
       <Link to="/legaltechnologies" style={linkStyle('/legaltechnologies')}>Juridische Technologieën</Link>
+      <Link to="/tasktypes" style={linkStyle('/tasktypes')}>Taaktypen</Link>
       <Link to="/organisations" style={linkStyle('/organisations')}>Organisaties</Link>
       <Link to="/definitions" style={linkStyle('/definitions')}>Definities</Link>
       <Link to="/assistant" style={linkStyle('/assistant')}>Assistent</Link>

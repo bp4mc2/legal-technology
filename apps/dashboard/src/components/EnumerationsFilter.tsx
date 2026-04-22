@@ -8,8 +8,33 @@ type Enumeration = {
 
 
 const expectedEnums = [
-  "Functionaliteiten", "Technologietypen", "Taaktypen", "Normstatussen", "Gebruiksstatussen", "Licentievormen", "Gebruikersgroepen"
+  'Functionaliteiten',
+  'Technologietypen',
+  'Taaktypen',
+  'Normstatussen',
+  'Gebruiksstatussen',
+  'Licentievormen',
+  'Gebruikersgroepen',
+  'Beschouwingsniveaus',
+  'Modelsoorten',
 ];
+
+const normalizeEnumerations = (data: Enumeration[]): Enumeration[] => {
+  const enumsMap: Record<string, string[]> = {};
+  data.forEach(e => {
+    const uniqueValues = Array.from(new Set((e.values || []).filter(Boolean)));
+    enumsMap[e.name] = uniqueValues;
+  });
+
+  const result: Enumeration[] = expectedEnums.map(name => ({ name, values: enumsMap[name] || [] }));
+  data.forEach(e => {
+    if (!expectedEnums.includes(e.name)) {
+      result.push({ name: e.name, values: Array.from(new Set((e.values || []).filter(Boolean))) });
+    }
+  });
+
+  return result;
+};
 
 const EnumerationsFilter: React.FC = () => {
   const [enums, setEnums] = useState<Enumeration[]>([]);
@@ -18,17 +43,7 @@ const EnumerationsFilter: React.FC = () => {
 
   useEffect(() => {
     apiFetch<Enumeration[]>('/api/legaltechnologies/enumerations')
-      .then(data => {
-        // Ensure all expected enums are present
-        const enumsMap: Record<string, string[]> = {};
-        data.forEach(e => { enumsMap[e.name] = e.values; });
-        const result: Enumeration[] = expectedEnums.map(name => ({ name, values: enumsMap[name] || [] }));
-        // Add any extra enums
-        data.forEach(e => {
-          if (!expectedEnums.includes(e.name)) result.push(e);
-        });
-        setEnums(result);
-      })
+      .then(data => setEnums(normalizeEnumerations(data)))
       .catch(e => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
@@ -43,6 +58,9 @@ const EnumerationsFilter: React.FC = () => {
           {enums.map(enumGroup => (
             <li key={enumGroup.name} style={{ marginBottom: 8 }}>
               <strong>{enumGroup.name}:</strong>
+              <span style={{ marginLeft: 8, color: '#666', fontSize: '0.9em' }}>
+                ({enumGroup.values.length})
+              </span>
               <span style={{ marginLeft: 8 }}>
                 {enumGroup.values.map(val => (
                   <span
@@ -60,6 +78,9 @@ const EnumerationsFilter: React.FC = () => {
                     {val}
                   </span>
                 ))}
+                {enumGroup.values.length === 0 && (
+                  <span style={{ color: '#777', fontStyle: 'italic' }}>Geen waarden</span>
+                )}
               </span>
             </li>
           ))}

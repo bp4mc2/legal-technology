@@ -1,7 +1,7 @@
 # Placeholder service-implementatie voor GraphDB API interactie
 
 from .graphdb_client import sparql_query, sparql_update
-from datetime import date
+from datetime import date, datetime
 
 
 _CONCEPT_LABEL_CACHE = {}
@@ -53,6 +53,24 @@ def _normalize_version(value):
     return raw if raw else '1.0.0'
 
 
+def _normalize_iso_date(value, field_name):
+    if value is None:
+        return ''
+    if isinstance(value, date):
+        return value.isoformat()
+
+    raw = str(value).strip()
+    if not raw:
+        return ''
+
+    # Accept full datetime strings but store as xsd:date.
+    date_part = raw[:10]
+    try:
+        return datetime.strptime(date_part, '%Y-%m-%d').date().isoformat()
+    except ValueError as exc:
+        raise ValueError(f"{field_name} must be an ISO date (YYYY-MM-DD)") from exc
+
+
 def _normalize_subtype(value):
     subtype = str(value or '').strip()
     if subtype in _SUBTYPE_CLASS_MAP:
@@ -102,17 +120,17 @@ def _get_part_iri(tech_iri, part, unique_suffix):
 
 
 def _get_concept_label(concept_iri):
-    concept_id = _extract_concept_identifier(concept_iri)
-    if not concept_id:
+    if not concept_iri:
         return ''
-    if concept_id in _CONCEPT_LABEL_CACHE:
-        return _CONCEPT_LABEL_CACHE[concept_id]
+    # Use the full IRI as cache key to handle both lt: and lto: concepts
+    if concept_iri in _CONCEPT_LABEL_CACHE:
+        return _CONCEPT_LABEL_CACHE[concept_iri]
 
     sparql = f'''
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     SELECT ?label WHERE {{
-        BIND(IRI("http://bp4mc2.org/lt#{concept_id}") AS ?concept)
+        BIND(IRI("{concept_iri}") AS ?concept)
         OPTIONAL {{ ?concept skos:prefLabel ?pref_label . }}
         OPTIONAL {{ ?concept rdfs:label ?rdfs_label . }}
         BIND(COALESCE(STR(?pref_label), STR(?rdfs_label), "") AS ?label)
@@ -124,11 +142,57 @@ def _get_concept_label(concept_iri):
         result = sparql_query(sparql)
         bindings = result.get('results', {}).get('bindings', [])
         label = bindings[0].get('label', {}).get('value', '') if bindings else ''
-        _CONCEPT_LABEL_CACHE[concept_id] = label
+        _CONCEPT_LABEL_CACHE[concept_iri] = label
         return label
     except Exception as e:
         print(f"[DEBUG] Exception in _get_concept_label for {concept_iri}:", e)
         return ''
+
+
+def _get_concept_labels_batch(concept_iris):
+    """Resolve multiple concept IRIs to labels in one query and hydrate cache."""
+    clean_iris = []
+    seen = set()
+    for iri in concept_iris or []:
+        value = str(iri or '').strip()
+        if not value or not value.startswith('http'):
+            continue
+        if value in seen:
+            continue
+        seen.add(value)
+        clean_iris.append(value)
+
+    if not clean_iris:
+        return {}
+
+    values = ' '.join(f'<{iri}>' for iri in clean_iris)
+    sparql = f'''
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    SELECT ?concept ?label WHERE {{
+      VALUES ?concept {{ {values} }}
+      OPTIONAL {{ ?concept skos:prefLabel ?pref_label . }}
+      OPTIONAL {{ ?concept rdfs:label ?rdfs_label . }}
+      BIND(COALESCE(STR(?pref_label), STR(?rdfs_label), "") AS ?label)
+    }}
+    '''
+    try:
+        result = sparql_query(sparql)
+        bindings = result.get('results', {}).get('bindings', [])
+        labels = {}
+        for b in bindings:
+            iri = b.get('concept', {}).get('value', '')
+            label = b.get('label', {}).get('value', '')
+            if iri:
+                labels[iri] = label
+                _CONCEPT_LABEL_CACHE[iri] = label
+
+        for iri in clean_iris:
+            labels.setdefault(iri, _CONCEPT_LABEL_CACHE.get(iri, ''))
+        return labels
+    except Exception as e:
+        print('[DEBUG] Exception in _get_concept_labels_batch:', e)
+        return {iri: _CONCEPT_LABEL_CACHE.get(iri, '') for iri in clean_iris}
 
 
 def _lookup_concept_iri_by_label(label):
@@ -172,7 +236,9 @@ def _get_object_values(subject_iri, predicate):
     sparql = f'''
     PREFIX lto: <http://bp4mc2.org/lto#>
     SELECT DISTINCT ?value WHERE {{
+      GRAPH <{_GRAPH_URI}> {{
         <{subject_iri}> lto:{predicate} ?value .
+      }}
     }}
     '''
     try:
@@ -188,9 +254,11 @@ def _get_ondersteuning_voor(tech_iri):
     sparql = f'''
     PREFIX lto: <http://bp4mc2.org/lto#>
     SELECT DISTINCT ?ondersteuning ?beschouwingsniveau ?modelsoort WHERE {{
+      GRAPH <{_GRAPH_URI}> {{
         <{tech_iri}> lto:ondersteuningVoor ?ondersteuning .
         OPTIONAL {{ ?ondersteuning lto:beschouwingsniveau ?beschouwingsniveau . }}
         OPTIONAL {{ ?ondersteuning lto:modelsoort ?modelsoort . }}
+      }}
     }}
     ORDER BY ?ondersteuning
     '''
@@ -199,9 +267,16 @@ def _get_ondersteuning_voor(tech_iri):
         bindings = result.get('results', {}).get('bindings', [])
         ondersteuning = []
         for binding in bindings:
+            beschouwingsniveau = _get_concept_label(binding.get('beschouwingsniveau', {}).get('value', ''))
+            modelsoort = _get_concept_label(binding.get('modelsoort', {}).get('value', ''))
+
+            # Ignore structurally present but semantically empty ondersteuning entries.
+            if not beschouwingsniveau and not modelsoort:
+                continue
+
             ondersteuning.append({
-                'beschouwingsniveau': _get_concept_label(binding.get('beschouwingsniveau', {}).get('value', '')),
-                'modelsoort': _get_concept_label(binding.get('modelsoort', {}).get('value', '')),
+                'beschouwingsniveau': beschouwingsniveau,
+                'modelsoort': modelsoort,
             })
         return ondersteuning
     except Exception as e:
@@ -213,9 +288,11 @@ def _get_geschikt_voor_taak(tech_iri):
     sparql = f'''
     PREFIX lto: <http://bp4mc2.org/lto#>
     SELECT DISTINCT ?geschikt ?omschrijving ?taaktype WHERE {{
+      GRAPH <{_GRAPH_URI}> {{
         <{tech_iri}> lto:geschiktVoorTaak ?geschikt .
         OPTIONAL {{ ?geschikt lto:omschrijving ?omschrijving . }}
         OPTIONAL {{ ?geschikt lto:taaktype ?taaktype . }}
+      }}
     }}
     ORDER BY ?geschikt
     '''
@@ -223,6 +300,7 @@ def _get_geschikt_voor_taak(tech_iri):
         result = sparql_query(sparql)
         bindings = result.get('results', {}).get('bindings', [])
         geschikt = []
+        seen = set()
         for binding in bindings:
             taaktype_binding = binding.get('taaktype', {})
             taaktype_type = taaktype_binding.get('type', '')
@@ -232,8 +310,19 @@ def _get_geschikt_voor_taak(tech_iri):
             else:
                 # Stored as plain literal (legacy data) — return as-is.
                 taaktype_label = taaktype_val
+            omschrijving = binding.get('omschrijving', {}).get('value', '')
+
+            # Ignore structurally present but semantically empty taak entries.
+            if not omschrijving and not taaktype_label:
+                continue
+
+            key = (omschrijving, taaktype_label)
+            if key in seen:
+                continue
+            seen.add(key)
+
             geschikt.append({
-                'omschrijving': binding.get('omschrijving', {}).get('value', ''),
+                'omschrijving': omschrijving,
                 'taaktype': taaktype_label,
             })
         return geschikt
@@ -293,24 +382,28 @@ def list_legal_technologies():
     bindings = result.get('results', {}).get('bindings', [])
     return _map_legal_technology_results(bindings)
 
+_GRAPH_URI = "https://data.bp4mc2.org/id/lto"
+
 def search_legal_technologies(query):
     # Search legal technologies by naam or omschrijving
     sparql = f'''
     PREFIX lto: <http://bp4mc2.org/lto#>
-            SELECT ?tech ?subtypeClass ?abbrevation ?versienummer ?versiedatum ?naam ?omschrijving ?gebruiksstatus ?licentievorm ?bijgewerktOp WHERE {{
-    VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
-    ?tech a ?subtypeClass ;
-            lto:naam ?naam ;
-            lto:omschrijving ?omschrijving ;
-            lto:gebruiksstatus ?gebruiksstatus ;
-            lto:licentievorm ?licentievorm ;
-            lto:bijgewerktOp ?bijgewerktOp .
-            OPTIONAL {{ ?tech lto:afkorting ?abbrevation . }}
-            OPTIONAL {{
-              ?tech lto:versiebeschrijving ?versie .
-              OPTIONAL {{ ?versie lto:versienummer ?versienummer . }}
-              OPTIONAL {{ ?versie lto:versiedatum ?versiedatum . }}
-            }}
+    SELECT ?tech ?subtypeClass ?abbrevation ?versienummer ?versiedatum ?naam ?omschrijving ?gebruiksstatus ?licentievorm ?bijgewerktOp WHERE {{
+      GRAPH <{_GRAPH_URI}> {{
+        VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
+        ?tech a ?subtypeClass ;
+              lto:naam ?naam ;
+              lto:omschrijving ?omschrijving ;
+              lto:gebruiksstatus ?gebruiksstatus ;
+              lto:licentievorm ?licentievorm ;
+              lto:bijgewerktOp ?bijgewerktOp .
+        OPTIONAL {{ ?tech lto:afkorting ?abbrevation . }}
+        OPTIONAL {{
+          ?tech lto:versiebeschrijving ?versie .
+          OPTIONAL {{ ?versie lto:versienummer ?versienummer . }}
+          OPTIONAL {{ ?versie lto:versiedatum ?versiedatum . }}
+        }}
+      }}
       FILTER (CONTAINS(LCASE(STR(?naam)), LCASE("""{query}""")) || CONTAINS(LCASE(STR(?omschrijving)), LCASE("""{query}""")))
     }}
     '''
@@ -326,7 +419,8 @@ def add_legal_technology(data):
     raw_versienummer = data.get("versienummer") or data.get("version") or ''
     abbrevation = _normalize_abbrevation(raw_abbrevation)
     versienummer = _normalize_version(raw_versienummer)
-    versiedatum = str(data.get("versiedatum") or '').strip()
+    versiedatum = _normalize_iso_date(data.get("versiedatum"), "versiedatum")
+    bijgewerkt_op = _normalize_iso_date(data.get("bijgewerkt_op"), "bijgewerkt_op")
     if not abbrevation:
         raise ValueError("abbrevation is required to build legal technology IRI")
     tech_uri = _build_tech_iri(abbrevation, versienummer)
@@ -349,18 +443,26 @@ def add_legal_technology(data):
                 'Gesloten': '<http://bp4mc2.org/lt#Gesloten>'
             },
             'geboden_functionaliteit': {
-                'Documentautomatisering': '<http://bp4mc2.org/lt#Documentautomatisering>',
+                'Geautomatiseerd beslissen': '<http://bp4mc2.org/lt#GeautomatiseerdBeslissen>',
                 'Compliance ondersteuning': '<http://bp4mc2.org/lt#ComplianceOndersteuning>'
             },
             'beoogde_gebruikers': {
                 'Burgers en bedrijven': '<http://bp4mc2.org/lt#BurgersEnBedrijven>',
                 'Rechtbanken': '<http://bp4mc2.org/lt#Rechtbanken>',
-                'Juristen': '<http://bp4mc2.org/lt#Juristen>'
+                'Opsporingsinstanties': '<http://bp4mc2.org/lt#Opsporingsinstanties>',
+                'Juristen': '<http://bp4mc2.org/lt#Juristen>',
+                'Beleidsmedewerkers': '<http://bp4mc2.org/lt#Beleidsmedewerkers>',
+                'Wetgevers': '<http://bp4mc2.org/lt#Wetgevers>',
+                'Advocaten': '<http://bp4mc2.org/lt#Advocaten>',
+                'Uitvoeringsorganisaties': '<http://bp4mc2.org/lt#Uitvoeringsorganisaties>',
+                'Commerciële organisaties': '<http://bp4mc2.org/lt#CommercieleOrganisaties>',
+                'Regelanalist': '<http://bp4mc2.org/lt#Regelanalist>',
+                'Softwareontwikkelaars': '<http://bp4mc2.org/lt#SoftwareOntwikkelaars>'
             },
             'normstatus': {
                 'Idee': '<http://bp4mc2.org/lt#Idee>',
                 'Voorstel': '<http://bp4mc2.org/lt#Voorstel>',
-                'BestPractice': '<http://bp4mc2.org/lt#BestPractice>',
+                'Best practice': '<http://bp4mc2.org/lt#BestPractice>',
                 'Industrie': '<http://bp4mc2.org/lt#Industrie>',
                 'Wettelijk': '<http://bp4mc2.org/lt#Wettelijk>'
             },
@@ -372,24 +474,37 @@ def add_legal_technology(data):
                 'Regelexecutie': '<http://bp4mc2.org/lt#Regelexecutie>'
             },
             'taaktype': {
-                'OpstellenRegeltekst': '<http://bp4mc2.org/lt#OpstellenRegeltekst>',
-                'Analyseren regeltekst': '<http://bp4mc2.org/lt#AnalyserenRegeltekst>'
+                'Opstellen regeltekst': '<http://bp4mc2.org/ltt#OpstellenRegeltekst>',
+                'Opdracht orientering': '<http://bp4mc2.org/ltt#Opdrachtorientering>',
+                'Verzamelen bronmateriaal': '<http://bp4mc2.org/ltt#VerzamelenBronmateriaal>',
+                'Analyseren regeltekst': '<http://bp4mc2.org/ltt#AnalyserenRegeltekst>',
+                'Interpreteren en expliciteren': '<http://bp4mc2.org/ltt#InterpreterenEnExpliciteren>',
+                'Begrip definiëren': '<http://bp4mc2.org/ltt#BegripDefinieren>',
+                'Specificeren gegevens(behoefte)': '<http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte>',
+                'Specificeren regels': '<http://bp4mc2.org/ltt#SpecificerenRegels>',
+                'Specificeren processen': '<http://bp4mc2.org/ltt#SpecificerenProcessen>',
+                'Valideren specificaties': '<http://bp4mc2.org/ltt#ValiderenSpecificaties>',
+                'Geautomatiseerde regeluitvoering': '<http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering>',
+                'Beslisondersteuning': '<http://bp4mc2.org/ltt#Beslisondersteuning>',
+                'Evaluatie': '<http://bp4mc2.org/ltt#Evaluatie>'
             },
             'technologietype': {
                 'DSL': '<http://bp4mc2.org/lt#DSL>',
                 'Markup (annotatie)': '<http://bp4mc2.org/lt#MarkupAnnotatie>',
-                'Machine learning': '<http://bp4mc2.org/lt#MachineLearning>'
+                'Markup (publicatie)': '<http://bp4mc2.org/lt#MarkupPublicatie>',
+                'Machine learning': '<http://bp4mc2.org/lt#MachineLearning>',
+                'Regelexecutie': '<http://bp4mc2.org/lt#Regelexecutie>'
             },
             'beschouwingsniveau': {
-                'Tekstueel': '<http://bp4mc2.org/lt#Tekstueel>',
-                'Semantisch': '<http://bp4mc2.org/lt#Semantisch>',
-                'Ontologisch': '<http://bp4mc2.org/lt#Ontologisch>',
-                'Logisch': '<http://bp4mc2.org/lt#Logisch>',
-                'Technisch': '<http://bp4mc2.org/lt#Technisch>'
+                'Tekstueel': '<http://bp4mc2.org/lto#Tekstueel>',
+                'Semantisch': '<http://bp4mc2.org/lto#Semantisch>',
+                'Ontologisch': '<http://bp4mc2.org/lto#Ontologisch>',
+                'Logisch': '<http://bp4mc2.org/lto#Logisch>',
+                'Technisch': '<http://bp4mc2.org/lto#Technisch>'
             },
             'modelsoort': {
-                'Descriptief': '<http://bp4mc2.org/lt#Descriptief>',
-                'Normatief': '<http://bp4mc2.org/lt#Normatief>'
+                'Descriptief': '<http://bp4mc2.org/lto#Descriptief>',
+                'Normatief': '<http://bp4mc2.org/lto#Normatief>'
             }
         }
     gebruiksstatus_val = data["gebruiksstatus"]
@@ -400,7 +515,7 @@ def add_legal_technology(data):
         f'<{versie_uri}> <http://bp4mc2.org/lto#versienummer> "{versienummer}" .',
     ]
     if versiedatum:
-        versie_triples.append(f'<{versie_uri}> <http://bp4mc2.org/lto#versiedatum> "{versiedatum}" .')
+        versie_triples.append(f'<{versie_uri}> <http://bp4mc2.org/lto#versiedatum> "{versiedatum}"^^<http://www.w3.org/2001/XMLSchema#date> .')
     triples = [
         f'<{tech_uri}> a <{subtype_class_iri}> ;',
         f'  <http://bp4mc2.org/lto#versiebeschrijving> <{versie_uri}> ;',
@@ -409,27 +524,54 @@ def add_legal_technology(data):
         f'  <http://bp4mc2.org/lto#omschrijving> "{data["omschrijving"]}" ;',
         f'  <http://bp4mc2.org/lto#gebruiksstatus> {enum_map["gebruiksstatus"].get(gebruiksstatus_val, f"\"{gebruiksstatus_val}\"")} ;',
         f'  <http://bp4mc2.org/lto#licentievorm> {enum_map["licentievorm"].get(licentievorm_val, f"\"{licentievorm_val}\"")} ;',
-        f'  <http://bp4mc2.org/lto#bijgewerktOp> "{data["bijgewerkt_op"]}" ;'
+        f'  <http://bp4mc2.org/lto#bijgewerktOp> "{bijgewerkt_op}"^^<http://www.w3.org/2001/XMLSchema#date> ;'
     ]
     # Lists
     for val in data.get("geboden_functionaliteit", []):
-        triples.append(f'  <http://bp4mc2.org/lto#gebodenFunctionaliteit> {enum_map["geboden_functionaliteit"].get(val, f"\"{val}\"")} ;')
+        clean_val = str(val or '').strip()
+        if not clean_val:
+            continue
+        triples.append(f'  <http://bp4mc2.org/lto#gebodenFunctionaliteit> {enum_map["geboden_functionaliteit"].get(clean_val, f"\"{clean_val}\"")} ;')
     for val in data.get("beoogde_gebruikers", []):
-        triples.append(f'  <http://bp4mc2.org/lto#beoogdeGebruikers> {enum_map["beoogde_gebruikers"].get(val, f"\"{val}\"")} ;')
+        clean_val = str(val or '').strip()
+        if not clean_val:
+            continue
+        triples.append(f'  <http://bp4mc2.org/lto#beoogdeGebruikers> {enum_map["beoogde_gebruikers"].get(clean_val, f"\"{clean_val}\"")} ;')
     for val in data.get("type_technologie", []):
         if val:
             triples.append(f'  <http://bp4mc2.org/lto#typeTechnologie> {enum_map["type_technologie"].get(val, f"\"{val}\"")} ;')
     # Nested objects as URIs
     # ondersteuning_voor
-    ondersteuning_uris = []
+    ondersteuning_items = []
     for ov in data.get("ondersteuning_voor", []):
+        besch = str((ov or {}).get("beschouwingsniveau", "")).strip()
+        mod = str((ov or {}).get("modelsoort", "")).strip()
+        if not besch and not mod:
+            continue
+        ondersteuning_items.append({"beschouwingsniveau": besch, "modelsoort": mod})
+
+    ondersteuning_uris = []
+    for _ in ondersteuning_items:
         ov_id = str(uuid.uuid4())
         ov_uri = _get_part_iri(tech_uri, "ondersteuningsvorm", ov_id)
         ondersteuning_uris.append(ov_uri)
         triples.append(f'  <http://bp4mc2.org/lto#ondersteuningVoor> <{ov_uri}> ;')
     # geschikt_voor_taak
-    geschikt_uris = []
+    geschikt_items = []
+    seen_geschikt = set()
     for gt in data.get("geschikt_voor_taak", []):
+        taaktype = str((gt or {}).get("taaktype", "")).strip()
+        omschrijving = str((gt or {}).get("omschrijving", "")).strip()
+        if not taaktype and not omschrijving:
+            continue
+        key = (omschrijving, taaktype)
+        if key in seen_geschikt:
+            continue
+        seen_geschikt.add(key)
+        geschikt_items.append({"omschrijving": omschrijving, "taaktype": taaktype})
+
+    geschikt_uris = []
+    for _ in geschikt_items:
         gt_id = str(uuid.uuid4())
         gt_uri = _get_part_iri(tech_uri, "taakinvulling", gt_id)
         geschikt_uris.append(gt_uri)
@@ -440,7 +582,7 @@ def add_legal_technology(data):
     if doc:
         doc_id = str(uuid.uuid4())
         doc_uri = _get_part_iri(tech_uri, "documentatie", doc_id)
-        triples.append(f'  <http://bp4mc2.org/lto#beschrijving> <{doc_uri}> ;')
+        triples.append(f'  <http://bp4mc2.org/lto#documentatie> <{doc_uri}> ;')
     # Bronverwijzing (array of URIs)
     bron_uris = []
     for bron in data.get("bronverwijzing", []):
@@ -465,7 +607,7 @@ def add_legal_technology(data):
 
     # Add triples for ondersteuning_voor
     ondersteuning_triples = []
-    for i, ov in enumerate(data.get("ondersteuning_voor", [])):
+    for i, ov in enumerate(ondersteuning_items):
         ov_uri = ondersteuning_uris[i]
         besch = ov.get("beschouwingsniveau", "")
         mod = ov.get("modelsoort", "")
@@ -474,7 +616,7 @@ def add_legal_technology(data):
         ondersteuning_triples.append(f'<{ov_uri}> <http://bp4mc2.org/lto#modelsoort> {enum_map["modelsoort"].get(mod, f"\"{mod}\"")} .')
     # Add triples for geschikt_voor_taak
     geschikt_triples = []
-    for i, gt in enumerate(data.get("geschikt_voor_taak", [])):
+    for i, gt in enumerate(geschikt_items):
         gt_uri = geschikt_uris[i]
         taaktype = gt.get("taaktype", "")
         omschrijving = gt.get("omschrijving", "")
@@ -523,6 +665,7 @@ def add_legal_technology(data):
     result['abbrevation'] = abbrevation
     result['versienummer'] = versienummer
     result['versiedatum'] = versiedatum
+    result['bijgewerkt_op'] = bijgewerkt_op
     result['subtype'] = subtype
     result['id'] = _build_api_id(abbrevation, versienummer)
     return result
@@ -532,9 +675,11 @@ def _get_versiebeschrijving(tech_iri: str) -> dict:
     sparql = f'''
     PREFIX lto: <http://bp4mc2.org/lto#>
     SELECT ?versienummer ?versiedatum WHERE {{
+      GRAPH <{_GRAPH_URI}> {{
         <{tech_iri}> lto:versiebeschrijving ?versie .
         OPTIONAL {{ ?versie lto:versienummer ?versienummer . }}
         OPTIONAL {{ ?versie lto:versiedatum ?versiedatum . }}
+      }}
     }}
     LIMIT 1
     '''
@@ -561,7 +706,9 @@ def _get_enumeration_labels(tech_iri: str, predicate: str, prefix: str = "lto") 
     sparql = f'''
     PREFIX lto: <http://bp4mc2.org/lto#>
     SELECT DISTINCT ?concept WHERE {{
+      GRAPH <{_GRAPH_URI}> {{
         <{tech_iri}> {prefix}:{predicate} ?concept .
+      }}
     }}
     ORDER BY ?concept
     '''
@@ -584,52 +731,62 @@ def get_legal_technology(id):
     tech_iri = _resolve_tech_iri_from_id(id)
     sparql = rf'''
     PREFIX lto: <http://bp4mc2.org/lto#>
-    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     PREFIX dc: <http://purl.org/dc/terms/>
     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-    SELECT ?tech ?subtypeClass ?naam ?omschrijving ?gebruiksstatusLabel ?licentievormLabel ?bijgewerktOp ?normstatusLabel
-           (GROUP_CONCAT(DISTINCT CONCAT(COALESCE(?beschouwingsniveauLabel, ''), '||', COALESCE(?modelsoortLabel, '')) ; SEPARATOR='@@') AS ?ondersteuning_voor)
-           (GROUP_CONCAT(DISTINCT CONCAT(COALESCE(?taak_omschrijving, ''), '||', COALESCE(?taaktypeLabel, '')) ; SEPARATOR='@@') AS ?geschikt_voor_taak)
+        SELECT ?tech ?subtypeClass ?abbrevation ?versienummer ?versiedatum ?naam ?omschrijving ?gebruiksstatus ?licentievorm ?bijgewerktOp ?normstatus
            (GROUP_CONCAT(DISTINCT CONCAT(COALESCE(?beoogdGebruik, ''), '||', COALESCE(?toegevoegdeWaarde, ''), '||', COALESCE(?onderdelen, ''), '||', COALESCE(?ontwikkelingEnBeheer, '')) ; SEPARATOR='@@') AS ?documentatie)
            (GROUP_CONCAT(DISTINCT CONCAT(COALESCE(?bron_titel, ''), '||', COALESCE(?bron_locatie, ''), '||', COALESCE(?bron_verwijzing, '')) ; SEPARATOR='@@') AS ?bronverwijzing)
+            (GROUP_CONCAT(DISTINCT CONCAT(COALESCE(STR(?beschouwingsniveau), ''), '||', COALESCE(STR(?modelsoort), '')) ; SEPARATOR='@@') AS ?ondersteuning_voor)
+            (GROUP_CONCAT(DISTINCT CONCAT(COALESCE(?taak_omschrijving, ''), '||', COALESCE(STR(?taaktype), '')) ; SEPARATOR='@@') AS ?geschikt_voor_taak)
+            (GROUP_CONCAT(DISTINCT STR(?typeTechnologieConcept); SEPARATOR='@@') AS ?type_technologie)
+            (GROUP_CONCAT(DISTINCT STR(?gebodenFunctionaliteitConcept); SEPARATOR='@@') AS ?geboden_functionaliteit)
+            (GROUP_CONCAT(DISTINCT STR(?beoogdeGebruikersConcept); SEPARATOR='@@') AS ?beoogde_gebruikers)
            (GROUP_CONCAT(DISTINCT STR(?beheerder); SEPARATOR='@@') AS ?beheerder)
            (GROUP_CONCAT(DISTINCT STR(?leverancier); SEPARATOR='@@') AS ?leverancier)
     WHERE {{
+      GRAPH <{_GRAPH_URI}> {{
         BIND(IRI("{tech_iri}") AS ?tech)
-          VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
-          ?tech a ?subtypeClass ;
+        VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
+        ?tech a ?subtypeClass ;
               lto:naam ?naam ;
               lto:omschrijving ?omschrijving ;
               lto:gebruiksstatus ?gebruiksstatus ;
               lto:licentievorm ?licentievorm ;
               lto:bijgewerktOp ?bijgewerktOp .
+                OPTIONAL {{ ?tech lto:afkorting ?abbrevation . }}
         OPTIONAL {{ ?tech lto:normstatus ?normstatus . }}
-        OPTIONAL {{ ?normstatus (skos:prefLabel|rdfs:label) ?normstatusLabel . }}
-        OPTIONAL {{ ?tech lto:ondersteuningVoor ?ondersteuning . }}
-        OPTIONAL {{ ?ondersteuning lto:beschouwingsniveau ?beschouwingsniveau . }}
-        OPTIONAL {{ ?beschouwingsniveau (skos:prefLabel|rdfs:label) ?beschouwingsniveauLabel . }}
-        OPTIONAL {{ ?ondersteuning lto:modelsoort ?modelsoort . }}
-        OPTIONAL {{ ?modelsoort (skos:prefLabel|rdfs:label) ?modelsoortLabel . }}
-        OPTIONAL {{ ?tech lto:geschiktVoorTaak ?geschikt . }}
-        OPTIONAL {{ ?geschikt lto:omschrijving ?taak_omschrijving . }}
-        OPTIONAL {{ ?geschikt lto:taaktype ?taaktype . }}
-        OPTIONAL {{ ?taaktype (skos:prefLabel|rdfs:label) ?taaktypeLabel . }}
-        OPTIONAL {{ ?tech lto:beschrijving ?doc . }}
-        OPTIONAL {{ ?doc lto:beoogdGebruik ?beoogdGebruik . }}
-        OPTIONAL {{ ?doc lto:toegevoegdeWaarde ?toegevoegdeWaarde . }}
-        OPTIONAL {{ ?doc lto:onderdelen ?onderdelen . }}
-        OPTIONAL {{ ?doc lto:ontwikkelingEnBeheer ?ontwikkelingEnBeheer . }}
-        OPTIONAL {{ ?tech lto:bron ?bron . }}
-        OPTIONAL {{ ?bron dc:title ?bron_titel . }}
-        OPTIONAL {{ ?bron foaf:page ?bron_locatie . }}
-        OPTIONAL {{ ?bron dc:bibliographicCitation ?bron_verwijzing . }}
+                OPTIONAL {{
+                    ?tech lto:versiebeschrijving ?versie .
+                    OPTIONAL {{ ?versie lto:versienummer ?versienummer . }}
+                    OPTIONAL {{ ?versie lto:versiedatum ?versiedatum . }}
+                }}
+                OPTIONAL {{ ?tech lto:ondersteuningVoor ?ondersteuning . }}
+                OPTIONAL {{ ?ondersteuning lto:beschouwingsniveau ?beschouwingsniveau . }}
+                OPTIONAL {{ ?ondersteuning lto:modelsoort ?modelsoort . }}
+                OPTIONAL {{ ?tech lto:geschiktVoorTaak ?geschikt . }}
+                OPTIONAL {{ ?geschikt lto:omschrijving ?taak_omschrijving . }}
+                OPTIONAL {{ ?geschikt lto:taaktype ?taaktype . }}
+                OPTIONAL {{ ?tech lto:typeTechnologie ?typeTechnologieConcept . }}
+                OPTIONAL {{ ?tech lto:gebodenFunctionaliteit ?gebodenFunctionaliteitConcept . }}
+                OPTIONAL {{ ?tech lto:beoogdeGebruikers ?beoogdeGebruikersConcept . }}
+        OPTIONAL {{
+          ?tech lto:documentatie ?doc .
+          OPTIONAL {{ ?doc lto:beoogdGebruik ?beoogdGebruik . }}
+          OPTIONAL {{ ?doc lto:toegevoegdeWaarde ?toegevoegdeWaarde . }}
+          OPTIONAL {{ ?doc lto:onderdelen ?onderdelen . }}
+          OPTIONAL {{ ?doc lto:ontwikkelingEnBeheer ?ontwikkelingEnBeheer . }}
+        }}
+        OPTIONAL {{
+          ?tech lto:bron ?bron .
+          OPTIONAL {{ ?bron dc:title ?bron_titel . }}
+          OPTIONAL {{ ?bron foaf:page ?bron_locatie . }}
+          OPTIONAL {{ ?bron dc:bibliographicCitation ?bron_verwijzing . }}
+        }}
         OPTIONAL {{ ?tech lto:beheerder ?beheerder . }}
         OPTIONAL {{ ?tech lto:leverancier ?leverancier . }}
-        OPTIONAL {{ ?gebruiksstatus (skos:prefLabel|rdfs:label) ?gebruiksstatusLabel . }}
-        OPTIONAL {{ ?licentievorm (skos:prefLabel|rdfs:label) ?licentievormLabel . }}
+      }}
     }}
-    GROUP BY ?tech ?subtypeClass ?naam ?omschrijving ?gebruiksstatusLabel ?licentievormLabel ?bijgewerktOp ?normstatusLabel
+        GROUP BY ?tech ?subtypeClass ?abbrevation ?versienummer ?versiedatum ?naam ?omschrijving ?gebruiksstatus ?licentievorm ?bijgewerktOp ?normstatus
     '''
     result = sparql_query(sparql)
     bindings = result.get('results', {}).get('bindings', [])
@@ -638,8 +795,34 @@ def get_legal_technology(id):
         return None
     b0 = bindings[0]
 
-    ondersteuning = _get_ondersteuning_voor(tech_iri)
-    geschikt = _get_geschikt_voor_taak(tech_iri)
+    ondersteuning = []
+    for item in _split_group_concat(b0.get('ondersteuning_voor', {}).get('value', '')):
+        parts = item.split('||')
+        beschouwingsniveau = parts[0] if len(parts) > 0 else ''
+        modelsoort = parts[1] if len(parts) > 1 else ''
+        if not beschouwingsniveau and not modelsoort:
+            continue
+        ondersteuning.append({
+            'beschouwingsniveau': beschouwingsniveau,
+            'modelsoort': modelsoort,
+        })
+
+    geschikt = []
+    seen_geschikt = set()
+    for item in _split_group_concat(b0.get('geschikt_voor_taak', {}).get('value', '')):
+        parts = item.split('||')
+        omschrijving = parts[0] if len(parts) > 0 else ''
+        taaktype = parts[1] if len(parts) > 1 else ''
+        if not omschrijving and not taaktype:
+            continue
+        key = (omschrijving, taaktype)
+        if key in seen_geschikt:
+            continue
+        seen_geschikt.add(key)
+        geschikt.append({
+            'omschrijving': omschrijving,
+            'taaktype': taaktype,
+        })
 
     bronverwijzing = []
     for item in _split_group_concat(b0.get('bronverwijzing', {}).get('value', '')):
@@ -664,24 +847,52 @@ def get_legal_technology(id):
     beheerder_values = _split_group_concat(b0.get('beheerder', {}).get('value', ''))
     leverancier_values = _split_group_concat(b0.get('leverancier', {}).get('value', ''))
 
-    gebruiksstatus_values = _get_object_values(tech_iri, 'gebruiksstatus')
-    licentievorm_values = _get_object_values(tech_iri, 'licentievorm')
-    normstatus_values = _get_object_values(tech_iri, 'normstatus')
-    abbrevation_values = _get_object_values(tech_iri, 'afkorting')
-    versie = _get_versiebeschrijving(tech_iri)
-
     parsed_abbrevation, parsed_versienummer = _parse_tech_iri(tech_iri)
-    abbrevation = (abbrevation_values[0] if abbrevation_values else '') or (parsed_abbrevation or '')
-    versienummer = versie.get('versienummer', '') or (parsed_versienummer or '')
-    versiedatum = versie.get('versiedatum', '')
+    abbrevation = b0.get('abbrevation', {}).get('value', '') or (parsed_abbrevation or '')
+    versienummer = b0.get('versienummer', {}).get('value', '') or (parsed_versienummer or '')
+    versiedatum = b0.get('versiedatum', {}).get('value', '')
     api_id = _build_api_id(abbrevation, versienummer) if abbrevation and versienummer else id
 
-    # Retrieve enumerations separately using dedicated queries.
-    # This avoids unbound OPTIONAL joins returning vocabulary-wide labels,
-    # and also resolves legacy malformed enum IRIs already stored in GraphDB.
-    type_technologie = _get_enumeration_labels(tech_iri, 'typeTechnologie')
-    geboden_functionaliteit = _get_enumeration_labels(tech_iri, 'gebodenFunctionaliteit')
-    beoogde_gebruikers = _get_enumeration_labels(tech_iri, 'beoogdeGebruikers')
+    type_technologie_values = _split_group_concat(b0.get('type_technologie', {}).get('value', ''))
+    geboden_functionaliteit_values = _split_group_concat(b0.get('geboden_functionaliteit', {}).get('value', ''))
+    beoogde_gebruikers_values = _split_group_concat(b0.get('beoogde_gebruikers', {}).get('value', ''))
+
+    concept_iris = set()
+    concept_iris.add(b0.get('gebruiksstatus', {}).get('value', ''))
+    concept_iris.add(b0.get('licentievorm', {}).get('value', ''))
+    concept_iris.add(b0.get('normstatus', {}).get('value', ''))
+    for values in [
+        type_technologie_values,
+        geboden_functionaliteit_values,
+        beoogde_gebruikers_values,
+    ]:
+        for value in values:
+            if value.startswith('http'):
+                concept_iris.add(value)
+    for item in ondersteuning:
+        if item['beschouwingsniveau'].startswith('http'):
+            concept_iris.add(item['beschouwingsniveau'])
+        if item['modelsoort'].startswith('http'):
+            concept_iris.add(item['modelsoort'])
+    for item in geschikt:
+        if item['taaktype'].startswith('http'):
+            concept_iris.add(item['taaktype'])
+
+    concept_labels = _get_concept_labels_batch(concept_iris)
+
+    for item in ondersteuning:
+        item['beschouwingsniveau'] = concept_labels.get(item['beschouwingsniveau'], item['beschouwingsniveau'])
+        item['modelsoort'] = concept_labels.get(item['modelsoort'], item['modelsoort'])
+    for item in geschikt:
+        item['taaktype'] = concept_labels.get(item['taaktype'], item['taaktype'])
+
+    type_technologie = [concept_labels.get(v, v) for v in type_technologie_values if v]
+    geboden_functionaliteit = [concept_labels.get(v, v) for v in geboden_functionaliteit_values if v]
+    beoogde_gebruikers = [concept_labels.get(v, v) for v in beoogde_gebruikers_values if v]
+
+    gebruiksstatus_iri = b0.get('gebruiksstatus', {}).get('value', '')
+    licentievorm_iri = b0.get('licentievorm', {}).get('value', '')
+    normstatus_iri = b0.get('normstatus', {}).get('value', '')
 
     return {
         'id': api_id,
@@ -691,10 +902,10 @@ def get_legal_technology(id):
         'versiedatum': versiedatum,
         'naam': b0.get('naam', {}).get('value', ''),
         'omschrijving': b0.get('omschrijving', {}).get('value', ''),
-        'gebruiksstatus': _get_concept_label(gebruiksstatus_values[0]) if gebruiksstatus_values else '',
-        'licentievorm': _get_concept_label(licentievorm_values[0]) if licentievorm_values else '',
+        'gebruiksstatus': concept_labels.get(gebruiksstatus_iri, ''),
+        'licentievorm': concept_labels.get(licentievorm_iri, ''),
         'bijgewerkt_op': b0.get('bijgewerktOp', {}).get('value', ''),
-        'normstatus': _get_concept_label(normstatus_values[0]) if normstatus_values else '',
+        'normstatus': concept_labels.get(normstatus_iri, ''),
         'ondersteuning_voor': ondersteuning,
         'geschikt_voor_taak': geschikt,
         'documentatie': documentatie,
@@ -904,27 +1115,39 @@ def export_legal_technology_markdown(id):
     return '\n'.join(lines)
 
 def list_enumerations():
-    # Haal enumeraties op voor gebruiksstatus, licentievorm, functionaliteiten, gebruikersgroepen, normstatussen, technologietypen
+    # Haal enumeraties op via skos:Collection (nieuwe ontologie gebruikt skos:member i.p.v. skos:inScheme)
     sparql = '''
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX lt: <http://bp4mc2.org/lt#>
-    SELECT ?type ?label WHERE {
-        VALUES ?type {
-            lt:Gebruiksstatussen
-            lt:Licentievormen
-            lt:Functionaliteiten
-            lt:Gebruikersgroepen
-            lt:Beschouwingsniveaus
-            lt:Modelsoorten
-            lt:Normstatussen
-            lt:Technologietypen
-            lt:Taaktypen
+    PREFIX lto: <http://bp4mc2.org/lto#>
+    PREFIX ltt: <http://bp4mc2.org/ltt#>
+    SELECT ?collection ?label WHERE {
+        VALUES ?collection {
+            lto:Gebruiksstatussen
+            lto:Licentievormen
+            lto:Functionaliteiten
+            lto:Gebruikersgroepen
+            lto:Beschouwingsniveaus
+            lto:Modelsoorten
+            lto:Normstatussen
+            lto:Technologietypen
         }
-        ?enum a skos:Concept ;
-                    skos:inScheme ?type .
-        OPTIONAL { ?enum rdfs:label ?label . }
+        ?collection skos:member ?enum .
         OPTIONAL { ?enum skos:prefLabel ?label . }
+        OPTIONAL { ?enum rdfs:label ?label . }
+        FILTER(BOUND(?label))
+    }
+    '''
+    # Taken worden apart opgehaald uit het taken-begrippenkader
+    taken_sparql = '''
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX ltt: <http://bp4mc2.org/ltt#>
+    SELECT ?label WHERE {
+        ?concept a skos:Concept ;
+                 skos:inScheme ltt:BegrippenkaderTaken .
+        OPTIONAL { ?concept skos:prefLabel ?label . }
+        OPTIONAL { ?concept rdfs:label ?label . }
         FILTER(BOUND(?label))
     }
     '''
@@ -933,7 +1156,7 @@ def list_enumerations():
         bindings = result.get('results', {}).get('bindings', [])
         enums = {}
         for b in bindings:
-            t_uri = b.get('type', {}).get('value')
+            t_uri = b.get('collection', {}).get('value')
             label = b.get('label', {}).get('value')
             if not t_uri or not label:
                 continue
@@ -941,11 +1164,68 @@ def list_enumerations():
             t = t_uri.split('/')[-1].split('#')[-1]
             if t not in enums:
                 enums[t] = []
-            enums[t].append(label)
+            if label not in enums[t]:
+                enums[t].append(label)
+        # Taken
+        taken_result = sparql_query(taken_sparql)
+        taken_bindings = taken_result.get('results', {}).get('bindings', [])
+        taaktypen = []
+        for b in taken_bindings:
+            label = b.get('label', {}).get('value')
+            if label and label not in taaktypen:
+                taaktypen.append(label)
+        if taaktypen:
+            enums['Taaktypen'] = taaktypen
         return enums
     except Exception as e:
         print("[DEBUG] Exception in list_enumerations:", e)
         return {'error': str(e)}
+
+
+def list_tasktypes():
+    sparql = '''
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX ltt: <http://bp4mc2.org/ltt#>
+    SELECT ?concept ?label ?definition WHERE {
+        ?concept a skos:Concept ;
+                 skos:inScheme ltt:BegrippenkaderTaken .
+        OPTIONAL {
+            ?concept skos:prefLabel ?prefLabel .
+            FILTER(LANG(?prefLabel) = '' || LANGMATCHES(LANG(?prefLabel), 'nl'))
+        }
+        OPTIONAL {
+            ?concept rdfs:label ?rdfsLabel .
+            FILTER(LANG(?rdfsLabel) = '' || LANGMATCHES(LANG(?rdfsLabel), 'nl'))
+        }
+        OPTIONAL {
+            ?concept skos:definition ?definitionValue .
+            FILTER(LANG(?definitionValue) = '' || LANGMATCHES(LANG(?definitionValue), 'nl'))
+        }
+        BIND(COALESCE(?prefLabel, ?rdfsLabel) AS ?label)
+        BIND(COALESCE(STR(?definitionValue), '') AS ?definition)
+        FILTER(BOUND(?label))
+    }
+    ORDER BY LCASE(STR(?label))
+    '''
+    try:
+        result = sparql_query(sparql)
+        bindings = result.get('results', {}).get('bindings', [])
+        tasktypes = []
+        for binding in bindings:
+            label = binding.get('label', {}).get('value', '')
+            iri = binding.get('concept', {}).get('value', '')
+            if not iri or not label:
+                continue
+            tasktypes.append({
+                'iri': iri,
+                'label': label,
+                'description': binding.get('definition', {}).get('value', ''),
+            })
+        return tasktypes
+    except Exception as e:
+        print('[DEBUG] Exception in list_tasktypes:', e)
+        return []
 
 def get_stats():
     total_query = '''

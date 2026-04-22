@@ -2,11 +2,11 @@ from flask_smorest import Blueprint, abort
 from flask import request, Response
 from api.services.graphdb_service import (
     search_legal_technologies, add_legal_technology, get_legal_technology, update_legal_technology,
-    delete_legal_technology, list_enumerations, get_stats,
+    delete_legal_technology, list_enumerations, list_tasktypes, get_stats,
     export_legal_technology_turtle, export_legal_technology_markdown
 )
 from api.models.legal_technology import LegalTechnologySchema, LegalTechnologyCreateSchema, LegalTechnologyUpdateSchema
-from api.models.enumeration import EnumerationSchema
+from api.models.enumeration import EnumerationSchema, TaskTypeSchema
 
 blp = Blueprint(
     "legal_technology",
@@ -228,6 +228,19 @@ def get_enumeration(enum_name):
     if values is None:
         abort(404, message=f"Enumeration '{enum_name}' not found")
     return {"name": enum_name, "values": values}
+
+
+@blp.route("/tasktypes")
+@blp.response(200, TaskTypeSchema(many=True))
+def tasktypes():
+    """
+    List all task types from the separate task ontology, including descriptions.
+    ---
+    responses:
+        200:
+            description: List of task types with label and description
+    """
+    return list_tasktypes()
 
 @blp.route("/stats")
 @blp.response(200)
