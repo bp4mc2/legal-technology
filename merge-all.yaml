@@ -42,12 +42,14 @@ queries:
       prefix owl: <http://www.w3.org/2002/07/owl#>
       insert {
         graph <urn:output> {
-          ?s?p?o
+          ?s?p?o.
+          ?o?op?oo.
         }
       }
       where {
         graph <urn:input> {
           ?s?p?o.
+          OPTIONAL {?o?op?oo}
           ?s a ?t
           FILTER (?t = owl:Class || ?t = sh:NodeShape || ?t = owl:DatatypeProperty || ?t = owl:ObjectProperty || ?t = sh:PropertyShape)
         }
@@ -87,7 +89,7 @@ queries:
           ?b rdfs:label ?blabel
         }
       }
-  - title: gebruikte begrippen ook toevoegen, vanuit waardelijsten
+  - title: gebruikte begrippen ook toevoegen, vanuit waardelijsten (conceptscheme)
     query: >
       prefix sh: <http://www.w3.org/ns/shacl#>
       prefix skos: <http://www.w3.org/2004/02/skos/core#>
@@ -105,5 +107,25 @@ queries:
           ?b a skos:Concept.
           ?b skos:inScheme ?scheme.
           ?b rdfs:label ?blabel
+        }
+      }
+  - title: gebruikte begrippen ook toevoegen, vanuit waardelijsten (collection)
+    query: >
+      prefix sh: <http://www.w3.org/ns/shacl#>
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      insert {
+        graph <urn:output> {
+          ?b a skos:Concept.
+          ?b rdfs:label ?blabel.
+          ?collection skos:member ?b
+        }
+      }
+      where {
+        graph <urn:input> {
+          ?s sh:hasValue ?collection.
+          ?b a skos:Concept.
+          ?collection skos:member ?b.
+          OPTIONAL {?b rdfs:label ?blabel}
         }
       }

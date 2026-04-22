@@ -668,7 +668,9 @@ lto:Licentievormen a skos:Collection;
 # Define the concepts (enumeration values)
 lt:VolledigOpen a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
-  skos:prefLabel "Volledig open"@nl.
+  skos:prefLabel "Volledig open"@nl;
+  rdfs:label "Volledig open"@nl
+.
 
 lt:OpenOnderVoorwaarden a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
@@ -676,7 +678,9 @@ lt:OpenOnderVoorwaarden a skos:Concept;
 
 lt:Gesloten a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
-  skos:prefLabel "Gesloten"@nl.
+  skos:prefLabel "Gesloten"@nl;
+  rdfs:label "Gesloten"@nl;
+.
 
 # SHACL shape to validate usage of licentievorm property
 lto:LicentievormenShape a sh:NodeShape;

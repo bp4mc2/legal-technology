@@ -13,7 +13,7 @@
 |URI|http://bp4mc2.org/lto#JuridischeTechnologie|
 |-|-|
 |Definitie|Een juridische technologie is een methode, standaard of tool die gebruikt wordt in het proces van wetgeving en/of wetsuitvoering|
-|Eigenschappen|[geschikt voor taak](http://bp4mc2.org/lto#geschiktVoorTaak), [aanvullende documentatie](http://bp4mc2.org/lto#bron), [licentievorm](http://bp4mc2.org/lto#licentievorm), [gebruiksstatus](http://bp4mc2.org/lto#gebruiksstatus), [beoogde gebruikers](http://bp4mc2.org/lto#beoogdeGebruikers), [versiebeschrijving](http://bp4mc2.org/lto#versiebeschrijving), [relatie](http://bp4mc2.org/lto#relatie), [omschrijving](http://bp4mc2.org/lto#omschrijving), [bijgewerkt op](http://bp4mc2.org/lto#bijgewerktOp), [ondersteuning voor](http://bp4mc2.org/lto#ondersteuningVoor), [geboden functionaliteit](http://bp4mc2.org/lto#gebodenFunctionaliteit), [naam](http://bp4mc2.org/lto#naam), [beschrijving](http://bp4mc2.org/lto#documentatie)|
+|Eigenschappen|[relatie](http://bp4mc2.org/lto#relatie), [versiebeschrijving](http://bp4mc2.org/lto#versiebeschrijving), [gebruiksstatus](http://bp4mc2.org/lto#gebruiksstatus), [aanvullende documentatie](http://bp4mc2.org/lto#bron), [naam](http://bp4mc2.org/lto#naam), [beoogde gebruikers](http://bp4mc2.org/lto#beoogdeGebruikers), [geschikt voor taak](http://bp4mc2.org/lto#geschiktVoorTaak), [geboden functionaliteit](http://bp4mc2.org/lto#gebodenFunctionaliteit), [bijgewerkt op](http://bp4mc2.org/lto#bijgewerktOp), [beschrijving](http://bp4mc2.org/lto#documentatie), [omschrijving](http://bp4mc2.org/lto#omschrijving), [ondersteuning voor](http://bp4mc2.org/lto#ondersteuningVoor), [licentievorm](http://bp4mc2.org/lto#licentievorm)|
 
 ### Methode
 
@@ -35,7 +35,7 @@
 |-|-|
 |Specialisatie van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
 |Definitie|Een (informatie)standaard is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een taak uit te voeren. Een (informatie)standaard beschrijft wat het resultaat is.|
-|Eigenschappen|[beheerder](http://bp4mc2.org/lto#beheerder), [normstatus](http://bp4mc2.org/lto#normstatus)|
+|Eigenschappen|[normstatus](http://bp4mc2.org/lto#normstatus), [beheerder](http://bp4mc2.org/lto#beheerder)|
 
 ### Taakinvulling
 
@@ -58,7 +58,7 @@
 |URI|http://bp4mc2.org/lto#beheerder|
 |-|-|
 |Definitie|Predicate tussen Methode/Standaard en een herbruikbare Organisatie-resource.|
-|Eigenschap van|[Standaard](http://bp4mc2.org/lto#Standaard)[Methode](http://bp4mc2.org/lto#Methode)|
+|Eigenschap van|[Methode](http://bp4mc2.org/lto#Methode)[Standaard](http://bp4mc2.org/lto#Standaard)|
 |Gerelateerde klasse|[Organisatie](http://bp4mc2.org/lto#Organisatie)|
 
 ### beoogde gebruikers
@@ -66,12 +66,14 @@
 |URI|http://bp4mc2.org/lto#beoogdeGebruikers|
 |-|-|
 |Eigenschap van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
+|Mogelijke waarden||
 
 ### beschouwingsniveau
 
 |URI|http://bp4mc2.org/lto#beschouwingsniveau|
 |-|-|
 |Eigenschap van|[Ondersteuningsvorm](http://bp4mc2.org/lto#Ondersteuningsvorm)|
+|Mogelijke waarden||
 
 ### aanvullende documentatie
 
@@ -91,12 +93,14 @@
 |URI|http://bp4mc2.org/lto#gebodenFunctionaliteit|
 |-|-|
 |Eigenschap van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
+|Mogelijke waarden||
 
 ### gebruiksstatus
 
 |URI|http://bp4mc2.org/lto#gebruiksstatus|
 |-|-|
 |Eigenschap van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
+|Mogelijke waarden||
 
 ### leverancier
 
@@ -111,12 +115,14 @@
 |URI|http://bp4mc2.org/lto#licentievorm|
 |-|-|
 |Eigenschap van|[Juridische technologie](http://bp4mc2.org/lto#JuridischeTechnologie)|
+|Mogelijke waarden||
 
 ### modelsoort
 
 |URI|http://bp4mc2.org/lto#modelsoort|
 |-|-|
 |Eigenschap van|[Ondersteuningsvorm](http://bp4mc2.org/lto#Ondersteuningsvorm)|
+|Mogelijke waarden||
 
 ### normstatus
 
@@ -124,6 +130,7 @@
 |-|-|
 |Definitie|Predicate tussen Standaard en een normstatus uit de Normstatussen-lijst.|
 |Eigenschap van|[Standaard](http://bp4mc2.org/lto#Standaard)|
+|Mogelijke waarden||
 
 ### ondersteuning voor
 
@@ -136,12 +143,14 @@
 |URI|http://bp4mc2.org/lto#typeRelatie|
 |-|-|
 |Eigenschap van||
+|Mogelijke waarden||
 
 ### type technologie
 
 |URI|http://bp4mc2.org/lto#typeTechnologie|
 |-|-|
 |Eigenschap van|[Tool](http://bp4mc2.org/lto#Tool)|
+|Mogelijke waarden||
 
 ## Eigenschappen (waarden)
 
