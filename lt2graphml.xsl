@@ -39,10 +39,22 @@
 </xsl:template>
 
 <xsl:template match="rdf:Description[rdf:type/@rdf:resource='http://bp4mc2.org/lto#Standaard']" mode="node">
-  <xsl:apply-templates select="." mode="node-generic"/>
+  <xsl:apply-templates select="." mode="node-generic">
+    <xsl:with-param name="fillcolor">#FFFFCC</xsl:with-param>
+  </xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="rdf:Description[rdf:type/@rdf:resource='http://bp4mc2.org/lto#Standaard']" mode="edge">
+  <xsl:apply-templates select="." mode="edge-generic"/>
+</xsl:template>
+
+<xsl:template match="rdf:Description[rdf:type/@rdf:resource='http://bp4mc2.org/lto#Methode']" mode="node">
+  <xsl:apply-templates select="." mode="node-generic">
+    <xsl:with-param name="fillcolor">#FFCCFF</xsl:with-param>
+  </xsl:apply-templates>
+</xsl:template>
+
+<xsl:template match="rdf:Description[rdf:type/@rdf:resource='http://bp4mc2.org/lto#Methode']" mode="edge">
   <xsl:apply-templates select="." mode="edge-generic"/>
 </xsl:template>
 
@@ -52,9 +64,9 @@
     <graphml:data key="d6">
       <y:ShapeNode>
         <y:Geometry height="71.0" width="108.0" x="330.0" y="334.0"/>
-        <y:Fill color="#FFFFCC" transparent="false"/>
+        <y:Fill color="#CCFFCC" transparent="false"/>
         <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-        <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="32.79296875" x="37.603515625" xml:space="preserve" y="26.43359375"><xsl:value-of select="rdfs:label"/><y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+        <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="32.79296875" x="37.603515625" xml:space="preserve" y="26.43359375"><xsl:value-of select="rdfs:label"/><y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
         <y:Shape type="rectangle"/>
       </y:ShapeNode>
     </graphml:data>
@@ -70,14 +82,15 @@
 </xsl:template>
 
 <xsl:template match="rdf:Description" mode="node-generic">
+  <xsl:param name="fillcolor">#FFFFFF</xsl:param>
   <graphml:node id="{@rdf:about}">
     <graphml:data key="d5"/>
     <graphml:data key="d6">
       <y:ShapeNode>
         <y:Geometry height="71.0" width="108.0" x="330.0" y="334.0"/>
-        <y:Fill color="#FFFFCC" transparent="false"/>
+        <y:Fill color="{$fillcolor}" transparent="false"/>
         <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-        <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="32.79296875" x="37.603515625" xml:space="preserve" y="26.43359375"><xsl:value-of select="rdfs:label"/><y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+        <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="32.79296875" x="37.603515625" xml:space="preserve" y="26.43359375"><xsl:value-of select="rdfs:label"/><y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
         <y:Shape type="ellipse"/>
       </y:ShapeNode>
     </graphml:data>
