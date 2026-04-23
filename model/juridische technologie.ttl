@@ -123,7 +123,7 @@ lto:JuridischeTechnologieShape a sh:NodeShape;
     sh:path lto:ondersteuningVoor;
     sh:description "Het beschouwingsniveau en de modelsoort waarvoor de technologie ondersteuning biedt"@nl;
     sh:minCount 1;
-    sh:node lto:Ondersteuningsvorm;
+    sh:node lto:OndersteuningsvormShape;
     sh:nodeKind sh:BlankNode;
   ];
   sh:property [
@@ -140,7 +140,7 @@ lto:JuridischeTechnologieShape a sh:NodeShape;
     sh:path lto:documentatie;
     sh:maxCount 1;
     sh:nodeKind sh:BlankNode;
-    sh:node lto:Documentatie
+    sh:node lto:DocumentatieShape
   ];
   sh:property [
     sh:order 102;
@@ -167,7 +167,11 @@ lto:JuridischeTechnologieShape a sh:NodeShape;
 
 ## Ondersteuningsvorm (combinatie van beschouwingsniveau en modelsoort)
 
-lto:Ondersteuningsvorm a sh:NodeShape;
+lto:Ondersteuningsvorm a owl:Class;
+  rdfs:label "Ondersteuningsvorm"@nl;
+.
+
+lto:OndersteuningsvormShape a sh:NodeShape;
   sh:targetClass lto:Ondersteuningsvorm;
   sh:name "Ondersteuningsvorm"@nl;
   sh:property [
@@ -400,6 +404,10 @@ lto:typeTechnologie a owl:ObjectProperty;
 ## ---------------------------------------------------------------------------------------------------------
 ## Relatie (samenhang tussen juridische technologieën)
 ## ---------------------------------------------------------------------------------------------------------
+lto:Relatie a owl:Class;
+  rdfs:label "Relatie";
+.
+
 lto:RelatieShape a sh:NodeShape;
   sh:targetClass lto:Relatie;
   rdfs:label "Relatie"@nl;
@@ -443,6 +451,10 @@ lto:beschrijvingRelatie a owl:DatatypeProperty;
 ## ---------------------------------------------------------------------------------------------------------
 ## Versiebeschrijving
 ## ---------------------------------------------------------------------------------------------------------
+lto:Versiebeschrijving a owl:Class;
+  rdfs:label "Versiebeschrijving";
+.
+
 lto:VersiebeschrijvingShape a sh:NodeShape;
   sh:targetClass lto:Versiebeschrijving;
   rdfs:label "Versiebeschrijving"@nl;
@@ -504,7 +516,6 @@ lto:OrganisatieShape a sh:NodeShape;
     rdfs:label "contactinformatie"@nl;
     sh:path lto:contactinformatie;
     sh:description "De contactinformatie van de organisatie"@nl;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:string;
   ]
@@ -530,7 +541,7 @@ lto:Taakinvulling a owl:Class;
   dct:subject lt:Taakinvulling;
 .
 
-lto:Taakinvulling a sh:NodeShape;
+lto:TaakinvullingShape a sh:NodeShape;
   sh:targetClass lto:Taakinvulling;
   rdfs:label "Taakinvulling"@nl;
   sh:property [
@@ -557,13 +568,17 @@ lto:Taakinvulling a sh:NodeShape;
 ## Documentatie
 ## ---------------------------------------------------------------------------------------------------------
 
-lto:Documentatie a sh:NodeShape;
+lto:Documentatie a owl:Class;
+  rdfs:label "Documentatie"@nl;
+.
+
+lto:DocumentatieShape a sh:NodeShape;
+  sh:targetClass lto:Documentatie;
   rdfs:label "Documentatie"@nl;
   sh:property [
     sh:order 1;
     rdfs:label "Beoogd gebruik"@nl;
     sh:path lto:beoogdGebruik;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:markdown
   ];
@@ -571,7 +586,6 @@ lto:Documentatie a sh:NodeShape;
     sh:order 2;
     rdfs:label "Toegevoegde waarde"@nl;
     sh:path lto:toegevoegdeWaarde;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:string
   ];
@@ -579,7 +593,6 @@ lto:Documentatie a sh:NodeShape;
     sh:order 3;
     rdfs:label "onderdelen"@nl;
     sh:path lto:onderdelen;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:string
   ];
@@ -587,7 +600,6 @@ lto:Documentatie a sh:NodeShape;
     sh:order 4;
     rdfs:label "Ontwikkeling en beheer"@nl;
     sh:path lto:ontwikkelingEnBeheer;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:string
   ]
@@ -600,24 +612,29 @@ lto:beoogdGebruik a owl:DatatypeProperty;
 
 lto:toegevoegdeWaarde a owl:DatatypeProperty;
   rdfs:label "toegevoegde waarde"@nl;
-  rdfs:range xsd:string
+  rdfs:range xsd:markdown
 .
 
 lto:onderdelen a owl:DatatypeProperty;
   rdfs:label "onderdelen"@nl;
-  rdfs:range xsd:string
+  rdfs:range xsd:markdown
 .
 
 lto:ontwikkelingEnBeheer a owl:DatatypeProperty;
   rdfs:label "ontwikkeling en beheer"@nl;
-  rdfs:range xsd:string
+  rdfs:range xsd:markdown
 .
 
 ## ---------------------------------------------------------------------------------------------------------
 ## Bronverwijzing
 ## ---------------------------------------------------------------------------------------------------------
 
-lto:Bronverwijzing a sh:NodeShape;
+lto:Bronverwijzing a owl:Class;
+  rdfs:label "Bronverwijzing"@nl;
+.
+
+lto:BronverwijzingShape a sh:NodeShape;
+  sh:targetClass lto:Bronverwijzing;
   rdfs:label "Bronverwijzing"@nl;
   sh:property [
     sh:order 1;
@@ -627,11 +644,11 @@ lto:Bronverwijzing a sh:NodeShape;
     sh:maxCount 1;
     sh:datatype xsd:string
   ];
+  # TODO: At least one of locatie or verwijzing should be present
   sh:property [
     sh:order 2;
     rdfs:label "locatie"@nl;
     sh:path foaf:page;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:anyURI
   ];
@@ -639,7 +656,6 @@ lto:Bronverwijzing a sh:NodeShape;
     sh:order 3;
     rdfs:label "verwijzing"@nl;
     sh:path dct:bibliographicCitation;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:string
   ];

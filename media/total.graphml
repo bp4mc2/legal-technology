@@ -12,66 +12,6 @@
    <key for="node" id="d6" yfiles.type="nodegraphics"/>
    <key for="edge" id="d10" yfiles.type="edgegraphics"/>
    <graph id="G" edgedefault="directed">
-      <node id="http://bp4mc2.org/lto#Taakinvulling">
-         <data key="d3">http://bp4mc2.org/lto#Taakinvulling</data>
-         <data key="d6">
-            <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-               <y:Geometry xmlns="http://graphml.graphdrawing.org/xmlns"
-                           xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                           xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                           xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                           xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="169.0"
-                           x="1096.1940251753474"
-                           y="297.5958019375673"/>
-               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-               <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
-                            configuration="com.yworks.entityRelationship.label.name"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasLineColor="false"
-                            height="18.1328125"
-                            horizontalTextPosition="center"
-                            iconTextGap="4"
-                            modelName="internal"
-                            modelPosition="t"
-                            textColor="#000000"
-                            verticalTextPosition="bottom"
-                            visible="true"
-                            width="44.25390625"
-                            x="17.873046875"
-                            y="4.0">Taakinvulling</y:NodeLabel>
-               <y:NodeLabel alignment="left" autoSizePolicy="content"
-                            configuration="com.yworks.entityRelationship.label.attributes"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasBackgroundColor="false"
-                            hasLineColor="false"
-                            height="46.3984375"
-                            horizontalTextPosition="center"
-                            iconTextGap="4"
-                            modelName="custom"
-                            textColor="#000000"
-                            verticalTextPosition="top"
-                            visible="true"
-                            width="65.541015625"
-                            x="2.0"
-                            y="30.1328125">omschrijving (string) [1,1]
-<y:LabelModel>
-                     <y:ErdAttributesNodeLabelModel/>
-                  </y:LabelModel>
-                  <y:ModelParameter>
-                     <y:ErdAttributesNodeLabelModelParameter/>
-                  </y:ModelParameter>
-               </y:NodeLabel>
-            </y:GenericNode>
-         </data>
-      </node>
       <node id="http://bp4mc2.org/lto#ToolShape">
          <data key="d3">http://bp4mc2.org/lto#ToolShape</data>
          <data key="d6">
@@ -82,10 +22,10 @@
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="747.8805907618605"
-                           y="551.8289611752361"/>
+                           height="80.10283315844697"
+                           width="146.07929673484034"
+                           x="872.8682288966423"
+                           y="546.8172498156069"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -132,131 +72,6 @@
             </y:GenericNode>
          </data>
       </node>
-      <node id="http://bp4mc2.org/lto#Documentatie">
-         <data key="d3">http://bp4mc2.org/lto#Documentatie</data>
-         <data key="d6">
-            <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-               <y:Geometry xmlns="http://graphml.graphdrawing.org/xmlns"
-                           xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                           xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                           xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                           xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="96.41657922350475"
-                           width="229.98216159496315"
-                           x="830.5715823466093"
-                           y="-0.7341249716209859"/>
-               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-               <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
-                            configuration="com.yworks.entityRelationship.label.name"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasLineColor="false"
-                            height="18.1328125"
-                            horizontalTextPosition="center"
-                            iconTextGap="4"
-                            modelName="internal"
-                            modelPosition="t"
-                            textColor="#000000"
-                            verticalTextPosition="bottom"
-                            visible="true"
-                            width="44.25390625"
-                            x="17.873046875"
-                            y="4.0">Documentatie</y:NodeLabel>
-               <y:NodeLabel alignment="left" autoSizePolicy="content"
-                            configuration="com.yworks.entityRelationship.label.attributes"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasBackgroundColor="false"
-                            hasLineColor="false"
-                            height="46.3984375"
-                            horizontalTextPosition="center"
-                            iconTextGap="4"
-                            modelName="custom"
-                            textColor="#000000"
-                            verticalTextPosition="top"
-                            visible="true"
-                            width="65.541015625"
-                            x="2.0"
-                            y="30.1328125">Beoogd gebruik (markdown) [1,1]
-Toegevoegde waarde (string) [1,1]
-onderdelen (string) [1,1]
-Ontwikkeling en beheer (string) [1,1]
-<y:LabelModel>
-                     <y:ErdAttributesNodeLabelModel/>
-                  </y:LabelModel>
-                  <y:ModelParameter>
-                     <y:ErdAttributesNodeLabelModelParameter/>
-                  </y:ModelParameter>
-               </y:NodeLabel>
-            </y:GenericNode>
-         </data>
-      </node>
-      <node id="http://bp4mc2.org/lto#Bronverwijzing">
-         <data key="d3">http://bp4mc2.org/lto#Bronverwijzing</data>
-         <data key="d6">
-            <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-               <y:Geometry xmlns="http://graphml.graphdrawing.org/xmlns"
-                           xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                           xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                           xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                           xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="146.07929673484034"
-                           x="551.3207750269107"
-                           y="5.682454251883769"/>
-               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-               <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
-                            configuration="com.yworks.entityRelationship.label.name"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasLineColor="false"
-                            height="18.1328125"
-                            horizontalTextPosition="center"
-                            iconTextGap="4"
-                            modelName="internal"
-                            modelPosition="t"
-                            textColor="#000000"
-                            verticalTextPosition="bottom"
-                            visible="true"
-                            width="44.25390625"
-                            x="17.873046875"
-                            y="4.0">Bronverwijzing</y:NodeLabel>
-               <y:NodeLabel alignment="left" autoSizePolicy="content"
-                            configuration="com.yworks.entityRelationship.label.attributes"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasBackgroundColor="false"
-                            hasLineColor="false"
-                            height="46.3984375"
-                            horizontalTextPosition="center"
-                            iconTextGap="4"
-                            modelName="custom"
-                            textColor="#000000"
-                            verticalTextPosition="top"
-                            visible="true"
-                            width="65.541015625"
-                            x="2.0"
-                            y="30.1328125">titel (string) [1,1]
-locatie (anyURI) [1,1]
-verwijzing (string) [1,1]
-<y:LabelModel>
-                     <y:ErdAttributesNodeLabelModel/>
-                  </y:LabelModel>
-                  <y:ModelParameter>
-                     <y:ErdAttributesNodeLabelModelParameter/>
-                  </y:ModelParameter>
-               </y:NodeLabel>
-            </y:GenericNode>
-         </data>
-      </node>
       <node id="http://bp4mc2.org/lto#TaaktypenShape">
          <data key="d3">http://bp4mc2.org/lto#TaaktypenShape</data>
          <data key="d6">
@@ -270,7 +85,7 @@ verwijzing (string) [1,1]
                            height="227.17208814270725"
                            width="229.98216159496315"
                            x="1419.3021049235108"
-                           y="229.00975786621365"/>
+                           y="217.25215031112447"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -339,7 +154,7 @@ verwijzing (string) [1,1]
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
                            height="113.51521511017836"
-                           width="253.75131164742913"
+                           width="182.27072402938086"
                            x="678.6932185145317"
                            y="274.0805868273889"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
@@ -400,9 +215,9 @@ bijgewerkt op (date) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="140.4921301154249"
+                           height="193.92025183630642"
+                           width="169.0"
+                           x="51.492130115424914"
                            y="573.2701993704093"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
@@ -469,10 +284,10 @@ bijgewerkt op (date) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="1288.894018887723"
-                           y="615.3578174186779"/>
+                           height="80.10283315844697"
+                           width="114.64008394543544"
+                           x="1231.1605456453306"
+                           y="168.33578174186766"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -520,6 +335,126 @@ bijgewerkt op (date) [1,1]
             </y:GenericNode>
          </data>
       </node>
+      <node id="http://bp4mc2.org/lto#OndersteuningsvormShape">
+         <data key="d3">http://bp4mc2.org/lto#OndersteuningsvormShape</data>
+         <data key="d6">
+            <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
+               <y:Geometry xmlns="http://graphml.graphdrawing.org/xmlns"
+                           xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                           xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                           xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           xmlns:yed="http://www.yworks.com/xml/yed/3"
+                           height="48.648478488982164"
+                           width="146.07929673484034"
+                           x="342.73770590558547"
+                           y="287.8848890309566"/>
+               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
+                            configuration="com.yworks.entityRelationship.label.name"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasLineColor="false"
+                            height="18.1328125"
+                            horizontalTextPosition="center"
+                            iconTextGap="4"
+                            modelName="internal"
+                            modelPosition="t"
+                            textColor="#000000"
+                            verticalTextPosition="bottom"
+                            visible="true"
+                            width="44.25390625"
+                            x="17.873046875"
+                            y="4.0">Ondersteuningsvorm</y:NodeLabel>
+               <y:NodeLabel alignment="left" autoSizePolicy="content"
+                            configuration="com.yworks.entityRelationship.label.attributes"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasBackgroundColor="false"
+                            hasLineColor="false"
+                            height="46.3984375"
+                            horizontalTextPosition="center"
+                            iconTextGap="4"
+                            modelName="custom"
+                            textColor="#000000"
+                            verticalTextPosition="top"
+                            visible="true"
+                            width="65.541015625"
+                            x="2.0"
+                            y="30.1328125">
+                  <y:LabelModel>
+                     <y:ErdAttributesNodeLabelModel/>
+                  </y:LabelModel>
+                  <y:ModelParameter>
+                     <y:ErdAttributesNodeLabelModelParameter/>
+                  </y:ModelParameter>
+               </y:NodeLabel>
+            </y:GenericNode>
+         </data>
+      </node>
+      <node id="http://bp4mc2.org/lto#TaakinvullingShape">
+         <data key="d3">http://bp4mc2.org/lto#TaakinvullingShape</data>
+         <data key="d6">
+            <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
+               <y:Geometry xmlns="http://graphml.graphdrawing.org/xmlns"
+                           xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                           xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                           xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           xmlns:yed="http://www.yworks.com/xml/yed/3"
+                           height="90.0"
+                           width="169.0"
+                           x="1076.6691038741933"
+                           y="285.8381943824781"/>
+               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
+                            configuration="com.yworks.entityRelationship.label.name"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasLineColor="false"
+                            height="18.1328125"
+                            horizontalTextPosition="center"
+                            iconTextGap="4"
+                            modelName="internal"
+                            modelPosition="t"
+                            textColor="#000000"
+                            verticalTextPosition="bottom"
+                            visible="true"
+                            width="44.25390625"
+                            x="17.873046875"
+                            y="4.0">Taakinvulling</y:NodeLabel>
+               <y:NodeLabel alignment="left" autoSizePolicy="content"
+                            configuration="com.yworks.entityRelationship.label.attributes"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasBackgroundColor="false"
+                            hasLineColor="false"
+                            height="46.3984375"
+                            horizontalTextPosition="center"
+                            iconTextGap="4"
+                            modelName="custom"
+                            textColor="#000000"
+                            verticalTextPosition="top"
+                            visible="true"
+                            width="65.541015625"
+                            x="2.0"
+                            y="30.1328125">omschrijving (string) [1,1]
+<y:LabelModel>
+                     <y:ErdAttributesNodeLabelModel/>
+                  </y:LabelModel>
+                  <y:ModelParameter>
+                     <y:ErdAttributesNodeLabelModelParameter/>
+                  </y:ModelParameter>
+               </y:NodeLabel>
+            </y:GenericNode>
+         </data>
+      </node>
       <node id="http://bp4mc2.org/lto#LicentievormenShape">
          <data key="d3">http://bp4mc2.org/lto#LicentievormenShape</data>
          <data key="d6">
@@ -530,10 +465,10 @@ bijgewerkt op (date) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="1060.5537439415725"
-                           y="125.68245425188377"/>
+                           height="80.10283315844697"
+                           width="169.0"
+                           x="299.73819517313757"
+                           y="380.3172080236114"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -591,10 +526,10 @@ bijgewerkt op (date) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="447.57187827911866"
-                           y="139.88152053963634"/>
+                           height="69.99799483134674"
+                           width="182.27072402938091"
+                           x="309.5608604407136"
+                           y="123.82349898965026"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -652,9 +587,9 @@ bijgewerkt op (date) [1,1]
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
                            height="90.0"
-                           width="80.0"
-                           x="1008.0178384050366"
-                           y="783.9097586568728"/>
+                           width="119.04984260230844"
+                           x="1076.6691038741933"
+                           y="-152.67221521296415"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -713,10 +648,10 @@ bijgewerkt op (date) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="67.0"
-                           width="253.75131164742913"
-                           x="273.82056663168953"
-                           y="589.5091496232508"/>
+                           height="80.10283315844697"
+                           width="146.07929673484034"
+                           x="505.68331437633344"
+                           y="546.8172498156069"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -773,10 +708,10 @@ bijgewerkt op (date) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="285.6505771248688"
-                           y="159.8835257082896"/>
+                           height="67.0"
+                           width="101.44386149003145"
+                           x="51.41762854144807"
+                           y="189.16837373790997"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -835,8 +770,8 @@ bijgewerkt op (date) [1,1]
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
                            height="67.0"
                            width="169.0"
-                           x="1162.8204679875196"
-                           y="443.02478604192527"/>
+                           x="1116.6336893936057"
+                           y="458.9044067400323"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -894,10 +829,10 @@ versiedatum (date) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="225.29800629590767"
-                           y="778.1290661070304"/>
+                           height="113.51521511017836"
+                           width="114.64008394543544"
+                           x="407.9338929695698"
+                           y="760.3945435466944"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -947,8 +882,8 @@ versiedatum (date) [1,1]
             </y:GenericNode>
          </data>
       </node>
-      <node id="http://bp4mc2.org/lto#Ondersteuningsvorm">
-         <data key="d3">http://bp4mc2.org/lto#Ondersteuningsvorm</data>
+      <node id="http://bp4mc2.org/lto#DocumentatieShape">
+         <data key="d3">http://bp4mc2.org/lto#DocumentatieShape</data>
          <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
                <y:Geometry xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -957,10 +892,10 @@ versiedatum (date) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="67.0"
-                           width="314.79748163693597"
-                           x="98.14323189926546"
-                           y="391.4113326337881"/>
+                           height="100.33788037775446"
+                           width="229.98216159496315"
+                           x="443.6560321098067"
+                           y="-53.812172088142745"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -979,7 +914,7 @@ versiedatum (date) [1,1]
                             visible="true"
                             width="44.25390625"
                             x="17.873046875"
-                            y="4.0">Ondersteuningsvorm</y:NodeLabel>
+                            y="4.0">Documentatie</y:NodeLabel>
                <y:NodeLabel alignment="left" autoSizePolicy="content"
                             configuration="com.yworks.entityRelationship.label.attributes"
                             fontFamily="Dialog"
@@ -996,8 +931,73 @@ versiedatum (date) [1,1]
                             visible="true"
                             width="65.541015625"
                             x="2.0"
-                            y="30.1328125">
-                  <y:LabelModel>
+                            y="30.1328125">Beoogd gebruik (markdown) [0,1]
+Toegevoegde waarde (string) [0,1]
+onderdelen (string) [0,1]
+Ontwikkeling en beheer (string) [0,1]
+<y:LabelModel>
+                     <y:ErdAttributesNodeLabelModel/>
+                  </y:LabelModel>
+                  <y:ModelParameter>
+                     <y:ErdAttributesNodeLabelModelParameter/>
+                  </y:ModelParameter>
+               </y:NodeLabel>
+            </y:GenericNode>
+         </data>
+      </node>
+      <node id="http://bp4mc2.org/lto#BronverwijzingShape">
+         <data key="d3">http://bp4mc2.org/lto#BronverwijzingShape</data>
+         <data key="d6">
+            <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
+               <y:Geometry xmlns="http://graphml.graphdrawing.org/xmlns"
+                           xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                           xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                           xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           xmlns:yed="http://www.yworks.com/xml/yed/3"
+                           height="90.0"
+                           width="146.07929673484034"
+                           x="762.7775445960126"
+                           y="-53.812172088142745"/>
+               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
+                            configuration="com.yworks.entityRelationship.label.name"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasLineColor="false"
+                            height="18.1328125"
+                            horizontalTextPosition="center"
+                            iconTextGap="4"
+                            modelName="internal"
+                            modelPosition="t"
+                            textColor="#000000"
+                            verticalTextPosition="bottom"
+                            visible="true"
+                            width="44.25390625"
+                            x="17.873046875"
+                            y="4.0">Bronverwijzing</y:NodeLabel>
+               <y:NodeLabel alignment="left" autoSizePolicy="content"
+                            configuration="com.yworks.entityRelationship.label.attributes"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasBackgroundColor="false"
+                            hasLineColor="false"
+                            height="46.3984375"
+                            horizontalTextPosition="center"
+                            iconTextGap="4"
+                            modelName="custom"
+                            textColor="#000000"
+                            verticalTextPosition="top"
+                            visible="true"
+                            width="65.541015625"
+                            x="2.0"
+                            y="30.1328125">titel (string) [1,1]
+locatie (anyURI) [0,1]
+verwijzing (string) [0,1]
+<y:LabelModel>
                      <y:ErdAttributesNodeLabelModel/>
                   </y:LabelModel>
                   <y:ModelParameter>
@@ -1019,8 +1019,8 @@ versiedatum (date) [1,1]
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
                            height="67.0"
                            width="209.92235047219322"
-                           x="440.94753410283295"
-                           y="806.9097586568728"/>
+                           x="664.8674052931256"
+                           y="784.6878279118571"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -1057,7 +1057,7 @@ versiedatum (date) [1,1]
                             width="65.541015625"
                             x="2.0"
                             y="30.1328125">naam (string) [1,1]
-contactinformatie (string) [1,1]
+contactinformatie (string) [0,1]
 <y:LabelModel>
                      <y:ErdAttributesNodeLabelModel/>
                   </y:LabelModel>
@@ -1078,10 +1078,10 @@ contactinformatie (string) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="959.5563672364308"
-                           y="565.9939345130724"/>
+                           height="67.0"
+                           width="169.0"
+                           x="1096.1940251753474"
+                           y="31.54692506921083"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -1138,10 +1138,10 @@ contactinformatie (string) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="570.8698845750262"
-                           y="551.8289611752361"/>
+                           height="80.10283315844697"
+                           width="146.07929673484034"
+                           x="696.7889321618019"
+                           y="546.8172498156069"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -1198,10 +1198,10 @@ contactinformatie (string) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="137.19307450157396"
-                           y="181.32738719832105"/>
+                           height="111.44386149003145"
+                           width="119.0498426023085"
+                           x="33.81164742917102"
+                           y="301.4296539058008"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -1261,10 +1261,10 @@ contactinformatie (string) [1,1]
                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                           height="90.0"
-                           width="80.0"
-                           x="747.8805907618605"
-                           y="734.2818325789567"/>
+                           height="111.4438614900314"
+                           width="136.08394543546706"
+                           x="1056.3422906569288"
+                           y="762.4658971668414"/>
                <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                <y:BorderStyle color="#000000" type="line" width="1.0"/>
                <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3"
@@ -1314,69 +1314,6 @@ contactinformatie (string) [1,1]
             </y:GenericNode>
          </data>
       </node>
-      <edge source="http://bp4mc2.org/lto#Taakinvulling"
-            target="http://bp4mc2.org/lto#TaaktypenShape">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#Taakinvullinghttp://bp4mc2.org/lto#taaktypehttp://bp4mc2.org/lto#TaaktypenShape</data>
-         <data key="d8">http://bp4mc2.org/lto#taaktype</data>
-         <data key="d10">
-            <y:PolyLineEdge>
-               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
-                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                       xmlns:yed="http://www.yworks.com/xml/yed/3"
-                       sx="0.0"
-                       sy="0.0"
-                       tx="0.0"
-                       ty="0.0"/>
-               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
-                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                            color="#000000"
-                            type="line"
-                            width="1.0"/>
-               <y:Arrows source="none" target="standard"/>
-               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
-                            distance="2.0"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasLineColor="false"
-                            modelName="custom"
-                            preferredPlacement="anywhere"
-                            ratio="0.5"
-                            textColor="#000000"
-                            visible="true"
-                            x="34.91908555724149"
-                            y="-9.066398990167102">taaktype [1,1]<y:LabelModel>
-                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-                  </y:LabelModel>
-                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
-                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
-                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
-                                                     ratio="0.5"
-                                                     segment="0"/>
-                  </y:ModelParameter>
-                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
-                                                  angleRotationOnRightSide="co"
-                                                  distance="-1.0"
-                                                  frozen="true"
-                                                  placement="anywhere"
-                                                  side="anywhere"
-                                                  sideReference="relative_to_edge_flow"/>
-               </y:EdgeLabel>
-               <y:BendStyle smoothed="false"/>
-            </y:PolyLineEdge>
-         </data>
-      </edge>
       <edge source="http://bp4mc2.org/lto#ToolShape"
             target="http://bp4mc2.org/lto#TechnologietypenShape">
          <data key="d7">urn:md5:http://bp4mc2.org/lto#ToolShapehttp://bp4mc2.org/lto#typeTechnologiehttp://bp4mc2.org/lto#TechnologietypenShape</data>
@@ -1414,8 +1351,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="-65.6445557225145"
-                            y="37.12589248256518">type technologie [1,n]<y:LabelModel>
+                            x="-13.367005377711394"
+                            y="58.68932796107265">type technologie [1,n]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -1477,8 +1414,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="-135.58470365214657"
-                            y="78.18442339261696">leverancier [1,1]<y:LabelModel>
+                            x="-108.9432213946236"
+                            y="69.8002933335805">leverancier [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -1504,9 +1441,9 @@ contactinformatie (string) [1,1]
          </data>
       </edge>
       <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
-            target="http://bp4mc2.org/lto#VersiebeschrijvingShape">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#versiebeschrijvinghttp://bp4mc2.org/lto#VersiebeschrijvingShape</data>
-         <data key="d8">http://bp4mc2.org/lto#versiebeschrijving</data>
+            target="http://bp4mc2.org/lto#DocumentatieShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#documentatiehttp://bp4mc2.org/lto#DocumentatieShape</data>
+         <data key="d8">http://bp4mc2.org/lto#documentatie</data>
          <data key="d10">
             <y:PolyLineEdge>
                <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -1540,8 +1477,136 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="53.03001610721799"
-                            y="31.382751126776952">versiebeschrijving [1,1]<y:LabelModel>
+                            x="-124.39318247077131"
+                            y="-122.80656313485906">beschrijving [0,1]<y:LabelModel>
+                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+                  </y:LabelModel>
+                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
+                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
+                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
+                                                     ratio="0.5"
+                                                     segment="0"/>
+                  </y:ModelParameter>
+                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
+                                                  angleRotationOnRightSide="co"
+                                                  distance="-1.0"
+                                                  frozen="true"
+                                                  placement="anywhere"
+                                                  side="anywhere"
+                                                  sideReference="relative_to_edge_flow"/>
+               </y:EdgeLabel>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
+            target="http://bp4mc2.org/lto#RelatieShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#relatiehttp://bp4mc2.org/lto#RelatieShape</data>
+         <data key="d8">http://bp4mc2.org/lto#relatie</data>
+         <data key="d10">
+            <y:PolyLineEdge>
+               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
+                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xmlns:yed="http://www.yworks.com/xml/yed/3"
+                       sx="0.0"
+                       sy="0.0"
+                       tx="0.0"
+                       ty="0.0">
+                  <y:Point x="942.6138509968521" y="140.26967471143757"/>
+               </y:Path>
+               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
+                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xmlns:yed="http://www.yworks.com/xml/yed/3"
+                            color="#000000"
+                            type="line"
+                            width="1.0"/>
+               <y:Arrows source="none" target="standard"/>
+               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
+                            distance="2.0"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasLineColor="false"
+                            modelName="custom"
+                            preferredPlacement="anywhere"
+                            ratio="0.5"
+                            textColor="#000000"
+                            visible="true"
+                            x="104.40975988798743"
+                            y="-148.72691177310915">relatie [0,n]<y:LabelModel>
+                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+                  </y:LabelModel>
+                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
+                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
+                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
+                                                     ratio="0.16300475073179332"
+                                                     segment="-1"/>
+                  </y:ModelParameter>
+                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
+                                                  angleRotationOnRightSide="co"
+                                                  distance="-1.0"
+                                                  frozen="true"
+                                                  placement="anywhere"
+                                                  side="anywhere"
+                                                  sideReference="relative_to_edge_flow"/>
+               </y:EdgeLabel>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
+            target="http://bp4mc2.org/lto#OndersteuningsvormShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#ondersteuningVoorhttp://bp4mc2.org/lto#OndersteuningsvormShape</data>
+         <data key="d8">http://bp4mc2.org/lto#ondersteuningVoor</data>
+         <data key="d10">
+            <y:PolyLineEdge>
+               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
+                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xmlns:yed="http://www.yworks.com/xml/yed/3"
+                       sx="0.0"
+                       sy="0.0"
+                       tx="0.0"
+                       ty="0.0"/>
+               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
+                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xmlns:yed="http://www.yworks.com/xml/yed/3"
+                            color="#000000"
+                            type="line"
+                            width="1.0"/>
+               <y:Arrows source="diamond" target="standard"/>
+               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
+                            distance="2.0"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasLineColor="false"
+                            modelName="custom"
+                            preferredPlacement="anywhere"
+                            ratio="0.5"
+                            textColor="#000000"
+                            visible="true"
+                            x="-169.24653737173998"
+                            y="-14.061020606208444">ondersteuning voor [1,n]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -1603,8 +1668,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="6.085958760967856"
-                            y="-41.18085849689464">licentievorm [1,1]<y:LabelModel>
+                            x="-158.0043859296029"
+                            y="15.299646875233577">licentievorm [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -1630,8 +1695,8 @@ contactinformatie (string) [1,1]
          </data>
       </edge>
       <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
-            target="http://bp4mc2.org/lto#Bronverwijzing">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#bronhttp://bp4mc2.org/lto#Bronverwijzing</data>
+            target="http://bp4mc2.org/lto#BronverwijzingShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#bronhttp://bp4mc2.org/lto#BronverwijzingShape</data>
          <data key="d8">http://bp4mc2.org/lto#bron</data>
          <data key="d10">
             <y:PolyLineEdge>
@@ -1666,134 +1731,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="-151.4642432491146"
-                            y="-98.28742477286369">aanvullende documentatie [0,n]<y:LabelModel>
-                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-                  </y:LabelModel>
-                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
-                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
-                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
-                                                     ratio="0.5"
-                                                     segment="0"/>
-                  </y:ModelParameter>
-                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
-                                                  angleRotationOnRightSide="co"
-                                                  distance="-1.0"
-                                                  frozen="true"
-                                                  placement="anywhere"
-                                                  side="anywhere"
-                                                  sideReference="relative_to_edge_flow"/>
-               </y:EdgeLabel>
-               <y:BendStyle smoothed="false"/>
-            </y:PolyLineEdge>
-         </data>
-      </edge>
-      <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
-            target="http://bp4mc2.org/lto#RelatieShape">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#relatiehttp://bp4mc2.org/lto#RelatieShape</data>
-         <data key="d8">http://bp4mc2.org/lto#relatie</data>
-         <data key="d10">
-            <y:PolyLineEdge>
-               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
-                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                       xmlns:yed="http://www.yworks.com/xml/yed/3"
-                       sx="0.0"
-                       sy="0.0"
-                       tx="0.0"
-                       ty="0.0"/>
-               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
-                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                            color="#000000"
-                            type="line"
-                            width="1.0"/>
-               <y:Arrows source="none" target="standard"/>
-               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
-                            distance="2.0"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasLineColor="false"
-                            modelName="custom"
-                            preferredPlacement="anywhere"
-                            ratio="0.5"
-                            textColor="#000000"
-                            visible="true"
-                            x="26.39528915365372"
-                            y="80.1546399538355">relatie [0,n]<y:LabelModel>
-                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-                  </y:LabelModel>
-                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
-                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
-                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
-                                                     ratio="0.5"
-                                                     segment="0"/>
-                  </y:ModelParameter>
-                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
-                                                  angleRotationOnRightSide="co"
-                                                  distance="-1.0"
-                                                  frozen="true"
-                                                  placement="anywhere"
-                                                  side="anywhere"
-                                                  sideReference="relative_to_edge_flow"/>
-               </y:EdgeLabel>
-               <y:BendStyle smoothed="false"/>
-            </y:PolyLineEdge>
-         </data>
-      </edge>
-      <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
-            target="http://bp4mc2.org/lto#GebruikersgroepenShape">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#beoogdeGebruikershttp://bp4mc2.org/lto#GebruikersgroepenShape</data>
-         <data key="d8">http://bp4mc2.org/lto#beoogdeGebruikers</data>
-         <data key="d10">
-            <y:PolyLineEdge>
-               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
-                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                       xmlns:yed="http://www.yworks.com/xml/yed/3"
-                       sx="0.0"
-                       sy="0.0"
-                       tx="0.0"
-                       ty="0.0"/>
-               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
-                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                            color="#000000"
-                            type="line"
-                            width="1.0"/>
-               <y:Arrows source="none" target="standard"/>
-               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
-                            distance="2.0"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasLineColor="false"
-                            modelName="custom"
-                            preferredPlacement="anywhere"
-                            ratio="0.5"
-                            textColor="#000000"
-                            visible="true"
-                            x="-281.5056053716254"
-                            y="85.6149957982525">beoogde gebruikers [1,n]<y:LabelModel>
+                            x="-70.64604006011109"
+                            y="-128.00998818701757">aanvullende documentatie [0,n]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -1855,8 +1794,134 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="-138.97441945439573"
-                            y="-33.855683270702684">geboden functionaliteit [1,n]<y:LabelModel>
+                            x="-201.72156151448235"
+                            y="-63.47458833791643">geboden functionaliteit [1,n]<y:LabelModel>
+                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+                  </y:LabelModel>
+                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
+                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
+                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
+                                                     ratio="0.5"
+                                                     segment="0"/>
+                  </y:ModelParameter>
+                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
+                                                  angleRotationOnRightSide="co"
+                                                  distance="-1.0"
+                                                  frozen="true"
+                                                  placement="anywhere"
+                                                  side="anywhere"
+                                                  sideReference="relative_to_edge_flow"/>
+               </y:EdgeLabel>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
+            target="http://bp4mc2.org/lto#GebruikersgroepenShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#beoogdeGebruikershttp://bp4mc2.org/lto#GebruikersgroepenShape</data>
+         <data key="d8">http://bp4mc2.org/lto#beoogdeGebruikers</data>
+         <data key="d10">
+            <y:PolyLineEdge>
+               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
+                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xmlns:yed="http://www.yworks.com/xml/yed/3"
+                       sx="0.0"
+                       sy="0.0"
+                       tx="0.0"
+                       ty="0.0"/>
+               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
+                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xmlns:yed="http://www.yworks.com/xml/yed/3"
+                            color="#000000"
+                            type="line"
+                            width="1.0"/>
+               <y:Arrows source="none" target="standard"/>
+               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
+                            distance="2.0"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasLineColor="false"
+                            modelName="custom"
+                            preferredPlacement="anywhere"
+                            ratio="0.5"
+                            textColor="#000000"
+                            visible="true"
+                            x="-284.9974467010072"
+                            y="103.05553611471288">beoogde gebruikers [1,n]<y:LabelModel>
+                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+                  </y:LabelModel>
+                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
+                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
+                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
+                                                     ratio="0.5"
+                                                     segment="0"/>
+                  </y:ModelParameter>
+                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
+                                                  angleRotationOnRightSide="co"
+                                                  distance="-1.0"
+                                                  frozen="true"
+                                                  placement="anywhere"
+                                                  side="anywhere"
+                                                  sideReference="relative_to_edge_flow"/>
+               </y:EdgeLabel>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
+            target="http://bp4mc2.org/lto#VersiebeschrijvingShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#versiebeschrijvinghttp://bp4mc2.org/lto#VersiebeschrijvingShape</data>
+         <data key="d8">http://bp4mc2.org/lto#versiebeschrijving</data>
+         <data key="d10">
+            <y:PolyLineEdge>
+               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
+                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xmlns:yed="http://www.yworks.com/xml/yed/3"
+                       sx="0.0"
+                       sy="0.0"
+                       tx="0.0"
+                       ty="0.0"/>
+               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
+                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xmlns:yed="http://www.yworks.com/xml/yed/3"
+                            color="#000000"
+                            type="line"
+                            width="1.0"/>
+               <y:Arrows source="diamond" target="standard"/>
+               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
+                            distance="2.0"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasLineColor="false"
+                            modelName="custom"
+                            preferredPlacement="anywhere"
+                            ratio="0.5"
+                            textColor="#000000"
+                            visible="true"
+                            x="74.31029373087358"
+                            y="44.84969651126198">versiebeschrijving [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -1918,8 +1983,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="120.56033573251761"
-                            y="104.79523008827886">gebruiksstatus [1,1]<y:LabelModel>
+                            x="124.82744184852777"
+                            y="-52.76659445503395">gebruiksstatus [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -1945,134 +2010,8 @@ contactinformatie (string) [1,1]
          </data>
       </edge>
       <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
-            target="http://bp4mc2.org/lto#Ondersteuningsvorm">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#ondersteuningVoorhttp://bp4mc2.org/lto#Ondersteuningsvorm</data>
-         <data key="d8">http://bp4mc2.org/lto#ondersteuningVoor</data>
-         <data key="d10">
-            <y:PolyLineEdge>
-               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
-                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                       xmlns:yed="http://www.yworks.com/xml/yed/3"
-                       sx="0.0"
-                       sy="0.0"
-                       tx="0.0"
-                       ty="0.0"/>
-               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
-                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                            color="#000000"
-                            type="line"
-                            width="1.0"/>
-               <y:Arrows source="diamond" target="standard"/>
-               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
-                            distance="2.0"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasLineColor="false"
-                            modelName="custom"
-                            preferredPlacement="anywhere"
-                            ratio="0.5"
-                            textColor="#000000"
-                            visible="true"
-                            x="-207.20946219728967"
-                            y="13.661772681408024">ondersteuning voor [1,n]<y:LabelModel>
-                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-                  </y:LabelModel>
-                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
-                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
-                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
-                                                     ratio="0.5"
-                                                     segment="0"/>
-                  </y:ModelParameter>
-                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
-                                                  angleRotationOnRightSide="co"
-                                                  distance="-1.0"
-                                                  frozen="true"
-                                                  placement="anywhere"
-                                                  side="anywhere"
-                                                  sideReference="relative_to_edge_flow"/>
-               </y:EdgeLabel>
-               <y:BendStyle smoothed="false"/>
-            </y:PolyLineEdge>
-         </data>
-      </edge>
-      <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
-            target="http://bp4mc2.org/lto#Documentatie">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#documentatiehttp://bp4mc2.org/lto#Documentatie</data>
-         <data key="d8">http://bp4mc2.org/lto#documentatie</data>
-         <data key="d10">
-            <y:PolyLineEdge>
-               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
-                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                       xmlns:yed="http://www.yworks.com/xml/yed/3"
-                       sx="0.0"
-                       sy="0.0"
-                       tx="0.0"
-                       ty="0.0"/>
-               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
-                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                            color="#000000"
-                            type="line"
-                            width="1.0"/>
-               <y:Arrows source="diamond" target="standard"/>
-               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
-                            distance="2.0"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasLineColor="false"
-                            modelName="custom"
-                            preferredPlacement="anywhere"
-                            ratio="0.5"
-                            textColor="#000000"
-                            visible="true"
-                            x="-8.515484568314605"
-                            y="-98.26032516348866">beschrijving [0,1]<y:LabelModel>
-                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-                  </y:LabelModel>
-                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
-                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
-                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
-                                                     ratio="0.5"
-                                                     segment="0"/>
-                  </y:ModelParameter>
-                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
-                                                  angleRotationOnRightSide="co"
-                                                  distance="-1.0"
-                                                  frozen="true"
-                                                  placement="anywhere"
-                                                  side="anywhere"
-                                                  sideReference="relative_to_edge_flow"/>
-               </y:EdgeLabel>
-               <y:BendStyle smoothed="false"/>
-            </y:PolyLineEdge>
-         </data>
-      </edge>
-      <edge source="http://bp4mc2.org/lto#JuridischeTechnologieShape"
-            target="http://bp4mc2.org/lto#Taakinvulling">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#geschiktVoorTaakhttp://bp4mc2.org/lto#Taakinvulling</data>
+            target="http://bp4mc2.org/lto#TaakinvullingShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#geschiktVoorTaakhttp://bp4mc2.org/lto#TaakinvullingShape</data>
          <data key="d8">http://bp4mc2.org/lto#geschiktVoorTaak</data>
          <data key="d10">
             <y:PolyLineEdge>
@@ -2107,8 +2046,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="11.113711262404195"
-                            y="-6.500591713112328">geschikt voor taak [1,n]<y:LabelModel>
+                            x="37.140497818428"
+                            y="-9.066407668303157">geschikt voor taak [1,n]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -2133,10 +2072,10 @@ contactinformatie (string) [1,1]
             </y:PolyLineEdge>
          </data>
       </edge>
-      <edge source="http://bp4mc2.org/lto#StandaardShape"
-            target="http://bp4mc2.org/lto#OrganisatieShape">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#StandaardShapehttp://bp4mc2.org/lto#beheerderhttp://bp4mc2.org/lto#OrganisatieShape</data>
-         <data key="d8">http://bp4mc2.org/lto#beheerder</data>
+      <edge source="http://bp4mc2.org/lto#OndersteuningsvormShape"
+            target="http://bp4mc2.org/lto#ModelsoortenShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#OndersteuningsvormShapehttp://bp4mc2.org/lto#modelsoorthttp://bp4mc2.org/lto#ModelsoortenShape</data>
+         <data key="d8">http://bp4mc2.org/lto#modelsoort</data>
          <data key="d10">
             <y:PolyLineEdge>
                <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -2170,8 +2109,134 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="3.373419266307451"
-                            y="66.11619242131178">beheerder [1,1]<y:LabelModel>
+                            x="-145.52324749045187"
+                            y="-36.178520839558814">modelsoort [0,1]<y:LabelModel>
+                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+                  </y:LabelModel>
+                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
+                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
+                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
+                                                     ratio="0.5"
+                                                     segment="0"/>
+                  </y:ModelParameter>
+                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
+                                                  angleRotationOnRightSide="co"
+                                                  distance="-1.0"
+                                                  frozen="true"
+                                                  placement="anywhere"
+                                                  side="anywhere"
+                                                  sideReference="relative_to_edge_flow"/>
+               </y:EdgeLabel>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge source="http://bp4mc2.org/lto#OndersteuningsvormShape"
+            target="http://bp4mc2.org/lto#BeschouwingsniveausShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#OndersteuningsvormShapehttp://bp4mc2.org/lto#beschouwingsniveauhttp://bp4mc2.org/lto#BeschouwingsniveausShape</data>
+         <data key="d8">http://bp4mc2.org/lto#beschouwingsniveau</data>
+         <data key="d10">
+            <y:PolyLineEdge>
+               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
+                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xmlns:yed="http://www.yworks.com/xml/yed/3"
+                       sx="0.0"
+                       sy="0.0"
+                       tx="0.0"
+                       ty="0.0"/>
+               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
+                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xmlns:yed="http://www.yworks.com/xml/yed/3"
+                            color="#000000"
+                            type="line"
+                            width="1.0"/>
+               <y:Arrows source="none" target="standard"/>
+               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
+                            distance="2.0"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasLineColor="false"
+                            modelName="custom"
+                            preferredPlacement="anywhere"
+                            ratio="0.5"
+                            textColor="#000000"
+                            visible="true"
+                            x="-172.45925212912374"
+                            y="4.169880074402613">beschouwingsniveau [1,1]<y:LabelModel>
+                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+                  </y:LabelModel>
+                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
+                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
+                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
+                                                     ratio="0.5"
+                                                     segment="0"/>
+                  </y:ModelParameter>
+                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
+                                                  angleRotationOnRightSide="co"
+                                                  distance="-1.0"
+                                                  frozen="true"
+                                                  placement="anywhere"
+                                                  side="anywhere"
+                                                  sideReference="relative_to_edge_flow"/>
+               </y:EdgeLabel>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge source="http://bp4mc2.org/lto#TaakinvullingShape"
+            target="http://bp4mc2.org/lto#TaaktypenShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#TaakinvullingShapehttp://bp4mc2.org/lto#taaktypehttp://bp4mc2.org/lto#TaaktypenShape</data>
+         <data key="d8">http://bp4mc2.org/lto#taaktype</data>
+         <data key="d10">
+            <y:PolyLineEdge>
+               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
+                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xmlns:yed="http://www.yworks.com/xml/yed/3"
+                       sx="0.0"
+                       sy="0.0"
+                       tx="0.0"
+                       ty="0.0"/>
+               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
+                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xmlns:yed="http://www.yworks.com/xml/yed/3"
+                            color="#000000"
+                            type="line"
+                            width="1.0"/>
+               <y:Arrows source="none" target="standard"/>
+               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
+                            distance="2.0"
+                            fontFamily="Dialog"
+                            fontSize="12"
+                            fontStyle="plain"
+                            hasLineColor="false"
+                            modelName="custom"
+                            preferredPlacement="anywhere"
+                            ratio="0.5"
+                            textColor="#000000"
+                            visible="true"
+                            x="44.66309463322705"
+                            y="-9.066407668303157">taaktype [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -2233,8 +2298,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="-91.54422116504315"
-                            y="51.75178608779686">normstatus [1,1]<y:LabelModel>
+                            x="-83.27617111652307"
+                            y="57.66439333849917">normstatus [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -2259,10 +2324,10 @@ contactinformatie (string) [1,1]
             </y:PolyLineEdge>
          </data>
       </edge>
-      <edge source="http://bp4mc2.org/lto#Ondersteuningsvorm"
-            target="http://bp4mc2.org/lto#BeschouwingsniveausShape">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#Ondersteuningsvormhttp://bp4mc2.org/lto#beschouwingsniveauhttp://bp4mc2.org/lto#BeschouwingsniveausShape</data>
-         <data key="d8">http://bp4mc2.org/lto#beschouwingsniveau</data>
+      <edge source="http://bp4mc2.org/lto#StandaardShape"
+            target="http://bp4mc2.org/lto#OrganisatieShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#StandaardShapehttp://bp4mc2.org/lto#beheerderhttp://bp4mc2.org/lto#OrganisatieShape</data>
+         <data key="d8">http://bp4mc2.org/lto#beheerder</data>
          <data key="d10">
             <y:PolyLineEdge>
                <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -2296,8 +2361,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="-101.19298487118999"
-                            y="-69.13128095308605">beschouwingsniveau [1,1]<y:LabelModel>
+                            x="18.311423081285398"
+                            y="69.8002933335805">beheerder [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -2322,10 +2387,10 @@ contactinformatie (string) [1,1]
             </y:PolyLineEdge>
          </data>
       </edge>
-      <edge source="http://bp4mc2.org/lto#Ondersteuningsvorm"
-            target="http://bp4mc2.org/lto#ModelsoortenShape">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#Ondersteuningsvormhttp://bp4mc2.org/lto#modelsoorthttp://bp4mc2.org/lto#ModelsoortenShape</data>
-         <data key="d8">http://bp4mc2.org/lto#modelsoort</data>
+      <edge source="http://bp4mc2.org/lto#RelatieShape"
+            target="http://bp4mc2.org/lto#JuridischeTechnologieShape">
+         <data key="d7">urn:md5:http://bp4mc2.org/lto#RelatieShapehttp://bp4mc2.org/lto#gerelateerdeTechnologiehttp://bp4mc2.org/lto#JuridischeTechnologieShape</data>
+         <data key="d8">http://bp4mc2.org/lto#gerelateerdeTechnologie</data>
          <data key="d10">
             <y:PolyLineEdge>
                <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -2337,7 +2402,9 @@ contactinformatie (string) [1,1]
                        sx="0.0"
                        sy="0.0"
                        tx="0.0"
-                       ty="0.0"/>
+                       ty="0.0">
+                  <y:Point x="1034.5233224223707" y="193.11235082918125"/>
+               </y:Path>
                <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
                             xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
                             xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
@@ -2359,8 +2426,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="-28.00653788279695"
-                            y="-79.83731203989862">modelsoort [0,1]<y:LabelModel>
+                            x="-261.89036734932904"
+                            y="118.96407594498424">gerelateerde technologie [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -2371,7 +2438,7 @@ contactinformatie (string) [1,1]
                                     xmlns:yed="http://www.yworks.com/xml/yed/3">
                      <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
                                                      ratio="0.5"
-                                                     segment="0"/>
+                                                     segment="-1"/>
                   </y:ModelParameter>
                   <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
                                                   angleRotationOnRightSide="co"
@@ -2422,8 +2489,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="-35.62329756989118"
-                            y="54.9091219755976">type relatie [1,1]<y:LabelModel>
+                            x="-61.98199419828393"
+                            y="-56.15260898484054">type relatie [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
@@ -2435,71 +2502,6 @@ contactinformatie (string) [1,1]
                      <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
                                                      ratio="0.5"
                                                      segment="0"/>
-                  </y:ModelParameter>
-                  <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
-                                                  angleRotationOnRightSide="co"
-                                                  distance="-1.0"
-                                                  frozen="true"
-                                                  placement="anywhere"
-                                                  side="anywhere"
-                                                  sideReference="relative_to_edge_flow"/>
-               </y:EdgeLabel>
-               <y:BendStyle smoothed="false"/>
-            </y:PolyLineEdge>
-         </data>
-      </edge>
-      <edge source="http://bp4mc2.org/lto#RelatieShape"
-            target="http://bp4mc2.org/lto#JuridischeTechnologieShape">
-         <data key="d7">urn:md5:http://bp4mc2.org/lto#RelatieShapehttp://bp4mc2.org/lto#gerelateerdeTechnologiehttp://bp4mc2.org/lto#JuridischeTechnologieShape</data>
-         <data key="d8">http://bp4mc2.org/lto#gerelateerdeTechnologie</data>
-         <data key="d10">
-            <y:PolyLineEdge>
-               <y:Path xmlns="http://graphml.graphdrawing.org/xmlns"
-                       xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                       xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                       xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                       xmlns:yed="http://www.yworks.com/xml/yed/3"
-                       sx="0.0"
-                       sy="0.0"
-                       tx="0.0"
-                       ty="0.0">
-                  <y:Point x="879.4677085713738" y="544.4617737043125"/>
-               </y:Path>
-               <y:LineStyle xmlns="http://graphml.graphdrawing.org/xmlns"
-                            xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                            xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                            xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                            xmlns:yed="http://www.yworks.com/xml/yed/3"
-                            color="#000000"
-                            type="line"
-                            width="1.0"/>
-               <y:Arrows source="none" target="standard"/>
-               <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel"
-                            distance="2.0"
-                            fontFamily="Dialog"
-                            fontSize="12"
-                            fontStyle="plain"
-                            hasLineColor="false"
-                            modelName="custom"
-                            preferredPlacement="anywhere"
-                            ratio="0.5"
-                            textColor="#000000"
-                            visible="true"
-                            x="-177.55507014181592"
-                            y="-76.07806846137942">gerelateerde technologie [1,1]<y:LabelModel>
-                     <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-                  </y:LabelModel>
-                  <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"
-                                    xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
-                                    xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
-                                    xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
-                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                                    xmlns:yed="http://www.yworks.com/xml/yed/3">
-                     <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center"
-                                                     ratio="0.15862426040656954"
-                                                     segment="-1"/>
                   </y:ModelParameter>
                   <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute"
                                                   angleRotationOnRightSide="co"
@@ -2550,8 +2552,8 @@ contactinformatie (string) [1,1]
                             ratio="0.5"
                             textColor="#000000"
                             visible="true"
-                            x="-68.86098187337086"
-                            y="73.48648638089821">beheerder [1,1]<y:LabelModel>
+                            x="-46.84469827937164"
+                            y="69.8002933335805">beheerder [1,1]<y:LabelModel>
                      <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
                   </y:LabelModel>
                   <y:ModelParameter xmlns="http://graphml.graphdrawing.org/xmlns"

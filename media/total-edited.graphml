@@ -14,20 +14,6 @@
   <key for="edge" id="d10" yfiles.type="edgegraphics"/>
   <graph edgedefault="directed" id="G">
     <node id="n0">
-      <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#Taakinvulling]]></data>
-      <data key="d4"/>
-      <data key="d5">
-        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="90.0" width="169.0" x="1096.1940251753474" y="297.5958019375673"/>
-          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="81.765625" x="43.6171875" xml:space="preserve" y="4.0">Taakinvulling</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="155.013671875" x="2.0" xml:space="preserve" y="30.1328125">omschrijving (string) [1,1]
-<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n1">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#ToolShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -41,45 +27,12 @@
         </y:GenericNode>
       </data>
     </node>
-    <node id="n2">
-      <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#Documentatie]]></data>
-      <data key="d4"/>
-      <data key="d5">
-        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="96.41657922350475" width="229.98216159496315" x="721.7027470895264" y="-109.60296022870389"/>
-          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="85.046875" x="72.46764329748157" xml:space="preserve" y="4.0">Documentatie</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="60.53125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="218.3359375" x="2.0" xml:space="preserve" y="30.1328125">Beoogd gebruik (markdown) [1,1]
-Toegevoegde waarde (string) [1,1]
-onderdelen (string) [1,1]
-Ontwikkeling en beheer (string) [1,1]
-<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n3">
-      <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#Bronverwijzing]]></data>
-      <data key="d4"/>
-      <data key="d5">
-        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="90.0" width="146.07929673484034" x="452.3491066113809" y="-152.67221521296412"/>
-          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.080078125" x="27.999609304920114" xml:space="preserve" y="4.0">Bronverwijzing</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="46.3984375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="139.5390625" x="2.0" xml:space="preserve" y="30.1328125">titel (string) [1,1]
-locatie (anyURI) [1,1]
-verwijzing (string) [1,1]
-<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n4">
+    <node id="n1">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#TaaktypenShape]]></data>
       <data key="d4"/>
       <data key="d5">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="227.17208814270725" width="229.98216159496315" x="1419.3021049235108" y="229.00975786621365"/>
+          <y:Geometry height="227.17208814270725" width="229.98216159496315" x="1419.3021049235108" y="217.25215031112447"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="64.298828125" x="82.84166673498157" xml:space="preserve" y="4.0">Taaktypen</y:NodeLabel>
@@ -99,7 +52,7 @@ verwijzing (string) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n5">
+    <node id="n2">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#JuridischeTechnologieShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -115,7 +68,7 @@ bijgewerkt op (date) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n6">
+    <node id="n3">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#GebruikersgroepenShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -138,7 +91,7 @@ bijgewerkt op (date) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n7">
+    <node id="n4">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#GebruiksstatusShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -153,7 +106,35 @@ bijgewerkt op (date) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n8">
+    <node id="n5">
+      <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#OndersteuningsvormShape]]></data>
+      <data key="d4"/>
+      <data key="d5">
+        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
+          <y:Geometry height="48.648478488982164" width="146.07929673484034" x="342.73770590558547" y="287.8848890309566"/>
+          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="126.314453125" x="9.88242180492017" xml:space="preserve" y="4.0">Ondersteuningsvorm</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="72.34375" x="2.0" xml:space="preserve" y="30.1328125">
+                  <y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#TaakinvullingShape]]></data>
+      <data key="d4"/>
+      <data key="d5">
+        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
+          <y:Geometry height="90.0" width="169.0" x="1076.6691038741933" y="285.8381943824781"/>
+          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="81.765625" x="43.6171875" xml:space="preserve" y="4.0">Taakinvulling</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="155.013671875" x="2.0" xml:space="preserve" y="30.1328125">omschrijving (string) [1,1]
+<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n7">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#LicentievormenShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -168,7 +149,7 @@ bijgewerkt op (date) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n9">
+    <node id="n8">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#FunctionaliteitenShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -182,7 +163,7 @@ bijgewerkt op (date) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n10">
+    <node id="n9">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#RelatietypenShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -190,7 +171,7 @@ bijgewerkt op (date) [1,1]
           <y:Geometry height="90.0" width="119.04984260230844" x="1076.6691038741933" y="-152.67221521296415"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="75.455078125" x="21.79738223865411" xml:space="preserve" y="4.0">Relatietypen</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="75.455078125" x="21.797382238654336" xml:space="preserve" y="4.0">Relatietypen</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="60.53125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="104.46484375" x="2.0" xml:space="preserve" y="30.1328125">- GerelateerdAan
 - VervolgOp
 - AlternatiefVoor
@@ -198,7 +179,7 @@ bijgewerkt op (date) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n11">
+    <node id="n10">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#StandaardShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -206,13 +187,13 @@ bijgewerkt op (date) [1,1]
           <y:Geometry height="80.10283315844697" width="146.07929673484034" x="505.68331437633344" y="546.8172498156069"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="62.294921875" x="41.89218742992017" xml:space="preserve" y="4.0">Standaard</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="62.294921875" x="41.89218742992023" xml:space="preserve" y="4.0">Standaard</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="72.34375" x="2.0" xml:space="preserve" y="30.1328125">
                   <y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n12">
+    <node id="n11">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#ModelsoortenShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -220,13 +201,13 @@ bijgewerkt op (date) [1,1]
           <y:Geometry height="67.0" width="101.44386149003145" x="51.41762854144807" y="189.16837373790997"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="83.8046875" x="8.819586995015698" xml:space="preserve" y="4.0">Modelsoorten</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="83.8046875" x="8.819586995015726" xml:space="preserve" y="4.0">Modelsoorten</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="77.6640625" x="2.0" xml:space="preserve" y="30.1328125">- Normatief
 - Descriptief<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n13">
+    <node id="n12">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#VersiebeschrijvingShape]]></data>
       <data key="d4"/>
       <data key="d5">
@@ -241,12 +222,12 @@ versiedatum (date) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n14">
+    <node id="n13">
       <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#NormstatussenShape]]></data>
       <data key="d4"/>
       <data key="d5">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="113.51521511017836" width="114.64008394543544" x="225.29800629590767" y="778.1290661070304"/>
+          <y:Geometry height="113.51521511017836" width="114.64008394543544" x="407.9338929695698" y="760.3945435466944"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="91.884765625" x="11.377659160217718" xml:space="preserve" y="4.0">Normstatussen</y:NodeLabel>
@@ -258,17 +239,36 @@ versiedatum (date) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n15">
-      <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#Ondersteuningsvorm]]></data>
+    <node id="n14">
+      <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#DocumentatieShape]]></data>
       <data key="d4"/>
       <data key="d5">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="38.958027282266585" width="136.08394543546706" x="332.6542497376705" y="254.9619721077962"/>
+          <y:Geometry height="100.33788037775446" width="229.98216159496315" x="443.6560321098067" y="-53.812172088142745"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="126.314453125" x="4.884746155233529" xml:space="preserve" y="4.0">Ondersteuningsvorm</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="72.34375" x="2.0" xml:space="preserve" y="30.1328125">
-                  <y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="85.046875" x="72.46764329748157" xml:space="preserve" y="4.0">Documentatie</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="60.53125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="218.3359375" x="2.0" xml:space="preserve" y="30.1328125">Beoogd gebruik (markdown) [0,1]
+Toegevoegde waarde (string) [0,1]
+onderdelen (string) [0,1]
+Ontwikkeling en beheer (string) [0,1]
+<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n15">
+      <data key="d3" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#BronverwijzingShape]]></data>
+      <data key="d4"/>
+      <data key="d5">
+        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
+          <y:Geometry height="90.0" width="146.07929673484034" x="762.7775445960126" y="-53.812172088142745"/>
+          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.080078125" x="27.999609304920114" xml:space="preserve" y="4.0">Bronverwijzing</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="46.3984375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="139.5390625" x="2.0" xml:space="preserve" y="30.1328125">titel (string) [1,1]
+locatie (anyURI) [0,1]
+verwijzing (string) [0,1]
+<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
@@ -280,9 +280,9 @@ versiedatum (date) [1,1]
           <y:Geometry height="67.0" width="209.92235047219322" x="664.8674052931256" y="784.6878279118571"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="70.64453125" x="69.63890961109661" xml:space="preserve" y="4.0">Organisatie</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="70.64453125" x="69.63890961109655" xml:space="preserve" y="4.0">Organisatie</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="182.88671875" x="2.0" xml:space="preserve" y="30.1328125">naam (string) [1,1]
-contactinformatie (string) [1,1]
+contactinformatie (string) [0,1]
 <y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
@@ -340,7 +340,7 @@ contactinformatie (string) [1,1]
           <y:Geometry height="111.4438614900314" width="136.08394543546706" x="1056.3422906569288" y="762.4658971668414"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="107.60546875" x="14.239238342733529" xml:space="preserve" y="4.0">Technologietypen</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="107.60546875" x="14.239238342733415" xml:space="preserve" y="4.0">Technologietypen</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="74.6640625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="114.9296875" x="2.0" xml:space="preserve" y="30.1328125">- Regelexecutie
 - MarkupPublicatie
 - MachineLearning
@@ -349,21 +349,7 @@ contactinformatie (string) [1,1]
         </y:GenericNode>
       </data>
     </node>
-    <edge id="e0" source="n0" target="n4">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#Taakinvullinghttp://bp4mc2.org/lto#taaktypehttp://bp4mc2.org/lto#TaaktypenShape]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#taaktype]]></data>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="84.326171875" x="34.91908555724149" xml:space="preserve" y="-9.066398990167102">taaktype [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e1" source="n1" target="n20">
+    <edge id="e0" source="n0" target="n20">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#ToolShapehttp://bp4mc2.org/lto#typeTechnologiehttp://bp4mc2.org/lto#TechnologietypenShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#typeTechnologie]]></data>
       <data key="d9"/>
@@ -377,7 +363,7 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e2" source="n1" target="n16">
+    <edge id="e1" source="n0" target="n16">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#ToolShapehttp://bp4mc2.org/lto#leverancierhttp://bp4mc2.org/lto#OrganisatieShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#leverancier]]></data>
       <data key="d9"/>
@@ -391,36 +377,8 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e3" source="n5" target="n13">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#versiebeschrijvinghttp://bp4mc2.org/lto#VersiebeschrijvingShape]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#versiebeschrijving]]></data>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="diamond" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="139.240234375" x="74.31029373087358" xml:space="preserve" y="44.84969651126198">versiebeschrijving [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e4" source="n5" target="n8">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#licentievormhttp://bp4mc2.org/lto#LicentievormenShape]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#licentievorm]]></data>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="106.12890625" x="-158.0043859296029" xml:space="preserve" y="15.299646875233577">licentievorm [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e5" source="n5" target="n3">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#bronhttp://bp4mc2.org/lto#Bronverwijzing]]></data>
+    <edge id="e2" source="n2" target="n15">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#bronhttp://bp4mc2.org/lto#BronverwijzingShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#bron]]></data>
       <data key="d9"/>
       <data key="d10">
@@ -428,12 +386,54 @@ contactinformatie (string) [1,1]
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="187.509765625" x="-187.60775890190757" xml:space="preserve" y="-177.43280760099077">aanvullende documentatie [0,n]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="187.509765625" x="-70.64604006011109" xml:space="preserve" y="-128.00998818701757">aanvullende documentatie [0,n]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e6" source="n5" target="n17">
+    <edge id="e3" source="n2" target="n5">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#ondersteuningVoorhttp://bp4mc2.org/lto#OndersteuningsvormShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#ondersteuningVoor]]></data>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="diamond" target="standard"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="148.64453125" x="-169.24653737173998" xml:space="preserve" y="-14.061020606208444">ondersteuning voor [1,n]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="n2" target="n3">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#beoogdeGebruikershttp://bp4mc2.org/lto#GebruikersgroepenShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#beoogdeGebruikers]]></data>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="151.205078125" x="-284.9974467010072" xml:space="preserve" y="103.05553611471288">beoogde gebruikers [1,n]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="n2" target="n14">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#documentatiehttp://bp4mc2.org/lto#DocumentatieShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#documentatie]]></data>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="diamond" target="standard"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="105.162109375" x="-124.39318247077131" xml:space="preserve" y="-122.80656313485906">beschrijving [0,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e6" source="n2" target="n17">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#relatiehttp://bp4mc2.org/lto#RelatieShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#relatie]]></data>
       <data key="d9"/>
@@ -449,21 +449,35 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e7" source="n5" target="n6">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#beoogdeGebruikershttp://bp4mc2.org/lto#GebruikersgroepenShape]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#beoogdeGebruikers]]></data>
+    <edge id="e7" source="n2" target="n6">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#geschiktVoorTaakhttp://bp4mc2.org/lto#TaakinvullingShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#geschiktVoorTaak]]></data>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="151.205078125" x="-284.9974467010072" xml:space="preserve" y="103.05553611471288">beoogde gebruikers [1,n]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="141.49609375" x="37.140497818428" xml:space="preserve" y="-9.066407668303157">geschikt voor taak [1,n]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e8" source="n5" target="n9">
+    <edge id="e8" source="n2" target="n7">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#licentievormhttp://bp4mc2.org/lto#LicentievormenShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#licentievorm]]></data>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="106.12890625" x="-158.0043859296029" xml:space="preserve" y="15.299646875233577">licentievorm [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e9" source="n2" target="n8">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#gebodenFunctionaliteithttp://bp4mc2.org/lto#FunctionaliteitenShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#gebodenFunctionaliteit]]></data>
       <data key="d9"/>
@@ -477,7 +491,7 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e9" source="n5" target="n7">
+    <edge id="e10" source="n2" target="n4">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#gebruiksstatushttp://bp4mc2.org/lto#GebruiksstatusShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#gebruiksstatus]]></data>
       <data key="d9"/>
@@ -491,49 +505,77 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e10" source="n5" target="n15">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#ondersteuningVoorhttp://bp4mc2.org/lto#Ondersteuningsvorm]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#ondersteuningVoor]]></data>
+    <edge id="e11" source="n2" target="n12">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#versiebeschrijvinghttp://bp4mc2.org/lto#VersiebeschrijvingShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#versiebeschrijving]]></data>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="diamond" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="148.64453125" x="-179.27855585147785" xml:space="preserve" y="-25.101967438348254">ondersteuning voor [1,n]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="139.240234375" x="74.31029373087358" xml:space="preserve" y="44.84969651126198">versiebeschrijving [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e11" source="n5" target="n2">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#documentatiehttp://bp4mc2.org/lto#Documentatie]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#documentatie]]></data>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="diamond" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="105.162109375" x="-28.09198957055378" xml:space="preserve" y="-152.71970617093635">beschrijving [0,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e12" source="n5" target="n0">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#JuridischeTechnologieShapehttp://bp4mc2.org/lto#geschiktVoorTaakhttp://bp4mc2.org/lto#Taakinvulling]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#geschiktVoorTaak]]></data>
+    <edge id="e12" source="n5" target="n19">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#OndersteuningsvormShapehttp://bp4mc2.org/lto#beschouwingsniveauhttp://bp4mc2.org/lto#BeschouwingsniveausShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#beschouwingsniveau]]></data>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="141.49609375" x="46.84662301978619" xml:space="preserve" y="-5.701244396982474">geschikt voor taak [1,n]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="154.990234375" x="-172.45925212912374" xml:space="preserve" y="4.169880074402613">beschouwingsniveau [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e13" source="n11" target="n16">
+    <edge id="e13" source="n5" target="n11">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#OndersteuningsvormShapehttp://bp4mc2.org/lto#modelsoorthttp://bp4mc2.org/lto#ModelsoortenShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#modelsoort]]></data>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="101.11328125" x="-145.52324749045187" xml:space="preserve" y="-36.178520839558814">modelsoort [0,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e14" source="n6" target="n1">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#TaakinvullingShapehttp://bp4mc2.org/lto#taaktypehttp://bp4mc2.org/lto#TaaktypenShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#taaktype]]></data>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="84.326171875" x="44.66309463322705" xml:space="preserve" y="-9.066407668303157">taaktype [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e15" source="n10" target="n13">
+      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#StandaardShapehttp://bp4mc2.org/lto#normstatushttp://bp4mc2.org/lto#NormstatussenShape]]></data>
+      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#normstatus]]></data>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="100.791015625" x="-83.27617111652307" xml:space="preserve" y="57.66439333849917">normstatus [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e16" source="n10" target="n16">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#StandaardShapehttp://bp4mc2.org/lto#beheerderhttp://bp4mc2.org/lto#OrganisatieShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#beheerder]]></data>
       <data key="d9"/>
@@ -547,49 +589,7 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e14" source="n11" target="n14">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#StandaardShapehttp://bp4mc2.org/lto#normstatushttp://bp4mc2.org/lto#NormstatussenShape]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#normstatus]]></data>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="100.791015625" x="-140.65465177444264" xml:space="preserve" y="66.53482844679218">normstatus [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e15" source="n15" target="n19">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#Ondersteuningsvormhttp://bp4mc2.org/lto#beschouwingsniveauhttp://bp4mc2.org/lto#BeschouwingsniveausShape]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#beschouwingsniveau]]></data>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="154.990234375" x="-155.37137839379022" xml:space="preserve" y="11.890134305728282">beschouwingsniveau [1,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e16" source="n15" target="n12">
-      <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#Ondersteuningsvormhttp://bp4mc2.org/lto#modelsoorthttp://bp4mc2.org/lto#ModelsoortenShape]]></data>
-      <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#modelsoort]]></data>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="101.11328125" x="-140.4523657111281" xml:space="preserve" y="-24.65518150849084">modelsoort [0,1]<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e17" source="n17" target="n10">
+    <edge id="e17" source="n17" target="n9">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#RelatieShapehttp://bp4mc2.org/lto#typeRelatiehttp://bp4mc2.org/lto#RelatietypenShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#typeRelatie]]></data>
       <data key="d9"/>
@@ -603,7 +603,7 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e18" source="n17" target="n5">
+    <edge id="e18" source="n17" target="n2">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#RelatieShapehttp://bp4mc2.org/lto#gerelateerdeTechnologiehttp://bp4mc2.org/lto#JuridischeTechnologieShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[http://bp4mc2.org/lto#gerelateerdeTechnologie]]></data>
       <data key="d9"/>
@@ -633,7 +633,7 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e20" source="n1" target="n5">
+    <edge id="e20" source="n0" target="n2">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#ToolShaperdfs:subClassOfhttp://bp4mc2.org/lto#JuridischeTechnologieShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[rdfs:subClassOf]]></data>
       <data key="d9"/>
@@ -646,7 +646,7 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e21" source="n11" target="n5">
+    <edge id="e21" source="n10" target="n2">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#StandaardShaperdfs:subClassOfhttp://bp4mc2.org/lto#JuridischeTechnologieShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[rdfs:subClassOf]]></data>
       <data key="d9"/>
@@ -659,7 +659,7 @@ contactinformatie (string) [1,1]
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e22" source="n18" target="n5">
+    <edge id="e22" source="n18" target="n2">
       <data key="d7" xml:space="preserve"><![CDATA[urn:md5:http://bp4mc2.org/lto#MethodeShaperdfs:subClassOfhttp://bp4mc2.org/lto#JuridischeTechnologieShape]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[rdfs:subClassOf]]></data>
       <data key="d9"/>

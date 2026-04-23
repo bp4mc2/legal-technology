@@ -71,8 +71,6 @@ queries:
       }
   - title: fix errors - empty values
     query: >
-      prefix lto: <http://bp4mc2.org/lto#>
-      prefix lt: <http://bp4mc2.org/lt#>
       delete {
         graph <urn:output> {
           ?s ?p ?o
@@ -82,6 +80,22 @@ queries:
         graph <urn:output> {
           ?s ?p ?o
           FILTER (?o="")
+        }
+      }
+  - title: fix errors - empty resources
+    query: >
+      prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      delete {
+        graph <urn:output> {
+          ?s a ?t.
+          ?ss ?sp ?s
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?s a ?t.
+          OPTIONAL {?ss ?sp ?s}
+          FILTER NOT EXISTS {?s ?p ?o FILTER (?p!=rdf:type)}
         }
       }
   - title: fix errors - beoogdeGebruikers
@@ -119,6 +133,7 @@ queries:
         }
       }
   - title: fix errors - bijgewerktOp (string vs date)
+    use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix lt: <http://bp4mc2.org/lt#>
@@ -158,6 +173,27 @@ queries:
           ?lt a ?t.
           ?t rdfs:subClassOf lto:JuridischeTechnologie
           FILTER NOT EXISTS {?lt lto:bijgewerktOp ?date}
+        }
+      }
+  - title: fix errors - ondersteuningVoor (missing values)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix lt: <http://bp4mc2.org/lt#>
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      insert {
+        graph <urn:output> {
+          ?lt lto:ondersteuningVoor [
+            lto:beschouwingsniveau lto:Tekstueel;
+            lto:modelsoort lto:Descriptief
+          ]
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?lt a ?t.
+          ?t rdfs:subClassOf lto:JuridischeTechnologie
+          FILTER NOT EXISTS {?lt lto:ondersteuningVoor ?ov}
         }
       }
   - title: fix errors - versiebeschrijving (non-blank node 1/2)
@@ -207,6 +243,7 @@ queries:
         }
       }
   - title: fix errors - ondersteuningVoor (non-blank node 1/2)
+    use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix lt: <http://bp4mc2.org/lt#>
@@ -229,6 +266,7 @@ queries:
         }
       }
   - title: fix errors - ondersteuningVoor (non-blank node 2/2)
+    use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix lt: <http://bp4mc2.org/lt#>
@@ -273,7 +311,7 @@ queries:
       insert {
         graph <urn:output> {
           ?lt lto:beheerder <urn:name:OnbekendeBeheerder>.
-          <urn:name:OnbekendeBeheerder> a lto:Organisatie
+          <urn:name:OnbekendeBeheerder> a lto:Organisatie; lto:naamOrganisatie "Onbekende beheerder"
         }
       }
       where {
@@ -304,7 +342,7 @@ queries:
       insert {
         graph <urn:output> {
           ?lt lto:leverancier <urn:name:OnbekendeLeverancier>.
-          <urn:name:OnbekendeLeverancier> a lto:Organisatie
+          <urn:name:OnbekendeLeverancier> a lto:Organisatie; lto:naamOrganisatie "Onbekende leverancier"
         }
       }
       where {
@@ -329,6 +367,7 @@ queries:
         }
       }
   - title: fix errors - versiedatum (string vs date)
+    use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix lt: <http://bp4mc2.org/lt#>
@@ -351,7 +390,30 @@ queries:
           BIND(xsd:date(?value) as ?date)
         }
       }
+  - title: fix errors - locatie (string vs anyURI)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      prefix foaf: <http://xmlns.com/foaf/0.1/>
+      delete {
+        graph <urn:output> {
+          ?bv foaf:page ?value
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?bv foaf:page ?anyuri
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?bv a lto:Bronverwijzing.
+          ?bv foaf:page ?value.
+          BIND(xsd:anyURI(?value) as ?anyuri)
+        }
+      }
   - title: fix errors - ondersteuningVoor (beschouwingsniveau)
+    use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -367,6 +429,7 @@ queries:
         }
       }
   - title: fix errors - ondersteuningVoor (modelsoort)
+    use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix xsd: <http://www.w3.org/2001/XMLSchema#>
