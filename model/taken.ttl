@@ -93,7 +93,7 @@ ltt:ValiderenSpecificaties a skos:Concept;
   skos:prefLabel "Valideren specificaties"@nl;
 .
 
-ltt:GeautomatitseerdeRegeluitvoering a skos:Concept;
+ltt:GeautomatiseerdeRegeluitvoering a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Geautomatiseerde regeluitvoering"@nl;
   skos:prefLabel "Geautomatiseerde regeluitvoering"@nl;
@@ -109,4 +109,41 @@ ltt:Evaluatie a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Evaluatie"@nl;
   skos:prefLabel "Evaluatie"@nl;
+.
+
+##
+## Taakgroepen
+##
+ltt:Groep1 a skos:OrderedCollection;
+  rdfs:label "Taakgroep 1";
+  skos:memberList (
+    ltt:OpstellenRegeltekst
+    ltt:Opdrachtorientering
+    ltt:VerzamelenBronmateriaal
+  )
+.
+ltt:Groep2 a skos:OrderedCollection;
+  rdfs:label "Taakgroep 2";
+  skos:memberList (
+    ltt:AnalyserenRegeltekst
+    ltt:InterpreterenEnExpliciteren
+    ltt:BegripDefinieren
+  )
+.
+ltt:Groep3 skos:OrderedCollection;
+  rdfs:label "Taakgroep 3";
+  skos:memberList (
+    ltt:SpecificerenGegevensbehoefte
+    ltt:SpecificerenRegels
+    ltt:SpecificerenProcessen
+  )
+.
+ltt:Groep4 skos:OrderedCollection;
+  rdfs:label "Taakgroep 4";
+  skos:memberList (
+    ltt:ValiderenSpecificaties
+    ltt:GeautomatiseerdeRegeluitvoering
+    ltt:Beslisondersteuning
+    ltt:Evaluatie
+  )
 .

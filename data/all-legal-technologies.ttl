@@ -151,7 +151,7 @@
 
 
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0/taakinvulling/d7fb9f1e-2b36-4c3c-8438-65aa759c9b5e> lto:omschrijving "" ;
-	lto:taaktype <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> ;
+	lto:taaktype <http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering> ;
 	rdf:type lto:Taakinvulling .
 
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0/versiebeschrijving> lto:versienummer "1.0" ;
@@ -179,7 +179,7 @@
 	rdf:type lto:Taakinvulling .
 
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063> lto:omschrijving "" ;
-	lto:taaktype <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> ;
+	lto:taaktype <http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering> ;
 	rdf:type lto:Taakinvulling .
 
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/versiebeschrijving> lto:versienummer "1.0" ;
@@ -1010,7 +1010,7 @@
 
 
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0/taakinvulling/a46f407c-5b16-47ad-8ce1-a4806d46fcb7> lto:omschrijving "" ;
-	lto:taaktype <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> ;
+	lto:taaktype <http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering> ;
 	rdf:type lto:Taakinvulling .
 
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0/versiebeschrijving> lto:versienummer "1.0" ;
@@ -1446,7 +1446,3 @@
 
 <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0/versiebeschrijving> lto:versienummer "1.0" ;
 	rdf:type lto:Versiebeschrijving .
-
-
-
-
