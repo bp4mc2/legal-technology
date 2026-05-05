@@ -130,7 +130,7 @@ ltt:Groep2 a skos:OrderedCollection;
     ltt:BegripDefinieren
   )
 .
-ltt:Groep3 skos:OrderedCollection;
+ltt:Groep3 a skos:OrderedCollection;
   rdfs:label "Taakgroep 3";
   skos:memberList (
     ltt:SpecificerenGegevensbehoefte
@@ -138,7 +138,7 @@ ltt:Groep3 skos:OrderedCollection;
     ltt:SpecificerenProcessen
   )
 .
-ltt:Groep4 skos:OrderedCollection;
+ltt:Groep4 a skos:OrderedCollection;
   rdfs:label "Taakgroep 4";
   skos:memberList (
     ltt:ValiderenSpecificaties
