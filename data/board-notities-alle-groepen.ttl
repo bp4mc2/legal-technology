@@ -1,0 +1,2701 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+@prefix ltb: <http://bp4mc2.org/ltb#>.
+@prefix ltt: <http://bp4mc2.org/ltt#>.
+@prefix lto: <http://bp4mc2.org/lto#>.
+@prefix lt: <http://bp4mc2.org/lt#>.
+
+<https://data.bp4mc2.org/id/ltb/alle-groepen>
+  a owl:Ontology ;
+  dct:title "Board notities alle groepen"@nl ;
+  dct:created "2026-05-05"^^xsd:date ;
+  dct:source "Alkemio whiteboard export (Excalidraw)"@nl ;
+  owl:imports <http://bp4mc2.org/ltb#ontology> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1>
+  a ltb:Board ;
+  ltb:boardNaam "groep 1" ;
+  ltb:boardBron "Alkemio whiteboard export (Excalidraw)" ;
+  ltb:boardExportDatum "2026-05-05"^^xsd:date ;
+  ltb:taakgroep ltt:Groep1.
+
+<https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2>
+  a ltb:Board ;
+  ltb:boardNaam "groep 2" ;
+  ltb:boardBron "Alkemio whiteboard export (Excalidraw)" ;
+  ltb:boardExportDatum "2026-05-05"^^xsd:date ;
+  ltb:taakgroep ltt:Groep2 .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3>
+  a ltb:Board ;
+  ltb:boardNaam "groep 3" ;
+  ltb:boardBron "Alkemio whiteboard export (Excalidraw)" ;
+  ltb:boardExportDatum "2026-05-05"^^xsd:date ;
+  ltb:taakgroep ltt:Groep3 .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4>
+  a ltb:Board ;
+  ltb:boardNaam "groep 4" ;
+  ltb:boardBron "Alkemio whiteboard export (Excalidraw)" ;
+  ltb:boardExportDatum "2026-05-05"^^xsd:date ;
+  ltb:taakgroep ltt:Groep4 .
+
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/ax498mhaEJKTQDZoV8cso>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "ax498mhaEJKTQDZoV8cso" ;
+  ltb:stickyTekst """Referenteiekader
+regeltekst tov staande
+praktijk
+
+(er is geen greenfield)
+
+<--->""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#fde047" ;
+  
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s1> a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s1" ;
+  ltb:stickyTekst """gestandaardiseerd & granulair verwijzen naar
+bronnen. (standaarden zijn er, meer moeten in
+toepassingen & geimplementeerd in bronmateriaal""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fde047" ;
+  
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/-S1wApTdiIb68YPPC_9Yj>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "-S1wApTdiIb68YPPC_9Yj" ;
+  ltb:stickyTekst """Definiteies en begrippen ui praktijk als referentiekader""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/_kr8LN02taN8WAIQGRrf8>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "_kr8LN02taN8WAIQGRrf8" ;
+  ltb:stickyTekst """impl. DRPM digital ready
+policy making""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/0x9A6KBGLBQiqERCcUOOp>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "0x9A6KBGLBQiqERCcUOOp" ;
+  ltb:stickyTekst """Standaar voor elke verwijzing (vgl. acad.
+verwijzingen)
+
+-> combineren wat er al is
+-> op niveau van bron eenheid
+
+(verwijsindex)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s1>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s1" ;
+  ltb:stickyTekst """aanwijzingen voor de
+regelgeving""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+.
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s4>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s4" ;
+  ltb:stickyTekst """Handreiking & "tools" voor het opstellen van regeltekst die beter uitvoerbaar is, o.a. door:
+ICT-
+uitvoeringsgericht
+wetgeven""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2_s1>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2_s1" ;
+  ltb:stickyTekst """Voor regelperspectief
+nodig, voor
+begripsbronwijzing
+niet""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/0aaRLvC1LILzl0WhByndZ>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "0aaRLvC1LILzl0WhByndZ" ;
+  ltb:stickyTekst """Uitvoeringstoet
+s formats zoals
+UDO, HUF -&gt;
+dit vormt input""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#bbf7d0" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s10>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s10" ;
+  ltb:stickyTekst """bevoegde uitleggers
+aangewezen en
+beschikbare personen
+voor toelichting/uitleg
++ ontvangen feedback
+vanuit de uitvoering""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2_s5>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2_s5" ;
+  ltb:stickyTekst """Wet en regelgeving
+bestuderen""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#7dd3fc" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+ 
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/4s87FoGA9nTYhbfEU1sQX>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "4s87FoGA9nTYhbfEU1sQX" ;
+  ltb:stickyTekst """- oogmerk verplicht
+stellen
+- verwijzen naar
+definities
+- meetbaar maken
+beoogd effect""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2_s2>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2_s2" ;
+  ltb:stickyTekst """Uitvoeringstoetsform
+ats zoals UDO, WUF
+--> dit vormt input""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s3>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s3" ;
+  ltb:stickyTekst """Aanwijzingen voor de
+regeling specifiek
+(voor verwijzingen)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/eci/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/g23_s1>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "g23_s1" ;
+  ltb:stickyTekst """Template/standaard
+uitvoeringstoets""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s2>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s2" ;
+  ltb:stickyTekst """Met templates voor
+opbouw regeltekst
+AKA staalkaart""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s3>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s3" ;
+  ltb:stickyTekst """verwijzingen naar bestaande regels/begrippen""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/ftxWVwsj5MXnvyALuHof3>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "ftxWVwsj5MXnvyALuHof3" ;
+  ltb:stickyTekst """uitvoering. nadrukkelijk
+betrekken in creatiefase""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/far_left_s2>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "far_left_s2" ;
+  ltb:stickyTekst """betrokkenheid opstellers/beheerders bij de opvolgende stappen in de voortbrenging""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s2>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s2" ;
+  ltb:stickyTekst """mist: alle vormen van kennisbronnen kunnen verwijzen ook decentraal""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#c6f68d" ;
+  
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/far_left_s1>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "far_left_s1" ;
+  ltb:stickyTekst """Simulaties""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2vFCcSBQ8TE_5-20BXGf>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2vFCcSBQ8TE_5-20BXGf" ;
+  ltb:stickyTekst """Bronmateriaal is al verzameld want: IST in een bak met open standaard vastgelegd""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s5>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s5" ;
+  ltb:stickyTekst """Standaarden for identificatie & metadata BwB.id, JCDR, ELI, ECLI, OEP.id""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#7dd3fc" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s4>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s4" ;
+  ltb:stickyTekst """Zoeken in databanken wet & regelgeving""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#7dd3fc" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s5>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s5" ;
+  ltb:stickyTekst """VNS-leidraad voor
+verorderningen""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#7dd3fc" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2_s3>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2_s3" ;
+  ltb:stickyTekst """Wetsanalyse als methode""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2_s7>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2_s7" ;
+  ltb:stickyTekst """DUO WOW Uitvoeringstoets (scompafijthe)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s7>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s7" ;
+  ltb:stickyTekst """Standaarden voor verwijzingen Aanwijzingen voor de R. leidraad (ECI/ECLI/BWB.id?J CDR)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#7dd3fc" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/eci/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/ONOSXHMB1Vw2StqTW1Sgt>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "ONOSXHMB1Vw2StqTW1Sgt" ;
+  ltb:stickyTekst """bewustzijn bij wetgever welke
+begrippen/definities nodig zijn om de
+wet te kunnen uitvoeren
+--> welke impact het heeft in bijv. regels
+en proces
+--> bij het opstellen van de wet collega's
+van de uitvoeringsorganisatie betrekken""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/Y4QKqZoH94Ol2snrwZ0WO>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Y4QKqZoH94Ol2snrwZ0WO" ;
+  ltb:stickyTekst """Relatie
+invoeringstoets of
+idealiter simulatie
+effecten vooraf""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/jSp81F2m2Zfm4x1AQqiFn>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "jSp81F2m2Zfm4x1AQqiFn" ;
+  ltb:stickyTekst """geagregeerde tekst voor
+mut en nut""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+ 
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s6>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s6" ;
+  ltb:stickyTekst """BIBTEX""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2_s4>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2_s4" ;
+  ltb:stickyTekst """Calculus (methode)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+.
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s8>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s8" ;
+  ltb:stickyTekst """STOP TPOD""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s9>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s9" ;
+  ltb:stickyTekst """LIDO (JURRELATIES)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#ffec99" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2_s9>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2_s9" ;
+  ltb:stickyTekst """Uitvoeringstoets BD""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/0kB8vo_emJUZLz9FEtanl>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "0kB8vo_emJUZLz9FEtanl" ;
+  ltb:stickyTekst """next gen creatiesoftware door het rijk (met annotatie mogelijkheden)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/far_left_s3>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "far_left_s3" ;
+  ltb:stickyTekst """GEDEELD BEGRIPPEN KADER (gebruik maken van)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/57N8umOc_p_cxpDeD_6e1>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "57N8umOc_p_cxpDeD_6e1" ;
+  ltb:stickyTekst """Standaard om afzonderijke
+stukjes tekst met elkaar
+te verbinden - duurzaam
+van alpha naar omega""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s7>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s7" ;
+  ltb:stickyTekst """mist universele annotatie strategie""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/VwFC7rA2_17pOYhkcXyj2>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "VwFC7rA2_17pOYhkcXyj2" ;
+  ltb:stickyTekst "META STANDAARDEN" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/YBwa89itxuYURsWaOffOG>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "YBwa89itxuYURsWaOffOG" ;
+  ltb:stickyTekst """Uitvoeringsgericht wetgeven""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s13>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s13" ;
+  ltb:stickyTekst """AKN""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2_s6>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2_s6" ;
+  ltb:stickyTekst """Common kads""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s10>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s10" ;
+  ltb:stickyTekst "Dublin Core" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s12>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s12" ;
+  ltb:stickyTekst "TOOI" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s12>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s12" ;
+  ltb:stickyTekst "FRBR" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/dIsL42ZRYkw1c0hNmTZNT>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "dIsL42ZRYkw1c0hNmTZNT" ;
+  ltb:stickyTekst "organisatorisch multidisciplinaire teams/processen" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s14>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s14" ;
+  ltb:stickyTekst "JURICONNECT" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/jzmMt3Cdnnm4wLZQ-mQA8>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "jzmMt3Cdnnm4wLZQ-mQA8" ;
+  ltb:stickyTekst """vaste metainfo (structuur)
+voor alle wet & regelgeving
+(ook beleidsregels, kaders)
+
+Voor: 1. de kennisbron
+2. onderdelen""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/g12_s4>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "g12_s4" ;
+  ltb:stickyTekst "Standaard voor verwijzen naar begrip in een wet, AMvB enz." ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s16>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s16" ;
+  ltb:stickyTekst "BWB" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c2_s8>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c2_s8" ;
+  ltb:stickyTekst "Business case analyses" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s13>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s13" ;
+  ltb:stickyTekst "Juridisch landschap" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/zna8-fZExuq7sQCBm4HQj>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "zna8-fZExuq7sQCBm4HQj" ;
+  ltb:stickyTekst "MARKDOWN" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s17>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s17" ;
+  ltb:stickyTekst "wetenschappelijke citeer standaarden" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s15>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s15" ;
+  ltb:stickyTekst "mist wetsvinding standaardiseren wat + verwijzing" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/g12_s5>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "g12_s5" ;
+  ltb:stickyTekst "zorgen dat data in  regeltekst machine leesbaar aanwezig is" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s15>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s15" ;
+  ltb:stickyTekst "Beginselen grondwet & EVRM" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s14>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s14" ;
+  ltb:stickyTekst "detecteren missende bronnen" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/g12_s6>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "g12_s6" ;
+  ltb:stickyTekst """Voor opsetellen regeltekst:
+- regeltekst zien als sluitstuk van ontwerp
+- eerst ontwerp architetuur maken, hoe moet
+het gaan werken
+- model gebaseerd ontwerp""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c1_s17>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c1_s17" ;
+  ltb:stickyTekst """Zorg dat de standaard
+de democratische &
+maatschappelijke
+dynamiek faciliteert en
+versterkt
+
+(wetgeving is ook een
+middel)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#f43f5e" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/RtRpV_pZzRHuVRteBquMb>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "RtRpV_pZzRHuVRteBquMb" ;
+  ltb:stickyTekst """Opdrachtgever moet
+in standaard de
+opdracht goed
+meegeven (bijv. naast
+wet, MvT, etc, ook
+ardinmate model/oid
+
+(wettelijk verplicht?)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opdrachtorientatie" ;
+  ltb:taaktype ltt:Opdrachtorientering ;
+  ltb:stickyKleur "#f43f5e" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/c3_s18>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "c3_s18" ;
+  ltb:stickyTekst "Onderdeel wetsanalyse" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Verzamelen Bronmateriaal" ;
+  ltb:taaktype ltt:VerzamelenBronmateriaal ;
+  ltb:stickyKleur "#fde047" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/rLF0wYIXd6OUHS6eaTmYX>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "rLF0wYIXd6OUHS6eaTmYX" ;
+  ltb:stickyTekst """Aan rechtsbinnen gekoppelde
+begripsdefinities, direct bij de
+rechtsbronnen ontsloten""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/YV7bL4AJrIVWeLSmgG4yC>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "YV7bL4AJrIVWeLSmgG4yC" ;
+  ltb:stickyTekst "NL-SBB" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/uHhhPCYLL-ofmpFZviuV3>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "uHhhPCYLL-ofmpFZviuV3" ;
+  ltb:stickyTekst "SKOS" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/iQwSorMUMUnEHNlhLISvP>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "iQwSorMUMUnEHNlhLISvP" ;
+  ltb:stickyTekst "MIM" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/LUVEV8lR4H_EFB2rf4Xxr>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "LUVEV8lR4H_EFB2rf4Xxr" ;
+  ltb:stickyTekst "Semantische aansluiting (MIM)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/SY2bJBZY94kqAe0c7rEbH>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "SY2bJBZY94kqAe0c7rEbH" ;
+  ltb:stickyTekst "NL-SBB *" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#ef4444" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/k9E88lGJhqrobWM791fU2>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "k9E88lGJhqrobWM791fU2" ;
+  ltb:stickyTekst "SKOS-lex" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/LHDdpLG5pX7DPKF5WFv-q>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "LHDdpLG5pX7DPKF5WFv-q" ;
+  ltb:stickyTekst "Context-based definieren" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fca5a5" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/HXlhaeT-8jN0La8nJ_KPI>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "HXlhaeT-8jN0La8nJ_KPI" ;
+  ltb:stickyTekst "Analyse schema en deze aansluiten op NL-SBB" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/FfXFYmK8h2FUm11lZbcrh>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "FfXFYmK8h2FUm11lZbcrh" ;
+  ltb:stickyTekst "FBM" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/PQjm7P_W-EP8LG1loBvkD>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "PQjm7P_W-EP8LG1loBvkD" ;
+  ltb:stickyTekst "TAAK \"CIM\" (MIM niveau 2)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/YY2VI48QDGWLloKhQu9-e>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "YY2VI48QDGWLloKhQu9-e" ;
+  ltb:stickyTekst "Strakkere`invulling NL SBB --> er mogen wel meer verplichtingen in" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/Pzcw5Vmk8Nt-20OImzxvk>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Pzcw5Vmk8Nt-20OImzxvk" ;
+  ltb:stickyTekst "Semantische koppeling  tussen begrippen uit samenhangende wetgeving" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/6zh_MRzhrKhNrzbf06nn6>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "6zh_MRzhrKhNrzbf06nn6" ;
+  ltb:stickyTekst "UML" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/Ag-f4NVi4fSuIei927Vki>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Ag-f4NVi4fSuIei927Vki" ;
+  ltb:stickyTekst """Ontologie
+gemeentelijk
+gegevensmodel
+IDEM voor:
+provincies,
+waterschappen,
+omgevingsdiensten -
+-> begrippenmodel
+VTH""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/Tz1XyyCk98jXpfDgMCswb>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Tz1XyyCk98jXpfDgMCswb" ;
+  ltb:stickyTekst "Archimate (BOM)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/IWVu9koMF_6tD3hlT7sDD>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "IWVu9koMF_6tD3hlT7sDD" ;
+  ltb:stickyTekst "Duidelijkheid over welk resultaat waar (analyse res. interp. res, begrippen res.)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/fajPfpN_dyIxLHf82xFbJ>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "fajPfpN_dyIxLHf82xFbJ" ;
+  ltb:stickyTekst "RDF" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/OhMs4hQVIWDaKGMxUeYEe>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "OhMs4hQVIWDaKGMxUeYEe" ;
+  ltb:stickyTekst "Annotatie-strategie (IMUP)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/4Ted-kXIK0zcKfDdIjysT>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "4Ted-kXIK0zcKfDdIjysT" ;
+  ltb:stickyTekst "UPL CPSV" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/n1mCe2MfOOFpI_YiSsSse>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "n1mCe2MfOOFpI_YiSsSse" ;
+  ltb:stickyTekst "TSU standaard begrippen 25964" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fca5a5" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/bmCZ1sn96WwM8y6z_GqLn>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "bmCZ1sn96WwM8y6z_GqLn" ;
+  ltb:stickyTekst "WET- EN REGELGEVING" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/F57VbwV55MjAOISS0YhW1>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "F57VbwV55MjAOISS0YhW1" ;
+  ltb:stickyTekst "Simulaties" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/7g7-ltaNEKvscCu683x-h>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "7g7-ltaNEKvscCu683x-h" ;
+  ltb:stickyTekst "Web annotation standaard" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/H9cHHkb6FiuoF6sJY235i>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "H9cHHkb6FiuoF6sJY235i" ;
+  ltb:stickyTekst """mist link naar
+kennisbron (over de
+hele linie, ook
+decentraal)
+
+JCDR ELI (to be)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/32bsAKMhn7SGKj5McpWvy>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "32bsAKMhn7SGKj5McpWvy" ;
+  ltb:stickyTekst "EN  BELEIDSMEDEWERKER" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/DJO4FW44CWFrMjKlHRwCp>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "DJO4FW44CWFrMjKlHRwCp" ;
+  ltb:stickyTekst "Bestuderen M.v.T. etc. Mist!" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/qUOeFc9w4HD_pDqgv7Aca>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "qUOeFc9w4HD_pDqgv7Aca" ;
+  ltb:stickyTekst "Machine leesbare wet en regelgeving (algedaan bij opstellen - zie STOP)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/N7I_Bv7NZI4xMEV555MxH>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "N7I_Bv7NZI4xMEV555MxH" ;
+  ltb:stickyTekst "JRA/JRM" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#fca5a5" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/jNfX5VFvHZRbNe1FDJGPQ>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "jNfX5VFvHZRbNe1FDJGPQ" ;
+  ltb:stickyTekst "FLINT (norm engineering)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#fca5a5" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/s9Ds4RbjE12WhfgU9ZgWz>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "s9Ds4RbjE12WhfgU9ZgWz" ;
+  ltb:stickyTekst "Metamodel Norm Modellering (concept)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Analyseren Rechtstreeks" ;
+  ltb:taaktype ltt:AnalyserenRegeltekst ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/Ahc8OCvC7ejN229Ksv1f7>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Ahc8OCvC7ejN229Ksv1f7" ;
+  ltb:stickyTekst "Raadplegen rechtspraak" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#7dd3fc" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/6YKpXhhKRSjBrRKCri14z>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "6YKpXhhKRSjBrRKCri14z" ;
+  ltb:stickyTekst "Bestuderen M.v.T. etc" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/egMTEnl_z1x4W7T7C5ExR>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "egMTEnl_z1x4W7T7C5ExR" ;
+  ltb:stickyTekst "mist: export format regelspraak" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/1eFe2Z5m3GCIHIHL7zCYr>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "1eFe2Z5m3GCIHIHL7zCYr" ;
+  ltb:stickyTekst "Use cases" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fca5a5" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/zDV1oDVt5CX-eWw83M5Of>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "zDV1oDVt5CX-eWw83M5Of" ;
+  ltb:stickyTekst "Idealiter op basis van een \"schone\" look (geen garbage-in)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/XulWed-MqPX2F2Eikt261>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "XulWed-MqPX2F2Eikt261" ;
+  ltb:stickyTekst "Flint" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/rJw6l_Vesod2MQ7xOgK6j>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "rJw6l_Vesod2MQ7xOgK6j" ;
+  ltb:stickyTekst "TPOD" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/G2ccg4IiRDxMvbI5YaVGy>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "G2ccg4IiRDxMvbI5YaVGy" ;
+  ltb:stickyTekst "Wetsanalyse JRM" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/ch2oCrbUA0_G6G_OJFCjW>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "ch2oCrbUA0_G6G_OJFCjW" ;
+  ltb:stickyTekst "Analyse , interpretatie en expliciteren is een(iteratief) proces" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/UJPhcQEoR-nwiU2qSzl2l>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "UJPhcQEoR-nwiU2qSzl2l" ;
+  ltb:stickyTekst "HKBA (Handreiking keten business analyse)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/mgs8SIsTwkMf6UT1wx8bb>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "mgs8SIsTwkMf6UT1wx8bb" ;
+  ltb:stickyTekst "RULESPEAK" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/ySN1_JNcgv89tsAYl8Qp6>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "ySN1_JNcgv89tsAYl8Qp6" ;
+  ltb:stickyTekst "mist: standaard vastlegging voor rechtsvinding (incl. interpretatie)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/7ToOPGuq9NLZC0UvxW-5y>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "7ToOPGuq9NLZC0UvxW-5y" ;
+  ltb:stickyTekst "Van Dale" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/yMJsXAQol77GCLc3w-zGO>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "yMJsXAQol77GCLc3w-zGO" ;
+  ltb:stickyTekst "Stelsel-catalogus basisregistratie (onderliggend model)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/3DJ_AP3EVml4MU6Xa0Jaf>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "3DJ_AP3EVml4MU6Xa0Jaf" ;
+  ltb:stickyTekst "SKOS-LEX" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/ZgdVeHd0cv2MZvt94nW4j>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "ZgdVeHd0cv2MZvt94nW4j" ;
+  ltb:stickyTekst "AIM (moet nog ontwikkeld)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/PCtNFWbS7Q-eTX-_AjsEW>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "PCtNFWbS7Q-eTX-_AjsEW" ;
+  ltb:stickyTekst "STANDAARD DIE REGELS WEGLAAT OMDAT MENSELIJK OORDEEL IS GEVRAAG (EN DAT ONDERSTEUND) DOEL    PROCES.  --> GEGEVENS" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fca5a5" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/qJvqWocmZnVgZ-_tSoML0>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "qJvqWocmZnVgZ-_tSoML0" ;
+  ltb:stickyTekst """Kennis bron
+VERWIJZINGEN los
+neerzetten op vele
+plekken toepassen
+(niet alleen in NL-
+SBB)""" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#c6f68d" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/dyvt6y_gcRDKUzuyWfyti>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "dyvt6y_gcRDKUzuyWfyti" ;
+  ltb:stickyTekst "J&V wetsanalyse resultaat sjabloon" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Interpreteren & Expliciteren" ;
+  ltb:taaktype ltt:InterpreterenEnExpliciteren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-2/sticky/zAn1QwTxC42NbuRpo8RO_>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "zAn1QwTxC42NbuRpo8RO_" ;
+  ltb:stickyTekst "Bronverwijzingen granulair kunnen maken obv eli" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Begrippen Definiëren" ;
+  ltb:taaktype ltt:BegripDefinieren ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-2/board/groep-2> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/MowEfGubR1Ix-3PXarUlw>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "MowEfGubR1Ix-3PXarUlw" ;
+  ltb:stickyTekst "Actore register" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/H6BkCibQq7NroDYV4K7OB>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "H6BkCibQq7NroDYV4K7OB" ;
+  ltb:stickyTekst "IMgeluid IMOW IM.... (generieke modellen waar je op voorbouwt)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Gegevens" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/QU0WysMRAeZ5xTv1zhJ3R>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "QU0WysMRAeZ5xTv1zhJ3R" ;
+  ltb:stickyTekst "MIM niveu 3 (met 4m4,LD,FBM,ER)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Gegevens" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/z35Xn-z7w06JgsQN0gcDp>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "z35Xn-z7w06JgsQN0gcDp" ;
+  ltb:stickyTekst "open API 3.0" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/Do65EShJLhG0__Zv5bB-x>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Do65EShJLhG0__Zv5bB-x" ;
+  ltb:stickyTekst "MIM- STATISCHE HERLEIDBAARHEID (naar CIM/SOM)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/JDvU9-H0NYK2Jht4OswkQ>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "JDvU9-H0NYK2Jht4OswkQ" ;
+  ltb:stickyTekst "Reg Expression" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/ZhfMXEF4pYoZIVscqR3Cf>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "ZhfMXEF4pYoZIVscqR3Cf" ;
+  ltb:stickyTekst "PREDICATen LOGICA" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/aga5wDAK_UygFXr7mnmed>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "aga5wDAK_UygFXr7mnmed" ;
+  ltb:stickyTekst "RegelTaal Syntax (in ontw.)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_green_bpmn>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_green_bpmn" ;
+  ltb:stickyTekst "BPMN" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#84cc16" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/mksfs0Awsj4xUdgwuK5ri>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "mksfs0Awsj4xUdgwuK5ri" ;
+  ltb:stickyTekst "CONTEXT AFHANKELIJKE MODELLEN B.V. Tussen vastlegging & gebruik" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#facc15" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/_z2qsX-OqVyiW70J8p_g7>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "_z2qsX-OqVyiW70J8p_g7" ;
+  ltb:stickyTekst "Javascript expressies" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/NB5TMGZ7cQzuo7bwJRhBS>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "NB5TMGZ7cQzuo7bwJRhBS" ;
+  ltb:stickyTekst "CPRMV" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/7Fanj5VjX_tcE9Bsx20Fq>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "7Fanj5VjX_tcE9Bsx20Fq" ;
+  ltb:stickyTekst "Object Constraint Language" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/7k2GzKxlG4-uTPtHpTqq4>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "7k2GzKxlG4-uTPtHpTqq4" ;
+  ltb:stickyTekst "SHACL" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/fwBSAMjt0LT4MbRecy86H>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "fwBSAMjt0LT4MbRecy86H" ;
+  ltb:stickyTekst "UML Class" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Gegevens" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/60J-OvMyHkWsfJZ6VIHwK>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "60J-OvMyHkWsfJZ6VIHwK" ;
+  ltb:stickyTekst "NRML (nog niet geaccepteerd)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/xdsslv5OQiPuW4CnsB2-g>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "xdsslv5OQiPuW4CnsB2-g" ;
+  ltb:stickyTekst "MIM 2.0 niveau 2 als input" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Gegevens" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/Q2PtA0H8BUdEqxwR6Lg_->
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Q2PtA0H8BUdEqxwR6Lg_-" ;
+  ltb:stickyTekst "NIAM" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/AWaSwq_DMyy_VaSoXwqFi>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "AWaSwq_DMyy_VaSoXwqFi" ;
+  ltb:stickyTekst "FCO-IM" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Gegevens" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/vZm8Cdev9Q4I-txj7tcvl>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "vZm8Cdev9Q4I-txj7tcvl" ;
+  ltb:stickyTekst "SHACL rules" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_yellow_bpmn_detail>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_yellow_bpmn_detail" ;
+  ltb:stickyTekst "BPMN (bevat meer dan alleen proces spec)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#facc15" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/7tC_E3YvU6rCxpVdsahgM>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "7tC_E3YvU6rCxpVdsahgM" ;
+  ltb:stickyTekst "DMN & Feel + Steel" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_yellow_orchestrat>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_yellow_orchestrat" ;
+  ltb:stickyTekst "Orchestratie G /\\R - P" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#facc15" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/Z8tR-eGmZBg5Q-UCSHqua>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Z8tR-eGmZBg5Q-UCSHqua" ;
+  ltb:stickyTekst "SAMENHANGEND MODEL van P - R - G" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#facc15" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_magenta_archimate>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_magenta_archimate" ;
+  ltb:stickyTekst "Archimate" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#f43f5e" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/gVw0-ocF1lJwqWFkSc36C>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "gVw0-ocF1lJwqWFkSc36C" ;
+  ltb:stickyTekst "Regelspeak" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/0utg8cgs1Q0oWRUGPcMwI>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "0utg8cgs1Q0oWRUGPcMwI" ;
+  ltb:stickyTekst "Flint (in ontw)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_pink_petri>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_pink_petri" ;
+  ltb:stickyTekst "Petri-net" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#fb7185" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/9TIBCR6LQt0EeHVfDNkoh>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "9TIBCR6LQt0EeHVfDNkoh" ;
+  ltb:stickyTekst "XSD/JSON SCHEMA" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#ffec99" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_yellow_regel_id>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_yellow_regel_id" ;
+  ltb:stickyTekst "Regel identificatie t.b.v. processen etc." ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#facc15" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/Ax10kATDGA3mRwhNw5P4c>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Ax10kATDGA3mRwhNw5P4c" ;
+  ltb:stickyTekst "open fisca" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_white_execute>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_white_execute" ;
+  ltb:stickyTekst "en ook executeerbaar ↗" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#fefce8" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/ZARx6NQ6O-QMtwnGK1Ws2>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "ZARx6NQ6O-QMtwnGK1Ws2" ;
+  ltb:stickyTekst "XSD/JSON SCHEMA" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/VaEVZ318as0K9MhcBvLRP>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "VaEVZ318as0K9MhcBvLRP" ;
+  ltb:stickyTekst "Regel-spraak" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/dfv2IkN2qkCoDFgWrnNTb>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "dfv2IkN2qkCoDFgWrnNTb" ;
+  ltb:stickyTekst "ER Dialecten" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/y8-Qy9lwPL2seKkZ0X4hz>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "y8-Qy9lwPL2seKkZ0X4hz" ;
+  ltb:stickyTekst "FBM" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Gegevens" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#be123c" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/2CLuWYya12qETVuiNWq_h>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "2CLuWYya12qETVuiNWq_h" ;
+  ltb:stickyTekst "Archimate (BOM)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Gegevens" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/y1kVK24I63V_vGHfb-IQD>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "y1kVK24I63V_vGHfb-IQD" ;
+  ltb:stickyTekst "ORM" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Gegevens" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/IYlXmrCwdNZWq-hj62F9c>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "IYlXmrCwdNZWq-hj62F9c" ;
+  ltb:stickyTekst "DMN + DRD voor inizicht in structuur" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#86efac" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/HzWq_z11BjkWLPxuWaMSl>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "HzWq_z11BjkWLPxuWaMSl" ;
+  ltb:stickyTekst "mist: link tussen DMN, Regelspraak, gegevens, begrippen, kennisbronnen" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#86efac" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/oK24EtEoEQM_FXdAnmOBQ>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "oK24EtEoEQM_FXdAnmOBQ" ;
+  ltb:stickyTekst "OWL" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_yellow_demo>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_yellow_demo" ;
+  ltb:stickyTekst "DEMO" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#facc15" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/SunKtXSrs3mJGu-gMxd4s>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "SunKtXSrs3mJGu-gMxd4s" ;
+  ltb:stickyTekst "Orchestratie koppelen gegevens & regels" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fefce8" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/QxLm2D5B7jHvVN03N5Ate>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "QxLm2D5B7jHvVN03N5Ate" ;
+  ltb:stickyTekst "SBVR" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/pGI51t7qgN0z19XDZp4Xd>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "pGI51t7qgN0z19XDZp4Xd" ;
+  ltb:stickyTekst "GEGEVENS (Type)  definitie opstellen obv CIM/SOM (MIM) (NLSBB)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/IuwjBzdC3AtSu-csKuLdV>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "IuwjBzdC3AtSu-csKuLdV" ;
+  ltb:stickyTekst "MIM 2.0 i.o." ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Gegevens" ;
+  ltb:taaktype ltt:SpecificerenGegevensbehoefte ;
+  ltb:stickyKleur "#f472b6" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/jz2qP3NF5Kge5VEmeg0-v>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "jz2qP3NF5Kge5VEmeg0-v" ;
+  ltb:stickyTekst "begrippen <-> regels (welke taal?)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_pink_uml>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_pink_uml" ;
+  ltb:stickyTekst "UML - Activity Diagram" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#fb7185" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/87tBmEB_p_tGnZMMEmU0N>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "87tBmEB_p_tGnZMMEmU0N" ;
+  ltb:stickyTekst "STTR" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/4rgeKb4nLLegA-V6XIXFY>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "4rgeKb4nLLegA-V6XIXFY" ;
+  ltb:stickyTekst "LegalRuleML" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/LoO-o9_vY8PZUaGFcAQWL>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "LoO-o9_vY8PZUaGFcAQWL" ;
+  ltb:stickyTekst "beslistabel (DMN)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/tF5s4V_x6cKfH-tSAn5Zq>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "tF5s4V_x6cKfH-tSAn5Zq" ;
+  ltb:stickyTekst "koppeling Archimate met geg verwerking & regeltoepassing" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "onbekend" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#fefce8" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_yellow_flint>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_yellow_flint" ;
+  ltb:stickyTekst "FLint" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#facc15" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/SOACUKTEYmfVsVHgkUDxK>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "SOACUKTEYmfVsVHgkUDxK" ;
+  ltb:stickyTekst "gegevens <-> regels (welke taal?)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sj1wgkCiP4YjNROL_wfz1>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sj1wgkCiP4YjNROL_wfz1" ;
+  ltb:stickyTekst "REGELS BEGUNSTIGD IN PROCESSTAPPEN (mens handeling/semiautom/automation)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#ef4444" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/r6lIaIjBtJ077X_fOGEQh>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "r6lIaIjBtJ077X_fOGEQh" ;
+  ltb:stickyTekst "Gegevensmodel (1)  = input voor (2) Regelmodel" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/sn_red_proces_regels>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "sn_red_proces_regels" ;
+  ltb:stickyTekst "een proces laat samenhang met regels en gegevens zien (liefst executeerbaar)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Processen" ;
+  ltb:taaktype ltt:SpecificerenProcessen ;
+  ltb:stickyKleur "#ef4444" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-3/sticky/f92zo_Md0T3ZqIOsuU11h>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "f92zo_Md0T3ZqIOsuU11h" ;
+  ltb:stickyTekst "en vice versa" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Specificeren Regels" ;
+  ltb:taaktype ltt:SpecificerenRegels ;
+  ltb:stickyKleur "#86efac" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-3/board/groep-3> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/JqZzluxeO_bbTeYM9Ta5U>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "JqZzluxeO_bbTeYM9Ta5U" ;
+  ltb:stickyTekst "Standaardiseren specificatie kwaliteit\" \"Toetsingskader\" (2)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/eci/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/E6JnDsAwHdVunFN8YbaGh>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "E6JnDsAwHdVunFN8YbaGh" ;
+  ltb:stickyTekst "J&V (en BD) Toetsingskaderobv ISO norm voor datakwaliteit" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/dPUFZadpgDAWMnoVyMd7T>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "dPUFZadpgDAWMnoVyMd7T" ;
+  ltb:stickyTekst "uitlegbare regels oftewel inzicht in de regels standaard voor nodig" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/xRg6n-90LEj1e6tNLRbWu>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "xRg6n-90LEj1e6tNLRbWu" ;
+  ltb:stickyTekst "SHACL (TOEKOMSTIG)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/RjstFSfahBGv0Cpvku6q8>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "RjstFSfahBGv0Cpvku6q8" ;
+  ltb:stickyTekst "Linting Tools (YAML, Python)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/d_z3ZyWMxcXcctmLOeenT>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "d_z3ZyWMxcXcctmLOeenT" ;
+  ltb:stickyTekst "Schema.json" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/pnVApradRbAPXo78Ji7Rm>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "pnVApradRbAPXo78Ji7Rm" ;
+  ltb:stickyTekst "KJAR" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/ccQX6yWGpmjhi1iK3e0U7>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "ccQX6yWGpmjhi1iK3e0U7" ;
+  ltb:stickyTekst "L3 Uitvoeren regels (3)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/Tw9AsIXe21fQYLugMEjyp>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Tw9AsIXe21fQYLugMEjyp" ;
+  ltb:stickyTekst "API's" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/mVvamPdQJxrXXg9ZZTrNn>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "mVvamPdQJxrXXg9ZZTrNn" ;
+  ltb:stickyTekst "Standaard voor geven van feedback op specificaties (1)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/eci/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/gCr6iGUwWQy-2kFvNXjko>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "gCr6iGUwWQy-2kFvNXjko" ;
+  ltb:stickyTekst "STTR" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/-af2DrrED8uEAg7vVuFTK>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "-af2DrrED8uEAg7vVuFTK" ;
+  ltb:stickyTekst "DMN + DRD" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/0LvGqTIEgHpHsslVC_1Ni>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "0LvGqTIEgHpHsslVC_1Ni" ;
+  ltb:stickyTekst "willekeurige programmeertaal" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/HJZf3EDcJ3cRgGU9kdD8R>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "HJZf3EDcJ3cRgGU9kdD8R" ;
+  ltb:stickyTekst "Checki tests" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/YekHtHcnlXJeKMg_P2OYp>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "YekHtHcnlXJeKMg_P2OYp" ;
+  ltb:stickyTekst "TMap" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fb7185" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/xlMjqc-dUqM0XzGIxbQTL>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "xlMjqc-dUqM0XzGIxbQTL" ;
+  ltb:stickyTekst "verbalisatie (gekoppeld aan FBM)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fb7185" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/PUjgNJ4lrdbmsrT9c4pqf>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "PUjgNJ4lrdbmsrT9c4pqf" ;
+  ltb:stickyTekst "DMN reasoner" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/gMlAP5XUhnupype35JiB8>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "gMlAP5XUhnupype35JiB8" ;
+  ltb:stickyTekst "RegelRecht Engine" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/AtH21wkd6bZNZbEy--E-J>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "AtH21wkd6bZNZbEy--E-J" ;
+  ltb:stickyTekst "DROOLS" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/4Wl10RSqg9yqbz-EzWQio>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "4Wl10RSqg9yqbz-EzWQio" ;
+  ltb:stickyTekst "open rules" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/swHS9YpMtwTJ-hA-3LkWV>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "swHS9YpMtwTJ-hA-3LkWV" ;
+  ltb:stickyTekst "regelspraak tests/simulators" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/6KkG4GOgEgzD6ItyRuRJ6>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "6KkG4GOgEgzD6ItyRuRJ6" ;
+  ltb:stickyTekst "Schematron" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/tCa6lhMEtXPJVL-HLLzBS>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "tCa6lhMEtXPJVL-HLLzBS" ;
+  ltb:stickyTekst "BPMN" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fb7185" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/pRwLCKXHKItEry0RO7kWn>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "pRwLCKXHKItEry0RO7kWn" ;
+  ltb:stickyTekst "Beslisboom" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#fb7185" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/f_4DvDXiIzmT9qZnZbdX->
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "f_4DvDXiIzmT9qZnZbdX-" ;
+  ltb:stickyTekst "Neb Amotatie standaard (voor comments)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/HeiTCsPlkLQ8oROpiV8jD>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "HeiTCsPlkLQ8oROpiV8jD" ;
+  ltb:stickyTekst "DMN speler / reasoner" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/4MXbvMclH9f6f7MfTx3n->
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "4MXbvMclH9f6f7MfTx3n-" ;
+  ltb:stickyTekst "BPEL" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fb7185" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/3z5jmAlGVhfEVs4ZD8qSP>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "3z5jmAlGVhfEVs4ZD8qSP" ;
+  ltb:stickyTekst "SHACL Rules" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/Jxa7j7fgrqIUOyBJ39y_8>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "Jxa7j7fgrqIUOyBJ39y_8" ;
+  ltb:stickyTekst "check op recente rechtspraak" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/41gzvKRy1Pia2dxN-LYMq>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "41gzvKRy1Pia2dxN-LYMq" ;
+  ltb:stickyTekst "AI/LLM (ondersteunend)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fb7185" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/84mw4vUa275FwsyhA7hCb>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "84mw4vUa275FwsyhA7hCb" ;
+  ltb:stickyTekst "Standaard \"wat is een uitvoeringsregel\"(los van de techniek)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/aqTiZLc1eneyLUl6S44J_>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "aqTiZLc1eneyLUl6S44J_" ;
+  ltb:stickyTekst "check op toekomstige regelgeving" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/l0_FiABpfKCjiGrSjrChH>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "l0_FiABpfKCjiGrSjrChH" ;
+  ltb:stickyTekst "ALEF als open source" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/UaZRqVeK-F2DR7hfC9Ild>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "UaZRqVeK-F2DR7hfC9Ild" ;
+  ltb:stickyTekst "Issue tracker" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fbbf24" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/BG0UsnOy80olVaPgLERAq>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "BG0UsnOy80olVaPgLERAq" ;
+  ltb:stickyTekst "Een standaard voor bol.com beslisondersteuning" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/JLVlRdXPBXMptqj4RcGcI>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "JLVlRdXPBXMptqj4RcGcI" ;
+  ltb:stickyTekst "Voorschriften voor unit tests" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fb7185" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/b34bcLRTATgzHjKFlMGVx>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "b34bcLRTATgzHjKFlMGVx" ;
+  ltb:stickyTekst "Rule engine certificeren op NL standaarden" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/d-45vqTUD4Rt_GGomzrO1>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "d-45vqTUD4Rt_GGomzrO1" ;
+  ltb:stickyTekst "welk soort bedrijfsregels zijn er? Welke  standaard past bij welke soort?" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/EB1H3djZEOtscXOe_omLP>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "EB1H3djZEOtscXOe_omLP" ;
+  ltb:stickyTekst "Vendor specifiek" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Beslisondersteuning" ;
+  ltb:taaktype ltt:Beslisondersteuning ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/eci/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/s91dY3JxA_puAH0v-lueU>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "s91dY3JxA_puAH0v-lueU" ;
+  ltb:stickyTekst "Verbalisatie (vrije vorm)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/WxalnspD4gQOeM6JgJvdP>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "WxalnspD4gQOeM6JgJvdP" ;
+  ltb:stickyTekst "Specificaties in samenhang houden door alle stappen heen..." ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/eci/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/29URgmXhr1lds9Pa1M4aE>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "29URgmXhr1lds9Pa1M4aE" ;
+  ltb:stickyTekst "iKnow Rules" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> .
+
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/y2pObnMUPoOEQwbtvm_o9>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "y2pObnMUPoOEQwbtvm_o9" ;
+  ltb:stickyTekst "Review Feedback (ondersteuning in excel)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/lA54HfSyyr3ewgeBMvLGW>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "lA54HfSyyr3ewgeBMvLGW" ;
+  ltb:stickyTekst "terugverwijzen naar de wet zodat je: - weet of je de hele wetcovert - weet wat je moet doen als de wet verandert" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Valideren Specificaties" ;
+  ltb:taaktype ltt:ValiderenSpecificaties ;
+  ltb:stickyKleur "#fef08a" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+ .
+<https://data.bp4mc2.org/id/ltb/groep-4/sticky/RRslJTbm1sI5NsKZQyYUZ>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "RRslJTbm1sI5NsKZQyYUZ" ;
+  ltb:stickyTekst "Open specs --> crowd feedback (centrale publicatie)" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Geautomatiseerde Regeluitvoering" ;
+  ltb:taaktype ltt:GeautomatiseerdeRegeluitvoering ;
+  ltb:stickyKleur "#bef264" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-4/board/groep-4> ;
+  
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> ;
+  ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> .

@@ -17,6 +17,7 @@ const NavBar: React.FC = () => {
       <Link to="/tasktypes" style={linkStyle('/tasktypes')}>Taaktypen</Link>
       <Link to="/organisations" style={linkStyle('/organisations')}>Organisaties</Link>
       <Link to="/definitions" style={linkStyle('/definitions')}>Definities</Link>
+      <Link to="/stickynotes" style={linkStyle('/stickynotes')}>Sticky Notes</Link>
       <Link to="/assistant" style={linkStyle('/assistant')}>Assistent</Link>
     </nav>
   );

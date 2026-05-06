@@ -1,0 +1,303 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+@prefix lt: <http://bp4mc2.org/lt#>.
+@prefix lto: <http://bp4mc2.org/lto#>.
+@prefix ltb: <http://bp4mc2.org/ltb#>.
+@prefix ltt: <http://bp4mc2.org/ltt#>.
+
+<http://bp4mc2.org/ltb#ontology>
+  a owl:Ontology ;
+  dct:title "Board notities ontologie"@nl ;
+  dct:creator "Brattinga, Van Dijk, Straver"@nl ;
+  dct:created "2026-05-05"^^xsd:date ;
+  owl:versionInfo "0.1.0" ;
+  rdfs:comment "Aparte ontologie voor boards en sticky notes, met verwijzingen naar juridische technologieen."@nl ;
+  owl:imports <http://bp4mc2.org/lt#ontology> .
+
+## ---------------------------------------------------------------------------------------------------------
+## Board model
+## ---------------------------------------------------------------------------------------------------------
+
+ltb:Board a owl:Class;
+  rdfs:label "Board"@nl
+.
+
+ltb:StickyNote a owl:Class;
+  rdfs:label "Sticky note"@nl
+.
+
+ltb:BoardShape a sh:NodeShape;
+  sh:targetClass ltb:Board;
+  rdfs:label "Board"@nl;
+  sh:property [
+    sh:order 1;
+    sh:path ltb:boardNaam;
+    rdfs:label "naam"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 2;
+    sh:path ltb:boardBron;
+    rdfs:label "bron"@nl;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 3;
+    sh:path ltb:boardExportDatum;
+    rdfs:label "export datum"@nl;
+    sh:maxCount 1;
+    sh:datatype xsd:date
+  ];
+  sh:property [
+    sh:order 4;
+    sh:path ltb:taakgroep;
+    rdfs:label "taakgroep"@nl;
+    sh:maxCount 1;
+    sh:node ltb:TaakgroepShape;
+    sh:nodeKind sh:IRI
+  ]
+.
+
+ltb:StickyNoteShape a sh:NodeShape;
+  sh:targetClass ltb:StickyNote;
+  rdfs:label "Sticky note"@nl;
+  sh:property [
+    sh:order 1;
+    sh:path ltb:stickyNoteId;
+    rdfs:label "notitie id"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 2;
+    sh:path ltb:stickyTekst;
+    rdfs:label "tekst"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 3;
+    sh:path ltb:stickyStatus;
+    rdfs:label "status"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:node ltb:StickyNoteStatussenShape;
+    sh:in (
+      lt:Opgenomen
+      lt:GeenJuridischeTechnologie
+      lt:Uitzoeken
+      lt:NaderTeBepalen
+    )
+  ];
+  sh:property [
+    sh:order 4;
+    sh:path ltb:sectieOpBoard;
+    rdfs:label "sectie op board"@nl;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 5;
+    sh:path ltb:stickyKleur;
+    rdfs:label "kleur"@nl;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 6;
+    sh:path ltb:omschrijvingAfhandeling;
+    rdfs:label "omschrijving afhandeling"@nl;
+    sh:maxCount 1;
+    sh:datatype xsd:string
+  ];
+  sh:property [
+    sh:order 7;
+    sh:path ltb:opBoard;
+    rdfs:label "op board"@nl;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:class ltb:Board;
+    sh:nodeKind sh:IRI
+  ];
+  sh:property [
+    sh:order 8;
+    sh:path ltb:taaktype;
+    rdfs:label "taaktype"@nl;
+    sh:maxCount 1;
+    sh:node ltb:TaaktypeShape;
+    sh:nodeKind sh:IRI
+  ];
+  sh:property [
+    sh:order 9;
+    sh:path ltb:verwijstNaarTechnologie;
+    rdfs:label "verwijst naar juridische technologie"@nl;
+    sh:maxCount 1;
+    sh:class lto:JuridischeTechnologie;
+    sh:nodeKind sh:IRI
+  ];
+  sh:property [
+    sh:order 10;
+    sh:path ltb:kandidaatTechnologie;
+    rdfs:label "kandidaat juridische technologie"@nl;
+    sh:class lto:JuridischeTechnologie;
+    sh:nodeKind sh:IRI
+  ]
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Properties
+## ---------------------------------------------------------------------------------------------------------
+
+ltb:boardNaam a owl:DatatypeProperty;
+  rdfs:label "board naam"@nl;
+  rdfs:domain ltb:Board;
+  rdfs:range xsd:string
+.
+
+ltb:boardBron a owl:DatatypeProperty;
+  rdfs:label "board bron"@nl;
+  rdfs:domain ltb:Board;
+  rdfs:range xsd:string
+.
+
+ltb:boardExportDatum a owl:DatatypeProperty;
+  rdfs:label "board export datum"@nl;
+  rdfs:domain ltb:Board;
+  rdfs:range xsd:date
+.
+
+ltb:stickyNoteId a owl:DatatypeProperty;
+  rdfs:label "sticky note id"@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range xsd:string
+.
+
+ltb:stickyTekst a owl:DatatypeProperty;
+  rdfs:label "tekst"@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range xsd:string
+.
+
+ltb:sectieOpBoard a owl:DatatypeProperty;
+  rdfs:label "sectie op board"@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range xsd:string
+.
+
+ltb:stickyKleur a owl:DatatypeProperty;
+  rdfs:label "kleur"@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range xsd:string
+.
+
+ltb:omschrijvingAfhandeling a owl:DatatypeProperty;
+  rdfs:label "omschrijving afhandeling"@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range xsd:string
+.
+
+ltb:stickyStatus a owl:ObjectProperty;
+  rdfs:label "status"@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range skos:Concept
+.
+
+ltb:opBoard a owl:ObjectProperty;
+  rdfs:label "op board"@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range ltb:Board
+.
+
+ltb:taaktype a owl:ObjectProperty;
+  rdfs:label "taaktype"@nl;
+  rdfs:comment "Relatie van een sticky note naar precies een taakconcept uit het taken-begrippenkader."@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range skos:Concept
+.
+
+ltb:verwijstNaarTechnologie a owl:ObjectProperty;
+  rdfs:label "verwijst naar juridische technologie"@nl;
+  rdfs:comment "Relatie van een sticky note naar een juridische technologie in de lto-ontologie."@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range lto:JuridischeTechnologie
+.
+
+ltb:kandidaatTechnologie a owl:ObjectProperty;
+  rdfs:label "kandidaat juridische technologie"@nl;
+  rdfs:comment "Niet-definitieve suggestie van een juridische technologie die mogelijk past bij de sticky note."@nl;
+  rdfs:domain ltb:StickyNote;
+  rdfs:range lto:JuridischeTechnologie
+.
+
+ltb:taakgroep a owl:ObjectProperty;
+  rdfs:label "taakgroep"@nl;
+  rdfs:comment "Relatie van een board naar een taakgroep (ordered collection van taakconcepten) uit het taken-begrippenkader."@nl;
+  rdfs:domain ltb:Board;
+  rdfs:range skos:OrderedCollection
+.
+
+## ---------------------------------------------------------------------------------------------------------
+## Sticky note statussen
+## ---------------------------------------------------------------------------------------------------------
+
+ltb:StickyNoteStatussen a skos:Collection;
+  rdfs:label "Sticky note statussen"@nl;
+  skos:prefLabel "Sticky note statussen"@nl;
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:definition "Enumeratie van mogelijke statussen van sticky notes op het board."@nl;
+  skos:member lt:Opgenomen, lt:GeenJuridischeTechnologie, lt:Uitzoeken, lt:NaderTeBepalen
+.
+
+lt:Opgenomen a skos:Concept;
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:prefLabel "Opgenomen"@nl
+.
+
+lt:GeenJuridischeTechnologie a skos:Concept;
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:prefLabel "Geen juridische technologie"@nl
+.
+
+lt:Uitzoeken a skos:Concept;
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:prefLabel "Uitzoeken"@nl
+.
+
+lt:NaderTeBepalen a skos:Concept;
+  skos:inScheme lt:BegrippenkaderCategorieen;
+  skos:prefLabel "Nader te bepalen"@nl
+.
+
+ltb:StickyNoteStatussenShape a sh:NodeShape;
+  rdfs:label "Sticky note statussen"@nl;
+  sh:property [
+    sh:path [ sh:inversePath skos:member ];
+    sh:hasValue ltb:StickyNoteStatussen
+  ]
+.
+
+ltb:TaaktypeShape a sh:NodeShape;
+  rdfs:label "Taaktype"@nl;
+  sh:property [
+    sh:path [ sh:inversePath skos:inScheme ];
+    sh:hasValue ltt:BegrippenkaderTaken
+  ]
+.
+
+ltb:TaakgroepShape a sh:NodeShape;
+  rdfs:label "Taakgroep"@nl;
+  sh:property [
+    sh:path [ sh:inversePath skos:inScheme ];
+    sh:hasValue ( ltt:Groep1 ltt:Groep2 ltt:Groep3 ltt:Groep4 )
+  ]
+.

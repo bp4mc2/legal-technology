@@ -9,6 +9,7 @@ from api.routes.legal_technology import blp as legal_technology_blp
 from api.routes.definition import blp as definition_blp
 from api.routes.organisation import blp as organisation_blp
 from api.routes.assistant import blp as assistant_blp
+from api.routes.sticky_notes import blp as sticky_notes_blp
 from api.services.graphdb_service import get_stats
 
 app = Flask(__name__)
@@ -38,6 +39,7 @@ api.register_blueprint(legal_technology_blp)
 api.register_blueprint(definition_blp)
 api.register_blueprint(organisation_blp)
 api.register_blueprint(assistant_blp)
+api.register_blueprint(sticky_notes_blp)
 
 # Register /api/stats at the app level
 @app.route('/api/stats')
@@ -63,6 +65,7 @@ def root():
             '/api/organisations/<iri>': 'Ophalen (GET), bijwerken (PUT), verwijderen (DELETE)',
             '/api/definitions': 'Lijst, toevoegen van SKOS-definities',
             '/api/definitions/<id>': 'Ophalen, bijwerken van SKOS-definities',
+            '/api/stickynotes': 'Lijst sticky notes met optionele filters (board, status, q, linkMode)',
             '/api/stats': 'Statistieken over technologieën'
         },
         'docs': 'Zie /api/docs voor documentatie.'

@@ -32,6 +32,7 @@ import StatisticsPanel from './components/StatisticsPanel';
 import EnumerationsFilter from './components/EnumerationsFilter';
 import AssistantPanel from './components/AssistantPanel';
 import OrganisatiesPanel from './components/OrganisatiesPanel';
+import StickyNotesPanel from './components/StickyNotesPanel';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -97,6 +98,15 @@ function EnumerationsPage() {
   );
 }
 
+function StickyNotesPage() {
+  return (
+    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 1300, margin: '2rem auto' }}>
+      <h2 style={{ marginTop: 0 }}>Sticky Notes</h2>
+      <StickyNotesPanel />
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
@@ -112,6 +122,7 @@ function App() {
             <Route path="/assistant" element={<AssistantPage />} />
             <Route path="/enumerations" element={<EnumerationsPage />} />
             <Route path="/definitions" element={<DefinitionsPage />} />
+            <Route path="/stickynotes" element={<StickyNotesPage />} />
           </Routes>
         </div>
       </div>
