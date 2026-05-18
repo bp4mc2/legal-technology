@@ -47,33 +47,28 @@ const ColorLegend: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h3 style={{ color: '#f9a825', fontWeight: 600, margin: 0 }}>Kleurenlegenda</h3>
+    <div className="lt-panel-shell lt-enum-panel">
+      <h3 className="lt-enum-title lt-enum-title--amber">Kleurenlegenda</h3>
       {loading && <p>Laden...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="text-danger mb-0">{error}</p>}
       {!loading && enums.length > 0 && (
-        <ul style={{ paddingLeft: 0, listStyle: 'none' }}>
+        <ul className="lt-enum-list">
           {enums.map(enumGroup => (
-            <li key={enumGroup.name} style={{ marginBottom: 8 }}>
-              <strong>{enumGroup.name}:</strong>
-              <span style={{ marginLeft: 8 }}>
+            <li key={enumGroup.name} className="lt-enum-item">
+              <div className="lt-enum-item-head">
+                <strong>{enumGroup.name}</strong>
+              </div>
+              <div className="lt-enum-chip-row">
                 {enumGroup.values.map(val => (
                   <span
                     key={val}
-                    style={{
-                      display: 'inline-block',
-                      background: colorMap[val] || '#eee',
-                      color: '#222',
-                      borderRadius: 4,
-                      padding: '2px 8px',
-                      marginRight: 6,
-                      fontSize: '0.95em',
-                    }}
+                    className="lt-enum-chip lt-enum-chip--legend"
+                    style={{ ['--lt-enum-chip-bg' as any]: colorMap[val] || '#eee' }}
                   >
                     {val}
                   </span>
                 ))}
-              </span>
+              </div>
             </li>
           ))}
         </ul>

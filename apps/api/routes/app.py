@@ -59,6 +59,8 @@ def root():
             '/api/legaltechnologies/search': 'Zoek juridische technologieën',
             '/api/legaltechnologies': 'Voeg toe (POST), lijst (GET)',
             '/api/legaltechnologies/<id>': 'Ophalen (GET), bijwerken (PUT), verwijderen (DELETE)',
+            '/api/legaltechnologies/export/all.ttl': 'Download de volledige named graph als Turtle',
+            '/api/legaltechnologies/export/sync': 'Sla named graph en bundle exports op in de data-map (POST)',
             '/api/legaltechnologies/enumerations': 'Lijst van enumeraties',
             '/api/legaltechnologies/tasktypes': 'Lijst van taaktypen met beschrijving',
             '/api/organisations': 'Voeg toe (POST), lijst (GET)',

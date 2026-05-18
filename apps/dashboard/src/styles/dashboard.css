@@ -1,0 +1,255 @@
+html {
+  font-size: var(--lt-font-size);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--lt-page-bg);
+  color: var(--lt-text);
+  font-family: var(--lt-font-family);
+}
+
+.app-shell {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--lt-page-bg);
+  color: var(--lt-text);
+}
+
+.app-shell h1,
+.app-shell h2,
+.app-shell h3,
+.app-shell h4,
+.app-shell h5,
+.app-shell h6 {
+  color: var(--lt-heading);
+  font-weight: var(--lt-font-weight-medium);
+  line-height: 1.45;
+}
+
+.app-shell label,
+.app-shell button,
+.app-shell input,
+.app-shell select,
+.app-shell textarea {
+  font: inherit;
+  line-height: 1.5;
+}
+
+.app-shell .btn,
+.app-shell .form-control,
+.app-shell .form-select,
+.app-shell .alert,
+.app-shell .card,
+.app-shell .table,
+.app-shell .badge {
+  border-radius: var(--lt-radius-md);
+}
+
+.app-shell .btn {
+  font-weight: var(--lt-font-weight-medium);
+}
+
+.app-shell .btn-primary {
+  background: var(--lt-primary);
+  border-color: var(--lt-primary);
+  color: var(--lt-primary-foreground);
+}
+
+.app-shell .btn-outline-primary {
+  color: var(--lt-primary);
+  border-color: var(--lt-primary-border);
+}
+
+.app-shell .btn-outline-primary:hover,
+.app-shell .btn-outline-primary:focus-visible {
+  background: var(--lt-primary-soft);
+  border-color: var(--lt-primary);
+  color: var(--lt-primary);
+}
+
+.app-shell .btn-outline-secondary {
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+.app-shell .btn-outline-danger {
+  color: var(--lt-destructive);
+  border-color: rgba(212, 24, 61, 0.25);
+}
+
+.app-shell .form-control,
+.app-shell .form-select {
+  border-color: var(--lt-border);
+  background: var(--lt-card);
+  box-shadow: none;
+}
+
+.app-shell .form-control:focus,
+.app-shell .form-select:focus,
+.app-shell textarea:focus,
+.app-shell input:focus,
+.app-shell select:focus {
+  border-color: var(--lt-primary-border);
+  box-shadow: 0 0 0 0.2rem var(--lt-ring);
+}
+
+.app-shell .card {
+  border-color: var(--lt-border);
+  box-shadow: var(--lt-shadow-1);
+}
+
+.app-shell .card-header {
+  background: var(--lt-surface-soft);
+  border-bottom-color: var(--lt-border-soft);
+}
+
+.app-shell .table thead th {
+  color: var(--lt-text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.app-shell .badge {
+  font-weight: var(--lt-font-weight-medium);
+}
+
+.app-shell .alert {
+  border-radius: var(--lt-radius-md);
+  border: 1px solid transparent;
+}
+
+.app-shell .alert-danger {
+  border-color: rgba(212, 24, 61, 0.14);
+}
+
+.app-shell .alert-success {
+  border-color: rgba(21, 128, 61, 0.14);
+}
+
+.app-content {
+  margin: 2rem;
+}
+
+.app-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--lt-border);
+  backdrop-filter: blur(14px);
+}
+
+.app-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+}
+
+.app-nav-brand {
+  color: var(--lt-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.app-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.app-nav-link {
+  padding: 0.5rem 0.85rem;
+  color: var(--lt-text-muted);
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.app-nav-link:hover {
+  background: var(--lt-surface-soft);
+  color: var(--lt-heading);
+}
+
+.app-nav-link.is-active {
+  background: var(--lt-primary-soft);
+  color: var(--lt-primary);
+  font-weight: 700;
+}
+
+.page-card {
+  background: var(--lt-surface);
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-lg);
+  box-shadow: var(--lt-shadow-1);
+  padding: 1.5rem;
+  margin: 2rem auto;
+}
+
+.page-card--flush {
+  margin: 0;
+}
+
+.page-card--sm {
+  max-width: 600px;
+}
+
+.page-card--md {
+  max-width: 800px;
+}
+
+.page-card--lg {
+  max-width: 900px;
+}
+
+.page-card--xl {
+  max-width: 1100px;
+}
+
+.page-card--xxl {
+  max-width: 1300px;
+}
+
+.page-heading {
+  margin-top: 0;
+}
+
+.overview-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.overview-main {
+  flex: 2;
+}
+
+.overview-block {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 960px) {
+  .app-nav-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .app-content {
+    margin: 1rem;
+  }
+
+  .overview-layout {
+    display: block;
+  }
+}

@@ -1,0 +1,7 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/8ed6441a-9063-493d-9fca-6cb45a786557> .
+<https://data.bp4mc2.org/id/lto/organisatie/8ed6441a-9063-493d-9fca-6cb45a786557> <http://bp4mc2.org/lto#contactinformatie> "www.tno.nl" .
+<https://data.bp4mc2.org/id/lto/organisatie/8ed6441a-9063-493d-9fca-6cb45a786557> <http://bp4mc2.org/lto#naamOrganisatie> "TNO" .
+<https://data.bp4mc2.org/id/lto/organisatie/8ed6441a-9063-493d-9fca-6cb45a786557> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Organisatie> .

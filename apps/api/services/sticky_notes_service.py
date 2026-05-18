@@ -73,6 +73,7 @@ def list_sticky_notes(
     q: Optional[str] = None,
     link_mode: Optional[str] = None,
     note_uri: Optional[str] = None,
+    technology_uri: Optional[str] = None,
 ) -> List[Dict]:
     sparql = f'''
     PREFIX ltb: <http://bp4mc2.org/ltb#>
@@ -165,6 +166,7 @@ def list_sticky_notes(
     status_filter = (status or "").strip().lower()
     text_filter = (q or "").strip().lower()
     mode = (link_mode or "all").strip().lower()
+    technology_filter = (technology_uri or "").strip().lower()
 
     filtered: List[Dict] = []
     for note in notes:
@@ -200,6 +202,15 @@ def list_sticky_notes(
 
         if note_uri and note.get("uri") != note_uri:
             continue
+
+        if technology_filter:
+            linked_uri = (note.get("linkedTechnology", {}).get("uri") or "").strip().lower()
+            candidate_uris = [
+                (candidate.get("uri") or "").strip().lower()
+                for candidate in note.get("candidateTechnologies", [])
+            ]
+            if linked_uri != technology_filter and technology_filter not in candidate_uris:
+                continue
 
         filtered.append(note)
 

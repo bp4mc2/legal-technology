@@ -22,6 +22,17 @@ type Organisation = {
   contactinformatie?: string;
 };
 
+type TechRef = {
+  uri: string;
+  name: string;
+};
+
+type StickyNote = {
+  uri: string;
+  linkedTechnology: TechRef;
+  candidateTechnologies: TechRef[];
+};
+
 type LegalTechnology = {
   id?: string;
   subtype?: 'JuridischeTechnologie' | 'Methode' | 'Standaard' | 'Tool';
@@ -62,6 +73,25 @@ const SUBTYPE_COLORS: Record<string, string> = {
   JuridischeTechnologie: 'secondary',
 };
 
+const normalizeForCompare = (value?: string) =>
+  decodeURIComponent((value || '').trim()).toLowerCase();
+
+const compactIdentifier = (value?: string) => {
+  const cleaned = decodeURIComponent((value || '').trim());
+  if (!cleaned) {
+    return '';
+  }
+  const hash = cleaned.lastIndexOf('#');
+  if (hash >= 0 && hash < cleaned.length - 1) {
+    return cleaned.slice(hash + 1).toLowerCase();
+  }
+  const slash = cleaned.lastIndexOf('/');
+  if (slash >= 0 && slash < cleaned.length - 1) {
+    return cleaned.slice(slash + 1).toLowerCase();
+  }
+  return cleaned.toLowerCase();
+};
+
 const StatusBadge: React.FC<{ value: string }> = ({ value }) => {
   const color = STATUS_COLORS[value] ?? 'secondary';
   return <span className={`badge bg-${color}`}>{value || '-'}</span>;
@@ -83,11 +113,14 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
   const [items, setItems] = useState<LegalTechnology[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [exportMessage, setExportMessage] = useState<string | null>(null);
+  const [exportBusy, setExportBusy] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState('');
   const [formMode, setFormMode] = useState<'add' | 'edit'>('add');
   const [selectedForComparison, setSelectedForComparison] = useState<Set<string>>(new Set());
   const [comparisonDetails, setComparisonDetails] = useState<Record<string, LegalTechnology>>({});
+  const [stickyNotes, setStickyNotes] = useState<StickyNote[]>([]);
 
   const triggerDownload = (content: string, filename: string, contentType: string) => {
     const blob = new Blob([content], { type: contentType });
@@ -114,8 +147,65 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
     }
   };
 
+  const downloadNamedGraph = async () => {
+    setExportBusy(true);
+    setError(null);
+    setExportMessage(null);
+    try {
+      const turtle = await apiFetchText('/api/legaltechnologies/export/all.ttl');
+      triggerDownload(turtle, 'all-legal-technologies.ttl', 'text/turtle;charset=utf-8');
+      setExportMessage('Named graph download gestart.');
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setExportBusy(false);
+    }
+  };
+
+  const syncExports = async () => {
+    setExportBusy(true);
+    setError(null);
+    setExportMessage(null);
+    try {
+      const result = await apiFetch<{
+        legal_technology_bundles: number;
+        organisation_bundles: number;
+      }>('/api/legaltechnologies/export/sync', { method: 'POST' });
+      setExportMessage(
+        `Exports bijgewerkt: ${result.legal_technology_bundles} legal technology bundles en ${result.organisation_bundles} organisatiebundles.`,
+      );
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setExportBusy(false);
+    }
+  };
+
   useEffect(() => {
     fetchItems();
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const fetchStickyNotes = async () => {
+      try {
+        const data = await apiFetch<StickyNote[]>('/api/stickynotes');
+        if (!cancelled) {
+          setStickyNotes(data);
+        }
+      } catch {
+        if (!cancelled) {
+          setStickyNotes([]);
+        }
+      }
+    };
+
+    fetchStickyNotes();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleDelete = async (id?: string) => {
@@ -290,16 +380,73 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
     [selectedForComparison, comparisonDetails, items],
   );
 
+  const stickyCountsByTechnology = useMemo(() => {
+    const counts: Record<string, { definitive: number; candidate: number }> = {};
+
+    const increment = (key: string, field: 'definitive' | 'candidate') => {
+      if (!key) {
+        return;
+      }
+      if (!counts[key]) {
+        counts[key] = { definitive: 0, candidate: 0 };
+      }
+      counts[key][field] += 1;
+    };
+
+    stickyNotes.forEach((note) => {
+      const definitiveKeys = new Set<string>([
+        normalizeForCompare(note.linkedTechnology?.uri),
+        compactIdentifier(note.linkedTechnology?.uri),
+      ]);
+      definitiveKeys.forEach((key) => increment(key, 'definitive'));
+
+      note.candidateTechnologies.forEach((candidate) => {
+        const candidateKeys = new Set<string>([
+          normalizeForCompare(candidate?.uri),
+          compactIdentifier(candidate?.uri),
+        ]);
+        candidateKeys.forEach((key) => increment(key, 'candidate'));
+      });
+    });
+
+    return counts;
+  }, [stickyNotes]);
+
+  const getStickyCounts = (itemId?: string) => {
+    const normalized = normalizeForCompare(itemId);
+    const compact = compactIdentifier(itemId);
+    const primary = stickyCountsByTechnology[normalized] || { definitive: 0, candidate: 0 };
+    const secondary = stickyCountsByTechnology[compact] || { definitive: 0, candidate: 0 };
+
+    const definitive = primary.definitive + (compact && compact !== normalized ? secondary.definitive : 0);
+    const candidate = primary.candidate + (compact && compact !== normalized ? secondary.candidate : 0);
+
+    return {
+      definitive,
+      candidate,
+      total: definitive + candidate,
+    };
+  };
+
   return (
-    <div className="p-3 bg-white rounded shadow-sm">
-      <div className="d-flex align-items-center justify-content-between mb-3">
+    <div className="lt-list-panel">
+      <div className="lt-list-toolbar">
         <h4 className="mb-0 fw-semibold text-primary">Juridische Technologieen</h4>
-        <button className="btn btn-primary btn-sm" onClick={handleAdd} disabled={loading}>
-          + Nieuwe technologie
-        </button>
+        <div className="lt-list-actions">
+          <button className="btn btn-sm btn-outline-secondary" onClick={downloadNamedGraph} disabled={loading || exportBusy}>
+            Download named graph
+          </button>
+          <button className="btn btn-sm btn-outline-primary" onClick={syncExports} disabled={loading || exportBusy}>
+            Sync exports
+          </button>
+          <button className="btn btn-primary btn-sm" onClick={handleAdd} disabled={loading || exportBusy}>
+            + Nieuwe technologie
+          </button>
+        </div>
       </div>
 
       {error && <div className="alert alert-danger">{error}</div>}
+      {exportMessage && <div className="alert alert-success">{exportMessage}</div>}
 
       <form onSubmit={handleSearch} className="d-flex gap-2 mb-3">
         <input
@@ -341,7 +488,7 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
       )}
 
       {variant === 'cards' && selectedForComparison.size > 0 && (
-        <div className="mt-4 mb-4 p-3 border rounded bg-light">
+        <div className="lt-list-comparison mt-4 mb-4 p-3">
           <div className="d-flex align-items-center justify-content-between mb-3">
             <h5 className="mb-0 fw-semibold text-primary">
               Vergelijken: {comparisonItems.length} technologie{comparisonItems.length !== 1 ? 'en' : ''}
@@ -391,7 +538,7 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
           Laden...
         </div>
       ) : items.length === 0 ? (
-        <div className="text-center py-5 text-muted">
+        <div className="lt-list-empty text-center py-5">
           <div className="fs-5 mb-1">Geen technologieen gevonden</div>
           <small>Gebruik de knop hierboven om een nieuwe technologie toe te voegen.</small>
         </div>
@@ -401,10 +548,11 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
             const id = item.id || `idx-${idx}`;
             const checked = selectedForComparison.has(id);
             const disableCheck = selectedForComparison.size >= 4 && !checked;
+            const stickyCounts = getStickyCounts(item.id);
             return (
               <div key={id} className="col-md-6 col-xl-4">
-                <div className="card h-100 shadow-sm border-0">
-                  <div className="card-header bg-white d-flex justify-content-between align-items-start">
+                <div className="lt-list-card card h-100">
+                  <div className="lt-list-card-header card-header d-flex justify-content-between align-items-start">
                     <div className="pe-2">
                       <div className="fw-semibold">{item.naam}</div>
                       <small className="text-muted">{item.abbrevation || item.id}</small>
@@ -424,6 +572,17 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                     <div className="d-flex gap-2 mb-2">
                       <SubtypeBadge value={item.subtype} />
                       <StatusBadge value={item.gebruiksstatus} />
+                    </div>
+                    <div className="d-flex gap-2 mb-2 flex-wrap">
+                      <span className={`badge ${stickyCounts.total > 0 ? 'text-bg-primary' : 'text-bg-light'}`}>
+                        Sticky notes: {stickyCounts.total}
+                      </span>
+                      {stickyCounts.definitive > 0 && (
+                        <span className="badge text-bg-success">Definitief: {stickyCounts.definitive}</span>
+                      )}
+                      {stickyCounts.candidate > 0 && (
+                        <span className="badge text-bg-warning text-dark">Kandidaat: {stickyCounts.candidate}</span>
+                      )}
                     </div>
                     <p className="small text-muted mb-3" style={{ minHeight: 42 }}>
                       {item.omschrijving || '-'}
@@ -450,7 +609,7 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
         </div>
       ) : (
         <div className="table-responsive">
-          <table className="table table-sm table-hover align-middle mb-0">
+          <table className="lt-list-table table table-sm table-hover align-middle mb-0">
             <thead className="table-light">
               <tr>
                 <th style={{ minWidth: 220 }}>Naam</th>
@@ -467,6 +626,24 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                   <td>
                     <div className="fw-semibold">{item.naam}</div>
                     <small className="text-muted">{item.abbrevation || item.id}</small>
+                    <div className="mt-1">
+                      {(() => {
+                        const stickyCounts = getStickyCounts(item.id);
+                        return (
+                          <div className="d-flex gap-1 flex-wrap">
+                            <span className={`badge ${stickyCounts.total > 0 ? 'text-bg-primary' : 'text-bg-light'}`}>
+                              Sticky: {stickyCounts.total}
+                            </span>
+                            {stickyCounts.definitive > 0 && (
+                              <span className="badge text-bg-success">D: {stickyCounts.definitive}</span>
+                            )}
+                            {stickyCounts.candidate > 0 && (
+                              <span className="badge text-bg-warning text-dark">K: {stickyCounts.candidate}</span>
+                            )}
+                          </div>
+                        );
+                      })()}
+                    </div>
                   </td>
                   <td><SubtypeBadge value={item.subtype} /></td>
                   <td><StatusBadge value={item.gebruiksstatus} /></td>

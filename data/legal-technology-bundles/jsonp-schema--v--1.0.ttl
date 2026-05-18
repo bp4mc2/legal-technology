@@ -1,0 +1,24 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010543 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010544 <http://bp4mc2.org/lto#versienummer> "1.0" .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/documentatie/e887d014-8cae-48b3-bb1d-a28dba033481> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/bronverwijzing/fb9475dc-f8e7-4ef0-aff4-b01e597cdc82> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/taakinvulling/c18cd442-cfba-4188-9dbf-177b748a8096> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#naam> "JSON Schema Definition" .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#omschrijving> "JSON Schema is een declaratieve taal voor het definiëren van de structuur, inhoud en beperkingen van JSON‑data. Het biedt een gestandaardiseerde manier om JSON‑gegevens te valideren en te documenteren, wat zorgt voor consistentie en interoperabiliteit tussen systemen. JSON Schema wordt veel gebruikt bij API’s, configuratiebestanden en datavalidatieprocessen." .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010543 .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010544 .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "JSON Schema Definition"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/bronverwijzing/fb9475dc-f8e7-4ef0-aff4-b01e597cdc82> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/documentatie/e887d014-8cae-48b3-bb1d-a28dba033481> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/taakinvulling/c18cd442-cfba-4188-9dbf-177b748a8096> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/taakinvulling/c18cd442-cfba-4188-9dbf-177b748a8096> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/taakinvulling/c18cd442-cfba-4188-9dbf-177b748a8096> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

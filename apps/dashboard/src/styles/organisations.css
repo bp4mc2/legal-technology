@@ -1,0 +1,26 @@
+.lt-org-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.lt-org-title {
+  margin-top: 0;
+  color: #0d6efd;
+}
+
+.lt-org-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lt-org-form {
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-lg);
+  background: #fff;
+  padding: 1rem;
+}
+
+.lt-org-form-group {
+  margin-bottom: 1rem;
+}

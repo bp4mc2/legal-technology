@@ -1,0 +1,7 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/91bad084-f0ef-40d6-b929-8fa2fa919b2b> .
+<https://data.bp4mc2.org/id/lto/organisatie/91bad084-f0ef-40d6-b929-8fa2fa919b2b> <http://bp4mc2.org/lto#contactinformatie> "https://www.ifla.org/" .
+<https://data.bp4mc2.org/id/lto/organisatie/91bad084-f0ef-40d6-b929-8fa2fa919b2b> <http://bp4mc2.org/lto#naamOrganisatie> "International Federation of Library Associations and Institutions (IFLA)" .
+<https://data.bp4mc2.org/id/lto/organisatie/91bad084-f0ef-40d6-b929-8fa2fa919b2b> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Organisatie> .

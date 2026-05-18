@@ -1,7 +1,24 @@
 """Service for managing lto:Organisatie resources."""
 
 from .graphdb_client import sparql_query, sparql_update
+from .bundle_export_service import (
+    GRAPH_URI,
+    export_named_graph_turtle,
+    remove_organisation_bundle,
+    write_named_graph_export,
+    write_organisation_bundle,
+)
 import uuid
+
+
+def _sync_exports_after_organisation_change(iri=None, deleted_iri=None):
+    write_named_graph_export(export_named_graph_turtle(GRAPH_URI))
+    if deleted_iri:
+        remove_organisation_bundle(deleted_iri)
+    if iri:
+        turtle = export_organisation_turtle(iri)
+        if turtle is not None:
+            write_organisation_bundle(iri, turtle)
 
 
 def list_organisations():
@@ -81,11 +98,13 @@ def add_organisation(data):
     '''
     try:
         sparql_update(insert, graph_uri=graph_uri)
-        return {
+        result = {
             'iri': org_iri,
             'naam': naam,
             'contactinformatie': contact
         }
+        _sync_exports_after_organisation_change(iri=org_iri)
+        return result
     except Exception as e:
         print(f"[DEBUG] Exception in add_organisation: {e}")
         raise
@@ -120,11 +139,13 @@ def update_organisation(iri, data):
     try:
         sparql_update(delete, graph_uri=graph_uri)
         sparql_update(insert, graph_uri=graph_uri)
-        return {
+        result = {
             'iri': iri,
             'naam': naam,
             'contactinformatie': contact
         }
+        _sync_exports_after_organisation_change(iri=iri)
+        return result
     except Exception as e:
         print(f"[DEBUG] Exception in update_organisation: {e}")
         raise
@@ -148,6 +169,7 @@ def delete_organisation(iri):
     '''
     try:
         sparql_update(delete, graph_uri=graph_uri)
+        _sync_exports_after_organisation_change(deleted_iri=iri)
         return current
     except Exception as e:
         print(f"[DEBUG] Exception in delete_organisation: {e}")

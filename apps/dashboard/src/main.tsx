@@ -1,8 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/index.css';
 import DefinitionsPanel from './components/DefinitionsPanel';
 function DefinitionsPage() {
   return (
-    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 800, margin: '2rem auto' }}>
+    <div className="page-card page-card--md">
       <DefinitionsPanel />
     </div>
   );
@@ -10,8 +11,8 @@ function DefinitionsPage() {
 
 function OrganisatiesPage() {
   return (
-    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 800, margin: '2rem auto' }}>
-      <h2 style={{ marginTop: 0 }}>Organisaties</h2>
+    <div className="page-card page-card--md">
+      <h2 className="page-heading">Organisaties</h2>
       <OrganisatiesPanel />
     </div>
   );
@@ -38,14 +39,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function OverviewPage() {
   return (
-    <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
-      <div style={{ flex: 2 }}>
-        <section style={{ marginBottom: '2rem', background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem' }}>
-          <h2 style={{ marginTop: 0 }}>Statistieken & Overzicht</h2>
+    <div className="overview-layout">
+      <div className="overview-main">
+        <section className="page-card page-card--flush overview-block">
+          <h2 className="page-heading">Statistieken & Overzicht</h2>
           <StatisticsPanel />
         </section>
-        <section style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem' }}>
-          <h2 style={{ marginTop: 0 }}>Juridische Technologieën</h2>
+        <section className="page-card page-card--flush">
+          <h2 className="page-heading">Juridische Technologieën</h2>
           <LegalTechnologyList variant="cards" />
         </section>
       </div>
@@ -55,8 +56,8 @@ function OverviewPage() {
 
 function LegalTechnologiesPage() {
   return (
-    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 900, margin: '2rem auto' }}>
-      <h2 style={{ marginTop: 0 }}>Juridische Technologieën</h2>
+    <div className="page-card page-card--lg">
+      <h2 className="page-heading">Juridische Technologieën</h2>
       <LegalTechnologyList variant="list" />
     </div>
   );
@@ -64,8 +65,8 @@ function LegalTechnologiesPage() {
 
 function TaskTypesPage() {
   return (
-    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 1100, margin: '2rem auto' }}>
-      <h2 style={{ marginTop: 0 }}>Taaktypen</h2>
+    <div className="page-card page-card--xl">
+      <h2 className="page-heading">Taaktypen</h2>
       <LegalTechnologyByTasktype />
     </div>
   );
@@ -73,8 +74,8 @@ function TaskTypesPage() {
 
 function StatsPage() {
   return (
-    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 600, margin: '2rem auto' }}>
-      <h2 style={{ marginTop: 0 }}>Statistieken</h2>
+    <div className="page-card page-card--sm">
+      <h2 className="page-heading">Statistieken</h2>
       <StatisticsPanel />
     </div>
   );
@@ -82,8 +83,8 @@ function StatsPage() {
 
 function AssistantPage() {
   return (
-    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 600, margin: '2rem auto' }}>
-      <h2 style={{ marginTop: 0 }}>Assistent</h2>
+    <div className="page-card page-card--sm">
+      <h2 className="page-heading">Assistent</h2>
       <AssistantPanel />
     </div>
   );
@@ -91,8 +92,8 @@ function AssistantPage() {
 
 function EnumerationsPage() {
   return (
-    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 600, margin: '2rem auto' }}>
-      <h2 style={{ marginTop: 0 }}>Filter op Enumeraties</h2>
+    <div className="page-card page-card--sm">
+      <h2 className="page-heading">Filter op Enumeraties</h2>
       <EnumerationsFilter />
     </div>
   );
@@ -100,8 +101,8 @@ function EnumerationsPage() {
 
 function StickyNotesPage() {
   return (
-    <div style={{ background: 'white', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: '1.5rem', maxWidth: 1300, margin: '2rem auto' }}>
-      <h2 style={{ marginTop: 0 }}>Sticky Notes</h2>
+    <div className="page-card page-card--xxl">
+      <h2 className="page-heading">Sticky Notes</h2>
       <StickyNotesPanel />
     </div>
   );
@@ -110,9 +111,9 @@ function StickyNotesPage() {
 function App() {
   return (
     <Router>
-      <div style={{ fontFamily: 'sans-serif', margin: '0', background: '#f5f6fa', minHeight: '100vh' }}>
+      <div className="app-shell">
         <NavBar />
-        <div style={{ margin: '2rem' }}>
+        <div className="app-content">
           <Routes>
             <Route path="/" element={<OverviewPage />} />
             <Route path="/legaltechnologies" element={<LegalTechnologiesPage />} />

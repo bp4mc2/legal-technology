@@ -26,6 +26,13 @@ type StickyNote = {
   candidateTechnologies: TechRef[];
 };
 
+type EnumerationValue = string | { label?: string; iri?: string; value?: string };
+
+type EnumerationResponse = {
+  name: string;
+  values: EnumerationValue[];
+};
+
 const STATUS_COLORS: Record<string, string> = {
   Opgenomen: '#16a34a',
   'Geen Juridische Technologie': '#6b7280',
@@ -34,19 +41,21 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 const statusChipStyle = (status: string): React.CSSProperties => ({
-  background: STATUS_COLORS[status] || '#6b7280',
-  color: '#fff',
-  borderRadius: 999,
-  padding: '0.2rem 0.55rem',
-  fontSize: '0.78rem',
-  fontWeight: 700,
-  display: 'inline-block',
+  ['--lt-sticky-status-bg' as any]: STATUS_COLORS[status] || '#6b7280',
 });
+
+const noteColorStyle = (color?: string): React.CSSProperties => ({
+  ['--lt-sticky-note-bg' as any]: color || '#fde68a',
+});
+
 
 const StickyNotesPanel: React.FC = () => {
   const [notes, setNotes] = useState<StickyNote[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [allStatuses, setAllStatuses] = useState<{ label: string; iri: string }[]>([]);
+  const [allStatusIriByLabel, setAllStatusIriByLabel] = useState<Record<string, string>>({});
 
   const [search, setSearch] = useState('');
   const [boardFilter, setBoardFilter] = useState('all');
@@ -66,6 +75,46 @@ const StickyNotesPanel: React.FC = () => {
   const [loadingSuggestions, setLoadingSuggestions] = useState(false);
   const [saving, setSaving] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
+
+  // Ophalen van alle mogelijke statussen uit enumeratie endpoint
+  useEffect(() => {
+    const fetchStatuses = async () => {
+      try {
+        const data = await apiFetch<EnumerationResponse>(
+          '/api/legaltechnologies/enumerations/StickyNoteStatussen'
+        );
+        const normalized = (data.values || []).reduce<{ label: string; iri: string }[]>((acc, item) => {
+          if (typeof item === 'string') {
+            acc.push({ label: item, iri: '' });
+            return acc;
+          }
+
+          const label = (item.label || item.value || '').trim();
+          if (!label) {
+            return acc;
+          }
+
+          acc.push({ label, iri: (item.iri || '').trim() });
+          return acc;
+        }, []);
+
+        setAllStatuses(normalized);
+        const mapping: Record<string, string> = {};
+        normalized.forEach((s) => {
+          if (s.iri) {
+            mapping[s.label] = s.iri;
+          }
+        });
+        setAllStatusIriByLabel(mapping);
+      } catch (e) {
+        console.warn('Kon StickyNoteStatussen niet ophalen via enumerations endpoint', e);
+        // fallback: geen statussen
+        setAllStatuses([]);
+        setAllStatusIriByLabel({});
+      }
+    };
+    fetchStatuses();
+  }, []);
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -88,20 +137,24 @@ const StickyNotesPanel: React.FC = () => {
     [notes],
   );
 
+
+  // Toon altijd alle statussen uit enumeratie, niet alleen uit sticky notes
   const statuses = useMemo(
-    () => Array.from(new Set(notes.map((n) => n.status).filter(Boolean))).sort(),
-    [notes],
+    () => allStatuses.map((s) => s.label),
+    [allStatuses]
   );
 
+
+  // Gebruik mapping uit enumeratie endpoint, met fallback op reeds geladen notes
   const statusIriByLabel = useMemo(() => {
-    const mapping: Record<string, string> = {};
+    const mapping: Record<string, string> = { ...allStatusIriByLabel };
     notes.forEach((note) => {
       if (note.status && note.statusIri && !mapping[note.status]) {
         mapping[note.status] = note.statusIri;
       }
     });
     return mapping;
-  }, [notes]);
+  }, [allStatusIriByLabel, notes]);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -275,56 +328,42 @@ const StickyNotesPanel: React.FC = () => {
   }
 
   if (error) {
-    return <div style={{ color: '#b00020' }}>{error}</div>;
+    return <div className="lt-sticky-error">{error}</div>;
   }
 
   return (
-    <div>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-          gap: '0.75rem',
-          marginBottom: '1rem',
-        }}
-      >
-        <div style={{ background: '#f5f6fa', borderRadius: 8, padding: '0.75rem' }}>
-          <div style={{ fontSize: '0.85rem', opacity: 0.8 }}>Totaal</div>
-          <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{summary.total}</div>
+    <div className="lt-panel-shell lt-sticky-shell">
+      <div className="lt-sticky-summary-grid">
+        <div className="lt-sticky-summary-card">
+          <div className="lt-sticky-summary-label">Totaal</div>
+          <div className="lt-sticky-summary-value">{summary.total}</div>
         </div>
-        <div style={{ background: '#f5f6fa', borderRadius: 8, padding: '0.75rem' }}>
-          <div style={{ fontSize: '0.85rem', opacity: 0.8 }}>Gekoppeld</div>
-          <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{summary.linkedCount}</div>
+        <div className="lt-sticky-summary-card">
+          <div className="lt-sticky-summary-label">Gekoppeld</div>
+          <div className="lt-sticky-summary-value">{summary.linkedCount}</div>
         </div>
-        <div style={{ background: '#f5f6fa', borderRadius: 8, padding: '0.75rem' }}>
-          <div style={{ fontSize: '0.85rem', opacity: 0.8 }}>Kandidaten</div>
-          <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{summary.candidateCount}</div>
+        <div className="lt-sticky-summary-card">
+          <div className="lt-sticky-summary-label">Kandidaten</div>
+          <div className="lt-sticky-summary-value">{summary.candidateCount}</div>
         </div>
-        <div style={{ background: '#f5f6fa', borderRadius: 8, padding: '0.75rem' }}>
-          <div style={{ fontSize: '0.85rem', opacity: 0.8 }}>Nog open</div>
-          <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{summary.unresolvedCount}</div>
+        <div className="lt-sticky-summary-card">
+          <div className="lt-sticky-summary-label">Nog open</div>
+          <div className="lt-sticky-summary-value">{summary.unresolvedCount}</div>
         </div>
       </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '2fr 1fr 1fr 1fr',
-          gap: '0.75rem',
-          marginBottom: '1rem',
-        }}
-      >
+      <div className="lt-sticky-filters">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Zoek op tekst, sectie, status, technologie..."
-          style={{ padding: '0.5rem 0.6rem', borderRadius: 6, border: '1px solid #c9ced6' }}
+          className="form-control form-control-sm"
         />
 
         <select
           value={boardFilter}
           onChange={(e) => setBoardFilter(e.target.value)}
-          style={{ padding: '0.5rem 0.6rem', borderRadius: 6, border: '1px solid #c9ced6' }}
+          className="form-select form-select-sm"
         >
           <option value="all">Alle boards</option>
           {boards.map((b) => (
@@ -337,7 +376,7 @@ const StickyNotesPanel: React.FC = () => {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          style={{ padding: '0.5rem 0.6rem', borderRadius: 6, border: '1px solid #c9ced6' }}
+          className="form-select form-select-sm"
         >
           <option value="all">Alle statussen</option>
           {statuses.map((s) => (
@@ -350,7 +389,7 @@ const StickyNotesPanel: React.FC = () => {
         <select
           value={linkFilter}
           onChange={(e) => setLinkFilter(e.target.value as 'all' | 'linked' | 'candidates' | 'unlinked')}
-          style={{ padding: '0.5rem 0.6rem', borderRadius: 6, border: '1px solid #c9ced6' }}
+          className="form-select form-select-sm"
         >
           <option value="all">Alle koppelingen</option>
           <option value="linked">Definitief gekoppeld</option>
@@ -359,7 +398,7 @@ const StickyNotesPanel: React.FC = () => {
         </select>
       </div>
 
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+      <div className="lt-sticky-view-toggle">
         <button
           type="button"
           onClick={() => setViewMode('table')}
@@ -377,64 +416,52 @@ const StickyNotesPanel: React.FC = () => {
       </div>
 
       {viewMode === 'table' ? (
-        <div style={{ overflowX: 'auto' }}>
+        <div className="lt-sticky-table-wrap">
           <table className="table table-sm table-hover align-middle mb-0">
             <thead>
               <tr>
-                <th style={{ padding: '0.5rem' }}>Sticky</th>
-                <th style={{ padding: '0.5rem' }}>Board / Sectie</th>
-                <th style={{ padding: '0.5rem' }}>Status</th>
-                <th style={{ padding: '0.5rem' }}>Koppeling</th>
+                <th className="lt-sticky-cell">Sticky</th>
+                <th className="lt-sticky-cell">Board / Sectie</th>
+                <th className="lt-sticky-cell">Status</th>
+                <th className="lt-sticky-cell">Koppeling</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((note) => (
                 <tr
                   key={note.uri}
-                  style={{ cursor: 'pointer' }}
+                  className="lt-sticky-click-row"
                   onClick={() => openDrawer(note)}
                   title="Klik voor detail en review"
                 >
-                  <td style={{ padding: '0.5rem', minWidth: 420 }}>
-                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
-                      <span
-                        title={note.color || 'geen kleur'}
-                        style={{
-                          width: 12,
-                          height: 12,
-                          minWidth: 12,
-                          borderRadius: 999,
-                          marginTop: 4,
-                          background: note.color || '#d1d5db',
-                          border: '1px solid #9ca3af',
-                          display: 'inline-block',
-                        }}
-                      />
-                      <div style={{ whiteSpace: 'pre-wrap', fontSize: '0.95rem' }}>{note.text}</div>
+                  <td className="lt-sticky-cell lt-sticky-cell--text">
+                    <div className="lt-sticky-note-line">
+                      <span title={note.color || 'geen kleur'} className="lt-sticky-dot" style={noteColorStyle(note.color)} />
+                      <div className="lt-sticky-note-text">{note.text}</div>
                     </div>
                   </td>
-                  <td style={{ padding: '0.5rem', minWidth: 220 }}>
+                  <td className="lt-sticky-cell lt-sticky-cell--board">
                     <div>{note.board.name}</div>
-                    <div style={{ fontSize: '0.9rem', opacity: 0.75 }}>{note.section || 'onbekend'}</div>
+                    <div className="lt-sticky-subtle">{note.section || 'onbekend'}</div>
                   </td>
-                  <td style={{ padding: '0.5rem', minWidth: 170 }}>
-                    <span style={statusChipStyle(note.status)}>{note.status}</span>
+                  <td className="lt-sticky-cell lt-sticky-cell--status">
+                    <span className="lt-sticky-status-chip" style={statusChipStyle(note.status)}>{note.status}</span>
                   </td>
-                  <td style={{ padding: '0.5rem', minWidth: 320 }}>
+                  <td className="lt-sticky-cell lt-sticky-cell--link">
                     {note.linkedTechnology?.uri ? (
                       <div>
-                        <div style={{ fontWeight: 600 }}>Definitief</div>
-                        <div style={{ fontSize: '0.9rem' }}>
+                        <div className="lt-sticky-strong">Definitief</div>
+                        <div className="lt-sticky-subtle">
                           {note.linkedTechnology.name || note.linkedTechnology.uri}
                         </div>
                       </div>
                     ) : note.candidateTechnologies.length > 0 ? (
                       <div>
-                        <div style={{ fontWeight: 600 }}>Kandidaten</div>
-                        <div style={{ fontSize: '0.9rem' }}>{note.candidateTechnologies.length}</div>
+                        <div className="lt-sticky-strong">Kandidaten</div>
+                        <div className="lt-sticky-subtle">{note.candidateTechnologies.length}</div>
                       </div>
                     ) : (
-                      <span style={{ opacity: 0.7 }}>Geen koppeling</span>
+                      <span className="lt-sticky-empty">Geen koppeling</span>
                     )}
                   </td>
                 </tr>
@@ -443,26 +470,11 @@ const StickyNotesPanel: React.FC = () => {
           </table>
         </div>
       ) : (
-        <div style={{ display: 'grid', gap: '1rem' }}>
+        <div className="lt-sticky-whiteboard">
           {whiteboardGroups.map((group) => (
-            <section
-              key={group.boardName}
-              style={{
-                border: '1px solid #e5e7eb',
-                borderRadius: 10,
-                padding: '0.8rem',
-                background: '#f8fafc',
-              }}
-            >
-              <h4 style={{ margin: '0 0 0.65rem 0', fontSize: '1rem' }}>{group.boardName}</h4>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: `repeat(${Math.min(Math.max(group.columns.length, 1), 4)}, minmax(220px, 1fr))`,
-                  gap: '0.75rem',
-                  alignItems: 'start',
-                }}
-              >
+            <section key={group.boardName} className="lt-sticky-board">
+              <h4 className="lt-sticky-board-title">{group.boardName}</h4>
+              <div className="lt-sticky-board-columns">
                 {group.columns.map((column) => {
                   const dropKey = `${group.boardName}||${column.taaktypeUri}`;
                   const isOver = dragOverKey === dropKey;
@@ -500,25 +512,10 @@ const StickyNotesPanel: React.FC = () => {
                         setNotes((prev) => prev.map((n) => (n.uri === moving.uri ? moving : n)));
                       }
                     }}
-                    style={{
-                      borderRadius: 8,
-                      padding: '0.35rem',
-                      transition: 'background 0.15s',
-                      background: isOver ? 'rgba(59,130,246,0.10)' : 'transparent',
-                      outline: isOver ? '2px dashed #3b82f6' : '2px dashed transparent',
-                    }}
+                    className={`lt-sticky-column-dropzone${isOver ? ' is-over' : ''}`}
                   >
-                    <div
-                      style={{
-                        fontSize: '0.83rem',
-                        fontWeight: 700,
-                        marginBottom: '0.45rem',
-                        color: '#334155',
-                      }}
-                    >
-                      {column.taaktypeName}
-                    </div>
-                    <div style={{ display: 'grid', gap: '0.55rem' }}>
+                    <div className="lt-sticky-column-title">{column.taaktypeName}</div>
+                    <div className="lt-sticky-column-list">
                       {column.notes.map((note) => (
                         <button
                           type="button"
@@ -530,40 +527,15 @@ const StickyNotesPanel: React.FC = () => {
                           }}
                           onDragEnd={() => setDraggedNote(null)}
                           onClick={() => openDrawer(note)}
-                          style={{
-                            textAlign: 'left',
-                            border: '1px solid rgba(0,0,0,0.15)',
-                            borderRadius: 8,
-                            background: note.color || '#fde68a',
-                            padding: '0.65rem',
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                            minHeight: 150,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '0.45rem',
-                            cursor: 'pointer',
-                          }}
+                          className="lt-sticky-card"
+                          style={noteColorStyle(note.color)}
                           title="Klik voor detail en review"
                         >
-                          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                            <span style={{ fontSize: '0.82rem', fontWeight: 700 }}>
-                              {note.section || 'onbekende sectie'}
-                            </span>
-                            <span style={statusChipStyle(note.status)}>{note.status}</span>
+                          <div className="lt-sticky-card-head">
+                            <span className="lt-sticky-card-label">{note.section || 'onbekende sectie'}</span>
+                            <span className="lt-sticky-status-chip" style={statusChipStyle(note.status)}>{note.status}</span>
                           </div>
-                          <div
-                            style={{
-                              whiteSpace: 'pre-wrap',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              display: '-webkit-box',
-                              WebkitLineClamp: 6,
-                              WebkitBoxOrient: 'vertical',
-                              lineHeight: 1.33,
-                            }}
-                          >
-                            {note.text}
-                          </div>
+                          <div className="lt-sticky-card-text">{note.text}</div>
                         </button>
                       ))}
                     </div>
@@ -578,42 +550,12 @@ const StickyNotesPanel: React.FC = () => {
 
       {drawerOpen && selectedNote && (
         <>
-          <div
-            onClick={closeDrawer}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              background: 'rgba(0,0,0,0.26)',
-              zIndex: 1100,
-            }}
-          />
-          <aside
-            style={{
-              position: 'fixed',
-              top: 0,
-              right: 0,
-              height: '100vh',
-              width: 'min(520px, 96vw)',
-              background: '#fff',
-              zIndex: 1200,
-              boxShadow: '-4px 0 16px rgba(0,0,0,0.15)',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <div
-              style={{
-                padding: '0.9rem 1rem',
-                borderBottom: '1px solid #e5e7eb',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                gap: '0.75rem',
-              }}
-            >
+          <div onClick={closeDrawer} className="lt-sticky-overlay" />
+          <aside className="lt-sticky-drawer">
+            <div className="lt-sticky-drawer-head">
               <div>
-                <div style={{ fontWeight: 700, fontSize: '1.05rem' }}>Sticky details</div>
-                <div style={{ fontSize: '0.88rem', opacity: 0.8 }}>
+                <div className="lt-sticky-drawer-title">Sticky details</div>
+                <div className="lt-sticky-drawer-subtitle">
                   {selectedNote.board.name} / {selectedNote.section || 'onbekende sectie'}
                 </div>
               </div>
@@ -622,27 +564,20 @@ const StickyNotesPanel: React.FC = () => {
               </button>
             </div>
 
-            <div style={{ padding: '1rem', overflowY: 'auto', display: 'grid', gap: '1rem' }}>
-              <div
-                style={{
-                  background: selectedNote.color || '#fde68a',
-                  border: '1px solid rgba(0,0,0,0.16)',
-                  borderRadius: 8,
-                  padding: '0.85rem',
-                }}
-              >
-                <div style={{ marginBottom: '0.5rem' }}>
-                  <span style={statusChipStyle(selectedNote.status)}>{selectedNote.status}</span>
+            <div className="lt-sticky-drawer-body">
+              <div className="lt-sticky-color-panel" style={noteColorStyle(selectedNote.color)}>
+                <div className="lt-sticky-linked-block">
+                  <span className="lt-sticky-status-chip" style={statusChipStyle(selectedNote.status)}>{selectedNote.status}</span>
                 </div>
-                <div style={{ whiteSpace: 'pre-wrap', lineHeight: 1.4 }}>{selectedNote.text}</div>
+                <div className="lt-sticky-note-text">{selectedNote.text}</div>
               </div>
 
-              <section>
-                <div style={{ fontWeight: 700, marginBottom: '0.45rem' }}>Review workflow</div>
+              <section className="lt-sticky-panel">
+                <div className="lt-sticky-panel-title">Review workflow</div>
 
-                <label style={{ display: 'grid', gap: '0.35rem', marginBottom: '0.7rem' }}>
-                  <span style={{ fontSize: '0.88rem' }}>Mark status</span>
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <label className="lt-sticky-form-group">
+                  <span className="lt-sticky-form-label">Mark status</span>
+                  <div className="lt-sticky-form-row">
                     <select
                       value={statusDraft}
                       onChange={(e) => setStatusDraft(e.target.value)}
@@ -667,9 +602,9 @@ const StickyNotesPanel: React.FC = () => {
                   </div>
                 </label>
 
-                <label style={{ display: 'grid', gap: '0.35rem', marginBottom: '0.7rem' }}>
-                  <span style={{ fontSize: '0.88rem' }}>Set definitive technology (autocomplete op naam)</span>
-                  <div style={{ display: 'grid', gap: '0.45rem' }}>
+                <label className="lt-sticky-form-group">
+                  <span className="lt-sticky-form-label">Set definitive technology (autocomplete op naam)</span>
+                  <div className="lt-sticky-panel">
                     <input
                       value={definitiveTechNameDraft}
                       onChange={(e) => {
@@ -681,17 +616,9 @@ const StickyNotesPanel: React.FC = () => {
                       disabled={saving}
                     />
                     {loadingSuggestions ? (
-                      <div style={{ fontSize: '0.82rem', opacity: 0.7 }}>Zoeken...</div>
+                      <div className="lt-sticky-loading-text">Zoeken...</div>
                     ) : techSuggestions.length > 0 ? (
-                      <div
-                        style={{
-                          border: '1px solid #e5e7eb',
-                          borderRadius: 8,
-                          maxHeight: 180,
-                          overflowY: 'auto',
-                          background: '#fff',
-                        }}
-                      >
+                      <div className="lt-sticky-suggestions">
                         {techSuggestions.map((suggestion) => (
                           <button
                             type="button"
@@ -701,25 +628,17 @@ const StickyNotesPanel: React.FC = () => {
                               setDefinitiveTechNameDraft(suggestion.name || suggestion.uri);
                               setTechSuggestions([]);
                             }}
-                            style={{
-                              width: '100%',
-                              textAlign: 'left',
-                              border: 0,
-                              borderBottom: '1px solid #f1f5f9',
-                              background: '#fff',
-                              padding: '0.5rem 0.55rem',
-                              cursor: 'pointer',
-                            }}
+                            className="lt-sticky-suggestion"
                           >
-                            <div style={{ fontWeight: 600, fontSize: '0.88rem' }}>{suggestion.name}</div>
-                            <div style={{ fontSize: '0.78rem', opacity: 0.75, wordBreak: 'break-all' }}>
+                            <div className="lt-sticky-suggestion-name">{suggestion.name}</div>
+                            <div className="lt-sticky-suggestion-uri">
                               {suggestion.uri}
                             </div>
                           </button>
                         ))}
                       </div>
                     ) : null}
-                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                    <div className="lt-sticky-form-row">
                       <input
                         value={definitiveTechDraft}
                         onChange={(e) => setDefinitiveTechDraft(e.target.value)}
@@ -742,28 +661,18 @@ const StickyNotesPanel: React.FC = () => {
                 </label>
 
                 {selectedNote.candidateTechnologies.length > 0 && (
-                  <div style={{ marginTop: '0.7rem' }}>
-                    <div style={{ fontSize: '0.88rem', marginBottom: '0.35rem' }}>
+                  <div className="lt-sticky-candidates">
+                    <div className="lt-sticky-candidate-title">
                       Move candidate to definitive
                     </div>
-                    <div style={{ display: 'grid', gap: '0.45rem' }}>
+                    <div className="lt-sticky-candidate-list">
                       {selectedNote.candidateTechnologies.map((candidate) => (
-                        <div
-                          key={`${selectedNote.uri}-${candidate.uri}`}
-                          style={{
-                            border: '1px solid #e5e7eb',
-                            borderRadius: 8,
-                            padding: '0.55rem',
-                            background: '#fafafa',
-                            display: 'grid',
-                            gap: '0.25rem',
-                          }}
-                        >
-                          <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>
+                        <div key={`${selectedNote.uri}-${candidate.uri}`} className="lt-sticky-candidate-card">
+                          <div className="lt-sticky-strong">
                             {candidate.name || 'Kandidaat'}
                           </div>
-                          <div style={{ fontSize: '0.8rem', wordBreak: 'break-all' }}>{candidate.uri}</div>
-                          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                          <div className="lt-sticky-uri">{candidate.uri}</div>
+                          <div className="lt-sticky-candidate-actions">
                             <button
                               type="button"
                               className="btn btn-sm btn-outline-primary"
@@ -784,15 +693,15 @@ const StickyNotesPanel: React.FC = () => {
                 )}
 
                 {actionError && (
-                  <div style={{ color: '#b00020', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+                  <div className="lt-sticky-action-error">
                     {actionError}
                   </div>
                 )}
               </section>
 
-              <section>
-                <div style={{ fontWeight: 700, marginBottom: '0.45rem' }}>Omschrijving afhandeling</div>
-                <div style={{ display: 'grid', gap: '0.45rem' }}>
+              <section className="lt-sticky-panel">
+                <div className="lt-sticky-panel-title">Omschrijving afhandeling</div>
+                <div className="lt-sticky-panel">
                   <textarea
                     value={omschrijvingDraft}
                     onChange={(e) => setOmschrijvingDraft(e.target.value)}
@@ -801,7 +710,7 @@ const StickyNotesPanel: React.FC = () => {
                     placeholder="Beschrijf hoe deze sticky note is afgehandeld..."
                     disabled={saving}
                   />
-                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <div className="lt-sticky-actions-right">
                     <button
                       type="button"
                       className="btn btn-sm btn-primary"
@@ -814,37 +723,37 @@ const StickyNotesPanel: React.FC = () => {
                 </div>
               </section>
 
-              <section>
-                <div style={{ fontWeight: 700, marginBottom: '0.45rem' }}>Koppelingen</div>
-                <div style={{ marginBottom: '0.6rem' }}>
-                  <div style={{ fontSize: '0.88rem', opacity: 0.8, marginBottom: '0.2rem' }}>Definitief</div>
+              <section className="lt-sticky-panel">
+                <div className="lt-sticky-panel-title">Koppelingen</div>
+                <div className="lt-sticky-linked-block">
+                  <div className="lt-sticky-linked-label">Definitief</div>
                   {selectedNote.linkedTechnology?.uri ? (
                     <div>
-                      <div style={{ fontWeight: 600 }}>{selectedNote.linkedTechnology.name || '-'}</div>
-                      <div style={{ fontSize: '0.84rem', wordBreak: 'break-all' }}>
+                      <div className="lt-sticky-strong">{selectedNote.linkedTechnology.name || '-'}</div>
+                      <div className="lt-sticky-uri">
                         {selectedNote.linkedTechnology.uri}
                       </div>
                     </div>
                   ) : (
-                    <div style={{ opacity: 0.7 }}>Geen definitieve koppeling</div>
+                    <div className="lt-sticky-empty">Geen definitieve koppeling</div>
                   )}
                 </div>
 
                 <div>
-                  <div style={{ fontSize: '0.88rem', opacity: 0.8, marginBottom: '0.2rem' }}>
+                  <div className="lt-sticky-linked-label">
                     Kandidaten (URI)
                   </div>
                   {selectedNote.candidateTechnologies.length > 0 ? (
-                    <ul style={{ margin: 0, paddingLeft: '1.1rem' }}>
+                    <ul className="lt-sticky-linked-list">
                       {selectedNote.candidateTechnologies.map((candidate) => (
-                        <li key={`${selectedNote.uri}-candidate-${candidate.uri}`} style={{ marginBottom: '0.35rem' }}>
-                          <div style={{ fontWeight: 600 }}>{candidate.name || 'Kandidaat'}</div>
-                          <div style={{ fontSize: '0.84rem', wordBreak: 'break-all' }}>{candidate.uri}</div>
+                        <li key={`${selectedNote.uri}-candidate-${candidate.uri}`}>
+                          <div className="lt-sticky-strong">{candidate.name || 'Kandidaat'}</div>
+                          <div className="lt-sticky-uri">{candidate.uri}</div>
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <div style={{ opacity: 0.7 }}>Geen kandidaten</div>
+                    <div className="lt-sticky-empty">Geen kandidaten</div>
                   )}
                 </div>
               </section>

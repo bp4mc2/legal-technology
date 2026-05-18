@@ -1,0 +1,28 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010522 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010523 <http://bp4mc2.org/lto#versienummer> "1.0" .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/documentatie/595fc6a0-094e-42c1-af1e-23dc0bc0b9b5> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/bronverwijzing/f878fd5e-f54c-465f-a1ee-235cb51c5f8d> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/ab5f9824-a322-440d-8c93-91af01f5fa7d> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/b5c05ecc-b05e-412b-99d4-82a96f5e1364> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#naam> "MIM - Metamodel Informatie Modellering" .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#omschrijving> "MIM (Metamodel voor Informatie-modellering) beschrijft een gestandaardiseerd metamodel voor het opstellen van informatiemodellen. Het definieert metaklassen, metastructuren en metagegevens als basis voor consistente en vergelijkbare informatiemodellering en maakt hergebruik en gezamenlijke tooling mogelijk." .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010522 .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010523 .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "MIM - Metamodel Informatie Modellering"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/bronverwijzing/f878fd5e-f54c-465f-a1ee-235cb51c5f8d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/documentatie/595fc6a0-094e-42c1-af1e-23dc0bc0b9b5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/ab5f9824-a322-440d-8c93-91af01f5fa7d> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/ab5f9824-a322-440d-8c93-91af01f5fa7d> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#BegripDefinieren> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/ab5f9824-a322-440d-8c93-91af01f5fa7d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/b5c05ecc-b05e-412b-99d4-82a96f5e1364> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/b5c05ecc-b05e-412b-99d4-82a96f5e1364> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/taakinvulling/b5c05ecc-b05e-412b-99d4-82a96f5e1364> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

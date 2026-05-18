@@ -1,0 +1,81 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010071 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e010072 <http://bp4mc2.org/lto#beoogdGebruik> "- Legal engineering\n- Rules-as-Code\n- Besluitvorming overheid" .
+_:696de21d1d614276aa662912c98809e010073 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Expliciete en herleidbare interpretatie van normen, Consistentie tussen beleid, wetgeving en uitvoering, Basis voor uitlegbare algoritmen en automatisering" .
+_:696de21d1d614276aa662912c98809e010074 <http://bp4mc2.org/lto#onderdelen> "Calculemus-protocol (5 stappen), FLINT-taal" .
+_:696de21d1d614276aa662912c98809e010181 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010182 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
+_:696de21d1d614276aa662912c98809e010183 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:696de21d1d614276aa662912c98809e010184 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010185 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
+_:696de21d1d614276aa662912c98809e010186 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Normatief> .
+_:696de21d1d614276aa662912c98809e010187 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010188 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Ontologisch> .
+_:696de21d1d614276aa662912c98809e010189 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:696de21d1d614276aa662912c98809e010190 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010191 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Ontologisch> .
+_:696de21d1d614276aa662912c98809e010192 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Normatief> .
+_:696de21d1d614276aa662912c98809e010368 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010369 <http://bp4mc2.org/lto#versienummer> "1.0" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/8ed6441a-9063-493d-9fca-6cb45a786557> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Beleidsmedewerkers> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Juristen> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Regelanalist> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-05-18"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/78d195e2-cd45-4ec1-a4c6-1f981d5f749e> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/a6572b18-7503-46ac-874b-10ec8525dba7> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/f62537a5-05f2-4f97-9180-4dd203a48e2d> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010071 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010072 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010073 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010074 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#WorkInProgress> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/09a347b1-475b-48c3-a1ea-f8d21405abb9> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/dc546660-d83e-407e-8164-ff8e8c310a8c> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/de5fe028-d4c7-4651-b040-f731a3baa670> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/ebf060d2-f0ea-4c7a-9fab-74b1d63d3805> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#naam> "Calculemus-Flint" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Calculemus‑Flint is een combinatie van een methode en een formele taal voor het interpreteren en modelleren van juridische normen. Het maakt juridische regels expliciet en uitlegbaar → formaliseerbaar → (deels) automatiseerbaar." .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010181 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010182 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010183 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010184 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010185 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010186 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010187 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010188 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010189 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010190 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010191 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010192 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010368 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010369 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Calculemus-Flint"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/78d195e2-cd45-4ec1-a4c6-1f981d5f749e> <http://purl.org/dc/terms/title> "Digitale Overheid projectpagina" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/78d195e2-cd45-4ec1-a4c6-1f981d5f749e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/78d195e2-cd45-4ec1-a4c6-1f981d5f749e> <http://xmlns.com/foaf/0.1/page> "https://www.digitaleoverheid.nl/innovatieproject/calculemus-flint/" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/a6572b18-7503-46ac-874b-10ec8525dba7> <http://purl.org/dc/terms/title> "Calculemus-Flint methode" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/a6572b18-7503-46ac-874b-10ec8525dba7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/a6572b18-7503-46ac-874b-10ec8525dba7> <http://xmlns.com/foaf/0.1/page> "https://regels.overheid.nl/docs/methods/flint/methodebeschrijving/CALCULEMUS_FLINT [regels.overheid.nl]" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/f62537a5-05f2-4f97-9180-4dd203a48e2d> <http://purl.org/dc/terms/title> "Nederlandse AI Coalitie use case" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/f62537a5-05f2-4f97-9180-4dd203a48e2d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/f62537a5-05f2-4f97-9180-4dd203a48e2d> <http://xmlns.com/foaf/0.1/page> "https://nlaic.com/pd-use-case/legal-engineering-programma-met-calculemus-flint/" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/09a347b1-475b-48c3-a1ea-f8d21405abb9> <http://bp4mc2.org/lto#omschrijving> "vertaling naar formeel model" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/09a347b1-475b-48c3-a1ea-f8d21405abb9> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenRegels> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/09a347b1-475b-48c3-a1ea-f8d21405abb9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/dc546660-d83e-407e-8164-ff8e8c310a8c> <http://bp4mc2.org/lto#omschrijving> "structureren van juridische bronnen" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/dc546660-d83e-407e-8164-ff8e8c310a8c> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/dc546660-d83e-407e-8164-ff8e8c310a8c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/de5fe028-d4c7-4651-b040-f731a3baa670> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/de5fe028-d4c7-4651-b040-f731a3baa670> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#Opdrachtorientering> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/de5fe028-d4c7-4651-b040-f731a3baa670> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/ebf060d2-f0ea-4c7a-9fab-74b1d63d3805> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/ebf060d2-f0ea-4c7a-9fab-74b1d63d3805> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/ebf060d2-f0ea-4c7a-9fab-74b1d63d3805> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

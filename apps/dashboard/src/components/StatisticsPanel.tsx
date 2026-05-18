@@ -162,7 +162,7 @@ const StatisticsPanel: React.FC = () => {
     .sort((a, b) => b.linkedPct - a.linkedPct);
 
   return (
-    <div>
+    <div className="lt-stats-shell">
       <div className="d-flex align-items-center justify-content-between mb-3">
         <div>
           <h3 className="mb-1 fw-semibold text-primary">Statistieken</h3>
@@ -184,14 +184,14 @@ const StatisticsPanel: React.FC = () => {
 
       {stats && (
         <div className="d-grid gap-3">
-          <section className="card border-0 shadow-sm">
-            <div className="card-header bg-white border-0">
+          <section className="lt-stats-panel card border-0">
+            <div className="lt-stats-panel-header card-header border-0">
               <h4 className="mb-0 fw-semibold text-primary">Juridische technologieën</h4>
             </div>
             <div className="card-body d-grid gap-3">
               <div className="row g-3">
                 <div className="col-lg-4">
-                  <div className="card border-0 h-100 bg-primary text-white">
+                  <div className="lt-stats-card lt-stats-hero lt-stats-hero-primary card h-100 text-white">
                     <div className="card-body">
                       <div className="text-uppercase small opacity-75 mb-2">Totaal</div>
                       <div className="display-5 fw-bold lh-1">{stats.count}</div>
@@ -201,7 +201,7 @@ const StatisticsPanel: React.FC = () => {
                 </div>
 
                 <div className="col-lg-8">
-                  <div className="card border h-100">
+                  <div className="lt-stats-card card h-100">
                     <div className="card-header bg-white border-0 pb-0">
                       <div className="fw-semibold text-primary">Verdeling naar subtype</div>
                     </div>
@@ -252,7 +252,7 @@ const StatisticsPanel: React.FC = () => {
 
                       <div className="d-flex flex-wrap gap-2 mt-3">
                         {subtypeWithPercentage.map(item => (
-                          <span key={`legend-${item.key}`} className="badge rounded-pill bg-light text-dark border">
+                          <span key={`legend-${item.key}`} className="lt-stats-legend-item badge rounded-pill text-dark">
                             <span
                               className="d-inline-block rounded-circle me-1"
                               style={{ width: 8, height: 8, background: subtypeChartColors[item.key] ?? '#6c757d' }}
@@ -268,7 +268,7 @@ const StatisticsPanel: React.FC = () => {
 
               <div className="row g-3">
                 <div className="col-lg-6">
-                  <div className="card border h-100">
+                  <div className="lt-stats-card card h-100">
                     <div className="card-header bg-white border-0">
                       <div className="fw-semibold text-primary">Nieuw toegevoegd</div>
                     </div>
@@ -293,7 +293,7 @@ const StatisticsPanel: React.FC = () => {
                 </div>
 
                 <div className="col-lg-6">
-                  <div className="card border h-100">
+                  <div className="lt-stats-card card h-100">
                     <div className="card-header bg-white border-0">
                       <div className="fw-semibold text-primary">Laatst bewerkt</div>
                     </div>
@@ -327,7 +327,7 @@ const StatisticsPanel: React.FC = () => {
             <div className="card-body d-grid gap-3">
               <div className="row g-3">
                 <div className="col-lg-6">
-                  <div className="card border h-100 bg-success text-white">
+                  <div className="lt-stats-card lt-stats-hero lt-stats-hero-success card h-100 text-white">
                     <div className="card-body">
                       <div className="text-uppercase small opacity-75 mb-2">Sticky Notes</div>
                       <div className="display-5 fw-bold lh-1">{stickyNotesCount}</div>
@@ -337,7 +337,7 @@ const StatisticsPanel: React.FC = () => {
                 </div>
 
                 <div className="col-lg-6">
-                  <div className="card border h-100 bg-dark text-white">
+                  <div className="lt-stats-card lt-stats-hero lt-stats-hero-dark card h-100 text-white">
                     <div className="card-body">
                       <div className="text-uppercase small opacity-75 mb-2">Gekoppeld</div>
                       <div className="display-5 fw-bold lh-1">{linkedPercentage}%</div>
@@ -349,7 +349,7 @@ const StatisticsPanel: React.FC = () => {
 
               <div className="row g-3">
                 <div className="col-lg-5">
-                  <div className="card border h-100">
+                  <div className="lt-stats-card card h-100">
                     <div className="card-header bg-white border-0">
                       <div className="fw-semibold text-primary">Koppelstatus</div>
                     </div>
@@ -409,7 +409,7 @@ const StatisticsPanel: React.FC = () => {
                 </div>
 
                 <div className="col-lg-7">
-                  <div className="card border h-100">
+                  <div className="lt-stats-card card h-100">
                     <div className="card-header bg-white border-0">
                       <div className="fw-semibold text-primary">Verdeling naar status</div>
                     </div>

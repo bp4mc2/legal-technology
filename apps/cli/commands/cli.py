@@ -1,6 +1,14 @@
 
+from pathlib import Path
+
 import click
 from .graphdb_utils import get_graphdb_config, upload_ttl_to_graphdb, clear_graphdb, extract_graphdb
+from api.services.bundle_export_service import ALL_LEGAL_TECHNOLOGIES_PATH
+from api.services.graphdb_service import (
+    export_named_graph_download,
+    sync_named_graph_exports,
+    migrate_legal_technology_blank_nodes,
+)
 
 @click.group()
 def cli():
@@ -30,6 +38,60 @@ def extract(out):
     try:
         extract_graphdb(host, repo, out)
         click.echo(f"Succesvol geëxporteerd naar {out} uit GraphDB repository {repo} op {host}")
+    except Exception as e:
+        click.echo(str(e))
+
+
+@cli.command('download-named-graph')
+@click.option('--out', default=None, help='Bestand om de volledige named graph in op te slaan (TTL).')
+def download_named_graph(out):
+    """Download de volledige named graph naar een Turtle-bestand."""
+    output_path = Path(out) if out else ALL_LEGAL_TECHNOLOGIES_PATH
+    try:
+        turtle = export_named_graph_download()
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(turtle, encoding='utf-8')
+        click.echo(f'Named graph opgeslagen naar {output_path}')
+    except Exception as e:
+        click.echo(str(e))
+
+
+@cli.command('sync-exports')
+def sync_exports():
+    """Werk alle lokale exportbestanden bij vanuit de named graph."""
+    try:
+        result = sync_named_graph_exports()
+        click.echo(
+            'Exports gesynchroniseerd: '
+            f"{result['legal_technology_bundles']} legal technology bundles, "
+            f"{result['organisation_bundles']} organisatiebundles, "
+            f"named graph: {result['named_graph_path']}"
+        )
+    except Exception as e:
+        click.echo(str(e))
+
+
+@cli.command('migrate-blanknodes')
+@click.option('--no-sync', is_flag=True, help='Sla het herschrijven van lokale exports over.')
+def migrate_blanknodes(no_sync):
+    """Migreer legacy IRI-child nodes naar blank nodes voor SHACL nodeKind-conforme ABox."""
+    try:
+        result = migrate_legal_technology_blank_nodes(sync_exports=not no_sync)
+        migrated = result.get('migrated', {})
+        click.echo(
+            'Migratie voltooid: '
+            f"documentatie={migrated.get('documentatie', 0)}, "
+            f"ondersteuningVoor={migrated.get('ondersteuningVoor', 0)}, "
+            f"versiebeschrijving={migrated.get('versiebeschrijving', 0)}"
+        )
+        if result.get('sync_exports') and result.get('exports'):
+            exports = result['exports']
+            click.echo(
+                'Exports gesynchroniseerd: '
+                f"{exports['legal_technology_bundles']} legal technology bundles, "
+                f"{exports['organisation_bundles']} organisatiebundles, "
+                f"named graph: {exports['named_graph_path']}"
+            )
     except Exception as e:
         click.echo(str(e))
 

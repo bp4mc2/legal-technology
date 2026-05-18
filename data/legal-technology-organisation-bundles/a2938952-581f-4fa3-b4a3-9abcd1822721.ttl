@@ -1,0 +1,7 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/a2938952-581f-4fa3-b4a3-9abcd1822721> .
+<https://data.bp4mc2.org/id/lto/organisatie/a2938952-581f-4fa3-b4a3-9abcd1822721> <http://bp4mc2.org/lto#contactinformatie> "https://european-union.europa.eu/" .
+<https://data.bp4mc2.org/id/lto/organisatie/a2938952-581f-4fa3-b4a3-9abcd1822721> <http://bp4mc2.org/lto#naamOrganisatie> "Europese Unie (Raad van de EU)" .
+<https://data.bp4mc2.org/id/lto/organisatie/a2938952-581f-4fa3-b4a3-9abcd1822721> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Organisatie> .

@@ -50,6 +50,7 @@ class VersiebeschrijvingSchema(Schema):
 
 class LegalTechnologySchema(Schema):
     id = fields.Str(required=True)
+    iri = fields.Str(required=False)
     abbrevation = fields.Str(required=False)
     versienummer = fields.Str(required=False)
     versiedatum = ISODateField(required=False, allow_none=True)

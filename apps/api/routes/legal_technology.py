@@ -3,7 +3,9 @@ from flask import request, Response
 from api.services.graphdb_service import (
     search_legal_technologies, add_legal_technology, get_legal_technology, update_legal_technology,
     delete_legal_technology, list_enumerations, list_tasktypes, get_stats,
-    export_legal_technology_turtle, export_legal_technology_markdown
+    list_sticky_note_status_enumeration_items,
+    export_legal_technology_turtle, export_legal_technology_markdown,
+    export_named_graph_download, sync_named_graph_exports,
 )
 from api.models.legal_technology import LegalTechnologySchema, LegalTechnologyCreateSchema, LegalTechnologyUpdateSchema
 from api.models.enumeration import EnumerationSchema, TaskTypeSchema
@@ -165,6 +167,23 @@ def export_turtle(id):
     )
 
 
+@blp.route("/export/all.ttl")
+def export_named_graph_turtle_route():
+    """Download the full named graph as Turtle."""
+    turtle = export_named_graph_download()
+    return Response(
+        turtle,
+        mimetype="text/turtle; charset=utf-8",
+        headers={"Content-Disposition": 'attachment; filename="all-legal-technologies.ttl"'}
+    )
+
+
+@blp.route("/export/sync", methods=["POST"])
+def sync_named_graph_route():
+    """Persist the named graph and bundle exports to the workspace data directory."""
+    return sync_named_graph_exports()
+
+
 @blp.route("/<id>/export.md")
 def export_markdown(id):
     """Download a legal technology as Markdown."""
@@ -223,6 +242,12 @@ def get_enumeration(enum_name):
         404:
             description: Enumeration not found
     """
+    if enum_name == "StickyNoteStatussen":
+        return {
+            "name": enum_name,
+            "values": list_sticky_note_status_enumeration_items(),
+        }
+
     enums = list_enumerations()
     values = enums.get(enum_name)
     if values is None:

@@ -1,0 +1,7 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+
+<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/f9f140f4-48f1-448d-8ef2-e02c14031da8> .
+<https://data.bp4mc2.org/id/lto/organisatie/f9f140f4-48f1-448d-8ef2-e02c14031da8> <http://bp4mc2.org/lto#contactinformatie> "https://european-union.europa.eu/contact-eu/write-us_en" .
+<https://data.bp4mc2.org/id/lto/organisatie/f9f140f4-48f1-448d-8ef2-e02c14031da8> <http://bp4mc2.org/lto#naamOrganisatie> "Publications Office of the European Union" .
+<https://data.bp4mc2.org/id/lto/organisatie/f9f140f4-48f1-448d-8ef2-e02c14031da8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Organisatie> .

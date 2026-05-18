@@ -109,38 +109,31 @@ const AssistantPanel: React.FC = () => {
     return colors[intent] || '#666';
   };
 
+  const statusToneStyle = (): React.CSSProperties => ({
+    ['--lt-assistant-tone' as any]: getStatusColor(),
+    backgroundColor: getStatusColor(),
+  });
+
+  const responseToneStyle = (intent: string): React.CSSProperties => ({
+    borderLeftColor: getIntentColor(intent),
+  });
+
   return (
-    <div style={{ padding: '1rem' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-        <h3 style={{ color: '#ad1457', fontWeight: 600, margin: 0 }}>🤖 Natural Language Assistant</h3>
+    <div className="lt-panel-shell lt-assistant">
+      <div className="lt-assistant-header">
+        <h3 className="lt-assistant-title">🤖 Natural Language Assistant</h3>
         <button
+          type="button"
           onClick={() => setShowStatus(!showStatus)}
-          style={{
-            padding: '6px 12px',
-            backgroundColor: getStatusColor(),
-            color: 'white',
-            border: 'none',
-            borderRadius: 4,
-            cursor: 'pointer',
-            fontSize: 12,
-            fontWeight: 'bold',
-          }}
+          style={statusToneStyle()}
+          className={`lt-assistant-status-toggle${!status ? ' is-disabled' : ''}`}
         >
           {getStatusText()}
         </button>
       </div>
 
       {showStatus && status && (
-        <div
-          style={{
-            padding: 12,
-            backgroundColor: '#f5f5f5',
-            borderRadius: 4,
-            marginBottom: 12,
-            fontSize: 12,
-            borderLeft: `4px solid ${getStatusColor()}`,
-          }}
-        >
+        <div className="lt-assistant-status-card" style={{ borderLeftColor: getStatusColor() }}>
           <div>
             <strong>Status:</strong> {status.status}
           </div>
@@ -164,25 +157,19 @@ const AssistantPanel: React.FC = () => {
             </div>
           )}
           {status.message && (
-            <div style={{ color: '#dc3545', marginTop: 8 }}>
+            <div className="lt-assistant-status-message">
               <strong>Message:</strong> {status.message}
             </div>
           )}
         </div>
       )}
 
-      <form onSubmit={handleAsk} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <div style={{ display: 'flex', gap: 8 }}>
+      <form onSubmit={handleAsk} className="lt-assistant-form">
+        <div className="lt-assistant-row">
           <select
             value={lang}
             onChange={(e) => setLang(e.target.value as 'nl' | 'en')}
-            style={{
-              flex: 0.3,
-              padding: '8px',
-              borderRadius: 4,
-              border: '1px solid #ddd',
-              fontSize: 14,
-            }}
+            className="form-select lt-assistant-lang"
           >
             <option value="nl">🇳🇱 Nederlands</option>
             <option value="en">🇬🇧 English</option>
@@ -198,29 +185,13 @@ const AssistantPanel: React.FC = () => {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           rows={3}
-          style={{
-            padding: '10px',
-            borderRadius: 4,
-            border: '1px solid #ddd',
-            fontFamily: 'inherit',
-            fontSize: 14,
-            resize: 'vertical',
-          }}
+          className="form-control lt-assistant-textarea"
         />
 
         <button
           type="submit"
           disabled={loading || !prompt.trim() || !status?.model_available}
-          style={{
-            padding: '10px 16px',
-            backgroundColor: loading || !prompt.trim() || !status?.model_available ? '#ccc' : '#ad1457',
-            color: 'white',
-            border: 'none',
-            borderRadius: 4,
-            cursor: loading || !prompt.trim() || !status?.model_available ? 'not-allowed' : 'pointer',
-            fontWeight: 'bold',
-            fontSize: 14,
-          }}
+          className="btn btn-primary lt-assistant-submit"
         >
           {loading ? (lang === 'nl' ? 'Verwerking...' : 'Processing...') : lang === 'nl' ? 'Vraag' : 'Ask'}
         </button>
@@ -228,41 +199,36 @@ const AssistantPanel: React.FC = () => {
 
       {response && (
         <div
-          style={{
-            marginTop: 16,
-            padding: 16,
-            backgroundColor: response.intent === 'error' ? '#ffebee' : '#f9f9f9',
-            borderRadius: 4,
-            borderLeft: `4px solid ${getIntentColor(response.intent)}`,
-          }}
+          className={`lt-assistant-response${response.intent === 'error' ? ' is-error' : ''}`}
+          style={responseToneStyle(response.intent)}
         >
-          <div style={{ marginBottom: 12 }}>
-            <div style={{ fontWeight: 'bold', color: getIntentColor(response.intent), marginBottom: 4 }}>
+          <div className="lt-assistant-block">
+            <div className="lt-assistant-kicker" style={{ color: getIntentColor(response.intent) }}>
               Intent: <span style={{ textTransform: 'uppercase' }}>{response.intent}</span>
             </div>
             {response.action && (
-              <div style={{ fontSize: 12, color: '#666', marginBottom: 8 }}>
+              <div className="lt-assistant-action">
                 Action: {response.action}
               </div>
             )}
           </div>
 
-          <div style={{ marginBottom: 12 }}>
-            <div style={{ fontWeight: 'bold', marginBottom: 4 }}>
+          <div className="lt-assistant-block">
+            <div className="lt-assistant-kicker">
               {lang === 'nl' ? '📋 Samenvatting' : '📋 Summary'}:
             </div>
-            <div style={{ padding: 10, backgroundColor: '#fff', borderRadius: 4, whiteSpace: 'pre-wrap' }}>
+            <div className="lt-assistant-surface">
               {response.summary}
             </div>
           </div>
 
           {Object.keys(response.parameters || {}).length > 0 && (
-            <div style={{ marginBottom: 12 }}>
-              <div style={{ fontWeight: 'bold', marginBottom: 4 }}>
+            <div className="lt-assistant-block">
+              <div className="lt-assistant-kicker">
                 {lang === 'nl' ? '⚙️ Parameters' : '⚙️ Parameters'}:
               </div>
-              <div style={{ padding: 10, backgroundColor: '#fff', borderRadius: 4, fontSize: 12 }}>
-                <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+              <div className="lt-assistant-surface lt-assistant-json">
+                <pre>
                   {JSON.stringify(response.parameters, null, 2)}
                 </pre>
               </div>
@@ -270,31 +236,22 @@ const AssistantPanel: React.FC = () => {
           )}
 
           {response.error && (
-            <div style={{ padding: 10, backgroundColor: '#ffebee', borderRadius: 4, color: '#c62828', fontSize: 12 }}>
+            <div className="lt-assistant-error">
               <strong>Error:</strong> {response.error}
             </div>
           )}
 
           {response.timestamp && (
-            <div style={{ fontSize: 11, color: '#999', marginTop: 8 }}>
+            <div className="lt-assistant-time">
               {new Date(response.timestamp).toLocaleTimeString(lang === 'nl' ? 'nl-NL' : 'en-US')}
             </div>
           )}
         </div>
       )}
 
-      <div
-        style={{
-          marginTop: 16,
-          padding: 12,
-          backgroundColor: '#f0f4f8',
-          borderRadius: 4,
-          fontSize: 12,
-          color: '#555',
-        }}
-      >
+      <div className="lt-assistant-tips">
         <strong>{lang === 'nl' ? '💡 Tips:' : '💡 Tips:'}</strong>
-        <ul style={{ margin: '8px 0', paddingLeft: 20 }}>
+        <ul>
           {lang === 'nl' ? (
             <>
               <li>Stel vragen in natuurlijke taal</li>

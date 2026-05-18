@@ -43,6 +43,7 @@ class StickyNotesQuerySchema(Schema):
     status = fields.Str(required=False)
     q = fields.Str(required=False)
     linkMode = fields.Str(required=False)
+    technologyUri = fields.Str(required=False)
 
 
 class StickyTechSuggestionsQuerySchema(Schema):
@@ -82,6 +83,7 @@ def get_sticky_notes(args):
         status=args.get("status"),
         q=args.get("q"),
         link_mode=args.get("linkMode"),
+        technology_uri=args.get("technologyUri"),
     )
 
 

@@ -139,8 +139,8 @@ const OrganisatiesPanel: React.FC = () => {
   };
 
   return (
-    <div className="p-3 bg-white rounded shadow-sm">
-      <h3 className="mb-3 text-primary">Organisaties</h3>
+    <div className="lt-panel-shell lt-org-panel">
+      <h3 className="lt-org-title">Organisaties</h3>
 
       {error && <div className="alert alert-danger">{error}</div>}
       {success && <div className="alert alert-success">{success}</div>}
@@ -205,8 +205,8 @@ const OrganisatiesPanel: React.FC = () => {
           )}
         </>
       ) : (
-        <form onSubmit={handleSubmit} className="border rounded p-3">
-          <div className="mb-3">
+        <form onSubmit={handleSubmit} className="lt-org-form">
+          <div className="lt-org-form-group">
             <label className="form-label">Naam:</label>
             <input
               type="text"
@@ -216,7 +216,7 @@ const OrganisatiesPanel: React.FC = () => {
               required
             />
           </div>
-          <div className="mb-3">
+          <div className="lt-org-form-group">
             <label className="form-label">Contactinformatie:</label>
             <input
               type="text"
@@ -226,7 +226,7 @@ const OrganisatiesPanel: React.FC = () => {
               required
             />
           </div>
-          <div>
+          <div className="lt-org-actions">
             <button
               type="submit"
               className="btn btn-success me-2"

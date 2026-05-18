@@ -49,39 +49,28 @@ const EnumerationsFilter: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h3 style={{ color: '#6d4c41', fontWeight: 600, margin: 0 }}>Enumeraties</h3>
+    <div className="lt-panel-shell lt-enum-panel">
+      <h3 className="lt-enum-title lt-enum-title--brown">Enumeraties</h3>
       {loading && <p>Laden...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="text-danger mb-0">{error}</p>}
       {!loading && enums.length > 0 && (
-        <ul style={{ paddingLeft: 0, listStyle: 'none' }}>
+        <ul className="lt-enum-list">
           {enums.map(enumGroup => (
-            <li key={enumGroup.name} style={{ marginBottom: 8 }}>
-              <strong>{enumGroup.name}:</strong>
-              <span style={{ marginLeft: 8, color: '#666', fontSize: '0.9em' }}>
+            <li key={enumGroup.name} className="lt-enum-item">
+              <div className="lt-enum-item-head">
+                <strong>{enumGroup.name}</strong>
+                <span className="lt-enum-count">
                 ({enumGroup.values.length})
-              </span>
-              <span style={{ marginLeft: 8 }}>
+                </span>
+              </div>
+              <div className="lt-enum-chip-row">
                 {enumGroup.values.map(val => (
-                  <span
-                    key={val}
-                    style={{
-                      display: 'inline-block',
-                      background: '#eee',
-                      color: '#222',
-                      borderRadius: 4,
-                      padding: '2px 8px',
-                      marginRight: 6,
-                      fontSize: '0.95em',
-                    }}
-                  >
-                    {val}
-                  </span>
+                  <span key={val} className="lt-enum-chip">{val}</span>
                 ))}
                 {enumGroup.values.length === 0 && (
-                  <span style={{ color: '#777', fontStyle: 'italic' }}>Geen waarden</span>
+                  <span className="lt-enum-empty">Geen waarden</span>
                 )}
-              </span>
+              </div>
             </li>
           ))}
         </ul>

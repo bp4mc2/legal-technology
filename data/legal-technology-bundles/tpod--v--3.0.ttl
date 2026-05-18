@@ -1,0 +1,74 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010131 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e010132 <http://bp4mc2.org/lto#beoogdGebruik> "Toepassingscontext:  \n- Omgevingsplan, omgevingsvisie, verordening, projectbesluit\n- Publicatie via LVBB en ontsluiting via Omgevingsloket (DSO)" .
+_:696de21d1d614276aa662912c98809e010133 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Uniforme structuur en annotatie van regels  • Koppeling van tekst aan locaties en activiteiten, Maakt regels raadpleegbaar en toepasbaar in DSO" .
+_:696de21d1d614276aa662912c98809e010134 <http://bp4mc2.org/lto#onderdelen> "Toepassingsprofielen per documenttype, Annotatieregels, Waardelijsten (IMOW), XML-schema’s voor uitwisseling" .
+_:696de21d1d614276aa662912c98809e010280 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010281 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Tekstueel> .
+_:696de21d1d614276aa662912c98809e010282 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:696de21d1d614276aa662912c98809e010283 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010284 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
+_:696de21d1d614276aa662912c98809e010285 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Normatief> .
+_:696de21d1d614276aa662912c98809e010286 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010287 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Ontologisch> .
+_:696de21d1d614276aa662912c98809e010288 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Normatief> .
+_:696de21d1d614276aa662912c98809e010593 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010594 <http://bp4mc2.org/lto#versienummer> "3.0" .
+_:696de21d1d614276aa662912c98809e010595 <http://bp4mc2.org/lto#versiedatum> "2023-12-27"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/f197cc06-88ae-4b82-a8a8-db9029261e59> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Beleidsmedewerkers> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Juristen> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Regelanalist> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-05-18"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/2ae42790-0590-4606-9422-fb5e36dc03b2> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/f3b048cb-f438-44cd-b4a3-c17ba8674d10> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/fa62d533-5ace-446a-bde6-b708655c0e90> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010131 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010132 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010133 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010134 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ComplianceOndersteuning> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/701d4fd5-23c1-4383-b5df-bfd12867d632> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/e4ba1457-b9c9-43b9-815f-42e0f1783328> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/fa320e3a-8092-492d-bf3e-69c36ce1a394> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#naam> "TPOD" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#normstatus> <http://bp4mc2.org/lt#Wettelijk> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#omschrijving> "TPOD (Toepassingsprofielen Omgevingsdocumenten) is een informatie-standaard die voorschrijft hoe omgevingsdocumenten moeten worden gestructureerd, geannoteerd en uitgewisseld. Het is een domeinspecifieke invulling van STOP en vormt de brug tussen juridische tekst en digitale uitvoering binnen het DSO." .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010280 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010281 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010282 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010283 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010284 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010285 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010286 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010287 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010288 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010593 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010594 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010595 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://www.w3.org/2000/01/rdf-schema#label> "TPOD"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/2ae42790-0590-4606-9422-fb5e36dc03b2> <http://purl.org/dc/terms/title> "STOP/TPOD uitleg IPLO" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/2ae42790-0590-4606-9422-fb5e36dc03b2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/2ae42790-0590-4606-9422-fb5e36dc03b2> <http://xmlns.com/foaf/0.1/page> "https://iplo.nl/digitaal-stelsel/aansluiten/standaarden/stop-tpod-imop/" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/f3b048cb-f438-44cd-b4a3-c17ba8674d10> <http://purl.org/dc/terms/title> "Wegwijzer TPOD" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/f3b048cb-f438-44cd-b4a3-c17ba8674d10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/f3b048cb-f438-44cd-b4a3-c17ba8674d10> <http://xmlns.com/foaf/0.1/page> "https://www.wegwijzertpod.nl/" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/fa62d533-5ace-446a-bde6-b708655c0e90> <http://purl.org/dc/terms/title> "Geonovum TPO" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/fa62d533-5ace-446a-bde6-b708655c0e90> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/fa62d533-5ace-446a-bde6-b708655c0e90> <http://xmlns.com/foaf/0.1/page> "https://iplo.nl/digitaal-stelsel/aansluiten/standaarden/stop-tpod-imop/" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/701d4fd5-23c1-4383-b5df-bfd12867d632> <http://bp4mc2.org/lto#omschrijving> "definieert welke metadata/annotaties nodig zijn" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/701d4fd5-23c1-4383-b5df-bfd12867d632> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/701d4fd5-23c1-4383-b5df-bfd12867d632> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/e4ba1457-b9c9-43b9-815f-42e0f1783328> <http://bp4mc2.org/lto#omschrijving> "Structuur en tekstemodellen" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/e4ba1457-b9c9-43b9-815f-42e0f1783328> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/e4ba1457-b9c9-43b9-815f-42e0f1783328> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/fa320e3a-8092-492d-bf3e-69c36ce1a394> <http://bp4mc2.org/lto#omschrijving> "expliciteren regels naar toepasbare structuur" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/fa320e3a-8092-492d-bf3e-69c36ce1a394> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenRegels> .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/fa320e3a-8092-492d-bf3e-69c36ce1a394> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

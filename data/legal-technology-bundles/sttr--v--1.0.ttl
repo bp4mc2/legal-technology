@@ -1,0 +1,28 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010559 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010560 <http://bp4mc2.org/lto#versienummer> "1.0" .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/documentatie/e293875a-3ab5-4f01-82d5-52876dfcf5a3> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/bronverwijzing/37b3b164-b64f-4b11-97e6-9aee6d0deb08> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/7a29d5e5-f600-43c2-9789-668f208e3d55> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/c8a1fed7-b897-40c1-8209-ed6ac71ede32> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#naam> "STTR - Standaard en informatiemodel toepasbare regels" .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De Standaard toepasbare regels (STTR) is een van de standaarden voor het Digitaal Stelsel Omgevingswet (DSO). De STTR en het bijbehorende informatiemodel (IMTR) zijn nodig om toepasbare regels te kunnen publiceren. Ze horen bij het maken en het aanleveren van toepasbare regels aan de Registratie toepasbare regels (RTR). Rijkswaterstaat beheert deze standaard." .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010559 .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010560 .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "STTR - Standaard en informatiemodel toepasbare regels"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/bronverwijzing/37b3b164-b64f-4b11-97e6-9aee6d0deb08> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/documentatie/e293875a-3ab5-4f01-82d5-52876dfcf5a3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/7a29d5e5-f600-43c2-9789-668f208e3d55> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/7a29d5e5-f600-43c2-9789-668f208e3d55> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenRegels> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/7a29d5e5-f600-43c2-9789-668f208e3d55> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/c8a1fed7-b897-40c1-8209-ed6ac71ede32> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/c8a1fed7-b897-40c1-8209-ed6ac71ede32> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#Beslisondersteuning> .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/taakinvulling/c8a1fed7-b897-40c1-8209-ed6ac71ede32> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

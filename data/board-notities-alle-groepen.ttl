@@ -891,6 +891,18 @@ ardinmate model/oid
   
   ltb:kandidaatTechnologie <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> .
 
+<https://data.bp4mc2.org/id/ltb/groep-1/sticky/text_c1_s6>
+  a ltb:StickyNote ;
+  ltb:stickyNoteId "text_c1_s6" ;
+  ltb:stickyTekst "BELEIDS-KOMPAS" ;
+  ltb:stickyStatus lt:NaderTeBepalen ;
+  ltb:sectieOpBoard "Opstellen Regeltekst" ;
+  ltb:taaktype ltt:OpstellenRegeltekst ;
+  ltb:stickyKleur "#ef4444" ;
+  ltb:opBoard <https://data.bp4mc2.org/id/ltb/groep-1/board/groep-1> ; 
+  ltb:verwijstNaarTechnologie <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/20240605> .
+
+
 <https://data.bp4mc2.org/id/ltb/groep-2/sticky/rLF0wYIXd6OUHS6eaTmYX>
   a ltb:StickyNote ;
   ltb:stickyNoteId "rLF0wYIXd6OUHS6eaTmYX" ;

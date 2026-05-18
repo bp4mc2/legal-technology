@@ -1,0 +1,148 @@
+.lt-assistant {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.lt-assistant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lt-assistant-title {
+  margin: 0;
+  color: #8b1d5f;
+}
+
+.lt-assistant-status-toggle {
+  border: 0;
+  border-radius: var(--lt-radius-md);
+  padding: 0.4rem 0.8rem;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lt-assistant-status-toggle.is-disabled {
+  opacity: 0.7;
+}
+
+.lt-assistant-status-card {
+  padding: 0.9rem;
+  background: var(--lt-surface-soft);
+  border-radius: var(--lt-radius-md);
+  border-left: 4px solid var(--lt-primary);
+  font-size: 0.82rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.lt-assistant-status-message {
+  color: var(--lt-destructive);
+  margin-top: 0.25rem;
+}
+
+.lt-assistant-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lt-assistant-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lt-assistant-lang {
+  max-width: 220px;
+}
+
+.lt-assistant-textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.lt-assistant-submit {
+  justify-self: start;
+  min-width: 160px;
+}
+
+.lt-assistant-submit.btn:disabled {
+  opacity: 0.65;
+}
+
+.lt-assistant-response {
+  margin-top: 0.25rem;
+  padding: 1rem;
+  border-radius: var(--lt-radius-md);
+  border-left: 4px solid var(--lt-primary);
+  background: var(--lt-surface-soft);
+}
+
+.lt-assistant-response.is-error {
+  background: #fff1f2;
+}
+
+.lt-assistant-block {
+  margin-bottom: 0.9rem;
+}
+
+.lt-assistant-block:last-child {
+  margin-bottom: 0;
+}
+
+.lt-assistant-kicker {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.lt-assistant-action {
+  color: var(--lt-text-muted);
+  font-size: 0.8rem;
+}
+
+.lt-assistant-surface {
+  padding: 0.7rem;
+  border-radius: var(--lt-radius-md);
+  background: var(--lt-card);
+  white-space: pre-wrap;
+}
+
+.lt-assistant-json {
+  font-size: 0.8rem;
+}
+
+.lt-assistant-json pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.lt-assistant-error {
+  padding: 0.7rem;
+  border-radius: var(--lt-radius-md);
+  background: #ffebee;
+  color: #c62828;
+  font-size: 0.8rem;
+}
+
+.lt-assistant-time {
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+  color: var(--lt-text-soft);
+}
+
+.lt-assistant-tips {
+  padding: 0.85rem;
+  border-radius: var(--lt-radius-md);
+  background: #f0f4f8;
+  color: #475569;
+  font-size: 0.8rem;
+}
+
+.lt-assistant-tips ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+}

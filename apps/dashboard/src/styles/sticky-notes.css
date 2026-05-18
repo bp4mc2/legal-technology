@@ -1,0 +1,382 @@
+.lt-sticky-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.lt-sticky-error {
+  color: var(--lt-destructive);
+}
+
+.lt-sticky-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.lt-sticky-summary-card {
+  background: #f5f6fa;
+  border-radius: var(--lt-radius-md);
+  padding: 0.75rem;
+}
+
+.lt-sticky-summary-label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.lt-sticky-summary-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.lt-sticky-filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.lt-sticky-view-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lt-sticky-table-wrap {
+  overflow-x: auto;
+}
+
+.lt-sticky-click-row {
+  cursor: pointer;
+}
+
+.lt-sticky-cell {
+  padding: 0.5rem;
+}
+
+.lt-sticky-cell--text {
+  min-width: 420px;
+}
+
+.lt-sticky-cell--board {
+  min-width: 220px;
+}
+
+.lt-sticky-cell--status {
+  min-width: 170px;
+}
+
+.lt-sticky-cell--link {
+  min-width: 320px;
+}
+
+.lt-sticky-note-line {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.lt-sticky-dot {
+  width: 12px;
+  height: 12px;
+  min-width: 12px;
+  border-radius: 999px;
+  margin-top: 4px;
+  background: var(--lt-sticky-note-bg, #d1d5db);
+  border: 1px solid #9ca3af;
+  display: inline-block;
+}
+
+.lt-sticky-note-text {
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+}
+
+.lt-sticky-subtle {
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.lt-sticky-strong {
+  font-weight: 600;
+}
+
+.lt-sticky-empty {
+  opacity: 0.7;
+}
+
+.lt-sticky-status-chip {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--lt-sticky-status-bg, #6b7280);
+}
+
+.lt-sticky-whiteboard {
+  display: grid;
+  gap: 1rem;
+}
+
+.lt-sticky-board {
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-md);
+  padding: 0.8rem;
+  background: var(--lt-surface-soft);
+}
+
+.lt-sticky-board-title {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+}
+
+.lt-sticky-board-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.lt-sticky-column-dropzone {
+  border-radius: var(--lt-radius-md);
+  padding: 0.35rem;
+  transition: background 0.15s ease, outline-color 0.15s ease;
+  background: transparent;
+  outline: 2px dashed transparent;
+}
+
+.lt-sticky-column-dropzone.is-over {
+  background: rgba(59, 130, 246, 0.1);
+  outline-color: #3b82f6;
+}
+
+.lt-sticky-column-title {
+  font-size: 0.83rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  color: #334155;
+}
+
+.lt-sticky-column-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.lt-sticky-card {
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: var(--lt-radius-md);
+  background: var(--lt-sticky-note-bg, #fde68a);
+  padding: 0.65rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  cursor: pointer;
+}
+
+.lt-sticky-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.lt-sticky-card-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.lt-sticky-card-text {
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  line-height: 1.33;
+}
+
+.lt-sticky-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.26);
+  z-index: 1100;
+}
+
+.lt-sticky-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(520px, 96vw);
+  background: #fff;
+  z-index: 1200;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.lt-sticky-drawer-head {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--lt-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lt-sticky-drawer-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.lt-sticky-drawer-subtitle {
+  font-size: 0.88rem;
+  opacity: 0.8;
+}
+
+.lt-sticky-drawer-body {
+  padding: 1rem;
+  overflow-y: auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.lt-sticky-color-panel {
+  background: var(--lt-sticky-note-bg, #fde68a);
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: var(--lt-radius-md);
+  padding: 0.85rem;
+}
+
+.lt-sticky-panel {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.lt-sticky-panel-title {
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+
+.lt-sticky-form-group {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.7rem;
+}
+
+.lt-sticky-form-label {
+  font-size: 0.88rem;
+}
+
+.lt-sticky-form-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.lt-sticky-suggestions {
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-md);
+  max-height: 180px;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.lt-sticky-suggestion {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid #f1f5f9;
+  background: #fff;
+  padding: 0.5rem 0.55rem;
+  cursor: pointer;
+}
+
+.lt-sticky-suggestion:last-child {
+  border-bottom: 0;
+}
+
+.lt-sticky-suggestion-name {
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.lt-sticky-suggestion-uri,
+.lt-sticky-uri {
+  font-size: 0.8rem;
+  opacity: 0.75;
+  word-break: break-all;
+}
+
+.lt-sticky-loading-text {
+  font-size: 0.82rem;
+  opacity: 0.7;
+}
+
+.lt-sticky-candidates {
+  margin-top: 0.7rem;
+}
+
+.lt-sticky-candidate-title,
+.lt-sticky-section-kicker {
+  font-size: 0.88rem;
+  margin-bottom: 0.35rem;
+}
+
+.lt-sticky-candidate-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.lt-sticky-candidate-card {
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-md);
+  padding: 0.55rem;
+  background: #fafafa;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.lt-sticky-candidate-actions,
+.lt-sticky-actions-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lt-sticky-action-error {
+  color: #b00020;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.lt-sticky-linked-block {
+  margin-bottom: 0.6rem;
+}
+
+.lt-sticky-linked-label {
+  font-size: 0.88rem;
+  opacity: 0.8;
+  margin-bottom: 0.2rem;
+}
+
+.lt-sticky-linked-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.lt-sticky-linked-list li {
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 960px) {
+  .lt-sticky-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .lt-sticky-form-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

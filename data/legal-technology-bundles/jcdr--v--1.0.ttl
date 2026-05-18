@@ -1,0 +1,65 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e010104 <http://bp4mc2.org/lto#beoogdGebruik> "- Verwijzingen in juridische documenten  \n- Publicatieplatforms (DROP, CVDR) " .
+_:696de21d1d614276aa662912c98809e010105 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidige identificatie van regelingen, Betere vindbaarheid en herleidbaarheid, Interoperabiliteit tussen systemen" .
+_:696de21d1d614276aa662912c98809e010106 <http://bp4mc2.org/lto#onderdelen> "Structuurregels voor identificatie van documenten in CVDR" .
+_:696de21d1d614276aa662912c98809e010235 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010236 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Tekstueel> .
+_:696de21d1d614276aa662912c98809e010237 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:696de21d1d614276aa662912c98809e010238 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010239 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
+_:696de21d1d614276aa662912c98809e010240 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Normatief> .
+_:696de21d1d614276aa662912c98809e010477 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010478 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e010479 <http://bp4mc2.org/lto#versiedatum> "2012-12-07"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Beleidsmedewerkers> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Juristen> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Uitvoeringsorganisaties> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-05-18"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/79b22df2-1da8-4581-a872-5c40ff36434c> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/7fbd002f-89c1-481c-b3f3-9eda91bebcf6> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010103 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010104 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010105 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010106 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ComplianceOndersteuning> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ZoekenWetgeving> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/83330031-1d66-4c01-9237-c60ba4e7250d> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/867348a9-eb00-4ac0-ae3f-2e2841972827> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/9d253e8a-0a18-40e6-9299-9a3fe3e84c4d> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#naam> "JCDR" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#normstatus> <http://bp4mc2.org/lt#Wettelijk> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#omschrijving> "JCDR (JuriConnect Decentrale Regelgeving) is een informatie-standaard voor het uniform verwijzen naar decentrale regelgeving in Nederland." .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010235 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010236 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010237 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010238 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010239 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010240 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010477 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010478 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010479 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "JCDR"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/79b22df2-1da8-4581-a872-5c40ff36434c> <http://purl.org/dc/terms/title> "NORA Online – JCDR" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/79b22df2-1da8-4581-a872-5c40ff36434c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/79b22df2-1da8-4581-a872-5c40ff36434c> <http://xmlns.com/foaf/0.1/page> "https://www.noraonline.nl/wiki/Jcdr" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/7fbd002f-89c1-481c-b3f3-9eda91bebcf6> <http://purl.org/dc/terms/title> "Forum Standaardisatie – JCDR" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/7fbd002f-89c1-481c-b3f3-9eda91bebcf6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/7fbd002f-89c1-481c-b3f3-9eda91bebcf6> <http://xmlns.com/foaf/0.1/page> "https://www.forumstandaardisatie.nl/open-standaarden/jcdr" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/83330031-1d66-4c01-9237-c60ba4e7250d> <http://bp4mc2.org/lto#omschrijving> "koppeling expliciet en uniform opnemen" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/83330031-1d66-4c01-9237-c60ba4e7250d> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/83330031-1d66-4c01-9237-c60ba4e7250d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/867348a9-eb00-4ac0-ae3f-2e2841972827> <http://bp4mc2.org/lto#omschrijving> "uniforme toegang tot decentrale regelgeving" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/867348a9-eb00-4ac0-ae3f-2e2841972827> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/867348a9-eb00-4ac0-ae3f-2e2841972827> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/9d253e8a-0a18-40e6-9299-9a3fe3e84c4d> <http://bp4mc2.org/lto#omschrijving> "betrouwbare koppeling tussen documenten" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/9d253e8a-0a18-40e6-9299-9a3fe3e84c4d> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/9d253e8a-0a18-40e6-9299-9a3fe3e84c4d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

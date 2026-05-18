@@ -1,0 +1,16 @@
+.lt-panel-shell {
+  background: var(--lt-surface);
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-lg);
+  box-shadow: var(--lt-shadow-1);
+  padding: 1rem;
+}
+
+.lt-panel-heading {
+  margin-top: 0;
+  color: var(--lt-text);
+}
+
+.lt-panel-alert {
+  border-radius: 10px;
+}

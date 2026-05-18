@@ -1,0 +1,66 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e010124 <http://bp4mc2.org/lto#beoogdGebruik> "- Jurisprudentiedatabases\n- Juridisch onderzoek  \n- Verwijzingen in juridische documenten" .
+_:696de21d1d614276aa662912c98809e010125 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Uniforme citatiestandaard, Betere vindbaarheid" .
+_:696de21d1d614276aa662912c98809e010126 <http://bp4mc2.org/lto#onderdelen> "ECLI-identifier structuur, ECLI metadata, ECLI-zoekportaal" .
+_:696de21d1d614276aa662912c98809e010268 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010269 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Tekstueel> .
+_:696de21d1d614276aa662912c98809e010270 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:696de21d1d614276aa662912c98809e010271 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010272 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
+_:696de21d1d614276aa662912c98809e010273 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Normatief> .
+_:696de21d1d614276aa662912c98809e010587 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010588 <http://bp4mc2.org/lto#versienummer> "20110429" .
+_:696de21d1d614276aa662912c98809e010589 <http://bp4mc2.org/lto#versiedatum> "2011-04-29"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/a2938952-581f-4fa3-b4a3-9abcd1822721> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Advocaten> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Juristen> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Opsporingsinstanties> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Rechtbanken> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#bijgewerktOp> "2026-05-18"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/3e09b904-9703-43b1-ac6b-1f906e8d5dcb> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/8e98af3f-6186-466f-9137-d859a4eae107> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/be64367a-4137-445c-8677-79b1901cf813> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010123 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010124 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010125 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010126 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ComplianceOndersteuning> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ZoekenRechtspraak> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/496f2048-a608-4746-bf89-94cb6d7a7d3b> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/62a5981b-4a3e-45a0-997e-9a4e1cd30ec7> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#naam> "ECLI" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#normstatus> <http://bp4mc2.org/lt#Wettelijk> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#omschrijving> "ECLI (European Case Law Identifier) is een informatie-standaard voor het uniform identificeren en ontsluiten van jurisprudentie in Europa. Het ondersteunt vooral taken rond verzamelen, analyseren en verwijzen naar rechterlijke uitspraken." .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010268 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010269 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010270 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010271 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010272 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010273 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010587 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010588 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010589 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://www.w3.org/2000/01/rdf-schema#label> "ECLI"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/3e09b904-9703-43b1-ac6b-1f906e8d5dcb> <http://purl.org/dc/terms/title> "ECLI Search (EU portal)" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/3e09b904-9703-43b1-ac6b-1f906e8d5dcb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/3e09b904-9703-43b1-ac6b-1f906e8d5dcb> <http://xmlns.com/foaf/0.1/page> "https://e-justice.europa.eu/ecli" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/8e98af3f-6186-466f-9137-d859a4eae107> <http://purl.org/dc/terms/title> "Raadsconclusies waarin de invoering wordt aanbevolen van een Europese identificatiecode voor jurisprudentie (ECLI)," .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/8e98af3f-6186-466f-9137-d859a4eae107> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/8e98af3f-6186-466f-9137-d859a4eae107> <http://xmlns.com/foaf/0.1/page> "https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX%3A52011XG0429%2801%29" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/be64367a-4137-445c-8677-79b1901cf813> <http://purl.org/dc/terms/title> "Rechtspraak ECLI uitleg" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/be64367a-4137-445c-8677-79b1901cf813> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/be64367a-4137-445c-8677-79b1901cf813> <http://xmlns.com/foaf/0.1/page> "https://www.rechtspraak.nl/Uitspraken/Paginas/ECLI.aspx" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/496f2048-a608-4746-bf89-94cb6d7a7d3b> <http://bp4mc2.org/lto#omschrijving> "koppeling uitspraken aan analyse" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/496f2048-a608-4746-bf89-94cb6d7a7d3b> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/496f2048-a608-4746-bf89-94cb6d7a7d3b> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/62a5981b-4a3e-45a0-997e-9a4e1cd30ec7> <http://bp4mc2.org/lto#omschrijving> "uniforme toegang tot jurisprudentie" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/62a5981b-4a3e-45a0-997e-9a4e1cd30ec7> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/62a5981b-4a3e-45a0-997e-9a4e1cd30ec7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

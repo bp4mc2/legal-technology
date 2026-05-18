@@ -1,0 +1,44 @@
+.lt-stats-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.lt-stats-panel {
+  background: var(--lt-surface);
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-lg);
+  box-shadow: var(--lt-shadow-1);
+}
+
+.lt-stats-panel-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--lt-border-soft);
+}
+
+.lt-stats-card {
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-lg);
+}
+
+.lt-stats-hero {
+  border: 0;
+  color: #ffffff;
+}
+
+.lt-stats-hero-primary {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+}
+
+.lt-stats-hero-success {
+  background: linear-gradient(135deg, #15803d 0%, #22c55e 100%);
+}
+
+.lt-stats-hero-dark {
+  background: linear-gradient(135deg, #111827 0%, #374151 100%);
+}
+
+.lt-stats-legend-item {
+  border: 1px solid var(--lt-border);
+  background: #fff;
+  border-radius: 999px;
+}

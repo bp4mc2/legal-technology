@@ -32,6 +32,8 @@ Python Click CLI met GraphDB-functies:
 - `load`: laad een Turtle-bestand naar GraphDB (optioneel in een specifieke named graph).
 - `extract`: exporteer data uit GraphDB naar een `.ttl` bestand.
 - `clear`: leeg de repository na expliciete bevestiging.
+- `download-named-graph`: download de volledige named graph als Turtle (standaard naar `data/all-legal-technologies.ttl`).
+- `sync-exports`: schrijf alle lokale exports weg (aggregate + bundles per legal technology + bundles per organisatie).
 
 De CLI leest configuratie uit `config/graphdb.ini` en ondersteunt standaard:
 
@@ -218,6 +220,9 @@ Voorbeelden:
 ```bash
 python -m cli.commands.cli load --file "ontology/legal technology.ttl"
 python -m cli.commands.cli extract --out export.ttl
+python -m cli.commands.cli download-named-graph
+python -m cli.commands.cli download-named-graph --out data/all-legal-technologies.ttl
+python -m cli.commands.cli sync-exports
 python -m cli.commands.cli clear
 ```
 

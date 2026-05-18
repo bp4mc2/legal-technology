@@ -1,0 +1,45 @@
+.lt-form-context-column {
+  align-self: stretch;
+}
+
+.lt-form-context-card {
+  position: sticky;
+  top: 0.75rem;
+  border: 1px solid var(--lt-border-soft);
+  border-radius: var(--lt-radius-lg);
+}
+
+.lt-form-context-title {
+  letter-spacing: 0.04em;
+}
+
+.lt-form-context-body {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.lt-form-context-summary .badge {
+  font-weight: 600;
+}
+
+.lt-form-context-list {
+  display: grid;
+  gap: 0.55rem;
+  max-height: 56vh;
+  overflow-y: auto;
+  padding-right: 0.1rem;
+}
+
+.lt-form-context-note {
+  border-color: var(--lt-border-soft) !important;
+}
+
+@media (max-width: 1199px) {
+  .lt-form-context-card {
+    position: static;
+  }
+
+  .lt-form-context-list {
+    max-height: 42vh;
+  }
+}

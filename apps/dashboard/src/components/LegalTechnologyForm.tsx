@@ -32,6 +32,39 @@ type Bronverwijzing = {
   locatie: string;
   verwijzing: string;
 };
+
+type TechRef = {
+  uri: string;
+  name: string;
+};
+
+type StickyNote = {
+  uri: string;
+  noteId: string;
+  text: string;
+  statusIri: string;
+  status: string;
+  section: string;
+  color: string;
+  omschrijvingAfhandeling: string;
+  board: { uri: string; name: string };
+  taaktype: { uri: string; name: string };
+  linkedTechnology: TechRef;
+  candidateTechnologies: TechRef[];
+};
+
+type TechSuggestion = {
+  uri: string;
+  name: string;
+};
+
+type EnumerationValue = string | { label?: string; iri?: string; value?: string };
+
+type EnumerationResponse = {
+  name: string;
+  values: EnumerationValue[];
+};
+
 type LegalTechnology = {
   subtype?: 'Methode' | 'Standaard' | 'Tool';
   id?: string;
@@ -60,6 +93,47 @@ type LegalTechnology = {
 
 type EditLegalTechnology = Omit<Partial<LegalTechnology>, 'documentatie'> & {
   documentatie?: Partial<Documentatie> | null;
+};
+
+const STICKY_STATUS_COLORS: Record<string, string> = {
+  Opgenomen: '#16a34a',
+  'Geen Juridische Technologie': '#6b7280',
+  Uitzoeken: '#d97706',
+  'Nader Te Bepalen': '#2563eb',
+};
+
+const stickyStatusChipStyle = (status: string): React.CSSProperties => ({
+  ['--lt-detail-status-bg' as any]: STICKY_STATUS_COLORS[status] || '#6b7280',
+});
+
+const stickyNoteColorStyle = (color?: string): React.CSSProperties => ({
+  ['--lt-detail-note-bg' as any]: color || '#fde68a',
+});
+
+const normalizeForCompare = (value?: string) => decodeURIComponent((value || '').trim()).toLowerCase();
+
+const uriMatchesTechnology = (uri: string | undefined, technologyKeys: Set<string>) => {
+  const normalizedUri = normalizeForCompare(uri);
+  return Boolean(normalizedUri) && technologyKeys.has(normalizedUri);
+};
+
+const resolveTechnologyUri = (tech: EditLegalTechnology): string => {
+  const iri = ((tech as any).iri || '').trim();
+  if (iri.startsWith('http://') || iri.startsWith('https://')) {
+    return iri;
+  }
+
+  const id = (tech.id || '').trim();
+  if (id.startsWith('http://') || id.startsWith('https://')) {
+    return id;
+  }
+
+  const abbreviation = (tech.abbrevation || '').trim();
+  if (abbreviation) {
+    return `http://bp4mc2.org/lt#${abbreviation}`;
+  }
+
+  return '';
 };
 
 const normalizeDateValue = (value?: string) => {
@@ -172,7 +246,10 @@ const normalizeForForm = (tech: EditLegalTechnology): LegalTechnology => {
     beoogde_gebruikers: withFallbackArray(tech.beoogde_gebruikers, ''),
     ondersteuning_voor: normalizeOndersteuning(tech.ondersteuning_voor),
     geschikt_voor_taak: normalizeTaakinvulling(tech.geschikt_voor_taak),
-    bronverwijzing: withFallbackArray(tech.bronverwijzing, { titel: '', locatie: '', verwijzing: '' }),
+    bronverwijzing: withFallbackArray(
+      (tech.bronverwijzing || []).map(b => ({ ...b, locatie: b.locatie || '', verwijzing: b.verwijzing || '' })),
+      { titel: '', locatie: '', verwijzing: '' },
+    ),
     type_technologie: withFallbackArray(tech.type_technologie, ''),
   };
 };
@@ -203,6 +280,22 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
   const [organisations, setOrganisations] = useState<Organisation[]>([]);
   const [organisationsLoading, setOrganisationsLoading] = useState(true);
   const [organisationsError, setOrganisationsError] = useState<string | null>(null);
+  const [contextOpen, setContextOpen] = useState(true);
+  const [selectedTechnologyUri, setSelectedTechnologyUri] = useState('');
+  const [stickyNotes, setStickyNotes] = useState<StickyNote[]>([]);
+  const [stickyLoading, setStickyLoading] = useState(false);
+  const [stickyError, setStickyError] = useState<string | null>(null);
+  const [allStickyStatuses, setAllStickyStatuses] = useState<{ label: string; iri: string }[]>([]);
+  const [allStickyStatusIriByLabel, setAllStickyStatusIriByLabel] = useState<Record<string, string>>({});
+  const [editingSticky, setEditingSticky] = useState<StickyNote | null>(null);
+  const [statusDraft, setStatusDraft] = useState('');
+  const [definitiveTechDraft, setDefinitiveTechDraft] = useState('');
+  const [definitiveTechNameDraft, setDefinitiveTechNameDraft] = useState('');
+  const [omschrijvingDraft, setOmschrijvingDraft] = useState('');
+  const [techSuggestions, setTechSuggestions] = useState<TechSuggestion[]>([]);
+  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
+  const [savingSticky, setSavingSticky] = useState(false);
+  const [stickyActionError, setStickyActionError] = useState<string | null>(null);
 
   useEffect(() => {
     // Load enumerations
@@ -219,8 +312,47 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
   }, []);
 
   useEffect(() => {
+    const fetchStickyStatuses = async () => {
+      try {
+        const data = await apiFetch<EnumerationResponse>('/api/legaltechnologies/enumerations/StickyNoteStatussen');
+        const normalized = (data.values || []).reduce<{ label: string; iri: string }[]>((acc, item) => {
+          if (typeof item === 'string') {
+            acc.push({ label: item, iri: '' });
+            return acc;
+          }
+
+          const label = (item.label || item.value || '').trim();
+          if (!label) {
+            return acc;
+          }
+
+          acc.push({ label, iri: (item.iri || '').trim() });
+          return acc;
+        }, []);
+
+        setAllStickyStatuses(normalized);
+
+        const mapping: Record<string, string> = {};
+        normalized.forEach((status) => {
+          if (status.iri) {
+            mapping[status.label] = status.iri;
+          }
+        });
+        setAllStickyStatusIriByLabel(mapping);
+      } catch (e) {
+        console.warn('Kon StickyNoteStatussen niet ophalen via enumerations endpoint', e);
+        setAllStickyStatuses([]);
+        setAllStickyStatusIriByLabel({});
+      }
+    };
+
+    fetchStickyStatuses();
+  }, []);
+
+  useEffect(() => {
     const fn = (tech: EditLegalTechnology) => {
       setForm(normalizeForForm(tech));
+      setSelectedTechnologyUri(resolveTechnologyUri(tech));
       setSuccess(null);
       setError(null);
     };
@@ -236,6 +368,183 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
       if (idx > -1) listeners.splice(idx, 1);
     };
   }, []);
+
+  const activeTechnologyUri = React.useMemo(() => {
+    if (selectedTechnologyUri) {
+      return selectedTechnologyUri;
+    }
+
+    const id = (form.id || '').trim();
+    if (id.startsWith('http://') || id.startsWith('https://')) {
+      return id;
+    }
+
+    const abbreviation = (form.abbrevation || '').trim();
+    if (abbreviation) {
+      return `http://bp4mc2.org/lt#${abbreviation}`;
+    }
+
+    return '';
+  }, [selectedTechnologyUri, form.id, form.abbrevation]);
+
+  const technologyMatchKeys = React.useMemo(() => {
+    const keys = new Set<string>();
+    [activeTechnologyUri].forEach((candidate) => {
+      const normalized = normalizeForCompare(candidate);
+      if (normalized) {
+        keys.add(normalized);
+      }
+    });
+    return keys;
+  }, [activeTechnologyUri]);
+
+  useEffect(() => {
+    if (!activeTechnologyUri) {
+      setStickyNotes([]);
+      setStickyError(null);
+      return;
+    }
+
+    const fetchStickyNotes = async () => {
+      setStickyLoading(true);
+      setStickyError(null);
+      try {
+        const endpoint = `/api/stickynotes?technologyUri=${encodeURIComponent(activeTechnologyUri)}`;
+        const data = await apiFetch<StickyNote[]>(endpoint);
+        setStickyNotes(data);
+      } catch (e: any) {
+        setStickyError(e?.message || 'Kon sticky notes niet ophalen');
+      } finally {
+        setStickyLoading(false);
+      }
+    };
+
+    fetchStickyNotes();
+  }, [activeTechnologyUri]);
+
+  const relatedStickyNotes = React.useMemo(() => {
+    return stickyNotes.filter((note) => {
+      if (uriMatchesTechnology(note.linkedTechnology?.uri, technologyMatchKeys)) {
+        return true;
+      }
+      return note.candidateTechnologies.some((candidate) =>
+        uriMatchesTechnology(candidate.uri, technologyMatchKeys),
+      );
+    });
+  }, [stickyNotes, technologyMatchKeys]);
+
+  const stickyStatusIriByLabel = React.useMemo(() => {
+    const mapping: Record<string, string> = { ...allStickyStatusIriByLabel };
+    stickyNotes.forEach((note) => {
+      if (note.status && note.statusIri && !mapping[note.status]) {
+        mapping[note.status] = note.statusIri;
+      }
+    });
+    return mapping;
+  }, [allStickyStatusIriByLabel, stickyNotes]);
+
+  const stickyStatuses = React.useMemo(() => {
+    const endpointStatuses = Array.from(new Set(allStickyStatuses.map((s) => s.label).filter(Boolean))).sort();
+    if (endpointStatuses.length > 0) {
+      return endpointStatuses;
+    }
+    return Array.from(new Set(stickyNotes.map((note) => note.status).filter(Boolean))).sort();
+  }, [allStickyStatuses, stickyNotes]);
+
+  const stickySummary = React.useMemo(() => {
+    const definitive = relatedStickyNotes.filter((note) =>
+      uriMatchesTechnology(note.linkedTechnology?.uri, technologyMatchKeys),
+    ).length;
+    const candidate = relatedStickyNotes.filter((note) =>
+      note.candidateTechnologies.some((candidateTechnology) =>
+        uriMatchesTechnology(candidateTechnology.uri, technologyMatchKeys),
+      ),
+    ).length;
+    return {
+      total: relatedStickyNotes.length,
+      definitive,
+      candidate,
+    };
+  }, [relatedStickyNotes, technologyMatchKeys]);
+
+  const applyUpdatedStickyNote = (updated: StickyNote) => {
+    setStickyNotes((previous) => previous.map((note) => (note.uri === updated.uri ? updated : note)));
+    setEditingSticky(updated);
+    setStatusDraft(updated.statusIri || '');
+    setDefinitiveTechDraft(updated.linkedTechnology?.uri || '');
+    setDefinitiveTechNameDraft(updated.linkedTechnology?.name || '');
+    setOmschrijvingDraft(updated.omschrijvingAfhandeling || '');
+  };
+
+  const openStickyEditor = (note: StickyNote) => {
+    setEditingSticky(note);
+    setStatusDraft(note.statusIri || '');
+    setDefinitiveTechDraft(note.linkedTechnology?.uri || '');
+    setDefinitiveTechNameDraft(note.linkedTechnology?.name || '');
+    setOmschrijvingDraft(note.omschrijvingAfhandeling || '');
+    setTechSuggestions([]);
+    setStickyActionError(null);
+  };
+
+  const closeStickyEditor = () => {
+    setEditingSticky(null);
+    setStickyActionError(null);
+    setTechSuggestions([]);
+  };
+
+  useEffect(() => {
+    if (!editingSticky) {
+      return;
+    }
+
+    const query = definitiveTechNameDraft.trim();
+    if (query.length < 2) {
+      setTechSuggestions([]);
+      return;
+    }
+
+    const timer = window.setTimeout(async () => {
+      setLoadingSuggestions(true);
+      try {
+        const data = await apiFetch<TechSuggestion[]>(
+          `/api/stickynotes/tech-suggestions?q=${encodeURIComponent(query)}&limit=12`,
+        );
+        setTechSuggestions(data);
+      } catch {
+        setTechSuggestions([]);
+      } finally {
+        setLoadingSuggestions(false);
+      }
+    }, 200);
+
+    return () => window.clearTimeout(timer);
+  }, [definitiveTechNameDraft, editingSticky]);
+
+  const patchStickyReview = async (payload: {
+    statusIri?: string;
+    definitiveTechnologyUri?: string;
+    moveCandidateToDefinitiveUri?: string;
+    omschrijvingAfhandeling?: string;
+  }) => {
+    if (!editingSticky) {
+      return;
+    }
+
+    setSavingSticky(true);
+    setStickyActionError(null);
+    try {
+      const updated = await apiFetch<StickyNote>('/api/stickynotes/review', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ noteUri: editingSticky.uri, ...payload }),
+      });
+      applyUpdatedStickyNote(updated);
+    } catch (e: any) {
+      setStickyActionError(e?.message || 'Kon sticky note niet bijwerken');
+    } finally {
+      setSavingSticky(false);
+    }
+  };
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -355,7 +664,8 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
     setError(null);
     setSuccess(null);
     try {
-      const payload = {
+      // Build a clean payload: strip fields not in the API schema and filter empty values.
+      const rawPayload: Record<string, unknown> = {
         ...form,
         versienummer: form.versiebeschrijving.versienummer,
         versiedatum: form.versiebeschrijving.versiedatum,
@@ -364,6 +674,31 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
           versiedatum: form.versiebeschrijving.versiedatum,
         },
       };
+
+      // Remove fields that are not part of the Create/Update schema.
+      delete rawPayload['iri'];
+
+      // Filter empty strings out of array fields.
+      rawPayload['geboden_functionaliteit'] = (form.geboden_functionaliteit || []).filter(v => v && v.trim());
+      rawPayload['beoogde_gebruikers'] = (form.beoogde_gebruikers || []).filter(v => v && v.trim());
+      rawPayload['type_technologie'] = (form.type_technologie || []).filter(v => v && v.trim());
+
+      // Omit empty optional scalar fields so the backend receives clean data.
+      if (!rawPayload['normstatus']) delete rawPayload['normstatus'];
+      if (!rawPayload['leverancier']) delete rawPayload['leverancier'];
+      if (!rawPayload['technologietype']) delete rawPayload['technologietype'];
+      if (!rawPayload['taaktype']) delete rawPayload['taaktype'];
+
+      // Ensure each bronverwijzing item always has the locatie key (required=True in schema).
+      if (Array.isArray(rawPayload['bronverwijzing'])) {
+        rawPayload['bronverwijzing'] = (rawPayload['bronverwijzing'] as Bronverwijzing[]).map(b => ({
+          ...b,
+          locatie: b.locatie || '',
+          verwijzing: b.verwijzing || '',
+        }));
+      }
+
+      const payload = rawPayload;
 
       if (form.id) {
         await apiFetch<LegalTechnology>(`/api/legaltechnologies/${form.id}`, {
@@ -392,7 +727,10 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 bg-white rounded shadow-sm">
+    <>
+      <div className="row g-3 align-items-start">
+        <div className="col-12 col-xl-8">
+          <form onSubmit={handleSubmit} className="p-4 bg-white rounded shadow-sm">
 
       {/* Form header */}
       <div className="d-flex align-items-start justify-content-between mb-4 pb-3 border-bottom">
@@ -1025,7 +1363,251 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
 
       {error && <div className="alert alert-danger mt-3 mb-0">{error}</div>}
       {success && <div className="alert alert-success mt-3 mb-0">{success}</div>}
-    </form>
+          </form>
+        </div>
+
+        <aside className="col-12 col-xl-4 lt-form-context-column">
+          <div className="card border-0 shadow-sm lt-form-context-card">
+            <div className="card-header d-flex justify-content-between align-items-center">
+              <div className="fw-semibold small text-uppercase text-primary lt-form-context-title">Context: Sticky notes</div>
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-primary"
+                onClick={() => setContextOpen((open) => !open)}
+              >
+                {contextOpen ? 'Inklappen' : 'Uitklappen'}
+              </button>
+            </div>
+
+            {contextOpen && (
+              <div className="card-body lt-form-context-body">
+                {!activeTechnologyUri ? (
+                  <div className="text-muted small">
+                    Sla de juridische technologie eerst op of gebruik een bestaande technologie om gekoppelde sticky notes te zien.
+                  </div>
+                ) : stickyLoading ? (
+                  <div className="text-muted small">Sticky notes laden...</div>
+                ) : stickyError ? (
+                  <div className="alert alert-danger py-2 px-3 mb-0">{stickyError}</div>
+                ) : (
+                  <>
+                    <div className="d-flex gap-2 flex-wrap lt-form-context-summary">
+                      <span className="badge text-bg-light">Totaal: {stickySummary.total}</span>
+                      <span className="badge text-bg-success">Definitief: {stickySummary.definitive}</span>
+                      <span className="badge text-bg-warning text-dark">Kandidaat: {stickySummary.candidate}</span>
+                    </div>
+
+                    {relatedStickyNotes.length === 0 ? (
+                      <div className="text-muted small">Geen gekoppelde sticky notes gevonden voor deze technologie.</div>
+                    ) : (
+                      <div className="lt-form-context-list">
+                        {relatedStickyNotes.map((note) => {
+                          const isDefinitive = uriMatchesTechnology(note.linkedTechnology?.uri, technologyMatchKeys);
+                          const isCandidate = note.candidateTechnologies.some((candidate) =>
+                            uriMatchesTechnology(candidate.uri, technologyMatchKeys),
+                          );
+                          return (
+                            <div key={note.uri} className="border rounded p-2 bg-white lt-form-context-note">
+                              <div className="d-flex justify-content-between align-items-start gap-2 mb-1">
+                                <div className="d-inline-flex gap-2 align-items-center">
+                                  <span
+                                    className="lt-detail-sticky-dot"
+                                    title={note.color || 'geen kleur'}
+                                    style={stickyNoteColorStyle(note.color)}
+                                  />
+                                  <span className="lt-detail-sticky-chip" style={stickyStatusChipStyle(note.status)}>{note.status}</span>
+                                </div>
+                                <button
+                                  type="button"
+                                  className="btn btn-sm btn-outline-primary"
+                                  onClick={() => openStickyEditor(note)}
+                                >
+                                  Bewerk
+                                </button>
+                              </div>
+
+                              <div className="small text-muted mb-1">{note.board.name} / {note.section || 'onbekende sectie'}</div>
+                              <div className="lt-detail-sticky-preview">{note.text}</div>
+
+                              <div className="d-flex gap-2 flex-wrap mt-2">
+                                {isDefinitive && <span className="badge text-bg-success">Definitieve koppeling</span>}
+                                {isCandidate && <span className="badge text-bg-warning text-dark">Kandidaatkoppeling</span>}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        </aside>
+      </div>
+
+      {editingSticky && (
+        <>
+          <div onClick={closeStickyEditor} className="lt-detail-editor-overlay" />
+
+          <aside className="lt-detail-editor-drawer">
+            <div className="lt-detail-editor-head">
+              <div>
+                <div className="lt-detail-editor-title">Sticky note bewerken</div>
+                <div className="lt-detail-editor-subtitle">
+                  {editingSticky.board.name} / {editingSticky.section || 'onbekende sectie'}
+                </div>
+              </div>
+              <button type="button" className="btn btn-sm btn-outline-secondary" onClick={closeStickyEditor}>
+                Sluiten
+              </button>
+            </div>
+
+            <div className="lt-detail-editor-body">
+              <div className="lt-detail-editor-note" style={stickyNoteColorStyle(editingSticky.color)}>
+                <div className="mb-2">
+                  <span className="lt-detail-sticky-chip" style={stickyStatusChipStyle(editingSticky.status)}>{editingSticky.status}</span>
+                </div>
+                <div className="lt-detail-editor-note-text">{editingSticky.text}</div>
+              </div>
+
+              <section className="lt-detail-sticky-editor-form">
+                <div className="fw-semibold mb-2">Aanpassen</div>
+
+                <label className="lt-detail-form-group">
+                  <span className="lt-detail-form-label">Status</span>
+                  <div className="lt-detail-form-row">
+                    <select
+                      value={statusDraft}
+                      onChange={(event) => setStatusDraft(event.target.value)}
+                      className="form-select form-select-sm"
+                      disabled={savingSticky}
+                    >
+                      <option value="">Kies status</option>
+                      {stickyStatuses.map((status) => (
+                        <option key={status} value={stickyStatusIriByLabel[status] || ''}>
+                          {status}
+                        </option>
+                      ))}
+                    </select>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-primary"
+                      disabled={savingSticky || !statusDraft}
+                      onClick={() => patchStickyReview({ statusIri: statusDraft })}
+                    >
+                      Opslaan
+                    </button>
+                  </div>
+                </label>
+
+                <label className="lt-detail-form-group">
+                  <span className="lt-detail-form-label">Definitieve technologie</span>
+                  <div className="lt-detail-sticky-suggestion-list">
+                    <input
+                      value={definitiveTechNameDraft}
+                      onChange={(event) => {
+                        setDefinitiveTechNameDraft(event.target.value);
+                        setDefinitiveTechDraft('');
+                      }}
+                      className="form-control form-control-sm"
+                      placeholder="Typ 2+ letters van technologie naam"
+                      disabled={savingSticky}
+                    />
+
+                    {loadingSuggestions ? (
+                      <div className="lt-detail-loading-inline">Zoeken...</div>
+                    ) : techSuggestions.length > 0 ? (
+                      <div className="lt-detail-suggestion-list">
+                        {techSuggestions.map((suggestion) => (
+                          <button
+                            type="button"
+                            key={suggestion.uri}
+                            onClick={() => {
+                              setDefinitiveTechDraft(suggestion.uri);
+                              setDefinitiveTechNameDraft(suggestion.name || suggestion.uri);
+                              setTechSuggestions([]);
+                            }}
+                            className="lt-detail-suggestion"
+                          >
+                            <div className="lt-detail-suggestion-name">{suggestion.name}</div>
+                            <div className="lt-detail-suggestion-uri">{suggestion.uri}</div>
+                          </button>
+                        ))}
+                      </div>
+                    ) : null}
+
+                    <div className="lt-detail-form-row">
+                      <input
+                        value={definitiveTechDraft}
+                        onChange={(event) => setDefinitiveTechDraft(event.target.value)}
+                        className="form-control form-control-sm"
+                        placeholder="Geselecteerde URI (of handmatig invullen)"
+                        disabled={savingSticky}
+                      />
+                      <button
+                        type="button"
+                        className="btn btn-sm btn-primary"
+                        disabled={savingSticky || !definitiveTechDraft.trim()}
+                        onClick={() => patchStickyReview({ definitiveTechnologyUri: definitiveTechDraft.trim() })}
+                      >
+                        Opslaan
+                      </button>
+                    </div>
+                  </div>
+                </label>
+
+                {editingSticky.candidateTechnologies.length > 0 && (
+                  <div>
+                    <div className="lt-detail-subkicker mb-2">Kandidaat definitief maken</div>
+                    <div className="lt-detail-sticky-candidate-list">
+                      {editingSticky.candidateTechnologies.map((candidate) => (
+                        <div key={`${editingSticky.uri}-${candidate.uri}`} className="lt-detail-candidate-card">
+                          <div className="lt-detail-candidate-name">{candidate.name || 'Kandidaat'}</div>
+                          <div className="lt-detail-candidate-uri">{candidate.uri}</div>
+                          <button
+                            type="button"
+                            className="btn btn-sm btn-outline-primary"
+                            disabled={savingSticky}
+                            onClick={() => patchStickyReview({ moveCandidateToDefinitiveUri: candidate.uri })}
+                          >
+                            Maak definitief
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <label className="lt-detail-form-group">
+                  <span className="lt-detail-form-label">Omschrijving afhandeling</span>
+                  <textarea
+                    value={omschrijvingDraft}
+                    onChange={(event) => setOmschrijvingDraft(event.target.value)}
+                    className="form-control form-control-sm"
+                    rows={4}
+                    placeholder="Beschrijf hoe deze sticky note is afgehandeld..."
+                    disabled={savingSticky}
+                  />
+                  <div className="lt-detail-actions-end">
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-primary"
+                      disabled={savingSticky}
+                      onClick={() => patchStickyReview({ omschrijvingAfhandeling: omschrijvingDraft })}
+                    >
+                      Opslaan
+                    </button>
+                  </div>
+                </label>
+
+                {stickyActionError && <div className="alert alert-danger py-2 px-3 mt-2 mb-0">{stickyActionError}</div>}
+              </section>
+            </div>
+          </aside>
+        </>
+      )}
+    </>
   );
 };
 

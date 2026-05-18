@@ -1,0 +1,50 @@
+.lt-list-panel {
+  background: var(--lt-surface);
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-lg);
+  box-shadow: var(--lt-shadow-1);
+  padding: 1rem;
+}
+
+.lt-list-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lt-list-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.lt-list-card {
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-lg);
+  box-shadow: var(--lt-shadow-1);
+}
+
+.lt-list-card-header {
+  background: #ffffff;
+}
+
+.lt-list-comparison {
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-lg);
+  background: #f8fafc;
+}
+
+.lt-list-empty {
+  color: var(--lt-text-muted);
+}
+
+.lt-list-table thead th {
+  background: #f8fafc;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}

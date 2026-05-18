@@ -1,0 +1,62 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010075 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e010076 <http://bp4mc2.org/lto#beoogdGebruik> "- Systematisch analyseren van wet- en regelgeving\n- Identificeren van:\n-- normen en rechtsgevolgen\n-- voorwaarden / criteria\n-- uitzonderingen en verwijzingen\n- Voorbereiding voor interpretatie, implementatie of automatisering" .
+_:696de21d1d614276aa662912c98809e010077 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Verhoogt transparantie en begrijpelijkheid, Legt impliciete structuur expliciet vast" .
+_:696de21d1d614276aa662912c98809e010078 <http://bp4mc2.org/lto#onderdelen> "Analyse van tekststructuur, - Identificatie van regelcomponenten, Analyse van verwijzingen en samenhang" .
+_:696de21d1d614276aa662912c98809e010193 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010194 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Tekstueel> .
+_:696de21d1d614276aa662912c98809e010195 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:696de21d1d614276aa662912c98809e010196 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:696de21d1d614276aa662912c98809e010197 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
+_:696de21d1d614276aa662912c98809e010198 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:696de21d1d614276aa662912c98809e010370 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010371 <http://bp4mc2.org/lto#versienummer> "1.0" .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Beleidsmedewerkers> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Juristen> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Regelanalist> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/bronverwijzing/317ec632-addf-4c23-a642-8e44ddb398ac> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010075 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010076 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010077 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010078 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/2764ae78-aef8-4eb2-a8bf-716d0bc9b061> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/6899b84c-336a-4a1e-96f5-62aefcef6532> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/976bdc26-1fd3-457c-abca-69495822f829> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/fe2d00bc-6caf-42a9-9f0d-b958e8ed7973> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/ffb88686-7585-4177-ba78-6ad911794045> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#naam> "Wetsanalyse" .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Wetsanalyse is een methode voor het systematisch ontleden van juridische teksten naar structuur, betekenis en werking. Het richt zich primair op het tekstuele en semantische niveau en ondersteunt vooral de taken analyseren regeltekst en interpreteren en expliciteren." .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010193 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010194 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010195 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010196 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010197 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010198 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010370 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010371 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Wetsanalyse"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/bronverwijzing/317ec632-addf-4c23-a642-8e44ddb398ac> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/2764ae78-aef8-4eb2-a8bf-716d0bc9b061> <http://bp4mc2.org/lto#omschrijving> "voorbereiding en gedeeltelijke uitvoering" .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/2764ae78-aef8-4eb2-a8bf-716d0bc9b061> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/2764ae78-aef8-4eb2-a8bf-716d0bc9b061> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/6899b84c-336a-4a1e-96f5-62aefcef6532> <http://bp4mc2.org/lto#omschrijving> "input voor verdere formalisering" .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/6899b84c-336a-4a1e-96f5-62aefcef6532> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenRegels> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/6899b84c-336a-4a1e-96f5-62aefcef6532> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/976bdc26-1fd3-457c-abca-69495822f829> <http://bp4mc2.org/lto#omschrijving> "kernactiviteit" .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/976bdc26-1fd3-457c-abca-69495822f829> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/976bdc26-1fd3-457c-abca-69495822f829> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/fe2d00bc-6caf-42a9-9f0d-b958e8ed7973> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/fe2d00bc-6caf-42a9-9f0d-b958e8ed7973> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#Opdrachtorientering> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/fe2d00bc-6caf-42a9-9f0d-b958e8ed7973> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/ffb88686-7585-4177-ba78-6ad911794045> <http://bp4mc2.org/lto#omschrijving> "identificatie van relevante termen" .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/ffb88686-7585-4177-ba78-6ad911794045> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#BegripDefinieren> .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/ffb88686-7585-4177-ba78-6ad911794045> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

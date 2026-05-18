@@ -1,0 +1,28 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010402 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010403 <http://bp4mc2.org/lto#versienummer> "1.0" .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/documentatie/90c7f40a-0a07-40de-819a-6b50de1e0652> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/bronverwijzing/51f72ffd-2cca-4344-85ef-82b8ee07821a> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/2cb0af76-f420-49dd-bb71-e2e220f9992a> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/cffc724e-d330-4fd5-ab79-5888c15319b7> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#naam> "FBM - Fact-based modelling" .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Fact‑based modelling is een conceptuele modelleertechniek die informatie vastlegt als afzonderlijke feiten in plaats van als traditionele entiteiten en attributen. Elk feit beschrijft een concrete bewering binnen het domein, bijvoorbeeld: “Persoon ‘Barack Obama’ heeft een lengte van ‘1,85 meter’”. Deze feiten worden geordend in facttypen, die de structuur en onderlinge relaties vastleggen en zo leiden tot nauwkeurige en semantisch rijke informatiemodellen." .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010402 .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010403 .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "FBM - Fact-based modelling"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/bronverwijzing/51f72ffd-2cca-4344-85ef-82b8ee07821a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/documentatie/90c7f40a-0a07-40de-819a-6b50de1e0652> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/2cb0af76-f420-49dd-bb71-e2e220f9992a> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/2cb0af76-f420-49dd-bb71-e2e220f9992a> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#BegripDefinieren> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/2cb0af76-f420-49dd-bb71-e2e220f9992a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/cffc724e-d330-4fd5-ab79-5888c15319b7> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/cffc724e-d330-4fd5-ab79-5888c15319b7> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/taakinvulling/cffc724e-d330-4fd5-ab79-5888c15319b7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

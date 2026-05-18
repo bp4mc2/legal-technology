@@ -1,0 +1,9 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+
+<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99> .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99> .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99> .
+<https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99> <http://bp4mc2.org/lto#contactinformatie> "https://www.koopoverheid.nl/" .
+<https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99> <http://bp4mc2.org/lto#naamOrganisatie> "KOOP" .
+<https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Organisatie> .

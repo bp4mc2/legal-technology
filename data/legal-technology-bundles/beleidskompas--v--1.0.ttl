@@ -1,0 +1,24 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:696de21d1d614276aa662912c98809e010358 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e010359 <http://bp4mc2.org/lto#versienummer> "1.0" .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/documentatie/24a26530-31a6-4837-9273-b4e2f37da1ac> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-13"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/bronverwijzing/b8113498-1464-47de-886d-155dd464aa3e> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/taakinvulling/c641934f-fa66-4bac-94df-80dc966c9dcd> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#naam> "Beleidskompas" .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Het Beleidskompas is de centrale werkwijze voor het maken van beleid bij de Rijksoverheid en vervangt het Integraal afwegingskader voor beleid en regelgeving (IAK)" .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010358 .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010359 .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Beleidskompas"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/bronverwijzing/b8113498-1464-47de-886d-155dd464aa3e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/documentatie/24a26530-31a6-4837-9273-b4e2f37da1ac> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/taakinvulling/c641934f-fa66-4bac-94df-80dc966c9dcd> <http://bp4mc2.org/lto#omschrijving> "" .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/taakinvulling/c641934f-fa66-4bac-94df-80dc966c9dcd> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
+<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/taakinvulling/c641934f-fa66-4bac-94df-80dc966c9dcd> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

@@ -1,6 +1,22 @@
 # Placeholder service-implementatie voor GraphDB API interactie
 
+from pathlib import Path
+
 from .graphdb_client import sparql_query, sparql_update
+from .bundle_export_service import (
+    GRAPH_URI,
+    ALL_LEGAL_TECHNOLOGIES_PATH,
+    LEGAL_TECHNOLOGY_BUNDLES_DIR,
+    LEGAL_TECHNOLOGY_ORGANISATION_BUNDLES_DIR,
+    export_named_graph_turtle,
+    legal_technology_bundle_path,
+    organisation_bundle_path,
+    remove_legal_technology_bundle,
+    remove_stale_bundles,
+    write_legal_technology_bundle,
+    write_named_graph_export,
+    write_organisation_bundle,
+)
 from datetime import date, datetime
 
 
@@ -224,12 +240,16 @@ def _lookup_concept_iri_by_label(label):
         return None
 
 
-def _enum_lookup(enum_map_section, label):
-    """Look up label in enum_map; fall back to GraphDB reverse-IRI lookup, then literal."""
+def _enum_lookup(enum_map_section, label, *, require_iri=False, field_name='waarde'):
+    """Look up a concept label and return either an IRI term or a literal fallback."""
     if label in enum_map_section:
         return enum_map_section[label]
     iri = _lookup_concept_iri_by_label(label)
-    return iri if iri else f'"{label}"'
+    if iri:
+        return iri
+    if require_iri:
+        raise ValueError(f"{field_name} must resolve to a concept IRI: {label}")
+    return f'"{label}"'
 
 
 def _get_object_values(subject_iri, predicate):
@@ -382,7 +402,175 @@ def list_legal_technologies():
     bindings = result.get('results', {}).get('bindings', [])
     return _map_legal_technology_results(bindings)
 
-_GRAPH_URI = "https://data.bp4mc2.org/id/lto"
+_GRAPH_URI = GRAPH_URI
+
+
+def _collect_related_organisation_iris(tech):
+    if not tech:
+        return set()
+    values = set()
+    for key in ('beheerder', 'leverancier'):
+        value = tech.get(key)
+        if value:
+            values.add(value)
+    return values
+
+
+def _sync_full_named_graph_export():
+    content = export_named_graph_turtle(_GRAPH_URI)
+    path = write_named_graph_export(content)
+    return path, content
+
+
+def _sync_organisation_bundles(organisation_iris):
+    from .organisation_service import export_organisation_turtle
+
+    written_paths = []
+    for iri in sorted(set(organisation_iris or [])):
+        turtle = export_organisation_turtle(iri)
+        if turtle is None:
+            path = organisation_bundle_path(iri)
+            if path.exists():
+                path.unlink()
+            continue
+        written_paths.append(write_organisation_bundle(iri, turtle))
+    return written_paths
+
+
+def _sync_exports_after_legal_technology_change(current_id=None, deleted_id=None, organisation_iris=None):
+    aggregate_path, _ = _sync_full_named_graph_export()
+    bundle_path = None
+    if deleted_id:
+        remove_legal_technology_bundle(deleted_id)
+    if current_id:
+        turtle = export_legal_technology_turtle(current_id)
+        if turtle is not None:
+            bundle_path = write_legal_technology_bundle(current_id, turtle)
+    organisation_paths = _sync_organisation_bundles(organisation_iris)
+    return {
+        'named_graph_path': str(aggregate_path),
+        'legal_technology_bundle_path': str(bundle_path) if bundle_path else None,
+        'organisation_bundle_paths': [str(path) for path in organisation_paths],
+    }
+
+
+def _count_legacy_iri_nodes_for_property(predicate):
+        sparql = f'''
+        PREFIX lto: <http://bp4mc2.org/lto#>
+        SELECT (COUNT(DISTINCT ?child) AS ?count) WHERE {{
+            GRAPH <{_GRAPH_URI}> {{
+                VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
+                ?tech a ?subtypeClass ;
+                            lto:{predicate} ?child .
+                FILTER(isIRI(?child))
+                FILTER(STRSTARTS(STR(?child), CONCAT(STR(?tech), '/')))
+            }}
+        }}
+        '''
+        try:
+                result = sparql_query(sparql)
+                bindings = result.get('results', {}).get('bindings', [])
+                return int(bindings[0].get('count', {}).get('value', 0)) if bindings else 0
+        except Exception as e:
+                print(f'[DEBUG] Exception in _count_legacy_iri_nodes_for_property({predicate}):', e)
+                return 0
+
+
+def _migrate_property_iri_nodes_to_blank_nodes(predicate):
+        """Replace legacy IRI child nodes with blank nodes and move child triples."""
+        update = f'''
+        PREFIX lto: <http://bp4mc2.org/lto#>
+        DELETE {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?tech lto:{predicate} ?oldNode .
+                ?oldNode ?cp ?co .
+            }}
+        }}
+        INSERT {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?tech lto:{predicate} ?newNode .
+                ?newNode ?cp ?co .
+            }}
+        }}
+        WHERE {{
+            GRAPH <{_GRAPH_URI}> {{
+                VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
+                ?tech a ?subtypeClass ;
+                            lto:{predicate} ?oldNode .
+                FILTER(isIRI(?oldNode))
+                FILTER(STRSTARTS(STR(?oldNode), CONCAT(STR(?tech), '/')))
+                ?oldNode ?cp ?co .
+                BIND(BNODE() AS ?newNode)
+            }}
+        }}
+        '''
+        sparql_update(update, graph_uri=_GRAPH_URI)
+
+
+def migrate_legal_technology_blank_nodes(sync_exports=True):
+        """
+        Migrate legacy IRI nodes to blank nodes for nodeKind-constrained properties:
+        - lto:documentatie
+        - lto:ondersteuningVoor
+        - lto:versiebeschrijving
+        """
+        predicates = ['documentatie', 'ondersteuningVoor', 'versiebeschrijving']
+        before = {predicate: _count_legacy_iri_nodes_for_property(predicate) for predicate in predicates}
+
+        _migrate_property_iri_nodes_to_blank_nodes('documentatie')
+        _migrate_property_iri_nodes_to_blank_nodes('ondersteuningVoor')
+        _migrate_property_iri_nodes_to_blank_nodes('versiebeschrijving')
+
+        after = {predicate: _count_legacy_iri_nodes_for_property(predicate) for predicate in predicates}
+        migrated = {predicate: max(before[predicate] - after[predicate], 0) for predicate in predicates}
+
+        exports_result = None
+        if sync_exports:
+                exports_result = sync_named_graph_exports()
+
+        return {
+                'before': before,
+                'after': after,
+                'migrated': migrated,
+                'sync_exports': bool(sync_exports),
+                'exports': exports_result,
+        }
+
+
+def sync_named_graph_exports():
+    from .organisation_service import export_organisation_turtle, list_organisations
+
+    aggregate_path, _ = _sync_full_named_graph_export()
+    tech_ids = [item.get('id') for item in search_legal_technologies('') if item.get('id')]
+    organisation_iris = [item.get('iri') for item in list_organisations() if item.get('iri')]
+
+    written_tech_filenames = []
+    for tech_id in tech_ids:
+        turtle = export_legal_technology_turtle(tech_id)
+        if turtle is None:
+            continue
+        path = write_legal_technology_bundle(tech_id, turtle)
+        written_tech_filenames.append(path.name)
+
+    written_org_filenames = []
+    for iri in organisation_iris:
+        turtle = export_organisation_turtle(iri)
+        if turtle is None:
+            continue
+        path = write_organisation_bundle(iri, turtle)
+        written_org_filenames.append(path.name)
+
+    remove_stale_bundles(LEGAL_TECHNOLOGY_BUNDLES_DIR, written_tech_filenames)
+    remove_stale_bundles(LEGAL_TECHNOLOGY_ORGANISATION_BUNDLES_DIR, written_org_filenames)
+
+    return {
+        'named_graph_path': str(aggregate_path),
+        'named_graph_download': str(ALL_LEGAL_TECHNOLOGIES_PATH),
+        'legal_technology_bundle_dir': str(LEGAL_TECHNOLOGY_BUNDLES_DIR),
+        'legal_technology_bundles': len(written_tech_filenames),
+        'organisation_bundle_dir': str(LEGAL_TECHNOLOGY_ORGANISATION_BUNDLES_DIR),
+        'organisation_bundles': len(written_org_filenames),
+    }
 
 def search_legal_technologies(query):
     # Search legal technologies by naam or omschrijving
@@ -411,7 +599,7 @@ def search_legal_technologies(query):
     bindings = result.get('results', {}).get('bindings', [])
     return _map_legal_technology_results(bindings)
 
-def add_legal_technology(data):
+def add_legal_technology(data, sync_exports=True):
     from .graphdb_client import sparql_update
     import uuid
     graph_uri = "https://data.bp4mc2.org/id/lto"
@@ -444,7 +632,19 @@ def add_legal_technology(data):
             },
             'geboden_functionaliteit': {
                 'Geautomatiseerd beslissen': '<http://bp4mc2.org/lt#GeautomatiseerdBeslissen>',
-                'Compliance ondersteuning': '<http://bp4mc2.org/lt#ComplianceOndersteuning>'
+                'Compliance ondersteuning': '<http://bp4mc2.org/lt#ComplianceOndersteuning>',
+                'Compliance-ondersteuning': '<http://bp4mc2.org/lt#ComplianceOndersteuning>',
+                'Contract: geautomatiseerde contractgeneratie': '<http://bp4mc2.org/lt#ContractAutomatischAanmaken>',
+                'Contract: analyse/redactie/beoordeling': '<http://bp4mc2.org/lt#ContractAnalyticsConceptReview>',
+                'Juridisch expertsysteem': '<http://bp4mc2.org/lt#JuridischExpertSysteem>',
+                'Wetgeving: wetgevingsredactie': '<http://bp4mc2.org/lt#WetgevingConceptualisering>',
+                'Wetgeving: uitvoering van wet- en regelgeving': '<http://bp4mc2.org/lt#WetgevingUitvoering>',
+                'Wetgeving: modellering van wet- en regelgeving': '<http://bp4mc2.org/lt#WetgevingRepresentatie>',
+                'Procespraktijk: procesanalyse': '<http://bp4mc2.org/lt#LitigatieAnalytics>',
+                'Procespraktijk: opstellen van processtukken': '<http://bp4mc2.org/lt#LitigatieConceptualisering>',
+                'Procespraktijk: voorspelling van rechterlijke uitspraak': '<http://bp4mc2.org/lt#LitigatiePredictieVoorsluiting>',
+                'Zoeken: jurisprudentie': '<http://bp4mc2.org/lt#ZoekenRechtspraak>',
+                'Zoeken: wet- en regelgeving': '<http://bp4mc2.org/lt#ZoekenWetgeving>'
             },
             'beoogde_gebruikers': {
                 'Burgers en bedrijven': '<http://bp4mc2.org/lt#BurgersEnBedrijven>',
@@ -509,21 +709,21 @@ def add_legal_technology(data):
         }
     gebruiksstatus_val = data["gebruiksstatus"]
     licentievorm_val = data["licentievorm"]
-    versie_uri = f"{tech_uri}/versiebeschrijving"
+    versie_bnode = f"_:versie_{uuid.uuid4().hex}"
     versie_triples = [
-        f'<{versie_uri}> a <http://bp4mc2.org/lto#Versiebeschrijving> .',
-        f'<{versie_uri}> <http://bp4mc2.org/lto#versienummer> "{versienummer}" .',
+        f'{versie_bnode} a <http://bp4mc2.org/lto#Versiebeschrijving> .',
+        f'{versie_bnode} <http://bp4mc2.org/lto#versienummer> "{versienummer}" .',
     ]
     if versiedatum:
-        versie_triples.append(f'<{versie_uri}> <http://bp4mc2.org/lto#versiedatum> "{versiedatum}"^^<http://www.w3.org/2001/XMLSchema#date> .')
+        versie_triples.append(f'{versie_bnode} <http://bp4mc2.org/lto#versiedatum> "{versiedatum}"^^<http://www.w3.org/2001/XMLSchema#date> .')
     triples = [
         f'<{tech_uri}> a <{subtype_class_iri}> ;',
-        f'  <http://bp4mc2.org/lto#versiebeschrijving> <{versie_uri}> ;',
+        f'  <http://bp4mc2.org/lto#versiebeschrijving> {versie_bnode} ;',
         f'  <http://bp4mc2.org/lto#naam> "{data["naam"]}" ;',
         f'  rdfs:label "{data["naam"]}"@nl ;',
         f'  <http://bp4mc2.org/lto#omschrijving> "{data["omschrijving"]}" ;',
-        f'  <http://bp4mc2.org/lto#gebruiksstatus> {enum_map["gebruiksstatus"].get(gebruiksstatus_val, f"\"{gebruiksstatus_val}\"")} ;',
-        f'  <http://bp4mc2.org/lto#licentievorm> {enum_map["licentievorm"].get(licentievorm_val, f"\"{licentievorm_val}\"")} ;',
+        f'  <http://bp4mc2.org/lto#gebruiksstatus> {_enum_lookup(enum_map["gebruiksstatus"], gebruiksstatus_val, require_iri=True, field_name="gebruiksstatus")} ;',
+        f'  <http://bp4mc2.org/lto#licentievorm> {_enum_lookup(enum_map["licentievorm"], licentievorm_val, require_iri=True, field_name="licentievorm")} ;',
         f'  <http://bp4mc2.org/lto#bijgewerktOp> "{bijgewerkt_op}"^^<http://www.w3.org/2001/XMLSchema#date> ;'
     ]
     # Lists
@@ -531,16 +731,16 @@ def add_legal_technology(data):
         clean_val = str(val or '').strip()
         if not clean_val:
             continue
-        triples.append(f'  <http://bp4mc2.org/lto#gebodenFunctionaliteit> {enum_map["geboden_functionaliteit"].get(clean_val, f"\"{clean_val}\"")} ;')
+        triples.append(f'  <http://bp4mc2.org/lto#gebodenFunctionaliteit> {_enum_lookup(enum_map["geboden_functionaliteit"], clean_val, require_iri=True, field_name="geboden_functionaliteit")} ;')
     for val in data.get("beoogde_gebruikers", []):
         clean_val = str(val or '').strip()
         if not clean_val:
             continue
-        triples.append(f'  <http://bp4mc2.org/lto#beoogdeGebruikers> {enum_map["beoogde_gebruikers"].get(clean_val, f"\"{clean_val}\"")} ;')
+        triples.append(f'  <http://bp4mc2.org/lto#beoogdeGebruikers> {_enum_lookup(enum_map["beoogde_gebruikers"], clean_val, require_iri=True, field_name="beoogde_gebruikers")} ;')
     for val in data.get("type_technologie", []):
         if val:
-            triples.append(f'  <http://bp4mc2.org/lto#typeTechnologie> {enum_map["type_technologie"].get(val, f"\"{val}\"")} ;')
-    # Nested objects as URIs
+            triples.append(f'  <http://bp4mc2.org/lto#typeTechnologie> {_enum_lookup(enum_map["type_technologie"], val, require_iri=True, field_name="type_technologie")} ;')
+    # Nested objects as blank nodes where required by SHACL nodeKind.
     # ondersteuning_voor
     ondersteuning_items = []
     for ov in data.get("ondersteuning_voor", []):
@@ -550,12 +750,11 @@ def add_legal_technology(data):
             continue
         ondersteuning_items.append({"beschouwingsniveau": besch, "modelsoort": mod})
 
-    ondersteuning_uris = []
+    ondersteuning_nodes = []
     for _ in ondersteuning_items:
-        ov_id = str(uuid.uuid4())
-        ov_uri = _get_part_iri(tech_uri, "ondersteuningsvorm", ov_id)
-        ondersteuning_uris.append(ov_uri)
-        triples.append(f'  <http://bp4mc2.org/lto#ondersteuningVoor> <{ov_uri}> ;')
+        ov_node = f"_:ondersteuning_{uuid.uuid4().hex}"
+        ondersteuning_nodes.append(ov_node)
+        triples.append(f'  <http://bp4mc2.org/lto#ondersteuningVoor> {ov_node} ;')
     # geschikt_voor_taak
     geschikt_items = []
     seen_geschikt = set()
@@ -576,13 +775,12 @@ def add_legal_technology(data):
         gt_uri = _get_part_iri(tech_uri, "taakinvulling", gt_id)
         geschikt_uris.append(gt_uri)
         triples.append(f'  <http://bp4mc2.org/lto#geschiktVoorTaak> <{gt_uri}> ;')
-    # Documentatie (object as URI)
+    # Documentatie (blank node)
     doc = data.get("documentatie")
-    doc_uri = None
+    doc_node = None
     if doc:
-        doc_id = str(uuid.uuid4())
-        doc_uri = _get_part_iri(tech_uri, "documentatie", doc_id)
-        triples.append(f'  <http://bp4mc2.org/lto#documentatie> <{doc_uri}> ;')
+        doc_node = f"_:documentatie_{uuid.uuid4().hex}"
+        triples.append(f'  <http://bp4mc2.org/lto#documentatie> {doc_node} ;')
     # Bronverwijzing (array of URIs)
     bron_uris = []
     for bron in data.get("bronverwijzing", []):
@@ -592,7 +790,7 @@ def add_legal_technology(data):
         triples.append(f'  <http://bp4mc2.org/lto#bron> <{bron_uri}> ;')
     # Optional fields
     if data.get("normstatus"):
-            triples.append(f'  <http://bp4mc2.org/lto#normstatus> {enum_map["normstatus"].get(data["normstatus"], f"\"{data["normstatus"]}\"")} ;')
+            triples.append(f'  <http://bp4mc2.org/lto#normstatus> {_enum_lookup(enum_map["normstatus"], data["normstatus"], require_iri=True, field_name="normstatus")} ;')
     # beheerder/leverancier as reusable Organisatie IRIs
     beheerder_iri = _normalize_org_iri(data.get("beheerder"))
     if beheerder_iri:
@@ -608,12 +806,12 @@ def add_legal_technology(data):
     # Add triples for ondersteuning_voor
     ondersteuning_triples = []
     for i, ov in enumerate(ondersteuning_items):
-        ov_uri = ondersteuning_uris[i]
+        ov_node = ondersteuning_nodes[i]
         besch = ov.get("beschouwingsniveau", "")
         mod = ov.get("modelsoort", "")
-        ondersteuning_triples.append(f'<{ov_uri}> a <http://bp4mc2.org/lto#Ondersteuningsvorm> .')
-        ondersteuning_triples.append(f'<{ov_uri}> <http://bp4mc2.org/lto#beschouwingsniveau> {enum_map["beschouwingsniveau"].get(besch, f"\"{besch}\"")} .')
-        ondersteuning_triples.append(f'<{ov_uri}> <http://bp4mc2.org/lto#modelsoort> {enum_map["modelsoort"].get(mod, f"\"{mod}\"")} .')
+        ondersteuning_triples.append(f'{ov_node} a <http://bp4mc2.org/lto#Ondersteuningsvorm> .')
+        ondersteuning_triples.append(f'{ov_node} <http://bp4mc2.org/lto#beschouwingsniveau> {_enum_lookup(enum_map["beschouwingsniveau"], besch, require_iri=True, field_name="beschouwingsniveau")} .')
+        ondersteuning_triples.append(f'{ov_node} <http://bp4mc2.org/lto#modelsoort> {_enum_lookup(enum_map["modelsoort"], mod, require_iri=True, field_name="modelsoort")} .')
     # Add triples for geschikt_voor_taak
     geschikt_triples = []
     for i, gt in enumerate(geschikt_items):
@@ -622,19 +820,19 @@ def add_legal_technology(data):
         omschrijving = gt.get("omschrijving", "")
         geschikt_triples.append(f'<{gt_uri}> a <http://bp4mc2.org/lto#Taakinvulling> .')
         geschikt_triples.append(f'<{gt_uri}> <http://bp4mc2.org/lto#omschrijving> "{omschrijving}" .')
-        geschikt_triples.append(f'<{gt_uri}> <http://bp4mc2.org/lto#taaktype> {_enum_lookup(enum_map["taaktype"], taaktype)} .')
+        geschikt_triples.append(f'<{gt_uri}> <http://bp4mc2.org/lto#taaktype> {_enum_lookup(enum_map["taaktype"], taaktype, require_iri=True, field_name="taaktype")} .')
     # Add triples for documentatie
     doc_triples = []
-    if doc and doc_uri:
-        doc_triples.append(f'<{doc_uri}> a <http://bp4mc2.org/lto#Documentatie> .')
+    if doc and doc_node:
+        doc_triples.append(f'{doc_node} a <http://bp4mc2.org/lto#Documentatie> .')
         if doc.get("beoogdGebruik"):
-            doc_triples.append(f'<{doc_uri}> <http://bp4mc2.org/lto#beoogdGebruik> "{doc.get("beoogdGebruik")}" .')
+            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#beoogdGebruik> "{doc.get("beoogdGebruik")}" .')
         if doc.get("toegevoegdeWaarde"):
-            doc_triples.append(f'<{doc_uri}> <http://bp4mc2.org/lto#toegevoegdeWaarde> "{doc.get("toegevoegdeWaarde")}" .')
+            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#toegevoegdeWaarde> "{doc.get("toegevoegdeWaarde")}" .')
         if doc.get("onderdelen"):
-            doc_triples.append(f'<{doc_uri}> <http://bp4mc2.org/lto#onderdelen> "{doc.get("onderdelen")}" .')
+            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#onderdelen> "{doc.get("onderdelen")}" .')
         if doc.get("ontwikkelingEnBeheer"):
-            doc_triples.append(f'<{doc_uri}> <http://bp4mc2.org/lto#ontwikkelingEnBeheer> "{doc.get("ontwikkelingEnBeheer")}" .')
+            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#ontwikkelingEnBeheer> "{doc.get("ontwikkelingEnBeheer")}" .')
     # Add triples for bronverwijzing
     bron_triples = []
     for i, bron in enumerate(data.get("bronverwijzing", [])):
@@ -643,7 +841,7 @@ def add_legal_technology(data):
         if bron.get("titel"):
             bron_triples.append(f'<{bron_uri}> <http://purl.org/dc/terms/title> "{bron.get("titel")}" .')
         if bron.get("locatie"):
-            bron_triples.append(f'<{bron_uri}> <http://xmlns.com/foaf/0.1/page> "{bron.get("locatie")}" .')
+            bron_triples.append(f'<{bron_uri}> <http://xmlns.com/foaf/0.1/page> "{bron.get("locatie")}"^^<http://www.w3.org/2001/XMLSchema#anyURI> .')
         if bron.get("verwijzing"):
             bron_triples.append(f'<{bron_uri}> <http://purl.org/dc/terms/bibliographicCitation> "{bron.get("verwijzing")}" .')
     insert = f"""
@@ -668,6 +866,11 @@ def add_legal_technology(data):
     result['bijgewerkt_op'] = bijgewerkt_op
     result['subtype'] = subtype
     result['id'] = _build_api_id(abbrevation, versienummer)
+    if sync_exports:
+        _sync_exports_after_legal_technology_change(
+            current_id=result['id'],
+            organisation_iris={beheerder_iri, leverancier_iri} - {None},
+        )
     return result
 
 def _get_versiebeschrijving(tech_iri: str) -> dict:
@@ -896,6 +1099,7 @@ def get_legal_technology(id):
 
     return {
         'id': api_id,
+        'iri': tech_iri,
         'subtype': _CLASS_TO_SUBTYPE.get(b0.get('subtypeClass', {}).get('value', ''), ''),
         'abbrevation': abbrevation,
         'versienummer': versienummer,
@@ -917,7 +1121,7 @@ def get_legal_technology(id):
         'beoogde_gebruikers': beoogde_gebruikers,
     }
 
-def update_legal_technology(id, data):
+def update_legal_technology(id, data, sync_exports=True):
     # Update strategy: merge incoming payload with existing entity, then replace.
     existing = get_legal_technology(id)
     if not existing:
@@ -940,11 +1144,22 @@ def update_legal_technology(id, data):
     merged.pop('id', None)
 
     # Replace existing record in GraphDB and recreate with merged values.
-    delete_legal_technology(id)
-    created = add_legal_technology(merged)
-    return get_legal_technology(created.get('id', id))
+    existing_org_iris = _collect_related_organisation_iris(existing)
 
-def delete_legal_technology(id):
+    delete_legal_technology(id, sync_exports=False)
+    created = add_legal_technology(merged, sync_exports=False)
+    created_id = created.get('id', id)
+    current = get_legal_technology(created_id)
+    current_org_iris = _collect_related_organisation_iris(current)
+    if sync_exports:
+        _sync_exports_after_legal_technology_change(
+            current_id=created_id,
+            deleted_id=id if id != created_id else None,
+            organisation_iris=existing_org_iris | current_org_iris,
+        )
+    return current
+
+def delete_legal_technology(id, sync_exports=True):
         # Retrieve the current resource first so we can return what was deleted.
         existing = get_legal_technology(id)
         if not existing:
@@ -968,8 +1183,7 @@ def delete_legal_technology(id):
                 OPTIONAL {{ <{tech_iri}> ?p ?o . }}
                 OPTIONAL {{
                     <{tech_iri}> ?sp ?child .
-                    FILTER(isIRI(?child))
-                    FILTER(STRSTARTS(STR(?child), "{tech_iri}/"))
+                    FILTER(isBlank(?child) || (isIRI(?child) && STRSTARTS(STR(?child), "{tech_iri}/")))
                     ?child ?cp ?co .
                 }}
                 OPTIONAL {{ ?ref ?rp <{tech_iri}> . }}
@@ -978,12 +1192,19 @@ def delete_legal_technology(id):
         '''
 
         sparql_update(delete, graph_uri=graph_uri)
+        if sync_exports:
+            _sync_exports_after_legal_technology_change(
+                deleted_id=id,
+                organisation_iris=_collect_related_organisation_iris(existing),
+            )
         return existing
 
 
 def _term_to_turtle(term: dict) -> str:
     term_type = term.get('type')
     value = term.get('value', '')
+    if term_type == 'bnode':
+        return f'_:{value}'
     if term_type == 'uri':
         return f'<{value}>'
     if term_type == 'literal':
@@ -1011,8 +1232,7 @@ def export_legal_technology_turtle(id):
         UNION
         {{
           <{tech_iri}> ?sp ?child .
-          FILTER(isIRI(?child))
-          FILTER(STRSTARTS(STR(?child), "{tech_iri}/"))
+                    FILTER(isBlank(?child) || (isIRI(?child) && STRSTARTS(STR(?child), "{tech_iri}/")))
           BIND(?child AS ?s)
           ?s ?p ?o .
         }}
@@ -1037,6 +1257,10 @@ def export_legal_technology_turtle(id):
         o = _term_to_turtle(b.get('o', {}))
         lines.append(f'{s} {p} {o} .')
     return '\n'.join(lines) + '\n'
+
+
+def export_named_graph_download():
+    return export_named_graph_turtle(_GRAPH_URI)
 
 
 def export_legal_technology_markdown(id):
@@ -1120,6 +1344,7 @@ def list_enumerations():
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX lto: <http://bp4mc2.org/lto#>
+    PREFIX ltb: <http://bp4mc2.org/ltb#>
     PREFIX ltt: <http://bp4mc2.org/ltt#>
     SELECT ?collection ?label WHERE {
         VALUES ?collection {
@@ -1131,6 +1356,7 @@ def list_enumerations():
             lto:Modelsoorten
             lto:Normstatussen
             lto:Technologietypen
+            ltb:StickyNoteStatussen
         }
         ?collection skos:member ?enum .
         OPTIONAL { ?enum skos:prefLabel ?label . }
@@ -1182,6 +1408,45 @@ def list_enumerations():
         return {'error': str(e)}
 
 
+def list_sticky_note_status_enumeration_items():
+    sparql = '''
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX ltb: <http://bp4mc2.org/ltb#>
+    SELECT ?iri ?label WHERE {
+        ltb:StickyNoteStatussen skos:member ?iri .
+        OPTIONAL {
+            ?iri skos:prefLabel ?prefLabel .
+            FILTER(LANG(?prefLabel) = '' || LANGMATCHES(LANG(?prefLabel), 'nl'))
+        }
+        OPTIONAL {
+            ?iri rdfs:label ?rdfsLabel .
+            FILTER(LANG(?rdfsLabel) = '' || LANGMATCHES(LANG(?rdfsLabel), 'nl'))
+        }
+        BIND(COALESCE(?prefLabel, ?rdfsLabel) AS ?label)
+        FILTER(BOUND(?label))
+    }
+    ORDER BY LCASE(STR(?label))
+    '''
+
+    try:
+        result = sparql_query(sparql)
+        bindings = result.get('results', {}).get('bindings', [])
+        values = []
+        seen_iris = set()
+        for b in bindings:
+            iri = b.get('iri', {}).get('value', '')
+            label = b.get('label', {}).get('value', '')
+            if not iri or not label or iri in seen_iris:
+                continue
+            seen_iris.add(iri)
+            values.append({'label': label, 'iri': iri})
+        return values
+    except Exception as e:
+        print('[DEBUG] Exception in list_sticky_note_status_enumeration_items:', e)
+        return []
+
+
 def list_tasktypes():
     sparql = '''
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -1208,20 +1473,128 @@ def list_tasktypes():
     }
     ORDER BY LCASE(STR(?label))
     '''
+
+    ordered_groups_sparql = '''
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    SELECT ?group ?groupLabel ?head ?node ?member ?next WHERE {
+        ?group a skos:OrderedCollection ;
+               skos:memberList ?head .
+        OPTIONAL {
+            ?group skos:prefLabel ?groupPrefLabel .
+            FILTER(LANG(?groupPrefLabel) = '' || LANGMATCHES(LANG(?groupPrefLabel), 'nl'))
+        }
+        OPTIONAL {
+            ?group rdfs:label ?groupRdfsLabel .
+            FILTER(LANG(?groupRdfsLabel) = '' || LANGMATCHES(LANG(?groupRdfsLabel), 'nl'))
+        }
+        BIND(COALESCE(?groupPrefLabel, ?groupRdfsLabel, STR(?group)) AS ?groupLabel)
+
+        ?head rdf:rest* ?node .
+        ?node rdf:first ?member .
+        OPTIONAL { ?node rdf:rest ?next . }
+    }
+    '''
+
+    def _extract_order_number(value):
+        token = _extract_concept_identifier(value)
+        digits = ''.join(ch for ch in token if ch.isdigit())
+        if digits:
+            try:
+                return int(digits)
+            except ValueError:
+                return None
+        return None
+
     try:
         result = sparql_query(sparql)
         bindings = result.get('results', {}).get('bindings', [])
+
+        ordering_result = sparql_query(ordered_groups_sparql)
+        ordering_bindings = ordering_result.get('results', {}).get('bindings', [])
+
+        group_nodes = {}
+        group_heads = {}
+        group_labels = {}
+        group_members = {}
+
+        for binding in ordering_bindings:
+            group_iri = binding.get('group', {}).get('value', '')
+            member_iri = binding.get('member', {}).get('value', '')
+            node_iri = binding.get('node', {}).get('value', '')
+            next_node_iri = binding.get('next', {}).get('value', '')
+            head_iri = binding.get('head', {}).get('value', '')
+            group_label = binding.get('groupLabel', {}).get('value', '')
+
+            if not group_iri or not member_iri or not node_iri:
+                continue
+
+            group_labels[group_iri] = group_label
+            group_heads[group_iri] = head_iri
+            group_nodes.setdefault(group_iri, {})[node_iri] = {
+                'member': member_iri,
+                'next': next_node_iri,
+            }
+
+        ordered_groups = sorted(
+            group_nodes.keys(),
+            key=lambda iri: (
+                _extract_order_number(group_labels.get(iri, ''))
+                if _extract_order_number(group_labels.get(iri, '')) is not None
+                else 9999,
+                group_labels.get(iri, '').lower(),
+            ),
+        )
+
+        for group_index, group_iri in enumerate(ordered_groups):
+            nodes = group_nodes.get(group_iri, {})
+            current = group_heads.get(group_iri)
+            visited = set()
+            task_index = 0
+
+            while current and current in nodes and current not in visited:
+                visited.add(current)
+                node_info = nodes[current]
+                member_iri = node_info.get('member', '')
+                if member_iri:
+                    group_members[member_iri] = {
+                        'group_iri': group_iri,
+                        'group_label': group_labels.get(group_iri, ''),
+                        'group_order': group_index,
+                        'task_order': task_index,
+                    }
+                    task_index += 1
+                next_node = node_info.get('next', '')
+                if not next_node or next_node.endswith('rdf-syntax-ns#nil'):
+                    break
+                current = next_node
+
         tasktypes = []
         for binding in bindings:
             label = binding.get('label', {}).get('value', '')
             iri = binding.get('concept', {}).get('value', '')
             if not iri or not label:
                 continue
+
+            group_info = group_members.get(iri, {})
             tasktypes.append({
                 'iri': iri,
                 'label': label,
                 'description': binding.get('definition', {}).get('value', ''),
+                'group_iri': group_info.get('group_iri', ''),
+                'group_label': group_info.get('group_label', ''),
+                'group_order': group_info.get('group_order'),
+                'task_order': group_info.get('task_order'),
             })
+
+        tasktypes.sort(
+            key=lambda item: (
+                item.get('group_order') if item.get('group_order') is not None else 9999,
+                item.get('task_order') if item.get('task_order') is not None else 9999,
+                str(item.get('label', '')).lower(),
+            ),
+        )
         return tasktypes
     except Exception as e:
         print('[DEBUG] Exception in list_tasktypes:', e)
