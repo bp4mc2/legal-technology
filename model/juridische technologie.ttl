@@ -4,6 +4,7 @@
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix skosthes: <http://purl.org/iso25964/skos-thes#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
 
@@ -66,7 +67,6 @@ lto:JuridischeTechnologieShape a sh:NodeShape;
     sh:minCount 1;
     sh:maxCount 1;
     sh:node lto:GebruiksstatusShape;
-    sh:in (lt:WorkInProgress lt:Voorstel lt:InGebruik);
   ];
   sh:property [
     sh:order 4;
@@ -76,44 +76,26 @@ lto:JuridischeTechnologieShape a sh:NodeShape;
     sh:minCount 1;
     sh:maxCount 1;
     sh:node lto:LicentievormenShape;
-    sh:in (lt:VolledigOpen lt:OpenOnderVoorwaarden lt:Gesloten);
   ];
   sh:property [
     sh:order 5;
     rdfs:label "geboden functionaliteit"@nl;
     sh:path lto:gebodenFunctionaliteit;
     sh:description "Het soort functionaliteit dat de technologie biedt"@nl;
-    sh:minCount 1;
     sh:node lto:FunctionaliteitenShape;
-    sh:in (lt:GeautomatiseerdBeslissen lt:ComplianceOndersteuning);
   ];
   sh:property [
     sh:order 6;
     rdfs:label "beoogde gebruikers"@nl;
     sh:path lto:beoogdeGebruikers;
     sh:description "De groep van gebruikers die van deze technologie gebruik zou kunnen maken"@nl;
-    sh:minCount 1;
     sh:node lto:GebruikersgroepenShape;
-    sh:in (
-      lt:BurgersEnBedrijven
-      lt:Rechtbanken
-      lt:Opsporingsinstanties
-      lt:Juristen
-      lt:Beleidsmedewerkers
-      lt:Wetgevers
-      lt:Advocaten
-      lt:Uitvoeringsorganisaties
-      lt:CommercieleOrganisaties
-      lt:Regelanalist
-      lt:SoftwareOntwikkelaars
-    );
   ];
   sh:property [
     sh:order 7;
     rdfs:label "bijgewerkt op"@nl;
     sh:path lto:bijgewerktOp;
     sh:description "De datum waarop de beschrijving van de technologie voor het laatst is bijgewerkt"@nl;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:date;
   ];
@@ -122,7 +104,6 @@ lto:JuridischeTechnologieShape a sh:NodeShape;
     rdfs:label "ondersteuning voor"@nl;
     sh:path lto:ondersteuningVoor;
     sh:description "Het beschouwingsniveau en de modelsoort waarvoor de technologie ondersteuning biedt"@nl;
-    sh:minCount 1;
     sh:node lto:OndersteuningsvormShape;
     sh:nodeKind sh:BlankNode;
   ];
@@ -178,16 +159,8 @@ lto:OndersteuningsvormShape a sh:NodeShape;
     sh:order 1;
     rdfs:label "beschouwingsniveau"@nl;
     sh:path lto:beschouwingsniveau;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:node lto:BeschouwingsniveausShape;
-    sh:in (
-      lto:Tekstueel
-      lto:Semantisch
-      lto:Ontologisch
-      lto:Logisch
-      lto:Technisch
-    );
   ];
   sh:property [
     sh:order 2;
@@ -195,10 +168,6 @@ lto:OndersteuningsvormShape a sh:NodeShape;
     sh:path lto:modelsoort;
     sh:maxCount 1;
     sh:node lto:ModelsoortenShape;
-    sh:in (
-      lto:Descriptief
-      lto:Normatief
-    );
   ]
 .
 
@@ -212,7 +181,6 @@ lto:naam a owl:DatatypeProperty;
 .
 lto:omschrijving a owl:DatatypeProperty;
   rdfs:label "omschrijving"@nl;
-  rdfs:domain lto:JuridischeTechnologie;
   rdfs:range xsd:string
 .
 lto:bijgewerktOp a owl:DatatypeProperty;
@@ -261,13 +229,19 @@ lto:modelsoort a owl:ObjectProperty;
 lto:bron a owl:ObjectProperty;
   rdfs:label "bron"@nl;
   rdfs:domain lto:JuridischeTechnologie;
-  rdfs:range skos:Concept;
+  rdfs:range lto:Bronverwijzing;
 .
 lto:documentatie a owl:ObjectProperty;
   rdfs:label "documentatie"@nl;
   rdfs:domain lto:JuridischeTechnologie;
   rdfs:range lto:Documentatie
 .
+lto:geschiktVoorTaak a owl:ObjectProperty;
+  rdfs:label "geschikt voor taak"@nl;
+  rdfs:domain lto:JuridischeTechnologie;
+  rdfs:range lto:Taakinvulling
+.
+
 
 ## ---------------------------------------------------------------------------------------------------------
 ## Methode (verbijzondering van Juridische technologie)
@@ -288,7 +262,6 @@ lto:MethodeShape a sh:NodeShape;
     rdfs:label "beheerder"@nl;
     sh:path lto:beheerder;
     sh:description "De organisatie die verantwoordelijk is voor het beheer van de methode."@nl;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:class lto:Organisatie;
     sh:nodeKind sh:IRI
@@ -320,7 +293,6 @@ lto:StandaardShape a sh:NodeShape;
     rdfs:label "beheerder"@nl;
     sh:path lto:beheerder;
     sh:description "De organisatie die verantwoordelijk is voor het beheer van de standaard."@nl;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:class lto:Organisatie;
     sh:nodeKind sh:IRI
@@ -330,16 +302,8 @@ lto:StandaardShape a sh:NodeShape;
     rdfs:label "normstatus"@nl;
     sh:path lto:normstatus;
     sh:description "De status van de standaard (bijv. idee, voorstel, best practice, wettelijk)."@nl;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:node lto:NormstatussenShape;
-    sh:in (
-      lt:Idee
-      lt:Voorstel
-      lt:BestPractice
-      lt:Industrie
-      lt:Wettelijk
-    );
   ]
 .
 
@@ -368,7 +332,6 @@ lto:ToolShape a sh:NodeShape;
     rdfs:label "leverancier"@nl;
     sh:path lto:leverancier;
     sh:description "De organisatie die de tool levert."@nl;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:class lto:Organisatie;
     sh:nodeKind sh:IRI
@@ -378,15 +341,7 @@ lto:ToolShape a sh:NodeShape;
     rdfs:label "type technologie"@nl;
     sh:path lto:typeTechnologie;
     sh:description "Het type technologie van de tool (bijv. Markup, DSL, Machine learning)."@nl;
-    sh:minCount 1;
     sh:node lto:TechnologietypenShape;
-    sh:in (
-      lt:MarkupAnnotatie
-      lt:MarkupPublicatie
-      lt:DSL
-      lt:MachineLearning
-      lt:Regelexecutie
-    );
   ]
 .
 
@@ -418,7 +373,6 @@ lto:RelatieShape a sh:NodeShape;
     sh:minCount 1;
     sh:maxCount 1;
     sh:node lto:RelatietypenShape;
-    sh:in ( lt:Vervangt lt:VervolgOp lt:AlternatiefVoor lt:GerelateerdAan);
   ];
   sh:property [
     sh:order 2;
@@ -448,6 +402,11 @@ lto:beschrijvingRelatie a owl:DatatypeProperty;
   rdfs:range xsd:string
 .
 
+lto:gerelateerdeTechnologie a owl:ObjectProperty;
+  rdfs:label "gerelateerde technologie"@nl;
+  rdfs:range lto:JuridischeTechnologie
+.
+
 ## ---------------------------------------------------------------------------------------------------------
 ## Versiebeschrijving
 ## ---------------------------------------------------------------------------------------------------------
@@ -470,7 +429,6 @@ lto:VersiebeschrijvingShape a sh:NodeShape;
     sh:order 2;
     rdfs:label "versiedatum"@nl;
     sh:path lto:versiedatum;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:date
   ]
@@ -487,7 +445,7 @@ lto:versiedatum a owl:DatatypeProperty;
   rdfs:label "versiedatum"@nl;
   rdfs:comment "Datum waarop deze versie van de technologie is uitgebracht"@nl;
   rdfs:domain lto:Versiebeschrijving;
-  rdfs:range xsd:string
+  rdfs:range xsd:date
 .
 
 ## ---------------------------------------------------------------------------------------------------------
@@ -587,21 +545,21 @@ lto:DocumentatieShape a sh:NodeShape;
     rdfs:label "Toegevoegde waarde"@nl;
     sh:path lto:toegevoegdeWaarde;
     sh:maxCount 1;
-    sh:datatype xsd:string
+    sh:datatype xsd:markdown
   ];
   sh:property [
     sh:order 3;
     rdfs:label "onderdelen"@nl;
     sh:path lto:onderdelen;
     sh:maxCount 1;
-    sh:datatype xsd:string
+    sh:datatype xsd:markdown
   ];
   sh:property [
     sh:order 4;
     rdfs:label "Ontwikkeling en beheer"@nl;
     sh:path lto:ontwikkelingEnBeheer;
     sh:maxCount 1;
-    sh:datatype xsd:string
+    sh:datatype xsd:markdown
   ]
 .
 
@@ -640,7 +598,6 @@ lto:BronverwijzingShape a sh:NodeShape;
     sh:order 1;
     rdfs:label "titel"@nl;
     sh:path dct:title;
-    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:string
   ];
@@ -662,6 +619,235 @@ lto:BronverwijzingShape a sh:NodeShape;
 .
 
 ########################################################################################################
+## Product
+########################################################################################################
+lto:BegrippenkaderProducten a skos:ConceptScheme;
+  rdfs:label "Producten"@nl;
+  rdfs:label "Products"@en;
+  skos:prefLabel "Producten"@nl;
+  skos:definition "Begrippenkader met alle mogelijke producten"@nl
+.
+
+lto:Product a skos:Concept;
+  rdfs:label "Product"@nl;
+  skos:prefLabel "Product"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "Een product is een resultaat van een taak."@nl;
+.
+
+lto:ProductenShape a sh:NodeShape;
+  rdfs:label "Producten"@nl;
+  sh:property [
+    sh:path skos:inScheme;
+    sh:hasValue lto:BegrippenkaderProducten
+  ]
+.
+
+lto:inputProduct a owl:ObjectProperty;
+  rdfs:label "input product"@nl;
+  rdfs:comment "Afgeleide inverse relatie tussen een taaktype en een product dat als input dient voor die taak. Deze relatie is bedoeld voor inferentie en queries; de canonieke opslagrichting loopt via lto:inputVoorTaak."@nl;
+  owl:inverseOf lto:inputVoorTaak;
+  rdfs:domain skos:Concept;
+  rdfs:range skos:Concept
+.
+
+lto:outputProduct a owl:ObjectProperty;
+  rdfs:label "output product"@nl;
+  rdfs:comment "Afgeleide inverse relatie tussen een taaktype en een product dat als output ontstaat uit die taak. Deze relatie is bedoeld voor inferentie en queries; de canonieke opslagrichting loopt via lto:uitvoerVanTaak."@nl;
+  owl:inverseOf lto:uitvoerVanTaak;
+  rdfs:domain skos:Concept;
+  rdfs:range skos:Concept
+.
+
+lto:inputVoorTaak a owl:ObjectProperty;
+  rdfs:label "input voor taak"@nl;
+  rdfs:comment "Canonieke opslagrelatie tussen een product (als skos:Concept in lto:BegrippenkaderProducten) en een taaktype dat het product als input nodig heeft."@nl;
+  rdfs:domain skos:Concept;
+  rdfs:range skos:Concept
+.
+
+lto:uitvoerVanTaak a owl:ObjectProperty;
+  rdfs:label "output van taak"@nl;
+  rdfs:comment "Canonieke opslagrelatie tussen een product (als skos:Concept in lto:BegrippenkaderProducten) en een taaktype dat het product als output produceert."@nl;
+  rdfs:domain skos:Concept;
+  rdfs:range skos:Concept
+.
+
+
+########################################################################################################
+## Producten
+########################################################################################################
+
+lto:Regeltekst a skos:Concept;
+  rdfs:label "Regeltekst"@nl;
+  skos:prefLabel "Regeltekst"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "Opstellen van juridische tekst als onderdeel van het geschreven recht: de algemeen verbindende voorschriften, inclusief beleidsregels."@nl;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:BeleidsregelsAlgemeenVerbindend a skos:Concept;
+  rdfs:label "Beleidsregels (algemeen verbindend)"@nl;
+  skos:prefLabel "Beleidsregels (algemeen verbindend)"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "Opstellen van tekst en commentaren voor nadere duiding juridische tekst"@nl;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:ServiceinformatieAnnotaties a skos:Concept;
+  rdfs:label "Serviceinformatie (annotaties)"@nl;
+  skos:prefLabel "Serviceinformatie (annotaties)"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "Opstellen van juridische tekst als onderdeel van het geschreven recht: de algemeen verbindende voorschriften, inclusief beleidsregels."@nl;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:TekstenEnCommentaren a skos:Concept;
+  rdfs:label "Teksten en commentaren"@nl;
+  skos:prefLabel "Teksten en commentaren"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "Opstellen van tekst en commentaren voor nadere duiding juridische tekst"@nl;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:Scope a skos:Concept;
+  rdfs:label "Scope"@nl;
+  skos:prefLabel "Scope"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "doel (?) herbruikbare implementatie"@nl;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:NormatieveVragen a skos:Concept;
+  rdfs:label "Normatieve vragen"@nl;
+  skos:prefLabel "Normatieve vragen"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "doel (?) herbruikbare implementatie"@nl;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:JuridischLandschapRelevanteTekstblokkenIcmOpdracht a skos:Concept;
+  rdfs:label "Juridisch landschap (relevante tekstblokken icm opdracht)"@nl;
+  skos:prefLabel "Juridisch landschap (relevante tekstblokken icm opdracht)"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:Ordening a skos:Concept;
+  rdfs:label "Ordening"@nl;
+  skos:prefLabel "Ordening"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:Groepering a skos:Concept;
+  rdfs:label "Groepering"@nl;
+  skos:prefLabel "Groepering"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:Classificatie a skos:Concept;
+  rdfs:label "Classificatie"@nl;
+  skos:prefLabel "Classificatie"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:InputVoorBeleidsregels a skos:Concept;
+  rdfs:label "Input voor beleidsregels"@nl;
+  skos:prefLabel "Input voor beleidsregels"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:InstructieLoopNaarBeleidOpstellen a skos:Concept;
+  rdfs:label "Instructie (loop naar beleid opstellen)"@nl;
+  skos:prefLabel "Instructie (loop naar beleid opstellen)"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:BouwstenenVoorDeModellen a skos:Concept;
+  rdfs:label "Bouwstenen voor de modellen"@nl;
+  skos:prefLabel "Bouwstenen voor de modellen"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  lto:inputVoorTaak ltt:BegripDefinieren;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:ConceptueelModel a skos:Concept;
+  rdfs:label "Conceptueel model"@nl;
+  skos:prefLabel "Conceptueel model"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  lto:uitvoerVanTaak ltt:BegripDefinieren;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:LogischModel a skos:Concept;
+  rdfs:label "Logisch model"@nl;
+  skos:prefLabel "Logisch model"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  lto:uitvoerVanTaak ltt:LogischModelOpstellen;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:Regelmodel a skos:Concept;
+  rdfs:label "Regelmodel"@nl;
+  skos:prefLabel "Regelmodel"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  lto:uitvoerVanTaak ltt:RegelmodelOpstellen;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:Procesmodel a skos:Concept;
+  rdfs:label "Procesmodel"@nl;
+  skos:prefLabel "Procesmodel"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  lto:uitvoerVanTaak ltt:ProcesmodelOpstellen;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:Uitvoeringsspecificaties a skos:Concept;
+  rdfs:label "Uitvoeringsspecificaties"@nl;
+  skos:prefLabel "Uitvoeringsspecificaties"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "Gegevensmodel in de context van de taak"@nl;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:CorrecteJuisteEnUitvoerbareSpecificaties a skos:Concept;
+  rdfs:label "Correcte, juiste en uitvoerbare specificaties"@nl;
+  skos:prefLabel "Correcte, juiste en uitvoerbare specificaties"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:SysteemWaarbinnenDeRegelsWordenUitgevoerd a skos:Concept;
+  rdfs:label "Systeem waarbinnen de regels worden uitgevoerd"@nl;
+  skos:prefLabel "Systeem waarbinnen de regels worden uitgevoerd"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:Besluit a skos:Concept;
+  rdfs:label "Besluit"@nl;
+  skos:prefLabel "Besluit"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skosthes:broaderGeneric lto:Product;
+.
+
+lto:Rollen a skos:Concept;
+  rdfs:label "Rollen"@nl;
+  skos:prefLabel "Rollen"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "informatie en regel (incl. vertaling naar IT)"@nl;
+  skosthes:broaderGeneric lto:Product;
+.
+
+
+
+########################################################################################################
 ## Categorisations (lists)
 ########################################################################################################
 
@@ -673,6 +859,7 @@ lt:BegrippenkaderCategorieen a skos:ConceptScheme;
 ##
 ## Licentievormen enumeration
 ##
+
 lto:Licentievormen a skos:Collection;
   rdfs:label "Licentievormen"@nl;
   skos:prefLabel "Licentievormen"@nl;
@@ -681,6 +868,7 @@ lto:Licentievormen a skos:Collection;
   skos:member lt:VolledigOpen, lt:OpenOnderVoorwaarden, lt:Gesloten
 .
 
+
 # Define the concepts (enumeration values)
 lt:VolledigOpen a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
@@ -688,29 +876,34 @@ lt:VolledigOpen a skos:Concept;
   rdfs:label "Volledig open"@nl
 .
 
+
 lt:OpenOnderVoorwaarden a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Open onder voorwaarden"@nl.
 
 lt:Gesloten a skos:Concept;
+
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Gesloten"@nl;
   rdfs:label "Gesloten"@nl;
 .
 
 # SHACL shape to validate usage of licentievorm property
+
 lto:LicentievormenShape a sh:NodeShape;
   rdfs:label "Licentievormen";
   sh:property [
     sh:path [sh:inversePath skos:member];
     sh:hasValue lto:Licentievormen
   ]
+
 .
 
 ##
 ## Gebruikersgroepen enumeration
 ##
 lto:Gebruikersgroepen a skos:Collection;
+
   rdfs:label "Gebruikersgroepen"@nl;
   skos:prefLabel "Gebruikersgroepen"@nl;
   skos:inScheme lt:BegrippenkaderCategorieen;
@@ -718,11 +911,13 @@ lto:Gebruikersgroepen a skos:Collection;
   skos:member lt:BurgersEnBedrijven, lt:Rechtbanken, lt:Opsporingsinstanties, lt:Juristen, lt:Beleidsmedewerkers, lt:Wetgevers, lt:Advocaten, lt:Uitvoeringsorganisaties, lt:CommercieleOrganisaties, lt:Regelanalist, lt:SoftwareOntwikkelaars
 .
 
+
 lt:BurgersEnBedrijven a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Burgers en bedrijven"@nl.
 
 lt:Rechtbanken a skos:Concept;
+
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Rechtbanken"@nl.
 
@@ -730,11 +925,13 @@ lt:Opsporingsinstanties a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Opsporingsinstanties"@nl.
 
+
 lt:Juristen a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Juristen"@nl.
 
 lt:Beleidsmedewerkers a skos:Concept;
+
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Beleidsmedewerkers"@nl.
 
@@ -742,17 +939,20 @@ lt:Wetgevers a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Wetgevers"@nl.
 
+
 lt:Advocaten a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Advocaten"@nl.
 
 lt:Uitvoeringsorganisaties a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
+
   skos:prefLabel "Uitvoeringsorganisaties"@nl.
 
 lt:CommercieleOrganisaties a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
   skos:prefLabel "Commerciële organisaties"@nl.
+
 
 lt:Regelanalist a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
@@ -760,6 +960,7 @@ lt:Regelanalist a skos:Concept;
 
 lt:SoftwareOntwikkelaars a skos:Concept;
   skos:inScheme lt:BegrippenkaderCategorieen;
+
   skos:prefLabel "Softwareontwikkelaars"@nl.
 
 # SHACL shape for gebruikersgroepen
@@ -806,21 +1007,139 @@ lto:GebruiksstatusShape a sh:NodeShape;
 ##
 ## Functionaliteiten enumeration
 ##
-lto:Functionaliteiten a skos:Collection;
-  rdfs:label "Functionaliteiten"@nl;
-  skos:prefLabel "Functionaliteiten"@nl;
-  skos:inScheme lt:BegrippenkaderCategorieen;
-  skos:definition "Enumeratie van mogelijke functionaliteiten voor juridische technologie."@nl;
-  skos:member lt:GeautomatiseerdBeslissen, lt:ComplianceOndersteuning
+# lto:Functionaliteiten a skos:Collection;
+#   rdfs:label "Functionaliteiten"@nl;
+#   skos:prefLabel "Functionaliteiten"@nl;
+#   skos:inScheme lt:BegrippenkaderCategorieen;
+#   skos:definition "Enumeratie van mogelijke functionaliteiten voor juridische technologie."@nl;
+#   skos:member lt:GeautomatiseerdBeslissen, lt:ComplianceOndersteuning
+# .
+
+lto:Functionaliteiten a skos:Collection ;
+  rdfs:label "Functionaliteiten"@nl ;
+  skos:prefLabel "Functionaliteiten"@nl ;
+  skos:definition "Enumeratie van mogelijke functionaliteiten voor juridische technologie."@nl ;
+  skos:member
+    lt:GeautomatiseerdBeslissen,
+    lt:ComplianceOndersteuning,
+    lt:ContractAutomatischAanmaken,
+    lt:ContractAnalyticsConceptReview,
+    lt:JuridischExpertSysteem,
+    lt:WetgevingConceptualisering,
+    lt:WetgevingUitvoering,
+    lt:WetgevingRepresentatie,
+    lt:LitigatieAnalytics,
+    lt:LitigatieConceptualisering,
+    lt:LitigatiePredictieVoorsluiting,
+    lt:ZoekenRechtspraak,
+    lt:ZoekenWetgeving
 .
 
-lt:GeautomatiseerdBeslissen a skos:Concept;
-  skos:inScheme lt:BegrippenkaderCategorieen;
-  skos:prefLabel "Geautomatiseerd beslissen"@nl.
+lt:GeautomatiseerdBeslissen a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Automated decision-making"@en ;
+  skos:prefLabel "Geautomatiseerd beslissen"@nl ;
+  skos:definition "Het (geheel of gedeeltelijk) nemen van besluiten door een geautomatiseerd systeem, al dan niet met rechtsgevolgen voor betrokkenen."@nl
+.
 
-lt:ComplianceOndersteuning a skos:Concept;
-  skos:inScheme lt:BegrippenkaderCategorieen;
-  skos:prefLabel "Compliance ondersteuning"@nl.
+lt:ComplianceOndersteuning a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Compliance supporCompliancet"@en ;
+  skos:prefLabel "Compliance ondersteuning"@nl ;
+  skos:altLabel "Compliance-ondersteuning"@nl ;
+  skos:definition "Ondersteuning bij het aantoonbaar naleven van wet- en regelgeving en interne normen, inclusief controles, signalering en rapportage."@nl
+.
+
+lt:ContractAutomatischAanmaken a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Contract: automated creation"@en ;
+  skos:prefLabel "Contract: geautomatiseerde contractgeneratie"@nl ;
+  skos:altLabel "Contract: geautomatiseerde totstandkoming van contracten"@nl ;
+  skos:altLabel "Contract: geautomatiseerd opstellen van contracten"@nl ;
+  skos:definition "Het automatisch genereren of samenstellen van een contract op basis van invoer, templates en/of clausulebibliotheken."@nl
+.
+
+lt:ContractAnalyticsConceptReview a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Contract: analytics/drafting/review"@en ;
+  skos:prefLabel "Contract: analyse/redactie/beoordeling"@nl ;
+  skos:altLabel "Contract: analyse, opstellen en beoordeling"@nl ;
+  skos:definition "Functionaliteiten voor het analyseren van contractinhoud, het (mede) opstellen/redigeren van bepalingen en het beoordelen (review) van concepten en wijzigingen."@nl
+.
+
+lt:JuridischExpertSysteem a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Legal expert system"@en ;
+  skos:prefLabel "Juridisch expertsysteem"@nl ;
+  skos:altLabel "Rechtskundig expertsysteem"@nl ;
+  skos:definition "Een systeem dat juridische kennis (regels en/of heuristieken) toepast om te adviseren, te kwalificeren of beslissingen/uitkomsten te ondersteunen."@nl
+.
+
+lt:WetgevingConceptualisering a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Legislation: drafting"@en ;
+  skos:prefLabel "Wetgeving: wetgevingsredactie"@nl ;
+  skos:altLabel "Wetgeving: ontwerpen"@nl ;
+  skos:definition "Het (ondersteunen bij het) opstellen en redigeren van wet- en regelgeving, inclusief structuur, definities, verwijzingen en consistentie."@nl
+.
+
+lt:WetgevingUitvoering a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Legislation: execution"@en ;
+  skos:prefLabel "Wetgeving: uitvoering van wet- en regelgeving"@nl ;
+  skos:altLabel "Wetgeving: implementatie van wet- en regelgeving"@nl ;
+  skos:altLabel "Wetgeving: handhaving van wet- en regelgeving"@nl ;
+  skos:definition "Functionaliteiten gericht op uitvoering of implementatie van wettelijke verplichtingen en, waar bedoeld, ondersteuning bij toezicht en handhaving."@nl
+.
+
+lt:WetgevingRepresentatie a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Legislation: representation"@en ;
+  skos:prefLabel "Wetgeving: modellering van wet- en regelgeving"@nl ;
+  skos:altLabel "Wetgeving: representatie"@nl ;
+  skos:altLabel "Wetgeving: weergave van wet- en regelgeving"@nl ;
+  skos:definition "Het formaliseren of modelleren van wet- en regelgeving (bijv. als regels, logica, metadata of semantische structuur) ten behoeve van interpretatie, toepassing of automatisering."@nl
+.
+
+lt:LitigatieAnalytics a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Litigation: analytics"@en ;
+  skos:prefLabel "Procespraktijk: procesanalyse"@nl ;
+  skos:altLabel "Litigatiebehandeling: analytics"@nl ;
+  skos:definition "Analyse van procesvoering en procesgegevens (bijv. doorlooptijden, uitkomsten, proceshandelingen en patronen) ter ondersteuning van processtrategie en dossiersturing."@nl
+.
+
+lt:LitigatieConceptualisering a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Litigation: drafting"@en ;
+  skos:prefLabel "Procespraktijk: opstellen van processtukken"@nl ;
+  skos:altLabel "Litigatiebehandeling: conceptualisering"@nl ;
+  skos:definition "Het opstellen en redigeren van processtukken (zoals dagvaarding, verzoekschrift, conclusie, pleitnota en incidentele verzoeken)."@nl
+.
+
+lt:LitigatiePredictieVoorsluiting a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Litigation: prediction of judgment"@en ;
+  skos:prefLabel "Procespraktijk: voorspelling van rechterlijke uitspraak"@nl ;
+  skos:altLabel "Litigatiebehandeling: voorsluiting voorspelling"@nl ;
+  skos:definition "Het (statistisch of modelmatig) voorspellen van de waarschijnlijke uitkomst van een procedure of de inhoud/strekking van een rechterlijke uitspraak."@nl
+.
+
+lt:ZoekenRechtspraak a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Search: case law"@en ;
+  skos:prefLabel "Zoeken: jurisprudentie"@nl ;
+  skos:altLabel "Zoeken: rechtspraak"@nl ;
+  skos:definition "Het doorzoeken en ontsluiten van jurisprudentie (uitspraken), inclusief filtering, citaties, vindplaatsen en relevante overwegingen."@nl
+.
+
+lt:ZoekenWetgeving a skos:Concept ;
+  skos:inScheme lt:BegrippenkaderCategorieen ;
+  # skos:prefLabel "Search: legislation"@en ;
+  skos:prefLabel "Zoeken: wet- en regelgeving"@nl ;
+  skos:altLabel "Zoeken: wetgeving"@nl ;
+  skos:definition "Het doorzoeken en ontsluiten van wet- en regelgeving, inclusief consolidaties, historische versies, artikelen/leden en kruisverwijzingen."@nl
+.
 
 # SHACL shape for functionaliteiten
 lto:FunctionaliteitenShape a sh:NodeShape;
@@ -989,6 +1308,25 @@ lto:TaaktypenShape a sh:NodeShape;
   ]
 .
 
+lto:TaakProductRelatiesShape a sh:NodeShape;
+  sh:name "Taak-productrelaties";
+  rdfs:comment "Valideert taak-productrelaties vanuit de canonieke product-naar-taak opslag via inverse paths."@nl;
+  sh:targetObjectsOf lto:inputVoorTaak;
+  sh:targetObjectsOf lto:uitvoerVanTaak;
+  sh:property [
+    sh:path skos:inScheme;
+    sh:hasValue ltt:BegrippenkaderTaken
+  ];
+  sh:property [
+    sh:path [ sh:inversePath lto:inputVoorTaak ];
+    sh:node lto:ProductenShape
+  ];
+  sh:property [
+    sh:path [ sh:inversePath lto:uitvoerVanTaak ];
+    sh:node lto:ProductenShape
+  ]
+.
+
 # Relatietypen enumeration
 lto:Relatietypen a skos:Collection;
   rdfs:label "Relatietypen"@nl;
@@ -1022,3 +1360,4 @@ lt:GerelateerdAan a skos:Concept;
     sh:hasValue lto:Relatietypen
   ]
 .
+

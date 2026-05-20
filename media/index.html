@@ -1,43 +1,261 @@
 <!DOCTYPE html>
 <html lang="nl">
-  <head>
-    <meta charset="utf-8" />
-    <title>Legal technology model</title>
-    <script
-      src="https://www.w3.org/Tools/respec/respec-w3c"
-      class="remove"
-      defer
-    ></script>
-    <!--
-    <script src="localbiblio.js" class="remove"></script>
-    <script src="postprocess.js" class="remove"></script>
-  -->
-    <script class="remove">
-      // All config options at https://respec.org/docs/
-      var respecConfig = {
-        //localBiblio: localBiblio,
-        specStatus: "base",
-        shortName: "dpia",
-        subtitle: "model for describing legal technology",
-        publishDate: "2025-12-18",
-        //postProcess: [markupDefTables],
-        latestVersion: "https://../legal-technology",
-        editors: [{ name: "Werkgroep challenge 1"}],
-        authors: [
-          {
-            name:       "MB",
-            company:    "Ministerie van Justitie en Veiligheid",
-            companyURL: "https://minjenv.nl"
-          },
-        ],
-        lint: false,
-      };
-    </script>
-  </head>
-  <body>
-    <p class="copyright" />
-    <section id="abstract" data-format="markdown" data-include-format="text" data-include="samenvatting.md"></section>
-    <section data-include-format="markdown" data-include="begrippen.md"></section>
-    <section data-include-format="markdown" data-include="ontology.md"></section>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Juridische technologie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <style>
+  /* =========================
+    PAGINA-INSTELLINGEN
+    ========================= */
+
+  @page {
+    size: A4;
+    margin: 2.5cm 2cm 2cm 2cm;
+
+    @bottom-right {
+      content: counter(page);
+      font-size: 10pt;
+      color: #666;
+    }
+
+    @top-left {
+      content: "Juridische technologie";
+      font-size: 10pt;
+      color: #666;
+    }
+
+    @top-right {
+      content: "Concept";
+      font-size: 10pt;
+      color: #666;
+    }
+  }
+
+  /* Eerste pagina (cover) */
+  @page:first {
+    margin-top: 5cm;
+
+    @top-left { content: none; }
+    @top-right { content: none; }
+    @bottom-right { content: none; }
+  }
+
+  /* =========================
+    BASIS OPMAAK
+    ========================= */
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  /* =========================
+    TITELS
+    ========================= */
+
+  h1, h2, h3, h4 {
+    font-family: Georgia, serif;
+    page-break-after: avoid;
+  }
+
+  h1 {
+    font-size: 24pt;
+    page-break-before: always;
+  }
+
+  h2 {
+    font-size: 18pt;
+    margin-top: 2em;
+  }
+
+  h3 {
+    font-size: 14pt;
+  }
+
+  /* =========================
+    SECTIES
+    ========================= */
+
+  section {
+    page-break-inside: avoid;
+  }
+
+  /* zorg dat top-level secties nieuwe pagina starten */
+  body > section {
+    page-break-before: always;
+  }
+
+  /* uitzondering voor abstract */
+  #abstract {
+    page-break-before: auto;
+  }
+
+  /* =========================
+    TABELLEN
+    ========================= */
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    page-break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 4px 6px;
+  }
+
+  th {
+    background: #f5f5f5;
+    font-weight: bold;
+  }
+
+  /* =========================
+    LINKS
+    ========================= */
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  /* =========================
+    CODE
+    ========================= */
+
+  code {
+    font-family: monospace;
+    font-size: 10pt;
+  }
+
+  /* =========================
+    BLOCKQUOTES
+    ========================= */
+
+  blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 1em;
+    margin-left: 0;
+    color: #444;
+  }
+
+  /* =========================
+    LIJSTEN
+    ========================= */
+
+  ul, ol {
+    page-break-inside: avoid;
+  }
+
+  /* =========================
+    TOC FIX
+    ========================= */
+
+  #toc {
+    page-break-after: always;
+  }
+
+  </style>
+
+  <script src="../node_modules/respec/builds/respec-w3c.js" class="remove" async></script>
+
+  <script class="remove">
+  var respecConfig = {
+    specStatus: "base",
+    shortName: "juridische-technologie",
+    subtitle: "Model voor het beschrijven van juridische technologie",
+    publishDate: "2025-12-18",
+    latestVersion: "https://bp4mc2.org/legal-technology",
+
+    editors: [
+      {
+        name: "Werkgroep challenge 1"
+      }
+    ],
+
+    authors: [
+      {
+        name: "MB",
+        company: "Ministerie van Justitie en Veiligheid",
+        companyURL: "https://minjenv.nl"
+      }
+    ],
+
+    lint: false
+  };
+  </script>
+
+</head>
+
+<body>
+
+<section
+  id="abstract"
+  data-include-format="markdown"
+  data-include="../docs/respec/abstract.md">
+</section>
+
+<section
+  id="sotd"
+  data-include-format="markdown"
+  data-include="../docs/respec/sotd.md">
+</section>
+
+<section
+  id="inleiding"
+  data-include-format="markdown"
+  data-include="../docs/respec/inleiding.md">
+</section>
+
+<section
+  id="begrippen"
+  data-include-format="markdown"
+  data-include="begrippen.md">
+</section>
+
+<section
+  id="catalogus"
+  data-include-format="markdown"
+  data-include="catalogus.md">
+</section>
+
+<section
+  id="taxonomieen"
+  data-include-format="markdown"
+  data-include="taxonomieen.md">
+</section>
+
+<section
+  id="organisaties"
+  data-include-format="markdown"
+  data-include="organisaties.md">
+</section>
+
+<section
+  id="ontologie"
+  data-include-format="markdown"
+  data-include="ontologie.md">
+</section>
+
+<!-- <section
+  id="bronnen"
+  class="appendix"
+  data-include-format="markdown"
+  data-include="bronnen.md">
+</section> -->
+
+<section
+  id="generatieverantwoording"
+  class="appendix"
+  data-include-format="markdown"
+  data-include="generatieverantwoording.md">
+</section>
+
+</body>
 </html>

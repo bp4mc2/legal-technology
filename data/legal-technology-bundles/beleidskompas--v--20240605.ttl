@@ -6,8 +6,8 @@
 _:genid-18edcff6e8ea4178871657eb7128dd736390-698E71D7FD8A6650586FD6770C2D0066 <http://bp4mc2.org/lto#versiedatum> "2024-06-05"^^<http://www.w3.org/2001/XMLSchema#date> .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-698E71D7FD8A6650586FD6770C2D0066 <http://bp4mc2.org/lto#versienummer> "20240605" .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-698E71D7FD8A6650586FD6770C2D0066 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://bp4mc2.org/lto#onderdelen> "Probleemanalyse, Doelbepaling, Beleidsopties uitwerken, Gevolgen in kaart brengen & voorkeursoptie kiezen." .
-_:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Het Beleidskompas zorgt dat je vóór het schrijven van regels scherp hebt wat het probleem is, wie geraakt wordt en wat werkt — waardoor regelteksten uiteindelijk gerichter, uitvoerbaarder en beter handhaafbaar zijn." .
+_:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://bp4mc2.org/lto#onderdelen> "Probleemanalyse, Doelbepaling, Beleidsopties uitwerken, Gevolgen in kaart brengen & voorkeursoptie kiezen."^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Het Beleidskompas zorgt dat je vóór het schrijven van regels scherp hebt wat het probleem is, wie geraakt wordt en wat werkt — waardoor regelteksten uiteindelijk gerichter, uitvoerbaarder en beter handhaafbaar zijn."^^<http://www.w3.org/2001/XMLSchema#markdown> .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Tekstueel> .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .

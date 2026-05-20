@@ -1,0 +1,106 @@
+PREFIX sh:   <http://www.w3.org/ns/shacl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT
+  ?shape
+  ?shapeLabel
+  ?targetClass
+  ?targetClassLabel
+  ?propertyShape
+  ?order
+  ?path
+  ?pathLabel
+  ?propertyLabel
+  ?description
+  ?minCount
+  ?maxCount
+  ?datatype
+  ?class
+  ?node
+  ?nodeKind
+WHERE {
+  ?shape a sh:NodeShape .
+
+  OPTIONAL {
+    ?shape rdfs:label ?shapeRdfsLabel .
+    FILTER(LANG(?shapeRdfsLabel) = "nl" || LANG(?shapeRdfsLabel) = "")
+  }
+
+  OPTIONAL {
+    ?shape sh:name ?shapeName .
+    FILTER(LANG(?shapeName) = "nl" || LANG(?shapeName) = "")
+  }
+
+  BIND(COALESCE(?shapeName, ?shapeRdfsLabel) AS ?shapeLabel)
+
+  OPTIONAL {
+    ?shape sh:targetClass ?targetClass .
+
+    OPTIONAL {
+      ?targetClass rdfs:label ?targetClassLabel .
+      FILTER(LANG(?targetClassLabel) = "nl" || LANG(?targetClassLabel) = "")
+    }
+  }
+
+  OPTIONAL {
+    ?shape sh:property ?propertyShape .
+
+    OPTIONAL {
+      ?propertyShape sh:order ?order .
+    }
+
+    OPTIONAL {
+      ?propertyShape sh:path ?path .
+
+      OPTIONAL {
+        ?path rdfs:label ?pathLabel .
+        FILTER(LANG(?pathLabel) = "nl" || LANG(?pathLabel) = "")
+      }
+    }
+
+    OPTIONAL {
+      ?propertyShape rdfs:label ?propertyRdfsLabel .
+      FILTER(LANG(?propertyRdfsLabel) = "nl" || LANG(?propertyRdfsLabel) = "")
+    }
+
+    OPTIONAL {
+      ?propertyShape sh:name ?propertyName .
+      FILTER(LANG(?propertyName) = "nl" || LANG(?propertyName) = "")
+    }
+
+    BIND(COALESCE(?propertyName, ?propertyRdfsLabel, ?pathLabel) AS ?propertyLabel)
+
+    OPTIONAL {
+      ?propertyShape sh:description ?description .
+      FILTER(LANG(?description) = "nl" || LANG(?description) = "")
+    }
+
+    OPTIONAL {
+      ?propertyShape sh:minCount ?minCount .
+    }
+
+    OPTIONAL {
+      ?propertyShape sh:maxCount ?maxCount .
+    }
+
+    OPTIONAL {
+      ?propertyShape sh:datatype ?datatype .
+    }
+
+    OPTIONAL {
+      ?propertyShape sh:class ?class .
+    }
+
+    OPTIONAL {
+      ?propertyShape sh:node ?node .
+    }
+
+    OPTIONAL {
+      ?propertyShape sh:nodeKind ?nodeKind .
+    }
+  }
+}
+ORDER BY
+  LCASE(STR(COALESCE(?shapeLabel, "")))
+  STR(COALESCE(?order, "999999"))
+  LCASE(STR(COALESCE(?propertyLabel, "")))

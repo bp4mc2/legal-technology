@@ -1,0 +1,86 @@
+---
+title: "{{ metadata.title | default('Juridische technologieën') }}"
+shortName: "juridische-technologieen"
+status: "ED"
+group: "bp4mc2"
+editors:
+  - name: "Brattinga, Van Dijk, Straver"
+---
+
+# Abstract
+
+Deze specificatie beschrijft een catalogus van juridische technologieën.  
+De inhoud is automatisch gegenereerd uit RDF/Turtle op basis van de juridische technologie-ontologie.
+
+# Status of This Document
+
+Dit document is gegenereerd uit de Turtle-bronbestanden:
+
+- TBox: `{{ tbox_file }}`
+- ABox: `{{ abox_file }}`
+
+{% if metadata.version %}
+Versie van de ontologie: `{{ metadata.version }}`
+{% endif %}
+
+{% if metadata.created %}
+Aangemaakt op: `{{ metadata.created }}`
+{% endif %}
+
+# Inleiding
+
+Deze catalogus beschrijft juridische technologieën, waaronder methoden, standaarden en tools.  
+Per technologie worden kenmerken beschreven zoals gebruiksstatus, licentievorm, functionaliteit, doelgroep, ondersteuning, taken, bronnen en relaties met andere technologieën.
+
+# Leeswijzer
+
+De catalogus bestaat uit de volgende onderdelen:
+
+1. overzicht van juridische technologieën;
+2. detailbeschrijvingen per technologie;
+3. taxonomieën en waardenlijsten;
+4. organisaties;
+5. bronnen en relaties.
+
+# Overzicht van juridische technologieën
+
+{% include "overview_table.md.j2" %}
+
+# Technologieën
+
+{% for tech in technologies %}
+{% include "technology_section.md.j2" %}
+{% endfor %}
+
+# Taxonomieën en waardenlijsten
+
+{% for taxonomy in taxonomies %}
+{% include "taxonomy_section.md.j2" %}
+{% endfor %}
+
+# Organisaties
+
+{% for organisation in organisations %}
+{% include "organisation_section.md.j2" %}
+{% endfor %}
+
+# Bijlage: datamodel
+
+Deze catalogus gebruikt onder meer de volgende hoofdklassen:
+
+- `lto:JuridischeTechnologie`
+- `lto:Methode`
+- `lto:Standaard`
+- `lto:Tool`
+- `lto:Organisatie`
+- `lto:Taakinvulling`
+- `lto:Bronverwijzing`
+- `lto:Relatie`
+- `lto:Versiebeschrijving`
+- `lto:Documentatie`
+
+De waardenlijsten zijn gemodelleerd als `skos:Collection` en `skos:Concept`.
+
+# Bijlage: generatie
+
+Dit document is automatisch gegenereerd. Handmatige wijzigingen in dit Markdown-bestand kunnen bij een volgende generatie worden overschreven.

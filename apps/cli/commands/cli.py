@@ -82,7 +82,8 @@ def migrate_blanknodes(no_sync):
             'Migratie voltooid: '
             f"documentatie={migrated.get('documentatie', 0)}, "
             f"ondersteuningVoor={migrated.get('ondersteuningVoor', 0)}, "
-            f"versiebeschrijving={migrated.get('versiebeschrijving', 0)}"
+            f"versiebeschrijving={migrated.get('versiebeschrijving', 0)}, "
+            f"taaktype-IRI typo's gecorrigeerd={result.get('taaktype_iri_fixed', 0)}"
         )
         if result.get('sync_exports') and result.get('exports'):
             exports = result['exports']

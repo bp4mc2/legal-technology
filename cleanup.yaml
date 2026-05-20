@@ -85,6 +85,9 @@ queries:
   - title: fix errors - empty resources
     query: >
       prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      prefix owl: <http://www.w3.org/2002/07/owl#>
+      prefix sh: <http://www.w3.org/ns/shacl#>
+      prefix skos: <http://www.w3.org/2004/02/skos/core#>
       delete {
         graph <urn:output> {
           ?s a ?t.
@@ -95,6 +98,7 @@ queries:
         graph <urn:output> {
           ?s a ?t.
           OPTIONAL {?ss ?sp ?s}
+          FILTER (?t!=owl:Class && ?t!=sh:NodeShape && ?t!=sh:PropertyShape && ?t!=skos:Concept && ?t!=skos:ConceptScheme && ?t!=skos:Collection)
           FILTER NOT EXISTS {?s ?p ?o FILTER (?p!=rdf:type)}
         }
       }
@@ -133,7 +137,7 @@ queries:
         }
       }
   - title: fix errors - bijgewerktOp (string vs date)
-    use: no
+    # use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix lt: <http://bp4mc2.org/lt#>
@@ -243,7 +247,7 @@ queries:
         }
       }
   - title: fix errors - ondersteuningVoor (non-blank node 1/2)
-    use: no
+    # use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix lt: <http://bp4mc2.org/lt#>
@@ -266,7 +270,7 @@ queries:
         }
       }
   - title: fix errors - ondersteuningVoor (non-blank node 2/2)
-    use: no
+    # use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix lt: <http://bp4mc2.org/lt#>
@@ -367,7 +371,7 @@ queries:
         }
       }
   - title: fix errors - versiedatum (string vs date)
-    use: no
+    # use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix lt: <http://bp4mc2.org/lt#>
@@ -412,8 +416,96 @@ queries:
           BIND(xsd:anyURI(?value) as ?anyuri)
         }
       }
+  - title: fix errors - beoogdGebruik (string vs markdown)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?doc lto:beoogdGebruik ?value
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?doc lto:beoogdGebruik ?markdown
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?doc lto:beoogdGebruik ?value.
+          FILTER(isLiteral(?value))
+          FILTER(datatype(?value) != xsd:markdown)
+          BIND(STRDT(STR(?value), xsd:markdown) as ?markdown)
+        }
+      }
+  - title: fix errors - toegevoegdeWaarde (string vs markdown)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?doc lto:toegevoegdeWaarde ?value
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?doc lto:toegevoegdeWaarde ?markdown
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?doc lto:toegevoegdeWaarde ?value.
+          FILTER(isLiteral(?value))
+          FILTER(datatype(?value) != xsd:markdown)
+          BIND(STRDT(STR(?value), xsd:markdown) as ?markdown)
+        }
+      }
+  - title: fix errors - onderdelen (string vs markdown)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?doc lto:onderdelen ?value
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?doc lto:onderdelen ?markdown
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?doc lto:onderdelen ?value.
+          FILTER(isLiteral(?value))
+          FILTER(datatype(?value) != xsd:markdown)
+          BIND(STRDT(STR(?value), xsd:markdown) as ?markdown)
+        }
+      }
+  - title: fix errors - ontwikkelingEnBeheer (string vs markdown)
+    query: >
+      prefix lto: <http://bp4mc2.org/lto#>
+      prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+      delete {
+        graph <urn:output> {
+          ?doc lto:ontwikkelingEnBeheer ?value
+        }
+      }
+      insert {
+        graph <urn:output> {
+          ?doc lto:ontwikkelingEnBeheer ?markdown
+        }
+      }
+      where {
+        graph <urn:output> {
+          ?doc lto:ontwikkelingEnBeheer ?value.
+          FILTER(isLiteral(?value))
+          FILTER(datatype(?value) != xsd:markdown)
+          BIND(STRDT(STR(?value), xsd:markdown) as ?markdown)
+        }
+      }
   - title: fix errors - ondersteuningVoor (beschouwingsniveau)
-    use: no
+    # use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -429,7 +521,7 @@ queries:
         }
       }
   - title: fix errors - ondersteuningVoor (modelsoort)
-    use: no
+    # use: no
     query: >
       prefix lto: <http://bp4mc2.org/lto#>
       prefix xsd: <http://www.w3.org/2001/XMLSchema#>

@@ -1,0 +1,11 @@
+<section id="{{ organisation.anchor }}">
+
+## {{ organisation.naam | default(organisation.id) }}
+
+| Kenmerk | Waarde |
+|---|---|
+| URI | `{{ organisation.uri }}` |
+{% if organisation.contactinformatie %}| Contactinformatie | {{ organisation.contactinformatie }} |
+{% endif %}
+
+</section>

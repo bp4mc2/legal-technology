@@ -1,0 +1,64 @@
+## Generatieverantwoording
+
+Dit document is automatisch gegenereerd uit RDF/Turtle-bronnen. De inhoud van de catalogus, taxonomieën, organisaties en ontologie wordt direct afgeleid uit deze bronbestanden.
+
+### Bronbestanden
+
+| Type | Bestand |
+|---|---|
+| TBox | `{{ tbox_file }}` |
+| ABox | `{{ abox_file }}` |
+
+### Generatie
+
+De documentatie is gegenereerd met behulp van:
+
+- Python (RDFLib voor het parsen van RDF/Turtle)
+- SPARQL-queries voor het selecteren van gegevens
+- Jinja2-templates voor het genereren van Markdown
+- ReSpec voor de uiteindelijke weergave van het document
+
+Datum van generatie: `{{ generated_on }}`
+
+{% if metadata.version %}
+Ontologieversie: `{{ metadata.version }}`
+{% endif %}
+
+{% if metadata.created %}
+Datum van de ontologie: `{{ metadata.created }}`
+{% endif %}
+
+### Statistieken
+
+| Onderdeel | Aantal |
+|---|---|
+| Juridische technologieën | {{ technologies | length }} |
+| Taxonomieën | {{ taxonomies | length }} |
+| Organisaties | {{ organisations | length }} |
+| Klassen | {{ classes | length }} |
+| Objecteigenschappen | {{ object_properties | length }} |
+| Datatype-eigenschappen | {{ datatype_properties | length }} |
+| SHACL-shapes | {{ shapes | length }} |
+
+### Werkwijze
+
+De generatie van dit document volgt de volgende stappen:
+
+1. Het laden van de TBox en ABox in een RDF graph.
+2. Het uitvoeren van SPARQL-queries om gegevens te verzamelen.
+3. Het opbouwen van Python-datastructuren op basis van de query-resultaten.
+4. Het renderen van Markdown-fragmenten met behulp van Jinja2.
+5. Het opnemen van deze fragmenten in het ReSpec-document via `data-include`.
+
+### Opmerkingen
+
+- Handmatige wijzigingen in de gegenereerde Markdown-bestanden kunnen bij een volgende generatie worden overschreven.
+- De inhoud van dit document is afhankelijk van de kwaliteit en volledigheid van de RDF-bronnen.
+- Onvolledige of ontbrekende gegevens in de TBox of ABox kunnen leiden tot lege velden in dit document.
+
+### Reproduceerbaarheid
+
+De generatie van dit document kan opnieuw worden uitgevoerd met:
+
+```bash
+python generate_respec.py

@@ -3,8 +3,8 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-_:696de21d1d614276aa662912c98809e010526 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010527 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017623 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017623 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/documentatie/85d56649-2f69-4366-b565-eaacd2696589> .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/bronverwijzing/fc0f41ff-1075-4425-bebf-5e8c0f17134c> .
@@ -15,8 +15,7 @@ _:696de21d1d614276aa662912c98809e010527 <http://bp4mc2.org/lto#versienummer> "1.
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#naam> "Archimate" .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#omschrijving> "ArchiMate® is een open en onafhankelijke modelleertaal voor Enterprise Architectuur, ontwikkeld door The Open Group, en wordt ondersteund door diverse tools en adviesbureaus. De standaard biedt Enterprise Architects hulpmiddelen om relaties tussen verschillende bedrijfsdomeinen eenduidig te beschrijven, analyseren en visualiseren." .
-<https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010526 .
-<https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010527 .
+<https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017623 .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Archimate"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/bronverwijzing/fc0f41ff-1075-4425-bebf-5e8c0f17134c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .

@@ -3,8 +3,8 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-_:696de21d1d614276aa662912c98809e010567 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010568 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017637 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017637 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/documentatie/7a5b45a4-27a9-4312-b309-1016c1c502dc> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/bronverwijzing/a98e4caa-74c9-42b6-9239-043a1bd502b0> .
@@ -14,8 +14,7 @@ _:696de21d1d614276aa662912c98809e010568 <http://bp4mc2.org/lto#versienummer> "1.
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#naam> "BPMN - Business Process Model and Notation" .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Business Process Model and Notation (BPMN) is een grafische standaard voor het modelleren en vastleggen van bedrijfsprocessen. De standaard is oorspronkelijk ontwikkeld door de Business Process Management Initiative (BPMI) en wordt sinds 2005 beheerd door de Object Management Group (OMG). Met BPMN 2.0 zijn naast notatie‑ en diagramregels ook uitvoeringssemantiek geïntroduceerd. BPMN is vastgelegd als OMG‑specificatie en tevens genormeerd als ISO 19510." .
-<https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010567 .
-<https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010568 .
+<https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017637 .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "BPMN - Business Process Model and Notation"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/bronverwijzing/a98e4caa-74c9-42b6-9239-043a1bd502b0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -25,5 +24,4 @@ _:696de21d1d614276aa662912c98809e010568 <http://bp4mc2.org/lto#versienummer> "1.
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/0620e3da-8a11-4470-91cb-c22377588d1d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063> <http://bp4mc2.org/lto#omschrijving> "" .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering> .
-<https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

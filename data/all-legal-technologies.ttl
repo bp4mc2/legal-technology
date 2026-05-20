@@ -6,42 +6,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-_:696de21d1d614276aa662912c98809e010071 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010072 <http://bp4mc2.org/lto#beoogdGebruik> "- Legal engineering\n- Rules-as-Code\n- Besluitvorming overheid" .
-_:696de21d1d614276aa662912c98809e010073 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Expliciete en herleidbare interpretatie van normen, Consistentie tussen beleid, wetgeving en uitvoering, Basis voor uitlegbare algoritmen en automatisering" .
-_:696de21d1d614276aa662912c98809e010074 <http://bp4mc2.org/lto#onderdelen> "Calculemus-protocol (5 stappen), FLINT-taal" .
-_:696de21d1d614276aa662912c98809e010075 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010076 <http://bp4mc2.org/lto#beoogdGebruik> "- Systematisch analyseren van wet- en regelgeving\n- Identificeren van:\n-- normen en rechtsgevolgen\n-- voorwaarden / criteria\n-- uitzonderingen en verwijzingen\n- Voorbereiding voor interpretatie, implementatie of automatisering" .
-_:696de21d1d614276aa662912c98809e010077 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Verhoogt transparantie en begrijpelijkheid, Legt impliciete structuur expliciet vast" .
-_:696de21d1d614276aa662912c98809e010078 <http://bp4mc2.org/lto#onderdelen> "Analyse van tekststructuur, - Identificatie van regelcomponenten, Analyse van verwijzingen en samenhang" .
-_:696de21d1d614276aa662912c98809e010103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010104 <http://bp4mc2.org/lto#beoogdGebruik> "- Verwijzingen in juridische documenten  \n- Publicatieplatforms (DROP, CVDR) " .
-_:696de21d1d614276aa662912c98809e010105 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidige identificatie van regelingen, Betere vindbaarheid en herleidbaarheid, Interoperabiliteit tussen systemen" .
-_:696de21d1d614276aa662912c98809e010106 <http://bp4mc2.org/lto#onderdelen> "Structuurregels voor identificatie van documenten in CVDR" .
-_:696de21d1d614276aa662912c98809e010115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010116 <http://bp4mc2.org/lto#beoogdGebruik> "- Gestandaardiseerd verwijzen naar wet- en regelgeving (via o.a. BWB‑nummers).\n- Uitwisseling van juridische verwijzingen tussen systemen/partijen (niet als pure identifier, maar als betekenisvolle link).\n- Ondersteunt verwijzingen naar:\n-- specifieke wetstoestanden (consolidaties)\n-- of verzamelingen daarvan (bijv. alle versies van een artikel)" .
-_:696de21d1d614276aa662912c98809e010117 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidigheid & interoperabiliteit, Machineleesbaar & implementeerbaar" .
-_:696de21d1d614276aa662912c98809e010118 <http://bp4mc2.org/lto#onderdelen> "Identificatie, type verwijzing, parameters" .
-_:696de21d1d614276aa662912c98809e010119 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010120 <http://bp4mc2.org/lto#beoogdGebruik> "ELI is bedoeld voor officiële juridische publicatiesystemen, EU-instellingen en lidstaten om wetgeving duurzaam, uniform en machineleesbaar te identificeren en publiceren. Primaire gebruikers van het ELI-model zijn officiële juridische uitgevers van EU-lidstaten, maar het model kan ook door andere organisaties worden gebruikt" .
-_:696de21d1d614276aa662912c98809e010121 <http://bp4mc2.org/lto#toegevoegdeWaarde> "ELI verbetert vindbaarheid, interoperabiliteit, hergebruik en koppeling van wetgeving over grenzen en systemen heen. Het maakt wetgeving geschikt voor linked data, kennisgrafen, metadata-uitwisseling en geautomatiseerde verwerking." .
-_:696de21d1d614276aa662912c98809e010122 <http://bp4mc2.org/lto#onderdelen> "1) web identifiers / HTTP-URI’s voor juridische informatie, 2) metadata-elementen/ontology om wetgeving te beschrijven, en 3) machineleesbare uitwisselformaten voor wetgevingsdata" .
-_:696de21d1d614276aa662912c98809e010123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010124 <http://bp4mc2.org/lto#beoogdGebruik> "- Jurisprudentiedatabases\n- Juridisch onderzoek  \n- Verwijzingen in juridische documenten" .
-_:696de21d1d614276aa662912c98809e010125 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Uniforme citatiestandaard, Betere vindbaarheid" .
-_:696de21d1d614276aa662912c98809e010126 <http://bp4mc2.org/lto#onderdelen> "ECLI-identifier structuur, ECLI metadata, ECLI-zoekportaal" .
-_:696de21d1d614276aa662912c98809e010127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010128 <http://bp4mc2.org/lto#beoogdGebruik> "- Publicatie van wet- en regelgeving  \n- Metadata- en datasystemen overheid" .
-_:696de21d1d614276aa662912c98809e010129 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Gemeenschappelijke “taal” voor overheidssystemen, Betere vindbaarheid en interoperabiliteit (FAIR), Persistente identifiers (URI’s) voor concepten en organisaties" .
-_:696de21d1d614276aa662912c98809e010130 <http://bp4mc2.org/lto#onderdelen> "Ontologie (conceptueel model in RDF), Thesauri (begrippenlijsten, taxonomieën), Waardelijsten (geversioneerde subsets)" .
-_:696de21d1d614276aa662912c98809e010131 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010132 <http://bp4mc2.org/lto#beoogdGebruik> "Toepassingscontext:  \n- Omgevingsplan, omgevingsvisie, verordening, projectbesluit\n- Publicatie via LVBB en ontsluiting via Omgevingsloket (DSO)" .
-_:696de21d1d614276aa662912c98809e010133 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Uniforme structuur en annotatie van regels  • Koppeling van tekst aan locaties en activiteiten, Maakt regels raadpleegbaar en toepasbaar in DSO" .
-_:696de21d1d614276aa662912c98809e010134 <http://bp4mc2.org/lto#onderdelen> "Toepassingsprofielen per documenttype, Annotatieregels, Waardelijsten (IMOW), XML-schema’s voor uitwisseling" .
-_:696de21d1d614276aa662912c98809e010135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010136 <http://bp4mc2.org/lto#beoogdGebruik> "- Structureren van informatieobjecten en metadata\n- Ondersteunen van informatieontsluiting (zoek-, selectie- en toegangstaken)\n- Modelleren van relaties tussen versies en verschijningsvormen van documenten\n- In juridische context: modelleren van wetgeving, versies en componenten" .
-_:696de21d1d614276aa662912c98809e010137 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidige modellering van informatieobjecten, Betere vindbaarheid" .
-_:696de21d1d614276aa662912c98809e010138 <http://bp4mc2.org/lto#onderdelen> "Groep 1: Work, Expression, Manifestation, Item (WEMI), Groep 2: persoon, organisatie (actoren), Groep 3: concept, object, gebeurtenis, plaats" .
 _:696de21d1d614276aa662912c98809e010181 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010182 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
 _:696de21d1d614276aa662912c98809e010183 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
@@ -66,9 +30,6 @@ _:696de21d1d614276aa662912c98809e010237 <http://bp4mc2.org/lto#modelsoort> <http
 _:696de21d1d614276aa662912c98809e010238 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010239 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
 _:696de21d1d614276aa662912c98809e010240 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Normatief> .
-_:696de21d1d614276aa662912c98809e010259 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
-_:696de21d1d614276aa662912c98809e010260 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
-_:696de21d1d614276aa662912c98809e010261 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
 _:696de21d1d614276aa662912c98809e010262 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010263 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Tekstueel> .
 _:696de21d1d614276aa662912c98809e010264 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
@@ -102,133 +63,172 @@ _:696de21d1d614276aa662912c98809e010291 <http://bp4mc2.org/lto#modelsoort> <http
 _:696de21d1d614276aa662912c98809e010292 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010293 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Ontologisch> .
 _:696de21d1d614276aa662912c98809e010294 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
-_:696de21d1d614276aa662912c98809e010358 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010359 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010368 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010369 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010370 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010371 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010372 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010373 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010374 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010375 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010390 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010391 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010392 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010393 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010402 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010403 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010408 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010409 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010412 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010413 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010427 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010428 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010435 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010436 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010441 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010442 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010443 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010444 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010449 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010450 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010451 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010452 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010453 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010454 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010477 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010478 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010479 <http://bp4mc2.org/lto#versiedatum> "2012-12-07"^^<http://www.w3.org/2001/XMLSchema#date> .
-_:696de21d1d614276aa662912c98809e010482 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010483 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010484 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010485 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010486 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010487 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010488 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010489 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010498 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010499 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010500 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010501 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010504 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010505 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010506 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010507 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010508 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010509 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010510 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010511 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010516 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010517 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010518 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010519 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010520 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010521 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010522 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010523 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010526 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010527 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010528 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010529 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010532 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010533 <http://bp4mc2.org/lto#versienummer> "3.1.0" .
-_:696de21d1d614276aa662912c98809e010536 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010537 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010538 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010539 <http://bp4mc2.org/lto#versienummer> "20170720" .
-_:696de21d1d614276aa662912c98809e010540 <http://bp4mc2.org/lto#versiedatum> "2017-07-20"^^<http://www.w3.org/2001/XMLSchema#date> .
-_:696de21d1d614276aa662912c98809e010541 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010542 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010543 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010544 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010545 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010546 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010547 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010548 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010551 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010552 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010553 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010554 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010555 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010556 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010559 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010560 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010561 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010562 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010567 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010568 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010569 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010570 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010581 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010582 <http://bp4mc2.org/lto#versienummer> "1.3.1" .
-_:696de21d1d614276aa662912c98809e010583 <http://bp4mc2.org/lto#versiedatum> "2014-10-01"^^<http://www.w3.org/2001/XMLSchema#date> .
-_:696de21d1d614276aa662912c98809e010584 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010585 <http://bp4mc2.org/lto#versienummer> "1.5" .
-_:696de21d1d614276aa662912c98809e010586 <http://bp4mc2.org/lto#versiedatum> "2024-03-21"^^<http://www.w3.org/2001/XMLSchema#date> .
-_:696de21d1d614276aa662912c98809e010587 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010588 <http://bp4mc2.org/lto#versienummer> "20110429" .
-_:696de21d1d614276aa662912c98809e010589 <http://bp4mc2.org/lto#versiedatum> "2011-04-29"^^<http://www.w3.org/2001/XMLSchema#date> .
-_:696de21d1d614276aa662912c98809e010590 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010591 <http://bp4mc2.org/lto#versienummer> "1.3.4" .
-_:696de21d1d614276aa662912c98809e010592 <http://bp4mc2.org/lto#versiedatum> "2024-03-01"^^<http://www.w3.org/2001/XMLSchema#date> .
-_:696de21d1d614276aa662912c98809e010593 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010594 <http://bp4mc2.org/lto#versienummer> "3.0" .
-_:696de21d1d614276aa662912c98809e010595 <http://bp4mc2.org/lto#versiedatum> "2023-12-27"^^<http://www.w3.org/2001/XMLSchema#date> .
-_:696de21d1d614276aa662912c98809e010596 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010597 <http://bp4mc2.org/lto#versienummer> "13.3" .
-_:696de21d1d614276aa662912c98809e010598 <http://bp4mc2.org/lto#versiedatum> "2008-11-15"^^<http://www.w3.org/2001/XMLSchema#date> .
-_:696de21d1d614276aa662912c98809e010624 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010625 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010699 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010700 <http://bp4mc2.org/lto#versienummer> "1.0" .
-_:696de21d1d614276aa662912c98809e010701 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010702 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017591 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017591 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017592 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017592 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017593 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017593 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017594 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017594 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017595 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017595 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017596 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017596 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017597 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017597 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017598 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017598 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017599 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017599 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017600 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017600 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017601 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017601 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017602 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017602 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017603 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017603 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017604 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017604 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017605 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017605 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017606 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017606 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017607 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017607 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017608 <http://bp4mc2.org/lto#versiedatum> "2012-12-07"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017608 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017608 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017609 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017609 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017610 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017610 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017611 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017611 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017612 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017612 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017613 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017613 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017614 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017614 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017615 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017615 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017616 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017616 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017617 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017617 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017618 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017618 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017619 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017619 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017620 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017620 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017621 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017621 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017622 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017622 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017623 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017623 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017624 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017624 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017625 <http://bp4mc2.org/lto#versienummer> "3.1.0" .
+_:696de21d1d614276aa662912c98809e017625 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017626 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017626 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017627 <http://bp4mc2.org/lto#versiedatum> "2017-07-20"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017627 <http://bp4mc2.org/lto#versienummer> "20170720" .
+_:696de21d1d614276aa662912c98809e017627 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017628 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017628 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017629 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017629 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017630 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017630 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017631 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017631 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017632 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017632 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017633 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017633 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017634 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017634 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017635 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017635 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017636 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017636 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017637 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017637 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017638 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017638 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017639 <http://bp4mc2.org/lto#versiedatum> "2014-10-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017639 <http://bp4mc2.org/lto#versienummer> "1.3.1" .
+_:696de21d1d614276aa662912c98809e017639 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017640 <http://bp4mc2.org/lto#versiedatum> "2024-03-21"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017640 <http://bp4mc2.org/lto#versienummer> "1.5" .
+_:696de21d1d614276aa662912c98809e017640 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017641 <http://bp4mc2.org/lto#versiedatum> "2011-04-29"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017641 <http://bp4mc2.org/lto#versienummer> "20110429" .
+_:696de21d1d614276aa662912c98809e017641 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017642 <http://bp4mc2.org/lto#versiedatum> "2024-03-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017642 <http://bp4mc2.org/lto#versienummer> "1.3.4" .
+_:696de21d1d614276aa662912c98809e017642 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017643 <http://bp4mc2.org/lto#versiedatum> "2023-12-27"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017643 <http://bp4mc2.org/lto#versienummer> "3.0" .
+_:696de21d1d614276aa662912c98809e017643 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017644 <http://bp4mc2.org/lto#versiedatum> "2008-11-15"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017644 <http://bp4mc2.org/lto#versienummer> "13.3" .
+_:696de21d1d614276aa662912c98809e017644 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017645 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017645 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017646 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017646 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017647 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017647 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017688 <http://bp4mc2.org/lto#beoogdGebruik> "- Legal engineering\n- Rules-as-Code\n- Besluitvorming overheid"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017688 <http://bp4mc2.org/lto#onderdelen> "Calculemus-protocol (5 stappen), FLINT-taal"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017688 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Expliciete en herleidbare interpretatie van normen, Consistentie tussen beleid, wetgeving en uitvoering, Basis voor uitlegbare algoritmen en automatisering"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017688 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e017689 <http://bp4mc2.org/lto#beoogdGebruik> "- Systematisch analyseren van wet- en regelgeving\n- Identificeren van:\n-- normen en rechtsgevolgen\n-- voorwaarden / criteria\n-- uitzonderingen en verwijzingen\n- Voorbereiding voor interpretatie, implementatie of automatisering"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017689 <http://bp4mc2.org/lto#onderdelen> "Analyse van tekststructuur, - Identificatie van regelcomponenten, Analyse van verwijzingen en samenhang"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017689 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Verhoogt transparantie en begrijpelijkheid, Legt impliciete structuur expliciet vast"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017689 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e017690 <http://bp4mc2.org/lto#beoogdGebruik> "- Verwijzingen in juridische documenten  \n- Publicatieplatforms (DROP, CVDR) "^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017690 <http://bp4mc2.org/lto#onderdelen> "Structuurregels voor identificatie van documenten in CVDR"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017690 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidige identificatie van regelingen, Betere vindbaarheid en herleidbaarheid, Interoperabiliteit tussen systemen"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017690 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e017691 <http://bp4mc2.org/lto#beoogdGebruik> "- Gestandaardiseerd verwijzen naar wet- en regelgeving (via o.a. BWB‑nummers).\n- Uitwisseling van juridische verwijzingen tussen systemen/partijen (niet als pure identifier, maar als betekenisvolle link).\n- Ondersteunt verwijzingen naar:\n-- specifieke wetstoestanden (consolidaties)\n-- of verzamelingen daarvan (bijv. alle versies van een artikel)"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017691 <http://bp4mc2.org/lto#onderdelen> "Identificatie, type verwijzing, parameters"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017691 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidigheid & interoperabiliteit, Machineleesbaar & implementeerbaar"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017691 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e017692 <http://bp4mc2.org/lto#beoogdGebruik> "ELI is bedoeld voor officiële juridische publicatiesystemen, EU-instellingen en lidstaten om wetgeving duurzaam, uniform en machineleesbaar te identificeren en publiceren. Primaire gebruikers van het ELI-model zijn officiële juridische uitgevers van EU-lidstaten, maar het model kan ook door andere organisaties worden gebruikt"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017692 <http://bp4mc2.org/lto#onderdelen> "1) web identifiers / HTTP-URI’s voor juridische informatie, 2) metadata-elementen/ontology om wetgeving te beschrijven, en 3) machineleesbare uitwisselformaten voor wetgevingsdata"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017692 <http://bp4mc2.org/lto#toegevoegdeWaarde> "ELI verbetert vindbaarheid, interoperabiliteit, hergebruik en koppeling van wetgeving over grenzen en systemen heen. Het maakt wetgeving geschikt voor linked data, kennisgrafen, metadata-uitwisseling en geautomatiseerde verwerking."^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017692 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e017693 <http://bp4mc2.org/lto#beoogdGebruik> "- Jurisprudentiedatabases\n- Juridisch onderzoek  \n- Verwijzingen in juridische documenten"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017693 <http://bp4mc2.org/lto#onderdelen> "ECLI-identifier structuur, ECLI metadata, ECLI-zoekportaal"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017693 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Uniforme citatiestandaard, Betere vindbaarheid"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017693 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e017694 <http://bp4mc2.org/lto#beoogdGebruik> "- Publicatie van wet- en regelgeving  \n- Metadata- en datasystemen overheid"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017694 <http://bp4mc2.org/lto#onderdelen> "Ontologie (conceptueel model in RDF), Thesauri (begrippenlijsten, taxonomieën), Waardelijsten (geversioneerde subsets)"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017694 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Gemeenschappelijke “taal” voor overheidssystemen, Betere vindbaarheid en interoperabiliteit (FAIR), Persistente identifiers (URI’s) voor concepten en organisaties"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017694 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e017695 <http://bp4mc2.org/lto#beoogdGebruik> "Toepassingscontext:  \n- Omgevingsplan, omgevingsvisie, verordening, projectbesluit\n- Publicatie via LVBB en ontsluiting via Omgevingsloket (DSO)"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017695 <http://bp4mc2.org/lto#onderdelen> "Toepassingsprofielen per documenttype, Annotatieregels, Waardelijsten (IMOW), XML-schema’s voor uitwisseling"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017695 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Uniforme structuur en annotatie van regels  • Koppeling van tekst aan locaties en activiteiten, Maakt regels raadpleegbaar en toepasbaar in DSO"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017695 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e017696 <http://bp4mc2.org/lto#beoogdGebruik> "- Structureren van informatieobjecten en metadata\n- Ondersteunen van informatieontsluiting (zoek-, selectie- en toegangstaken)\n- Modelleren van relaties tussen versies en verschijningsvormen van documenten\n- In juridische context: modelleren van wetgeving, versies en componenten"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017696 <http://bp4mc2.org/lto#onderdelen> "Groep 1: Work, Expression, Manifestation, Item (WEMI), Groep 2: persoon, organisatie (actoren), Groep 3: concept, object, gebeurtenis, plaats"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017696 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidige modellering van informatieobjecten, Betere vindbaarheid"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017696 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:696de21d1d614276aa662912c98809e017697 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
+_:696de21d1d614276aa662912c98809e017697 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:696de21d1d614276aa662912c98809e017697 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-698E71D7FD8A6650586FD6770C2D0066 <http://bp4mc2.org/lto#versiedatum> "2024-06-05"^^<http://www.w3.org/2001/XMLSchema#date> .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-698E71D7FD8A6650586FD6770C2D0066 <http://bp4mc2.org/lto#versienummer> "20240605" .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-698E71D7FD8A6650586FD6770C2D0066 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://bp4mc2.org/lto#onderdelen> "Probleemanalyse, Doelbepaling, Beleidsopties uitwerken, Gevolgen in kaart brengen & voorkeursoptie kiezen." .
-_:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Het Beleidskompas zorgt dat je vóór het schrijven van regels scherp hebt wat het probleem is, wie geraakt wordt en wat werkt — waardoor regelteksten uiteindelijk gerichter, uitvoerbaarder en beter handhaafbaar zijn." .
+_:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://bp4mc2.org/lto#onderdelen> "Probleemanalyse, Doelbepaling, Beleidsopties uitwerken, Gevolgen in kaart brengen & voorkeursoptie kiezen."^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Het Beleidskompas zorgt dat je vóór het schrijven van regels scherp hebt wat het probleem is, wie geraakt wordt en wat werkt — waardoor regelteksten uiteindelijk gerichter, uitvoerbaarder en beter handhaafbaar zijn."^^<http://www.w3.org/2001/XMLSchema#markdown> .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-DE9B78B2A2B8B20B30A4A41E787B8C00 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Tekstueel> .
 _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
@@ -240,8 +240,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0> <http://bp4mc2.org/lto#naam> "Akoma Ntoso" .
 <https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Akoma Ntoso (AKN) is een internationale standaard voor het gestructureerd vastleggen en uitwisselen van juridische documenten met behulp van een juridische XML‑vocabulaire." .
-<https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010484 .
-<https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010485 .
+<https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017610 .
 <https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Akoma Ntoso"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/aln/v/1.0/bronverwijzing/35ae7fc7-3f36-47cc-b5a7-7b63c05ceb6f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -259,8 +258,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#naam> "Archimate" .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#omschrijving> "ArchiMate® is een open en onafhankelijke modelleertaal voor Enterprise Architectuur, ontwikkeld door The Open Group, en wordt ondersteund door diverse tools en adviesbureaus. De standaard biedt Enterprise Architects hulpmiddelen om relaties tussen verschillende bedrijfsdomeinen eenduidig te beschrijven, analyseren en visualiseren." .
-<https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010526 .
-<https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010527 .
+<https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017623 .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Archimate"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/bronverwijzing/fc0f41ff-1075-4425-bebf-5e8c0f17134c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -274,23 +272,6 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/taakinvulling/f19ad636-9b6e-450e-a56d-03826787b125> <http://bp4mc2.org/lto#omschrijving> "" .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/taakinvulling/f19ad636-9b6e-450e-a56d-03826787b125> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#BegripDefinieren> .
 <https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/taakinvulling/f19ad636-9b6e-450e-a56d-03826787b125> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/documentatie/24a26530-31a6-4837-9273-b4e2f37da1ac> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-13"^^<http://www.w3.org/2001/XMLSchema#date> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/bronverwijzing/b8113498-1464-47de-886d-155dd464aa3e> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/taakinvulling/c641934f-fa66-4bac-94df-80dc966c9dcd> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#naam> "Beleidskompas" .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Het Beleidskompas is de centrale werkwijze voor het maken van beleid bij de Rijksoverheid en vervangt het Integraal afwegingskader voor beleid en regelgeving (IAK)" .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010358 .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010359 .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Beleidskompas"@nl .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/bronverwijzing/b8113498-1464-47de-886d-155dd464aa3e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/documentatie/24a26530-31a6-4837-9273-b4e2f37da1ac> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/taakinvulling/c641934f-fa66-4bac-94df-80dc966c9dcd> <http://bp4mc2.org/lto#omschrijving> "" .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/taakinvulling/c641934f-fa66-4bac-94df-80dc966c9dcd> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
-<https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/1.0/taakinvulling/c641934f-fa66-4bac-94df-80dc966c9dcd> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
 <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/20240605> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/4d4c8c24-532a-4751-8971-1d27c79b0eac> .
 <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/20240605> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Beleidsmedewerkers> .
 <https://data.bp4mc2.org/id/lto/legaltech/beleidskompas/v/20240605> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Wetgevers> .
@@ -321,8 +302,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0> <http://bp4mc2.org/lto#naam> "BibTeX" .
 <https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0> <http://bp4mc2.org/lto#omschrijving> "BibTeX is zowel een hulpmiddel als een bestandsformaat voor het beschrijven en verwerken van literatuurverwijzingen, meestal in combinatie met LaTeX‑documenten." .
-<https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010498 .
-<https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010499 .
+<https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017613 .
 <https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "BibTeX"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/bibtex/v/1.0/bronverwijzing/1c545b69-6b1b-40b7-8ae2-1f377aceb49f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -337,15 +317,13 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> <http://bp4mc2.org/lto#naam> "BPEL - Business Process Execution Language" .
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> <http://bp4mc2.org/lto#omschrijving> "WS‑BPEL (Web Services Business Process Execution Language), vaak kortweg BPEL genoemd, is een door OASIS vastgestelde standaard voor het uitvoerbaar specificeren van bedrijfsprocessen op basis van webservices. Met BPEL worden acties en proceslogica vastgelegd waarbij processen uitsluitend communiceren via webservice‑interfaces voor het importeren en exporteren van informatie." .
-<https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010453 .
-<https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010454 .
+<https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017607 .
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "BPEL - Business Process Execution Language"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0/bronverwijzing/f81a4c38-8007-4134-b1c6-abf6b5a793f0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0/documentatie/bb604d48-bff9-463b-9ce1-3cb8dae451df> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0/taakinvulling/d7fb9f1e-2b36-4c3c-8438-65aa759c9b5e> <http://bp4mc2.org/lto#omschrijving> "" .
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0/taakinvulling/d7fb9f1e-2b36-4c3c-8438-65aa759c9b5e> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering> .
-<https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0/taakinvulling/d7fb9f1e-2b36-4c3c-8438-65aa759c9b5e> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpel/v/1.0/taakinvulling/d7fb9f1e-2b36-4c3c-8438-65aa759c9b5e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/documentatie/7a5b45a4-27a9-4312-b309-1016c1c502dc> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
@@ -356,8 +334,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#naam> "BPMN - Business Process Model and Notation" .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Business Process Model and Notation (BPMN) is een grafische standaard voor het modelleren en vastleggen van bedrijfsprocessen. De standaard is oorspronkelijk ontwikkeld door de Business Process Management Initiative (BPMI) en wordt sinds 2005 beheerd door de Object Management Group (OMG). Met BPMN 2.0 zijn naast notatie‑ en diagramregels ook uitvoeringssemantiek geïntroduceerd. BPMN is vastgelegd als OMG‑specificatie en tevens genormeerd als ISO 19510." .
-<https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010567 .
-<https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010568 .
+<https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017637 .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "BPMN - Business Process Model and Notation"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/bronverwijzing/a98e4caa-74c9-42b6-9239-043a1bd502b0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -367,7 +344,6 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/0620e3da-8a11-4470-91cb-c22377588d1d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063> <http://bp4mc2.org/lto#omschrijving> "" .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering> .
-<https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> .
 <https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/taakinvulling/2722ff64-dd3a-4058-952f-7f79d7e44063> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Juristen> .
@@ -376,10 +352,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-13"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/12060963-706b-4cca-bab2-19490ad0f0c8> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/e4b41f16-4f92-404d-9e9a-6c2b308cc948> .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010115 .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010116 .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010117 .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010118 .
+<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017691 .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ComplianceOndersteuning> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
@@ -389,20 +362,16 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#naam> "BWB" .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#normstatus> <http://bp4mc2.org/lt#Wettelijk> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#omschrijving> "BWB is een afgesproken tekstvolgorde (syntaxis) voor verwijzingen naar landelijk vastgestelde wetten en regels." .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010259 .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010260 .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010261 .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010581 .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010582 .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010583 .
+<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e017697 .
+<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017639 .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1> <http://www.w3.org/2000/01/rdf-schema#label> "BWB"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/12060963-706b-4cca-bab2-19490ad0f0c8> <http://purl.org/dc/terms/title> "Forum Standaardisatie (BWB)" .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/12060963-706b-4cca-bab2-19490ad0f0c8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/12060963-706b-4cca-bab2-19490ad0f0c8> <http://xmlns.com/foaf/0.1/page> "https://www.forumstandaardisatie.nl/open-standaarden/bwb" .
+<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/12060963-706b-4cca-bab2-19490ad0f0c8> <http://xmlns.com/foaf/0.1/page> "https://www.forumstandaardisatie.nl/open-standaarden/bwb"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/e4b41f16-4f92-404d-9e9a-6c2b308cc948> <http://purl.org/dc/terms/title> "Juriconnect" .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/e4b41f16-4f92-404d-9e9a-6c2b308cc948> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/e4b41f16-4f92-404d-9e9a-6c2b308cc948> <http://xmlns.com/foaf/0.1/page> "https://www.juriconnect.nl/" .
+<https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/bronverwijzing/e4b41f16-4f92-404d-9e9a-6c2b308cc948> <http://xmlns.com/foaf/0.1/page> "https://www.juriconnect.nl/"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/taakinvulling/bd66c0e0-98e6-448b-baf5-133959fa6ea1> <http://bp4mc2.org/lto#omschrijving> "Bij het verzamelen van bronmateriaal kan de BWB verwijzing gebruikt worden om samenhangen regelgeving te verzamelen" .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/taakinvulling/bd66c0e0-98e6-448b-baf5-133959fa6ea1> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
 <https://data.bp4mc2.org/id/lto/legaltech/bwb/v/1.3.1/taakinvulling/bd66c0e0-98e6-448b-baf5-133959fa6ea1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
@@ -416,8 +385,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0> <http://bp4mc2.org/lto#naam> "Dublin Core" .
 <https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Dublin Core is een internationaal erkende metadata‑standaard die bestaat uit 15 kernelementen voor het beschrijven en organiseren van bronnen, zodat deze eenvoudiger vindbaar en beheersbaar zijn." .
-<https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010500 .
-<https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010501 .
+<https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017614 .
 <https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Dublin Core"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/dc/v/1.0/bronverwijzing/c3722c62-3909-4f4f-bdd1-bdd14f91178e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -432,8 +400,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> <http://bp4mc2.org/lto#naam> "DEMO - Design & Engineering Methodology for Organizations" .
 <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> <http://bp4mc2.org/lto#omschrijving> "DEMO is een methodiek voor het ontwerpen, inrichten en onderling koppelen van organisaties. Hierbij staan de 'communicatieve acties' centraal: communicatie is essentieel voor het functioneren van organisaties. Afspraken tussen medewerkers, klanten en toeleveranciers komen immers tot stand door te communiceren. Hetzelfde geldt voor de acceptatie van geleverde resultaten" .
-<https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010449 .
-<https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010450 .
+<https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017605 .
 <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "DEMO - Design & Engineering Methodology for Organizations"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/demo/v/1.0/bronverwijzing/82309a04-9cb2-4191-87e6-0d41bdd90d8e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -448,8 +415,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> <http://bp4mc2.org/lto#naam> "DMN - Decision Model and Notation" .
 <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Decision Model and Notation (DMN) is een modelleertaal en notatie voor het eenduidig vastleggen van bedrijfsbeslissingen en bedrijfsregels. DMN is leesbaar voor verschillende betrokkenen in besluitvorming, zoals businessprofessionals die regels definiëren en toepassen, en businessanalisten die deze beslissingen analyseren en ontwerpen." .
-<https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010553 .
-<https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010554 .
+<https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017633 .
 <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "DMN - Decision Model and Notation"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/dmn/v/1.0/bronverwijzing/81ab0b56-95cb-43dc-a040-36c5c21b2d46> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -464,8 +430,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0> <http://bp4mc2.org/lto#naam> "DROOLS" .
 <https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Drools is een verzameling projecten gericht op intelligente automatisering en besluitvorming. Het platform biedt onder andere een regelengine gebaseerd op inferentie met forward‑ en backward‑chaining, een DMN‑beslissingsengine en aanvullende componenten. Een regelengine vormt een essentieel bouwblok voor expertsystemen: softwaresystemen die, binnen het domein van kunstmatige intelligentie, het besluitvormingsvermogen van een menselijke expert nabootsen." .
-<https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010701 .
-<https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010702 .
+<https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017647 .
 <https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Tool> .
 <https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "DROOLS"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/drools/v/1.0/bronverwijzing/acb2c7d7-b1fa-4f8e-b107-ed47f1fe6f0a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -482,10 +447,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/3e09b904-9703-43b1-ac6b-1f906e8d5dcb> .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/8e98af3f-6186-466f-9137-d859a4eae107> .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/be64367a-4137-445c-8677-79b1901cf813> .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010123 .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010124 .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010125 .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010126 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017693 .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ComplianceOndersteuning> .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ZoekenRechtspraak> .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
@@ -501,20 +463,18 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010271 .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010272 .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010273 .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010587 .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010588 .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010589 .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017641 .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429> <http://www.w3.org/2000/01/rdf-schema#label> "ECLI"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/3e09b904-9703-43b1-ac6b-1f906e8d5dcb> <http://purl.org/dc/terms/title> "ECLI Search (EU portal)" .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/3e09b904-9703-43b1-ac6b-1f906e8d5dcb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/3e09b904-9703-43b1-ac6b-1f906e8d5dcb> <http://xmlns.com/foaf/0.1/page> "https://e-justice.europa.eu/ecli" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/3e09b904-9703-43b1-ac6b-1f906e8d5dcb> <http://xmlns.com/foaf/0.1/page> "https://e-justice.europa.eu/ecli"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/8e98af3f-6186-466f-9137-d859a4eae107> <http://purl.org/dc/terms/title> "Raadsconclusies waarin de invoering wordt aanbevolen van een Europese identificatiecode voor jurisprudentie (ECLI)," .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/8e98af3f-6186-466f-9137-d859a4eae107> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/8e98af3f-6186-466f-9137-d859a4eae107> <http://xmlns.com/foaf/0.1/page> "https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX%3A52011XG0429%2801%29" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/8e98af3f-6186-466f-9137-d859a4eae107> <http://xmlns.com/foaf/0.1/page> "https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX%3A52011XG0429%2801%29"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/be64367a-4137-445c-8677-79b1901cf813> <http://purl.org/dc/terms/title> "Rechtspraak ECLI uitleg" .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/be64367a-4137-445c-8677-79b1901cf813> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/be64367a-4137-445c-8677-79b1901cf813> <http://xmlns.com/foaf/0.1/page> "https://www.rechtspraak.nl/Uitspraken/Paginas/ECLI.aspx" .
+<https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/bronverwijzing/be64367a-4137-445c-8677-79b1901cf813> <http://xmlns.com/foaf/0.1/page> "https://www.rechtspraak.nl/Uitspraken/Paginas/ECLI.aspx"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/496f2048-a608-4746-bf89-94cb6d7a7d3b> <http://bp4mc2.org/lto#omschrijving> "koppeling uitspraken aan analyse" .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/496f2048-a608-4746-bf89-94cb6d7a7d3b> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
 <https://data.bp4mc2.org/id/lto/legaltech/ecli/v/20110429/taakinvulling/496f2048-a608-4746-bf89-94cb6d7a7d3b> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
@@ -527,10 +487,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Wetgevers> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#bijgewerktOp> "2026-05-17"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010119 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010120 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010121 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010122 .
+<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017692 .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ComplianceOndersteuning> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
@@ -545,14 +502,12 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010265 .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010266 .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010267 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010584 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010585 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010586 .
+<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017640 .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://www.w3.org/2000/01/rdf-schema#label> "ELI"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> <http://purl.org/dc/terms/title> "ELI - European Legislation Identifier" .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> <http://xmlns.com/foaf/0.1/page> "https://eur-lex.europa.eu/content/help/eurlex-content/eli.html?locale=en" .
+<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> <http://xmlns.com/foaf/0.1/page> "https://eur-lex.europa.eu/content/help/eurlex-content/eli.html?locale=en"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/taakinvulling/42e363ec-1d4e-4288-b600-f1c6baebaa7f> <http://bp4mc2.org/lto#omschrijving> "Bij het opstellen van de regeltekst dient rekening gehouden te worden met verwijzingen middels ELI" .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/taakinvulling/42e363ec-1d4e-4288-b600-f1c6baebaa7f> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/taakinvulling/42e363ec-1d4e-4288-b600-f1c6baebaa7f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
@@ -563,8 +518,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> <http://bp4mc2.org/lto#naam> "Entity–relationship model" .
 <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Een entiteit‑relatiemodel (ER‑model) beschrijft onderling samenhangende objecten binnen een specifiek kennisdomein. Een basaal ER‑model bestaat uit entiteittypen, die de relevante objecten classificeren, en definieert de relaties die tussen instanties van deze entiteiten kunnen bestaan." .
-<https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010536 .
-<https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010537 .
+<https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017626 .
 <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Entity–relationship model"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/er-model/v/1.0/bronverwijzing/82bac2fd-c61b-41b7-a400-e35be5189f42> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -581,8 +535,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#naam> "FBM - Fact-based modelling" .
 <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Fact‑based modelling is een conceptuele modelleertechniek die informatie vastlegt als afzonderlijke feiten in plaats van als traditionele entiteiten en attributen. Elk feit beschrijft een concrete bewering binnen het domein, bijvoorbeeld: “Persoon ‘Barack Obama’ heeft een lengte van ‘1,85 meter’”. Deze feiten worden geordend in facttypen, die de structuur en onderlinge relaties vastleggen en zo leiden tot nauwkeurige en semantisch rijke informatiemodellen." .
-<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010402 .
-<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010403 .
+<https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017598 .
 <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "FBM - Fact-based modelling"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/fbm/v/1.0/bronverwijzing/51f72ffd-2cca-4344-85ef-82b8ee07821a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -600,8 +553,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> <http://bp4mc2.org/lto#naam> "FCO-IM - Fully Communication Oriented Information Modeling" .
 <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Fully Communication Oriented Information Modeling (FCO‑IM) is een methode voor het opstellen van conceptuele informatiemodellen die zich richt op de communicatieve aspecten van data. De methode modelleert de feiten zoals deze door gebruikers worden uitgewisseld, en behoort daarmee tot de familie van fact‑georiënteerde modelleertechnieken. FCO‑IM wordt veel toegepast en onderwezen in Nederland en daarbuiten, en heeft zijn waarde bewezen in onder meer retail, logistiek, financiële dienstverlening en de zorg. Met hulpmiddelen zoals CaseTalk en Infagon kunnen informatiemodellen worden opgesteld en vertaald naar andere modelvormen, zoals entiteit‑relatiemodellen en UML." .
-<https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010412 .
-<https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010413 .
+<https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017600 .
 <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "FCO-IM - Fully Communication Oriented Information Modeling"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/fco-im/v/1.0/bronverwijzing/db346b63-df96-4bb7-800a-2130eaca01ea> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -617,10 +569,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/78d195e2-cd45-4ec1-a4c6-1f981d5f749e> .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/a6572b18-7503-46ac-874b-10ec8525dba7> .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/f62537a5-05f2-4f97-9180-4dd203a48e2d> .
-<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010071 .
-<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010072 .
-<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010073 .
-<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010074 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017688 .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#WorkInProgress> .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/09a347b1-475b-48c3-a1ea-f8d21405abb9> .
@@ -642,19 +591,18 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010190 .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010191 .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010192 .
-<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010368 .
-<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010369 .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017592 .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Calculemus-Flint"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/78d195e2-cd45-4ec1-a4c6-1f981d5f749e> <http://purl.org/dc/terms/title> "Digitale Overheid projectpagina" .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/78d195e2-cd45-4ec1-a4c6-1f981d5f749e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/78d195e2-cd45-4ec1-a4c6-1f981d5f749e> <http://xmlns.com/foaf/0.1/page> "https://www.digitaleoverheid.nl/innovatieproject/calculemus-flint/" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/78d195e2-cd45-4ec1-a4c6-1f981d5f749e> <http://xmlns.com/foaf/0.1/page> "https://www.digitaleoverheid.nl/innovatieproject/calculemus-flint/"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/a6572b18-7503-46ac-874b-10ec8525dba7> <http://purl.org/dc/terms/title> "Calculemus-Flint methode" .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/a6572b18-7503-46ac-874b-10ec8525dba7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/a6572b18-7503-46ac-874b-10ec8525dba7> <http://xmlns.com/foaf/0.1/page> "https://regels.overheid.nl/docs/methods/flint/methodebeschrijving/CALCULEMUS_FLINT [regels.overheid.nl]" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/a6572b18-7503-46ac-874b-10ec8525dba7> <http://xmlns.com/foaf/0.1/page> "https://regels.overheid.nl/docs/methods/flint/methodebeschrijving/CALCULEMUS_FLINT [regels.overheid.nl]"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/f62537a5-05f2-4f97-9180-4dd203a48e2d> <http://purl.org/dc/terms/title> "Nederlandse AI Coalitie use case" .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/f62537a5-05f2-4f97-9180-4dd203a48e2d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/f62537a5-05f2-4f97-9180-4dd203a48e2d> <http://xmlns.com/foaf/0.1/page> "https://nlaic.com/pd-use-case/legal-engineering-programma-met-calculemus-flint/" .
+<https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/bronverwijzing/f62537a5-05f2-4f97-9180-4dd203a48e2d> <http://xmlns.com/foaf/0.1/page> "https://nlaic.com/pd-use-case/legal-engineering-programma-met-calculemus-flint/"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/09a347b1-475b-48c3-a1ea-f8d21405abb9> <http://bp4mc2.org/lto#omschrijving> "vertaling naar formeel model" .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/09a347b1-475b-48c3-a1ea-f8d21405abb9> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenRegels> .
 <https://data.bp4mc2.org/id/lto/legaltech/flint/v/1.0/taakinvulling/09a347b1-475b-48c3-a1ea-f8d21405abb9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
@@ -674,10 +622,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010135 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010136 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010137 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010138 .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017696 .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ZoekenWetgeving> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
@@ -693,20 +638,18 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010292 .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010293 .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010294 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010596 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010597 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010598 .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017644 .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://www.w3.org/2000/01/rdf-schema#label> "FRBR"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> <http://purl.org/dc/terms/title> "FLA Bibliographic Conceptual Models" .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> <http://xmlns.com/foaf/0.1/page> "https://www.ifla.org/ifla-s-bibliographic-conceptual-models" .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> <http://xmlns.com/foaf/0.1/page> "https://www.ifla.org/ifla-s-bibliographic-conceptual-models"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> <http://purl.org/dc/terms/title> "FRBR Model – Library of Congress" .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> <http://xmlns.com/foaf/0.1/page> "https://www.loc.gov/catdir/cpso/frbreng.pdf" .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> <http://xmlns.com/foaf/0.1/page> "https://www.loc.gov/catdir/cpso/frbreng.pdf"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> <http://purl.org/dc/terms/title> "Functional Requirements for Bibliographic Records – Wikipedia" .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> <http://xmlns.com/foaf/0.1/page> "https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records" .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> <http://xmlns.com/foaf/0.1/page> "https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/taakinvulling/3d139882-f530-4e7c-a0b9-71bce0e1b89f> <http://bp4mc2.org/lto#omschrijving> "expliciteren van verschillende verschijningsvormen van regels" .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/taakinvulling/3d139882-f530-4e7c-a0b9-71bce0e1b89f> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/taakinvulling/3d139882-f530-4e7c-a0b9-71bce0e1b89f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
@@ -720,8 +663,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> <http://bp4mc2.org/lto#naam> "Handreiking Ketenbusinessanalyse (HKBA)" .
 <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> <http://bp4mc2.org/lto#omschrijving> "et de HKBA kan een zorgvuldige analyse van verantwoordelijkheden tussen ketenpartners worden uitgevoerd, zodat hun onderlinge samenwerking leidt tot betere en beter samenhangende dienstverlening." .
-<https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010392 .
-<https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010393 .
+<https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017597 .
 <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Handreiking Ketenbusinessanalyse (HKBA)"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/hkba/v/1.0/bronverwijzing/5e3fc827-784d-4d24-8559-f70b507724e1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -736,10 +678,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-05-18"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/79b22df2-1da8-4581-a872-5c40ff36434c> .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/7fbd002f-89c1-481c-b3f3-9eda91bebcf6> .
-<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010103 .
-<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010104 .
-<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010105 .
-<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010106 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017690 .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ComplianceOndersteuning> .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ZoekenWetgeving> .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
@@ -756,17 +695,15 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010238 .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010239 .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010240 .
-<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010477 .
-<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010478 .
-<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010479 .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017608 .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "JCDR"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/79b22df2-1da8-4581-a872-5c40ff36434c> <http://purl.org/dc/terms/title> "NORA Online – JCDR" .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/79b22df2-1da8-4581-a872-5c40ff36434c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/79b22df2-1da8-4581-a872-5c40ff36434c> <http://xmlns.com/foaf/0.1/page> "https://www.noraonline.nl/wiki/Jcdr" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/79b22df2-1da8-4581-a872-5c40ff36434c> <http://xmlns.com/foaf/0.1/page> "https://www.noraonline.nl/wiki/Jcdr"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/7fbd002f-89c1-481c-b3f3-9eda91bebcf6> <http://purl.org/dc/terms/title> "Forum Standaardisatie – JCDR" .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/7fbd002f-89c1-481c-b3f3-9eda91bebcf6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/7fbd002f-89c1-481c-b3f3-9eda91bebcf6> <http://xmlns.com/foaf/0.1/page> "https://www.forumstandaardisatie.nl/open-standaarden/jcdr" .
+<https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/bronverwijzing/7fbd002f-89c1-481c-b3f3-9eda91bebcf6> <http://xmlns.com/foaf/0.1/page> "https://www.forumstandaardisatie.nl/open-standaarden/jcdr"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/83330031-1d66-4c01-9237-c60ba4e7250d> <http://bp4mc2.org/lto#omschrijving> "koppeling expliciet en uniform opnemen" .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/83330031-1d66-4c01-9237-c60ba4e7250d> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 <https://data.bp4mc2.org/id/lto/legaltech/jcdr/v/1.0/taakinvulling/83330031-1d66-4c01-9237-c60ba4e7250d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
@@ -783,8 +720,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> <http://bp4mc2.org/lto#naam> "Javascript expressions" .
 <https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> <http://bp4mc2.org/lto#omschrijving> "JavaScript‑expressies zijn geldige code‑eenheden die een waarde opleveren. Er wordt onderscheid gemaakt tussen expressies met bijwerkingen, zoals toekenningen (x = 7), en expressies die uitsluitend evalueren, zoals (3 + 4). Operatoren combineren operanden en bepalen de volgorde van evaluatie. JavaScript ondersteunt een breed scala aan operatoren, waaronder rekenkundige, logische, bitwise, string‑ en ternaire operatoren. Elke operator heeft een eigen prioriteit en kan worden gecombineerd met andere operatoren om complexe expressies te vormen." .
-<https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010547 .
-<https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010548 .
+<https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017631 .
 <https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Javascript expressions"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/js-expr/v/1.0/bronverwijzing/1178d4d7-3e6f-4c17-ae80-40da34f4bdbb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -800,8 +736,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#naam> "JSON Schema Definition" .
 <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#omschrijving> "JSON Schema is een declaratieve taal voor het definiëren van de structuur, inhoud en beperkingen van JSON‑data. Het biedt een gestandaardiseerde manier om JSON‑gegevens te valideren en te documenteren, wat zorgt voor consistentie en interoperabiliteit tussen systemen. JSON Schema wordt veel gebruikt bij API’s, configuratiebestanden en datavalidatieprocessen." .
-<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010543 .
-<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010544 .
+<https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017629 .
 <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "JSON Schema Definition"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/jsonp-schema/v/1.0/bronverwijzing/fb9475dc-f8e7-4ef0-aff4-b01e597cdc82> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -816,8 +751,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0> <http://bp4mc2.org/lto#naam> "Jurriconnect" .
 <https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Standaard voor identificatie van en verwijzing naar wet- en regelgeving." .
-<https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010482 .
-<https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010483 .
+<https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017609 .
 <https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Jurriconnect"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/juriconnect/v/1.0/bronverwijzing/93647f68-3f33-4764-a428-1e4c494f26b1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -832,8 +766,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> <http://bp4mc2.org/lto#naam> "LegalRuleML" .
 <https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De OASIS LegalRuleML Technical Committee (TC) definieert een uitwisselbare regeltaal voor het juridische domein. Deze standaard ondersteunt het modelleren en automatisch redeneren over juridische regels, en stelt implementaties in staat om juridische argumenten eenduidig te structureren, evalueren en vergelijken met behulp van gestandaardiseerde regelrepresentaties." .
-<https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010561 .
-<https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010562 .
+<https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017636 .
 <https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "LegalRuleML"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/legalruleml/v/1.0/bronverwijzing/24736a34-66cd-4625-9935-9118c7f07559> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -848,8 +781,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0> <http://bp4mc2.org/lto#naam> "LIDO" .
 <https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Met LiDO - een databank met miljoenen hyperlinks - kunt u snel inzicht krijgen in de verbanden tussen nationale en Europese regelgeving, uitspraken van Nederlandse en Europese rechters, parlementaire documenten en officiële bekendmakingen. LiDO maakt daartoe onder meer gebruik van intelligente software die tal van citatievormen kan herkennen." .
-<https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010624 .
-<https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010625 .
+<https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017645 .
 <https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Tool> .
 <https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "LIDO"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/lido/v/1.0/bronverwijzing/5f52ad63-92ab-4bb9-ae0d-5e921d85d3fe> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -864,8 +796,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0> <http://bp4mc2.org/lto#naam> "Markdown" .
 <https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De standaard Markdown‑syntaxis is gebruiksvriendelijk en efficiënt. Hiermee kunnen gebruikers eenvoudig opgemaakte tekst schrijven in een platte‑teksteditor, wat het lezen en schrijven vergemakkelijkt. Markdown is gebaseerd op het idee dat de auteur zich kan richten op de inhoud in plaats van op complexe opmaak, waardoor formatteren intuïtief en efficiënt blijft." .
-<https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010488 .
-<https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010489 .
+<https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017612 .
 <https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Markdown"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/markdown/v/1.0/bronverwijzing/18118b06-a1ba-48c3-bdb3-16a9f954332f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -882,8 +813,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#naam> "MIM - Metamodel Informatie Modellering" .
 <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#omschrijving> "MIM (Metamodel voor Informatie-modellering) beschrijft een gestandaardiseerd metamodel voor het opstellen van informatiemodellen. Het definieert metaklassen, metastructuren en metagegevens als basis voor consistente en vergelijkbare informatiemodellering en maakt hergebruik en gezamenlijke tooling mogelijk." .
-<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010522 .
-<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010523 .
+<https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017622 .
 <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "MIM - Metamodel Informatie Modellering"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/mim/v/1.0/bronverwijzing/f878fd5e-f54c-465f-a1ee-235cb51c5f8d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -903,8 +833,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#naam> "NIAM" .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Natural language Information Analysis Method (NIAM) is een informatieanalyse- en datamodelleringmethode, ontwikkeld in de jaren zeventig door Sjir Nijssen en anderen. Kenmerkend is dat de analyse expliciet gebeurt door middel van uitspraken in gesproken taal, en dat de gebruikte modeltechniek verschilt van andere door het explicieter modelleren van rollen." .
-<https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010390 .
-<https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010391 .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017596 .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "NIAM"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0/bronverwijzing/549fd8c5-7e3f-4e03-9f80-11b140ff4a7a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -923,8 +852,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> <http://bp4mc2.org/lto#naam> "NL-SBB" .
 <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De standaard voor het beschrijven van begrippen geeft aan hoe begrippen in een begrippenlijst, taxonomie of thesaurus eenduidig worden beschreven. " .
-<https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010516 .
-<https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010517 .
+<https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017619 .
 <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "NL-SBB"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/nlsbb/v/1.0/bronverwijzing/1e77f7c6-1a81-4566-ab86-59290b597324> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -942,8 +870,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0> <http://bp4mc2.org/lto#naam> "NRML" .
 <https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0> <http://bp4mc2.org/lto#omschrijving> "??" .
-<https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010443 .
-<https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010444 .
+<https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017604 .
 <https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "NRML"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/nrml/v/1.0/bronverwijzing/db7d254b-b5ee-4917-ab7f-9658b8af7edd> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -958,8 +885,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> <http://bp4mc2.org/lto#naam> "Web Annotation Data Model" .
 <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Het Web Annotation Data Model beschrijft een gestructureerd model en formaat waarmee annotaties kunnen worden gedeeld en hergebruikt over verschillende hardware‑ en softwareplatforms. Het ondersteunt zowel eenvoudige gebruiksscenario’s als complexere toepassingen, zoals het koppelen van willekeurige inhoud aan specifieke datapunten of aan segmenten van getimede multimedia." .
-<https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010504 .
-<https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010505 .
+<https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017615 .
 <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Web Annotation Data Model"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/oa/v/1.0/bronverwijzing/50129fc0-e078-45b9-9c41-b86e27fb7776> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -974,8 +900,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> <http://bp4mc2.org/lto#naam> "OAS - OpenAPI Specification " .
 <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> <http://bp4mc2.org/lto#omschrijving> "De OpenAPI‑specificatie (OAS) is een standaard voor het taal‑onafhankelijk beschrijven van API’s. Hiermee kunnen zowel mensen als machines de functionaliteit van een service begrijpen zonder toegang tot de broncode of aanvullende documentatie. OpenAPI‑beschrijvingen worden meestal vastgelegd in YAML of JSON en bieden een gestructureerde manier om endpoints, request‑ en responseformaten en authenticatiemethoden te definiëren. De standaard ondersteunt de volledige API‑levenscyclus, van ontwerp tot implementatie, en maakt het mogelijk om documentatie, client libraries en geautomatiseerde tests te genereren." .
-<https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010532 .
-<https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010533 .
+<https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017625 .
 <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0> <http://www.w3.org/2000/01/rdf-schema#label> "OAS - OpenAPI Specification "@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/oas/v/3.1.0/bronverwijzing/cd26c12d-8714-4ed7-a1c2-b431ec7e9c82> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -990,8 +915,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0> <http://bp4mc2.org/lto#naam> "OCL - Object Constraint Language" .
 <https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De Object Constraint Language (OCL) is een declaratieve taal voor het vastleggen van regels en constraints op UML‑modellen en andere OMG‑meta‑modellen (MOF). OCL maakt het mogelijk om nauwkeurige constraints en objectquery’s te formuleren die niet grafisch in diagrammen kunnen worden uitgedrukt. De taal is onderdeel van de UML‑standaard en vormt een belangrijk element binnen de OMG‑specificatie voor modeltransformaties (QVT)." .
-<https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010551 .
-<https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010552 .
+<https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017632 .
 <https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "OCL - Object Constraint Language"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/ocl/v/1.0/bronverwijzing/f1237b21-aeac-4f5c-b2b1-69722b51bfbb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1006,8 +930,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> <http://bp4mc2.org/lto#naam> "Open Fisca" .
 <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> <http://bp4mc2.org/lto#omschrijving> "OpenFisca zet wet‑ en regelgeving om in uitvoerbare code. Het platform maakt het mogelijk om belasting‑ en uitkeringsstelsels te modelleren en door te rekenen op basis van wetgeving." .
-<https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010435 .
-<https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010436 .
+<https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017602 .
 <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Open Fisca"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/open-fisca/v/1.0/bronverwijzing/fc673e07-b488-44eb-97c6-df0fd4ce7a0a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1022,8 +945,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0> <http://bp4mc2.org/lto#naam> "ORM - Object-Role Modelling" .
 <https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Object‑Role Modeling (ORM) is een conceptuele datamodelleermethode voor het op hoog niveau beschrijven en ontwerpen van informatiesystemen. De nadruk ligt op de betekenis van gegevens en hun onderlinge relaties, in plaats van op technische implementatiedetails." .
-<https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010408 .
-<https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010409 .
+<https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017599 .
 <https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "ORM - Object-Role Modelling"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/orm/v/1.0/bronverwijzing/ed9da5b5-1b95-4b17-84a4-09d70f2c8ad2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1038,8 +960,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0> <http://bp4mc2.org/lto#naam> "OWL - Web Ontology Language" .
 <https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0> <http://bp4mc2.org/lto#omschrijving> "OWL (Web Ontology Language) is een door het W3C ontwikkelde standaard voor het Semantisch Web, waarmee machines webinhoud beter kunnen verwerken en interpreteren. OWL bouwt voort op XML, RDF en RDF Schema (RDFS) en biedt een uitgebreidere woordenschat en formele semantiek voor het definiëren van ontologieën. Met OWL worden betekenissen van begrippen en de relaties daartussen vastgelegd, wat geautomatiseerd redeneren en interoperabiliteit mogelijk maakt." .
-<https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010555 .
-<https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010556 .
+<https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017634 .
 <https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "OWL - Web Ontology Language"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/owl/v/1.0/bronverwijzing/a3fa5e23-020c-4da2-ace0-96693f911027> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1054,8 +975,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0> <http://bp4mc2.org/lto#naam> "Petri-net" .
 <https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Petri‑netten zijn wiskundige modelleertalen voor het beschrijven van gedistribueerde systemen en behoren tot de klasse van discrete‑event dynamische systemen. Een Petri‑net is een gerichte bipartiete graaf met twee soorten elementen: plaatsen (cirkels) en transities (rechthoeken). Plaatsen kunnen tokens bevatten, en een transitie is activeerbaar wanneer alle invoerplaatsen minimaal één token hebben. Net als standaarden zoals UML‑activiteitendiagrammen, BPMN en event‑driven process chains bieden Petri‑netten een grafische notatie voor processen met keuzes, iteraties en gelijktijdigheid. In tegenstelling tot deze standaarden beschikken Petri‑netten over exact gedefinieerde uitvoeringssemantiek en een goed ontwikkelde wiskundige theorie voor procesanalyse." .
-<https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010569 .
-<https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010570 .
+<https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017638 .
 <https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Petri-net"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/petri-net/v/1.0/bronverwijzing/ded1da7c-7698-4448-a421-77ab4bf1bbd2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1070,8 +990,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0> <http://bp4mc2.org/lto#naam> "Predicatenlogica" .
 <https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Predicatenlogica is wiskundig-formele logica waarin expliciet predicaten voorkomen, waarmee eigenschappen van en relaties tussen verzamelingen objecten worden beschreven. Vaak wordt vooral de eerste-orde-predicatenlogica bedoeld" .
-<https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010427 .
-<https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010428 .
+<https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017601 .
 <https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Predicatenlogica"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/predicatenlogica/v/1.0/bronverwijzing/84f51d90-4b51-423d-ad05-849e82ea670e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1086,8 +1005,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> <http://bp4mc2.org/lto#naam> "RDF - Resource Description Framework" .
 <https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> <http://bp4mc2.org/lto#omschrijving> "RDF (Resource Description Framework) is een standaardmodel voor het uitwisselen van gegevens op het web. Het ondersteunt het samenvoegen van data, ook wanneer onderliggende schema’s verschillen, en maakt het mogelijk dat schema’s in de tijd evolueren zonder dat alle datagebruikers hoeven te worden aangepast." .
-<https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010528 .
-<https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010529 .
+<https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017624 .
 <https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "RDF - Resource Description Framework"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/rdf/v/1.0/bronverwijzing/67e50503-9876-48a0-9415-e3856073b89e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1102,15 +1020,13 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> <http://bp4mc2.org/lto#naam> "Regelrecht engine" .
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Regelrecht maakt Nederlandse wetgeving machine‑leesbaar en uitvoerbaar. Het platform zet juridische teksten om in gestructureerde YAML en voert deze uit als deterministische beslislogica." .
-<https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010699 .
-<https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010700 .
+<https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017646 .
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Tool> .
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Regelrecht engine"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0/bronverwijzing/788b7dfb-3602-4635-a96f-a8d3f0911e55> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0/documentatie/00ba8d04-93af-4802-b5f0-ed7fe833059d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0/taakinvulling/a46f407c-5b16-47ad-8ce1-a4806d46fcb7> <http://bp4mc2.org/lto#omschrijving> "" .
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0/taakinvulling/a46f407c-5b16-47ad-8ce1-a4806d46fcb7> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering> .
-<https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0/taakinvulling/a46f407c-5b16-47ad-8ce1-a4806d46fcb7> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering> .
 <https://data.bp4mc2.org/id/lto/legaltech/regelrecht-engine/v/1.0/taakinvulling/a46f407c-5b16-47ad-8ce1-a4806d46fcb7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0/documentatie/d50f5df6-0639-4193-a83a-71d994c49480> .
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
@@ -1121,8 +1037,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://bp4mc2.org/lto#naam> "Regelspraak" .
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Regelspraak is een standaard voor het modelleren van formele (reken)regels." .
-<https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010506 .
-<https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010507 .
+<https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017616 .
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Regelspraak"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0/bronverwijzing/a1641464-23bc-4e7d-a040-40f6defa4c6a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1140,8 +1055,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0> <http://bp4mc2.org/lto#naam> "Regular expression" .
 <https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Een reguliere expressie (afgekort als regex of regexp) is een tekenreeks die een patroon beschrijft om tekst te herkennen. Reguliere expressies worden vaak gebruikt voor zoek‑ en vervangbewerkingen in tekst en voor het valideren van invoer. De onderliggende technieken zijn ontwikkeld binnen de theoretische informatica en de theorie van formele talen." .
-<https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010545 .
-<https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010546 .
+<https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017630 .
 <https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Regular expression"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/regex/v/1.0/bronverwijzing/b144c577-f1bf-4412-a6b7-e684a7ccb5e4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1156,8 +1070,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> <http://bp4mc2.org/lto#naam> "SBVR - Semantics of Business Vocabulary and Business Rules" .
 <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Semantics of Business Vocabulary and Business Rules (SBVR) is een door de Object Management Group (OMG) vastgestelde standaard voor het formeel en eenduidig beschrijven van vocabulaire en declaratieve regels in natuurlijke taal. SBVR is bedoeld om complexe compliance‑ en bedrijfsregels, zoals operationele regels, beveiligingsbeleid en wet‑ en regelgeving, te formaliseren zodat deze door computers kunnen worden geïnterpreteerd en toegepast. De standaard vormt een integraal onderdeel van de model‑gedreven architectuur (MDA) van de OMG." .
-<https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010441 .
-<https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010442 .
+<https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017603 .
 <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "SBVR - Semantics of Business Vocabulary and Business Rules"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/sbvr/v/1.0/bronverwijzing/14375aa0-8515-41c3-a98b-94384bef2ecb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1172,9 +1085,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> <http://bp4mc2.org/lto#naam> "SHACL - Shapes Constraint Language" .
 <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> <http://bp4mc2.org/lto#omschrijving> "SHACL (Shapes Constraint Language) is een taal voor het valideren van RDF‑grafen aan de hand van een verzameling voorwaarden. Deze voorwaarden worden vastgelegd als shapes en andere constructies in de vorm van een RDF‑graaf. In SHACL worden de RDF‑grafen met regels shapes graphs genoemd, en de RDF‑grafen die hiertegen worden gevalideerd data graphs. Naast validatie kunnen SHACL‑shapes ook dienen als beschrijving van geldige data, bijvoorbeeld voor het bouwen van gebruikersinterfaces, codegeneratie en dataintegratie." .
-<https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010538 .
-<https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010539 .
-<https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010540 .
+<https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017627 .
 <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720> <http://www.w3.org/2000/01/rdf-schema#label> "SHACL - Shapes Constraint Language"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/shacl/v/20170720/bronverwijzing/79be046a-4db0-45f4-8af3-12097c2dab84> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1191,8 +1102,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> <http://bp4mc2.org/lto#naam> "SKOS-LEX" .
 <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De SKOS Legal Extension definieert de klassen en eigenschappen die nodig zijn om juridische begrippen als SKOS‑concepten te modelleren en vast te leggen." .
-<https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010510 .
-<https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010511 .
+<https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017618 .
 <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "SKOS-LEX"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0/bronverwijzing/82612ad0-56dc-427b-9460-496b5f59ec89> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1210,8 +1120,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> <http://bp4mc2.org/lto#naam> "SKOS - Simple Knowledge Organization" .
 <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> <http://bp4mc2.org/lto#omschrijving> "SKOS is een verzameling specificaties en standaarden die het gebruik van kennisorganisatiesystemen (KOS), zoals thesauri, classificatieschema’s, trefwoordsystemen en taxonomieën, ondersteunt binnen het raamwerk van het Semantisch Web." .
-<https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010518 .
-<https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010519 .
+<https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017620 .
 <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "SKOS - Simple Knowledge Organization"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/skos/v/1.0/bronverwijzing/6f7b26f9-f759-4eb6-92a8-a115c78f4e97> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1226,8 +1135,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> <http://bp4mc2.org/lto#naam> "STOP" .
 <https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De STandaard Officiële Publicaties (STOP) is de standaard die het mogelijk maakt om officiële publicaties en consolideerbare regelgeving van gemeenten, provincies, waterschappen en ministeries op een gestructureerde manier aan te leveren." .
-<https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010486 .
-<https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010487 .
+<https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017611 .
 <https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "STOP"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/stop/v/1.0/bronverwijzing/9ebd106f-ac26-47e4-901d-2138f5cffec4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1244,8 +1152,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#naam> "STTR - Standaard en informatiemodel toepasbare regels" .
 <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De Standaard toepasbare regels (STTR) is een van de standaarden voor het Digitaal Stelsel Omgevingswet (DSO). De STTR en het bijbehorende informatiemodel (IMTR) zijn nodig om toepasbare regels te kunnen publiceren. Ze horen bij het maken en het aanleveren van toepasbare regels aan de Registratie toepasbare regels (RTR). Rijkswaterstaat beheert deze standaard." .
-<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010559 .
-<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010560 .
+<https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017635 .
 <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "STTR - Standaard en informatiemodel toepasbare regels"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/bronverwijzing/37b3b164-b64f-4b11-97e6-9aee6d0deb08> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1263,8 +1170,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#Gesloten> .
 <https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0> <http://bp4mc2.org/lto#naam> "TMAP - Test Management Approach" .
 <https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0> <http://bp4mc2.org/lto#omschrijving> "TMAP (Test Management Approach) is een gestructureerde testmethode voor software, ontwikkeld door Sogeti en geïntroduceerd in 1995. De methode biedt een raamwerk voor het plannen, uitvoeren en beheersen van testactiviteiten." .
-<https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010451 .
-<https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010452 .
+<https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017606 .
 <https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "TMAP - Test Management Approach"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/tmap/v/1.0/bronverwijzing/de82359b-18ab-4d81-ab22-885f0f90f3b3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1279,10 +1185,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010127 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010128 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010129 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010130 .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017694 .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#JuridischExpertSysteem> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#Voorstel> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/taakinvulling/bd34797b-0214-4eeb-9512-ebd3ac295c46> .
@@ -1297,20 +1200,18 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010277 .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010278 .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010279 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010590 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010591 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010592 .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017642 .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://www.w3.org/2000/01/rdf-schema#label> "TOOI"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> <http://purl.org/dc/terms/title> "TOOI documentatie" .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> <http://xmlns.com/foaf/0.1/page> "https://standaarden.overheid.nl/tooi" .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> <http://xmlns.com/foaf/0.1/page> "https://standaarden.overheid.nl/tooi"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> <http://purl.org/dc/terms/title> "TOOI beheerplan" .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> <http://xmlns.com/foaf/0.1/page> "https://standaarden.overheid.nl/tooi/beheerplan/strategie" .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> <http://xmlns.com/foaf/0.1/page> "https://standaarden.overheid.nl/tooi/beheerplan/strategie"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> <http://purl.org/dc/terms/title> "Digitale Overheid community TOOI" .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> <http://xmlns.com/foaf/0.1/page> "https://www.digitaleoverheid.nl/community/tooi-thesauri-en-ontologieen-voor-overheidsinformatie/" .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> <http://xmlns.com/foaf/0.1/page> "https://www.digitaleoverheid.nl/community/tooi-thesauri-en-ontologieen-voor-overheidsinformatie/"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/taakinvulling/bd34797b-0214-4eeb-9512-ebd3ac295c46> <http://bp4mc2.org/lto#omschrijving> "Uniforme metadata" .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/taakinvulling/bd34797b-0214-4eeb-9512-ebd3ac295c46> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/taakinvulling/bd34797b-0214-4eeb-9512-ebd3ac295c46> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
@@ -1325,10 +1226,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/2ae42790-0590-4606-9422-fb5e36dc03b2> .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/f3b048cb-f438-44cd-b4a3-c17ba8674d10> .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/fa62d533-5ace-446a-bde6-b708655c0e90> .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010131 .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010132 .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010133 .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010134 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017695 .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ComplianceOndersteuning> .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/701d4fd5-23c1-4383-b5df-bfd12867d632> .
@@ -1347,20 +1245,18 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010286 .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010287 .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010288 .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010593 .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010594 .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010595 .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017643 .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0> <http://www.w3.org/2000/01/rdf-schema#label> "TPOD"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/2ae42790-0590-4606-9422-fb5e36dc03b2> <http://purl.org/dc/terms/title> "STOP/TPOD uitleg IPLO" .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/2ae42790-0590-4606-9422-fb5e36dc03b2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/2ae42790-0590-4606-9422-fb5e36dc03b2> <http://xmlns.com/foaf/0.1/page> "https://iplo.nl/digitaal-stelsel/aansluiten/standaarden/stop-tpod-imop/" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/2ae42790-0590-4606-9422-fb5e36dc03b2> <http://xmlns.com/foaf/0.1/page> "https://iplo.nl/digitaal-stelsel/aansluiten/standaarden/stop-tpod-imop/"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/f3b048cb-f438-44cd-b4a3-c17ba8674d10> <http://purl.org/dc/terms/title> "Wegwijzer TPOD" .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/f3b048cb-f438-44cd-b4a3-c17ba8674d10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/f3b048cb-f438-44cd-b4a3-c17ba8674d10> <http://xmlns.com/foaf/0.1/page> "https://www.wegwijzertpod.nl/" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/f3b048cb-f438-44cd-b4a3-c17ba8674d10> <http://xmlns.com/foaf/0.1/page> "https://www.wegwijzertpod.nl/"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/fa62d533-5ace-446a-bde6-b708655c0e90> <http://purl.org/dc/terms/title> "Geonovum TPO" .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/fa62d533-5ace-446a-bde6-b708655c0e90> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/fa62d533-5ace-446a-bde6-b708655c0e90> <http://xmlns.com/foaf/0.1/page> "https://iplo.nl/digitaal-stelsel/aansluiten/standaarden/stop-tpod-imop/" .
+<https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/bronverwijzing/fa62d533-5ace-446a-bde6-b708655c0e90> <http://xmlns.com/foaf/0.1/page> "https://iplo.nl/digitaal-stelsel/aansluiten/standaarden/stop-tpod-imop/"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/701d4fd5-23c1-4383-b5df-bfd12867d632> <http://bp4mc2.org/lto#omschrijving> "definieert welke metadata/annotaties nodig zijn" .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/701d4fd5-23c1-4383-b5df-bfd12867d632> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
 <https://data.bp4mc2.org/id/lto/legaltech/tpod/v/3.0/taakinvulling/701d4fd5-23c1-4383-b5df-bfd12867d632> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
@@ -1377,8 +1273,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0> <http://bp4mc2.org/lto#naam> "Use Cases" .
 <https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0> <http://bp4mc2.org/lto#omschrijving> "UML Use Cases beschrijven functioneel gedrag van een systeem vanuit het perspectief van de gebruiker. Ze laten zien wat een systeem moet doen, niet hoe het intern is opgebouwd. Use cases worden gebruikt om eisen en verwachtingen helder vast te leggen en te communiceren met zowel technische als niet‑technische stakeholders." .
-<https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010508 .
-<https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010509 .
+<https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017617 .
 <https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Use Cases"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/uc/v/1.0/bronverwijzing/e3c689f9-da49-4840-8108-0db29d66dd83> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1393,8 +1288,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> <http://bp4mc2.org/lto#naam> "Uitvoerbaarheidstoets Decentrale Overheden" .
 <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Het proces van de UDO helpt om beleid vorm te geven dat uitvoerbaar is en zijn doelen bereikt, of dat nu eigen beleid van het Rijk is of beleid dat volgt uit Europese richtlijnen." .
-<https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010372 .
-<https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010373 .
+<https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017594 .
 <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Uitvoerbaarheidstoets Decentrale Overheden"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/udo/v/1.0/bronverwijzing/bd29e9da-ceb6-428e-96e9-0a1264127c17> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1412,8 +1306,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#naam> "UML" .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De Unified Modeling Language (UML) is een algemene, objectgeoriënteerde, visuele modelleertaal waarmee de architectuur en het ontwerp van een systeem inzichtelijk kunnen worden gemaakt, vergelijkbaar met een blauwdruk. UML bevat notaties voor verschillende typen diagrammen die zich richten op onder andere gedrag, interactie en structuur." .
-<https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010520 .
-<https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010521 .
+<https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017621 .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "UML"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0/bronverwijzing/8830f789-fbfb-487f-8471-4bfad41cd19f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1432,10 +1325,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Regelanalist> .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/bronverwijzing/317ec632-addf-4c23-a642-8e44ddb398ac> .
-<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010075 .
-<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010076 .
-<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010077 .
-<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010078 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017689 .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/taakinvulling/2764ae78-aef8-4eb2-a8bf-716d0bc9b061> .
@@ -1452,8 +1342,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010196 .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010197 .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010198 .
-<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010370 .
-<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010371 .
+<https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017593 .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "Wetsanalyse"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/wetsanalyse/v/1.0/bronverwijzing/317ec632-addf-4c23-a642-8e44ddb398ac> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1479,8 +1368,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0> <http://bp4mc2.org/lto#naam> "WUF" .
 <https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0> <http://bp4mc2.org/lto#omschrijving> "??" .
-<https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010374 .
-<https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010375 .
+<https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017595 .
 <https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "WUF"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/wuf/v/1.0/bronverwijzing/ee1c9c81-3193-49f5-81b5-e2e9c4235ad7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
@@ -1495,8 +1383,7 @@ _:genid-18edcff6e8ea4178871657eb7128dd736390-E4C8C6116F4A6D0B4EF50117418BCF0D <h
 <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
 <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> <http://bp4mc2.org/lto#naam> "XSD - XML Schema Definition" .
 <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> <http://bp4mc2.org/lto#omschrijving> "XSD (XML Schema Definition) is een door het W3C aanbevolen standaard voor het formeel beschrijven van de structuur en inhoud van XML‑documenten. Met XSD kunnen regels worden vastgelegd waaraan een XML‑document moet voldoen om als geldig te worden beschouwd. Daarnaast ondersteunt XSD het toekennen van specifieke datatypen aan elementen, wat na validatie een rijke informatiebasis oplevert die bruikbaar is voor verdere verwerking, zoals validatie, dataconversie en softwareontwikkeling." .
-<https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010541 .
-<https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010542 .
+<https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017628 .
 <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "XSD - XML Schema Definition"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/xsd/v/1.0/bronverwijzing/f4ebb7fc-677e-49a8-a5ca-96cff0e6af2c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .

@@ -1,0 +1,5 @@
+| Technologie | Type | Status | Licentie | Bijgewerkt op |
+|---|---|---|---|---|
+{% for tech in technologies %}
+| [{{ tech.naam | default(tech.id) }}](#{{ tech.anchor }}) | {{ tech.typeLabel | default('') }} | {{ tech.gebruiksstatusLabel | default('') }} | {{ tech.licentievormLabel | default('') }} | {{ tech.bijgewerktOp | default('') }} |
+{% endfor %}

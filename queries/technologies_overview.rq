@@ -1,0 +1,41 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX lto:  <http://bp4mc2.org/lto#>
+
+SELECT
+  ?tech
+  ?naam
+  ?type
+  ?typeLabel
+  ?omschrijving
+  ?gebruiksstatusLabel
+  ?licentievormLabel
+  ?bijgewerktOp
+WHERE {
+  ?tech a ?type .
+
+  VALUES ?type {
+    lto:JuridischeTechnologie
+    lto:Methode
+    lto:Standaard
+    lto:Tool
+  }
+
+  OPTIONAL { ?type rdfs:label ?typeLabel . FILTER(LANG(?typeLabel) = "nl" || LANG(?typeLabel) = "") }
+
+  OPTIONAL { ?tech lto:naam ?naam . }
+  OPTIONAL { ?tech lto:omschrijving ?omschrijving . }
+  OPTIONAL { ?tech lto:bijgewerktOp ?bijgewerktOp . }
+
+  OPTIONAL {
+    ?tech lto:gebruiksstatus ?gebruiksstatus .
+    OPTIONAL { ?gebruiksstatus skos:prefLabel ?gebruiksstatusLabel . FILTER(LANG(?gebruiksstatusLabel) = "nl" || LANG(?gebruiksstatusLabel) = "") }
+  }
+
+  OPTIONAL {
+    ?tech lto:licentievorm ?licentievorm .
+    OPTIONAL { ?licentievorm skos:prefLabel ?licentievormLabel . FILTER(LANG(?licentievormLabel) = "nl" || LANG(?licentievormLabel) = "") }
+  }
+}
+ORDER BY LCASE(STR(COALESCE(?naam, "")))

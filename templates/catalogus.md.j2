@@ -1,0 +1,90 @@
+## Catalogus juridische technologieën
+
+Deze sectie bevat de concrete juridische technologieën die in de ABox zijn opgenomen. De gegevens in deze sectie zijn automatisch gegenereerd uit RDF/Turtle-bronnen.
+
+{% if technologies %}
+Aantal opgenomen technologieën: {{ technologies | length }}.
+
+### Overzicht
+
+| Technologie | Type | Gebruiksstatus | Licentievorm | Bijgewerkt op |
+|---|---|---|---|---|
+{% for tech in technologies %}
+| [{{ tech.naam | default(tech.id) }}](#{{ tech.anchor }}) | {{ tech.typeLabel | default('') }} | {{ tech.gebruiksstatusLabel | default('') }} | {{ tech.licentievormLabel | default('') }} | {{ tech.bijgewerktOp | default('') }} |
+{% endfor %}
+
+### Technologieën
+
+{% for tech in technologies %}
+#### {{ tech.naam | default(tech.id) }} {{ "{#" }}{{ tech.anchor }}{{ "}" }}
+
+{% if tech.omschrijving %}
+{{ tech.omschrijving }}
+{% endif %}
+
+| Kenmerk | Waarde |
+|---|---|
+| URI | `{{ tech.uri }}` |
+{% if tech.typeLabel %}| Type | {{ tech.typeLabel }} |
+{% endif %}{% if tech.gebruiksstatusLabel %}| Gebruiksstatus | {{ tech.gebruiksstatusLabel }} |
+{% endif %}{% if tech.licentievormLabel %}| Licentievorm | {{ tech.licentievormLabel }} |
+{% endif %}{% if tech.bijgewerktOp %}| Bijgewerkt op | {{ tech.bijgewerktOp }} |
+{% endif %}{% if tech.versienummer %}| Versienummer | {{ tech.versienummer }} |
+{% endif %}{% if tech.versiedatum %}| Versiedatum | {{ tech.versiedatum }} |
+{% endif %}{% if tech.beheerderNaam %}| Beheerder | {{ tech.beheerderNaam }} |
+{% endif %}{% if tech.leverancierNaam %}| Leverancier | {{ tech.leverancierNaam }} |
+{% endif %}{% if tech.normstatusLabel %}| Normstatus | {{ tech.normstatusLabel }} |
+{% endif %}{% if tech.typeTechnologieLabel %}| Type technologie | {{ tech.typeTechnologieLabel }} |
+{% endif %}{% if tech.functionaliteiten %}| Functionaliteit | {% for item in tech.functionaliteiten %}{{ item.label | default(item.id) }}{% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endif %}{% if tech.gebruikersgroepen %}| Beoogde gebruikers | {% for item in tech.gebruikersgroepen %}{{ item.label | default(item.id) }}{% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endif %}{% if tech.ondersteuningsvormen %}| Ondersteuning | {% for item in tech.ondersteuningsvormen %}{{ item.beschouwingsniveauLabel | default('') }}{% if item.modelsoortLabel %}: {{ item.modelsoortLabel }}{% endif %}{% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endif %}{% if tech.taken %}| Geschikt voor taak | {% for taak in tech.taken %}**{{ taak.taaktypeLabel or taak.taaktype or 'Taak' }}**{% if taak.omschrijving %}: {{ taak.omschrijving }}{% endif %}{% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endif %}{% if tech.bronnen %}| Bronnen | {% for bron in tech.bronnen %}{% if bron.pagina %}[{{ bron.titel or bron.pagina }}]({{ bron.pagina }}){% else %}{{ bron.titel or bron.verwijzing or bron.bron or 'Bron' }}{% endif %}{% if bron.verwijzing and (bron.titel or bron.pagina) %}, {{ bron.verwijzing }}{% endif %}{% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endif %}
+
+{% if tech.beoogdGebruik or tech.toegevoegdeWaarde or tech.onderdelen or tech.ontwikkelingEnBeheer or tech.relaties %}
+<details>
+<summary>Meer details</summary>
+
+{% if tech.beoogdGebruik %}
+**Beoogd gebruik**
+
+{{ tech.beoogdGebruik }}
+{% endif %}
+
+{% if tech.toegevoegdeWaarde %}
+**Toegevoegde waarde**
+
+{{ tech.toegevoegdeWaarde }}
+{% endif %}
+
+{% if tech.onderdelen %}
+**Onderdelen**
+
+{{ tech.onderdelen }}
+{% endif %}
+
+{% if tech.ontwikkelingEnBeheer %}
+**Ontwikkeling en beheer**
+
+{{ tech.ontwikkelingEnBeheer }}
+{% endif %}
+
+{% if tech.relaties %}
+**Relaties met andere technologieën**
+
+| Type relatie | Gerelateerde technologie | Beschrijving |
+|---|---|---|
+{% for relatie in tech.relaties %}
+| {{ relatie.typeRelatieLabel | default('') }} | [{{ relatie.gerelateerdeTechnologieNaam | default(relatie.gerelateerdeTechnologie) }}](#{{ relatie.gerelateerdeAnchor }}) | {{ relatie.beschrijvingRelatie | default('') }} |
+{% endfor %}
+{% endif %}
+
+</details>
+{% endif %}
+
+{% endfor %}
+
+{% else %}
+Er zijn geen juridische technologieën gevonden in de ABox.
+{% endif %}

@@ -1,0 +1,121 @@
+## Ontologie
+
+Deze sectie beschrijft de onderliggende ontologie waarmee juridische technologieën worden gemodelleerd.
+
+De ontologie bevat klassen, objecteigenschappen, datatype-eigenschappen en SHACL-shapes. De inhoud van deze sectie is automatisch gegenereerd uit de TBox.
+
+{% if metadata.version %}
+Ontologieversie: `{{ metadata.version }}`
+{% endif %}
+
+{% if metadata.created %}
+Datum ontologie: `{{ metadata.created }}`
+{% endif %}
+
+{% if metadata.comment %}
+{{ metadata.comment }}
+{% endif %}
+
+### Klassen
+
+{% if classes %}
+De volgende klassen zijn opgenomen in de ontologie.
+
+{% for cls in classes %}
+#### {{ cls.label }} {{ "{#klasse-" }}{{ cls.anchor }}{{ "}" }}
+
+| Kenmerk | Waarde |
+|---|---|
+| URI | `{{ cls.uri }}` |
+{% if cls.subClassOf %}| Specialisatie van | {{ cls.subClassOfLabel | default(cls.subClassOf) }} <br><code>{{ cls.subClassOf }}</code> |
+{% endif %}
+
+{% if cls.comment %}
+{{ cls.comment }}
+{% endif %}
+
+{% endfor %}
+{% else %}
+Er zijn geen klassen gevonden in de TBox.
+{% endif %}
+
+### Eigenschappen (relaties)
+
+Deze sectie bevat de objecteigenschappen uit de ontologie. Objecteigenschappen leggen relaties tussen resources, bijvoorbeeld tussen een juridische technologie en een organisatie, status, taak of andere technologie.
+
+{% if object_properties %}
+{% for property in object_properties %}
+#### {{ property.label | default(property.id) }} {{ "{#objecteigenschap-" }}{{ property.anchor }}{{ "}" }}
+
+| Kenmerk | Waarde |
+|---|---|
+| URI | `{{ property.uri }}` |
+{% if property.domain %}| Domein | {{ property.domainLabel | default(property.domain) }} <br><code>{{ property.domain }}</code> |
+{% endif %}{% if property.range %}| Bereik | {{ property.rangeLabel | default(property.range) }} <br><code>{{ property.range }}</code> |
+{% endif %}
+
+{% if property.comment %}
+{{ property.comment }}
+{% endif %}
+
+{% endfor %}
+{% else %}
+Er zijn geen objecteigenschappen gevonden in de TBox.
+{% endif %}
+
+### Eigenschappen (waarden)
+
+Deze sectie bevat de datatype-eigenschappen uit de ontologie. Datatype-eigenschappen leggen waarden vast, zoals tekst, datum of andere letterlijke waarden.
+
+{% if datatype_properties %}
+{% for property in datatype_properties %}
+#### {{ property.label | default(property.id) }} {{ "{#datatypeeigenschap-" }}{{ property.anchor }}{{ "}" }}
+
+| Kenmerk | Waarde |
+|---|---|
+| URI | `{{ property.uri }}` |
+{% if property.domain %}| Domein | {{ property.domainLabel | default(property.domain) }} <br><code>{{ property.domain }}</code> |
+{% endif %}{% if property.range %}| Datatype | {{ property.rangeLabel | default(property.range) }} <br><code>{{ property.range }}</code> |
+{% endif %}
+
+{% if property.comment %}
+{{ property.comment }}
+{% endif %}
+
+{% endfor %}
+{% else %}
+Er zijn geen datatype-eigenschappen gevonden in de TBox.
+{% endif %}
+
+### SHACL-shapes
+
+Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de ontologie te valideren. Per shape worden de doelklasse en de bijbehorende property-shapes weergegeven.
+
+{% if shapes %}
+{% for shape in shapes %}
+#### {{ shape.label | default(shape.id) }} {{ "{#shape-" }}{{ shape.anchor }}{{ "}" }}
+
+
+| Kenmerk | Waarde |
+|---|---|
+| URI | `{{ shape.uri }}` |
+{% if shape.targetClass %}| Doelklasse | {{ shape.targetClassLabel | default(shape.targetClass) }} <br><code>{{ shape.targetClass }}</code> |
+{% endif %}
+
+{% if shape.properties %}
+##### Eigenschappen
+
+| Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
+|---:|---|---|---|---|---|
+{% for prop in shape.properties %}
+| {{ prop.order | default('') }} | {{ prop.propertyLabel | default(prop.pathLabel) | default(prop.path) | default('') }} | {% if prop.path %}`{{ prop.path }}`{% endif %} | {% if prop.minCount or prop.maxCount %}{% if prop.minCount %}min. {{ prop.minCount }}{% endif %}{% if prop.minCount and prop.maxCount %}, {% endif %}{% if prop.maxCount %}max. {{ prop.maxCount }}{% endif %}{% endif %} | {% if prop.datatype %}`{{ prop.datatype }}`{% elif prop['class'] %}`{{ prop['class'] }}`{% elif prop.node %}`{{ prop.node }}`{% elif prop.nodeKind %}`{{ prop.nodeKind }}`{% endif %} | {{ prop.description | default('') }} |
+{% endfor %}
+
+{% else %}
+Deze shape bevat geen property-shapes.
+{% endif %}
+
+{% endfor %}
+{% else %}
+Er zijn geen SHACL-shapes gevonden in de TBox.
+{% endif %}

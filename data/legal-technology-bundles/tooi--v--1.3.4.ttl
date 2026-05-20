@@ -3,19 +3,19 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-_:696de21d1d614276aa662912c98809e010127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010128 <http://bp4mc2.org/lto#beoogdGebruik> "- Publicatie van wet- en regelgeving  \n- Metadata- en datasystemen overheid" .
-_:696de21d1d614276aa662912c98809e010129 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Gemeenschappelijke “taal” voor overheidssystemen, Betere vindbaarheid en interoperabiliteit (FAIR), Persistente identifiers (URI’s) voor concepten en organisaties" .
-_:696de21d1d614276aa662912c98809e010130 <http://bp4mc2.org/lto#onderdelen> "Ontologie (conceptueel model in RDF), Thesauri (begrippenlijsten, taxonomieën), Waardelijsten (geversioneerde subsets)" .
 _:696de21d1d614276aa662912c98809e010274 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010275 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Ontologisch> .
 _:696de21d1d614276aa662912c98809e010276 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
 _:696de21d1d614276aa662912c98809e010277 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010278 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
 _:696de21d1d614276aa662912c98809e010279 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
-_:696de21d1d614276aa662912c98809e010590 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010591 <http://bp4mc2.org/lto#versienummer> "1.3.4" .
-_:696de21d1d614276aa662912c98809e010592 <http://bp4mc2.org/lto#versiedatum> "2024-03-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017642 <http://bp4mc2.org/lto#versiedatum> "2024-03-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017642 <http://bp4mc2.org/lto#versienummer> "1.3.4" .
+_:696de21d1d614276aa662912c98809e017642 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017694 <http://bp4mc2.org/lto#beoogdGebruik> "- Publicatie van wet- en regelgeving  \n- Metadata- en datasystemen overheid"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017694 <http://bp4mc2.org/lto#onderdelen> "Ontologie (conceptueel model in RDF), Thesauri (begrippenlijsten, taxonomieën), Waardelijsten (geversioneerde subsets)"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017694 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Gemeenschappelijke “taal” voor overheidssystemen, Betere vindbaarheid en interoperabiliteit (FAIR), Persistente identifiers (URI’s) voor concepten en organisaties"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017694 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Beleidsmedewerkers> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Juristen> .
@@ -23,10 +23,7 @@ _:696de21d1d614276aa662912c98809e010592 <http://bp4mc2.org/lto#versiedatum> "202
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010127 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010128 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010129 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010130 .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017694 .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#JuridischExpertSysteem> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#Voorstel> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/taakinvulling/bd34797b-0214-4eeb-9512-ebd3ac295c46> .
@@ -41,20 +38,18 @@ _:696de21d1d614276aa662912c98809e010592 <http://bp4mc2.org/lto#versiedatum> "202
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010277 .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010278 .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010279 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010590 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010591 .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010592 .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017642 .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4> <http://www.w3.org/2000/01/rdf-schema#label> "TOOI"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> <http://purl.org/dc/terms/title> "TOOI documentatie" .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> <http://xmlns.com/foaf/0.1/page> "https://standaarden.overheid.nl/tooi" .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/1806747d-c761-45ec-b40a-afe636805a0e> <http://xmlns.com/foaf/0.1/page> "https://standaarden.overheid.nl/tooi"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> <http://purl.org/dc/terms/title> "TOOI beheerplan" .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> <http://xmlns.com/foaf/0.1/page> "https://standaarden.overheid.nl/tooi/beheerplan/strategie" .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/d24be7e5-2c73-4b21-a154-76cc50d299bc> <http://xmlns.com/foaf/0.1/page> "https://standaarden.overheid.nl/tooi/beheerplan/strategie"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> <http://purl.org/dc/terms/title> "Digitale Overheid community TOOI" .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> <http://xmlns.com/foaf/0.1/page> "https://www.digitaleoverheid.nl/community/tooi-thesauri-en-ontologieen-voor-overheidsinformatie/" .
+<https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/bronverwijzing/e67214d8-ce7b-4ec0-b8e9-041219466946> <http://xmlns.com/foaf/0.1/page> "https://www.digitaleoverheid.nl/community/tooi-thesauri-en-ontologieen-voor-overheidsinformatie/"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/taakinvulling/bd34797b-0214-4eeb-9512-ebd3ac295c46> <http://bp4mc2.org/lto#omschrijving> "Uniforme metadata" .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/taakinvulling/bd34797b-0214-4eeb-9512-ebd3ac295c46> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#VerzamelenBronmateriaal> .
 <https://data.bp4mc2.org/id/lto/legaltech/tooi/v/1.3.4/taakinvulling/bd34797b-0214-4eeb-9512-ebd3ac295c46> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

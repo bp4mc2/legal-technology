@@ -1,0 +1,28 @@
+## Taxonomieën en waardenlijsten
+
+Deze sectie beschrijft de waardenlijsten die worden gebruikt om juridische technologieën te classificeren, zoals gebruiksstatus, licentievorm, functionaliteit, doelgroep en andere categorieën.
+
+{% if taxonomies %}
+Aantal taxonomieën: {{ taxonomies | length }}.
+
+{% for taxonomy in taxonomies %}
+### {{ taxonomy.label | default(taxonomy.id) }} {{ "{#" }}{{ taxonomy.anchor }}{{ "}" }}
+
+{% if taxonomy.definition %}
+{{ taxonomy.definition }}
+{% endif %}
+
+{% if taxonomy.members %}
+| Waarde | Definitie |
+|---|---|
+{% for member in taxonomy.members %}
+| {{ member.label | default(member.id) }} | {{ member.definition | default('') }} |
+{% endfor %}
+{% else %}
+Er zijn geen waarden opgenomen in deze taxonomie.
+{% endif %}
+
+{% endfor %}
+{% else %}
+Er zijn geen taxonomieën gevonden in de TBox.
+{% endif %}

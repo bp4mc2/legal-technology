@@ -1,0 +1,45 @@
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT
+  ?property
+  ?label
+  ?comment
+  ?domain
+  ?domainLabel
+  ?range
+  ?rangeLabel
+WHERE {
+  ?property a owl:ObjectProperty .
+
+  OPTIONAL {
+    ?property rdfs:label ?label .
+    FILTER(LANG(?label) = "nl" || LANG(?label) = "")
+  }
+
+  OPTIONAL {
+    ?property rdfs:comment ?comment .
+    FILTER(LANG(?comment) = "nl" || LANG(?comment) = "")
+  }
+
+  OPTIONAL {
+    ?property rdfs:domain ?domain .
+
+    OPTIONAL {
+      ?domain rdfs:label ?domainLabel .
+      FILTER(LANG(?domainLabel) = "nl" || LANG(?domainLabel) = "")
+    }
+  }
+
+  OPTIONAL {
+    ?property rdfs:range ?range .
+
+    OPTIONAL {
+      ?range rdfs:label ?rangeLabel .
+      FILTER(LANG(?rangeLabel) = "nl" || LANG(?rangeLabel) = "")
+    }
+  }
+}
+ORDER BY
+  LCASE(STR(COALESCE(?label, "")))
+  STR(?property)

@@ -1,0 +1,30 @@
+{
+  "name": "wendbare-wetsuitvoering",
+  "version": "1.0.0",
+  "description": "Vocabulary, ontology and survey of legal technologies",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "powershell tools/build.ps1",
+    "pdf": "node tools/pdf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bp4mc2/legal-technology.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/bp4mc2/legal-technology/issues"
+  },
+  "homepage": "https://github.com/bp4mc2/legal-technology#readme",
+  "dependencies": {
+    "playwright": "^1.60.0",
+    "respec": "^37.1.0"
+  }
+}

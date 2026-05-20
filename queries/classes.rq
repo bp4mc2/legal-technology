@@ -1,0 +1,34 @@
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT
+  ?class
+  ?label
+  ?comment
+  ?subClassOf
+  ?subClassOfLabel
+WHERE {
+  ?class a owl:Class .
+
+  OPTIONAL {
+    ?class rdfs:label ?label .
+    FILTER(LANG(?label) = "nl" || LANG(?label) = "")
+  }
+
+  OPTIONAL {
+    ?class rdfs:comment ?comment .
+    FILTER(LANG(?comment) = "nl" || LANG(?comment) = "")
+  }
+
+  OPTIONAL {
+    ?class rdfs:subClassOf ?subClassOf .
+
+    OPTIONAL {
+      ?subClassOf rdfs:label ?subClassOfLabel .
+      FILTER(LANG(?subClassOfLabel) = "nl" || LANG(?subClassOfLabel) = "")
+    }
+  }
+}
+ORDER BY
+  LCASE(STR(COALESCE(?label, "")))
+  STR(?class)

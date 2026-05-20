@@ -3,8 +3,8 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-_:696de21d1d614276aa662912c98809e010390 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010391 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017596 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017596 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0/documentatie/a83a0562-38c0-4dcc-9be2-6d8cd6ab87af> .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0/bronverwijzing/549fd8c5-7e3f-4e03-9f80-11b140ff4a7a> .
@@ -14,8 +14,7 @@ _:696de21d1d614276aa662912c98809e010391 <http://bp4mc2.org/lto#versienummer> "1.
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#naam> "NIAM" .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#omschrijving> "Natural language Information Analysis Method (NIAM) is een informatieanalyse- en datamodelleringmethode, ontwikkeld in de jaren zeventig door Sjir Nijssen en anderen. Kenmerkend is dat de analyse expliciet gebeurt door middel van uitspraken in gesproken taal, en dat de gebruikte modeltechniek verschilt van andere door het explicieter modelleren van rollen." .
-<https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010390 .
-<https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010391 .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017596 .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "NIAM"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/niam/v/1.0/bronverwijzing/549fd8c5-7e3f-4e03-9f80-11b140ff4a7a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .

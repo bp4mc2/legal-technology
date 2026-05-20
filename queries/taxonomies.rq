@@ -1,0 +1,18 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?collection ?label ?definition
+WHERE {
+  ?collection a skos:Collection .
+
+  OPTIONAL {
+    ?collection skos:prefLabel ?label .
+    FILTER(LANG(?label) = "nl" || LANG(?label) = "")
+  }
+
+  OPTIONAL {
+    ?collection skos:definition ?definition .
+    FILTER(LANG(?definition) = "nl" || LANG(?definition) = "")
+  }
+}
+ORDER BY LCASE(STR(COALESCE(?label, "")))

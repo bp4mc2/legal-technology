@@ -43,6 +43,99 @@ We onderscheiden de volgende juridische taken van wet naar loket, de taken op de
 
 Deze opsomming suggereert een bepaalde volgordelijkheid. Deze is er in de praktijk ook wel, maar hoeft niet zo hard te zijn. Zo is het al mogelijk om begrippen te definiëren zoals deze uit een wet in formele zin af te leiden zijn, terwijl op dat moment de onderliggende regelgeving nog niet beschikbaar is. Het opstellen van de tekst van deze onderliggende regelgeving zou dan pas na het definiëren van deze begrippen volgen (waarop mogelijk ook deze begrippen preciezer kunnen worden gedefinieerd).
 
+## Producten
+Elke taak zoals genoemd in [juridische taken](#juridische-taken) heeft informatie nodig, maar lever ook informatie. Deze informatie wordt in de vorm van producten geleverd. Binnen de typologie «product»  beschouwd als een verzameling van afgebakende informatie geleverd door een taak. Een «productt» kan als input dienen voor een volgende «taak». Een product heeft een [beschouwingsniveau](#beschouwingsniveau), dat aangeeft of het vrij vorm van specificatie heeft of uiteindelijk een uitvoerbare vorm.
+
+We onderscheiden in de levenscyclus van wet naar loket de volgende producten:
+| Product                                             | Definitie | Beschouwingsniveau | Input voor (taak/taakgroep)                              | Output van (taak/taakgroep)                         |
+|-----------------------------------------------------|----------|---------------------|----------------------------------------------------------|-----------------------------------------------------|
+| Regeltekst / beleidsregels                          |          |Tekstueel - juridisch vastgesteld| Opdrachtoriëntatie (TG1)                                 | Opstellen regeltekst - Normatief (TG1)              |
+| Serviceinformatie (annotaties)                      |          |Tekstueel - juridisch vastgesteld| Opdrachtoriëntatie (TG1), Analyseren regeltekst (TG2)    | Opstellen regeltekst - Normatief (TG1)              |
+| Teksten en commentaren                              |          |Tekstueel - interpretatie| Opdrachtoriëntatie (TG1)                                 | Opstellen regeltekst - Descriptief (TG1)            |
+| Scope / normatieve vragen                           |          |Tekstueel - interpretatie| Verzamelen bronmateriaal (TG1)                           | Opdrachtoriëntatie (TG1)                            |
+| Juridisch landschap                                |          |Tekstueel - interpretatie| Analyseren regeltekst (TG2)                              | Verzamelen bronmateriaal (TG1)                      |
+| Ordening / groepering / classificatie               |          |Semantisch - basis| Interpreteren en expliciteren (TG2)                      | Analyseren regeltekst (TG2)                         |
+| Input beleidsregels / instructie                    |          |Tekstueel - interpretatie| (Vaststellen ontbrekend uitvoeringsbeleid)               | Interpreteren en expliciteren (TG2)                 |
+| Bouwstenen voor modellen                            |          |Semantisch - detail| Begrippen, normen en handelingen definiëren (TG2)        | Interpreteren en expliciteren (TG2)                 |
+| Conceptueel model                                   |          |Semantisch - detail | Taakgroep 3 (TG3)                                        | Begrippen, normen en handelingen definiëren (TG2)   |
+| Logisch model                                       |          |Logisch| Taakgroep 4 (TG4)                                        | Specificeren gegevens(-behoefte) (TG3)              |
+| Regelmodel                                          |          |Logisch| Taakgroep 4 (TG4)                                        | Specificeren regels (TG3)                           |
+| Procesmodel                                         |          |Logisch| Taakgroep 4 (TG4)                                        | Specificeren processen (TG3)                        |
+| Uitvoeringsspecificaties                            |          |Ontologisch| Taakgroep 4 (TG4)                                        | Taakgroep 3 (TG3)                                   |
+| Correcte, juiste en uitvoerbare specificaties       |          |Logisch| Implementeren van specificaties (TG4)                    | Valideren/verifieren (TG4)                          |
+| Systeem waarbinnen regels worden uitgevoerd         |          |Technisch| Regeluitvoering (TG4)                                    | Implementeren van specificaties (TG4)               |
+| Besluit                                             |          |Tekstueel| Evaluatie beleid (TG5)                                   | Regeluitvoering (TG4)                               |
+
+
+Schematisch ziet de relatie tussen de taken en producten er als volgt uit: 
+
+```mermaid
+flowchart LR
+
+  %% ===== Taakgroepen/Taken =====
+
+  subgraph TG1["Taakgroep 1 - Tekstueel (juridisch / interpretatie)"]
+    subgraph TG1OR["Opstellen regeltekst"]
+        TG1ORA("Normatief")
+        TG1ORB("Descriptief (MvT/Commentaar/NvT)")
+    end
+    TG1OO("Opdrachtoriëntatie")
+    TG1VB("Verzamelen bronmateriaal")
+  end
+
+  subgraph TG2["Taagroep 2 - Analyse en interpretatie"]
+    TG2AR("Analyseren regeltekst")
+    TG2IE("Interpreteren en expliciteren")
+    TG2BD("Begrippen, normen en handelingen definiëren")
+  end
+
+  VOB(["(Vaststellen ontbrekend uitvoeringsbeleid)"])
+
+  subgraph TG3["Taakgroep 3 - Logisch / modellering"]
+    TG3SG("Specificeren gegevens(-behoefte)")
+    TG3SR("Specificeren regels")
+    TG3SP("Specificeren processen")
+  end
+
+  subgraph TG4["Taagroep 4 - Validatie en uitvoering"]
+    TG4VV("Valideren, verifieren specificaties in de context")
+    TG4IS("Implementeren van specificaties")
+    TG4RU("Regeluitvoering")
+  end
+
+  subgraph TG5["Evaluatie"]
+    TG5EB("Evaluatie beleid")
+  end
+
+
+  %% ===== RELATIES =====
+
+  TG1ORA -->|Regeltekst / beleidsregels| TG1OO
+  TG1ORA -->|"Serviceinformatie (annotaties)"| TG1OO
+  TG1ORA -->|"Serviceinformatie (annotaties)"| TG2AR
+  TG1ORB -->|Teksten en commentaren| TG1OO 
+
+  TG1OO -->|Scope / normatieve vragen| TG1VB
+  TG1VB -->|Juridisch landschap| TG2AR
+
+  TG2AR -->|Ordening / Groepering / classificatie| TG2IE
+  TG2IE -->|"Input voor beleidsregels / instructie (loop naar beleid opstellen)"| VOB
+  TG2IE -->|Bouwstenen voor modellen| TG2BD
+
+  %% TG2 -->|Bouwstenen voor modellen| TG3
+
+  TG2BD -->|Conceptueel model| TG3
+  TG3SG -->|Logisch model| TG4
+  TG3SR -->|Regelmodel| TG4
+  TG3SP -->|Procesmodel| TG4  
+  
+  TG3 -->|uitvoeringsspecificaties| TG4
+
+  TG4VV -->|Correcte, juiste en uitvoerbare specificaties| TG4IS
+  TG4IS -->|Systeem waarbinnen de regels worden uitgevoerd| TG4RU
+  TG4RU -->|Besluit| TG5
+```
+
 ## Beschrijving van de juridische technologie
 
 ![](informatiemodel.svg)

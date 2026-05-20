@@ -1,0 +1,32 @@
+## Organisaties
+
+Deze sectie bevat organisaties die optreden als beheerder of leverancier van juridische technologieën.
+
+{% if organisations %}
+Aantal organisaties: {{ organisations | length }}.
+
+### Overzicht
+
+| Organisatie | Contactinformatie |
+|---|---|
+{% for org in organisations %}
+| #{{ org.anchor }} | {{ org.contactinformatie | default('') }} |
+{% endfor %}
+
+### Organisaties
+
+{% for org in organisations %}
+### {{ org.naam | default(org.id) }} {{ "{#" }}{{ org.anchor }}{{ "}" }}
+
+| Kenmerk | Waarde |
+|---|---|
+| URI | `{{ org.uri }}` |
+{% if org.naam %}| Naam | {{ org.naam }} |
+{% endif %}{% if org.contactinformatie %}| Contactinformatie | {{ org.contactinformatie }} |
+{% endif %}
+
+{% endfor %}
+
+{% else %}
+Er zijn geen organisaties gevonden in de ABox.
+{% endif %}

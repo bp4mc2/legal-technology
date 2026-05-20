@@ -3,8 +3,8 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-_:696de21d1d614276aa662912c98809e010520 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010521 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017621 <http://bp4mc2.org/lto#versienummer> "1.0" .
+_:696de21d1d614276aa662912c98809e017621 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#beschrijving> <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0/documentatie/c32ea044-82bb-4119-94a4-39a1fc56c5c4> .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#bijgewerktOp> "2026-04-14"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0/bronverwijzing/8830f789-fbfb-487f-8471-4bfad41cd19f> .
@@ -15,8 +15,7 @@ _:696de21d1d614276aa662912c98809e010521 <http://bp4mc2.org/lto#versienummer> "1.
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#OpenOnderVoorwaarden> .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#naam> "UML" .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#omschrijving> "De Unified Modeling Language (UML) is een algemene, objectgeoriënteerde, visuele modelleertaal waarmee de architectuur en het ontwerp van een systeem inzichtelijk kunnen worden gemaakt, vergelijkbaar met een blauwdruk. UML bevat notaties voor verschillende typen diagrammen die zich richten op onder andere gedrag, interactie en structuur." .
-<https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010520 .
-<https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010521 .
+<https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017621 .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0> <http://www.w3.org/2000/01/rdf-schema#label> "UML"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/uml/v/1.0/bronverwijzing/8830f789-fbfb-487f-8471-4bfad41cd19f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .

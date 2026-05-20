@@ -3,29 +3,26 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-_:696de21d1d614276aa662912c98809e010119 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010120 <http://bp4mc2.org/lto#beoogdGebruik> "ELI is bedoeld voor officiële juridische publicatiesystemen, EU-instellingen en lidstaten om wetgeving duurzaam, uniform en machineleesbaar te identificeren en publiceren. Primaire gebruikers van het ELI-model zijn officiële juridische uitgevers van EU-lidstaten, maar het model kan ook door andere organisaties worden gebruikt" .
-_:696de21d1d614276aa662912c98809e010121 <http://bp4mc2.org/lto#toegevoegdeWaarde> "ELI verbetert vindbaarheid, interoperabiliteit, hergebruik en koppeling van wetgeving over grenzen en systemen heen. Het maakt wetgeving geschikt voor linked data, kennisgrafen, metadata-uitwisseling en geautomatiseerde verwerking." .
-_:696de21d1d614276aa662912c98809e010122 <http://bp4mc2.org/lto#onderdelen> "1) web identifiers / HTTP-URI’s voor juridische informatie, 2) metadata-elementen/ontology om wetgeving te beschrijven, en 3) machineleesbare uitwisselformaten voor wetgevingsdata" .
 _:696de21d1d614276aa662912c98809e010262 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010263 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Tekstueel> .
 _:696de21d1d614276aa662912c98809e010264 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
 _:696de21d1d614276aa662912c98809e010265 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010266 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
 _:696de21d1d614276aa662912c98809e010267 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
-_:696de21d1d614276aa662912c98809e010584 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010585 <http://bp4mc2.org/lto#versienummer> "1.5" .
-_:696de21d1d614276aa662912c98809e010586 <http://bp4mc2.org/lto#versiedatum> "2024-03-21"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017640 <http://bp4mc2.org/lto#versiedatum> "2024-03-21"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017640 <http://bp4mc2.org/lto#versienummer> "1.5" .
+_:696de21d1d614276aa662912c98809e017640 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017692 <http://bp4mc2.org/lto#beoogdGebruik> "ELI is bedoeld voor officiële juridische publicatiesystemen, EU-instellingen en lidstaten om wetgeving duurzaam, uniform en machineleesbaar te identificeren en publiceren. Primaire gebruikers van het ELI-model zijn officiële juridische uitgevers van EU-lidstaten, maar het model kan ook door andere organisaties worden gebruikt"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017692 <http://bp4mc2.org/lto#onderdelen> "1) web identifiers / HTTP-URI’s voor juridische informatie, 2) metadata-elementen/ontology om wetgeving te beschrijven, en 3) machineleesbare uitwisselformaten voor wetgevingsdata"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017692 <http://bp4mc2.org/lto#toegevoegdeWaarde> "ELI verbetert vindbaarheid, interoperabiliteit, hergebruik en koppeling van wetgeving over grenzen en systemen heen. Het maakt wetgeving geschikt voor linked data, kennisgrafen, metadata-uitwisseling en geautomatiseerde verwerking."^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017692 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/f9f140f4-48f1-448d-8ef2-e02c14031da8> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Juristen> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Regelanalist> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Wetgevers> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#bijgewerktOp> "2026-05-17"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010119 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010120 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010121 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010122 .
+<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017692 .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ComplianceOndersteuning> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
@@ -40,14 +37,12 @@ _:696de21d1d614276aa662912c98809e010586 <http://bp4mc2.org/lto#versiedatum> "202
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010265 .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010266 .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010267 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010584 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010585 .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010586 .
+<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017640 .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5> <http://www.w3.org/2000/01/rdf-schema#label> "ELI"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> <http://purl.org/dc/terms/title> "ELI - European Legislation Identifier" .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> <http://xmlns.com/foaf/0.1/page> "https://eur-lex.europa.eu/content/help/eurlex-content/eli.html?locale=en" .
+<https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/bronverwijzing/0a7dc1de-388e-4019-a4dd-cc1599ac5de3> <http://xmlns.com/foaf/0.1/page> "https://eur-lex.europa.eu/content/help/eurlex-content/eli.html?locale=en"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/taakinvulling/42e363ec-1d4e-4288-b600-f1c6baebaa7f> <http://bp4mc2.org/lto#omschrijving> "Bij het opstellen van de regeltekst dient rekening gehouden te worden met verwijzingen middels ELI" .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/taakinvulling/42e363ec-1d4e-4288-b600-f1c6baebaa7f> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#OpstellenRegeltekst> .
 <https://data.bp4mc2.org/id/lto/legaltech/eli/v/1.5/taakinvulling/42e363ec-1d4e-4288-b600-f1c6baebaa7f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

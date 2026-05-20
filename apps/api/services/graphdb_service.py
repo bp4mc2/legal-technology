@@ -438,6 +438,9 @@ def _sync_organisation_bundles(organisation_iris):
 
 
 def _sync_exports_after_legal_technology_change(current_id=None, deleted_id=None, organisation_iris=None):
+    _compact_fragmented_blank_nodes()
+    _normalize_bronverwijzing_page_anyuri()
+    _normalize_documentatie_markdown_literals()
     aggregate_path, _ = _sync_full_named_graph_export()
     bundle_path = None
     if deleted_id:
@@ -494,13 +497,215 @@ def _migrate_property_iri_nodes_to_blank_nodes(predicate):
         }}
         WHERE {{
             GRAPH <{_GRAPH_URI}> {{
-                VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
-                ?tech a ?subtypeClass ;
-                            lto:{predicate} ?oldNode .
-                FILTER(isIRI(?oldNode))
-                FILTER(STRSTARTS(STR(?oldNode), CONCAT(STR(?tech), '/')))
+                {{
+                    SELECT DISTINCT ?tech ?oldNode ?newNode WHERE {{
+                        VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
+                        ?tech a ?subtypeClass ;
+                                    lto:{predicate} ?oldNode .
+                        FILTER(isIRI(?oldNode))
+                        FILTER(STRSTARTS(STR(?oldNode), CONCAT(STR(?tech), '/')))
+                        BIND(BNODE() AS ?newNode)
+                    }}
+                }}
                 ?oldNode ?cp ?co .
-                BIND(BNODE() AS ?newNode)
+            }}
+        }}
+        '''
+        sparql_update(update, graph_uri=_GRAPH_URI)
+
+
+def _compact_fragmented_blank_nodes():
+    """Merge fragmented blank nodes produced by legacy migrations into one logical node."""
+    # versiebeschrijving has maxCount 1 on JuridischeTechnologie: merge multiple blank nodes per tech.
+    merge_versie = f'''
+        PREFIX lto: <http://bp4mc2.org/lto#>
+        DELETE {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?tech lto:versiebeschrijving ?old .
+                ?old ?p ?o .
+            }}
+        }}
+        INSERT {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?tech lto:versiebeschrijving ?merged .
+                ?merged ?p ?o .
+            }}
+        }}
+        WHERE {{
+            GRAPH <{_GRAPH_URI}> {{
+                {{
+                    SELECT ?tech (BNODE() AS ?merged) WHERE {{
+                        VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
+                        ?tech a ?subtypeClass ; lto:versiebeschrijving ?node .
+                    }}
+                    GROUP BY ?tech
+                    HAVING(COUNT(DISTINCT ?node) > 1)
+                }}
+                ?tech lto:versiebeschrijving ?old .
+                ?old ?p ?o .
+            }}
+        }}
+    '''
+
+    # documentatie has maxCount 1 on JuridischeTechnologie: merge multiple blank nodes per tech.
+    merge_documentatie = f'''
+        PREFIX lto: <http://bp4mc2.org/lto#>
+        DELETE {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?tech lto:documentatie ?old .
+                ?old ?p ?o .
+            }}
+        }}
+        INSERT {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?tech lto:documentatie ?merged .
+                ?merged ?p ?o .
+            }}
+        }}
+        WHERE {{
+            GRAPH <{_GRAPH_URI}> {{
+                {{
+                    SELECT ?tech (BNODE() AS ?merged) WHERE {{
+                        VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
+                        ?tech a ?subtypeClass ; lto:documentatie ?node .
+                    }}
+                    GROUP BY ?tech
+                    HAVING(COUNT(DISTINCT ?node) > 1)
+                }}
+                ?tech lto:documentatie ?old .
+                ?old ?p ?o .
+            }}
+        }}
+    '''
+
+    # ondersteuningVoor can be multi-valued. Only merge obvious split cases
+    # where a technology has multiple nodes but at most one distinct beschouwingsniveau/modelsoort.
+    merge_ondersteuning = f'''
+        PREFIX lto: <http://bp4mc2.org/lto#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        DELETE {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?tech lto:ondersteuningVoor ?old .
+                ?old ?p ?o .
+            }}
+        }}
+        INSERT {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?tech lto:ondersteuningVoor ?merged .
+                ?merged ?p ?o .
+            }}
+        }}
+        WHERE {{
+            GRAPH <{_GRAPH_URI}> {{
+                {{
+                    SELECT ?tech (BNODE() AS ?merged) WHERE {{
+                        VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
+                        ?tech a ?subtypeClass ; lto:ondersteuningVoor ?node .
+                        OPTIONAL {{ ?node lto:beschouwingsniveau ?besch . }}
+                        OPTIONAL {{ ?node lto:modelsoort ?model . }}
+                    }}
+                    GROUP BY ?tech
+                    HAVING(
+                        COUNT(DISTINCT ?node) > 1 &&
+                        COUNT(DISTINCT ?besch) <= 1 &&
+                        COUNT(DISTINCT ?model) <= 1
+                    )
+                }}
+                ?tech lto:ondersteuningVoor ?old .
+                ?old ?p ?o .
+                FILTER(
+                    ?p = rdf:type ||
+                    ?p = lto:beschouwingsniveau ||
+                    ?p = lto:modelsoort
+                )
+            }}
+        }}
+    '''
+
+    sparql_update(merge_versie, graph_uri=_GRAPH_URI)
+    sparql_update(merge_documentatie, graph_uri=_GRAPH_URI)
+    sparql_update(merge_ondersteuning, graph_uri=_GRAPH_URI)
+
+
+def _fix_typo_taaktype_iris():
+    """Replace the historically misspelled ltt:GeautomatitseerdeRegeluitvoering with the correct IRI."""
+    typo_iri = 'http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering'
+    correct_iri = 'http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering'
+    update = f'''
+    DELETE {{
+      GRAPH <{_GRAPH_URI}> {{ ?s <http://bp4mc2.org/lto#taaktype> <{typo_iri}> . }}
+    }}
+    INSERT {{
+      GRAPH <{_GRAPH_URI}> {{ ?s <http://bp4mc2.org/lto#taaktype> <{correct_iri}> . }}
+    }}
+    WHERE {{
+      GRAPH <{_GRAPH_URI}> {{ ?s <http://bp4mc2.org/lto#taaktype> <{typo_iri}> . }}
+    }}
+    '''
+    sparql_update(update, graph_uri=_GRAPH_URI)
+    # Return count of affected triples by checking the correct IRI now exists
+    sparql = f'''
+    SELECT (COUNT(?s) AS ?count) WHERE {{
+      GRAPH <{_GRAPH_URI}> {{ ?s <http://bp4mc2.org/lto#taaktype> <{correct_iri}> . }}
+    }}
+    '''
+    try:
+        result = sparql_query(sparql)
+        bindings = result.get('results', {}).get('bindings', [])
+        return int(bindings[0].get('count', {}).get('value', 0)) if bindings else 0
+    except Exception:
+        return 0
+
+
+def _normalize_bronverwijzing_page_anyuri():
+        """Ensure foaf:page on lto:Bronverwijzing is stored as xsd:anyURI literal."""
+        update = f'''
+        PREFIX lto: <http://bp4mc2.org/lto#>
+        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        DELETE {{
+            GRAPH <{_GRAPH_URI}> {{ ?bron foaf:page ?value . }}
+        }}
+        INSERT {{
+            GRAPH <{_GRAPH_URI}> {{ ?bron foaf:page ?anyuri . }}
+        }}
+        WHERE {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?bron a lto:Bronverwijzing ;
+                            foaf:page ?value .
+                FILTER(isLiteral(?value))
+                FILTER(DATATYPE(?value) != xsd:anyURI)
+                FILTER(REGEX(STR(?value), "^[A-Za-z][A-Za-z0-9+.-]*://"))
+                BIND(STRDT(STR(?value), xsd:anyURI) AS ?anyuri)
+            }}
+        }}
+        '''
+        sparql_update(update, graph_uri=_GRAPH_URI)
+
+
+def _normalize_documentatie_markdown_literals():
+    """Ensure markdown-valued lto:Documentatie fields are stored as xsd:markdown literals."""
+    for predicate in [
+        'beoogdGebruik',
+        'toegevoegdeWaarde',
+        'onderdelen',
+        'ontwikkelingEnBeheer',
+    ]:
+        update = f'''
+        PREFIX lto: <http://bp4mc2.org/lto#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        DELETE {{
+            GRAPH <{_GRAPH_URI}> {{ ?doc lto:{predicate} ?value . }}
+        }}
+        INSERT {{
+            GRAPH <{_GRAPH_URI}> {{ ?doc lto:{predicate} ?markdown . }}
+        }}
+        WHERE {{
+            GRAPH <{_GRAPH_URI}> {{
+                ?doc lto:{predicate} ?value .
+                FILTER(isLiteral(?value))
+                FILTER(DATATYPE(?value) != xsd:markdown)
+                BIND(STRDT(STR(?value), xsd:markdown) AS ?markdown)
             }}
         }}
         '''
@@ -508,37 +713,45 @@ def _migrate_property_iri_nodes_to_blank_nodes(predicate):
 
 
 def migrate_legal_technology_blank_nodes(sync_exports=True):
-        """
-        Migrate legacy IRI nodes to blank nodes for nodeKind-constrained properties:
-        - lto:documentatie
-        - lto:ondersteuningVoor
-        - lto:versiebeschrijving
-        """
-        predicates = ['documentatie', 'ondersteuningVoor', 'versiebeschrijving']
-        before = {predicate: _count_legacy_iri_nodes_for_property(predicate) for predicate in predicates}
+    """
+    Migrate legacy IRI nodes to blank nodes for nodeKind-constrained properties:
+    - lto:documentatie
+    - lto:ondersteuningVoor
+    - lto:versiebeschrijving
+    Also fixes the historical typo IRI for GeautomatiseerdeRegeluitvoering.
+    """
+    predicates = ['documentatie', 'ondersteuningVoor', 'versiebeschrijving']
+    before = {predicate: _count_legacy_iri_nodes_for_property(predicate) for predicate in predicates}
 
-        _migrate_property_iri_nodes_to_blank_nodes('documentatie')
-        _migrate_property_iri_nodes_to_blank_nodes('ondersteuningVoor')
-        _migrate_property_iri_nodes_to_blank_nodes('versiebeschrijving')
+    _migrate_property_iri_nodes_to_blank_nodes('documentatie')
+    _migrate_property_iri_nodes_to_blank_nodes('ondersteuningVoor')
+    _migrate_property_iri_nodes_to_blank_nodes('versiebeschrijving')
+    _compact_fragmented_blank_nodes()
+    taaktype_fixed = _fix_typo_taaktype_iris()
 
-        after = {predicate: _count_legacy_iri_nodes_for_property(predicate) for predicate in predicates}
-        migrated = {predicate: max(before[predicate] - after[predicate], 0) for predicate in predicates}
+    after = {predicate: _count_legacy_iri_nodes_for_property(predicate) for predicate in predicates}
+    migrated = {predicate: max(before[predicate] - after[predicate], 0) for predicate in predicates}
 
-        exports_result = None
-        if sync_exports:
-                exports_result = sync_named_graph_exports()
+    exports_result = None
+    if sync_exports:
+        exports_result = sync_named_graph_exports()
 
-        return {
-                'before': before,
-                'after': after,
-                'migrated': migrated,
-                'sync_exports': bool(sync_exports),
-                'exports': exports_result,
-        }
+    return {
+        'before': before,
+        'after': after,
+        'migrated': migrated,
+        'taaktype_iri_fixed': taaktype_fixed,
+        'sync_exports': bool(sync_exports),
+        'exports': exports_result,
+    }
 
 
 def sync_named_graph_exports():
     from .organisation_service import export_organisation_turtle, list_organisations
+
+    _compact_fragmented_blank_nodes()
+    _normalize_bronverwijzing_page_anyuri()
+    _normalize_documentatie_markdown_literals()
 
     aggregate_path, _ = _sync_full_named_graph_export()
     tech_ids = [item.get('id') for item in search_legal_technologies('') if item.get('id')]
@@ -684,7 +897,7 @@ def add_legal_technology(data, sync_exports=True):
                 'Specificeren regels': '<http://bp4mc2.org/ltt#SpecificerenRegels>',
                 'Specificeren processen': '<http://bp4mc2.org/ltt#SpecificerenProcessen>',
                 'Valideren specificaties': '<http://bp4mc2.org/ltt#ValiderenSpecificaties>',
-                'Geautomatiseerde regeluitvoering': '<http://bp4mc2.org/ltt#GeautomatitseerdeRegeluitvoering>',
+                'Geautomatiseerde regeluitvoering': '<http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering>',
                 'Beslisondersteuning': '<http://bp4mc2.org/ltt#Beslisondersteuning>',
                 'Evaluatie': '<http://bp4mc2.org/ltt#Evaluatie>'
             },
@@ -826,13 +1039,13 @@ def add_legal_technology(data, sync_exports=True):
     if doc and doc_node:
         doc_triples.append(f'{doc_node} a <http://bp4mc2.org/lto#Documentatie> .')
         if doc.get("beoogdGebruik"):
-            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#beoogdGebruik> "{doc.get("beoogdGebruik")}" .')
+            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#beoogdGebruik> "{doc.get("beoogdGebruik")}"^^<http://www.w3.org/2001/XMLSchema#markdown> .')
         if doc.get("toegevoegdeWaarde"):
-            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#toegevoegdeWaarde> "{doc.get("toegevoegdeWaarde")}" .')
+            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#toegevoegdeWaarde> "{doc.get("toegevoegdeWaarde")}"^^<http://www.w3.org/2001/XMLSchema#markdown> .')
         if doc.get("onderdelen"):
-            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#onderdelen> "{doc.get("onderdelen")}" .')
+            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#onderdelen> "{doc.get("onderdelen")}"^^<http://www.w3.org/2001/XMLSchema#markdown> .')
         if doc.get("ontwikkelingEnBeheer"):
-            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#ontwikkelingEnBeheer> "{doc.get("ontwikkelingEnBeheer")}" .')
+            doc_triples.append(f'{doc_node} <http://bp4mc2.org/lto#ontwikkelingEnBeheer> "{doc.get("ontwikkelingEnBeheer")}"^^<http://www.w3.org/2001/XMLSchema#markdown> .')
     # Add triples for bronverwijzing
     bron_triples = []
     for i, bron in enumerate(data.get("bronverwijzing", [])):

@@ -1,0 +1,29 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX lto:  <http://bp4mc2.org/lto#>
+
+SELECT
+  ?tech
+  ?relatie
+  ?typeRelatieLabel
+  ?beschrijvingRelatie
+  ?gerelateerdeTechnologie
+  ?gerelateerdeTechnologieNaam
+WHERE {
+  ?tech lto:relatie ?relatie .
+
+  OPTIONAL {
+    ?relatie lto:typeRelatie ?typeRelatie .
+    OPTIONAL {
+      ?typeRelatie skos:prefLabel ?typeRelatieLabel .
+      FILTER(LANG(?typeRelatieLabel) = "nl" || LANG(?typeRelatieLabel) = "")
+    }
+  }
+
+  OPTIONAL { ?relatie lto:beschrijvingRelatie ?beschrijvingRelatie . }
+
+  OPTIONAL {
+    ?relatie lto:gerelateerdeTechnologie ?gerelateerdeTechnologie .
+    OPTIONAL { ?gerelateerdeTechnologie lto:naam ?gerelateerdeTechnologieNaam . }
+  }
+}
+ORDER BY ?tech LCASE(STR(COALESCE(?typeRelatieLabel, ""))) LCASE(STR(COALESCE(?gerelateerdeTechnologieNaam, "")))

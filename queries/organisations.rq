@@ -1,0 +1,10 @@
+PREFIX lto: <http://bp4mc2.org/lto#>
+
+SELECT ?organisation ?naam ?contactinformatie
+WHERE {
+  ?organisation a lto:Organisatie .
+
+  OPTIONAL { ?organisation lto:naamOrganisatie ?naam . }
+  OPTIONAL { ?organisation lto:contactinformatie ?contactinformatie . }
+    }
+ORDER BY LCASE(STR(COALESCE(?naam, "")))

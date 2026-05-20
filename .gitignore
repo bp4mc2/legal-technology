@@ -1,2 +1,5 @@
 libs
 pipeline/*.ttl
+.erwin
+exports
+temp

@@ -14,6 +14,16 @@ ltt:BegrippenkaderTaken a skos:ConceptScheme;
 .
 
 ##
+## Bovenliggend begrip
+##
+ltt:Taak a skos:Concept;
+  rdfs:label "Taak"@nl;
+  skos:prefLabel "Taak"@nl;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  skos:definition "Een taak is een activiteit die wordt uitgevoerd als onderdeel van het juridisch werkproces"@nl;
+.
+
+##
 ## Taken
 ##
 ltt:OpstellenRegeltekst a skos:Concept;
@@ -85,6 +95,24 @@ ltt:SpecificerenProcessen a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Specificeren processen"@nl;
   skos:prefLabel "Specificeren processen"@nl;
+.
+
+ltt:LogischModelOpstellen a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  rdfs:label "Logisch model opstellen"@nl;
+  skos:prefLabel "Logisch model opstellen"@nl;
+.
+
+ltt:RegelmodelOpstellen a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  rdfs:label "Regelmodel opstellen"@nl;
+  skos:prefLabel "Regelmodel opstellen"@nl;
+.
+
+ltt:ProcesmodelOpstellen a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  rdfs:label "Procesmodel opstellen"@nl;
+  skos:prefLabel "Procesmodel opstellen"@nl;
 .
 
 ltt:ValiderenSpecificaties a skos:Concept;

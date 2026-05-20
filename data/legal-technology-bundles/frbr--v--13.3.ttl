@@ -3,19 +3,19 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-_:696de21d1d614276aa662912c98809e010135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:696de21d1d614276aa662912c98809e010136 <http://bp4mc2.org/lto#beoogdGebruik> "- Structureren van informatieobjecten en metadata\n- Ondersteunen van informatieontsluiting (zoek-, selectie- en toegangstaken)\n- Modelleren van relaties tussen versies en verschijningsvormen van documenten\n- In juridische context: modelleren van wetgeving, versies en componenten" .
-_:696de21d1d614276aa662912c98809e010137 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidige modellering van informatieobjecten, Betere vindbaarheid" .
-_:696de21d1d614276aa662912c98809e010138 <http://bp4mc2.org/lto#onderdelen> "Groep 1: Work, Expression, Manifestation, Item (WEMI), Groep 2: persoon, organisatie (actoren), Groep 3: concept, object, gebeurtenis, plaats" .
 _:696de21d1d614276aa662912c98809e010289 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010290 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
 _:696de21d1d614276aa662912c98809e010291 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
 _:696de21d1d614276aa662912c98809e010292 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 _:696de21d1d614276aa662912c98809e010293 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Ontologisch> .
 _:696de21d1d614276aa662912c98809e010294 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
-_:696de21d1d614276aa662912c98809e010596 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:696de21d1d614276aa662912c98809e010597 <http://bp4mc2.org/lto#versienummer> "13.3" .
-_:696de21d1d614276aa662912c98809e010598 <http://bp4mc2.org/lto#versiedatum> "2008-11-15"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017644 <http://bp4mc2.org/lto#versiedatum> "2008-11-15"^^<http://www.w3.org/2001/XMLSchema#date> .
+_:696de21d1d614276aa662912c98809e017644 <http://bp4mc2.org/lto#versienummer> "13.3" .
+_:696de21d1d614276aa662912c98809e017644 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:696de21d1d614276aa662912c98809e017696 <http://bp4mc2.org/lto#beoogdGebruik> "- Structureren van informatieobjecten en metadata\n- Ondersteunen van informatieontsluiting (zoek-, selectie- en toegangstaken)\n- Modelleren van relaties tussen versies en verschijningsvormen van documenten\n- In juridische context: modelleren van wetgeving, versies en componenten"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017696 <http://bp4mc2.org/lto#onderdelen> "Groep 1: Work, Expression, Manifestation, Item (WEMI), Groep 2: persoon, organisatie (actoren), Groep 3: concept, object, gebeurtenis, plaats"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017696 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Eenduidige modellering van informatieobjecten, Betere vindbaarheid"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:696de21d1d614276aa662912c98809e017696 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/91bad084-f0ef-40d6-b929-8fa2fa919b2b> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Beleidsmedewerkers> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Regelanalist> .
@@ -23,10 +23,7 @@ _:696de21d1d614276aa662912c98809e010598 <http://bp4mc2.org/lto#versiedatum> "200
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010135 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010136 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010137 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e010138 .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#documentatie> _:696de21d1d614276aa662912c98809e017696 .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#ZoekenWetgeving> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
@@ -42,20 +39,18 @@ _:696de21d1d614276aa662912c98809e010598 <http://bp4mc2.org/lto#versiedatum> "200
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010292 .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010293 .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#ondersteuningVoor> _:696de21d1d614276aa662912c98809e010294 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010596 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010597 .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e010598 .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://bp4mc2.org/lto#versiebeschrijving> _:696de21d1d614276aa662912c98809e017644 .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Standaard> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3> <http://www.w3.org/2000/01/rdf-schema#label> "FRBR"@nl .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> <http://purl.org/dc/terms/title> "FLA Bibliographic Conceptual Models" .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> <http://xmlns.com/foaf/0.1/page> "https://www.ifla.org/ifla-s-bibliographic-conceptual-models" .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/38b77c71-61b7-45c5-a6db-6bd23f311871> <http://xmlns.com/foaf/0.1/page> "https://www.ifla.org/ifla-s-bibliographic-conceptual-models"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> <http://purl.org/dc/terms/title> "FRBR Model – Library of Congress" .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> <http://xmlns.com/foaf/0.1/page> "https://www.loc.gov/catdir/cpso/frbreng.pdf" .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/8e166835-a517-4679-80af-b5c17faecbd2> <http://xmlns.com/foaf/0.1/page> "https://www.loc.gov/catdir/cpso/frbreng.pdf"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> <http://purl.org/dc/terms/title> "Functional Requirements for Bibliographic Records – Wikipedia" .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> <http://xmlns.com/foaf/0.1/page> "https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records" .
+<https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/bronverwijzing/e623408b-1eca-4269-bc79-91a914ebf0f1> <http://xmlns.com/foaf/0.1/page> "https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/taakinvulling/3d139882-f530-4e7c-a0b9-71bce0e1b89f> <http://bp4mc2.org/lto#omschrijving> "expliciteren van verschillende verschijningsvormen van regels" .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/taakinvulling/3d139882-f530-4e7c-a0b9-71bce0e1b89f> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
 <https://data.bp4mc2.org/id/lto/legaltech/frbr/v/13.3/taakinvulling/3d139882-f530-4e7c-a0b9-71bce0e1b89f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

@@ -1,0 +1,19 @@
+<section id="{{ taxonomy.anchor }}">
+
+## {{ taxonomy.label | default(taxonomy.id) }}
+
+{% if taxonomy.definition %}
+{{ taxonomy.definition }}
+{% endif %}
+
+{% if taxonomy.members %}
+| Waarde | Definitie |
+|---|---|
+{% for member in taxonomy.members %}
+| {{ member.label | default(member.id) }} | {{ member.definition | default('') }} |
+{% endfor %}
+{% else %}
+_Geen waarden gevonden._
+{% endif %}
+
+</section>

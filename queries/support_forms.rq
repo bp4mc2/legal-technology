@@ -1,0 +1,34 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX lto:  <http://bp4mc2.org/lto#>
+
+SELECT
+  ?tech
+  ?support
+  ?beschouwingsniveau
+  ?beschouwingsniveauLabel
+  ?modelsoort
+  ?modelsoortLabel
+WHERE {
+  ?tech lto:ondersteuningVoor ?support .
+
+  OPTIONAL {
+    ?support lto:beschouwingsniveau ?beschouwingsniveau .
+    OPTIONAL {
+      ?beschouwingsniveau skos:prefLabel ?beschouwingsniveauLabel .
+      FILTER(LANG(?beschouwingsniveauLabel) = "nl" || LANG(?beschouwingsniveauLabel) = "")
+    }
+  }
+
+  OPTIONAL {
+    ?support lto:modelsoort ?modelsoort .
+    OPTIONAL {
+      ?modelsoort skos:prefLabel ?modelsoortLabel .
+      FILTER(LANG(?modelsoortLabel) = "nl" || LANG(?modelsoortLabel) = "")
+    }
+  }
+}
+
+ORDER BY
+  STR(?tech)
+  LCASE(STR(COALESCE(?beschouwingsniveauLabel, "")))
+  LCASE(STR(COALESCE(?modelsoortLabel, "")))

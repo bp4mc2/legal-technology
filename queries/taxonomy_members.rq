@@ -1,0 +1,22 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT
+  ?collection
+  ?member
+  ?label
+  ?definition
+WHERE {
+  ?collection a skos:Collection ;
+              skos:member ?member .
+
+  OPTIONAL {
+    ?member skos:prefLabel ?label .
+    FILTER(LANG(?label) = "nl" || LANG(?label) = "")
+  }
+
+  OPTIONAL {
+    ?member skos:definition ?definition .
+    FILTER(LANG(?definition) = "nl" || LANG(?definition) = "")
+  }
+}
+ORDER BY ?collection LCASE(STR(COALESCE(?label, "")))

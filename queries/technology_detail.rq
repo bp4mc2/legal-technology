@@ -1,0 +1,87 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX lto:  <http://bp4mc2.org/lto#>
+
+SELECT
+  ?tech
+  ?naam
+  ?type
+  ?typeLabel
+  ?omschrijving
+  ?gebruiksstatusLabel
+  ?licentievormLabel
+  ?bijgewerktOp
+  ?beheerder
+  ?beheerderNaam
+  ?leverancier
+  ?leverancierNaam
+  ?normstatusLabel
+  ?typeTechnologieLabel
+  ?versienummer
+  ?versiedatum
+  ?beoogdGebruik
+  ?toegevoegdeWaarde
+  ?onderdelen
+  ?ontwikkelingEnBeheer
+WHERE {
+  ?tech a ?type .
+
+  VALUES ?type {
+    lto:JuridischeTechnologie
+    lto:Methode
+    lto:Standaard
+    lto:Tool
+  }
+
+  OPTIONAL { ?type rdfs:label ?typeLabel . FILTER(LANG(?typeLabel) = "nl" || LANG(?typeLabel) = "") }
+
+  OPTIONAL { ?tech lto:naam ?naam . }
+  OPTIONAL { ?tech lto:omschrijving ?omschrijving . }
+  OPTIONAL { ?tech lto:bijgewerktOp ?bijgewerktOp . }
+
+  OPTIONAL {
+    ?tech lto:gebruiksstatus ?gebruiksstatus .
+    OPTIONAL { ?gebruiksstatus skos:prefLabel ?gebruiksstatusLabel . FILTER(LANG(?gebruiksstatusLabel) = "nl" || LANG(?gebruiksstatusLabel) = "") }
+  }
+
+  OPTIONAL {
+    ?tech lto:licentievorm ?licentievorm .
+    OPTIONAL { ?licentievorm skos:prefLabel ?licentievormLabel . FILTER(LANG(?licentievormLabel) = "nl" || LANG(?licentievormLabel) = "") }
+  }
+
+  OPTIONAL {
+    ?tech lto:beheerder ?beheerder .
+    OPTIONAL { ?beheerder lto:naamOrganisatie ?beheerderNaam . }
+  }
+
+  OPTIONAL {
+    ?tech lto:leverancier ?leverancier .
+    OPTIONAL { ?leverancier lto:naamOrganisatie ?leverancierNaam . }
+  }
+
+  OPTIONAL {
+    ?tech lto:normstatus ?normstatus .
+    OPTIONAL { ?normstatus skos:prefLabel ?normstatusLabel . FILTER(LANG(?normstatusLabel) = "nl" || LANG(?normstatusLabel) = "") }
+  }
+
+  OPTIONAL {
+    ?tech lto:typeTechnologie ?typeTechnologie .
+    OPTIONAL { ?typeTechnologie skos:prefLabel ?typeTechnologieLabel . FILTER(LANG(?typeTechnologieLabel) = "nl" || LANG(?typeTechnologieLabel) = "") }
+  }
+
+  OPTIONAL {
+    ?tech lto:versiebeschrijving ?versie .
+    OPTIONAL { ?versie lto:versienummer ?versienummer . }
+    OPTIONAL { ?versie lto:versiedatum ?versiedatum . }
+  }
+
+  OPTIONAL {
+    ?tech lto:documentatie ?doc .
+    OPTIONAL { ?doc lto:beoogdGebruik ?beoogdGebruik . }
+    OPTIONAL { ?doc lto:toegevoegdeWaarde ?toegevoegdeWaarde . }
+    OPTIONAL { ?doc lto:onderdelen ?onderdelen . }
+    OPTIONAL { ?doc lto:ontwikkelingEnBeheer ?ontwikkelingEnBeheer . }
+  }
+}
+ORDER BY LCASE(STR(COALESCE(?naam, "")))

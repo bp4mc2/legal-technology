@@ -1,0 +1,104 @@
+<section id="{{ tech.anchor }}">
+
+## {{ tech.naam | default(tech.id) }}
+
+{% if tech.omschrijving %}
+{{ tech.omschrijving }}
+{% endif %}
+
+| Kenmerk | Waarde |
+|---|---|
+| URI | `{{ tech.uri }}` |
+| Type | {{ tech.typeLabel | default('') }} |
+{% if tech.gebruiksstatusLabel %}| Gebruiksstatus | {{ tech.gebruiksstatusLabel }} |
+{% endif %}{% if tech.licentievormLabel %}| Licentievorm | {{ tech.licentievormLabel }} |
+{% endif %}{% if tech.bijgewerktOp %}| Bijgewerkt op | {{ tech.bijgewerktOp }} |
+{% endif %}{% if tech.versienummer %}| Versienummer | {{ tech.versienummer }} |
+{% endif %}{% if tech.versiedatum %}| Versiedatum | {{ tech.versiedatum }} |
+{% endif %}{% if tech.beheerderNaam %}| Beheerder | {{ tech.beheerderNaam }} |
+{% endif %}{% if tech.leverancierNaam %}| Leverancier | {{ tech.leverancierNaam }} |
+{% endif %}{% if tech.normstatusLabel %}| Normstatus | {{ tech.normstatusLabel }} |
+{% endif %}{% if tech.typeTechnologieLabel %}| Type technologie | {{ tech.typeTechnologieLabel }} |
+{% endif %}
+
+{% if tech.functionaliteiten %}
+### Geboden functionaliteit
+
+{% for item in tech.functionaliteiten %}
+- {{ item.label }}
+{% endfor %}
+{% endif %}
+
+{% if tech.gebruikersgroepen %}
+### Beoogde gebruikers
+
+{% for item in tech.gebruikersgroepen %}
+- {{ item.label }}
+{% endfor %}
+{% endif %}
+
+{% if tech.ondersteuningsvormen %}
+### Ondersteuning voor
+
+| Beschouwingsniveau | Modelsoort |
+|---|---|
+{% for item in tech.ondersteuningsvormen %}
+| {{ item.beschouwingsniveauLabel | default('') }} | {{ item.modelsoortLabel | default('') }} |
+{% endfor %}
+{% endif %}
+
+{% if tech.taken %}
+### Geschikt voor taak
+
+{% for taak in tech.taken %}
+- **{{ taak.taaktypeLabel or taak.taaktype or 'Taak' }}**{% if taak.omschrijving %}: {{ taak.omschrijving }}{% endif %}{{ "\n" -}}
+{% endfor %}
+{% endif %}
+
+{% if tech.beoogdGebruik or tech.toegevoegdeWaarde or tech.onderdelen or tech.ontwikkelingEnBeheer %}
+### Documentatie
+
+{% if tech.beoogdGebruik %}
+#### Beoogd gebruik
+
+{{ tech.beoogdGebruik }}
+{% endif %}
+
+{% if tech.toegevoegdeWaarde %}
+#### Toegevoegde waarde
+
+{{ tech.toegevoegdeWaarde }}
+{% endif %}
+
+{% if tech.onderdelen %}
+#### Onderdelen
+
+{{ tech.onderdelen }}
+{% endif %}
+
+{% if tech.ontwikkelingEnBeheer %}
+#### Ontwikkeling en beheer
+
+{{ tech.ontwikkelingEnBeheer }}
+{% endif %}
+{% endif %}
+
+{% if tech.relaties %}
+### Relaties met andere technologieën
+
+| Type relatie | Technologie | Beschrijving |
+|---|---|---|
+{% for relatie in tech.relaties %}
+| {{ relatie.typeRelatieLabel | default('') }} | [{{ relatie.gerelateerdeTechnologieNaam | default(relatie.gerelateerdeTechnologie) }}](#{{ relatie.gerelateerdeAnchor }}) | {{ relatie.beschrijvingRelatie | default('') }} |
+{% endfor %}
+{% endif %}
+
+{% if tech.bronnen %}
+### Bronnen
+
+{% for bron in tech.bronnen %}
+- {% if bron.pagina %}[{{ bron.titel or bron.pagina }}]({{ bron.pagina }}){% else %}{{ bron.titel or bron.verwijzing or bron.bron or 'Bron' }}{% endif %}{% if bron.verwijzing and (bron.titel or bron.pagina) %}, {{ bron.verwijzing }}{% endif %}{{ "\n" -}}
+{% endfor %}
+{% endif %}
+
+</section>

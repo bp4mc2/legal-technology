@@ -1,0 +1,23 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX lto:  <http://bp4mc2.org/lto#>
+
+SELECT
+  ?tech
+  ?taakinvulling
+  ?omschrijving
+  ?taaktype
+  ?taaktypeLabel
+WHERE {
+  ?tech lto:geschiktVoorTaak ?taakinvulling .
+
+  OPTIONAL { ?taakinvulling lto:omschrijving ?omschrijving . }
+
+  OPTIONAL {
+    ?taakinvulling lto:taaktype ?taaktype .
+    OPTIONAL {
+      ?taaktype skos:prefLabel ?taaktypeLabel .
+      FILTER(LANG(?taaktypeLabel) = "nl" || LANG(?taaktypeLabel) = "")
+    }
+  }
+}
+ORDER BY ?tech LCASE(STR(COALESCE(?taaktypeLabel, "")))

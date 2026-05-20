@@ -1,0 +1,18 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX lto:  <http://bp4mc2.org/lto#>
+
+SELECT ?tech ?property ?value ?label
+WHERE {
+  VALUES ?property {
+    lto:gebodenFunctionaliteit
+    lto:beoogdeGebruikers
+  }
+
+  ?tech ?property ?value .
+
+  OPTIONAL {
+    ?value skos:prefLabel ?label .
+    FILTER(LANG(?label) = "nl" || LANG(?label) = "")
+  }
+}
+ORDER BY ?tech ?property LCASE(STR(COALESCE(?label, "")))
