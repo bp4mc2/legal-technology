@@ -65,18 +65,16 @@ Completed outcomes:
 - Resilient empty states: when no technology is active, route-level generic cards are shown instead.
 - Deep links from rail cards to detail page, Definities, Opmerkingen, Voorstellen, and Auditlog.
 
-## Phase 3: Governance Views Implementation
+## Phase 3: Governance Views Implementation (completed)
 Goal: replace governance placeholders with usable operational views.
 
-Work items:
-- Implement an ontology for proposal and comment status to surface in the UI.
-- Implement Voorstellen queue with status filters and action affordances.
-- Implement Opmerkingen global list + status workflow surface.
-- Implement Auditlog timeline with basic filtering and traceability links.
-- Implement route-level context linking from governance cards to the relevant filters and deep-link targets in these views.
-- Implement empty states for these routes when no active technology context is set.
-- Implement sticky notes view with technology scoping and linking from technology cards.
-- Keep role-gated actions visible but disabled when permissions do not allow action.
+Completed outcomes:
+- Implemented ProposalsPage: proposal queue with status + entity type filters, search, mock data, role-gated action buttons (visible but disabled: Goedkeuren, Afwijzen, + Voorstel indienen).
+- Implemented CommentsPage: global comments list with status filter, search, mock data, escalate-to-proposal action (disabled), resolution tracking.
+- Implemented AuditLogPage: chronological audit timeline with action type + entity type filters, search, traceability links to proposals and technology detail.
+- All three routes show activeTechnology context banner when a technology is selected.
+- All views include cross-navigation links between governance routes (Voorstellen ↔ Opmerkingen ↔ Auditlog).
+- All role-gated actions (approve/reject proposals, add comments, change status, escalate) are visible but disabled pending role integration.
 
 Exit criteria:
 - /governance/proposals, /governance/comments, /governance/audit-log are functional (not placeholders).

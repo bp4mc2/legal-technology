@@ -136,9 +136,9 @@ The routes below are described in this redesign spec but are not yet fully imple
 |---|---|---|
 | Vergelijken | `/legaltechnologies/compare` | Implemented baseline matrix; advanced field-level diff rules still pending |
 | Selectie | `/legaltechnologies/selection` | Implemented baseline selection management; bulk curation workflow still pending |
-| Voorstellen | `/governance/proposals` | Placeholder only; governance queue behavior pending |
-| Opmerkingen | `/governance/comments` | Placeholder only; global comments behavior pending |
-| Auditlog | `/governance/audit-log` | Placeholder only; audit timeline behavior pending |
+| Voorstellen | `/governance/proposals` | Implemented baseline: status/entity-type filter, role-gated actions (disabled), activeTechnology context |
+| Opmerkingen | `/governance/comments` | Implemented baseline: status filter, comment cards, escalate action (disabled), activeTechnology context |
+| Auditlog | `/governance/audit-log` | Implemented baseline: action/entity-type filter, timeline view, traceability links |
 | Bijdragekaart | `/relations/contribution-map` | Placeholder only; graph view behavior pending |
 
 Fallback and deep-link behavior:

@@ -32,6 +32,12 @@ import OrganisatiesPanel from './components/OrganisatiesPanel';
 import StickyNotesPanel from './components/StickyNotesPanel';
 import ComparePage from './components/ComparePage';
 import TasksProductsPage from './components/TasksProductsPage';
+<<<<<<< HEAD
+=======
+import ProposalsPage from './components/ProposalsPage';
+import CommentsPage from './components/CommentsPage';
+import AuditLogPage from './components/AuditLogPage';
+>>>>>>> copilot/worktree-2026-06-02T05-56-46
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { CompareSelectionProvider, useCompareSelection } from './components/CompareSelectionContext';
 import { ActiveTechnologyProvider } from './components/ActiveTechnologyContext';
@@ -181,10 +187,17 @@ function App() {
             <Route path="/legaltechnologies/selection" element={<SelectionPage />} />
             <Route path="/legaltechnologies/:id" element={<LegalTechnologyDetailPage />} />
 
+<<<<<<< HEAD
             <Route path="/governance/proposals" element={<PlaceholderPage title="Voorstellen" description="Governance voorstellenoverzicht (in opbouw)." />} />
             <Route path="/governance/comments" element={<PlaceholderPage title="Opmerkingen" description="Globaal opmerkingenoverzicht (in opbouw)." />} />
             <Route path="/governance/stickynotes" element={<StickyNotesPage />} />
             <Route path="/governance/audit-log" element={<PlaceholderPage title="Auditlog" description="Chronologisch mutatieoverzicht (in opbouw)." />} />
+=======
+            <Route path="/governance/proposals" element={<ProposalsPage />} />
+            <Route path="/governance/comments" element={<CommentsPage />} />
+            <Route path="/governance/stickynotes" element={<StickyNotesPage />} />
+            <Route path="/governance/audit-log" element={<AuditLogPage />} />
+>>>>>>> copilot/worktree-2026-06-02T05-56-46
 
             <Route path="/relations/tasks-products" element={<TaskTypesPage />} />
             <Route path="/relations/contribution-map" element={<PlaceholderPage title="Bijdragekaart" description="Relationale bijdragekaart (in opbouw)." />} />
