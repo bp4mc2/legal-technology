@@ -1,5 +1,6 @@
 from flask_smorest import Blueprint, abort
-from flask import request, Response
+from flask import request, Response, jsonify
+from uuid import uuid4
 from api.services.graphdb_service import (
     search_legal_technologies, add_legal_technology, get_legal_technology, update_legal_technology,
     delete_legal_technology, list_enumerations, list_tasktypes, get_stats,
@@ -7,6 +8,12 @@ from api.services.graphdb_service import (
     export_legal_technology_turtle, export_legal_technology_markdown,
     export_named_graph_download, sync_named_graph_exports,
 )
+from api.services.documentation_service import (
+    DocumentationReadError,
+    get_technology_documentation,
+    get_catalog_documentation,
+)
+from api.services.access_policy import require_action
 from api.models.legal_technology import LegalTechnologySchema, LegalTechnologyCreateSchema, LegalTechnologyUpdateSchema
 from api.models.enumeration import EnumerationSchema, TaskTypeSchema
 
@@ -39,6 +46,9 @@ def search():
         200:
             description: List of matching legal technologies
     """
+    denied = require_action("legal_technology:search", "legal_technology")
+    if denied:
+        return denied
     query = request.args.get('q', '')
     return search_legal_technologies(query)
 
@@ -73,6 +83,9 @@ def add(data):
         201:
             description: The created legal technology
     """
+    denied = require_action("legal_technology:create", "legal_technology")
+    if denied:
+        return denied
     return add_legal_technology(data)
 
 @blp.route("/<id>")
@@ -122,6 +135,10 @@ def update(data, id):
         200:
             description: The updated legal technology
     """
+    denied = require_action("legal_technology:update", "legal_technology")
+    if denied:
+        return denied
+
     payload_id = data.pop("id", None)
     if payload_id is not None and payload_id != id:
         abort(400, message="Payload id must match URL id")
@@ -148,6 +165,9 @@ def delete(id):
         200:
             description: The deleted legal technology
     """
+    denied = require_action("legal_technology:delete", "legal_technology")
+    if denied:
+        return denied
     result = delete_legal_technology(id)
     if not result:
         abort(404, message="Not found")
@@ -181,6 +201,9 @@ def export_named_graph_turtle_route():
 @blp.route("/export/sync", methods=["POST"])
 def sync_named_graph_route():
     """Persist the named graph and bundle exports to the workspace data directory."""
+    denied = require_action("legal_technology:sync_export", "legal_technology")
+    if denied:
+        return denied
     return sync_named_graph_exports()
 
 
@@ -195,6 +218,78 @@ def export_markdown(id):
         mimetype="text/markdown; charset=utf-8",
         headers={"Content-Disposition": f'attachment; filename="legal-technology-{id}.md"'}
     )
+
+
+@blp.get("/<id>/documentation")
+def documentation(id):
+    """Return generated in-dashboard documentation section for a technology."""
+    correlation_id = request.headers.get("X-Correlation-ID") or str(uuid4())
+    try:
+        payload = get_technology_documentation(id)
+    except DocumentationReadError:
+        return (
+            jsonify(
+                {
+                    "message": "Generated documentation source is unavailable",
+                    "source": "media/legal-technologies.md",
+                    "correlation_id": correlation_id,
+                }
+            ),
+            503,
+            {"X-Correlation-ID": correlation_id},
+        )
+
+    if payload is None:
+        return (
+            jsonify(
+                {
+                    "message": "Documentation section not found",
+                    "source": "media/legal-technologies.md",
+                    "correlation_id": correlation_id,
+                }
+            ),
+            404,
+            {"X-Correlation-ID": correlation_id},
+        )
+
+    payload["correlation_id"] = correlation_id
+    return jsonify(payload), 200, {"X-Correlation-ID": correlation_id}
+
+
+@blp.get("/documentation/catalog")
+def documentation_catalog():
+    """Return full generated catalog documentation markdown."""
+    correlation_id = request.headers.get("X-Correlation-ID") or str(uuid4())
+    try:
+        payload = get_catalog_documentation()
+    except DocumentationReadError:
+        return (
+            jsonify(
+                {
+                    "message": "Generated catalog documentation source is unavailable",
+                    "source": "media/legal-technologies.md",
+                    "correlation_id": correlation_id,
+                }
+            ),
+            503,
+            {"X-Correlation-ID": correlation_id},
+        )
+
+    if payload is None:
+        return (
+            jsonify(
+                {
+                    "message": "Generated catalog documentation not found",
+                    "source": "media/legal-technologies.md",
+                    "correlation_id": correlation_id,
+                }
+            ),
+            404,
+            {"X-Correlation-ID": correlation_id},
+        )
+
+    payload["correlation_id"] = correlation_id
+    return jsonify(payload), 200, {"X-Correlation-ID": correlation_id}
 
 
 # List all enumerations as a list of {name, values}

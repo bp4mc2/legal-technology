@@ -1,5 +1,6 @@
 # Placeholder service-implementatie voor GraphDB API interactie
 
+import hashlib
 from pathlib import Path
 
 from .graphdb_client import sparql_query, sparql_update
@@ -31,6 +32,12 @@ _SUBTYPE_CLASS_MAP = {
 _CLASS_TO_SUBTYPE = {
     iri: label for label, iri in _SUBTYPE_CLASS_MAP.items()
 }
+_PRODUCT_SCHEME_IRI = "http://bp4mc2.org/lto#BegrippenkaderProducten"
+_PRODUCT_INPUT_PREDICATE_IRI = "http://bp4mc2.org/lto#inputVoorTaak"
+_PRODUCT_OUTPUT_PREDICATE_IRI = "http://bp4mc2.org/lto#uitvoerVanTaak"
+_PRODUCT_LIST_QUERY_TIMEOUT_SECONDS = 1.8
+_PRODUCT_TRACEABILITY_QUERY_TIMEOUT_SECONDS = 1.8
+_PRODUCT_CONTRIBUTION_CHAIN_QUERY_TIMEOUT_SECONDS = 1.8
 
 
 def _split_group_concat(value):
@@ -54,6 +61,20 @@ def _extract_concept_identifier(concept_iri):
     if not concept_iri:
         return ''
     return concept_iri.rsplit('#', 1)[-1].rsplit('/', 1)[-1].rsplit(':', 1)[-1]
+
+
+def _legacy_stable_concept_identifier(concept_iri):
+    identifier = _extract_concept_identifier(concept_iri)
+    return ''.join(ch.lower() for ch in identifier if ch.isalnum())
+
+
+def _stable_concept_identifier(concept_iri):
+    # Keep IDs human-readable while preventing collisions between similar fragments.
+    legacy_id = _legacy_stable_concept_identifier(concept_iri)
+    fingerprint = hashlib.sha1(str(concept_iri or '').encode('utf-8')).hexdigest()[:8]
+    if legacy_id:
+        return f"{legacy_id}-{fingerprint}"
+    return f"concept-{fingerprint}"
 
 
 def _normalize_abbrevation(value):
@@ -398,11 +419,264 @@ def list_legal_technologies():
             }
     }
     '''
-    result = sparql_query(sparql)
+    result = sparql_query(sparql, timeout_seconds=_PRODUCT_LIST_QUERY_TIMEOUT_SECONDS)
     bindings = result.get('results', {}).get('bindings', [])
     return _map_legal_technology_results(bindings)
 
 _GRAPH_URI = GRAPH_URI
+
+
+def list_products():
+    sparql = f'''
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX lto: <http://bp4mc2.org/lto#>
+    SELECT DISTINCT ?product ?label WHERE {{
+      GRAPH <{_GRAPH_URI}> {{
+        ?product a skos:Concept ;
+                 skos:inScheme lto:BegrippenkaderProducten .
+        OPTIONAL {{
+          ?product skos:prefLabel ?prefLabel .
+          FILTER(LANG(?prefLabel) = '' || LANGMATCHES(LANG(?prefLabel), 'nl'))
+        }}
+        OPTIONAL {{
+          ?product rdfs:label ?rdfsLabel .
+          FILTER(LANG(?rdfsLabel) = '' || LANGMATCHES(LANG(?rdfsLabel), 'nl'))
+        }}
+        BIND(COALESCE(STR(?prefLabel), STR(?rdfsLabel), '') AS ?label)
+      }}
+    }}
+    ORDER BY LCASE(STR(?label)) LCASE(STR(?product))
+    '''
+
+    result = sparql_query(sparql)
+    bindings = result.get('results', {}).get('bindings', [])
+    products = []
+    seen_iris = set()
+    for binding in bindings:
+        iri = binding.get('product', {}).get('value', '')
+        if not iri or iri in seen_iris:
+            continue
+        seen_iris.add(iri)
+        label = binding.get('label', {}).get('value', '').strip() or _extract_concept_identifier(iri)
+        products.append(
+            {
+                'id': _stable_concept_identifier(iri),
+                'iri': iri,
+                'label': label,
+            }
+        )
+    return products
+
+
+def _find_product_by_id(product_id):
+    token = str(product_id or '').strip().lower()
+    if not token:
+        return None
+
+    for product in list_products():
+        product_id_value = str(product.get('id', '')).strip().lower()
+        product_iri = str(product.get('iri', '')).strip().lower()
+        if product_id_value == token or product_iri == token:
+            return product
+
+        # Backward compatibility for previously exposed IDs without fingerprint suffix.
+        legacy_id = _legacy_stable_concept_identifier(product.get('iri'))
+        if legacy_id and legacy_id == ''.join(ch.lower() for ch in token if ch.isalnum()):
+            return product
+
+    return None
+
+
+def get_product_traceability(product_id):
+    product = _find_product_by_id(product_id)
+    if not product:
+        return None
+
+    sparql = f'''
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX lto: <http://bp4mc2.org/lto#>
+    SELECT ?predicate ?task ?taskLabel WHERE {{
+      GRAPH <{_GRAPH_URI}> {{
+        VALUES ?predicate {{ lto:inputVoorTaak lto:uitvoerVanTaak }}
+        <{product['iri']}> ?predicate ?task .
+        OPTIONAL {{
+          ?task skos:prefLabel ?taskPrefLabel .
+          FILTER(LANG(?taskPrefLabel) = '' || LANGMATCHES(LANG(?taskPrefLabel), 'nl'))
+        }}
+        OPTIONAL {{
+          ?task rdfs:label ?taskRdfsLabel .
+          FILTER(LANG(?taskRdfsLabel) = '' || LANGMATCHES(LANG(?taskRdfsLabel), 'nl'))
+        }}
+        BIND(COALESCE(STR(?taskPrefLabel), STR(?taskRdfsLabel), '') AS ?taskLabel)
+      }}
+    }}
+    ORDER BY ?predicate LCASE(STR(?taskLabel)) LCASE(STR(?task))
+    '''
+
+    result = sparql_query(sparql, timeout_seconds=_PRODUCT_TRACEABILITY_QUERY_TIMEOUT_SECONDS)
+    bindings = result.get('results', {}).get('bindings', [])
+    relations = {'input': [], 'output': []}
+    seen = set()
+
+    for binding in bindings:
+        predicate_iri = binding.get('predicate', {}).get('value', '')
+        task_iri = binding.get('task', {}).get('value', '')
+        if not predicate_iri or not task_iri:
+            continue
+
+        relation_kind = None
+        if predicate_iri == _PRODUCT_INPUT_PREDICATE_IRI:
+            relation_kind = 'input'
+        elif predicate_iri == _PRODUCT_OUTPUT_PREDICATE_IRI:
+            relation_kind = 'output'
+        if relation_kind is None:
+            continue
+
+        key = (relation_kind, task_iri)
+        if key in seen:
+            continue
+        seen.add(key)
+
+        task_label = binding.get('taskLabel', {}).get('value', '').strip() or _extract_concept_identifier(task_iri)
+        relations[relation_kind].append(
+            {
+                'task_id': _stable_concept_identifier(task_iri),
+                'task_iri': task_iri,
+                'task_label': task_label,
+                'predicate': predicate_iri,
+                'relation_kind': relation_kind,
+            }
+        )
+
+    for relation_kind in relations:
+        relations[relation_kind].sort(key=lambda item: (item['task_label'].casefold(), item['task_id']))
+
+    return {
+        'product': product,
+        'relations': relations,
+    }
+
+
+def _extract_technology_identifier(technology_iri):
+    parsed_abbrev, parsed_version = _parse_tech_iri(technology_iri)
+    if parsed_abbrev and parsed_version:
+        return _build_api_id(parsed_abbrev, parsed_version)
+    return _stable_concept_identifier(technology_iri)
+
+
+def get_product_contribution_chain(product_id):
+    traceability = get_product_traceability(product_id)
+    if traceability is None:
+        return None
+
+    task_iris = []
+    for relation_kind in ('input', 'output'):
+        task_iris.extend(item.get('task_iri', '') for item in traceability['relations'].get(relation_kind, []))
+    task_iris = [iri for iri in task_iris if iri]
+
+    technology_by_task = {}
+    if task_iris:
+        values = ' '.join(f'<{iri}>' for iri in sorted(set(task_iris)))
+        sparql = f'''
+        PREFIX lto: <http://bp4mc2.org/lto#>
+        SELECT ?task ?tech ?techName ?sourceTitle ?sourceLocation ?sourceReference WHERE {{
+          GRAPH <{_GRAPH_URI}> {{
+            VALUES ?task {{ {values} }}
+            VALUES ?subtypeClass {{ lto:Methode lto:Standaard lto:Tool }}
+            ?tech a ?subtypeClass ;
+                  lto:naam ?techName ;
+                  lto:geschiktVoorTaak ?geschiktVoorTaakNode .
+            ?geschiktVoorTaakNode lto:taaktype ?task .
+
+            OPTIONAL {{
+              ?tech lto:bronverwijzing ?bron .
+              OPTIONAL {{ ?bron lto:titel ?sourceTitle . }}
+              OPTIONAL {{ ?bron lto:locatie ?sourceLocation . }}
+              OPTIONAL {{ ?bron lto:verwijzing ?sourceReference . }}
+            }}
+          }}
+        }}
+        ORDER BY ?task LCASE(STR(?techName)) LCASE(STR(?tech))
+        '''
+
+        result = sparql_query(sparql, timeout_seconds=_PRODUCT_CONTRIBUTION_CHAIN_QUERY_TIMEOUT_SECONDS)
+        bindings = result.get('results', {}).get('bindings', [])
+
+        seen_technology = set()
+        evidence_seen = set()
+
+        for binding in bindings:
+            task_iri = binding.get('task', {}).get('value', '')
+            tech_iri = binding.get('tech', {}).get('value', '')
+            if not task_iri or not tech_iri:
+                continue
+
+            technology_list = technology_by_task.setdefault(task_iri, [])
+            technology_key = (task_iri, tech_iri)
+            if technology_key not in seen_technology:
+                seen_technology.add(technology_key)
+                technology_list.append(
+                    {
+                        'id': _extract_technology_identifier(tech_iri),
+                        'iri': tech_iri,
+                        'label': binding.get('techName', {}).get('value', '').strip() or _extract_concept_identifier(tech_iri),
+                        'evidence_links': [],
+                    }
+                )
+
+            location = binding.get('sourceLocation', {}).get('value', '').strip()
+            title = binding.get('sourceTitle', {}).get('value', '').strip()
+            reference = binding.get('sourceReference', {}).get('value', '').strip()
+            if not location and not title and not reference:
+                continue
+
+            node = next((item for item in technology_list if item['iri'] == tech_iri), None)
+            if node is None:
+                continue
+
+            evidence_key = (task_iri, tech_iri, location, title, reference)
+            if evidence_key in evidence_seen:
+                continue
+            evidence_seen.add(evidence_key)
+            node['evidence_links'].append(
+                {
+                    'title': title or None,
+                    'location': location or None,
+                    'reference': reference or None,
+                }
+            )
+
+    chains = {'input': [], 'output': []}
+    partial_data = False
+
+    for relation_kind in ('input', 'output'):
+        for task_relation in traceability['relations'].get(relation_kind, []):
+            task_iri = task_relation.get('task_iri', '')
+            technologies = technology_by_task.get(task_iri, [])
+            missing_node = len(technologies) == 0
+            if missing_node:
+                partial_data = True
+
+            chains[relation_kind].append(
+                {
+                    'task_id': task_relation.get('task_id', ''),
+                    'task_iri': task_iri,
+                    'task_label': task_relation.get('task_label', ''),
+                    'predicate': task_relation.get('predicate', ''),
+                    'relation_kind': task_relation.get('relation_kind', relation_kind),
+                    'missing_node': missing_node,
+                    'missing_reason': 'No contributing technologies linked to this task.' if missing_node else None,
+                    'technologies': sorted(technologies, key=lambda item: (item['label'].casefold(), item['id'])),
+                }
+            )
+
+    return {
+        'product': traceability['product'],
+        'chains': chains,
+        'partial_data': partial_data,
+    }
 
 
 def _collect_related_organisation_iris(tech):

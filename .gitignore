@@ -3,3 +3,8 @@ pipeline/*.ttl
 .erwin
 exports
 temp
+node_modules
+_bmad
+_bmad-output
+.pytest_cache
+.agents/skills/*

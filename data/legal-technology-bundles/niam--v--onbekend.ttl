@@ -1,0 +1,80 @@
+@prefix lto: <http://bp4mc2.org/lto#> .
+@prefix lt: <http://bp4mc2.org/lt#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-B3CFEBA24EFEBE27B78B97C333BC5561 <http://bp4mc2.org/lto#beoogdGebruik> "Methode voor conceptuele analyse en modellering van regels en domeinfeiten."^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-B3CFEBA24EFEBE27B78B97C333BC5561 <http://bp4mc2.org/lto#onderdelen> "Elementaire feiten, rollen, constraints, verbalisatie en conceptueel schema-ontwerp."^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-B3CFEBA24EFEBE27B78B97C333BC5561 <http://bp4mc2.org/lto#ontwikkelingEnBeheer> "Historisch ontwikkeld vanuit NIAM en doorontwikkeld in de ORM-community; geen centrale leverancier van de methode zelf."^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-B3CFEBA24EFEBE27B78B97C333BC5561 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Vermindert ambiguiteit en vergroot semantische consistentie en herleidbaarheid."^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-B3CFEBA24EFEBE27B78B97C333BC5561 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-B43AA8FDFFDBC15850BC2BA0D3CF7767 <http://bp4mc2.org/lto#versienummer> "onbekend" .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-B43AA8FDFFDBC15850BC2BA0D3CF7767 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-D551B3A0BD45E4C374F806A1951B7221 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Semantisch> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-D551B3A0BD45E4C374F806A1951B7221 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-D551B3A0BD45E4C374F806A1951B7221 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-FF3D7AFCDD7652FAD33FB349A1B84391 <http://bp4mc2.org/lto#beschouwingsniveau> <http://bp4mc2.org/lto#Logisch> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-FF3D7AFCDD7652FAD33FB349A1B84391 <http://bp4mc2.org/lto#modelsoort> <http://bp4mc2.org/lto#Descriptief> .
+_:genid-18edcff6e8ea4178871657eb7128dd7320756-FF3D7AFCDD7652FAD33FB349A1B84391 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Beleidsmedewerkers> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Juristen> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#Regelanalist> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://bp4mc2.org/lt#SoftwareOntwikkelaars> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#bijgewerktOp> "2026-05-21"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/07c74874-6f9b-4cd1-ad92-7e3baeda145b> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/2e38f191-9534-4c5c-b985-64888f43aed7> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/55aaf2e3-0567-4ba3-961c-3945315369ca> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/92e4cdc6-d1a0-4b6b-80fc-46dd483683de> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/fb73caab-6084-47ff-82de-4f28f7c55fc7> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#documentatie> _:genid-18edcff6e8ea4178871657eb7128dd7320756-B3CFEBA24EFEBE27B78B97C333BC5561 .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://bp4mc2.org/lt#WetgevingRepresentatie> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/0cfbc871-eabc-4621-8831-ad8d6e14304e> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/2a3543b6-95c4-481a-8a5a-138c55f8f3f3> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/3119d2fb-d77c-4994-be50-f641f48e6b40> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/4d6a235d-c161-4f34-add4-49b33196e269> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/6c83789f-659a-4396-89e3-d9a62e0c2cda> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/e3dd320b-77b9-4b96-a875-63de48c4b7ef> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#naam> "NIAM" .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#normstatus> <http://bp4mc2.org/lt#BestPractice> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#omschrijving> "Natural language Information Analysis Method: een fact-based methode voor conceptuele informatiemodellering en explicitering van domeinkennis." .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#ondersteuningVoor> _:genid-18edcff6e8ea4178871657eb7128dd7320756-D551B3A0BD45E4C374F806A1951B7221 .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#ondersteuningVoor> _:genid-18edcff6e8ea4178871657eb7128dd7320756-FF3D7AFCDD7652FAD33FB349A1B84391 .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#typeTechnologie> <http://bp4mc2.org/lt#DSL> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://bp4mc2.org/lto#versiebeschrijving> _:genid-18edcff6e8ea4178871657eb7128dd7320756-B43AA8FDFFDBC15850BC2BA0D3CF7767 .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend> <http://www.w3.org/2000/01/rdf-schema#label> "NIAM"@nl .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/07c74874-6f9b-4cd1-ad92-7e3baeda145b> <http://purl.org/dc/terms/title> "ORM 2 Technical Report 1" .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/07c74874-6f9b-4cd1-ad92-7e3baeda145b> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/07c74874-6f9b-4cd1-ad92-7e3baeda145b> <http://xmlns.com/foaf/0.1/page> "https://www.orm.net/pdf/ORM2_TechReport1.pdf"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/2e38f191-9534-4c5c-b985-64888f43aed7> <http://purl.org/dc/terms/title> "Object Role Modeling - Official Site" .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/2e38f191-9534-4c5c-b985-64888f43aed7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/2e38f191-9534-4c5c-b985-64888f43aed7> <http://xmlns.com/foaf/0.1/page> "https://www.orm.net/"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/55aaf2e3-0567-4ba3-961c-3945315369ca> <http://purl.org/dc/terms/title> "ORM Overview" .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/55aaf2e3-0567-4ba3-961c-3945315369ca> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/55aaf2e3-0567-4ba3-961c-3945315369ca> <http://xmlns.com/foaf/0.1/page> "https://www.orm.net/overview.html"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/92e4cdc6-d1a0-4b6b-80fc-46dd483683de> <http://purl.org/dc/terms/title> "Object-Role Modeling: an overview" .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/92e4cdc6-d1a0-4b6b-80fc-46dd483683de> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/92e4cdc6-d1a0-4b6b-80fc-46dd483683de> <http://xmlns.com/foaf/0.1/page> "https://www.orm.net/pdf/ORMwhitePaper.pdf"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/fb73caab-6084-47ff-82de-4f28f7c55fc7> <http://purl.org/dc/terms/title> "The NIAM Information Analysis Method: Theory and Practice" .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/fb73caab-6084-47ff-82de-4f28f7c55fc7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/bronverwijzing/fb73caab-6084-47ff-82de-4f28f7c55fc7> <http://xmlns.com/foaf/0.1/page> "https://doi.org/10.1007/978-94-009-0451-4"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/0cfbc871-eabc-4621-8831-ad8d6e14304e> <http://bp4mc2.org/lto#omschrijving> "Controleren of specificaties in lijn zijn met brontekst en interpretatie." .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/0cfbc871-eabc-4621-8831-ad8d6e14304e> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#ValiderenSpecificaties> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/0cfbc871-eabc-4621-8831-ad8d6e14304e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/2a3543b6-95c4-481a-8a5a-138c55f8f3f3> <http://bp4mc2.org/lto#omschrijving> "Vastleggen en afbakenen van begrippen binnen een specifieke context." .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/2a3543b6-95c4-481a-8a5a-138c55f8f3f3> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#BegripDefinieren> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/2a3543b6-95c4-481a-8a5a-138c55f8f3f3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/3119d2fb-d77c-4994-be50-f641f48e6b40> <http://bp4mc2.org/lto#omschrijving> "Expliciteren van betekenis en bedoeling van regels in een consistent feitenmodel." .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/3119d2fb-d77c-4994-be50-f641f48e6b40> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#InterpreterenEnExpliciteren> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/3119d2fb-d77c-4994-be50-f641f48e6b40> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/4d6a235d-c161-4f34-add4-49b33196e269> <http://bp4mc2.org/lto#omschrijving> "Gestructureerd analyseren van juridische teksten naar elementaire feiten en relaties." .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/4d6a235d-c161-4f34-add4-49b33196e269> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#AnalyserenRegeltekst> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/4d6a235d-c161-4f34-add4-49b33196e269> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/6c83789f-659a-4396-89e3-d9a62e0c2cda> <http://bp4mc2.org/lto#omschrijving> "Onderbouwen welke gegevens nodig zijn voor uitvoerbare specificaties." .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/6c83789f-659a-4396-89e3-d9a62e0c2cda> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/6c83789f-659a-4396-89e3-d9a62e0c2cda> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/e3dd320b-77b9-4b96-a875-63de48c4b7ef> <http://bp4mc2.org/lto#omschrijving> "Voorbereiden van formele regeluitwerking vanuit fact-based analyse." .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/e3dd320b-77b9-4b96-a875-63de48c4b7ef> <http://bp4mc2.org/lto#taaktype> <http://bp4mc2.org/ltt#SpecificerenRegels> .
+<https://data.bp4mc2.org/id/lto/legaltech/niam/v/onbekend/taakinvulling/e3dd320b-77b9-4b96-a875-63de48c4b7ef> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

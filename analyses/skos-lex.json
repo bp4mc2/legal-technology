@@ -1,0 +1,50 @@
+{
+  "subtype": "Standaard",
+  "abbrevation": "skos-lex",
+  "naam": "SKOS-LEX",
+  "omschrijving": "De SKOS Legal Extension definieert de klassen en eigenschappen die nodig zijn om juridische begrippen als SKOS-concepten te modelleren en vast te leggen.",
+  "gebruiksstatus": "In gebruik",
+  "licentievorm": "Volledig open",
+  "ondersteuning_voor": [
+    {
+      "beschouwingsniveau": "Semantisch",
+      "modelsoort": "Descriptief"
+    }
+  ],
+  "geschikt_voor_taak": [
+    {
+      "omschrijving": "Structureren en expliciteren van juridische begrippen in een consistent begrippenkader.",
+      "taaktype": "Interpreteren en expliciteren"
+    },
+    {
+      "omschrijving": "Definieren en vastleggen van begrippen als SKOS-concepten met eenduidige semantiek.",
+      "taaktype": "Begrip definiëren"
+    }
+  ],
+  "versiebeschrijving": {
+    "versienummer": "1.0"
+  },
+  "documentatie": {
+    "beoogdGebruik": "SKOS-LEX wordt gebruikt om juridische begrippen als SKOS-concepten machineleesbaar en uitwisselbaar vast te leggen.",
+    "toegevoegdeWaarde": "Betere semantische consistentie, herbruikbaarheid en interoperabiliteit van juridische begrippen.",
+    "onderdelen": "onbekend",
+    "ontwikkelingEnBeheer": "onbekend"
+  },
+  "bronverwijzing": [
+    {
+      "titel": "SKOS-LEX resource",
+      "locatie": "https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0",
+      "verwijzing": ""
+    },
+    {
+      "titel": "SKOS-LEX bronverwijzing",
+      "locatie": "https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0/bronverwijzing/82612ad0-56dc-427b-9460-496b5f59ec89",
+      "verwijzing": ""
+    },
+    {
+      "titel": "SKOS Reference (W3C Recommendation)",
+      "locatie": "https://www.w3.org/TR/skos-reference/",
+      "verwijzing": ""
+    }
+  ]
+}

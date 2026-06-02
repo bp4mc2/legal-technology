@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiFetch, apiFetchText } from '../utils/api';
 import LegalTechnologyForm, { selectForEdit } from './LegalTechnologyForm';
+import { useCompareSelection } from './CompareSelectionContext';
+import { useActiveTechnology } from './ActiveTechnologyContext';
 
 type Documentatie = {
   beoogdGebruik: string;
@@ -118,9 +120,17 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState('');
   const [formMode, setFormMode] = useState<'add' | 'edit'>('add');
-  const [selectedForComparison, setSelectedForComparison] = useState<Set<string>>(new Set());
-  const [comparisonDetails, setComparisonDetails] = useState<Record<string, LegalTechnology>>({});
   const [stickyNotes, setStickyNotes] = useState<StickyNote[]>([]);
+  const {
+    selectedSet,
+    selectedItems,
+    selectedCount,
+    maxSelection,
+    toggleSelection,
+    removeSelection,
+    clearSelection,
+  } = useCompareSelection();
+  const { setActiveTechnology } = useActiveTechnology();
 
   const triggerDownload = (content: string, filename: string, contentType: string) => {
     const blob = new Blob([content], { type: contentType });
@@ -214,11 +224,7 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
     try {
       await apiFetch(`/api/legaltechnologies/${id}`, { method: 'DELETE' });
       setItems(prev => prev.filter(i => i.id !== id));
-      setSelectedForComparison(prev => {
-        const next = new Set(prev);
-        next.delete(id);
-        return next;
-      });
+      removeSelection(id);
     } catch (e: any) {
       setError(e.message);
     }
@@ -282,7 +288,47 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
 
   const handleView = (id?: string) => {
     if (!id) return;
+    const item = items.find((technology) => technology.id === id);
+    if (item) {
+      setActiveTechnology({
+        id: item.id || id,
+        naam: item.naam,
+        omschrijving: item.omschrijving,
+        gebruiksstatus: item.gebruiksstatus,
+        licentievorm: item.licentievorm,
+        subtype: item.subtype,
+        versienummer: item.versienummer,
+        beoogdeGebruikers: item.beoogde_gebruikers || [],
+        gebodenFunctionaliteit: item.geboden_functionaliteit || [],
+        technologietype: item.technologietype,
+        typeTechnologie: item.type_technologie || [],
+        taaktypes: (item.geschikt_voor_taak || []).map((entry) => entry.taaktype).filter(Boolean),
+        ondersteuningsniveaus: item.ondersteuning_voor || [],
+      });
+    }
     navigate(`/legaltechnologies/${encodeURIComponent(id)}`);
+  };
+
+  const handleSetContext = (id?: string) => {
+    if (!id) return;
+    const item = items.find((technology) => technology.id === id);
+    if (!item) return;
+
+    setActiveTechnology({
+      id: item.id || id,
+      naam: item.naam,
+      omschrijving: item.omschrijving,
+      gebruiksstatus: item.gebruiksstatus,
+      licentievorm: item.licentievorm,
+      subtype: item.subtype,
+      versienummer: item.versienummer,
+      beoogdeGebruikers: item.beoogde_gebruikers || [],
+      gebodenFunctionaliteit: item.geboden_functionaliteit || [],
+      technologietype: item.technologietype,
+      typeTechnologie: item.type_technologie || [],
+      taaktypes: (item.geschikt_voor_taak || []).map((entry) => entry.taaktype).filter(Boolean),
+      ondersteuningsniveaus: item.ondersteuning_voor || [],
+    });
   };
 
   const downloadTechTurtle = async (id?: string) => {
@@ -310,74 +356,34 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
     fetchItems(search);
   };
 
-  const toggleComparison = (id?: string) => {
-    if (!id) return;
-    setSelectedForComparison(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else if (next.size < 4) {
-        next.add(id);
-      }
-      return next;
-    });
-  };
-
-  const resetComparison = () => {
-    setSelectedForComparison(new Set());
-    setComparisonDetails({});
-  };
-
-  useEffect(() => {
-    const ids = Array.from(selectedForComparison).filter(Boolean);
-    if (ids.length === 0) {
-      setComparisonDetails({});
-      return;
-    }
-
-    let cancelled = false;
-
-    const loadComparisonDetails = async () => {
-      const detailEntries = await Promise.all(
-        ids.map(async selectedId => {
-          try {
-            const detail = await apiFetch<LegalTechnology>(`/api/legaltechnologies/${encodeURIComponent(selectedId)}`);
-            return [selectedId, detail] as const;
-          } catch {
-            return null;
-          }
-        }),
-      );
-
-      if (cancelled) return;
-
-      setComparisonDetails(prev => {
-        const next: Record<string, LegalTechnology> = {};
-        ids.forEach(selectedId => {
-          if (prev[selectedId]) next[selectedId] = prev[selectedId];
-        });
-        detailEntries.forEach(entry => {
-          if (!entry) return;
-          const [selectedId, detail] = entry;
-          next[selectedId] = detail;
-        });
-        return next;
-      });
-    };
-
-    loadComparisonDetails();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [selectedForComparison]);
-
   const comparisonItems = useMemo(
     () =>
-      Array.from(selectedForComparison)
-        .map(id => comparisonDetails[id] ?? items.find(item => item.id === id))
+      selectedItems
+        .map(selected => items.find(item => item.id === selected.id) ?? ({
+          id: selected.id,
+          naam: selected.naam || selected.id,
+          omschrijving: selected.omschrijving || '',
+          gebruiksstatus: selected.gebruiksstatus || '',
+          licentievorm: selected.licentievorm || '',
+          versienummer: selected.versienummer || '',
+          subtype: selected.subtype as LegalTechnology['subtype'],
+          geboden_functionaliteit: [],
+          technologietype: '',
+          taaktype: '',
+          beoogde_gebruikers: [],
+          bijgewerkt_op: '',
+          ondersteuning_voor: [],
+          geschikt_voor_taak: [],
+          documentatie: {
+            beoogdGebruik: '',
+            toegevoegdeWaarde: '',
+            onderdelen: '',
+            ontwikkelingEnBeheer: '',
+          },
+          bronverwijzing: [],
+        } as LegalTechnology))
         .filter((item): item is LegalTechnology => item !== undefined),
-    [selectedForComparison, comparisonDetails, items],
+    [selectedItems, items],
   );
 
   const stickyCountsByTechnology = useMemo(() => {
@@ -487,13 +493,13 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
         </>
       )}
 
-      {variant === 'cards' && selectedForComparison.size > 0 && (
+      {variant === 'cards' && selectedCount > 0 && (
         <div className="lt-list-comparison mt-4 mb-4 p-3">
           <div className="d-flex align-items-center justify-content-between mb-3">
             <h5 className="mb-0 fw-semibold text-primary">
               Vergelijken: {comparisonItems.length} technologie{comparisonItems.length !== 1 ? 'en' : ''}
             </h5>
-            <button className="btn btn-sm btn-outline-danger" onClick={resetComparison}>
+            <button className="btn btn-sm btn-outline-danger" onClick={clearSelection}>
               Vergelijking resetten
             </button>
           </div>
@@ -546,25 +552,45 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
         <div className="row g-3">
           {items.map((item, idx) => {
             const id = item.id || `idx-${idx}`;
-            const checked = selectedForComparison.has(id);
-            const disableCheck = selectedForComparison.size >= 4 && !checked;
+            const checked = selectedSet.has(id);
+            const disableCheck = selectedCount >= maxSelection && !checked;
             const stickyCounts = getStickyCounts(item.id);
             return (
               <div key={id} className="col-md-6 col-xl-4">
-                <div className="lt-list-card card h-100">
+                <div className={`lt-list-card card h-100${checked ? ' is-compare-selected' : ''}`}>
                   <div className="lt-list-card-header card-header d-flex justify-content-between align-items-start">
                     <div className="pe-2">
-                      <div className="fw-semibold">{item.naam}</div>
-                      <small className="text-muted">{item.abbrevation || item.id}</small>
+                      <button
+                        type="button"
+                        className="btn btn-link p-0 fw-semibold text-decoration-none text-start lt-context-name-link"
+                        onClick={() => handleSetContext(id)}
+                      >
+                        {item.naam}
+                        <span className="lt-context-name-hint ms-1" aria-hidden="true">
+                          <span className="lt-context-name-hint-icon">›</span>
+                          <span className="lt-context-name-hint-label">context</span>
+                        </span>
+                      </button>
+                      <small className="text-muted">{item.abbrevation || id}</small>
                     </div>
-                    <div className="form-check m-0">
+                    <div className="form-check form-switch lt-compare-switch m-0">
                       <input
                         className="form-check-input"
                         type="checkbox"
                         checked={checked}
                         disabled={disableCheck}
-                        onChange={() => toggleComparison(item.id)}
-                        title={disableCheck ? 'Maximaal 4 technologieen' : 'Selecteer voor vergelijking'}
+                        role="switch"
+                        aria-label={`Vergelijk ${item.naam}`}
+                        onChange={() => toggleSelection({
+                          id,
+                          naam: item.naam,
+                          omschrijving: item.omschrijving,
+                          gebruiksstatus: item.gebruiksstatus,
+                          licentievorm: item.licentievorm,
+                          versienummer: item.versienummer,
+                          subtype: item.subtype,
+                        })}
+                        title={disableCheck ? `Maximaal ${maxSelection} technologieen` : 'Selecteer voor vergelijking'}
                       />
                     </div>
                   </div>
@@ -592,6 +618,9 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                     <div className="small mb-0"><strong>Normstatus:</strong> {item.normstatus || '-'}</div>
                   </div>
                   <div className="card-footer bg-white d-flex gap-2 flex-wrap">
+                    <button className="btn btn-sm btn-outline-success" onClick={() => handleSetContext(id)}>
+                      Context
+                    </button>
                     <button className="btn btn-sm btn-outline-secondary" onClick={() => handleView(item.id)}>
                       Details
                     </button>
@@ -621,11 +650,23 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
               </tr>
             </thead>
             <tbody>
-              {items.map((item, idx) => (
-                <tr key={item.id || idx}>
+              {items.map((item, idx) => {
+                const id = item.id || `idx-${idx}`;
+                return (
+                <tr key={id}>
                   <td>
-                    <div className="fw-semibold">{item.naam}</div>
-                    <small className="text-muted">{item.abbrevation || item.id}</small>
+                    <button
+                      type="button"
+                      className="btn btn-link p-0 fw-semibold text-decoration-none text-start lt-context-name-link"
+                      onClick={() => handleSetContext(id)}
+                    >
+                      {item.naam}
+                      <span className="lt-context-name-hint ms-1" aria-hidden="true">
+                        <span className="lt-context-name-hint-icon">›</span>
+                        <span className="lt-context-name-hint-label">context</span>
+                      </span>
+                    </button>
+                    <small className="text-muted">{item.abbrevation || id}</small>
                     <div className="mt-1">
                       {(() => {
                         const stickyCounts = getStickyCounts(item.id);
@@ -650,6 +691,9 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                   <td>{item.licentievorm || '-'}</td>
                   <td>{item.versienummer || '-'}</td>
                   <td className="text-end text-nowrap">
+                    <button className="btn btn-sm btn-outline-success me-1" onClick={() => handleSetContext(id)}>
+                      Context
+                    </button>
                     <button className="btn btn-sm btn-outline-secondary me-1" onClick={() => handleView(item.id)}>
                       Details
                     </button>
@@ -661,7 +705,8 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                     </button>
                   </td>
                 </tr>
-              ))}
+              );
+              })}
             </tbody>
           </table>
         </div>

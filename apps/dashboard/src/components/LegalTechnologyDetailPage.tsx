@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { apiFetch, apiFetchText } from '../utils/api';
+import { useActiveTechnology } from './ActiveTechnologyContext';
 
 type Organisation = {
   iri?: string;
@@ -171,6 +172,7 @@ function triggerDownload(content: string, filename: string, contentType: string)
 export default function LegalTechnologyDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { setActiveTechnology } = useActiveTechnology();
   const [tech, setTech] = useState<LegalTechnology | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -204,6 +206,21 @@ export default function LegalTechnologyDetailPage() {
           try { data.leverancier_org = await apiFetch<Organisation>(`/api/organisations/${encodeURIComponent(data.leverancier)}`); } catch { /* IRI fallback */ }
         }
         setTech(data);
+        setActiveTechnology({
+          id: data.id || id,
+          naam: data.naam,
+          omschrijving: data.omschrijving,
+          gebruiksstatus: data.gebruiksstatus,
+          licentievorm: data.licentievorm,
+          subtype: data.subtype,
+          versienummer: data.versienummer,
+          beoogdeGebruikers: data.beoogde_gebruikers || [],
+          gebodenFunctionaliteit: data.geboden_functionaliteit || [],
+          technologietype: data.technologietype,
+          typeTechnologie: data.type_technologie || [],
+          taaktypes: (data.geschikt_voor_taak || []).map((item) => item.taaktype).filter(Boolean),
+          ondersteuningsniveaus: data.ondersteuning_voor || [],
+        });
       })
       .catch(e => setError(e.message))
       .finally(() => setLoading(false));
@@ -515,7 +532,7 @@ export default function LegalTechnologyDetailPage() {
       <div className="row g-4 lt-detail-main-row">
 
         {/* Links: secties */}
-        <div className="col-lg-8">
+        <div className="col-12">
 
           {/* Omschrijving + Documentatie */}
           <Section title="Omschrijving" id="omschrijving">
@@ -638,191 +655,6 @@ export default function LegalTechnologyDetailPage() {
           </div>
 
           <div className="text-muted small mt-3">Bijgewerkt op {tech.bijgewerkt_op || '–'}</div>
-        </div>
-
-        {/* Rechts: Op een oogopslag */}
-        <div className="col-lg-4">
-          <div className="card border-0 shadow-sm lt-detail-overview-card">
-            <div className="card-header bg-primary text-white fw-semibold small text-uppercase py-2 lt-detail-sidebar-title">
-              Op een oogopslag
-            </div>
-            <div className="card-body p-0">
-              <table className="table table-sm mb-0">
-                <tbody>
-                  <tr>
-                    <th className="text-muted fw-normal small ps-3 lt-detail-sidebar-label">Beoogde gebruikers</th>
-                    <td className="small pe-3">{tech.beoogde_gebruikers?.filter(Boolean).join(', ') || '–'}</td>
-                  </tr>
-                  {tech.technologietype && (
-                    <tr>
-                      <th className="text-muted fw-normal small ps-3">Technologietype</th>
-                      <td className="small pe-3">{tech.technologietype}</td>
-                    </tr>
-                  )}
-                  {(tech.type_technologie?.filter(Boolean).length ?? 0) > 0 && (
-                    <tr>
-                      <th className="text-muted fw-normal small ps-3">Type technologie</th>
-                      <td className="small pe-3">{tech.type_technologie!.filter(Boolean).join(', ')}</td>
-                    </tr>
-                  )}
-                  <tr>
-                    <th className="text-muted fw-normal small ps-3">Vorm / subtype</th>
-                    <td className="small pe-3">
-                      {tech.subtype ? <span className={`badge bg-${subtypeBadge}`}>{tech.subtype}</span> : '–'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="text-muted fw-normal small ps-3">Gebruiksstatus</th>
-                    <td className="small pe-3">
-                      <span className={`badge bg-${statusBadge}`}>{tech.gebruiksstatus || '–'}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="text-muted fw-normal small ps-3">Licentie</th>
-                    <td className="small pe-3">{tech.licentievorm || '–'}</td>
-                  </tr>
-                  {tech.normstatus && (
-                    <tr>
-                      <th className="text-muted fw-normal small ps-3">Normstatus</th>
-                      <td className="small pe-3">{tech.normstatus}</td>
-                    </tr>
-                  )}
-                  {(tech.beheerder_org || tech.beheerder) && (
-                    <tr>
-                      <th className="text-muted fw-normal small ps-3">Beheerder</th>
-                      <td className="small pe-3">{tech.beheerder_org?.naam || tech.beheerder}</td>
-                    </tr>
-                  )}
-                  {(tech.leverancier_org || tech.leverancier) && (
-                    <tr>
-                      <th className="text-muted fw-normal small ps-3">Leverancier</th>
-                      <td className="small pe-3">{tech.leverancier_org?.naam || tech.leverancier}</td>
-                    </tr>
-                  )}
-                  <tr>
-                    <th className="text-muted fw-normal small ps-3">Versie</th>
-                    <td className="small pe-3">
-                      {tech.versienummer || '–'}
-                      {tech.versiedatum && <span className="text-muted ms-1">({tech.versiedatum})</span>}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="text-muted fw-normal small ps-3">Bijgewerkt op</th>
-                    <td className="small pe-3">{tech.bijgewerkt_op || '–'}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {tech.geboden_functionaliteit?.filter(Boolean).length > 0 && (
-            <div className="card border-0 shadow-sm mt-3">
-              <div className="card-header bg-primary bg-opacity-10 text-primary fw-semibold small text-uppercase py-2 lt-detail-panel-title">
-                Functionaliteiten
-              </div>
-              <div className="card-body">
-                <TagList items={tech.geboden_functionaliteit} bg="primary" />
-              </div>
-            </div>
-          )}
-
-          {tech.geschikt_voor_taak?.filter(t => t.taaktype).length > 0 && (
-            <div className="card border-0 shadow-sm mt-3">
-              <div className="card-header bg-success bg-opacity-10 text-success fw-semibold small text-uppercase py-2 lt-detail-panel-title">
-                Taaktypes
-              </div>
-              <div className="card-body">
-                <TagList items={tech.geschikt_voor_taak.map(t => t.taaktype).filter(Boolean)} bg="success" />
-              </div>
-            </div>
-          )}
-
-          <div className="card border-0 shadow-sm mt-3">
-            <div
-              className="card-header d-flex justify-content-between align-items-center lt-detail-context-header"
-            >
-              <div className="fw-semibold small text-uppercase text-primary lt-detail-context-title">
-                Context: Sticky Notes
-              </div>
-              <button
-                type="button"
-                className="btn btn-sm btn-outline-primary"
-                onClick={() => setContextOpen((open) => !open)}
-              >
-                {contextOpen ? 'Inklappen' : 'Uitklappen'}
-              </button>
-            </div>
-
-            {contextOpen && (
-              <div className="card-body lt-detail-context-body">
-                {stickyLoading ? (
-                  <div className="text-muted small">Sticky notes laden...</div>
-                ) : stickyError ? (
-                  <div className="alert alert-danger py-2 px-3 mb-0">{stickyError}</div>
-                ) : (
-                  <>
-                    <div className="d-flex gap-2 flex-wrap">
-                      <span className="badge text-bg-light">Totaal: {stickySummary.total}</span>
-                      <span className="badge text-bg-success">Definitief: {stickySummary.definitive}</span>
-                      <span className="badge text-bg-warning text-dark">Kandidaat: {stickySummary.candidate}</span>
-                    </div>
-
-                    {relatedStickyNotes.length === 0 ? (
-                      <div className="text-muted small">
-                        Geen gekoppelde sticky notes gevonden voor deze juridische technologie.
-                      </div>
-                    ) : (
-                      <div className="lt-detail-sticky-list">
-                        {relatedStickyNotes.map((note) => {
-                          const isDefinitive = uriMatchesTechnology(note.linkedTechnology?.uri, technologyMatchKeys);
-                          const isCandidate = note.candidateTechnologies.some((candidate) =>
-                            uriMatchesTechnology(candidate.uri, technologyMatchKeys),
-                          );
-                          return (
-                            <div
-                              key={note.uri}
-                              className="border rounded p-2 lt-detail-sticky-card"
-                            >
-                              <div className="d-flex justify-content-between align-items-start gap-2 mb-1">
-                                <div className="lt-detail-sticky-meta">
-                                  <span
-                                    title={note.color || 'geen kleur'}
-                                    className="lt-detail-sticky-dot"
-                                    style={stickyNoteColorStyle(note.color)}
-                                  />
-                                  <span className="lt-detail-sticky-chip" style={stickyStatusChipStyle(note.status)}>{note.status}</span>
-                                </div>
-                                <button
-                                  type="button"
-                                  className="btn btn-sm btn-outline-primary"
-                                  onClick={() => openStickyEditor(note)}
-                                >
-                                  Bewerk
-                                </button>
-                              </div>
-
-                              <div className="small text-muted mb-1">
-                                {note.board.name} / {note.section || 'onbekende sectie'}
-                              </div>
-
-                              <div className="lt-detail-sticky-preview">
-                                {note.text}
-                              </div>
-
-                              <div className="d-flex gap-2 flex-wrap mt-2">
-                                {isDefinitive && <span className="badge text-bg-success">Definitieve koppeling</span>}
-                                {isCandidate && <span className="badge text-bg-warning text-dark">Kandidaatkoppeling</span>}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-            )}
-          </div>
         </div>
 
       </div>

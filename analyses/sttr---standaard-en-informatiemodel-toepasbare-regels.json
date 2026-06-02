@@ -1,0 +1,45 @@
+{
+  "subtype": "Standaard",
+  "abbrevation": "sttr",
+  "naam": "STTR - Standaard en informatiemodel toepasbare regels",
+  "omschrijving": "De Standaard toepasbare regels (STTR) is een van de standaarden voor het Digitaal Stelsel Omgevingswet (DSO). De STTR en het bijbehorende informatiemodel (IMTR) zijn nodig om toepasbare regels te kunnen publiceren. Ze horen bij het maken en het aanleveren van toepasbare regels aan de Registratie toepasbare regels (RTR). Rijkswaterstaat beheert deze standaard.",
+  "gebruiksstatus": "In gebruik",
+  "licentievorm": "Volledig open",
+  "ondersteuning_voor": [
+    {
+      "beschouwingsniveau": "Logisch",
+      "modelsoort": "Normatief"
+    }
+  ],
+  "geschikt_voor_taak": [
+    {
+      "omschrijving": "Structureren en specificeren van toepasbare regels voor publicatie en uitvoering.",
+      "taaktype": "Specificeren regels"
+    },
+    {
+      "omschrijving": "Ondersteunen van beslisprocessen met uniform gemodelleerde toepasbare regels.",
+      "taaktype": "Beslisondersteuning"
+    }
+  ],
+  "versiebeschrijving": {
+    "versienummer": "1.0"
+  },
+  "documentatie": {
+    "beoogdGebruik": "Publiceren en aanleveren van toepasbare regels met behulp van STTR en IMTR in de DSO-context.",
+    "toegevoegdeWaarde": "Uniforme representatie van toepasbare regels en betere overdraagbaarheid richting uitvoering en beslisondersteuning.",
+    "onderdelen": "STTR, IMTR en RTR-koppeling (context publicatie/aanlevering).",
+    "ontwikkelingEnBeheer": "Rijkswaterstaat (volgens beschikbare interne omschrijving)."
+  },
+  "bronverwijzing": [
+    {
+      "titel": "STTR resource",
+      "locatie": "https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0",
+      "verwijzing": ""
+    },
+    {
+      "titel": "STTR bronverwijzing",
+      "locatie": "https://data.bp4mc2.org/id/lto/legaltech/sttr/v/1.0/bronverwijzing/37b3b164-b64f-4b11-97e6-9aee6d0deb08",
+      "verwijzing": ""
+    }
+  ]
+}
