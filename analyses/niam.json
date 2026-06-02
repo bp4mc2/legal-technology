@@ -1,0 +1,93 @@
+{
+  "subtype": "Methode",
+  "abbrevation": "niam",
+  "naam": "NIAM",
+  "omschrijving": "Natural language Information Analysis Method: een fact-based methode voor conceptuele informatiemodellering en explicitering van domeinkennis.",
+  "gebruiksstatus": "In gebruik",
+  "licentievorm": "Volledig open",
+  "geboden_functionaliteit": [
+    "Wetgeving: modellering van wet- en regelgeving"
+  ],
+  "beoogde_gebruikers": [
+    "Juristen",
+    "Beleidsmedewerkers",
+    "Regelanalist",
+    "Softwareontwikkelaars"
+  ],
+  "ondersteuning_voor": [
+    {
+      "beschouwingsniveau": "Semantisch",
+      "modelsoort": "Descriptief"
+    },
+    {
+      "beschouwingsniveau": "Logisch",
+      "modelsoort": "Descriptief"
+    }
+  ],
+  "geschikt_voor_taak": [
+    {
+      "omschrijving": "Gestructureerd analyseren van juridische teksten naar elementaire feiten en relaties.",
+      "taaktype": "Analyseren regeltekst"
+    },
+    {
+      "omschrijving": "Expliciteren van betekenis en bedoeling van regels in een consistent feitenmodel.",
+      "taaktype": "Interpreteren en expliciteren"
+    },
+    {
+      "omschrijving": "Vastleggen en afbakenen van begrippen binnen een specifieke context.",
+      "taaktype": "Begrip definiëren"
+    },
+    {
+      "omschrijving": "Onderbouwen welke gegevens nodig zijn voor uitvoerbare specificaties.",
+      "taaktype": "Specificeren gegevens(behoefte)"
+    },
+    {
+      "omschrijving": "Voorbereiden van formele regeluitwerking vanuit fact-based analyse.",
+      "taaktype": "Specificeren regels"
+    },
+    {
+      "omschrijving": "Controleren of specificaties in lijn zijn met brontekst en interpretatie.",
+      "taaktype": "Valideren specificaties"
+    }
+  ],
+  "versiebeschrijving": {
+    "versienummer": "onbekend"
+  },
+  "documentatie": {
+    "beoogdGebruik": "Methode voor conceptuele analyse en modellering van regels en domeinfeiten.",
+    "toegevoegdeWaarde": "Vermindert ambiguiteit en vergroot semantische consistentie en herleidbaarheid.",
+    "onderdelen": "Elementaire feiten, rollen, constraints, verbalisatie en conceptueel schema-ontwerp.",
+    "ontwikkelingEnBeheer": "Historisch ontwikkeld vanuit NIAM en doorontwikkeld in de ORM-community; geen centrale leverancier van de methode zelf."
+  },
+  "bronverwijzing": [
+    {
+      "titel": "Object Role Modeling - Official Site",
+      "locatie": "https://www.orm.net/",
+      "verwijzing": ""
+    },
+    {
+      "titel": "ORM Overview",
+      "locatie": "https://www.orm.net/overview.html",
+      "verwijzing": ""
+    },
+    {
+      "titel": "ORM 2 Technical Report 1",
+      "locatie": "https://www.orm.net/pdf/ORM2_TechReport1.pdf",
+      "verwijzing": ""
+    },
+    {
+      "titel": "Object-Role Modeling: an overview",
+      "locatie": "https://www.orm.net/pdf/ORMwhitePaper.pdf",
+      "verwijzing": ""
+    },
+    {
+      "titel": "The NIAM Information Analysis Method: Theory and Practice",
+      "locatie": "https://doi.org/10.1007/978-94-009-0451-4",
+      "verwijzing": ""
+    }
+  ],
+  "normstatus": "Best practice",
+  "type_technologie": [
+    "DSL"
+  ]
+}

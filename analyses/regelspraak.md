@@ -1,0 +1,17 @@
+TL;DR:
+Regelspraak is binnen dit typologiekader het best te duiden als een standaard voor het modelleren van formele (reken)regels. De best onderbouwde taakkoppelingen zijn Interpreteren en expliciteren en Specificeren regels, met primaire inzet in implementatie. Versiedatum, beheerder en normstatus zijn op basis van de beschikbare bronnen onbekend.
+
+---
+
+| Onderdeel | Beschrijving |
+|----------|-------------|
+| Algemene korte beschrijving van de technologie | - Wat is het?<br>- Regelspraak is een standaard voor het modelleren van formele (reken)regels.<br>- Classificatie: standaard |
+| Versie en versiedatum | - Versienummer: 1.0<br>- Datum: onbekend<br>- Laatst bijgewerkt (beschrijving): 2026-04-14 |
+| Beheerder / leverancier | - Organisatie / community: onbekend |
+| Beoogd gebruik | Formeel en eenduidig vastleggen van (reken)regels als stap tussen interpretatie van juridische tekst en verdere regeluitwerking. |
+| Toegevoegde waarde | - Welk probleem wordt opgelost?<br>- Vermindert ambiguiteit bij het expliciteren en structureren van regels die later verder gespecificeerd of geïmplementeerd worden.<br>- Concrete voordelen<br>- Consistentere interpretatie van regels<br>- Betere overdraagbaarheid tussen juridische en technische disciplines |
+| Onderdelen | - Componenten / modules / standaarden<br>- onbekend |
+| Kenmerken (typologie) | - Type: standaard<br>- Beschouwingsniveau: semantisch, logisch (technisch: conflict/onzeker)<br>- Type model: normatief (leidend), descriptief (ondersteunend bij explicitering)<br>- Gebruikers: Regelanalist, Juristen, Softwareontwikkelaars (onzeker)<br>- Gebruiksstatus: In gebruik<br>- Normstatus: onbekend |
+| Juridische taken die worden ondersteund | - Expliciete mapping naar typologie<br>- Interpreteren en expliciteren<br>- Specificeren regels |
+| Positie in beleidscyclus | - Opstellen: beperkt/indirect<br>- Implementatie: sterk<br>- Uitvoering: indirect<br>- Evaluatie: beperkt/indirect |
+| Bronverwijzingen | *Antwoord in formaat: title, URL*<br>- Regelspraak (resource in catalogusdata), https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0<br>- Regelspraak bronverwijzing (catalogusdata), https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0/bronverwijzing/a1641464-23bc-4e7d-a040-40f6defa4c6a<br>- Typology of legal technologies (achtergrond typologie), https://publications.cohubicol.com/typology<br>- Consolidatierationale (scorematrix, 4 persona's):<br>- Claim “Standaard” geselecteerd (Data architect 30/33, Legal engineer 29/33, Jurist 31/33, Business/informatie-analist 28/33); hoogste gewogen score en hoge typology fit.<br>- Claim “taken: Interpreteren en expliciteren + Specificeren regels” geselecteerd (31/33, 30/33, 32/33, 29/33); direct verifieerbaar in interne brondata.<br>- Conflict “beschouwingsniveau technisch” verworpen als leidend (18/33) ten opzichte van semantisch/logisch (27-30/33); onvoldoende bronkwaliteit en verifieerbaarheid voor technische executie.<br>- Claim “gebruiksstatus In gebruik” geselecteerd (33/33 in alle persona’s) op basis van expliciete statuswaarde in brondata.<br>- Claim “normstatus” gemarkeerd als conflict/onzeker (max 12/33) wegens ontbrekende expliciete normstatusbron.<br>- Claim “gebruikersgroepen” gemarkeerd als conflict/onzeker (max 16/33) wegens afleiding zonder directe bronvermelding. |

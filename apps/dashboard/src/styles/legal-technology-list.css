@@ -25,10 +25,48 @@
   border: 1px solid var(--lt-border);
   border-radius: var(--lt-radius-lg);
   box-shadow: var(--lt-shadow-1);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.lt-list-card.is-compare-selected {
+  border-color: #14b8a6;
+  background: linear-gradient(180deg, rgba(240, 253, 250, 0.8) 0%, rgba(255, 255, 255, 1) 38%);
+  box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.25), var(--lt-shadow-1);
 }
 
 .lt-list-card-header {
   background: #ffffff;
+}
+
+.lt-compare-switch {
+  padding-left: 0;
+  min-height: 1.15rem;
+}
+
+.lt-compare-switch .form-check-input {
+  float: none;
+  margin: 0;
+  width: 1.55rem;
+  height: 0.92rem;
+  border-color: #cbd5e1;
+  background-color: #f8fafc;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.lt-compare-switch .form-check-input:checked {
+  background-color: #14b8a6;
+  border-color: #14b8a6;
+}
+
+.lt-compare-switch .form-check-input:focus {
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 0.18rem rgba(20, 184, 166, 0.22);
+}
+
+.lt-compare-switch .form-check-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .lt-list-comparison {

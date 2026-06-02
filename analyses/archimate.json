@@ -1,0 +1,98 @@
+{
+  "naam": "Archimate",
+  "beschrijving": "ArchiMate is een open en onafhankelijke modelleertaal voor enterprise architectuur waarmee relaties tussen bedrijfsdomeinen eenduidig kunnen worden beschreven, geanalyseerd en gevisualiseerd.",
+  "ontwikkelaar": "The Open Group",
+  "url": "https://www.opengroup.org/archimate-forum/archimate-overview",
+  "subtype": "Standaard",
+  "hoofdcategorie": "Juridisch-inhoudelijke technologie",
+  "gerelateerde_technologieen": [
+    "TOGAF"
+  ],
+  "toepassingsdomein": [
+    "Enterprise architectuur",
+    "Overheidsinformatisering",
+    "Beleids- en uitvoeringsontwerp"
+  ],
+  "gebruikers": [
+    "Regelanalist",
+    "Beleidsmedewerkers",
+    "Softwareontwikkelaars",
+    "Uitvoeringsorganisaties"
+  ],
+  "functionele_mogelijkheden": [
+    "Visueel modelleren van architectuurlagen en relaties",
+    "Structureren van begrippen, processen en informatieobjecten",
+    "Ondersteunen van impactanalyse en ontwerpbesluitvorming"
+  ],
+  "ondersteuning_voor": [
+    {
+      "beschouwingsniveau": "Semantisch",
+      "modelsoort": "Descriptief"
+    },
+    {
+      "beschouwingsniveau": "Logisch",
+      "modelsoort": "Descriptief"
+    }
+  ],
+  "geschikt_voor_taak": [
+    {
+      "taaktype": "Begrip definiëren",
+      "toelichting": "ArchiMate ondersteunt het expliciet structureren van begrippen en hun onderlinge relaties in architectuurmodellen."
+    },
+    {
+      "taaktype": "Specificeren gegevens(behoefte)",
+      "toelichting": "ArchiMate maakt informatieobjecten en informatiestromen inzichtelijk voor gegevensbehoefte-analyse."
+    },
+    {
+      "taaktype": "Specificeren processen",
+      "toelichting": "ArchiMate biedt constructen om processen en hun samenhang met organisatie en IT te modelleren."
+    }
+  ],
+  "beleidsdomeinen": [
+    "Digitalisering overheid",
+    "Uitvoeringsarchitectuur",
+    "Informatievoorziening"
+  ],
+  "gebruiksstatus": "In gebruik",
+  "licentievorm": "Open onder voorwaarden",
+  "implementatievorm": "Commercieel product",
+  "cloud_opties": [
+    "Hybrid",
+    "On-prem"
+  ],
+  "interoperabiliteit": [
+    "Model Exchange File Format",
+    "XMI/XML-gebaseerde uitwisseling",
+    "Tool-onafhankelijke modelleerconventies"
+  ],
+  "security_en_compliance": [
+    "Afhankelijk van gekozen tooling en implementatiecontext"
+  ],
+  "voorbeelden": [
+    "Architectuurmodellen voor ketensamenwerking",
+    "Analyse van impact van beleidswijzigingen op uitvoering"
+  ],
+  "versiebeschrijving": {
+    "versie": "1.0",
+    "laatste_update": "2026-04-14",
+    "release_notes": "Catalogusregistratie Archimate v1.0 bijgewerkt; externe standaardcontext ArchiMate 3.x van The Open Group."
+  },
+  "bronnen": [
+    {
+      "titel": "Archimate resource (catalogusdata)",
+      "url": "https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0"
+    },
+    {
+      "titel": "Archimate bronverwijzing (catalogusdata)",
+      "url": "https://data.bp4mc2.org/id/lto/legaltech/archimate/v/1.0/bronverwijzing/fc0f41ff-1075-4425-bebf-5e8c0f17134c"
+    },
+    {
+      "titel": "The ArchiMate Enterprise Architecture Modeling Language",
+      "url": "https://www.opengroup.org/archimate-forum/archimate-overview"
+    },
+    {
+      "titel": "ArchiMate Certification Program",
+      "url": "https://www.opengroup.org/certifications/archimate"
+    }
+  ]
+}

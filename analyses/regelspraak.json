@@ -1,0 +1,54 @@
+{
+  "subtype": "Standaard",
+  "abbrevation": "regelspraak",
+  "naam": "Regelspraak",
+  "omschrijving": "Regelspraak is een standaard voor het modelleren van formele (reken)regels.",
+  "gebruiksstatus": "In gebruik",
+  "licentievorm": "Volledig open",
+  "ondersteuning_voor": [
+    {
+      "beschouwingsniveau": "Semantisch",
+      "modelsoort": "Normatief"
+    },
+    {
+      "beschouwingsniveau": "Logisch",
+      "modelsoort": "Normatief"
+    }
+  ],
+  "geschikt_voor_taak": [
+    {
+      "omschrijving": "Expliciteren van betekenis en bedoeling van regels in een gestructureerde vorm.",
+      "taaktype": "Interpreteren en expliciteren"
+    },
+    {
+      "omschrijving": "Formaliseren en structureren van (reken)regels voor verdere uitwerking.",
+      "taaktype": "Specificeren regels"
+    }
+  ],
+  "versiebeschrijving": {
+    "versienummer": "1.0"
+  },
+  "documentatie": {
+    "beoogdGebruik": "Regelspraak wordt gebruikt om formele (reken)regels te modelleren als schakel tussen juridische interpretatie en regeluitwerking.",
+    "toegevoegdeWaarde": "Eenduidiger vastlegging van regels en betere overdraagbaarheid tussen juridische en technische disciplines.",
+    "onderdelen": "onbekend",
+    "ontwikkelingEnBeheer": "onbekend"
+  },
+  "bronverwijzing": [
+    {
+      "titel": "Regelspraak resource",
+      "locatie": "https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0",
+      "verwijzing": ""
+    },
+    {
+      "titel": "Regelspraak bronverwijzing",
+      "locatie": "https://data.bp4mc2.org/id/lto/legaltech/regelspraak/v/1.0/bronverwijzing/a1641464-23bc-4e7d-a040-40f6defa4c6a",
+      "verwijzing": ""
+    },
+    {
+      "titel": "Typology of legal technologies",
+      "locatie": "https://publications.cohubicol.com/typology",
+      "verwijzing": ""
+    }
+  ]
+}

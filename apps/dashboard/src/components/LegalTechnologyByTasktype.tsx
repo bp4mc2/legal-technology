@@ -1,7 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { apiFetch } from '../utils/api';
 import LegalTechnologyForm, { selectForEdit } from './LegalTechnologyForm';
+import { useCompareSelection } from './CompareSelectionContext';
+import { useActiveTechnology } from './ActiveTechnologyContext';
+
+const TASKTYPE_CONTEXT_EVENT = 'lt-tasktype-context';
+const TASKTYPE_COMMAND_EVENT = 'lt-tasktype-command';
 
 type OndersteuningVoor = {
   beschouwingsniveau: string;
@@ -139,17 +143,18 @@ const SubtypeBadge: React.FC<{ value?: string }> = ({ value }) => {
   );
 };
 
-const EyeIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M1.5 8s2.3-4 6.5-4 6.5 4 6.5 4-2.3 4-6.5 4-6.5-4-6.5-4z" stroke="currentColor" strokeWidth="1.3" />
-    <circle cx="8" cy="8" r="2" stroke="currentColor" strokeWidth="1.3" />
-  </svg>
-);
-
 const EditIcon = () => (
   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
     <path d="M2 11.5V14h2.5l7.1-7.1-2.5-2.5L2 11.5z" stroke="currentColor" strokeWidth="1.2" />
     <path d="M8.9 3.6l2.5 2.5 1.1-1.1a.9.9 0 0 0 0-1.3l-1.2-1.2a.9.9 0 0 0-1.3 0L8.9 3.6z" stroke="currentColor" strokeWidth="1.2" />
+  </svg>
+);
+const TrashIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M2.7 4.5h10.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+    <path d="M6.2 2.8h3.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+    <path d="M4.4 4.5l.5 8.1c.03.5.45.9.95.9h4.4c.5 0 .92-.4.95-.9l.5-8.1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+    <path d="M6.7 6.6v4.8M9.3 6.6v4.8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
   </svg>
 );
 
@@ -166,13 +171,19 @@ const SearchIcon = () => (
   </svg>
 );
 
-const LegalTechnologyByTasktype: React.FC = () => {
-  const navigate = useNavigate();
+type LegalTechnologyByTasktypeProps = {
+  contextMode?: 'internal' | 'right-rail';
+};
+
+const LegalTechnologyByTasktype: React.FC<LegalTechnologyByTasktypeProps> = ({ contextMode = 'internal' }) => {
+  const { selectedSet, selectedCount, maxSelection, toggleSelection, removeSelection } = useCompareSelection();
+  const { setActiveTechnology } = useActiveTechnology();
   const [items, setItems] = useState<LegalTechnology[]>([]);
   const [taskTypes, setTaskTypes] = useState<TaskType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeGroup, setActiveGroup] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<'lijst' | 'taaktype'>('taaktype');
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const contentScrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -251,8 +262,36 @@ const LegalTechnologyByTasktype: React.FC = () => {
       .finally(() => setLoading(false));
   };
 
+  const handleDelete = async (id?: string) => {
+    if (!id) return;
+    if (!window.confirm('Weet je zeker dat je deze technologie wilt verwijderen?')) return;
+    try {
+      await apiFetch(`/api/legaltechnologies/${id}`, { method: 'DELETE' });
+      setItems((prev) => prev.filter((item) => item.id !== id));
+      removeSelection(id);
+    } catch (e: any) {
+      setError(e.message);
+    }
+  };
+
   const closeFormModal = () => {
     setShowForm(false);
+  };
+
+  const handleSetContext = (tech: LegalTechnology, fallbackId: string) => {
+    setActiveTechnology({
+      id: tech.id || fallbackId,
+      naam: tech.naam,
+      omschrijving: tech.omschrijving,
+      gebruiksstatus: tech.gebruiksstatus,
+      licentievorm: tech.licentievorm,
+      subtype: tech.subtype,
+      versienummer: tech.versienummer,
+      beoogdeGebruikers: tech.beoogde_gebruikers || [],
+      gebodenFunctionaliteit: tech.geboden_functionaliteit || [],
+      taaktypes: (tech.geschikt_voor_taak || []).map((item) => item.taaktype).filter(Boolean),
+      ondersteuningsniveaus: tech.ondersteuning_voor || [],
+    });
   };
 
   const handleFormSuccess = () => {
@@ -352,6 +391,13 @@ const LegalTechnologyByTasktype: React.FC = () => {
       .filter((group) => group.visible);
   }, [items, taskTypes, search, gebruikersgroepFilter, licentievormFilter, beschouwingsniveauFilter]);
 
+  const filteredItems = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    return [...items.filter((item) => matchesTechnologyFilters(item, q))].sort((a, b) =>
+      a.naam.localeCompare(b.naam, undefined, { sensitivity: 'base' }),
+    );
+  }, [items, search, gebruikersgroepFilter, licentievormFilter, beschouwingsniveauFilter]);
+
   const groupedByTaskGroup = useMemo(() => {
     const groups = new Map<
       string,
@@ -422,6 +468,100 @@ const LegalTechnologyByTasktype: React.FC = () => {
     window.scrollTo({ top: y, behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    if (contextMode !== 'right-rail' || typeof window === 'undefined') {
+      return;
+    }
+
+    const detail = {
+      taskGroups: groupedByTaskGroup.map((group) => ({
+        groupLabel: group.groupLabel,
+        tasktypeCount: group.tasktypes.length,
+      })),
+      activeGroup,
+      filters: {
+        search,
+        gebruikersgroepFilter,
+        licentievormFilter,
+        beschouwingsniveauFilter,
+      },
+      options: {
+        gebruikersgroepen,
+        licentievormen,
+        beschouwingsniveaus,
+      },
+      summary: {
+        tasktypeCount: groupedByTasktype.length,
+        groupCount: groupedByTaskGroup.length,
+      },
+    };
+
+    window.dispatchEvent(new CustomEvent(TASKTYPE_CONTEXT_EVENT, { detail }));
+  }, [
+    contextMode,
+    groupedByTaskGroup,
+    activeGroup,
+    search,
+    gebruikersgroepFilter,
+    licentievormFilter,
+    beschouwingsniveauFilter,
+    gebruikersgroepen,
+    licentievormen,
+    beschouwingsniveaus,
+    groupedByTasktype.length,
+  ]);
+
+  useEffect(() => {
+    if (contextMode !== 'right-rail' || typeof window === 'undefined') {
+      return;
+    }
+
+    const handler = (event: Event) => {
+      const customEvent = event as CustomEvent<{
+        type?: 'scrollToGroup' | 'setFilter' | 'clearFilters';
+        groupLabel?: string;
+        key?: 'search' | 'gebruikersgroepFilter' | 'licentievormFilter' | 'beschouwingsniveauFilter';
+        value?: string;
+      }>;
+
+      const payload = customEvent.detail;
+      if (!payload || !payload.type) {
+        return;
+      }
+
+      if (payload.type === 'scrollToGroup' && payload.groupLabel) {
+        scrollToGroup(payload.groupLabel);
+        return;
+      }
+
+      if (payload.type === 'clearFilters') {
+        setSearch('');
+        setGebruikersgroepFilter('');
+        setLicentievormFilter('');
+        setBeschouwingsniveauFilter('');
+        return;
+      }
+
+      if (payload.type === 'setFilter' && payload.key) {
+        const nextValue = payload.value || '';
+        if (payload.key === 'search') {
+          setSearch(nextValue);
+        } else if (payload.key === 'gebruikersgroepFilter') {
+          setGebruikersgroepFilter(nextValue);
+        } else if (payload.key === 'licentievormFilter') {
+          setLicentievormFilter(nextValue);
+        } else if (payload.key === 'beschouwingsniveauFilter') {
+          setBeschouwingsniveauFilter(nextValue);
+        }
+      }
+    };
+
+    window.addEventListener(TASKTYPE_COMMAND_EVENT, handler as EventListener);
+    return () => {
+      window.removeEventListener(TASKTYPE_COMMAND_EVENT, handler as EventListener);
+    };
+  }, [contextMode]);
+
   if (loading) {
     return (
       <div className="card border-0 shadow-sm">
@@ -436,9 +576,35 @@ const LegalTechnologyByTasktype: React.FC = () => {
   return (
     <div className="d-grid gap-3">
       <section className="lt-tasktype-header-card">
-        <div className="lt-tasktype-header-inner px-4 py-3">
-          <h3 className="lt-tasktype-title mb-1 fw-semibold">Juridische Technologieen per Taaktype</h3>
-          <p className="lt-tasktype-subtitle mb-0 small">Overzicht van juridische technologieen gegroepeerd naar taakstructuur</p>
+        <div className="lt-tasktype-header-inner px-4 py-3 d-flex flex-wrap align-items-center justify-content-between gap-2">
+          <div>
+            <h3 className="lt-tasktype-title mb-1 fw-semibold">Juridische Technologieen</h3>
+            <p className="lt-tasktype-subtitle mb-0 small">
+              {viewMode === 'lijst'
+                ? 'Alle technologieen in een platte lijst'
+                : 'Gegroepeerd naar taakstructuur'}
+            </p>
+          </div>
+          <div className="btn-group" role="group" aria-label="Weergave">
+            <button
+              type="button"
+              className={`btn btn-sm ${
+                viewMode === 'lijst' ? 'btn-primary' : 'btn-outline-secondary'
+              }`}
+              onClick={() => setViewMode('lijst')}
+            >
+              Lijst
+            </button>
+            <button
+              type="button"
+              className={`btn btn-sm ${
+                viewMode === 'taaktype' ? 'btn-primary' : 'btn-outline-secondary'
+              }`}
+              onClick={() => setViewMode('taaktype')}
+            >
+              Per taaktype
+            </button>
+          </div>
         </div>
       </section>
 
@@ -469,113 +635,227 @@ const LegalTechnologyByTasktype: React.FC = () => {
       )}
 
       <div className="lt-tasktype-layout row g-3 align-items-start">
-        <aside className="lt-tasktype-sidebar col-12 col-lg-auto h-100">
-          <div className="lt-tasktype-sticky d-grid gap-3 position-sticky">
-            <section className="lt-tasktype-card card">
-              <div className="lt-tasktype-card-header card-header py-3 border-bottom-0">
-                <div className="lt-tasktype-card-header-title small fw-semibold">Taakgroepen</div>
-              </div>
-              <div className="card-body py-2">
-                <div className="d-grid gap-2">
-                  {groupedByTaskGroup.map((taskGroup, groupIdx) => (
-                    <button
-                      key={`nav-${taskGroup.groupLabel}-${groupIdx}`}
-                      type="button"
-                      className={`lt-taskgroup-btn btn text-start rounded-3 p-2 ${
-                        activeGroup === taskGroup.groupLabel ? 'is-active' : ''
-                      }`}
-                      onClick={() => scrollToGroup(taskGroup.groupLabel)}
-                      title={`Ga naar ${taskGroup.groupLabel}`}
-                    >
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="lt-taskgroup-label small fw-semibold text-truncate">{taskGroup.groupLabel}</div>
-                        <div className="d-inline-flex align-items-center gap-2">
-                          <span className="lt-taskgroup-count badge rounded-pill">
-                            {taskGroup.tasktypes.length}
-                          </span>
-                          <span className={`lt-taskgroup-chevron ${activeGroup === taskGroup.groupLabel ? 'is-active' : ''}`}>
-                            <ChevronRightIcon />
-                          </span>
-                        </div>
-                      </div>
-                    </button>
-                  ))}
+        {contextMode !== 'right-rail' && viewMode === 'taaktype' ? (
+          <aside className="lt-tasktype-sidebar col-12 col-lg-auto h-100">
+            <div className="lt-tasktype-sticky d-grid gap-3 position-sticky">
+              <section className="lt-tasktype-card card">
+                <div className="lt-tasktype-card-header card-header py-3 border-bottom-0">
+                  <div className="lt-tasktype-card-header-title small fw-semibold">Taakgroepen</div>
                 </div>
-              </div>
-            </section>
-
-            <section className="lt-tasktype-card card">
-              <div className="lt-tasktype-card-header card-header py-3 border-bottom-0">
-                <div className="lt-tasktype-card-header-title small fw-semibold">Filters</div>
-              </div>
-              <div className="card-body d-grid gap-3">
-                <div>
-                  <label className="lt-filter-label form-label small mb-1">Zoekterm</label>
-                  <div className="lt-filter-search-wrap">
-                    <span className="lt-filter-search-icon" aria-hidden="true"><SearchIcon /></span>
-                    <input
-                      type="search"
-                      className="form-control form-control-sm lt-filter-search-input"
-                      placeholder="Zoek..."
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                    />
+                <div className="card-body py-2">
+                  <div className="d-grid gap-2">
+                    {groupedByTaskGroup.map((taskGroup, groupIdx) => (
+                      <button
+                        key={`nav-${taskGroup.groupLabel}-${groupIdx}`}
+                        type="button"
+                        className={`lt-taskgroup-btn btn text-start rounded-3 p-2 ${
+                          activeGroup === taskGroup.groupLabel ? 'is-active' : ''
+                        }`}
+                        onClick={() => scrollToGroup(taskGroup.groupLabel)}
+                        title={`Ga naar ${taskGroup.groupLabel}`}
+                      >
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div className="lt-taskgroup-label small fw-semibold text-truncate">{taskGroup.groupLabel}</div>
+                          <div className="d-inline-flex align-items-center gap-2">
+                            <span className="lt-taskgroup-count badge rounded-pill">
+                              {taskGroup.tasktypes.length}
+                            </span>
+                            <span className={`lt-taskgroup-chevron ${activeGroup === taskGroup.groupLabel ? 'is-active' : ''}`}>
+                              <ChevronRightIcon />
+                            </span>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
                   </div>
                 </div>
+              </section>
 
-                <div>
-                  <label className="lt-filter-label form-label small mb-1">Gebruikersgroep</label>
-                  <select
-                    className="form-select form-select-sm"
-                    value={gebruikersgroepFilter}
-                    onChange={(e) => setGebruikersgroepFilter(e.target.value)}
-                  >
-                    <option value="">Alle</option>
-                    {gebruikersgroepen.map((value) => (
-                      <option key={value} value={value}>{value}</option>
-                    ))}
-                  </select>
+              <section className="lt-tasktype-card card">
+                <div className="lt-tasktype-card-header card-header py-3 border-bottom-0">
+                  <div className="lt-tasktype-card-header-title small fw-semibold">Filters</div>
                 </div>
+                <div className="card-body d-grid gap-3">
+                  <div>
+                    <label className="lt-filter-label form-label small mb-1">Zoekterm</label>
+                    <div className="lt-filter-search-wrap">
+                      <span className="lt-filter-search-icon" aria-hidden="true"><SearchIcon /></span>
+                      <input
+                        type="search"
+                        className="form-control form-control-sm lt-filter-search-input"
+                        placeholder="Zoek..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                      />
+                    </div>
+                  </div>
 
-                <div>
-                  <label className="lt-filter-label form-label small mb-1">Licentievorm</label>
-                  <select
-                    className="form-select form-select-sm"
-                    value={licentievormFilter}
-                    onChange={(e) => setLicentievormFilter(e.target.value)}
-                  >
-                    <option value="">Alle</option>
-                    {licentievormen.map((value) => (
-                      <option key={value} value={value}>{value}</option>
-                    ))}
-                  </select>
+                  <div>
+                    <label className="lt-filter-label form-label small mb-1">Gebruikersgroep</label>
+                    <select
+                      className="form-select form-select-sm"
+                      value={gebruikersgroepFilter}
+                      onChange={(e) => setGebruikersgroepFilter(e.target.value)}
+                    >
+                      <option value="">Alle</option>
+                      {gebruikersgroepen.map((value) => (
+                        <option key={value} value={value}>{value}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="lt-filter-label form-label small mb-1">Licentievorm</label>
+                    <select
+                      className="form-select form-select-sm"
+                      value={licentievormFilter}
+                      onChange={(e) => setLicentievormFilter(e.target.value)}
+                    >
+                      <option value="">Alle</option>
+                      {licentievormen.map((value) => (
+                        <option key={value} value={value}>{value}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="lt-filter-label form-label small mb-1">Beschouwingsniveau</label>
+                    <select
+                      className="form-select form-select-sm"
+                      value={beschouwingsniveauFilter}
+                      onChange={(e) => setBeschouwingsniveauFilter(e.target.value)}
+                    >
+                      <option value="">Alle</option>
+                      {beschouwingsniveaus.map((value) => (
+                        <option key={value} value={value}>{value}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="lt-filter-summary border-top pt-3 small">
+                    {viewMode === 'lijst' ? (
+                      <><span className="lt-filter-summary-strong fw-semibold">{filteredItems.length}</span> technologie{filteredItems.length !== 1 ? 'en' : ''}</>
+                    ) : (
+                      <><span className="lt-filter-summary-strong fw-semibold">{groupedByTasktype.length}</span> taaktypen in{' '}
+                      <span className="lt-filter-summary-strong fw-semibold">{groupedByTaskGroup.length}</span> groepen</>
+                    )}
+                  </div>
                 </div>
+              </section>
+            </div>
+          </aside>
+        ) : null}
 
-                <div>
-                  <label className="lt-filter-label form-label small mb-1">Beschouwingsniveau</label>
-                  <select
-                    className="form-select form-select-sm"
-                    value={beschouwingsniveauFilter}
-                    onChange={(e) => setBeschouwingsniveauFilter(e.target.value)}
-                  >
-                    <option value="">Alle</option>
-                    {beschouwingsniveaus.map((value) => (
-                      <option key={value} value={value}>{value}</option>
-                    ))}
-                  </select>
+        <div className={`lt-tasktype-content ${contextMode === 'right-rail' ? 'col-12' : 'col'}`} ref={contentScrollRef}>
+          {viewMode === 'lijst' ? (
+            filteredItems.length === 0 ? (
+              <section className="card border-0 shadow-sm">
+                <div className="card-body text-center py-4 text-muted">
+                  Geen resultaten voor deze zoek/filter-combinatie.
                 </div>
-
-                <div className="lt-filter-summary border-top pt-3 small">
-                  <span className="lt-filter-summary-strong fw-semibold">{groupedByTasktype.length}</span> taaktypen in{' '}
-                  <span className="lt-filter-summary-strong fw-semibold">{groupedByTaskGroup.length}</span> groepen
+              </section>
+            ) : (
+              <section className="card">
+                <div className="card-header py-3 border-bottom d-flex justify-content-between align-items-center">
+                  <span className="fw-semibold">Alle technologieen</span>
+                  <span className="badge rounded-pill bg-light text-dark border">{filteredItems.length}</span>
                 </div>
-              </div>
-            </section>
-          </div>
-        </aside>
-
-        <div className="lt-tasktype-content col" ref={contentScrollRef}>
-          {groupedByTasktype.length === 0 ? (
+                <div className="card-body p-0">
+                  <div className="table-responsive">
+                    <table className="table table-sm align-middle mb-0">
+                      <thead className="table-light">
+                        <tr>
+                          <th className="lt-table-head">Naam</th>
+                          <th className="lt-table-head">Type</th>
+                          <th className="lt-table-head">Status</th>
+                          <th className="lt-table-head">Licentie</th>
+                          <th className="lt-table-head">Versie</th>
+                          <th className="lt-table-head text-end">Acties</th>
+                        </tr>
+                      </thead>
+                      <tbody className="border-top-0">
+                        {filteredItems.map((tech, techIdx) => {
+                          const compareId = tech.id || '';
+                          const contextId = tech.id || `list-${techIdx}`;
+                          const isSelected = compareId ? selectedSet.has(compareId) : false;
+                          const disableSelect = !isSelected && selectedCount >= maxSelection;
+                          return (
+                            <tr
+                              key={tech.id || `list-${techIdx}`}
+                              className={`align-middle lt-tech-row${isSelected ? ' is-compare-selected' : ''}`}
+                            >
+                              <td>
+                                <button
+                                  type="button"
+                                  className="btn btn-link p-0 fw-semibold text-decoration-none text-start lt-context-name-link"
+                                  onClick={() => handleSetContext(tech, contextId)}
+                                >
+                                  {tech.naam}
+                                  <span className="lt-context-name-hint ms-1" aria-hidden="true">
+                                    <span className="lt-context-name-hint-icon">›</span>
+                                    <span className="lt-context-name-hint-label">context</span>
+                                  </span>
+                                </button>
+                                <small className="text-muted">{tech.abbrevation || contextId}</small>
+                              </td>
+                              <td><SubtypeBadge value={tech.subtype} /></td>
+                              <td><StatusBadge value={tech.gebruiksstatus} /></td>
+                              <td>{tech.licentievorm || '-'}</td>
+                              <td>{tech.versienummer || '-'}</td>
+                              <td className="text-end text-nowrap">
+                                <div className="d-inline-flex align-items-center gap-1">
+                                  <div className="form-check form-switch lt-compare-switch-cell mb-0">
+                                    <input
+                                      type="checkbox"
+                                      role="switch"
+                                      className="form-check-input lt-compare-switch-input"
+                                      checked={isSelected}
+                                      disabled={!compareId || disableSelect}
+                                      aria-label={`Vergelijk ${tech.naam}`}
+                                      onChange={() =>
+                                        compareId &&
+                                        toggleSelection({
+                                          id: compareId,
+                                          naam: tech.naam,
+                                          omschrijving: tech.omschrijving,
+                                          gebruiksstatus: tech.gebruiksstatus,
+                                          licentievorm: tech.licentievorm,
+                                          versienummer: tech.versienummer,
+                                          subtype: tech.subtype,
+                                        })
+                                      }
+                                      title={disableSelect ? `Maximaal ${maxSelection} technologieen` : 'Selecteer voor vergelijking'}
+                                    />
+                                  </div>
+                                  <button
+                                    className="lt-action-btn lt-action-btn--outline btn btn-sm"
+                                    onClick={() => handleEdit(tech.id)}
+                                    disabled={!tech.id}
+                                  >
+                                    <span className="me-1 align-middle"><EditIcon /></span>
+                                    Bewerken
+                                  </button>
+                                  <button
+                                    className="lt-action-btn lt-action-btn--danger btn btn-sm"
+                                    onClick={() => handleDelete(tech.id)}
+                                    disabled={!tech.id}
+                                  >
+                                    <span className="me-1 align-middle"><TrashIcon /></span>
+                                    Verwijder
+                                  </button>
+                                </div>
+                                {disableSelect ? <div className="small text-muted mt-1">Maximum ({maxSelection}) bereikt</div> : null}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            )
+          ) : groupedByTasktype.length === 0 ? (
             <section className="card border-0 shadow-sm">
               <div className="card-body text-center py-4 text-muted">
                 Geen resultaten voor deze zoek/filter-combinatie.
@@ -635,32 +915,87 @@ const LegalTechnologyByTasktype: React.FC = () => {
                                   </tr>
                                 ) : (
                                   group.technologies.map((tech, techIdx) => (
-                                    <tr key={tech.id || `${group.taaktype}-${techIdx}`} className="align-middle lt-tech-row">
+                                    <tr
+                                      key={tech.id || `${group.taaktype}-${techIdx}`}
+                                      className={`align-middle lt-tech-row${(tech.id ? selectedSet.has(tech.id) : false) ? ' is-compare-selected' : ''}`}
+                                    >
                                       <td>
-                                        <div className="fw-semibold">{tech.naam}</div>
-                                        <small className="text-muted">{tech.abbrevation || tech.id || '-'}</small>
+                                        {(() => {
+                                          const contextId = tech.id || `${group.taaktype}-${techIdx}`;
+                                          return (
+                                            <>
+                                              <button
+                                                type="button"
+                                                className="btn btn-link p-0 fw-semibold text-decoration-none text-start lt-context-name-link"
+                                                onClick={() => handleSetContext(tech, contextId)}
+                                              >
+                                                {tech.naam}
+                                                <span className="lt-context-name-hint ms-1" aria-hidden="true">
+                                                  <span className="lt-context-name-hint-icon">›</span>
+                                                  <span className="lt-context-name-hint-label">context</span>
+                                                </span>
+                                              </button>
+                                              <small className="text-muted">{tech.abbrevation || contextId}</small>
+                                            </>
+                                          );
+                                        })()}
                                       </td>
                                       <td><SubtypeBadge value={tech.subtype} /></td>
                                       <td><StatusBadge value={tech.gebruiksstatus} /></td>
                                       <td>{tech.licentievorm || '-'}</td>
                                       <td>{tech.versienummer || '-'}</td>
                                       <td className="text-end text-nowrap">
-                                        <button
-                                          className="lt-action-btn lt-action-btn--ghost btn btn-sm me-1"
-                                          onClick={() => tech.id && navigate(`/legaltechnologies/${encodeURIComponent(tech.id)}`)}
-                                          disabled={!tech.id}
-                                        >
-                                          <span className="me-1 align-middle"><EyeIcon /></span>
-                                          Details
-                                        </button>
-                                        <button
-                                          className="lt-action-btn lt-action-btn--outline btn btn-sm"
-                                          onClick={() => handleEdit(tech.id)}
-                                          disabled={!tech.id}
-                                        >
-                                          <span className="me-1 align-middle"><EditIcon /></span>
-                                          Bewerken
-                                        </button>
+                                        {(() => {
+                                          const compareId = tech.id || '';
+                                          const isSelected = compareId ? selectedSet.has(compareId) : false;
+                                          const disableSelect = !isSelected && selectedCount >= maxSelection;
+                                          return (
+                                            <>
+                                              <div className="d-inline-flex align-items-center gap-1">
+                                                <div className="form-check form-switch lt-compare-switch-cell mb-0">
+                                                  <input
+                                                    type="checkbox"
+                                                    role="switch"
+                                                    className="form-check-input lt-compare-switch-input"
+                                                    checked={isSelected}
+                                                    disabled={!compareId || disableSelect}
+                                                    aria-label={`Vergelijk ${tech.naam}`}
+                                                    onChange={() =>
+                                                      compareId &&
+                                                      toggleSelection({
+                                                        id: compareId,
+                                                        naam: tech.naam,
+                                                        omschrijving: tech.omschrijving,
+                                                        gebruiksstatus: tech.gebruiksstatus,
+                                                        licentievorm: tech.licentievorm,
+                                                        versienummer: tech.versienummer,
+                                                        subtype: tech.subtype,
+                                                      })
+                                                    }
+                                                    title={disableSelect ? `Maximaal ${maxSelection} technologieen` : 'Selecteer voor vergelijking'}
+                                                  />
+                                                </div>
+                                                <button
+                                                  className="lt-action-btn lt-action-btn--outline btn btn-sm"
+                                                  onClick={() => handleEdit(tech.id)}
+                                                  disabled={!tech.id}
+                                                >
+                                                  <span className="me-1 align-middle"><EditIcon /></span>
+                                                  Bewerken
+                                                </button>
+                                                <button
+                                                  className="lt-action-btn lt-action-btn--danger btn btn-sm"
+                                                  onClick={() => handleDelete(tech.id)}
+                                                  disabled={!tech.id}
+                                                >
+                                                  <span className="me-1 align-middle"><TrashIcon /></span>
+                                                  Verwijder
+                                                </button>
+                                              </div>
+                                              {disableSelect ? <div className="small text-muted mt-1">Maximum ({maxSelection}) bereikt</div> : null}
+                                            </>
+                                          );
+                                        })()}
                                       </td>
                                     </tr>
                                   ))
@@ -681,5 +1016,6 @@ const LegalTechnologyByTasktype: React.FC = () => {
     </div>
   );
 };
+
 
 export default LegalTechnologyByTasktype;

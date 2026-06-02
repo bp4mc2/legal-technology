@@ -1,0 +1,93 @@
+{
+  "subtype": "Tool",
+  "abbrevation": "openfisca",
+  "naam": "OpenFisca",
+  "omschrijving": "Open-source engine voor microsimulatie en rules-as-code, gebruikt om wet- en regelgeving te modelleren en door te rekenen.",
+  "gebruiksstatus": "In gebruik",
+  "licentievorm": "Open onder voorwaarden",
+  "geboden_functionaliteit": [
+    "Geautomatiseerd beslissen",
+    "Wetgeving: uitvoering van wet- en regelgeving",
+    "Wetgeving: modellering van wet- en regelgeving"
+  ],
+  "beoogde_gebruikers": [
+    "Beleidsmedewerkers",
+    "Juristen",
+    "Softwareontwikkelaars",
+    "Uitvoeringsorganisaties"
+  ],
+  "ondersteuning_voor": [
+    {
+      "beschouwingsniveau": "Logisch",
+      "modelsoort": "Normatief"
+    },
+    {
+      "beschouwingsniveau": "Technisch",
+      "modelsoort": "Normatief"
+    }
+  ],
+  "geschikt_voor_taak": [
+    {
+      "omschrijving": "Vertalen van regelgeving naar uitvoerbare functies en regels.",
+      "taaktype": "Specificeren regels"
+    },
+    {
+      "omschrijving": "Definieren van invoergegevens en parameters voor wettelijke berekeningen.",
+      "taaktype": "Specificeren gegevens(behoefte)"
+    },
+    {
+      "omschrijving": "Automatisch doorrekenen van regels op casussen en populaties.",
+      "taaktype": "Geautomatiseerde regeluitvoering"
+    },
+    {
+      "omschrijving": "Ondersteunen van professionals met consistente berekeningsuitkomsten.",
+      "taaktype": "Beslisondersteuning"
+    },
+    {
+      "omschrijving": "Evalueren van beleidsvarianten via simulaties.",
+      "taaktype": "Evaluatie"
+    }
+  ],
+  "versiebeschrijving": {
+    "versienummer": "43.5.0",
+    "versiedatum": "2025-12-03"
+  },
+  "documentatie": {
+    "beoogdGebruik": "Modelleer en simuleer tax-and-benefit-regels met herbruikbare landpakketten.",
+    "toegevoegdeWaarde": "Transparante, reproduceerbare en testbare beleidsdoorrekening.",
+    "onderdelen": "OpenFisca Core, country packages, variabelen, parameters, formules, Python API en Web API.",
+    "ontwikkelingEnBeheer": "Community-gedreven ontwikkeling binnen de OpenFisca-organisatie."
+  },
+  "bronverwijzing": [
+    {
+      "titel": "OpenFisca Documentation",
+      "locatie": "https://openfisca.org/doc/",
+      "verwijzing": ""
+    },
+    {
+      "titel": "OpenFisca Key Concepts: Tax and Benefit System",
+      "locatie": "https://openfisca.org/doc/key-concepts/tax_and_benefit_system.html",
+      "verwijzing": ""
+    },
+    {
+      "titel": "OpenFisca Core repository",
+      "locatie": "https://github.com/openfisca/openfisca-core",
+      "verwijzing": ""
+    },
+    {
+      "titel": "OpenFisca Core tags",
+      "locatie": "https://github.com/openfisca/openfisca-core/tags",
+      "verwijzing": ""
+    },
+    {
+      "titel": "OpenFisca organisatie",
+      "locatie": "https://github.com/openfisca",
+      "verwijzing": ""
+    }
+  ],
+  "normstatus": "Industrie",
+  "leverancier": "https://github.com/openfisca",
+  "type_technologie": [
+    "DSL"
+  ]
+}

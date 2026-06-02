@@ -1,5 +1,6 @@
 from flask_smorest import Blueprint, abort
 from marshmallow import Schema, fields
+from api.services.access_policy import require_action
 
 from api.services.sticky_notes_service import (
     list_sticky_notes,
@@ -92,6 +93,10 @@ def get_sticky_notes(args):
 @blp.response(200, StickyNoteSchema)
 def patch_sticky_note_review(args):
     """Update review fields for one sticky note."""
+    denied = require_action("sticky_note:review", "sticky_note")
+    if denied:
+        return denied
+
     try:
         return update_sticky_note_review(
             note_uri=args.get("noteUri", ""),

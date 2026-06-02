@@ -1,0 +1,40 @@
+{
+  "repository_type": "monorepo",
+  "parts": [
+    {
+      "part_id": "api",
+      "root_path": "apps/api",
+      "description": "Flask REST API en business services"
+    },
+    {
+      "part_id": "dashboard",
+      "root_path": "apps/dashboard",
+      "description": "React + TypeScript dashboard"
+    },
+    {
+      "part_id": "cli",
+      "root_path": "apps/cli",
+      "description": "Click CLI voor GraphDB-beheer"
+    }
+  ],
+  "integration_points": [
+    {
+      "from": "dashboard",
+      "to": "api",
+      "type": "REST",
+      "details": "/api/* endpoints via fetch en Vite proxy"
+    },
+    {
+      "from": "api",
+      "to": "GraphDB",
+      "type": "SPARQL",
+      "details": "Lees- en schrijfbewerkingen op de semantische bron van waarheid"
+    },
+    {
+      "from": "cli",
+      "to": "GraphDB",
+      "type": "beheeroperaties",
+      "details": "Import, export, synchronisatie en migratie van Turtle-data"
+    }
+  ]
+}

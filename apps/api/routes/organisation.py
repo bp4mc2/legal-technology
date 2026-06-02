@@ -6,6 +6,7 @@ from api.services.organisation_service import (
     list_organisations, get_organisation, add_organisation, 
     update_organisation, delete_organisation, export_organisation_turtle
 )
+from api.services.access_policy import require_action
 from api.models.organisation import (
     OrganisatieSchema, OrganisatieCreateSchema, OrganisatieUpdateSchema
 )
@@ -49,6 +50,10 @@ def add(data):
         400:
             description: Invalid input
     """
+    denied = require_action("organisation:create", "organisation")
+    if denied:
+        return denied
+
     try:
         return add_organisation(data)
     except Exception as e:
@@ -105,6 +110,10 @@ def update(data, iri):
         404:
             description: Not found
     """
+    denied = require_action("organisation:update", "organisation")
+    if denied:
+        return denied
+
     result = update_organisation(iri, data)
     if not result:
         abort(404, message="Organisation not found")
@@ -130,6 +139,10 @@ def delete(iri):
         404:
             description: Not found
     """
+    denied = require_action("organisation:delete", "organisation")
+    if denied:
+        return denied
+
     result = delete_organisation(iri)
     if not result:
         abort(404, message="Organisation not found")

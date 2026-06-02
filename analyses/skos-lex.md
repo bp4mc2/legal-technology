@@ -1,0 +1,17 @@
+TL;DR:
+SKOS-LEX is in dit kader het best te classificeren als een standaard voor het modelleren en vastleggen van juridische begrippen als SKOS-concepten. De sterkst onderbouwde taakkoppelingen zijn Begrippen definiëren en Interpreteren en expliciteren. Versiedatum, beheerder, normstatus en concrete componenten zijn op basis van beschikbare bronnen onbekend.
+
+---
+
+| Onderdeel | Beschrijving |
+|----------|-------------|
+| Algemene korte beschrijving van de technologie | - Wat is het?<br>- SKOS-LEX (SKOS Legal Extension) definieert klassen en eigenschappen om juridische begrippen als SKOS-concepten te modelleren en vast te leggen.<br>- Classificatie: standaard |
+| Versie en versiedatum | - Versienummer: 1.0<br>- Datum: onbekend<br>- Laatst bijgewerkt (beschrijving): 2026-04-14 |
+| Beheerder / leverancier | - Organisatie / community: onbekend |
+| Beoogd gebruik | Eenduidige semantische representatie van juridische begrippen en hun relaties, zodat begrippenkaders herbruikbaar en machineleesbaar worden vastgelegd. |
+| Toegevoegde waarde | - Welk probleem wordt opgelost?<br>- Vermindert ambiguiteit in juridisch begrippengebruik door gestandaardiseerde begripsmodellering.<br>- Concrete voordelen<br>- Betere uitwisselbaarheid van begrippen tussen systemen<br>- Beter hergebruik van begrippenkaders in analyse en implementatie |
+| Onderdelen | - Componenten / modules / standaarden<br>- onbekend |
+| Kenmerken (typologie) | - Type: standaard<br>- Beschouwingsniveau: semantisch (ontologisch: conflict/onzeker)<br>- Type model: descriptief (normatief: conflict/onzeker)<br>- Gebruikers: Juristen, Regelanalist, Softwareontwikkelaars (conflict/onzeker)<br>- Gebruiksstatus: In gebruik<br>- Normstatus: onbekend |
+| Juridische taken die worden ondersteund | - Expliciete mapping naar typologie<br>- Begrippen definiëren<br>- Interpreteren en expliciteren |
+| Positie in beleidscyclus | - Opstellen: indirect<br>- Implementatie: sterk<br>- Uitvoering: indirect<br>- Evaluatie: beperkt/indirect |
+| Bronverwijzingen | *Antwoord in formaat: title, URL*<br>- SKOS-LEX resource (catalogusdata), https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0<br>- SKOS-LEX bronverwijzing (catalogusdata), https://data.bp4mc2.org/id/lto/legaltech/skos-lex/v/1.0/bronverwijzing/82612ad0-56dc-427b-9460-496b5f59ec89<br>- SKOS Reference (W3C Recommendation), https://www.w3.org/TR/skos-reference/<br>- SKOS Home (W3C), https://www.w3.org/2004/02/skos/<br>- Consolidatierationale (scorematrix, 4 persona's):<br>- Claim “Standaard” geselecteerd (Data architect 31/33, Legal engineer 30/33, Jurist 31/33, Business/informatie-analist 29/33); hoogste gewogen score en direct verifieerbaar in interne brondata.<br>- Claim “taken: Begrippen definiëren + Interpreteren en expliciteren” geselecteerd (31/33, 29/33, 32/33, 30/33); expliciet aanwezig in interne taakinvulling.<br>- Claim “semantisch beschouwingsniveau” geselecteerd (29/33, 28/33, 27/33, 28/33) op basis van aard van SKOS-conceptmodellering en W3C SKOS-doelstelling.<br>- Conflict “ontologisch beschouwingsniveau” gemarkeerd als conflict/onzeker (max 19/33); onvoldoende specifieke bron over SKOS-LEX-ontologieprofiel in beschikbare bronnen.<br>- Claim “gebruiksstatus In gebruik” geselecteerd (33/33 in alle persona’s) op basis van expliciete statuswaarde.<br>- Claims “beheerder, normstatus, concrete modules” gemarkeerd als onbekend/conflict-onzeker (max 12/33) wegens ontbrekende directe bronvermelding. |

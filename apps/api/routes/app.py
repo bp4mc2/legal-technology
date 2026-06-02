@@ -6,6 +6,7 @@ from flask_smorest import Api, Blueprint
 
 
 from api.routes.legal_technology import blp as legal_technology_blp
+from api.routes.product import blp as product_blp
 from api.routes.definition import blp as definition_blp
 from api.routes.organisation import blp as organisation_blp
 from api.routes.assistant import blp as assistant_blp
@@ -36,6 +37,7 @@ def health():
 
 api.register_blueprint(blp)
 api.register_blueprint(legal_technology_blp)
+api.register_blueprint(product_blp)
 api.register_blueprint(definition_blp)
 api.register_blueprint(organisation_blp)
 api.register_blueprint(assistant_blp)
@@ -63,6 +65,8 @@ def root():
             '/api/legaltechnologies/export/sync': 'Sla named graph en bundle exports op in de data-map (POST)',
             '/api/legaltechnologies/enumerations': 'Lijst van enumeraties',
             '/api/legaltechnologies/tasktypes': 'Lijst van taaktypen met beschrijving',
+            '/api/products': 'Lijst van productconcepten uit het productbegrippenkader',
+            '/api/products/<id>/traceability': 'Gegroepeerde input/output taakrelaties voor een product',
             '/api/organisations': 'Voeg toe (POST), lijst (GET)',
             '/api/organisations/<iri>': 'Ophalen (GET), bijwerken (PUT), verwijderen (DELETE)',
             '/api/definitions': 'Lijst, toevoegen van SKOS-definities',

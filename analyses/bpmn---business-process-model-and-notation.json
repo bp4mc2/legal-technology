@@ -1,0 +1,79 @@
+{
+  "naam": "BPMN - Business Process Model and Notation",
+  "omschrijving": "Business Process Model and Notation (BPMN) is een grafische standaard voor het modelleren en vastleggen van bedrijfsprocessen. De standaard is oorspronkelijk ontwikkeld door de Business Process Management Initiative (BPMI) en wordt sinds 2005 beheerd door de Object Management Group (OMG). Met BPMN 2.0 zijn naast notatie- en diagramregels ook uitvoeringssemantiek geïntroduceerd. BPMN is vastgelegd als OMG-specificatie en tevens genormeerd als ISO 19510.",
+  "subtype": "Standaard",
+  "gebruiksstatus": "In gebruik",
+  "licentievorm": "Volledig open",
+  "geboden_functionaliteit": [
+    "Wetgeving: uitvoering van wet- en regelgeving",
+    "Procespraktijk: procesanalyse"
+  ],
+  "beoogde_gebruikers": [
+    "Beleidsmedewerkers",
+    "Uitvoeringsorganisaties",
+    "Softwareontwikkelaars",
+    "Regelanalist"
+  ],
+  "ondersteuning_voor": [
+    {
+      "beschouwingsniveau": "Semantisch",
+      "modelsoort": "Descriptief"
+    },
+    {
+      "beschouwingsniveau": "Logisch",
+      "modelsoort": "Normatief"
+    },
+    {
+      "beschouwingsniveau": "Technisch",
+      "modelsoort": "Normatief"
+    }
+  ],
+  "geschikt_voor_taak": [
+    {
+      "omschrijving": "BPMN ondersteunt het modelleren van bedrijfsprocessen en de onderlinge processtappen.",
+      "taaktype": "Specificeren processen"
+    },
+    {
+      "omschrijving": "BPMN 2.0 bevat uitvoeringssemantiek en kan worden gebruikt voor het specificeren van uitvoerbare proceslogica.",
+      "taaktype": "Geautomatiseerde regeluitvoering"
+    }
+  ],
+  "versiebeschrijving": {
+    "versienummer": "1.0",
+    "versiedatum": "2026-04-14"
+  },
+  "documentatie": {
+    "beoogdGebruik": "BPMN wordt gebruikt om bedrijfsprocessen te beschrijven, te communiceren en in BPMN 2.0 ook voldoende precies te specificeren zodat diagrammen kunnen worden vertaald naar softwareprocescomponenten.",
+    "toegevoegdeWaarde": "Vermindert de kloof tussen procesontwerp en technische implementatie en geeft een gedeelde, eenduidige procesnotatie.",
+    "onderdelen": "BPMN-kernnotatie voor Business Process Diagrams, collaboration/process/choreography diagrams, en normatieve machineleesbare documenten zoals XSD en CMOF.",
+    "ontwikkelingEnBeheer": "Ontwikkeld door BPMI; sinds 2005 beheerd door de Object Management Group (OMG)."
+  },
+  "bronverwijzing": [
+    {
+      "titel": "BPMN - Business Process Model and Notation",
+      "locatie": "https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0",
+      "verwijzing": "Interne catalogusregistratie BPMN v1.0"
+    },
+    {
+      "titel": "BPMN bronverwijzing",
+      "locatie": "https://data.bp4mc2.org/id/lto/legaltech/bpmn/v/1.0/bronverwijzing/a98e4caa-74c9-42b6-9239-043a1bd502b0",
+      "verwijzing": "Interne bronverwijzing voor BPMN v1.0"
+    },
+    {
+      "titel": "BPMN 2.0.2 About page (OMG)",
+      "locatie": "https://www.omg.org/spec/BPMN/2.0.2/About-BPMN",
+      "verwijzing": "Officiële specificatiepagina"
+    },
+    {
+      "titel": "BPMN homepage (OMG)",
+      "locatie": "https://www.omg.org/bpmn/",
+      "verwijzing": "Officiële overzichtspagina"
+    }
+  ],
+  "relaties": [],
+  "normstatus": "Industrie",
+  "beheerder": "https://www.omg.org/",
+  "type_technologie": [
+    "Markup (annotatie)"
+  ]
+}

@@ -28,7 +28,7 @@
       },
       "isBackground": true,
       "problemMatcher": []
-    },
+    },    
     {
       "label": "Start API + Frontend",
       "dependsOn": [

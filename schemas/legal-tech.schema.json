@@ -1,0 +1,228 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JuridischeTechnologie",
+  "type": "object",
+  "required": [
+    "naam",
+    "omschrijving",
+    "gebruiksstatus",
+    "licentievorm",
+    "geschikt_voor_taak",
+    "versiebeschrijving"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "iri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "subtype": {
+      "type": "string",
+      "enum": ["Methode", "Standaard", "Tool"]
+    },
+    "abbrevation": {
+      "type": "string"
+    },
+    "naam": {
+      "type": "string"
+    },
+    "omschrijving": {
+      "type": "string"
+    },
+    "gebruiksstatus": {
+      "type": "string",
+      "enum": ["Work in progress", "Voorstel", "In gebruik"]
+    },
+    "licentievorm": {
+      "type": "string",
+      "enum": ["Volledig open", "Open onder voorwaarden", "Gesloten"]
+    },
+    "geboden_functionaliteit": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Geautomatiseerd beslissen",
+          "Compliance ondersteuning",
+          "Contract: geautomatiseerde contractgeneratie",
+          "Contract: analyse/redactie/beoordeling",
+          "Juridisch expertsysteem",
+          "Wetgeving: wetgevingsredactie",
+          "Wetgeving: uitvoering van wet- en regelgeving",
+          "Wetgeving: modellering van wet- en regelgeving",
+          "Procespraktijk: procesanalyse",
+          "Procespraktijk: opstellen van processtukken",
+          "Procespraktijk: voorspelling van rechterlijke uitspraak",
+          "Zoeken: jurisprudentie",
+          "Zoeken: wet- en regelgeving"
+        ]
+      }
+    },
+    "beoogde_gebruikers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Burgers en bedrijven",
+          "Rechtbanken",
+          "Opsporingsinstanties",
+          "Juristen",
+          "Beleidsmedewerkers",
+          "Wetgevers",
+          "Advocaten",
+          "Uitvoeringsorganisaties",
+          "Commerciële organisaties",
+          "Regelanalist",
+          "Softwareontwikkelaars"
+        ]
+      }
+    },
+    "bijgewerkt_op": {
+      "type": "string",
+      "format": "date"
+    },
+    "ondersteuning_voor": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "beschouwingsniveau": {
+            "type": "string",
+            "enum": ["Tekstueel", "Semantisch", "Ontologisch", "Logisch", "Technisch"]
+          },
+          "modelsoort": {
+            "type": "string",
+            "enum": ["Descriptief", "Normatief"]
+          }
+        }
+      }
+    },
+    "geschikt_voor_taak": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["omschrijving", "taaktype"],
+        "properties": {
+          "omschrijving": {
+            "type": "string"
+          },
+          "taaktype": {
+            "type": "string",
+            "enum": [
+              "Opstellen regeltekst",
+              "Opdracht orientering",
+              "Verzamelen bronmateriaal",
+              "Analyseren regeltekst",
+              "Interpreteren en expliciteren",
+              "Begrip definiëren",
+              "Specificeren gegevens(behoefte)",
+              "Specificeren regels",
+              "Specificeren processen",
+              "Valideren specificaties",
+              "Geautomatiseerde regeluitvoering",
+              "Beslisondersteuning",
+              "Evaluatie"
+            ]
+          }
+        }
+      }
+    },
+    "versiebeschrijving": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["versienummer"],
+      "properties": {
+        "versienummer": {
+          "type": "string"
+        },
+        "versiedatum": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "documentatie": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "beoogdGebruik": {
+          "type": "string"
+        },
+        "toegevoegdeWaarde": {
+          "type": "string"
+        },
+        "onderdelen": {
+          "type": "string"
+        },
+        "ontwikkelingEnBeheer": {
+          "type": "string"
+        }
+      }
+    },
+    "bronverwijzing": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "titel": {
+            "type": "string"
+          },
+          "locatie": {
+            "type": "string",
+            "format": "uri"
+          },
+          "verwijzing": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "relaties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type_relatie", "beschrijving_relatie", "gerelateerde_technologie"],
+        "properties": {
+          "type_relatie": {
+            "type": "string",
+            "enum": ["Vervangt", "Vervolg op", "Alternatief voor", "Gerelateerd aan"]
+          },
+          "beschrijving_relatie": {
+            "type": "string"
+          },
+          "gerelateerde_technologie": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "normstatus": {
+      "type": "string",
+      "enum": ["Idee", "Voorstel", "Best practice", "Industrie", "Wettelijk"]
+    },
+    "beheerder": {
+      "type": "string",
+      "format": "uri"
+    },
+    "leverancier": {
+      "type": "string",
+      "format": "uri"
+    },
+    "type_technologie": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Markup (annotatie)", "Markup (publicatie)", "DSL", "Machine learning", "Regelexecutie"]
+      }
+    }
+  }
+}
