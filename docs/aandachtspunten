@@ -1,0 +1,9 @@
+Vastleggen metadata voor verschillende type bronnen (normatief, interpretatief, interne bronnen)
+Thesaurus van bronnen vastleggen (met TOOI), zodat we beter per type bron kunnen beoordelen wat nodig is.
+Kunnen verwijzen naar en tussen verschillende type bronnen
+Service-informatie (“annotaties”) kunnen vatleggen bij juridische bronnen (zowel bij opstellen tekst als later in het proces). Basis voor machineleesbare regelgeving.
+Bestendig verwijzingen naar concept-regelgeving kunnen aangeven
+Bestendig service-informatie kunnen annoteren in concept-regelgeving (voor deze en vorige geldt dat verwijzingen niet verloren mogen gaan zodra een concept definitief wordt).
+Semantische herleidbaarbeid van interpretaties (semantische laag voor regels, “MetaNormenModel”) om gestructureerde analyses (JAS, JRM, Flint, RMM, etc.) beter te verbinden. Dit heeft ook relatie naar LOMO.
+Specificaties: wat is een voorkeursformaat om deze te publiceren? (Steven Gort gaat uit van DMN)
+AI-toepassingen: kunnen ontsluiten van knowledge graphs (UFO, ONTUML, GUFO, etc.)
