@@ -4,6 +4,8 @@ Kunnen verwijzen naar en tussen verschillende type bronnen
 Service-informatie (“annotaties”) kunnen vatleggen bij juridische bronnen (zowel bij opstellen tekst als later in het proces). Basis voor machineleesbare regelgeving.
 Bestendig verwijzingen naar concept-regelgeving kunnen aangeven
 Bestendig service-informatie kunnen annoteren in concept-regelgeving (voor deze en vorige geldt dat verwijzingen niet verloren mogen gaan zodra een concept definitief wordt).
+Verantwoording kunnen vastleggen: expert/vakkennis als interpretatie, Validatieresultaten kunnen vastleggen
+Discretionaire bevoegdheid expliciet kunnen duiden (waar zit deze bevoegdheid en hoe is deze ingevuld?)
 Semantische herleidbaarbeid van interpretaties (semantische laag voor regels, “MetaNormenModel”) om gestructureerde analyses (JAS, JRM, Flint, RMM, etc.) beter te verbinden. Dit heeft ook relatie naar LOMO.
 Specificaties: wat is een voorkeursformaat om deze te publiceren? (Steven Gort gaat uit van DMN)
 AI-toepassingen: kunnen ontsluiten van knowledge graphs (UFO, ONTUML, GUFO, etc.)
