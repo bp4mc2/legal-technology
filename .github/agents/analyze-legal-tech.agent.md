@@ -21,14 +21,14 @@ Additionally, execute the analysis workflow in two phases: four persona analyses
 - DO NOT skip any persona.
 - DO NOT invent fields that are not in schemas/legal-tech.schema.json.
 - DO NOT let prompt wording override the actual schema; schemas/legal-tech.schema.json is leading for JSON field names and required keys.
-- Use docs/typologie.md and model/juridische technologie.ttl as primary internal sources.
+- Use apps/docs/typologie.md and model/juridische technologie.ttl as primary internal sources.
 - Use external sources only when needed, and only if they are official or authoritative: government publications, standards body documentation, official product/vendor documentation, or peer-reviewed legal technology publications.
 - Answer in Dutch by default for the analysis section.
 - Use the user input technology name in the output filenames.
 - Build `normalized_naam` from the input name using: lowercase, spaces to `-`, remove characters other than `a-z`, `0-9`, and `-`.
 - All persona analyses must follow the exact structure from prompts/legal-tech-analysis.prompt.md.
 - Persona outputs are intermediate artifacts; only one consolidated ANALYSE is allowed in final output.
-- Consolidation must preserve typology consistency from docs/typologie.md and explicitly resolve conflicts between persona findings.
+- Consolidation must preserve typology consistency from apps/docs/typologie.md and explicitly resolve conflicts between persona findings.
 - Use a score matrix during consolidation and keep a concise consolidation rationale without adding extra top-level output sections.
 
 ## Score Matrix (mandatory for consolidation)
@@ -37,7 +37,7 @@ Use the matrix below to evaluate claims and decisions from persona analyses.
 Scale per criterion: 0 (weak/absent) to 3 (strong).
 
 Criteria and weights:
-- Typology fit (weight 3): degree to which the claim aligns exactly with docs/typologie.md (terminology, classification, tasks, policy cycle).
+- Typology fit (weight 3): degree to which the claim aligns exactly with apps/docs/typologie.md (terminology, classification, tasks, policy cycle).
 - Source quality (weight 3): official source > standards body source > peer-reviewed > secondary source.
 - Factual verifiability (weight 2): concretely evidenced by version, date, supplier/maintainer, and documentation.
 - Legal task coverage (weight 2): explicit and plausible mapping to framework task types.
@@ -54,7 +54,7 @@ Decision rules for conflicts:
 - Claims with Typology fit <= 1 cannot be leading, unless all persona claims score <= 1 (then mark as "onzeker").
 
 ## Approach
-1. Read prompts/legal-tech-analysis.prompt.md, prompts/legal-tech-json.prompt.md, docs/typologie.md, and schemas/legal-tech.schema.json.
+1. Read prompts/legal-tech-analysis.prompt.md, prompts/legal-tech-json.prompt.md, apps/docs/typologie.md, and schemas/legal-tech.schema.json.
 2. Validate the user-provided technology name before analysis:
 	- If missing or invalid: return the JSON error format defined in prompts/legal-tech-json.prompt.md.
 	- If ambiguous (multiple plausible technologies): ask the user for clarification before continuing.

@@ -2,7 +2,7 @@
 @prefix skosthes: <http://purl.org/iso25964/skos-thes#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 
-@prefix lt: <http://bp4mc2.org/lt#>.
+@prefix lt: <>.
 
 lt:BegrippenkaderJuridischeTechnologie a skos:ConceptScheme;
   rdfs:label "Legal technology vocabulary"@en;

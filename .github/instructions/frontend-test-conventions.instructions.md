@@ -11,7 +11,7 @@ Use this instruction for dashboard test creation and maintenance.
 
 ## Canonical References
 - Dashboard scripts and dependencies: [apps/dashboard/package.json](apps/dashboard/package.json)
-- Dashboard dev and test commands: [docs/development-guide.md](docs/development-guide.md)
+- Dashboard dev and test commands: [apps/docs/development-guide.md](apps/docs/development-guide.md)
 - Current Vitest config: [apps/dashboard/vite.config.ts](apps/dashboard/vite.config.ts)
 
 ## Testing Stack Expectations

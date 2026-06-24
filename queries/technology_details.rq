@@ -1,0 +1,206 @@
+PREFIX lto:  <http://bp4mc2.org/lto#>
+PREFIX dc:   <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT
+  ?tech
+  ?subtypeClass
+  ?subtypeClassLabel
+  ?abbrevation
+  ?versienummer
+  ?versiedatum
+  ?naam
+  ?omschrijving
+  ?bijgewerktOp
+  ?gebruiksstatus
+  ?licentievorm
+  ?normstatus
+  ?documentatie
+  ?bronverwijzing
+  ?ondersteuning_voor
+  ?geschikt_voor_taak
+  ?type_technologie
+  ?geboden_functionaliteit
+  ?beoogde_gebruikers
+  ?beheerder
+  ?leverancier
+WHERE {
+
+  BIND(<$_TECH_IRI> AS ?tech)
+
+  VALUES ?subtypeClass {
+    lto:Methode
+    lto:Standaard
+    lto:Tool
+  }
+  ?tech a ?subtypeClass ;
+        lto:naam ?naam ;
+        lto:omschrijving ?omschrijving ;
+        lto:gebruiksstatus ?gebruiksstatus ;
+        lto:licentievorm ?licentievorm .
+
+  OPTIONAL { ?subtypeClass rdfs:label ?subtypeClassLabel . }
+
+  OPTIONAL { ?tech lto:bijgewerktOp ?bijgewerktOp . }
+  OPTIONAL { ?tech lto:afkorting ?abbrevation . }
+ 
+  OPTIONAL { ?tech lto:normstatus ?normstatus . }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (SAMPLE(?vn) AS ?versienummer)
+      (SAMPLE(?vd) AS ?versiedatum)
+    WHERE {
+      ?tech lto:versiebeschrijving ?versie .
+      OPTIONAL { ?versie lto:versienummer ?vn . }
+      OPTIONAL { ?versie lto:versiedatum ?vd . }
+    }
+    GROUP BY ?tech
+  }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (
+        GROUP_CONCAT(
+          DISTINCT CONCAT(
+            COALESCE(STR(?beoogdGebruik), ""),
+            "||",
+            COALESCE(STR(?toegevoegdeWaarde), ""),
+            "||",
+            COALESCE(STR(?onderdelen), ""),
+            "||",
+            COALESCE(STR(?ontwikkelingEnBeheer), "")
+          );
+          SEPARATOR="@@"
+        ) AS ?documentatie
+      )
+    WHERE {
+      ?tech lto:documentatie ?doc .
+      OPTIONAL { ?doc lto:beoogdGebruik ?beoogdGebruik . }
+      OPTIONAL { ?doc lto:toegevoegdeWaarde ?toegevoegdeWaarde . }
+      OPTIONAL { ?doc lto:onderdelen ?onderdelen . }
+      OPTIONAL { ?doc lto:ontwikkelingEnBeheer ?ontwikkelingEnBeheer . }
+    }
+    GROUP BY ?tech
+  }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (
+        GROUP_CONCAT(
+          DISTINCT CONCAT(
+            COALESCE(STR(?bron_titel), ""),
+            "||",
+            COALESCE(STR(?bron_locatie), ""),
+            "||",
+            COALESCE(STR(?bron_verwijzing), "")
+          );
+          SEPARATOR="@@"
+        ) AS ?bronverwijzing
+      )
+    WHERE {
+      ?tech lto:bron ?bron .
+      OPTIONAL { ?bron dc:title ?bron_titel . }
+      OPTIONAL { ?bron foaf:page ?bron_locatie . }
+      OPTIONAL { ?bron dc:bibliographicCitation ?bron_verwijzing . }
+    }
+    GROUP BY ?tech
+  }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (
+        GROUP_CONCAT(
+          DISTINCT CONCAT(
+            COALESCE(STR(?beschouwingsniveau), ""),
+            "||",
+            COALESCE(STR(?modelsoort), "")
+          );
+          SEPARATOR="@@"
+        ) AS ?ondersteuning_voor
+      )
+    WHERE {
+      ?tech lto:ondersteuningVoor ?ondersteuning .
+      OPTIONAL { ?ondersteuning lto:beschouwingsniveau ?beschouwingsniveau . }
+      OPTIONAL { ?ondersteuning lto:modelsoort ?modelsoort . }
+    }
+    GROUP BY ?tech
+  }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (
+        GROUP_CONCAT(
+          DISTINCT CONCAT(
+            COALESCE(STR(?taak_omschrijving), ""),
+            "||",
+            COALESCE(STR(?taaktype), "")
+          );
+          SEPARATOR="@@"
+        ) AS ?geschikt_voor_taak
+      )
+    WHERE {
+      ?tech lto:geschiktVoorTaak ?geschikt .
+      OPTIONAL { ?geschikt lto:omschrijving ?taak_omschrijving . }
+      OPTIONAL { ?geschikt lto:taaktype ?taaktype . }
+    }
+    GROUP BY ?tech
+  }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (GROUP_CONCAT(DISTINCT STR(?typeTechnologieConcept); SEPARATOR="@@") AS ?type_technologie)
+    WHERE {
+      ?tech lto:typeTechnologie ?typeTechnologieConcept .
+    }
+    GROUP BY ?tech
+  }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (GROUP_CONCAT(DISTINCT STR(?gebodenFunctionaliteitConcept); SEPARATOR="@@") AS ?geboden_functionaliteit)
+    WHERE {
+      ?tech lto:gebodenFunctionaliteit ?gebodenFunctionaliteitConcept .
+    }
+    GROUP BY ?tech
+  }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (GROUP_CONCAT(DISTINCT STR(?beoogdeGebruikersConcept); SEPARATOR="@@") AS ?beoogde_gebruikers)
+    WHERE {
+      ?tech lto:beoogdeGebruikers ?beoogdeGebruikersConcept .
+    }
+    GROUP BY ?tech
+  }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (GROUP_CONCAT(DISTINCT STR(?beheerderValue); SEPARATOR="@@") AS ?beheerder)
+    WHERE {
+      ?tech lto:beheerder ?beheerderValue .
+    }
+    GROUP BY ?tech
+  }
+
+  OPTIONAL {
+    SELECT
+      ?tech
+      (GROUP_CONCAT(DISTINCT STR(?leverancierValue); SEPARATOR="@@") AS ?leverancier)
+    WHERE {
+      ?tech lto:leverancier ?leverancierValue .
+    }
+    GROUP BY ?tech
+  }
+}

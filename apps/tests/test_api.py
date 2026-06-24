@@ -11,6 +11,7 @@ import api.routes.product as product_routes
 import api.routes.sticky_notes as sticky_notes_routes
 import api.routes.definition as definition_routes
 import api.routes.organisation as organisation_routes
+import api.routes.governance as governance_routes
 import api.services.graphdb_service as graphdb_service
 import api.services.access_policy as access_policy
 
@@ -210,7 +211,7 @@ def test_get_technology_documentation_success(client, monkeypatch):
             'technology_id': tech_id,
             'section_title': 'Alpha Counsel',
             'content': 'Alpha documentation body',
-            'source': 'media/legal-technologies.md#alpha-counsel',
+            'source': 'build/docs/includes/catalogus-details.md#alpha-counsel',
             'correlation_id': 'corr-doc-success',
         },
     )
@@ -229,7 +230,7 @@ def test_get_technology_documentation_not_found(client, monkeypatch):
 
     assert response.status_code == 404
     assert response.json['message'] == 'Documentation section not found'
-    assert response.json['source'] == 'media/legal-technologies.md'
+    assert response.json['source'] == 'build/docs/includes/catalogus-details.md'
     assert response.json['correlation_id']
 
 
@@ -240,7 +241,7 @@ def test_get_catalog_documentation_success(client, monkeypatch):
         lambda: {
             'title': 'Juridische technologie catalogus',
             'content': '# Overzicht\n\n# Technologieen',
-            'source': 'media/legal-technologies.md',
+            'source': 'build/docs/includes/catalogus-details.md',
             'section_count': 42,
         },
     )
@@ -260,7 +261,7 @@ def test_get_catalog_documentation_not_found(client, monkeypatch):
 
     assert response.status_code == 404
     assert response.json['message'] == 'Generated catalog documentation not found'
-    assert response.json['source'] == 'media/legal-technologies.md'
+    assert response.json['source'] == 'build/docs/includes/catalogus-details.md'
     assert response.json['correlation_id']
 
 
@@ -275,7 +276,7 @@ def test_get_technology_documentation_read_error_returns_structured_503(client, 
 
     assert response.status_code == 503
     assert response.json['message'] == 'Generated documentation source is unavailable'
-    assert response.json['source'] == 'media/legal-technologies.md'
+    assert response.json['source'] == 'build/docs/includes/catalogus-details.md'
     assert response.json['correlation_id']
     assert response.headers['X-Correlation-ID']
 
@@ -291,7 +292,130 @@ def test_get_catalog_documentation_read_error_returns_structured_503(client, mon
 
     assert response.status_code == 503
     assert response.json['message'] == 'Generated catalog documentation source is unavailable'
-    assert response.json['source'] == 'media/legal-technologies.md'
+    assert response.json['source'] == 'build/docs/includes/catalogus-details.md'
+    assert response.json['correlation_id']
+    assert response.headers['X-Correlation-ID']
+
+
+def test_get_generated_documentation_sections_success(client, monkeypatch):
+    monkeypatch.setattr(
+        legal_technology_routes,
+        'get_generated_documentation_sections',
+        lambda: [
+            {
+                'id': 'catalogus-overzicht',
+                'title': 'Catalogus-overzicht',
+                'content': '## Catalogus juridische technologieen',
+                'source': 'build/docs/includes/catalogus-overzicht.md',
+                'updated_at': '2026-06-02T08:00:00Z',
+            },
+            {
+                'id': 'ontologie',
+                'title': 'Ontologie',
+                'content': '## Ontologie',
+                'source': 'build/docs/includes/ontologie.md',
+                'updated_at': '2026-06-02T08:05:00Z',
+            },
+        ],
+    )
+
+    response = client.get('/api/legaltechnologies/documentation/generated')
+
+    assert response.status_code == 200
+    assert response.json['section_count'] == 2
+    assert response.json['sections'][0]['id'] == 'catalogus-overzicht'
+    assert response.json['sections'][1]['source'] == 'build/docs/includes/ontologie.md'
+    assert response.json['correlation_id']
+
+
+def test_get_generated_documentation_sections_read_error_returns_structured_503(client, monkeypatch):
+    monkeypatch.setattr(
+        legal_technology_routes,
+        'get_generated_documentation_sections',
+        lambda: (_ for _ in ()).throw(legal_technology_routes.DocumentationReadError('read failed')),
+    )
+
+    response = client.get('/api/legaltechnologies/documentation/generated')
+
+    assert response.status_code == 503
+    assert response.json['message'] == 'Generated documentation sections are unavailable'
+    assert 'build/docs/includes/catalogus-overzicht.md' in response.json['sources']
+    assert response.json['correlation_id']
+    assert response.headers['X-Correlation-ID']
+
+
+def test_get_documentation_hub_success(client, monkeypatch):
+    monkeypatch.setattr(
+        legal_technology_routes,
+        'get_documentation_hub_payload',
+        lambda: {
+            'groups': [
+                {
+                    'id': 'generated',
+                    'title': 'Gegenereerde documentatie',
+                    'description': 'Build-uitvoer',
+                    'source_label': 'ReSpec gegenereerd',
+                    'sections': [
+                        {
+                            'id': 'catalogus-overzicht',
+                            'title': 'Catalogus-overzicht',
+                            'content': '## Catalogus',
+                            'source': 'build/docs/includes/catalogus-overzicht.md',
+                            'updated_at': '2026-06-02T08:00:00Z',
+                            'group_id': 'generated',
+                            'group_title': 'Gegenereerde documentatie',
+                            'source_label': 'ReSpec gegenereerd',
+                        },
+                    ],
+                },
+                {
+                    'id': 'curated',
+                    'title': 'Handmatige documentatie',
+                    'description': 'Docs-map',
+                    'source_label': 'Curated docs',
+                    'sections': [
+                        {
+                            'id': 'docs-overview',
+                            'title': 'Documentatie-overzicht',
+                            'content': '# Documentatie',
+                            'source': 'docs/README.md',
+                            'updated_at': '2026-06-02T08:10:00Z',
+                            'group_id': 'curated',
+                            'group_title': 'Handmatige documentatie',
+                            'source_label': 'Curated docs',
+                        },
+                    ],
+                },
+            ],
+            'sections': [
+                {'id': 'catalogus-overzicht'},
+                {'id': 'docs-overview'},
+            ],
+            'section_count': 2,
+        },
+    )
+
+    response = client.get('/api/legaltechnologies/documentation/hub')
+
+    assert response.status_code == 200
+    assert response.json['section_count'] == 2
+    assert response.json['groups'][0]['id'] == 'generated'
+    assert response.json['groups'][1]['sections'][0]['source'] == 'docs/README.md'
+    assert response.json['correlation_id']
+
+
+def test_get_documentation_hub_read_error_returns_structured_503(client, monkeypatch):
+    monkeypatch.setattr(
+        legal_technology_routes,
+        'get_documentation_hub_payload',
+        lambda: (_ for _ in ()).throw(legal_technology_routes.DocumentationReadError('read failed')),
+    )
+
+    response = client.get('/api/legaltechnologies/documentation/hub')
+
+    assert response.status_code == 503
+    assert response.json['message'] == 'Documentation hub sources are unavailable'
+    assert 'docs/README.md' in response.json['sources']
     assert response.json['correlation_id']
     assert response.headers['X-Correlation-ID']
 
@@ -304,7 +428,7 @@ def test_get_technology_documentation_is_deterministic_for_identical_requests(cl
             'technology_id': tech_id,
             'section_title': 'Alpha Counsel',
             'content': 'Alpha documentation body',
-            'source': 'media/legal-technologies.md#alpha-counsel',
+            'source': 'build/docs/includes/catalogus-details.md#alpha-counsel',
         },
     )
 
@@ -726,5 +850,258 @@ def test_organisation_delete_denied_for_moderator(client):
 
     assert response.status_code == 403
     assert response.headers['X-Correlation-ID'] == response.json['correlation_id']
+
+
+def test_governance_permissions_viewer(client):
+    response = client.get('/api/governance/permissions', headers={'X-User-Role': 'Viewer'})
+
+    assert response.status_code == 200
+    assert response.json['role'] == 'Viewer'
+    assert response.json['actions']['proposal.create'] is False
+    assert response.json['actions']['proposal.approve'] is False
+    assert response.json['actions']['audit.read'] is True
+
+
+def test_governance_proposals_list_for_viewer(client, monkeypatch):
+    monkeypatch.setattr(
+        governance_routes,
+        'list_proposals',
+        lambda status=None, entity_type=None, q=None: [
+            {
+                'id': 'vst-001',
+                'title': 'Voorstel titel',
+                'description': 'Omschrijving',
+                'entityType': 'Technologie',
+                'entityLabel': 'LegalKM',
+                'entityId': 'legalkm',
+                'status': 'Ingediend',
+                'submittedBy': 'Proposer',
+                'submittedAt': '2026-06-02',
+                'reason': None,
+            }
+        ],
+    )
+
+    response = client.get('/api/governance/proposals', headers={'X-User-Role': 'Viewer'})
+
+    assert response.status_code == 200
+    assert isinstance(response.json, list)
+    assert response.json[0]['id'] == 'vst-001'
+
+
+def test_governance_proposal_create_denied_for_viewer(client):
+    response = client.post(
+        '/api/governance/proposals',
+        json={
+            'title': 'Nieuw voorstel',
+            'description': 'Beschrijving',
+            'entityType': 'Technologie',
+            'entityLabel': 'LegalKM',
+        },
+        headers={'X-User-Role': 'Viewer'},
+    )
+
+    assert response.status_code == 403
+    assert response.headers['X-Correlation-ID'] == response.json['correlation_id']
+
+
+def test_governance_proposal_create_allowed_for_proposer(client, monkeypatch):
+    monkeypatch.setattr(
+        governance_routes,
+        'create_proposal',
+        lambda title, description, entity_type, entity_label, submitted_by, entity_id=None, reason=None: {
+            'id': 'vst-010',
+            'title': title,
+            'description': description,
+            'entityType': entity_type,
+            'entityLabel': entity_label,
+            'entityId': entity_id,
+            'status': 'Ingediend',
+            'submittedBy': submitted_by,
+            'submittedAt': '2026-06-02',
+            'reason': reason,
+        },
+    )
+
+    response = client.post(
+        '/api/governance/proposals',
+        json={
+            'title': 'Nieuw voorstel',
+            'description': 'Beschrijving',
+            'entityType': 'Technologie',
+            'entityLabel': 'LegalKM',
+        },
+        headers={'X-User-Role': 'Proposer'},
+    )
+
+    assert response.status_code == 201
+    assert response.json['status'] == 'Ingediend'
+
+
+def test_governance_proposal_create_uses_actor_id_header(client, monkeypatch):
+    captured = {}
+
+    def _fake_create_proposal(title, description, entity_type, entity_label, submitted_by, entity_id=None, reason=None):
+        captured['submitted_by'] = submitted_by
+        return {
+            'id': 'vst-011',
+            'title': title,
+            'description': description,
+            'entityType': entity_type,
+            'entityLabel': entity_label,
+            'entityId': entity_id,
+            'status': 'Ingediend',
+            'submittedBy': submitted_by,
+            'submittedAt': '2026-06-02',
+            'reason': reason,
+        }
+
+    monkeypatch.setattr(governance_routes, 'create_proposal', _fake_create_proposal)
+
+    response = client.post(
+        '/api/governance/proposals',
+        json={
+            'title': 'Nieuw voorstel',
+            'description': 'Beschrijving',
+            'entityType': 'Technologie',
+            'entityLabel': 'LegalKM',
+        },
+        headers={'X-User-Role': 'Proposer', 'X-Actor-Id': 'actor-123'},
+    )
+
+    assert response.status_code == 201
+    assert captured['submitted_by'] == 'actor-123'
+    assert response.json['submittedBy'] == 'actor-123'
+
+
+def test_governance_proposal_approve_denied_for_proposer(client):
+    response = client.patch(
+        '/api/governance/proposals/vst-001/status',
+        json={'status': 'Goedgekeurd'},
+        headers={'X-User-Role': 'Proposer'},
+    )
+
+    assert response.status_code == 403
+    assert response.headers['X-Correlation-ID'] == response.json['correlation_id']
+
+
+def test_governance_proposal_status_invalid_transition_returns_400(client, monkeypatch):
+    monkeypatch.setattr(
+        governance_routes,
+        'update_proposal_status',
+        lambda proposal_id, new_status, actor, reason=None: (_ for _ in ()).throw(
+            ValueError('Statusovergang niet toegestaan: Ingediend -> Goedgekeurd')
+        ),
+    )
+
+    response = client.patch(
+        '/api/governance/proposals/vst-001/status',
+        json={'status': 'Goedgekeurd'},
+        headers={'X-User-Role': 'Moderator', 'X-Actor-Id': 'moderator-7'},
+    )
+
+    assert response.status_code == 400
+    assert 'Statusovergang niet toegestaan' in response.json['message']
+
+
+def test_governance_comment_escalate_for_proposer(client, monkeypatch):
+    monkeypatch.setattr(
+        governance_routes,
+        'escalate_comment_to_proposal',
+        lambda comment_id, actor, title=None, description=None: {
+            'id': 'vst-020',
+            'title': title or f'Voorstel op basis van opmerking {comment_id}',
+            'description': description or 'Geescaleerd',
+            'entityType': 'Technologie',
+            'entityLabel': 'LegalKM',
+            'entityId': 'legalkm',
+            'status': 'Ingediend',
+            'submittedBy': actor,
+            'submittedAt': '2026-06-02',
+            'reason': 'escalatie',
+        },
+    )
+
+    response = client.post(
+        '/api/governance/comments/opm-001/escalate',
+        json={},
+        headers={'X-User-Role': 'Proposer'},
+    )
+
+    assert response.status_code == 201
+    assert response.json['id'] == 'vst-020'
+
+
+def test_governance_comments_list_forwards_entity_id_filter(client, monkeypatch):
+    captured = {}
+
+    def _fake_list_comments(status=None, entity_id=None, q=None):
+        captured['status'] = status
+        captured['entity_id'] = entity_id
+        captured['q'] = q
+        return []
+
+    monkeypatch.setattr(governance_routes, 'list_comments', _fake_list_comments)
+
+    response = client.get(
+        '/api/governance/comments?status=Nieuw&entityId=tech-123&q=test',
+        headers={'X-User-Role': 'Viewer'},
+    )
+
+    assert response.status_code == 200
+    assert captured['status'] == 'Nieuw'
+    assert captured['entity_id'] == 'tech-123'
+    assert captured['q'] == 'test'
+
+
+def test_governance_audit_log_read_for_viewer(client, monkeypatch):
+    monkeypatch.setattr(
+        governance_routes,
+        'list_audit_log',
+        lambda action=None, entity_type=None, entity_id=None, q=None: [
+            {
+                'id': 'aud-001',
+                'timestamp': '2026-06-02T12:00:00+00:00',
+                'actor': 'Admin',
+                'action': 'Voorstel ingediend',
+                'entityLabel': 'LegalKM',
+                'entityId': 'legalkm',
+                'entityType': 'Technologie',
+                'previousValue': None,
+                'newValue': None,
+                'reason': None,
+                'proposalId': 'vst-001',
+            }
+        ],
+    )
+
+    response = client.get('/api/governance/audit-log', headers={'X-User-Role': 'Viewer'})
+
+    assert response.status_code == 200
+    assert response.json[0]['id'] == 'aud-001'
+
+
+def test_governance_audit_log_forwards_entity_id_filter(client, monkeypatch):
+    captured = {}
+
+    def _fake_list_audit_log(action=None, entity_type=None, entity_id=None, q=None):
+        captured['action'] = action
+        captured['entity_type'] = entity_type
+        captured['entity_id'] = entity_id
+        captured['q'] = q
+        return []
+
+    monkeypatch.setattr(governance_routes, 'list_audit_log', _fake_list_audit_log)
+
+    response = client.get(
+        '/api/governance/audit-log?action=Status%20wijziging&entityType=Technologie&entityId=tech-123&q=test',
+        headers={'X-User-Role': 'Viewer'},
+    )
+
+    assert response.status_code == 200
+    assert captured['action'] == 'Status wijziging'
+    assert captured['entity_type'] == 'Technologie'
+    assert captured['entity_id'] == 'tech-123'
+    assert captured['q'] == 'test'
 
 

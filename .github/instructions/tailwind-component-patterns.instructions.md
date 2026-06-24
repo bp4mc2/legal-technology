@@ -8,8 +8,8 @@ applyTo: "apps/{dashboard,dashboard-next}/src/**/*.{ts,tsx,css}"
 Use this instruction for component-level UI implementation details when Tailwind is used.
 
 ## Canonical References
-- [../../docs/dashboard-design-spec.md](../../docs/dashboard-design-spec.md)
-- [../../docs/development-guide.md](../../docs/development-guide.md)
+- [../../apps/docs/dashboard-design-spec.md](../../apps/docs/dashboard-design-spec.md)
+- [../../apps/docs/development-guide.md](../../apps/docs/development-guide.md)
 - [../../apps/ARCHITECTURE.md](../../apps/ARCHITECTURE.md)
 
 ## Spec Traceability
@@ -90,7 +90,7 @@ Before finishing a component task, state which mapping rows were used.
 
 ## Done Criteria
 - Components match spec structure and role behavior for the touched area.
-- Route-coupled components remain aligned with route mapping and dedicated views in [../../docs/dashboard-design-spec.md](../../docs/dashboard-design-spec.md).
+- Route-coupled components remain aligned with route mapping and dedicated views in [../../apps/docs/dashboard-design-spec.md](../../apps/docs/dashboard-design-spec.md).
 - Shared primitives are reused instead of duplicating class patterns.
 - Accessibility requirements are met for labels, focus, and status communication.
 - Responsive behavior is verified for mobile and desktop.

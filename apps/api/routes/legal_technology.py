@@ -10,8 +10,10 @@ from api.services.graphdb_service import (
 )
 from api.services.documentation_service import (
     DocumentationReadError,
+    get_documentation_hub_payload,
     get_technology_documentation,
     get_catalog_documentation,
+    get_generated_documentation_sections,
 )
 from api.services.access_policy import require_action
 from api.models.legal_technology import LegalTechnologySchema, LegalTechnologyCreateSchema, LegalTechnologyUpdateSchema
@@ -231,7 +233,7 @@ def documentation(id):
             jsonify(
                 {
                     "message": "Generated documentation source is unavailable",
-                    "source": "media/legal-technologies.md",
+                    "source": "build/docs/includes/catalogus-details.md",
                     "correlation_id": correlation_id,
                 }
             ),
@@ -244,7 +246,7 @@ def documentation(id):
             jsonify(
                 {
                     "message": "Documentation section not found",
-                    "source": "media/legal-technologies.md",
+                    "source": "build/docs/includes/catalogus-details.md",
                     "correlation_id": correlation_id,
                 }
             ),
@@ -267,7 +269,7 @@ def documentation_catalog():
             jsonify(
                 {
                     "message": "Generated catalog documentation source is unavailable",
-                    "source": "media/legal-technologies.md",
+                    "source": "build/docs/includes/catalogus-details.md",
                     "correlation_id": correlation_id,
                 }
             ),
@@ -280,11 +282,78 @@ def documentation_catalog():
             jsonify(
                 {
                     "message": "Generated catalog documentation not found",
-                    "source": "media/legal-technologies.md",
+                    "source": "build/docs/includes/catalogus-details.md",
                     "correlation_id": correlation_id,
                 }
             ),
             404,
+            {"X-Correlation-ID": correlation_id},
+        )
+
+    payload["correlation_id"] = correlation_id
+    return jsonify(payload), 200, {"X-Correlation-ID": correlation_id}
+
+
+@blp.get("/documentation/generated")
+def documentation_generated_sections():
+    """Return generated markdown fragments for the documentation hub."""
+    correlation_id = request.headers.get("X-Correlation-ID") or str(uuid4())
+    try:
+        sections = get_generated_documentation_sections()
+    except DocumentationReadError:
+        return (
+            jsonify(
+                {
+                    "message": "Generated documentation sections are unavailable",
+                    "sources": [
+                        "build/docs/includes/catalogus-overzicht.md",
+                        "build/docs/includes/catalogus-details.md",
+                        "build/docs/includes/taxonomieen.md",
+                        "build/docs/includes/organisaties.md",
+                        "build/docs/includes/ontologie.md",
+                        "build/docs/includes/generatieverantwoording.md",
+                    ],
+                    "correlation_id": correlation_id,
+                }
+            ),
+            503,
+            {"X-Correlation-ID": correlation_id},
+        )
+
+    payload = {
+        "sections": sections,
+        "section_count": len(sections),
+        "correlation_id": correlation_id,
+    }
+    return jsonify(payload), 200, {"X-Correlation-ID": correlation_id}
+
+
+@blp.get("/documentation/hub")
+def documentation_hub():
+    """Return generated and curated markdown fragments for the documentation hub."""
+    correlation_id = request.headers.get("X-Correlation-ID") or str(uuid4())
+    try:
+        payload = get_documentation_hub_payload()
+    except DocumentationReadError:
+        return (
+            jsonify(
+                {
+                    "message": "Documentation hub sources are unavailable",
+                    "sources": [
+                        "build/docs/includes/catalogus-overzicht.md",
+                        "build/docs/includes/catalogus-details.md",
+                        "build/docs/includes/taxonomieen.md",
+                        "build/docs/includes/organisaties.md",
+                        "build/docs/includes/ontologie.md",
+                        "build/docs/includes/generatieverantwoording.md",
+                        "docs/README.md",
+                        "docs/meta-model.md",
+                        "docs/typologie.md",
+                    ],
+                    "correlation_id": correlation_id,
+                }
+            ),
+            503,
             {"X-Correlation-ID": correlation_id},
         )
 

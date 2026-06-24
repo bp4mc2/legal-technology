@@ -20,6 +20,17 @@ ACTION_ALLOWED_ROLES = {
     "definition:update": {"Moderator", "Admin"},
     "definition:delete": {"Admin"},
     "sticky_note:review": {"Moderator", "Admin"},
+    "governance:proposal:read": {"Viewer", "Proposer", "Moderator", "Admin"},
+    "governance:proposal:create": {"Proposer", "Moderator", "Admin"},
+    "governance:proposal:update_status": {"Moderator", "Admin"},
+    "governance:proposal:approve": {"Moderator", "Admin"},
+    "governance:proposal:reject": {"Moderator", "Admin"},
+    "governance:proposal:withdraw": {"Proposer", "Moderator", "Admin"},
+    "governance:comment:read": {"Viewer", "Proposer", "Moderator", "Admin"},
+    "governance:comment:create": {"Proposer", "Moderator", "Admin"},
+    "governance:comment:update_status": {"Moderator", "Admin"},
+    "governance:comment:escalate": {"Proposer", "Moderator", "Admin"},
+    "governance:audit:read": {"Viewer", "Proposer", "Moderator", "Admin"},
 }
 
 
@@ -38,6 +49,12 @@ class PolicyDecision:
     )
 
 
+@dataclass
+class RequestIdentity:
+    role: str
+    actor_id: str
+
+
 def _normalize_role(raw_role: Optional[str]) -> str:
     if not raw_role:
         return "Viewer"
@@ -49,6 +66,27 @@ def _normalize_role(raw_role: Optional[str]) -> str:
         "admin": "Admin",
     }
     return role_lookup.get(lowered, "Viewer")
+
+
+def get_current_role() -> str:
+    return get_request_identity().role
+
+
+def get_request_actor_id() -> str:
+    return _sanitize_actor_id(request.headers.get("X-Actor-Id"))
+
+
+def get_request_identity() -> RequestIdentity:
+    return RequestIdentity(
+        role=_normalize_role(request.headers.get("X-User-Role")),
+        actor_id=get_request_actor_id(),
+    )
+
+
+def is_action_allowed(action: str) -> bool:
+    role = get_current_role()
+    allowed_roles = ACTION_ALLOWED_ROLES.get(action, set())
+    return role in allowed_roles
 
 
 def get_request_correlation_id() -> str:
@@ -67,19 +105,18 @@ def _sanitize_actor_id(raw_actor_id: Optional[str]) -> str:
 
 
 def evaluate_policy(action: str, resource: str) -> PolicyDecision:
-    role = _normalize_role(request.headers.get("X-User-Role"))
-    actor_id = _sanitize_actor_id(request.headers.get("X-Actor-Id"))
+    identity = get_request_identity()
     correlation_id = get_request_correlation_id()
     allowed_roles = ACTION_ALLOWED_ROLES.get(action, set())
-    allowed = role in allowed_roles
+    allowed = identity.role in allowed_roles
 
     return PolicyDecision(
         allowed=allowed,
         action=action,
         resource=resource,
-        role=role,
+        role=identity.role,
         correlation_id=correlation_id,
-        actor_id=actor_id,
+        actor_id=identity.actor_id,
     )
 
 

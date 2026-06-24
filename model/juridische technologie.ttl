@@ -18,7 +18,7 @@
   dct:title "Juridische technologie ontologie"@nl ;
   dct:creator "Brattinga, Van Dijk, Straver"@nl ;
   dct:created "2026-03-31"^^xsd:date ;
-  owl:versionInfo "0.1.0" ;
+  owl:versionInfo "0.2.0" ;
   rdfs:comment "Deze ontologie beschrijft juridische technologieën, hun eigenschappen, relaties en relevante enumeraties."@nl .
 
 
@@ -96,6 +96,7 @@ lto:JuridischeTechnologieShape a sh:NodeShape;
     rdfs:label "bijgewerkt op"@nl;
     sh:path lto:bijgewerktOp;
     sh:description "De datum waarop de beschrijving van de technologie voor het laatst is bijgewerkt"@nl;
+    sh:minCount 1;
     sh:maxCount 1;
     sh:datatype xsd:date;
   ];
@@ -653,8 +654,8 @@ lto:inputProduct a owl:ObjectProperty;
 
 lto:outputProduct a owl:ObjectProperty;
   rdfs:label "output product"@nl;
-  rdfs:comment "Afgeleide inverse relatie tussen een taaktype en een product dat als output ontstaat uit die taak. Deze relatie is bedoeld voor inferentie en queries; de canonieke opslagrichting loopt via lto:uitvoerVanTaak."@nl;
-  owl:inverseOf lto:uitvoerVanTaak;
+  rdfs:comment "Afgeleide inverse relatie tussen een taaktype en een product dat als output ontstaat uit die taak. Deze relatie is bedoeld voor inferentie en queries; de canonieke opslagrichting loopt via lto:outputVanTaak."@nl;
+  owl:inverseOf lto:outputVanTaak;
   rdfs:domain skos:Concept;
   rdfs:range skos:Concept
 .
@@ -666,13 +667,12 @@ lto:inputVoorTaak a owl:ObjectProperty;
   rdfs:range skos:Concept
 .
 
-lto:uitvoerVanTaak a owl:ObjectProperty;
+lto:outputVanTaak a owl:ObjectProperty;
   rdfs:label "output van taak"@nl;
   rdfs:comment "Canonieke opslagrelatie tussen een product (als skos:Concept in lto:BegrippenkaderProducten) en een taaktype dat het product als output produceert."@nl;
   rdfs:domain skos:Concept;
   rdfs:range skos:Concept
 .
-
 
 ########################################################################################################
 ## Producten
@@ -682,24 +682,10 @@ lto:Regeltekst a skos:Concept;
   rdfs:label "Regeltekst"@nl;
   skos:prefLabel "Regeltekst"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
-  skos:definition "Opstellen van juridische tekst als onderdeel van het geschreven recht: de algemeen verbindende voorschriften, inclusief beleidsregels."@nl;
+  skos:definition "Opstellen van juridische tekst als onderdeel van het geschreven recht: de regeltekst en beleidsregels."@nl;
   skosthes:broaderGeneric lto:Product;
-.
-
-lto:BeleidsregelsAlgemeenVerbindend a skos:Concept;
-  rdfs:label "Beleidsregels (algemeen verbindend)"@nl;
-  skos:prefLabel "Beleidsregels (algemeen verbindend)"@nl;
-  skos:inScheme lto:BegrippenkaderProducten;
-  skos:definition "Opstellen van tekst en commentaren voor nadere duiding juridische tekst"@nl;
-  skosthes:broaderGeneric lto:Product;
-.
-
-lto:ServiceinformatieAnnotaties a skos:Concept;
-  rdfs:label "Serviceinformatie (annotaties)"@nl;
-  skos:prefLabel "Serviceinformatie (annotaties)"@nl;
-  skos:inScheme lto:BegrippenkaderProducten;
-  skos:definition "Opstellen van juridische tekst als onderdeel van het geschreven recht: de algemeen verbindende voorschriften, inclusief beleidsregels."@nl;
-  skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:OpstellenRegeltekst;
+  lto:inputVoorTaak ltt:Opdrachtorientering;
 .
 
 lto:TekstenEnCommentaren a skos:Concept;
@@ -708,144 +694,165 @@ lto:TekstenEnCommentaren a skos:Concept;
   skos:inScheme lto:BegrippenkaderProducten;
   skos:definition "Opstellen van tekst en commentaren voor nadere duiding juridische tekst"@nl;
   skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:OpstellenRegeltekst;
+  lto:inputVoorTaak ltt:Opdrachtorientering;
+.
+
+lto:ServiceinformatieAnnotaties a skos:Concept;
+  rdfs:label "Serviceinformatie (annotaties)"@nl;
+  skos:prefLabel "Serviceinformatie (annotaties)"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;
+  skos:definition "Opstellen van juridische tekst als onderdeel van het geschreven recht: de algemeen verbindende voorschriften, inclusief beleidsregels."@nl;
+  skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:OpstellenRegeltekst;
+  lto:inputVoorTaak ltt:AnalyserenRegeltekst;
 .
 
 lto:Scope a skos:Concept;
   rdfs:label "Scope"@nl;
   skos:prefLabel "Scope"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
-  skos:definition "doel (?) herbruikbare implementatie"@nl;
+  skos:definition "Doel en scope van de opdracht"@nl;
   skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:Opdrachtorientering;
+  lto:inputVoorTaak ltt:VerzamelenBronmateriaal;
 .
 
 lto:NormatieveVragen a skos:Concept;
   rdfs:label "Normatieve vragen"@nl;
   skos:prefLabel "Normatieve vragen"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
-  skos:definition "doel (?) herbruikbare implementatie"@nl;
+  skos:definition "Vragen over de normatieve aspecten van de opdracht"@nl;
   skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:Opdrachtorientering;
+  lto:inputVoorTaak ltt:VerzamelenBronmateriaal;
 .
 
-lto:JuridischLandschapRelevanteTekstblokkenIcmOpdracht a skos:Concept;
+lto:JuridischLandschap a skos:Concept;
   rdfs:label "Juridisch landschap (relevante tekstblokken icm opdracht)"@nl;
   skos:prefLabel "Juridisch landschap (relevante tekstblokken icm opdracht)"@nl;
+  skos:definition "Het juridische landschap bevat de context van de opdracht"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
   skosthes:broaderGeneric lto:Product;
-.
-
-lto:Ordening a skos:Concept;
-  rdfs:label "Ordening"@nl;
-  skos:prefLabel "Ordening"@nl;
-  skos:inScheme lto:BegrippenkaderProducten;
-  skosthes:broaderGeneric lto:Product;
-.
-
-lto:Groepering a skos:Concept;
-  rdfs:label "Groepering"@nl;
-  skos:prefLabel "Groepering"@nl;
-  skos:inScheme lto:BegrippenkaderProducten;
-  skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:VerzamelenBronmateriaal;
+  lto:inputVoorTaak ltt:AnalyserenRegeltekst;
 .
 
 lto:Classificatie a skos:Concept;
   rdfs:label "Classificatie"@nl;
   skos:prefLabel "Classificatie"@nl;
+  skos:definition "Classificatie van elementen in de regeltekst"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
   skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:AnalyserenRegeltekst;
+  lto:inputVoorTaak ltt:InterpreterenEnExpliciteren;
 .
 
-lto:InputVoorBeleidsregels a skos:Concept;
-  rdfs:label "Input voor beleidsregels"@nl;
-  skos:prefLabel "Input voor beleidsregels"@nl;
+lto:OntbrekendBeleid a skos:Concept;
+  rdfs:label "Ontbrekend beleid"@nl;
+  skos:prefLabel "Ontbrekend beleid"@nl;
+  skos:definition "Identificatie van ontbrekend beleid in de regeltekst"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
   skosthes:broaderGeneric lto:Product;
-.
-
-lto:InstructieLoopNaarBeleidOpstellen a skos:Concept;
-  rdfs:label "Instructie (loop naar beleid opstellen)"@nl;
-  skos:prefLabel "Instructie (loop naar beleid opstellen)"@nl;
-  skos:inScheme lto:BegrippenkaderProducten;
-  skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:InterpreterenEnExpliciteren;
 .
 
 lto:BouwstenenVoorDeModellen a skos:Concept;
   rdfs:label "Bouwstenen voor de modellen"@nl;
   skos:prefLabel "Bouwstenen voor de modellen"@nl;
-  skos:inScheme lto:BegrippenkaderProducten;
-  lto:inputVoorTaak ltt:BegripDefinieren;
+  skos:definition "Bouwstenen voor de modellen (concepten, relaties, regels, etc.)"@nl;
+  skos:inScheme lto:BegrippenkaderProducten;  
   skosthes:broaderGeneric lto:Product;
+  lto:inputVoorTaak ltt:BegripDefinieren;
+  lto:outputVanTaak ltt:InterpreterenEnExpliciteren;
 .
 
 lto:ConceptueelModel a skos:Concept;
   rdfs:label "Conceptueel model"@nl;
   skos:prefLabel "Conceptueel model"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
-  lto:uitvoerVanTaak ltt:BegripDefinieren;
+  skos:definition "Conceptueel model van de bouwstenen en begrippen"@nl;
   skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:BegripDefinieren;
+  lto:inputVoorTaak ltt:SpecificerenGegevensbehoefte;
+  lto:inputVoorTaak ltt:SpecificerenRegels;
+  lto:inputVoorTaak ltt:SpecificerenProcessen;
 .
 
 lto:LogischModel a skos:Concept;
   rdfs:label "Logisch model"@nl;
   skos:prefLabel "Logisch model"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
-  lto:uitvoerVanTaak ltt:LogischModelOpstellen;
+  skos:definition "Logisch model gebaseerd op het conceptueel model"@nl;
+  skos:broader lto:Uitvoeringsspecificaties;
   skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:SpecificerenGegevensbehoefte;
+  lto:inputVoorTaak ltt:ValiderenSpecificaties;
+  lto:inputVoorTaak ltt:ImplementerenSpecificaties;
 .
 
 lto:Regelmodel a skos:Concept;
   rdfs:label "Regelmodel"@nl;
   skos:prefLabel "Regelmodel"@nl;
+  skos:definition "Regelmodel van de regels en logica gebaseerd op het conceptueel model"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
-  lto:uitvoerVanTaak ltt:RegelmodelOpstellen;
+  skos:broader lto:Uitvoeringsspecificaties;
   skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:SpecificerenRegels;
+  lto:inputVoorTaak ltt:ValiderenSpecificaties;
+  lto:inputVoorTaak ltt:ImplementerenSpecificaties;
 .
 
 lto:Procesmodel a skos:Concept;
   rdfs:label "Procesmodel"@nl;
   skos:prefLabel "Procesmodel"@nl;
+  skos:definition "Procesmodel van de processen en taken gebaseerd op het conceptueel model"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
-  lto:uitvoerVanTaak ltt:ProcesmodelOpstellen;
+  skos:broader lto:Uitvoeringsspecificaties;
   skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:SpecificerenProcessen;
+  lto:inputVoorTaak ltt:ValiderenSpecificaties;
+  lto:inputVoorTaak ltt:ImplementerenSpecificaties;
 .
 
 lto:Uitvoeringsspecificaties a skos:Concept;
   rdfs:label "Uitvoeringsspecificaties"@nl;
   skos:prefLabel "Uitvoeringsspecificaties"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
-  skos:definition "Gegevensmodel in de context van de taak"@nl;
+  skos:definition "Uitvoeringsspecificaties"@nl;
+  skos:narrower lto:LogischModel, lto:Regelmodel, lto:Procesmodel;
   skosthes:broaderGeneric lto:Product;
 .
 
 lto:CorrecteJuisteEnUitvoerbareSpecificaties a skos:Concept;
   rdfs:label "Correcte, juiste en uitvoerbare specificaties"@nl;
   skos:prefLabel "Correcte, juiste en uitvoerbare specificaties"@nl;
+  skos:definition "Gevalideerde en geverifieederde uitvoeringsspecificatie voor implementatie van de modellen"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
   skosthes:broaderGeneric lto:Product;
+  lto:inputVoorTaak ltt:ImplementerenSpecificaties;
+  lto:outputVanTaak ltt:ValiderenSpecificaties;
 .
 
 lto:SysteemWaarbinnenDeRegelsWordenUitgevoerd a skos:Concept;
   rdfs:label "Systeem waarbinnen de regels worden uitgevoerd"@nl;
   skos:prefLabel "Systeem waarbinnen de regels worden uitgevoerd"@nl;
+  skos:definition "Het systeem (bijv. een softwareapplicatie) waarin de regels worden uitgevoerd"@nl;
   skos:inScheme lto:BegrippenkaderProducten;
   skosthes:broaderGeneric lto:Product;
+  lto:inputVoorTaak ltt:GeautomatiseerdeRegeluitvoering;
+  lto:outputVanTaak ltt:ImplementerenSpecificaties;
 .
 
 lto:Besluit a skos:Concept;
   rdfs:label "Besluit"@nl;
   skos:prefLabel "Besluit"@nl;
+  skos:definition "Een besluit is een schriftelijke beslissing van een bestuursorgaan, inhoudende een publiekrechtelijke rechtshandeling."@nl;
   skos:inScheme lto:BegrippenkaderProducten;
   skosthes:broaderGeneric lto:Product;
+  lto:outputVanTaak ltt:GeautomatiseerdeRegeluitvoering;
+  lto:inputVoorTaak ltt:Evaluatie;
 .
-
-lto:Rollen a skos:Concept;
-  rdfs:label "Rollen"@nl;
-  skos:prefLabel "Rollen"@nl;
-  skos:inScheme lto:BegrippenkaderProducten;
-  skos:definition "informatie en regel (incl. vertaling naar IT)"@nl;
-  skosthes:broaderGeneric lto:Product;
-.
-
-
 
 ########################################################################################################
 ## Categorisations (lists)
@@ -1308,11 +1315,12 @@ lto:TaaktypenShape a sh:NodeShape;
   ]
 .
 
+# SHACL shape for taak-productrelaties
 lto:TaakProductRelatiesShape a sh:NodeShape;
   sh:name "Taak-productrelaties";
   rdfs:comment "Valideert taak-productrelaties vanuit de canonieke product-naar-taak opslag via inverse paths."@nl;
   sh:targetObjectsOf lto:inputVoorTaak;
-  sh:targetObjectsOf lto:uitvoerVanTaak;
+  sh:targetObjectsOf lto:outputVanTaak;
   sh:property [
     sh:path skos:inScheme;
     sh:hasValue ltt:BegrippenkaderTaken
@@ -1322,7 +1330,7 @@ lto:TaakProductRelatiesShape a sh:NodeShape;
     sh:node lto:ProductenShape
   ];
   sh:property [
-    sh:path [ sh:inversePath lto:uitvoerVanTaak ];
+    sh:path [ sh:inversePath lto:outputVanTaak ];
     sh:node lto:ProductenShape
   ]
 .

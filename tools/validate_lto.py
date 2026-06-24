@@ -5,7 +5,7 @@ from pyshacl import validate
 
 SH = Namespace("http://www.w3.org/ns/shacl#")
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data" / "all-legal-technologies.ttl"
 SHAPES_PATH = ROOT / "model" / "juridische technologie.ttl"
 TASKS_PATH = ROOT / "model" / "taken.ttl"
@@ -13,32 +13,32 @@ TASKS_PATH = ROOT / "model" / "taken.ttl"
 
 def _copy_non_shacl_triples(source: Graph, target: Graph):
     for subject, predicate, obj in source:
-        if predicate.startswith(str(SH)):
+        if str(predicate).startswith(str(SH)):
             continue
-        if subject.startswith(str(SH)):
+        if str(subject).startswith(str(SH)):
             continue
-        if obj.startswith(str(SH)):
+        if str(obj).startswith(str(SH)):
             continue
         target.add((subject, predicate, obj))
 
 # Load data and model
 print(f"Loading data from {DATA_PATH.relative_to(ROOT)}...")
 g = Graph()
-g.parse(DATA_PATH, format="turtle")
-g.parse(TASKS_PATH, format="turtle")
+g.parse(str(DATA_PATH), format="turtle")
+g.parse(str(TASKS_PATH), format="turtle")
 
 model_support = Graph()
-model_support.parse(SHAPES_PATH, format="turtle")
+model_support.parse(str(SHAPES_PATH), format="turtle")
 _copy_non_shacl_triples(model_support, g)
 
 print(f"Loading shapes from {SHAPES_PATH.relative_to(ROOT)}...")
 s = Graph()
-s.parse(SHAPES_PATH, format="turtle")
+s.parse(str(SHAPES_PATH), format="turtle")
 
 print(f"Loading ontology support from {TASKS_PATH.relative_to(ROOT)}...")
 o = Graph()
-o.parse(SHAPES_PATH, format="turtle")
-o.parse(TASKS_PATH, format="turtle")
+o.parse(str(SHAPES_PATH), format="turtle")
+o.parse(str(TASKS_PATH), format="turtle")
 
 print(f"Data graph: {len(g)} triples")
 print(f"Shapes graph: {len(s)} triples")

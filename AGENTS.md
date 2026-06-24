@@ -5,7 +5,7 @@ Agent onboarding for this repository (semantic legal-tech platform).
 ## Start Here
 - Read [apps/README.md](apps/README.md) for runtime and endpoint overview.
 - Read [apps/ARCHITECTURE.md](apps/ARCHITECTURE.md) for API/dashboard/GraphDB boundaries.
-- Use [docs/development-guide.md](docs/development-guide.md) as the primary dev command reference.
+- Use [apps/docs/development-guide.md](apps/docs/development-guide.md) as the primary dev command reference.
 
 ## Project Layout (Most Relevant)
 - `apps/api`: Flask API routes/services/models.
@@ -41,7 +41,7 @@ Agent onboarding for this repository (semantic legal-tech platform).
 - For dashboard changes, run tests/lint/build in `apps/dashboard` before finishing.
 
 ## Frontend UI Instructions
-- Spec-first baseline: [docs/dashboard-design-spec.md](docs/dashboard-design-spec.md)
+- Spec-first baseline: [apps/docs/dashboard-design-spec.md](apps/docs/dashboard-design-spec.md)
   - Use this as the primary source of truth for dashboard layout, dedicated views, and route behavior before applying style and component guardrails.
 - Tailwind guardrails: [.github/instructions/tailwind-ui-guardrails.instructions.md](.github/instructions/tailwind-ui-guardrails.instructions.md)
   - Use for Tailwind-first UI implementation rules, accessibility requirements, responsive behavior, and validation steps.
@@ -53,7 +53,7 @@ Agent onboarding for this repository (semantic legal-tech platform).
 - Use this when the task is: one legal technology input -> structured analysis + schema-valid JSON output files in `analyses/`.
 
 ## Additional References
-- [docs/project-overview.md](docs/project-overview.md)
-- [docs/component-inventory.md](docs/component-inventory.md)
-- [docs/api-contracts.md](docs/api-contracts.md)
-- [docs/typologie.md](docs/typologie.md)
+- [apps/docs/project-overview.md](apps/docs/project-overview.md)
+- [apps/docs/component-inventory.md](apps/docs/component-inventory.md)
+- [apps/docs/api-contracts.md](apps/docs/api-contracts.md)
+- [apps/docs/typologie.md](apps/docs/typologie.md)

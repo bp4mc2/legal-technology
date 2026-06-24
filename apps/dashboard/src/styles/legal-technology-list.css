@@ -43,7 +43,7 @@
   min-height: 1.15rem;
 }
 
-.lt-compare-switch .form-check-input {
+.lt-compare-switch-input {
   float: none;
   margin: 0;
   width: 1.55rem;
@@ -54,17 +54,17 @@
   box-shadow: none;
 }
 
-.lt-compare-switch .form-check-input:checked {
+.lt-compare-switch-input:checked {
   background-color: #14b8a6;
   border-color: #14b8a6;
 }
 
-.lt-compare-switch .form-check-input:focus {
+.lt-compare-switch-input:focus {
   border-color: #14b8a6;
   box-shadow: 0 0 0 0.18rem rgba(20, 184, 166, 0.22);
 }
 
-.lt-compare-switch .form-check-input:disabled {
+.lt-compare-switch-input:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 
 export type ActiveTechnology = {
   id: string;
+  iri?: string;
   naam: string;
   omschrijving?: string;
   gebruiksstatus?: string;

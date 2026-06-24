@@ -8,3 +8,5 @@ _bmad
 _bmad-output
 .pytest_cache
 .agents/skills/*
+apps/config/assistant.ini
+apps/dashboard/.env

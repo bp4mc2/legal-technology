@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Begrippenkader</title>
+
+  <script class="remove">
+    var respecConfig = {
+      specStatus: "base",
+      shortName: "juridische-technologie-begrippenkader",
+      editors: [
+        {
+          name: "Brattinga, Van Dijk, Straver"
+        }
+      ],
+      maxTocLevel: 4
+    };
+  </script>
+
+  <script
+    src="https://www.w3.org/Tools/respec/respec-w3c"
+    class="remove"
+    async></script>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="assets/js/ontology-diagram-data.js"></script>
+  <script src="assets/js/ontology-diagram.js"></script>
+  <script src="assets/js/technology-overview-filter.js"></script>
+
+  <style>
+    nav.doc-nav {
+        position: fixed;
+        top: 5rem;
+        right: 1rem;
+
+        width: 18rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+
+        border: 1px solid #d0d0d0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: #fff;
+
+        box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.16);
+    }
+
+    nav.doc-nav ul {
+        margin-bottom: 0;
+        padding-left: 1.2rem;
+    }
+
+    body {
+        padding-right: 21rem;
+    }
+
+    @media (max-width: 1000px) {
+        nav.doc-nav {
+            position: static;
+            width: auto;
+            max-height: none;
+            overflow: visible;
+        }
+
+        body {
+            padding-right: 0;
+        }
+    }
+
+    .page-description {
+      font-size: 1.05rem;
+    }
+
+    .diagram-container {
+      width: 100%;
+      max-width: 100%;
+      height: 650px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    #ontology-diagram {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .diagram-toolbar {
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .diagram-toolbar button {
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+    }    
+  </style>
+  <link rel="stylesheet" href="assets/css/lto-detail.css">
+</head>
+
+<body>
+  <section id="abstract">
+    <p>Overzicht van begrippen, definities en classificaties.</p>
+  </section>
+
+  <section id="sotd">
+    <p>
+      Onderdeel van de documentatie juridische technologie.
+      Gegenereerd op 2026-06-24.
+    </p>
+  </section>
+
+  <section>
+
+    <h1>Begrippenkader</h1>
+
+    <p class="page-description">
+      Overzicht van begrippen, definities en classificaties.
+    </p>
+
+    <nav class="doc-nav" aria-label="Documentatienavigatie">
+      <strong>Documentatieonderdelen</strong>
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        <li>
+          <a href="typologie.html">Typologie juridische technologieën</a>
+        </li>
+        <li>
+          <a href="catalogus.html">Catalogus juridische technologieën</a>
+        </li>
+        <li>
+          <strong>Begrippenkader</strong>
+        </li>
+        <li>
+          <a href="organisaties.html">Organisaties</a>
+        </li>
+        <li>
+          <a href="ontologie.html">Ontologie</a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+    <section id="begrippenkader">
+    <h2>Begrippenkader</h2>
+
+    <nav class="lt-tabbladen" role="tablist" aria-label="Overzicht secties">
+        <button
+            type="button"
+            id="tab-definities"
+            class="lt-tabbladen__tab lt-tabbladen__tab--actief"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-definities"
+        >
+            Definities
+        </button>
+
+        <button
+            type="button"
+            id="tab-enumeraties"
+            class="lt-tabbladen__tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-enumeraties"
+            tabindex="-1"
+        >
+            Enumeraties
+        </button>
+    </nav>
+
+    <section class="lt-tabpanel lt-tabpanel--actief" id="panel-definities" role="tabpanel" aria-label="Definities">
+        <h3>Definities</h3>
+
+        <div class="lt-overzicht-toolbar">
+            <div class="lt-overzicht-zoek">
+            <input type="search" id="def-zoek"
+                    placeholder="Zoek op term of definitie…"
+                    aria-label="Zoek definitie">
+            </div>
+            <select id="def-cat" aria-label="Filter op categorie">
+            <option value="">Alle categorieën</option>
+            <option>Governance</option>
+            <option>Technologie</option>
+            <option>Juridisch</option>
+            <option>Proces</option>
+            </select>
+            <span class="lt-overzicht-count" id="def-count" aria-live="polite"></span>
+        </div>
+
+        <table class="lt-def-tabel" id="def-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+            <tr>
+                <th scope="col" aria-sort="ascending">Concept</th>
+                <th scope="col" aria-sort="none">Kenmerken</th>
+                <th scope="col">Definitie</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="lt-def-term" title="file:///C:/Users/Erwin%20Straver/projects/wendbare%20wetsuitvoering/model/begrippen.ttlJuridischeTechnologie">
+                    Juridische technologie
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-narrower">Narrower: Standaard</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Een juridische technologie is een methode, standaard of tool die gebruikt wordt in het proces van wetgeving en/of wetsuitvoering  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="file:///C:/Users/Erwin%20Straver/projects/wendbare%20wetsuitvoering/model/begrippen.ttlJuridischeTechnologie">
+                    Juridische technologie
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-narrower">Narrower: Methode</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Een juridische technologie is een methode, standaard of tool die gebruikt wordt in het proces van wetgeving en/of wetsuitvoering  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="file:///C:/Users/Erwin%20Straver/projects/wendbare%20wetsuitvoering/model/begrippen.ttlJuridischeTechnologie">
+                    Juridische technologie
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-narrower">Narrower: Tool</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Een juridische technologie is een methode, standaard of tool die gebruikt wordt in het proces van wetgeving en/of wetsuitvoering  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="file:///C:/Users/Erwin%20Straver/projects/wendbare%20wetsuitvoering/model/begrippen.ttlMethode">
+                    Methode
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-related">Gerelateerd: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Een methode is een gestructureerde, herhaalbare aanpak (stappenplan met technieken en keuzes) om een doel te bereiken of een taak uit te voeren. Een methode beschrijft hoe je te werk gaat (en evt. In welke volgorde) en kan verwijzen naar standaarden als hulpmiddel  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="file:///C:/Users/Erwin%20Straver/projects/wendbare%20wetsuitvoering/model/begrippen.ttlStandaard">
+                    Standaard
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-related">Gerelateerd: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Een (informatie)standaard is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een taak uit te voeren. Een (informatie)standaard beschrijft wat het resultaat is.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="file:///C:/Users/Erwin%20Straver/projects/wendbare%20wetsuitvoering/model/begrippen.ttlTaak">
+                    Taak
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Een taak is een afgebakende hoeveelheid werk die leidt tot een overdraagbaar resultaat en die bijdraagt aan het behalen van een doel  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="file:///C:/Users/Erwin%20Straver/projects/wendbare%20wetsuitvoering/model/begrippen.ttlTaakInvulling">
+                    Taakinvulling
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-related">Gerelateerd: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Een taakinvulling is een aanduiding voor de manier waarop een taak in een specifieke juridische technologie wordt ingevuld of ondersteund  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="file:///C:/Users/Erwin%20Straver/projects/wendbare%20wetsuitvoering/model/begrippen.ttlTaakInvulling">
+                    Taakinvulling
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-related">Gerelateerd: Juridische technologie</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Een taakinvulling is een aanduiding voor de manier waarop een taak in een specifieke juridische technologie wordt ingevuld of ondersteund  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="file:///C:/Users/Erwin%20Straver/projects/wendbare%20wetsuitvoering/model/begrippen.ttlTool">
+                    Tool
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-related">Gerelateerd: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Een tool is een informatievoorziening die ondersteuning biedt om een doel te bereiken of een taak uit te voeren. De beschrijving van een tool geeft aan WAARMEE een taak wordt uitgevoerd  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#ComplianceOndersteuning">
+                    Compliance ondersteuning
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Ondersteuning bij het aantoonbaar naleven van wet- en regelgeving en interne normen, inclusief controles, signalering en rapportage.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#ContractAnalyticsConceptReview">
+                    Contract: analyse/redactie/beoordeling
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Functionaliteiten voor het analyseren van contractinhoud, het (mede) opstellen/redigeren van bepalingen en het beoordelen (review) van concepten en wijzigingen.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#ContractAutomatischAanmaken">
+                    Contract: geautomatiseerde contractgeneratie
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het automatisch genereren of samenstellen van een contract op basis van invoer, templates en/of clausulebibliotheken.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#ContractAutomatischAanmaken">
+                    Contract: geautomatiseerde contractgeneratie
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het automatisch genereren of samenstellen van een contract op basis van invoer, templates en/of clausulebibliotheken.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#GeautomatiseerdBeslissen">
+                    Geautomatiseerd beslissen
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het (geheel of gedeeltelijk) nemen van besluiten door een geautomatiseerd systeem, al dan niet met rechtsgevolgen voor betrokkenen.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#JuridischExpertSysteem">
+                    Juridisch expertsysteem
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Een systeem dat juridische kennis (regels en/of heuristieken) toepast om te adviseren, te kwalificeren of beslissingen/uitkomsten te ondersteunen.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#LitigatieAnalytics">
+                    Procespraktijk: procesanalyse
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Analyse van procesvoering en procesgegevens (bijv. doorlooptijden, uitkomsten, proceshandelingen en patronen) ter ondersteuning van processtrategie en dossiersturing.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#LitigatieConceptualisering">
+                    Procespraktijk: opstellen van processtukken
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het opstellen en redigeren van processtukken (zoals dagvaarding, verzoekschrift, conclusie, pleitnota en incidentele verzoeken).  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#LitigatiePredictieVoorsluiting">
+                    Procespraktijk: voorspelling van rechterlijke uitspraak
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het (statistisch of modelmatig) voorspellen van de waarschijnlijke uitkomst van een procedure of de inhoud/strekking van een rechterlijke uitspraak.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#WetgevingConceptualisering">
+                    Wetgeving: wetgevingsredactie
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het (ondersteunen bij het) opstellen en redigeren van wet- en regelgeving, inclusief structuur, definities, verwijzingen en consistentie.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#WetgevingRepresentatie">
+                    Wetgeving: modellering van wet- en regelgeving
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het formaliseren of modelleren van wet- en regelgeving (bijv. als regels, logica, metadata of semantische structuur) ten behoeve van interpretatie, toepassing of automatisering.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#WetgevingRepresentatie">
+                    Wetgeving: modellering van wet- en regelgeving
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het formaliseren of modelleren van wet- en regelgeving (bijv. als regels, logica, metadata of semantische structuur) ten behoeve van interpretatie, toepassing of automatisering.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#WetgevingUitvoering">
+                    Wetgeving: uitvoering van wet- en regelgeving
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Functionaliteiten gericht op uitvoering of implementatie van wettelijke verplichtingen en, waar bedoeld, ondersteuning bij toezicht en handhaving.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#WetgevingUitvoering">
+                    Wetgeving: uitvoering van wet- en regelgeving
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Functionaliteiten gericht op uitvoering of implementatie van wettelijke verplichtingen en, waar bedoeld, ondersteuning bij toezicht en handhaving.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#ZoekenRechtspraak">
+                    Zoeken: jurisprudentie
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het doorzoeken en ontsluiten van jurisprudentie (uitspraken), inclusief filtering, citaties, vindplaatsen en relevante overwegingen.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lt#ZoekenWetgeving">
+                    Zoeken: wet- en regelgeving
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Het doorzoeken en ontsluiten van wet- en regelgeving, inclusief consolidaties, historische versies, artikelen/leden en kruisverwijzingen.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#Besluit">
+                    Besluit
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Een besluit is een schriftelijke beslissing van een bestuursorgaan, inhoudende een publiekrechtelijke rechtshandeling.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#BouwstenenVoorDeModellen">
+                    Bouwstenen voor de modellen
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Bouwstenen voor de modellen (concepten, relaties, regels, etc.)  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#Classificatie">
+                    Classificatie
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Classificatie van elementen in de regeltekst  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#ConceptueelModel">
+                    Conceptueel model
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Conceptueel model van de bouwstenen en begrippen  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#CorrecteJuisteEnUitvoerbareSpecificaties">
+                    Correcte, juiste en uitvoerbare specificaties
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Gevalideerde en geverifieederde uitvoeringsspecificatie voor implementatie van de modellen  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#JuridischLandschap">
+                    Juridisch landschap (relevante tekstblokken icm opdracht)
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het juridische landschap bevat de context van de opdracht  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#LogischModel">
+                    Logisch model
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Logisch model gebaseerd op het conceptueel model  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#NormatieveVragen">
+                    Normatieve vragen
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Vragen over de normatieve aspecten van de opdracht  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#OntbrekendBeleid">
+                    Ontbrekend beleid
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Identificatie van ontbrekend beleid in de regeltekst  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#Procesmodel">
+                    Procesmodel
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Procesmodel van de processen en taken gebaseerd op het conceptueel model  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#Product">
+                    Product
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Een product is een resultaat van een taak.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#Regelmodel">
+                    Regelmodel
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Regelmodel van de regels en logica gebaseerd op het conceptueel model  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#Regeltekst">
+                    Regeltekst
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Opstellen van juridische tekst als onderdeel van het geschreven recht: de regeltekst en beleidsregels.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#Scope">
+                    Scope
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Doel en scope van de opdracht  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#ServiceinformatieAnnotaties">
+                    Serviceinformatie (annotaties)
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Opstellen van juridische tekst als onderdeel van het geschreven recht: de algemeen verbindende voorschriften, inclusief beleidsregels.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#SysteemWaarbinnenDeRegelsWordenUitgevoerd">
+                    Systeem waarbinnen de regels worden uitgevoerd
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het systeem (bijv. een softwareapplicatie) waarin de regels worden uitgevoerd  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#TekstenEnCommentaren">
+                    Teksten en commentaren
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Opstellen van tekst en commentaren voor nadere duiding juridische tekst  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/lto#Uitvoeringsspecificaties">
+                    Uitvoeringsspecificaties
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Product</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Uitvoeringsspecificaties  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#AnalyserenRegeltekst">
+                    Analyseren regeltekst
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Analyseren is een taak waarin op een gestructureerde manier de betekenis, structuur en bedoeling van een juridische tekst wordt onderzocht  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#BegripDefinieren">
+                    Begrip definiëren
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het gestructureerd beschrijven van de betekenis die met een term wordt bedoeld in een specifieke context.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#Beslisondersteuning">
+                    Beslisondersteuning
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het ondersteunen van besluitvorming door het verstrekken van relevante informatie en analyses.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#Evaluatie">
+                    Evaluatie
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het gestructureerd beoordelen of de implementatie en uitvoering van wet- en regelgeving in de praktijk overeenkomen met de met de beleidsdoelen beoogde effecten.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#GeautomatiseerdeRegeluitvoering">
+                    Geautomatiseerde regeluitvoering
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het geautomatiseerd uitvoeren van regels, of delen van regels, zonder menselijke tussenkomst.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#ImplementerenSpecificaties">
+                    Implementeren specificaties
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het implementeren van specificaties in een geautomatiseerde regeluitvoering of beslisondersteuning.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#InterpreterenEnExpliciteren">
+                    Interpreteren en expliciteren
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het interpreteren van een juridische tekst en de betekenis en bedoeling daarvan op een gestructureerde manier vastleggen.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#Opdrachtorientering">
+                    Opdracht orientering
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Afbakenen reikwijdte is een taak waarin wordt bepaald waaruit de opgave bestaat  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#OpstellenRegeltekst">
+                    Opstellen regeltekst
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Opstellen regeltekst is een taak waarbij tekst wordt opgesteld als onderdeel van het geschreven recht  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#SpecificerenGegevensbehoefte">
+                    Specificeren gegevens(behoefte)
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke gegevens nodig zijn ten behoeve van een wettelijke taak.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#SpecificerenProcessen">
+                    Specificeren processen
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke processen uitgevoerd moeten worden ten behoeve van een wettelijke taak.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#SpecificerenRegels">
+                    Specificeren regels
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke regels nodig zijn ten behoeve van een wettelijke taak.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#Taak">
+                    Taak
+                    </td>
+                    <td class="lt-def-cat">
+                    </td> 
+                    <td class="lt-def-def">
+                    Een taak is een activiteit die wordt uitgevoerd als onderdeel van het juridisch werkproces  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#ValiderenSpecificaties">
+                    Valideren specificaties
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Het valideren of (gegevens, regel en/of proces-)specificaties overeen komen met de juridische teksten en de interpretatie die aan deze teksten moet worden gegeven.  
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lt-def-term" title="http://bp4mc2.org/ltt#VerzamelenBronmateriaal">
+                    Verzamelen bronmateriaal
+                    </td>
+                    <td class="lt-def-cat">
+                            <span class="lt-badge lt-badge--def-broader">Broader: Taak</span>
+                    </td> 
+                    <td class="lt-def-def">
+                    Verzamelen bronmateriaal is een taak waarin de relevante bronnen worden verzameld die nodig zijn voor de gegeven opgave  
+                    </td>
+                </tr>
+            <!-- Lege toestand -->
+            <!-- <tr><td colspan="3" class="lt-def-leeg">Geen definities gevonden.</td></tr> -->
+            </tbody>
+        </table>
+    </section>
+
+    <section class="lt-tabpanel" id="panel-enumeraties" role="tabpanel" aria-label="Enumeraties">
+    <h3>Enumeraties</h3>
+    <div class="lt-overzicht-toolbar">
+        <div class="lt-overzicht-zoek">
+        <input type="search" id="enum-zoek"
+                placeholder="Zoek op collectienaam of waarde…"
+                aria-label="Zoek enumeratie">
+        </div>
+        <select id="enum-type" aria-label="Filter op type">
+        <option value="">Alle typen</option>
+        <option>Gebruiksstatus</option>
+        <option>Licentievorm</option>
+        <option>Taaktype</option>
+        </select>
+        <span class="lt-overzicht-count" id="enum-count" aria-live="polite"></span>
+    </div>
+
+    <div class="lt-enum-lijst">
+
+        <div class="lt-enum-kaart" data-type="Licentievormen" id="enum-Licentievormen">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Licentievormen-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Licentievormen</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/lto#Licentievormen</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Licentievormen</span>
+            <span class="lt-enum-telling">3 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Licentievormen-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">Volledig open</td>
+                <td class="lt-val-concept">VolledigOpen</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Open onder voorwaarden</td>
+                <td class="lt-val-concept">OpenOnderVoorwaarden</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Gesloten</td>
+                <td class="lt-val-concept">Gesloten</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Gebruikersgroepen" id="enum-Gebruikersgroepen">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Gebruikersgroepen-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Gebruikersgroepen</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/lto#Gebruikersgroepen</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Gebruikersgroepen</span>
+            <span class="lt-enum-telling">11 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Gebruikersgroepen-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">Burgers en bedrijven</td>
+                <td class="lt-val-concept">BurgersEnBedrijven</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Rechtbanken</td>
+                <td class="lt-val-concept">Rechtbanken</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Opsporingsinstanties</td>
+                <td class="lt-val-concept">Opsporingsinstanties</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Juristen</td>
+                <td class="lt-val-concept">Juristen</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Beleidsmedewerkers</td>
+                <td class="lt-val-concept">Beleidsmedewerkers</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Wetgevers</td>
+                <td class="lt-val-concept">Wetgevers</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Advocaten</td>
+                <td class="lt-val-concept">Advocaten</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Uitvoeringsorganisaties</td>
+                <td class="lt-val-concept">Uitvoeringsorganisaties</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Commerciële organisaties</td>
+                <td class="lt-val-concept">CommercieleOrganisaties</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Regelanalist</td>
+                <td class="lt-val-concept">Regelanalist</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Softwareontwikkelaars</td>
+                <td class="lt-val-concept">SoftwareOntwikkelaars</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Gebruiksstatussen" id="enum-Gebruiksstatussen">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Gebruiksstatussen-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Gebruiksstatussen</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/lto#Gebruiksstatussen</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Gebruiksstatussen</span>
+            <span class="lt-enum-telling">3 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Gebruiksstatussen-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">Work in progress</td>
+                <td class="lt-val-concept">WorkInProgress</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Voorstel</td>
+                <td class="lt-val-concept">Voorstel</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">In gebruik</td>
+                <td class="lt-val-concept">InGebruik</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Functionaliteiten" id="enum-Functionaliteiten">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Functionaliteiten-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Functionaliteiten</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/lto#Functionaliteiten</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Functionaliteiten</span>
+            <span class="lt-enum-telling">13 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Functionaliteiten-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">Geautomatiseerd beslissen</td>
+                <td class="lt-val-concept">GeautomatiseerdBeslissen</td>
+                <td class="lt-val-def">
+                    Het (geheel of gedeeltelijk) nemen van besluiten door een geautomatiseerd systeem, al dan niet met rechtsgevolgen voor betrokkenen.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Compliance ondersteuning</td>
+                <td class="lt-val-concept">ComplianceOndersteuning</td>
+                <td class="lt-val-def">
+                    Ondersteuning bij het aantoonbaar naleven van wet- en regelgeving en interne normen, inclusief controles, signalering en rapportage.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Contract: geautomatiseerde contractgeneratie</td>
+                <td class="lt-val-concept">ContractAutomatischAanmaken</td>
+                <td class="lt-val-def">
+                    Het automatisch genereren of samenstellen van een contract op basis van invoer, templates en/of clausulebibliotheken.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Contract: analyse/redactie/beoordeling</td>
+                <td class="lt-val-concept">ContractAnalyticsConceptReview</td>
+                <td class="lt-val-def">
+                    Functionaliteiten voor het analyseren van contractinhoud, het (mede) opstellen/redigeren van bepalingen en het beoordelen (review) van concepten en wijzigingen.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Juridisch expertsysteem</td>
+                <td class="lt-val-concept">JuridischExpertSysteem</td>
+                <td class="lt-val-def">
+                    Een systeem dat juridische kennis (regels en/of heuristieken) toepast om te adviseren, te kwalificeren of beslissingen/uitkomsten te ondersteunen.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Wetgeving: wetgevingsredactie</td>
+                <td class="lt-val-concept">WetgevingConceptualisering</td>
+                <td class="lt-val-def">
+                    Het (ondersteunen bij het) opstellen en redigeren van wet- en regelgeving, inclusief structuur, definities, verwijzingen en consistentie.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Wetgeving: uitvoering van wet- en regelgeving</td>
+                <td class="lt-val-concept">WetgevingUitvoering</td>
+                <td class="lt-val-def">
+                    Functionaliteiten gericht op uitvoering of implementatie van wettelijke verplichtingen en, waar bedoeld, ondersteuning bij toezicht en handhaving.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Wetgeving: modellering van wet- en regelgeving</td>
+                <td class="lt-val-concept">WetgevingRepresentatie</td>
+                <td class="lt-val-def">
+                    Het formaliseren of modelleren van wet- en regelgeving (bijv. als regels, logica, metadata of semantische structuur) ten behoeve van interpretatie, toepassing of automatisering.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Procespraktijk: procesanalyse</td>
+                <td class="lt-val-concept">LitigatieAnalytics</td>
+                <td class="lt-val-def">
+                    Analyse van procesvoering en procesgegevens (bijv. doorlooptijden, uitkomsten, proceshandelingen en patronen) ter ondersteuning van processtrategie en dossiersturing.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Procespraktijk: opstellen van processtukken</td>
+                <td class="lt-val-concept">LitigatieConceptualisering</td>
+                <td class="lt-val-def">
+                    Het opstellen en redigeren van processtukken (zoals dagvaarding, verzoekschrift, conclusie, pleitnota en incidentele verzoeken).
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Procespraktijk: voorspelling van rechterlijke uitspraak</td>
+                <td class="lt-val-concept">LitigatiePredictieVoorsluiting</td>
+                <td class="lt-val-def">
+                    Het (statistisch of modelmatig) voorspellen van de waarschijnlijke uitkomst van een procedure of de inhoud/strekking van een rechterlijke uitspraak.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Zoeken: jurisprudentie</td>
+                <td class="lt-val-concept">ZoekenRechtspraak</td>
+                <td class="lt-val-def">
+                    Het doorzoeken en ontsluiten van jurisprudentie (uitspraken), inclusief filtering, citaties, vindplaatsen en relevante overwegingen.
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Zoeken: wet- en regelgeving</td>
+                <td class="lt-val-concept">ZoekenWetgeving</td>
+                <td class="lt-val-def">
+                    Het doorzoeken en ontsluiten van wet- en regelgeving, inclusief consolidaties, historische versies, artikelen/leden en kruisverwijzingen.
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Technologietypen" id="enum-Technologietypen">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Technologietypen-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Technologietypen</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/lto#Technologietypen</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Technologietypen</span>
+            <span class="lt-enum-telling">5 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Technologietypen-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">Markup (annotatie)</td>
+                <td class="lt-val-concept">MarkupAnnotatie</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Markup (publicatie)</td>
+                <td class="lt-val-concept">MarkupPublicatie</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">DSL</td>
+                <td class="lt-val-concept">DSL</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Machine learning</td>
+                <td class="lt-val-concept">MachineLearning</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Regelexecutie</td>
+                <td class="lt-val-concept">Regelexecutie</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Normstatussen" id="enum-Normstatussen">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Normstatussen-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Normstatussen</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/lto#Normstatussen</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Normstatussen</span>
+            <span class="lt-enum-telling">5 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Normstatussen-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">Idee</td>
+                <td class="lt-val-concept">Idee</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Voorstel</td>
+                <td class="lt-val-concept">Voorstel</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Best practice</td>
+                <td class="lt-val-concept">BestPractice</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Industrie</td>
+                <td class="lt-val-concept">Industrie</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Wettelijk</td>
+                <td class="lt-val-concept">Wettelijk</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Beschouwingsniveaus" id="enum-Beschouwingsniveaus">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Beschouwingsniveaus-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Beschouwingsniveaus</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/lto#Beschouwingsniveaus</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Beschouwingsniveaus</span>
+            <span class="lt-enum-telling">5 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Beschouwingsniveaus-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">Tekstueel</td>
+                <td class="lt-val-concept">Tekstueel</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Semantisch</td>
+                <td class="lt-val-concept">Semantisch</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Ontologisch</td>
+                <td class="lt-val-concept">Ontologisch</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Logisch</td>
+                <td class="lt-val-concept">Logisch</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Technisch</td>
+                <td class="lt-val-concept">Technisch</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Modelsoorten" id="enum-Modelsoorten">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Modelsoorten-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Modelsoorten</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/lto#Modelsoorten</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Modelsoorten</span>
+            <span class="lt-enum-telling">2 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Modelsoorten-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">Descriptief</td>
+                <td class="lt-val-concept">Descriptief</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Normatief</td>
+                <td class="lt-val-concept">Normatief</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Relatietypen" id="enum-Relatietypen">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Relatietypen-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Relatietypen</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/lto#Relatietypen</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Relatietypen</span>
+            <span class="lt-enum-telling">4 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Relatietypen-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">Vervangt</td>
+                <td class="lt-val-concept">Vervangt</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Vervolg op</td>
+                <td class="lt-val-concept">VervolgOp</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Alternatief voor</td>
+                <td class="lt-val-concept">AlternatiefVoor</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Gerelateerd aan</td>
+                <td class="lt-val-concept">GerelateerdAan</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Taakgroep 1 - Tekstuele analyse en interpretatie" id="enum-Groep1">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Groep1-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Taakgroep 1 - Tekstuele analyse en interpretatie</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/ltt#Groep1</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Taakgroep 1 - Tekstuele analyse en interpretatie</span>
+            <span class="lt-enum-telling">3 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Groep1-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">OpstellenRegeltekst</td>
+                <td class="lt-val-concept">OpstellenRegeltekst</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Opdrachtorientering</td>
+                <td class="lt-val-concept">Opdrachtorientering</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">VerzamelenBronmateriaal</td>
+                <td class="lt-val-concept">VerzamelenBronmateriaal</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Taakgroep 2 - Analyse en interpretatie" id="enum-Groep2">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Groep2-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Taakgroep 2 - Analyse en interpretatie</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/ltt#Groep2</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Taakgroep 2 - Analyse en interpretatie</span>
+            <span class="lt-enum-telling">3 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Groep2-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">AnalyserenRegeltekst</td>
+                <td class="lt-val-concept">AnalyserenRegeltekst</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">InterpreterenEnExpliciteren</td>
+                <td class="lt-val-concept">InterpreterenEnExpliciteren</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">BegripDefinieren</td>
+                <td class="lt-val-concept">BegripDefinieren</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Taakgroep 3 - Specificeren/Modelleren" id="enum-Groep3">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Groep3-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Taakgroep 3 - Specificeren/Modelleren</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/ltt#Groep3</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Taakgroep 3 - Specificeren/Modelleren</span>
+            <span class="lt-enum-telling">3 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Groep3-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">SpecificerenGegevensbehoefte</td>
+                <td class="lt-val-concept">SpecificerenGegevensbehoefte</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">SpecificerenRegels</td>
+                <td class="lt-val-concept">SpecificerenRegels</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">SpecificerenProcessen</td>
+                <td class="lt-val-concept">SpecificerenProcessen</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="lt-enum-kaart" data-type="Taakgroep 4 - Validatie en uitvoering" id="enum-Groep4">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-Groep4-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">Taakgroep 4 - Validatie en uitvoering</div>
+            <div class="lt-enum-uri">http://bp4mc2.org/ltt#Groep4</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">Taakgroep 4 - Validatie en uitvoering</span>
+            <span class="lt-enum-telling">4 waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-Groep4-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="lt-val-label">ValiderenSpecificaties</td>
+                <td class="lt-val-concept">ValiderenSpecificaties</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">GeautomatiseerdeRegeluitvoering</td>
+                <td class="lt-val-concept">GeautomatiseerdeRegeluitvoering</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Beslisondersteuning</td>
+                <td class="lt-val-concept">Beslisondersteuning</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+                <tr>
+                <td class="lt-val-label">Evaluatie</td>
+                <td class="lt-val-concept">Evaluatie</td>
+                <td class="lt-val-def">
+                    None
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+        <!-- Lege toestand -->
+        <!-- <p class="lt-enum-leeg">Geen enumeraties gevonden.</p> -->
+
+    </div>
+
+    </section>
+
+</section>
+<script>
+(async function () {
+  // Wacht tot ReSpec klaar is als dit een ReSpec-document is.
+  if (document.respec?.ready) {
+    await document.respec.ready;
+  } else if (document.respecIsReady) {
+    await document.respecIsReady;
+  }
+
+  initTabs();
+
+  function initTabs() {
+    const tablists = document.querySelectorAll('[role="tablist"]');
+
+    tablists.forEach((tablist) => {
+      const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+
+      function activateTab(tab) {
+        const targetId = tab.getAttribute('aria-controls');
+        const targetPanel = document.getElementById(targetId);
+        if (!targetPanel) return;
+
+        tabs.forEach((t) => {
+          const selected = t === tab;
+          t.setAttribute('aria-selected', selected ? 'true' : 'false');
+          t.setAttribute('tabindex', selected ? '0' : '-1');
+          t.classList.toggle('lt-tabbladen__tab--actief', selected);
+
+          const panelId = t.getAttribute('aria-controls');
+          const panel = panelId ? document.getElementById(panelId) : null;
+          if (panel) {
+            panel.hidden = !selected;
+            panel.classList.toggle('lt-tabpanel--actief', selected);
+          }
+        });
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab));
+
+        tab.addEventListener('keydown', (event) => {
+          let nextIndex = null;
+
+          switch (event.key) {
+            case 'ArrowRight':
+            case 'Right':
+              nextIndex = (index + 1) % tabs.length;
+              break;
+            case 'ArrowLeft':
+            case 'Left':
+              nextIndex = (index - 1 + tabs.length) % tabs.length;
+              break;
+            case 'Home':
+              nextIndex = 0;
+              break;
+            case 'End':
+              nextIndex = tabs.length - 1;
+              break;
+            default:
+              return;
+          }
+
+          event.preventDefault();
+          tabs[nextIndex].focus();
+          activateTab(tabs[nextIndex]);
+        });
+      });
+    });
+  }
+})();
+</script>
+
+
+</body>
+</html>

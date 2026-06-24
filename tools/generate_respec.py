@@ -2,31 +2,298 @@ from pathlib import Path
 from collections import defaultdict
 from datetime import date
 import re
+import json
+import shutil
 
+from attrs import fields
 from rdflib import Graph
 from jinja2 import Environment, FileSystemLoader
+from typing import Dict, List, Optional
+from string import Template
 
+from markdown.extensions import Extension
+from markdown.preprocessors import Preprocessor
 
 BASE_DIR = Path(__file__).parent
+PROJECT_ROOT = BASE_DIR.parent
 
-DATA_DIR = BASE_DIR / "../data"
-QUERY_DIR = BASE_DIR / "../queries"
-TEMPLATE_DIR = BASE_DIR / "../templates"
-OUTPUT_DIR = BASE_DIR / "../media"
-MODEL_DIR = BASE_DIR / "../model"
+DATA_DIR = PROJECT_ROOT / "data"
+QUERY_DIR = PROJECT_ROOT / "queries"
+TEMPLATE_DIR = PROJECT_ROOT / "templates"
+MODEL_DIR = PROJECT_ROOT / "model"
+DOCS_DIR = PROJECT_ROOT / "docs"
+STATIC_DOCS_DIR = DOCS_DIR / "static"
+
+BUILD_DIR = PROJECT_ROOT / "build" / "docs"
+BUILD_INCLUDE_DIR = BUILD_DIR / "includes"
+BUILD_RESPEC_DIR = BUILD_DIR / "respec"
+BUILD_ASSETS_JS_DIR = BUILD_DIR / "assets" / "js"
+BUILD_ASSETS_CSS_DIR = BUILD_DIR / "assets" / "css"
+BUILD_ASSETS_IMG_DIR = BUILD_DIR / "assets" / "img"
 
 TBOX_FILE = MODEL_DIR / "juridische technologie.ttl"
 TASKS_FILE = MODEL_DIR / "taken.ttl"
+BEGRIPPEN_FILE = MODEL_DIR / "begrippen.ttl"
 ABOX_FILE = DATA_DIR / "all-legal-technologies.ttl"
 
 OUTPUT_FILES = {
-    "catalogus": OUTPUT_DIR / "catalogus.md",
-    "taxonomieen": OUTPUT_DIR / "taxonomieen.md",
-    "organisaties": OUTPUT_DIR / "organisaties.md",
-    "ontologie": OUTPUT_DIR / "ontologie.md",
-    "generatieverantwoording": OUTPUT_DIR / "generatieverantwoording.md",
+    "catalogus-overzicht": BUILD_INCLUDE_DIR / "catalogus-overzicht.md",
+    "catalogus-details": BUILD_INCLUDE_DIR / "catalogus-details.md",
+    "begrippenkader": BUILD_INCLUDE_DIR / "begrippenkader.html",
+    "organisaties": BUILD_INCLUDE_DIR / "organisaties.md",
+    "ontologie": BUILD_INCLUDE_DIR / "ontologie.md",
+    "generatieverantwoording": BUILD_INCLUDE_DIR / "generatieverantwoording.md",
+    "catalogus-details": BUILD_INCLUDE_DIR / "catalogus-details.html",
+    "catalogus-overzicht": BUILD_INCLUDE_DIR / "catalogus-overzicht.html",
+    "aandachtspunten": BUILD_INCLUDE_DIR / "aandachtspunten.md",
 }
 
+OUTPUT_HTML_FILES = {
+    "index": BUILD_RESPEC_DIR / "index.html",
+    "typologie": BUILD_RESPEC_DIR / "typologie.html",
+    "catalogus": BUILD_RESPEC_DIR / "catalogus.html",
+    "begrippenkader": BUILD_RESPEC_DIR / "begrippenkader.html",
+    "organisaties": BUILD_RESPEC_DIR / "organisaties.html",
+    "ontologie": BUILD_RESPEC_DIR / "ontologie.html"
+}
+
+OUTPUT_JS_FILES = {
+    "ontology-diagram-data": BUILD_ASSETS_JS_DIR / "ontology-diagram-data.js",
+}
+
+STATIC_INCLUDE_FILES = {
+    "ontology-diagram": STATIC_DOCS_DIR / "includes" / "ontology-diagram.html",
+}
+
+STATIC_JS_FILES = {
+    "ontology-diagram": STATIC_DOCS_DIR / "js" / "ontology-diagram.js",
+    "technology-overview-filter": STATIC_DOCS_DIR / "js" / "technology-overview-filter.js"
+}
+
+STATIC_CSS_FILES = {
+    "catalogus": STATIC_DOCS_DIR / "css" / "lto-detail.css",
+}
+
+STATIC_IMG_FILES = {
+    "cyclus-svg": STATIC_DOCS_DIR / ".." / "cyclus.svg",
+    "informatiemodel-svg": STATIC_DOCS_DIR / ".." / "informatiemodel.svg",
+}
+
+MANUAL_INCLUDE_FILES = {
+    "typologie": DOCS_DIR / "typologie.md",
+    "aandachtspunten": DOCS_DIR / "aandachtspunten.md",
+}
+
+_COLLECTIONS = {}
+
+class ImagePathRewritePreprocessor(Preprocessor):
+    def __init__(self, md, img_prefix="../assets/img/"):
+        super().__init__(md)
+        self.img_prefix = img_prefix
+
+    def normalize_target(self, target: str) -> str:
+        target = target.strip()
+
+        # Laat externe/absolute/al herschreven paden ongemoeid
+        if (
+            target.startswith("http://")
+            or target.startswith("https://")
+            or target.startswith("/")
+            or target.startswith("../assets/img/")
+            or target.startswith("assets/img/")
+            or target.startswith("data:")
+            or target.startswith("#")
+        ):
+            return target
+
+        return self.img_prefix + Path(target).name
+
+    def run(self, lines):
+        text = "\n".join(lines)
+
+        # Markdown image syntax: ![alt](cyclus.svg)
+        text = re.sub(
+            r'(!\[[^\]]*\]\()([^)]+)(\))',
+            lambda m: f"{m.group(1)}{self.normalize_target(m.group(2))}{m.group(3)}",
+            text,
+        )
+
+        # HTML img tags: <img src="cyclus.svg">
+        text = re.sub(
+            r'(<img\b[^>]*\bsrc=["\'])([^"\']+)(["\'])',
+            lambda m: f'{m.group(1)}{self.normalize_target(m.group(2))}{m.group(3)}',
+            text,
+            flags=re.IGNORECASE,
+        )
+
+        return text.splitlines()
+
+
+class ImagePathRewriteExtension(Extension):
+    def __init__(self, **kwargs):
+        self.config = {
+            "img_prefix": ["../assets/img/", "Prefix voor lokale image-bestanden"]
+        }
+        super().__init__(**kwargs)
+
+    def extendMarkdown(self, md):
+        preprocessor = ImagePathRewritePreprocessor(
+            md,
+            img_prefix=self.getConfig("img_prefix")
+        )
+        # Vroeg registreren, vóór normale parsing
+        md.preprocessors.register(preprocessor, "image_path_rewrite", 35)
+
+def _collections(graph: Graph):
+    global _COLLECTIONS
+    if not _COLLECTIONS:
+        _COLLECTIONS = build_collections(graph, "technology_collections.rq")
+
+    return _COLLECTIONS
+
+def get_item_from_collection(collections: Dict, item_id: Optional[str] = None):
+    if item_id is None:
+        return {}
+    
+    for collection in collections.values():
+        for item in collection.get("items", []):
+            if item.get("uri") == item_id:
+                return item            
+    return {} 
+
+def build_collections(graph: Graph, query_file: str):
+    rows = execute_select(graph, query_file)
+    collections = {}
+
+    for row in rows:
+        collection_id = local_name(row.get("collection") or "")
+        collection = collections.get(collection_id)
+        if not collection:
+            collection = collections.setdefault(collection_id, {
+                "id": collection_id,
+                "uri": row.get("collection"),
+                "label": row.get("collectionLabel") or local_name(row.get("collection") or ""),
+                "definition": row.get("collectionDefinition"),
+                "items": [],
+            })
+        item = {}
+        item["concept"] = local_name(row.get("concept") or "")
+        item["uri"] = row.get("concept")
+        item["label"] = row.get("conceptLabel") or local_name(row.get("concept") or "")
+        item["anchor"] = slugify(item["label"])
+        item["definition"] = row.get("conceptDefinition")
+        collection["items"].append(item)
+
+    return collections
+
+def copy_source_file(source_path: Path, target_path: Path):
+    if not source_path.exists():
+        raise FileNotFoundError(f"Bronbestand niet gevonden: {source_path}")
+
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source_path, target_path)
+    print(f"Gekopieerd: {source_path} -> {target_path}")
+
+def cytoscape_id(value: str) -> str:
+    value = local_name(value or "")
+    value = re.sub(r"[^a-zA-Z0-9_]", "_", value)
+    if not value:
+        value = "Thing"
+    if value[0].isdigit():
+        value = "_" + value
+    return value
+
+
+def build_cytoscape_elements(classes, object_properties, datatype_properties):
+    elements = []
+    class_ids = {}
+
+    # Nodes voor klassen
+    for cls in classes:
+        uri = cls.get("uri")
+        cid = cytoscape_id(uri or cls.get("id") or cls.get("label"))
+        label = cls.get("label") or cls.get("id") or cid
+
+        class_ids[uri] = cid
+
+        elements.append({
+            "data": {
+                "id": cid,
+                "label": label,
+                "uri": uri,
+                "type": "class",
+                "comment": cls.get("comment") or "",
+            }
+        })
+
+    # Subclass edges
+    for cls in classes:
+        child_uri = cls.get("uri")
+        parent_uri = cls.get("subClassOf")
+
+        if child_uri and parent_uri and child_uri in class_ids and parent_uri in class_ids:
+            source = class_ids[child_uri]
+            target = class_ids[parent_uri]
+
+            elements.append({
+                "data": {
+                    "id": f"{source}_subClassOf_{target}",
+                    "source": source,
+                    "target": target,
+                    "label": "subClassOf",
+                    "type": "subClassOf",
+                }
+            })
+
+    # Object property edges
+    for prop in object_properties:
+        domain_uri = prop.get("domain")
+        range_uri = prop.get("range")
+
+        if not domain_uri or not range_uri:
+            continue
+
+        if domain_uri not in class_ids or range_uri not in class_ids:
+            continue
+
+        source = class_ids[domain_uri]
+        target = class_ids[range_uri]
+        prop_id = cytoscape_id(prop.get("uri") or prop.get("id") or prop.get("label"))
+
+        elements.append({
+            "data": {
+                "id": f"{source}_{prop_id}_{target}",
+                "source": source,
+                "target": target,
+                "label": prop.get("label") or prop.get("id") or prop_id,
+                "uri": prop.get("uri"),
+                "type": "objectProperty",
+            }
+        })
+
+    # Datatype properties als node-attributen
+    datatype_props_by_class = defaultdict(list)
+
+    for prop in datatype_properties:
+        domain_uri = prop.get("domain")
+        if domain_uri not in class_ids:
+            continue
+
+        cid = class_ids[domain_uri]
+        datatype_props_by_class[cid].append({
+            "label": prop.get("label") or prop.get("id"),
+            "range": local_name(prop.get("range") or "") or "Literal",
+            "uri": prop.get("uri"),
+        })
+
+    # Attributen toevoegen aan bestaande nodes
+    for element in elements:
+        data = element.get("data", {})
+        if data.get("type") == "class":
+            cid = data.get("id")
+            data["attributes"] = datatype_props_by_class.get(cid, [])
+
+    return elements
 
 def read_query(name: str) -> str:
     path = QUERY_DIR / name
@@ -90,8 +357,11 @@ def row_to_dict(row):
     return {key: term_to_str(value) for key, value in row.asdict().items()}
 
 
-def execute_select(graph: Graph, query_file: str):
+def execute_select(graph: Graph, query_file: str, params: Optional[Dict] = None):
     query = read_query(query_file)
+    if params:
+        query = Template(query).safe_substitute(params)
+        # query = query.format(**params)
     try:
         return [row_to_dict(row) for row in graph.query(query)]
     except Exception as e:
@@ -144,213 +414,151 @@ def build_metadata(graph: Graph):
     }
 
 
+def parse_field(value: Optional[str], fields: Optional[list] = None, collections: Optional[Dict] = None) -> List[Dict]:
+    if not value:
+        return []
+
+    items = [item.strip() for item in value.split("@@") if item.strip()]
+    result = []
+
+    for item in items:
+        parts = [part.strip() for part in item.split("||")]
+        if fields and len(parts) != len(fields):
+            continue
+        
+        # check if the part is an URI
+        new_parts = []
+        for i, part in enumerate(parts):
+            if part.startswith("http://") or part.startswith("https://"):
+                # try to get the label from the collections
+                if collections:
+                    item_from_collection = get_item_from_collection(collections, part)
+                    if item_from_collection:
+                        new_parts.append(item_from_collection)
+                    else:
+                        new_parts.append(part)
+            else:
+                new_parts.append(part)
+        
+        if fields:
+            result.append({field: part for field, part in zip(fields, new_parts)})
+            continue
+
+        # Zonder expliciete fields willen we nog steeds objecten in de lijst,
+        # en URI-waarden als resolved collectie-objecten meenemen.
+        if len(new_parts) == 1:
+            part = new_parts[0]
+            if isinstance(part, dict):
+                result.append(dict(part))
+            else:
+                result.append({"value": part})
+            continue
+
+        result.append({f"value{i + 1}": part for i, part in enumerate(new_parts)})
+
+    return result
+
+def get_organisation_by_id(graph: Graph, org_id: Optional[str]) -> Optional[Dict]:
+    if not org_id:
+        return {}
+
+    rows = execute_select(graph, "organisation_by_id.rq", params={"_ORG_ID": org_id})
+
+    if not rows:
+        return {}
+
+    row = rows[0]
+
+    return {
+        "uri": row.get("organisation"),
+        "id": local_name(row.get("organisation") or ""),
+        "anchor": slugify(row.get("naam") or ""),
+        "naam": row.get("naam"),
+        "contactinformatie": row.get("contactinformatie"),
+    }
+
 def build_technologies(graph: Graph):
-    detail_rows = execute_select(graph, "technology_detail.rq")
-    classification_rows = execute_select(graph, "technology_classifications.rq")
-    support_rows = execute_select(graph, "support_forms.rq")
-    task_rows = execute_select(graph, "task_assignments.rq")
-    relation_rows = execute_select(graph, "relations.rq")
-    source_rows = execute_select(graph, "sources.rq")
-
-    grouped_details = defaultdict(list)
-
-    for row in detail_rows:
-        tech_uri = row.get("tech")
-        if tech_uri:
-            grouped_details[tech_uri].append(row)
-
+    technology_rows = execute_select(graph, "technologies_overview.rq")
     technologies = []
-
-    for tech_uri, rows in grouped_details.items():
-        naam = first_value(rows, "naam") or local_name(tech_uri)
-        anchor = slugify(naam)
-
+    
+    for technology in technology_rows:
+        tech_uri = technology.get("tech")
+        if not tech_uri:
+            continue
+        
+        id = local_name(tech_uri)
+        anchor = slugify(f"{technology.get('naam')} {id}")
+        
+        technology_details = execute_select(graph, "technology_details.rq", params={"_TECH_IRI": tech_uri})
+        tech_details = technology_details[0] if technology_details else {}
+        
         tech = {
             "uri": tech_uri,
-            "id": local_name(tech_uri),
+            "id": id,
             "anchor": anchor,
-            "naam": naam,
+            "naam": tech_details.get('naam'),
 
-            "type": first_value(rows, "type"),
-            "typeLabel": first_value(rows, "typeLabel"),
+            "type": tech_details.get("subtypeClass"),
+            "typeLabel": tech_details.get("subtypeClassLabel"),
 
-            "omschrijving": first_value(rows, "omschrijving"),
-            "gebruiksstatusLabel": first_value(rows, "gebruiksstatusLabel"),
-            "licentievormLabel": first_value(rows, "licentievormLabel"),
-            "bijgewerktOp": first_value(rows, "bijgewerktOp"),
+            "afkorting": tech_details.get("abbrevation"),
+            "omschrijving": tech_details.get("omschrijving"),
+            "gebruiksstatus": get_item_from_collection(_collections(graph), tech_details.get("gebruiksstatus")),
+            "licentievorm": get_item_from_collection(_collections(graph), tech_details.get("licentievorm")),
+            "bijgewerktOp": tech_details.get("bijgewerktOp"),
 
-            "beheerder": first_value(rows, "beheerder"),
-            "beheerderNaam": first_value(rows, "beheerderNaam"),
+            "beheerder": get_organisation_by_id(graph, tech_details.get("beheerder")),
+            "leverancier": get_organisation_by_id(graph, tech_details.get("leverancier")),
 
-            "leverancier": first_value(rows, "leverancier"),
-            "leverancierNaam": first_value(rows, "leverancierNaam"),
+            "normstatus": get_item_from_collection(_collections(graph), tech_details.get("normstatus")),
+            "typeTechnologie": get_item_from_collection(_collections(graph), tech_details.get("type_technologie")),
 
-            "normstatusLabel": first_value(rows, "normstatusLabel"),
-            "typeTechnologieLabel": first_value(rows, "typeTechnologieLabel"),
+            "versienummer": tech_details.get("versienummer"),
+            "versiedatum": tech_details.get("versiedatum"),
 
-            "versienummer": first_value(rows, "versienummer"),
-            "versiedatum": first_value(rows, "versiedatum"),
+            "ontwikkelingEnBeheer": tech_details.get("ontwikkelingEnBeheer"),
 
-            "beoogdGebruik": first_value(rows, "beoogdGebruik"),
-            "toegevoegdeWaarde": first_value(rows, "toegevoegdeWaarde"),
-            "onderdelen": first_value(rows, "onderdelen"),
-            "ontwikkelingEnBeheer": first_value(rows, "ontwikkelingEnBeheer"),
-
-            "functionaliteiten": [],
-            "gebruikersgroepen": [],
-            "ondersteuningsvormen": [],
-            "taken": [],
-            "relaties": [],
-            "bronnen": [],
+            "functionaliteiten": parse_field(tech_details.get("geboden_functionaliteit"), collections=_collections(graph)),
+            "gebruikersgroepen": parse_field(tech_details.get("beoogde_gebruikers"), collections=_collections(graph)),
+            "ondersteuningsvormen": parse_field(tech_details.get("ondersteuning_voor", ""), fields=['beschouwingsniveau', 'modelsoort'], collections=_collections(graph)),
+            "taken": parse_field(tech_details.get("geschikt_voor_taak", ""), fields=['taak_omschrijving', 'taaktype'], collections=_collections(graph)),
+            "relaties": parse_field(tech_details.get("relaties", ""), collections=_collections(graph)),
+            "bronnen": parse_field(tech_details.get("bronverwijzing", ""), fields=['bron_titel', 'bron_locatie', 'bron_verwijzing'], collections=_collections(graph)),
+            "documentatie": parse_field(tech_details.get("documentatie", ""), fields=['beoogdGebruik', 'toegevoegdeWaarde', 'onderdelen', 'ontwikkelingEnBeheer'], collections=_collections(graph)),
         }
+
 
         technologies.append(tech)
-
-    tech_by_uri = {tech["uri"]: tech for tech in technologies}
-    anchor_by_uri = {tech["uri"]: tech["anchor"] for tech in technologies}
-
-    for row in classification_rows:
-        tech = tech_by_uri.get(row.get("tech"))
-        if not tech:
-            continue
-
-        value_uri = row.get("value")
-        if not value_uri:
-            continue
-        item = {
-            "uri": value_uri,
-            "id": local_name(value_uri),
-            "label": row.get("label") or local_name(value_uri),
-        }
-
-        prop = row.get("property", "")
-
-        if prop and prop.endswith("#gebodenFunctionaliteit"):
-            tech["functionaliteiten"].append(item)
-        elif prop and prop.endswith("#beoogdeGebruikers"):
-            tech["gebruikersgroepen"].append(item)
-
-    for row in support_rows:
-        tech = tech_by_uri.get(row.get("tech"))
-        if not tech:
-            continue
-
-        tech["ondersteuningsvormen"].append({
-            "support": row.get("support"),
-            "beschouwingsniveau": row.get("beschouwingsniveau"),
-            "beschouwingsniveauLabel": row.get("beschouwingsniveauLabel"),
-            "modelsoort": row.get("modelsoort"),
-            "modelsoortLabel": row.get("modelsoortLabel"),
-        })
-
-    for row in task_rows:
-        tech = tech_by_uri.get(row.get("tech"))
-        if not tech:
-            continue
-
-        tech["taken"].append({
-            "taakinvulling": row.get("taakinvulling"),
-            "omschrijving": row.get("omschrijving"),
-            "taaktype": row.get("taaktype"),
-            "taaktypeLabel": row.get("taaktypeLabel"),
-        })
-
-    for row in relation_rows:
-        tech = tech_by_uri.get(row.get("tech"))
-        if not tech:
-            continue
-
-        related_uri = row.get("gerelateerdeTechnologie")
-        related_label = row.get("gerelateerdeTechnologieNaam") or (local_name(related_uri) if related_uri else "")
-        related_anchor = anchor_by_uri.get(related_uri, slugify(related_label))
-
-        tech["relaties"].append({
-            "relatie": row.get("relatie"),
-            "typeRelatieLabel": row.get("typeRelatieLabel"),
-            "beschrijvingRelatie": row.get("beschrijvingRelatie"),
-            "gerelateerdeTechnologie": related_uri,
-            "gerelateerdeTechnologieNaam": related_label,
-            "gerelateerdeAnchor": related_anchor,
-        })
-
-    for row in source_rows:
-        tech = tech_by_uri.get(row.get("tech"))
-        if not tech:
-            continue
-
-        tech["bronnen"].append({
-            "bron": row.get("bron"),
-            "titel": row.get("titel"),
-            "pagina": row.get("pagina"),
-            "verwijzing": row.get("verwijzing"),
-        })
-
-    for tech in technologies:
-        tech["functionaliteiten"] = unique_items(tech["functionaliteiten"])
-        tech["gebruikersgroepen"] = unique_items(tech["gebruikersgroepen"])
-        tech["ondersteuningsvormen"] = unique_items(
-            tech["ondersteuningsvormen"],
-            key="support"
-        )
-        tech["taken"] = unique_items(tech["taken"], key="taakinvulling")
-        tech["relaties"] = unique_items(tech["relaties"], key="relatie")
-        tech["bronnen"] = unique_items(tech["bronnen"], key="bron")
-
-        tech["functionaliteiten"].sort(key=lambda x: (x.get("label") or "").lower())
-        tech["gebruikersgroepen"].sort(key=lambda x: (x.get("label") or "").lower())
-        tech["taken"].sort(key=lambda x: (x.get("taaktypeLabel") or "").lower())
-        tech["relaties"].sort(key=lambda x: (x.get("typeRelatieLabel") or "").lower())
-        tech["bronnen"].sort(key=lambda x: (x.get("titel") or "").lower())
-
-    technologies.sort(key=lambda t: (t.get("naam") or "").lower())
 
     return technologies
 
 
-def build_taxonomies(graph: Graph):
-    taxonomy_rows = execute_select(graph, "taxonomies.rq")
-    member_rows = execute_select(graph, "taxonomy_members.rq")
+def build_terms(graph: Graph):
+    term_rows = execute_select(graph, "begrippen.rq")
 
-    taxonomies = []
+    terms = []
 
-    for row in taxonomy_rows:
-        uri = row.get("collection") or ""
+    for row in term_rows:
+        uri = row.get("concept") or ""
         label = row.get("label") or local_name(uri)
 
-        taxonomies.append({
+        terms.append({
             "uri": uri,
             "id": local_name(uri),
             "anchor": slugify(label),
             "label": label,
             "definition": row.get("definition"),
-            "members": [],
+            "scope": row.get("scope"),
+            "editorial": row.get("editorial"),
+            "related": row.get("related"),
+            "relatedLabel": row.get("relatedLabel"),
+            "broader": row.get("broader"),
+            "broaderLabel": row.get("broaderLabel"),
+            "narrower": row.get("narrower"),
+            "narrowerLabel": row.get("narrowerLabel"),
         })
 
-    taxonomy_by_uri = {taxonomy["uri"]: taxonomy for taxonomy in taxonomies}
-
-    for row in member_rows:
-        taxonomy = taxonomy_by_uri.get(row.get("collection"))
-        if not taxonomy:
-            continue
-
-        member_uri = row.get("member") or ""
-        member_label = row.get("label") or local_name(member_uri)
-
-        taxonomy["members"].append({
-            "uri": member_uri,
-            "id": local_name(member_uri),
-            "anchor": slugify(member_label),
-            "label": member_label,
-            "definition": row.get("definition"),
-        })
-
-    for taxonomy in taxonomies:
-        taxonomy["members"] = unique_items(taxonomy["members"])
-        taxonomy["members"].sort(key=lambda m: (m.get("label") or "").lower())
-
-    taxonomies.sort(key=lambda t: (t.get("label") or "").lower())
-
-    return taxonomies
+    return terms
 
 
 def build_organisations(graph: Graph):
@@ -513,7 +721,7 @@ def build_shapes(graph: Graph):
     return shapes
 
 
-def render_fragment(env, template_name: str, output_file: Path, **context):
+def render(env, template_name: str, output_file: Path, **context):
     template = env.get_template(template_name)
     content = template.render(**context)
 
@@ -521,6 +729,146 @@ def render_fragment(env, template_name: str, output_file: Path, **context):
     output_file.write_text(content.strip() + "\n", encoding="utf-8")
 
     print(f"Geschreven: {output_file}")
+
+def render_markdown(markdown_text: str) -> str:
+    """
+    Render Markdown text to HTML using the 'markdown' library.
+    If the 'markdown' library is not available, return the original text.
+    """
+    try:
+        import markdown
+        from markdown.extensions.toc import TocExtension
+        from markdown.extensions.tables import TableExtension
+
+        md = markdown.Markdown(
+            extensions=[
+                TocExtension(
+                    slugify=lambda value, sep: slugify(value)
+                ), TableExtension(), ImagePathRewriteExtension(img_prefix="../assets/img/")
+            ]
+        )
+        html = md.convert(markdown_text)
+        return html
+    except ImportError:
+        print("Markdown library not found. Returning original text.")
+        return markdown_text
+
+# def inline_include_files(include_files):
+#     result = []
+
+#     for include_item in include_files:
+#         item = dict(include_item)
+#         include_path = item.get("path")
+#         content_format = item.get("format")
+
+#         if include_path and "content" not in item:
+#             source_path = (BUILD_RESPEC_DIR / include_path).resolve()            
+#             raw_content = source_path.read_text(encoding="utf-8")
+#             # ✅ HIER zit de fix
+#             if content_format == "markdown":
+#                 item["content"] = render_markdown(raw_content)
+#             else:
+#                 item["content"] = raw_content
+
+
+#         result.append(item)
+
+#     return result
+
+
+def inline_include_files(include_files):
+    """
+    Bestaande helper, maar nu alleen nog verantwoordelijk voor
+    het inlinen/renderen van include-bestanden zonder page-heading-logica.
+    """
+    result = []
+    for include_item in include_files:
+        item = dict(include_item)
+        include_path = item.get("path")
+        content_format = item.get("format")
+
+        if include_path and "content" not in item:
+            source_path = (BUILD_RESPEC_DIR / include_path).resolve()
+            raw_content = source_path.read_text(encoding="utf-8")
+
+            if content_format == "markdown":
+                item["content"] = render_markdown(raw_content)
+            else:
+                item["content"] = raw_content
+
+        result.append(item)
+    return result
+
+
+def extract_first_markdown_header(text: str):
+    """
+    Haal de eerste H1 (# Titel) uit markdown en geef terug:
+    (heading, markdown_zonder_die_eerste_h1)
+
+    Andere koppen blijven intact.
+    """
+    lines = text.splitlines()
+    heading = None
+    result = []
+    found = False
+
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if not found and line.startswith("# "):
+            heading = line[2:].strip()
+            found = True
+            i += 1
+            # verwijder ook lege regels direct na de H1
+            while i < len(lines) and not lines[i].strip():
+                i += 1
+            continue
+        result.append(line)
+        i += 1
+
+    return heading, "\n".join(result)
+
+
+def prepare_page(page: Dict) -> Dict:
+    """
+    Verwerk alle includes van één page en leid optioneel page.heading af
+    uit precies één include met provides_page_heading=True.
+    """
+    page = dict(page)
+    include_files = []
+    derived_heading = page.get("heading")
+    heading_provider_count = 0
+
+    for include_item in page.get("include_files", []):
+        item = dict(include_item)
+        include_path = item.get("path")
+        content_format = item.get("format")
+        provides_page_heading = item.get("provides_page_heading", False)
+
+        if include_path and "content" not in item:
+            source_path = (BUILD_RESPEC_DIR / include_path).resolve()
+            raw_content = source_path.read_text(encoding="utf-8")
+
+            if content_format == "markdown":
+                if provides_page_heading:
+                    heading_provider_count += 1
+                    extracted_heading, raw_content = extract_first_markdown_header(raw_content)
+                    if extracted_heading and not derived_heading:
+                        derived_heading = extracted_heading
+                item["content"] = render_markdown(raw_content)
+            else:
+                item["content"] = raw_content
+
+        include_files.append(item)
+
+    if heading_provider_count > 1:
+        raise ValueError(
+            f"Page '{page.get('key')}' heeft meerdere includes met provides_page_heading=True"
+        )
+
+    page["include_files"] = include_files
+    page["heading"] = derived_heading or page.get("title")
+    return page
 
 
 def main():
@@ -535,10 +883,13 @@ def main():
     if TASKS_FILE.exists():
         graph.parse(TASKS_FILE, format="turtle")
     graph.parse(ABOX_FILE, format="turtle")
-
+    if BEGRIPPEN_FILE.exists():
+        graph.parse(BEGRIPPEN_FILE, format="turtle")
+        
     metadata = build_metadata(graph)
     technologies = build_technologies(graph)
-    taxonomies = build_taxonomies(graph)
+    # taxonomies = build_taxonomies(graph)
+    terms = build_terms(graph)
     organisations = build_organisations(graph)
 
     # Deze drie onderdelen zijn optioneel, maar handig voor ontologie.md.
@@ -547,6 +898,72 @@ def main():
     classes = build_classes(graph)
     object_properties, datatype_properties = build_properties(graph)
     shapes = build_shapes(graph)
+
+    cytoscape_elements = build_cytoscape_elements(
+        classes,
+        object_properties,
+        datatype_properties,
+    )
+
+    BUILD_INCLUDE_DIR.mkdir(parents=True, exist_ok=True)
+    BUILD_RESPEC_DIR.mkdir(parents=True, exist_ok=True)
+    BUILD_ASSETS_JS_DIR.mkdir(parents=True, exist_ok=True)
+    BUILD_ASSETS_CSS_DIR.mkdir(parents=True, exist_ok=True)
+    BUILD_ASSETS_IMG_DIR.mkdir(parents=True, exist_ok=True)
+    
+    copy_source_file(
+        MANUAL_INCLUDE_FILES["typologie"],
+        BUILD_INCLUDE_DIR / "typologie.md",
+    )
+
+    copy_source_file(
+        MANUAL_INCLUDE_FILES["aandachtspunten"],
+        BUILD_INCLUDE_DIR / "aandachtspunten.md",
+    )
+
+
+    copy_source_file(
+        STATIC_INCLUDE_FILES["ontology-diagram"],
+        BUILD_INCLUDE_DIR / "ontology-diagram.html",
+    )
+
+    copy_source_file(
+        STATIC_JS_FILES["ontology-diagram"],
+        BUILD_ASSETS_JS_DIR / "ontology-diagram.js",
+    )
+    
+    copy_source_file(
+        STATIC_CSS_FILES["catalogus"],
+        BUILD_ASSETS_CSS_DIR / "lto-detail.css",
+    )
+    
+    copy_source_file(
+        STATIC_IMG_FILES["cyclus-svg"],
+        BUILD_ASSETS_IMG_DIR / "cyclus.svg",
+    )
+    
+    copy_source_file(
+        STATIC_IMG_FILES["informatiemodel-svg"],
+        BUILD_ASSETS_IMG_DIR / "informatiemodel.svg",
+    )
+
+    copy_source_file(
+        STATIC_JS_FILES["technology-overview-filter"],
+        BUILD_ASSETS_JS_DIR / "technology-overview-filter.js",
+    )
+
+    diagram_data_js = (
+        "window.ontologyDiagramElements = " +
+        json.dumps(cytoscape_elements, ensure_ascii=False, indent=2) +
+        ";\n"
+    )
+
+    OUTPUT_JS_FILES["ontology-diagram-data"].write_text(
+        diagram_data_js,
+        encoding="utf-8"
+    )
+
+    print(f"Geschreven: {OUTPUT_JS_FILES['ontology-diagram-data']}")
 
     env = Environment(
         loader=FileSystemLoader(TEMPLATE_DIR),
@@ -562,32 +979,35 @@ def main():
         "abox_file": str(ABOX_FILE),
         "generated_on": date.today().isoformat(),
     }
-
-    render_fragment(
+        
+    render(
         env,
-        "catalogus.md.j2",
-        OUTPUT_FILES["catalogus"],
+        "catalogus-overzicht.html.j2",
+        OUTPUT_FILES["catalogus-overzicht"],
+        technologies=technologies,
+        technology_collection=_collections(graph).get("Technologietypen", {}).get("items", []),
+        status_collection=_collections(graph).get("Gebruiksstatussen", {}).get("items", []),
+        **common_context,
+    )
+
+    render(
+        env,
+        "catalogus-details.html.j2",
+        OUTPUT_FILES["catalogus-details"],
         technologies=technologies,
         **common_context,
     )
 
-    render_fragment(
+    render(
         env,
-        "taxonomieen.md.j2",
-        OUTPUT_FILES["taxonomieen"],
-        taxonomies=taxonomies,
+        "begrippenkader.html.j2",
+        OUTPUT_FILES["begrippenkader"],
+        terms=terms,
+        enumerations=_collections(graph),
         **common_context,
     )
 
-    render_fragment(
-        env,
-        "organisaties.md.j2",
-        OUTPUT_FILES["organisaties"],
-        organisations=organisations,
-        **common_context,
-    )
-
-    render_fragment(
+    render(
         env,
         "ontologie.md.j2",
         OUTPUT_FILES["ontologie"],
@@ -598,12 +1018,12 @@ def main():
         **common_context,
     )
 
-    render_fragment(
+    render(
         env,
         "generatieverantwoording.md.j2",
         OUTPUT_FILES["generatieverantwoording"],
         technologies=technologies,
-        taxonomies=taxonomies,
+        terms=terms,
         organisations=organisations,
         classes=classes,
         object_properties=object_properties,
@@ -611,11 +1031,99 @@ def main():
         shapes=shapes,
         **common_context,
     )
+    
+    pages = [
+        {
+            "key": "typologie",
+            "title": "Typologie juridische technologieën",
+            "description": "De beschrijving van de typologie van juridische technologieën.",
+            "heading": None,
+            "include_files": [
+                {"path": "../includes/typologie.md", "format": "markdown", "provides_page_heading": True},
+            ],
+            "output_file": "typologie.html",
+        },
+        {
+            "key": "catalogus",
+            "title": "Catalogus juridische technologieën",
+            "description": "Deze pagina biedt een overzicht van juridische technologieën die een rol kunnen spelen bij de ontwikkeling, toepassing en evaluatie van wet- en regelgeving. Per technologie is beknopte informatie opgenomen over de aard, status, functionaliteiten en actualiteit, met doorklikmogelijkheden naar meer uitgebreide beschrijvingen.",
+            "heading": None,
+            "include_files": [
+                {"path": "../includes/catalogus-overzicht.html", "format": "html"},
+                {"path": "../includes/catalogus-details.html", "format": "html"},
+            ],
+            "output_file": "catalogus.html",
+        },
+        {
+            "key": "begrippenkader",
+            "title": "Begrippenkader",
+            "description": "Overzicht van begrippen, definities en classificaties.",
+            "heading": None,
+            "include_files": [
+                {"path": "../includes/begrippenkader.html", "format": "html", "provides_page_heading": True},
+            ],
+            "output_file": "begrippenkader.html",
+        },
+        {
+            "key": "organisaties",
+            "title": "Organisaties",
+            "description": "Overzicht van organisaties die als beheerder, leverancier of andere betrokkene voorkomen.",
+            "heading": None,
+            "include_files": [
+                {"path": "../includes/organisaties.md", "format": "markdown", "provides_page_heading": True},
+            ],
+            "output_file": "organisaties.html",
+        },
+        {
+            "key": "ontologie",
+            "title": "Ontologie",
+            "description": "Technische beschrijving van klassen, eigenschappen en SHACL-shapes.",
+            "heading": None,
+            "include_files": [
+                {"path": "../includes/ontologie.md", "format": "markdown", "provides_page_heading": True},
+                {"path": "../includes/ontology-diagram.html", "format": "html"},
+            ],
+            "output_file": "ontologie.html",
+        },
+    ]
+
+    pages = [prepare_page(page) for page in pages]
+    
+    stats = {
+        "technologies": len(technologies),
+        "terms": len(terms),
+        "organisations": len(organisations),
+        "classes": len(classes),
+        "object_properties": len(object_properties),
+        "datatype_properties": len(datatype_properties),
+        "shapes": len(shapes),
+    }
+
+    render(
+        env,
+        "respec_index.html.j2",
+        OUTPUT_HTML_FILES["index"],
+        pages=pages,
+        generation_justification=OUTPUT_FILES["generatieverantwoording"].read_text(encoding="utf-8"),
+        aandachtspunten=OUTPUT_FILES["aandachtspunten"].read_text(encoding="utf-8"),
+        **common_context,
+    )
+
+    for page in pages:
+        render(
+            env,
+            "respec_page.html.j2",
+            OUTPUT_HTML_FILES[page["key"]],
+            page=page,
+            pages=pages,
+            stats=stats,
+            **common_context,
+        )    
 
     print()
     print("Klaar.")
     print(f"Aantal technologieën: {len(technologies)}")
-    print(f"Aantal taxonomieën: {len(taxonomies)}")
+    print(f"Aantal begrippen: {len(terms)}")
     print(f"Aantal organisaties: {len(organisations)}")
     print(f"Aantal klassen: {len(classes)}")
     print(f"Aantal objecteigenschappen: {len(object_properties)}")

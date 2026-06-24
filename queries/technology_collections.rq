@@ -1,0 +1,23 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?collection ?collectionLabel ?collectionDefinition ?concept ?conceptLabel ?conceptDefinition
+WHERE {
+  ?collection a ?type .
+  FILTER (?type IN (skos:Collection, skos:OrderedCollection))
+    
+    OPTIONAL { ?collection skos:prefLabel ?collectionLabel . }
+    OPTIONAL { ?collection skos:definition ?collectionDefinition . }
+
+  {
+    ?collection skos:member ?concept .
+    ?concept skos:prefLabel ?conceptLabel .
+        OPTIONAL { ?concept skos:definition ?conceptDefinition . }   
+       
+  }
+  UNION
+  {
+    ?collection skos:memberList ?list .
+    ?list rdf:rest*/rdf:first ?concept .
+  }
+}

@@ -37,6 +37,41 @@
       ],
       "dependsOrder": "parallel",
       "problemMatcher": []
+    },
+    {
+      "label": "Generate Documentation",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "generate_respec.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}\\tools"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Documentation Server",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "-m",
+        "http.server",
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}\\dist"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Generate Documentation + Start Server",
+      "dependsOn": [
+        "Generate Documentation",
+        "Start Documentation Server"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
     }
   ]
 }

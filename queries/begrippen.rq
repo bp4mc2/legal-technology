@@ -1,0 +1,17 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX skosthes: <http://purl.org/iso25964/skos-thes#>
+
+SELECT ?concept ?label ?definition ?lang ?alt ?scope ?editorial ?related ?relatedLabel ?broader ?broaderLabel ?narrower ?narrowerLabel
+WHERE {
+    ?concept a skos:Concept ;
+                skos:prefLabel ?label ;
+                skos:definition ?definition .
+    BIND(lang(?label) AS ?lang)
+    OPTIONAL { ?concept skos:altLabel ?alt . }
+    OPTIONAL { ?concept skos:scopeNote ?scope . }
+    OPTIONAL { ?concept skos:editorialNote ?editorial . }
+    OPTIONAL { ?concept skos:related ?related . ?related skos:prefLabel ?relatedLabel . }
+    OPTIONAL { ?concept skosthes:broaderGeneric ?broader . ?broader skos:prefLabel ?broaderLabel . }
+    OPTIONAL { ?concept skosthes:narrowerGeneric ?narrower . ?narrower skos:prefLabel ?narrowerLabel . }
+}
+ORDER BY ?concept

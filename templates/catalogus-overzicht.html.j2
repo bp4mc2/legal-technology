@@ -1,0 +1,104 @@
+<section class="lt-overzicht">  
+  <h3>Overzicht van juridische technologieën</h3>
+  <!-- Toolbar: alleen renderen als JS beschikbaar is -->
+  <div class="lt-overzicht-toolbar">
+    <div class="lt-overzicht-zoek">
+      <input type="search" id="lt-zoek"
+             placeholder="Zoek op naam of omschrijving…"
+             aria-label="Zoek in de catalogus">
+    </div>
+    <select id="lt-filter-type" aria-label="Filter op type">
+      <option value="">Alle typen</option>
+      {#
+        Eenvoudige, veilige variant: vaste opties.
+        Als je deze dynamisch wilt maken, geef dan vanuit Python een lijst
+        technology_types mee aan de template.
+      #}
+
+      <option>Methode</option>
+      <option>Standaard</option>
+      <option>Tool</option>
+    </select>
+    <select id="lt-filter-status" aria-label="Filter op status">
+      <option value="">Alle statussen</option>
+      {% for status in status_collection %}
+      <option>{{ status.label }}</option>
+      {% endfor %}
+    </select>
+    <span class="lt-overzicht-count" id="lt-count" aria-live="polite">{{ technologies|length }} Juridische technologieën</span>
+  </div>
+
+  <table class="lt-overzicht-tabel" id="lt-tabel">
+    <colgroup>
+      <col class="lt-col-naam">
+      <col class="lt-col-type">
+      <col class="lt-col-status">
+      <col class="lt-col-licentie">
+      <col class="lt-col-omschrijving">
+      <col class="lt-col-datum">
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col" aria-sort="ascending">Naam</th>
+        <th scope="col" aria-sort="none">Type</th>
+        <th scope="col" aria-sort="none">Status</th>
+        <th scope="col" aria-sort="none">Licentie</th>
+        <th scope="col">Functionaliteiten</th>
+        <th scope="col" aria-sort="none">Bijgewerkt</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tech in technologies %}
+      {% set type_label = tech.typeLabel or tech.type or '' %}
+      {% set status_label = tech.gebruiksstatus.label if tech.gebruiksstatus else '' %}
+      {% set licentie_label = tech.licentievorm.label if tech.licentievorm else '' %}
+      {% set status_key = (
+          status_label
+          |replace(' ', '')
+          |replace('-', '')
+          |replace('/', '')
+          |replace('(', '')
+          |replace(')', '')
+        )
+      %}
+      <tr data-type="{{ type_label }}" data-status="{{ status_key }}">
+        <td class="lt-cel-naam">
+          <a href="#{{ tech.anchor }}">{{ tech.naam }}</a>
+        </td>
+        <td>
+          {% if type_label %}
+          <span class="lt-badge lt-badge--type">{{ type_label }}</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if status_label %}
+          <span class="lt-badge {% if status_key == 'Ontwikkeling' %}lt-badge--status-ontwikkeling{% else %}lt-badge--status{% endif %}">{{ status_label }}</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if licentie_label %}
+          <span class="lt-badge lt-badge--licentie">{{ licentie_label }}</span>
+          {% endif %}
+        </td>
+        <td>
+            <div class="lt-tags" role="list">
+            {% if tech.functionaliteiten %}
+            {% for func in tech.functionaliteiten %}
+            <span class="lt-tag">{{ func.label | default(func.id | default(func.value | default(func))) }}</span>
+            {% endfor %}
+            {% else %}
+            <span class="lt-leeg">Geen functionaliteiten opgenomen.</span>
+            {% endif %}
+            </div>
+        </td>
+        <td>{{ tech.bijgewerktOp or '' }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="6" class="lt-overzicht-leeg">Geen tools gevonden.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</section>

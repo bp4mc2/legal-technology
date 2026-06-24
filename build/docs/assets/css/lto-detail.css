@@ -1,0 +1,849 @@
+/* ============================================================
+   ReSpec LegalTech Detail — lto-detail.css
+   Sober, juridisch/overheidsachtig, print-vriendelijk
+   Geen frameworks, geen externe fonts
+   ============================================================ */
+
+/* --- Tokens ------------------------------------------------- */
+:root {
+  --kleur-rijksblauw:    #154273;
+  --kleur-blauw-licht:   #e8eef5;
+  --kleur-grijs-donker:  #333333;
+  --kleur-grijs-midden:  #666666;
+  --kleur-grijs-licht:   #f5f5f5;
+  --kleur-grens:         #d0d7de;
+  --kleur-groen-bg:      #e8f4ec;
+  --kleur-groen-tekst:   #1a6632;
+  --kleur-blauw-bg:      #e8eef5;
+  --kleur-blauw-tekst:   #154273;
+  --kleur-grijs-bg:      #ebebeb;
+  --kleur-grijs-tekst:   #444444;
+  --kleur-leeg:          #999999;
+
+  --font-body:    Georgia, "Times New Roman", serif;
+  --font-ui:      system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "Courier New", Courier, monospace;
+
+  --ruimte-xs:    0.25rem;
+  --ruimte-s:     0.5rem;
+  --ruimte-m:     1rem;
+  --ruimte-l:     1.5rem;
+  --ruimte-xl:    2rem;
+
+  --straal:       2px;
+}
+
+/* --- Basisreset voor ReSpec-context ------------------------- */
+.lt-card *,
+.lt-card *::before,
+.lt-card *::after {
+  box-sizing: border-box;
+}
+
+/* --- Kaartcontainer ----------------------------------------- */
+.lt-card {
+  font-family: var(--font-body);
+  color: var(--kleur-grijs-donker);
+  line-height: 1.6;
+  margin: var(--ruimte-xl) 0;
+}
+
+/* --- Sectielabel (eyebrow boven subsectie) ------------------ */
+.lt-sectie-label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kleur-grijs-midden);
+  margin: var(--ruimte-l) 0 var(--ruimte-s);
+}
+
+/* --- Metadatalijst ------------------------------------------ */
+.lt-meta {
+  display: grid;
+  grid-template-columns: minmax(10rem, 220px) 1fr;
+  gap: 0;
+  margin: var(--ruimte-m) 0;
+  border-left: 3px solid var(--kleur-rijksblauw);
+  padding-left: var(--ruimte-m);
+}
+
+.lt-meta dt {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--kleur-grijs-midden);
+  padding: var(--ruimte-xs) 0;
+  border-bottom: 1px solid var(--kleur-grens);
+  align-self: center;
+}
+
+.lt-meta dd {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  color: var(--kleur-grijs-donker);
+  padding: var(--ruimte-xs) 0 var(--ruimte-xs) var(--ruimte-s);
+  margin: 0;
+  border-bottom: 1px solid var(--kleur-grens);
+  align-self: center;
+}
+
+.lt-meta dt:last-of-type,
+.lt-meta dd:last-of-type {
+  border-bottom: none;
+}
+
+/* --- Badges ------------------------------------------------- */
+.lt-badge {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 2px 8px;
+  border-radius: var(--straal);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.lt-badge--type {
+  background: var(--kleur-grijs-bg);
+  color: var(--kleur-grijs-tekst);
+}
+
+.lt-badge--status {
+  background: var(--kleur-groen-bg);
+  color: var(--kleur-groen-tekst);
+}
+
+.lt-badge--licentie {
+  background: var(--kleur-blauw-bg);
+  color: var(--kleur-blauw-tekst);
+}
+
+/* --- Leeg veld --------------------------------------------- */
+.lt-leeg {
+  font-family: var(--font-ui);
+  font-style: italic;
+  color: var(--kleur-leeg);
+  font-size: 0.8rem;
+}
+
+/* --- URI ---------------------------------------------------- */
+.lt-uri {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--kleur-rijksblauw);
+  word-break: break-all;
+  text-decoration: none;
+}
+
+.lt-uri:hover {
+  text-decoration: underline;
+}
+
+/* --- Documentatieblok --------------------------------------- */
+.lt-documentatie {
+  background: var(--kleur-grijs-licht);
+  border-left: 3px solid var(--kleur-grens);
+  padding: var(--ruimte-m) var(--ruimte-l);
+  margin: var(--ruimte-m) 0;
+}
+
+.lt-documentatie__waarde {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 var(--ruimte-s);
+}
+
+.lt-documentatie__onderdelen {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--kleur-grijs-midden);
+  margin: 0;
+}
+
+.lt-documentatie__onderdelen strong {
+  color: var(--kleur-grijs-donker);
+}
+
+/* --- Bronnen ------------------------------------------------ */
+.lt-bronnen {
+  list-style: none;
+  padding: 0;
+  margin: var(--ruimte-s) 0;
+}
+
+.lt-bronnen li {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  padding: var(--ruimte-xs) 0;
+  border-bottom: 1px solid var(--kleur-grens);
+}
+
+.lt-bronnen li:last-child {
+  border-bottom: none;
+}
+
+.lt-bronnen a {
+  color: var(--kleur-rijksblauw);
+  text-decoration: none;
+}
+
+.lt-bronnen a:hover {
+  text-decoration: underline;
+}
+
+/* --- Tags (functionaliteiten / gebruikersgroepen) ----------- */
+.lt-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ruimte-s);
+  margin: var(--ruimte-s) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lt-tag {
+  font-family: var(--font-ui);
+  font-size: 0.775rem;
+  padding: 3px 10px;
+  border: 1px solid var(--kleur-grens);
+  border-radius: var(--straal);
+  color: var(--kleur-grijs-donker);
+  background: white;
+}
+
+.lt-tag[title] {
+  cursor: help;
+  text-decoration: underline dotted var(--kleur-grijs-midden);
+}
+
+/* --- Tabel (taken, ondersteuningsvormen) -------------------- */
+.lt-tabel {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  margin: var(--ruimte-s) 0;
+}
+
+.lt-tabel th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--kleur-grijs-midden);
+  border-bottom: 2px solid var(--kleur-rijksblauw);
+  padding: var(--ruimte-s) var(--ruimte-m) var(--ruimte-s) 0;
+}
+
+.lt-tabel td {
+  padding: var(--ruimte-s) var(--ruimte-m) var(--ruimte-s) 0;
+  border-bottom: 1px solid var(--kleur-grens);
+  vertical-align: top;
+  color: var(--kleur-grijs-donker);
+}
+
+.lt-tabel tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Badge: in ontwikkeling (amber) ------------------------- */
+.lt-badge--status-ontwikkeling {
+  background: #faeeda;
+  color:       #633806;
+}
+
+/* ============================================================
+   Overzichtstabel
+   Gebruik: <section class="lt-overzicht"> rond de tabel
+   ============================================================ */
+
+/* --- Wrapper ------------------------------------------------ */
+.lt-overzicht {
+  margin: var(--ruimte-xl) 0;
+  font-family: var(--font-ui);
+}
+
+/* --- Toolbar (zoekbalk + filters) --------------------------- */
+.lt-overzicht-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: var(--ruimte-m);
+}
+
+.lt-overzicht-zoek {
+  position: relative;
+  flex: 1;
+  min-width: 160px;
+}
+
+.lt-overzicht-zoek::before {
+  content: "⌕";
+  position: absolute;
+  left: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--kleur-grijs-midden);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.lt-overzicht-zoek input[type="search"],
+.lt-overzicht-zoek input[type="text"] {
+  width: 100%;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  padding: 0.4rem 0.6rem 0.4rem 1.8rem;
+  border: 1px solid var(--kleur-grens);
+  border-radius: var(--straal);
+  color: var(--kleur-grijs-donker);
+  background: white;
+}
+
+.lt-overzicht-toolbar select {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--kleur-grens);
+  border-radius: var(--straal);
+  color: var(--kleur-grijs-donker);
+  background: white;
+}
+
+.lt-overzicht-count {
+  font-size: 0.75rem;
+  color: var(--kleur-grijs-midden);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* --- Tabel -------------------------------------------------- */
+.lt-overzicht-tabel {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  table-layout: fixed;
+}
+
+.lt-overzicht-tabel thead th {
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--kleur-grijs-midden);
+  border-bottom: 2px solid var(--kleur-rijksblauw);
+  padding: var(--ruimte-s) var(--ruimte-s) var(--ruimte-s) 0;
+  white-space: nowrap;
+}
+
+/* Sorteerbaar: voeg aria-sort="ascending|descending|none" toe via JS */
+.lt-overzicht-tabel thead th[aria-sort] {
+  cursor: pointer;
+}
+
+.lt-overzicht-tabel thead th[aria-sort]::after {
+  content: " ↕";
+  font-size: 0.65rem;
+  color: var(--kleur-grijs-midden);
+}
+
+.lt-overzicht-tabel thead th[aria-sort="ascending"]::after  { content: " ↑"; color: var(--kleur-rijksblauw); }
+.lt-overzicht-tabel thead th[aria-sort="descending"]::after { content: " ↓"; color: var(--kleur-rijksblauw); }
+
+.lt-overzicht-tabel tbody tr {
+  border-bottom: 1px solid var(--kleur-grens);
+}
+
+.lt-overzicht-tabel tbody tr:last-child {
+  border-bottom: none;
+}
+
+.lt-overzicht-tabel tbody tr:hover {
+  background: var(--kleur-grijs-licht);
+}
+
+.lt-overzicht-tabel td {
+  padding: var(--ruimte-s) var(--ruimte-s) var(--ruimte-s) 0;
+  vertical-align: middle;
+  color: var(--kleur-grijs-donker);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Naam: bold, ankerlink, klikt door naar detailpagina */
+.lt-overzicht-tabel td.lt-cel-naam {
+  font-weight: 600;
+  white-space: normal;
+}
+
+.lt-overzicht-tabel td.lt-cel-naam a {
+  color: var(--kleur-rijksblauw);
+  text-decoration: none;
+}
+
+.lt-overzicht-tabel td.lt-cel-naam a:hover {
+  text-decoration: underline;
+}
+
+/* Omschrijving: kleiner, gedempte kleur, twee regels max */
+.lt-overzicht-tabel td.lt-cel-omschrijving {
+  font-size: 0.775rem;
+  color: var(--kleur-grijs-midden);
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Tags in tabelcellen */
+.lt-overzicht-tabel .lt-tags {
+  margin: 0;
+  gap: 3px;
+}
+
+.lt-overzicht-tabel .lt-tag {
+  font-size: 0.7rem;
+  padding: 1px 6px;
+}
+
+/* Kolombreedtes (aanpasbaar per publicatie) */
+.lt-overzicht-tabel col.lt-col-naam         { width: 20%; }
+.lt-overzicht-tabel col.lt-col-type         { width: 11%; }
+.lt-overzicht-tabel col.lt-col-status       { width: 12%; }
+.lt-overzicht-tabel col.lt-col-licentie     { width: 13%; }
+.lt-overzicht-tabel col.lt-col-omschrijving { width: 30%; }
+.lt-overzicht-tabel col.lt-col-datum        { width: 14%; }
+
+/* Lege toestand */
+.lt-overzicht-leeg {
+  padding: var(--ruimte-l) 0;
+  font-size: 0.85rem;
+  color: var(--kleur-grijs-midden);
+  font-style: italic;
+  text-align: center;
+}
+
+/* --- Print (overzicht) -------------------------------------- */
+@media print {
+  .lt-overzicht-toolbar {
+    display: none;
+  }
+
+  .lt-overzicht-tabel thead th {
+    border-bottom-color: black;
+    font-size: 7pt;
+  }
+
+  .lt-overzicht-tabel td {
+    font-size: 8pt;
+    white-space: normal;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+  }
+
+  .lt-overzicht-tabel td.lt-cel-naam a::after {
+    content: " (#" attr(href) ")";
+    font-size: 0.7em;
+    color: #555;
+    font-weight: 400;
+  }
+}
+
+/* ============================================================
+   Kenmerkbadges (definitie- en enumeratieoverzicht)
+   ============================================================ */
+
+.lt-badge--def-related {
+  background: var(--kleur-blauw-bg);
+  color:       var(--kleur-blauw-tekst);
+}
+
+.lt-badge--def-narrower {
+  background: var(--kleur-groen-bg);
+  color:       var(--kleur-groen-tekst);
+}
+
+.lt-badge--def-broader {
+  background: var(--kleur-grijs-bg);
+  color:       var(--kleur-grijs-tekst);
+}
+
+
+/* ============================================================
+   Tabbladen
+   Gebruik boven .lt-def-tabel of .lt-enum-lijst
+   ============================================================ */
+
+.lt-tabbladen {
+  display: flex;
+  gap: 0;
+  border-bottom: 1.5px solid var(--kleur-rijksblauw);
+  margin-bottom: var(--ruimte-l);
+}
+
+.lt-tabbladen__tab {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 6px 18px;
+  cursor: pointer;
+  border: 0.5px solid transparent;
+  border-bottom: none;
+  border-radius: 2px 2px 0 0;
+  color: var(--kleur-grijs-midden);
+  background: transparent;
+  position: relative;
+  bottom: -1.5px;
+  text-decoration: none;
+}
+
+.lt-tabbladen__tab:hover {
+  color: var(--kleur-grijs-donker);
+}
+
+.lt-tabbladen__tab--actief {
+  background: white;
+  border-color: var(--kleur-rijksblauw);
+  border-bottom: 1.5px solid white;
+  color: var(--kleur-rijksblauw);
+}
+
+.lt-tabpanel {
+  display: none;
+}
+
+.lt-tabpanel--actief {
+  display: block;
+}
+
+/* ============================================================
+   Definitietabel  (.lt-def-tabel)
+   ============================================================ */
+
+.lt-def-tabel {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  margin: var(--ruimte-s) 0;
+}
+
+.lt-def-tabel colgroup col:nth-child(1) { width: 22%; }
+.lt-def-tabel colgroup col:nth-child(2) { width: 14%; }
+.lt-def-tabel colgroup col:nth-child(3) { width: 64%; }
+
+.lt-def-tabel thead th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--kleur-grijs-midden);
+  border-bottom: 1.5px solid var(--kleur-rijksblauw);
+  padding: var(--ruimte-s) var(--ruimte-s) var(--ruimte-s) 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.lt-def-tabel thead th[aria-sort] {
+  cursor: pointer;
+}
+
+.lt-def-tabel thead th[aria-sort]::after {
+  content: " ↕";
+  font-size: 0.65rem;
+  color: var(--kleur-grijs-midden);
+}
+
+.lt-def-tabel thead th[aria-sort="ascending"]::after  { content: " ↑"; color: var(--kleur-rijksblauw); }
+.lt-def-tabel thead th[aria-sort="descending"]::after { content: " ↓"; color: var(--kleur-rijksblauw); }
+
+.lt-def-tabel tbody tr {
+  border-bottom: 0.5px solid var(--kleur-grens);
+}
+
+.lt-def-tabel tbody tr:last-child {
+  border-bottom: none;
+}
+
+.lt-def-tabel tbody tr:hover {
+  background: var(--kleur-grijs-licht);
+}
+
+.lt-def-tabel td {
+  padding: var(--ruimte-s) var(--ruimte-s) var(--ruimte-s) 0;
+  vertical-align: top;
+  color: var(--kleur-grijs-donker);
+}
+
+.lt-def-tabel td.lt-def-term {
+  font-weight: 600;
+  color: var(--kleur-rijksblauw);
+  white-space: nowrap;
+}
+
+/* URI als title-attribuut op lt-def-term; geen aparte kolom nodig */
+
+.lt-def-tabel td.lt-def-def {
+  font-size: 0.775rem;
+  color: var(--kleur-grijs-midden);
+  line-height: 1.5;
+}
+
+.lt-def-tabel td.lt-def-def em {
+  font-style: italic;
+  color: var(--kleur-leeg);
+  font-size: 0.725rem;
+}
+
+/* ============================================================
+   Enumeratie-accordeon  (.lt-enum-lijst / .lt-enum-kaart)
+   ============================================================ */
+
+.lt-enum-lijst {
+  margin: var(--ruimte-s) 0;
+}
+
+.lt-enum-kaart {
+  border: 0.5px solid var(--kleur-grens);
+  border-radius: var(--straal);
+  margin-bottom: var(--ruimte-s);
+  overflow: hidden;
+}
+
+/* Header */
+.lt-enum-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ruimte-m);
+  padding: var(--ruimte-s) var(--ruimte-m);
+  background: var(--kleur-grijs-licht);
+  border-bottom: 0.5px solid transparent;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  list-style: none; /* voor gebruik als <summary> */
+}
+
+.lt-enum-kaart--open > .lt-enum-header {
+  border-bottom-color: var(--kleur-grens);
+}
+
+.lt-enum-header-links {
+  flex: 1;
+  min-width: 0;
+}
+
+.lt-enum-naam {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--kleur-grijs-donker);
+}
+
+.lt-enum-uri {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--kleur-grijs-midden);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.lt-enum-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ruimte-s);
+  flex-shrink: 0;
+}
+
+.lt-enum-telling {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--kleur-grijs-midden);
+  white-space: nowrap;
+}
+
+.lt-enum-chevron {
+  font-size: 0.85rem;
+  color: var(--kleur-grijs-midden);
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.lt-enum-kaart--open .lt-enum-chevron {
+  transform: rotate(180deg);
+}
+
+/* Body */
+.lt-enum-body {
+  display: none;
+}
+
+.lt-enum-kaart--open .lt-enum-body {
+  display: block;
+}
+
+/* Subtabel met waarden */
+.lt-enum-tabel {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: var(--font-ui);
+  font-size: 0.775rem;
+}
+
+.lt-enum-tabel colgroup col:nth-child(1) { width: 28%; }
+.lt-enum-tabel colgroup col:nth-child(2) { width: 18%; }
+.lt-enum-tabel colgroup col:nth-child(3) { width: 54%; }
+
+.lt-enum-tabel thead th {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--kleur-grijs-midden);
+  padding: var(--ruimte-xs) var(--ruimte-m);
+  border-bottom: 0.5px solid var(--kleur-grens);
+  text-align: left;
+}
+
+.lt-enum-tabel tbody tr {
+  border-bottom: 0.5px solid var(--kleur-grens);
+}
+
+.lt-enum-tabel tbody tr:last-child {
+  border-bottom: none;
+}
+
+.lt-enum-tabel tbody tr:hover {
+  background: var(--kleur-grijs-licht);
+}
+
+.lt-enum-tabel td {
+  padding: var(--ruimte-xs) var(--ruimte-m);
+  vertical-align: top;
+  color: var(--kleur-grijs-donker);
+}
+
+.lt-enum-tabel td.lt-val-label {
+  font-weight: 600;
+}
+
+.lt-enum-tabel td.lt-val-concept {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--kleur-grijs-midden);
+  word-break: break-all;
+}
+
+.lt-enum-tabel td.lt-val-def {
+  font-size: 0.75rem;
+  color: var(--kleur-grijs-midden);
+  line-height: 1.45;
+}
+
+.lt-enum-tabel td.lt-val-def em {
+  font-style: italic;
+  color: var(--kleur-leeg);
+}
+
+/* Lege toestand */
+.lt-def-leeg,
+.lt-enum-leeg {
+  padding: var(--ruimte-l) 0;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--kleur-grijs-midden);
+  font-style: italic;
+  text-align: center;
+}
+
+/* --- Print (definities + enumeraties) ----------------------- */
+@media print {
+  .lt-tabbladen {
+    display: none;
+  }
+
+  .lt-tabpanel {
+    display: block;
+  }
+
+  .lt-def-tabel thead th,
+  .lt-enum-tabel thead th {
+    border-bottom-color: black;
+    font-size: 7pt;
+  }
+
+  .lt-def-tabel td,
+  .lt-enum-tabel td {
+    font-size: 8pt;
+  }
+
+  .lt-enum-body {
+    display: block;
+  }
+
+  .lt-enum-chevron {
+    display: none;
+  }
+
+  .lt-enum-kaart {
+    border: 0.5px solid #ccc;
+    margin-bottom: 12pt;
+    page-break-inside: avoid;
+  }
+
+  .lt-enum-uri {
+    color: #555;
+  }
+}
+
+/* --- Print -------------------------------------------------- */
+@media print {
+  .lt-card {
+    color: black;
+    font-size: 10pt;
+  }
+
+  .lt-meta {
+    border-left-color: black;
+  }
+
+  .lt-badge {
+    border: 1px solid #333;
+    background: transparent !important;
+    color: black !important;
+  }
+
+  .lt-uri {
+    color: black;
+  }
+
+  .lt-bronnen a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #555;
+  }
+
+  .lt-documentatie {
+    background: transparent;
+    border-left-color: black;
+  }
+
+  .lt-tabel th {
+    border-bottom-color: black;
+  }
+}

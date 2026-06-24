@@ -66,12 +66,12 @@ def _extract_definitions_from_bindings(bindings: List[Dict]) -> List[Dict]:
 
 
 def list_definitions() -> List[Dict]:
-  """Haal alle SKOS-definities op met volledige SKOS properties."""
+  """Haal alle SKOS-definities (van alle named graphs) op met volledige SKOS properties."""
   sparql = f'''
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     PREFIX skosthes: <http://purl.org/iso25964/skos-thes#>
-    SELECT ?concept ?label ?definition ?lang ?alt ?scope ?editorial ?related ?relatedLabel ?broader ?broaderLabel ?narrower ?narrowerLabel WHERE {{
-      GRAPH <{TERMS_GRAPH}> {{
+    SELECT ?g ?concept ?label ?definition ?lang ?alt ?scope ?editorial ?related ?relatedLabel ?broader ?broaderLabel ?narrower ?narrowerLabel WHERE {{
+      GRAPH ?g {{
         ?concept a skos:Concept ;
                  skos:prefLabel ?label ;
                  skos:definition ?definition .
@@ -173,7 +173,7 @@ def get_definition(id: str) -> Optional[Dict]:
   bindings = result.get('results', {}).get('bindings', [])
   if not bindings:
     return None
-  
+
   definitions = _extract_definitions_from_bindings(bindings)
   return definitions[0] if definitions else None
 

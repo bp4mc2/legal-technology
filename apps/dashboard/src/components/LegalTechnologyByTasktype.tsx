@@ -1,11 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { apiFetch } from '../utils/api';
 import LegalTechnologyForm, { selectForEdit } from './LegalTechnologyForm';
 import { useCompareSelection } from './CompareSelectionContext';
 import { useActiveTechnology } from './ActiveTechnologyContext';
-
-const TASKTYPE_CONTEXT_EVENT = 'lt-tasktype-context';
-const TASKTYPE_COMMAND_EVENT = 'lt-tasktype-command';
+import { useRightRail } from './rightRail/RightRailContext';
 
 type OndersteuningVoor = {
   beschouwingsniveau: string;
@@ -19,6 +17,7 @@ type GeschiktVoorTaak = {
 
 type LegalTechnology = {
   id?: string;
+  iri?: string;
   subtype?: 'JuridischeTechnologie' | 'Methode' | 'Standaard' | 'Tool';
   abbrevation?: string;
   versienummer?: string;
@@ -178,6 +177,7 @@ type LegalTechnologyByTasktypeProps = {
 const LegalTechnologyByTasktype: React.FC<LegalTechnologyByTasktypeProps> = ({ contextMode = 'internal' }) => {
   const { selectedSet, selectedCount, maxSelection, toggleSelection, removeSelection } = useCompareSelection();
   const { setActiveTechnology } = useActiveTechnology();
+  const { setRailState } = useRightRail();
   const [items, setItems] = useState<LegalTechnology[]>([]);
   const [taskTypes, setTaskTypes] = useState<TaskType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -281,6 +281,7 @@ const LegalTechnologyByTasktype: React.FC<LegalTechnologyByTasktypeProps> = ({ c
   const handleSetContext = (tech: LegalTechnology, fallbackId: string) => {
     setActiveTechnology({
       id: tech.id || fallbackId,
+      iri: tech.iri,
       naam: tech.naam,
       omschrijving: tech.omschrijving,
       gebruiksstatus: tech.gebruiksstatus,
@@ -329,7 +330,7 @@ const LegalTechnologyByTasktype: React.FC<LegalTechnologyByTasktypeProps> = ({ c
     [items, enumBeschouwingsniveaus],
   );
 
-  const matchesTechnologyFilters = (item: LegalTechnology, q: string) => {
+  const matchesTechnologyFilters = useCallback((item: LegalTechnology, q: string) => {
     const taaktypen = (item.geschikt_voor_taak ?? []).map((t) => t.taaktype).filter(Boolean);
     const matchesSearch =
       !q ||
@@ -344,7 +345,7 @@ const LegalTechnologyByTasktype: React.FC<LegalTechnologyByTasktypeProps> = ({ c
       (item.ondersteuning_voor ?? []).some((ov) => ov.beschouwingsniveau === beschouwingsniveauFilter);
 
     return matchesSearch && matchesGebruikersgroep && matchesLicentievorm && matchesBeschouwingsniveau;
-  };
+  }, [gebruikersgroepFilter, licentievormFilter, beschouwingsniveauFilter]);
 
   const groupedByTasktype = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -389,14 +390,14 @@ const LegalTechnologyByTasktype: React.FC<LegalTechnologyByTasktypeProps> = ({ c
         };
       })
       .filter((group) => group.visible);
-  }, [items, taskTypes, search, gebruikersgroepFilter, licentievormFilter, beschouwingsniveauFilter]);
+  }, [items, taskTypes, search, matchesTechnologyFilters]);
 
   const filteredItems = useMemo(() => {
     const q = search.trim().toLowerCase();
     return [...items.filter((item) => matchesTechnologyFilters(item, q))].sort((a, b) =>
       a.naam.localeCompare(b.naam, undefined, { sensitivity: 'base' }),
     );
-  }, [items, search, gebruikersgroepFilter, licentievormFilter, beschouwingsniveauFilter]);
+  }, [items, search, matchesTechnologyFilters]);
 
   const groupedByTaskGroup = useMemo(() => {
     const groups = new Map<
@@ -469,34 +470,59 @@ const LegalTechnologyByTasktype: React.FC<LegalTechnologyByTasktypeProps> = ({ c
   };
 
   useEffect(() => {
-    if (contextMode !== 'right-rail' || typeof window === 'undefined') {
+    if (contextMode !== 'right-rail') {
       return;
     }
 
-    const detail = {
-      taskGroups: groupedByTaskGroup.map((group) => ({
-        groupLabel: group.groupLabel,
-        tasktypeCount: group.tasktypes.length,
-      })),
-      activeGroup,
-      filters: {
-        search,
-        gebruikersgroepFilter,
-        licentievormFilter,
-        beschouwingsniveauFilter,
+    setRailState({
+      type: 'tasktype',
+      context: {
+        taskGroups: groupedByTaskGroup.map((group) => ({
+          groupLabel: group.groupLabel,
+          tasktypeCount: group.tasktypes.length,
+        })),
+        activeGroup,
+        filters: {
+          search,
+          gebruikersgroepFilter,
+          licentievormFilter,
+          beschouwingsniveauFilter,
+        },
+        options: {
+          gebruikersgroepen,
+          licentievormen,
+          beschouwingsniveaus,
+        },
+        summary: {
+          tasktypeCount: groupedByTasktype.length,
+          groupCount: groupedByTaskGroup.length,
+        },
       },
-      options: {
-        gebruikersgroepen,
-        licentievormen,
-        beschouwingsniveaus,
+      commands: {
+        clearFilters: () => {
+        setSearch('');
+        setGebruikersgroepFilter('');
+        setLicentievormFilter('');
+        setBeschouwingsniveauFilter('');
+        },
+        setFilter: (key, value) => {
+          const nextValue = value || '';
+          if (key === 'search') {
+            setSearch(nextValue);
+          } else if (key === 'gebruikersgroepFilter') {
+            setGebruikersgroepFilter(nextValue);
+          } else if (key === 'licentievormFilter') {
+            setLicentievormFilter(nextValue);
+          } else if (key === 'beschouwingsniveauFilter') {
+            setBeschouwingsniveauFilter(nextValue);
+          }
+        },
       },
-      summary: {
-        tasktypeCount: groupedByTasktype.length,
-        groupCount: groupedByTaskGroup.length,
-      },
-    };
+    });
 
-    window.dispatchEvent(new CustomEvent(TASKTYPE_CONTEXT_EVENT, { detail }));
+    return () => {
+      setRailState(null);
+    };
   }, [
     contextMode,
     groupedByTaskGroup,
@@ -509,58 +535,8 @@ const LegalTechnologyByTasktype: React.FC<LegalTechnologyByTasktypeProps> = ({ c
     licentievormen,
     beschouwingsniveaus,
     groupedByTasktype.length,
+    setRailState,
   ]);
-
-  useEffect(() => {
-    if (contextMode !== 'right-rail' || typeof window === 'undefined') {
-      return;
-    }
-
-    const handler = (event: Event) => {
-      const customEvent = event as CustomEvent<{
-        type?: 'scrollToGroup' | 'setFilter' | 'clearFilters';
-        groupLabel?: string;
-        key?: 'search' | 'gebruikersgroepFilter' | 'licentievormFilter' | 'beschouwingsniveauFilter';
-        value?: string;
-      }>;
-
-      const payload = customEvent.detail;
-      if (!payload || !payload.type) {
-        return;
-      }
-
-      if (payload.type === 'scrollToGroup' && payload.groupLabel) {
-        scrollToGroup(payload.groupLabel);
-        return;
-      }
-
-      if (payload.type === 'clearFilters') {
-        setSearch('');
-        setGebruikersgroepFilter('');
-        setLicentievormFilter('');
-        setBeschouwingsniveauFilter('');
-        return;
-      }
-
-      if (payload.type === 'setFilter' && payload.key) {
-        const nextValue = payload.value || '';
-        if (payload.key === 'search') {
-          setSearch(nextValue);
-        } else if (payload.key === 'gebruikersgroepFilter') {
-          setGebruikersgroepFilter(nextValue);
-        } else if (payload.key === 'licentievormFilter') {
-          setLicentievormFilter(nextValue);
-        } else if (payload.key === 'beschouwingsniveauFilter') {
-          setBeschouwingsniveauFilter(nextValue);
-        }
-      }
-    };
-
-    window.addEventListener(TASKTYPE_COMMAND_EVENT, handler as EventListener);
-    return () => {
-      window.removeEventListener(TASKTYPE_COMMAND_EVENT, handler as EventListener);
-    };
-  }, [contextMode]);
 
   if (loading) {
     return (

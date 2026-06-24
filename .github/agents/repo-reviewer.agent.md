@@ -30,8 +30,8 @@ Your job is to detect regressions and integration risks before merge, with empha
 2. Inspect contract-bearing files first:
    - apps/api/routes/**
    - apps/api/models/**
-   - docs/api-contracts.md
-   - docs/architecture-api.md
+   - apps/docs/api-contracts.md
+   - apps/docs/architecture-api.md
 3. Inspect schema-bearing files and dependents:
    - schemas/**
    - apps/api/models/**
@@ -39,8 +39,8 @@ Your job is to detect regressions and integration risks before merge, with empha
    - analyses/** when relevant
 4. Inspect docs linkage and instruction drift:
    - AGENTS.md
-   - docs/development-guide.md
-   - docs/project-overview.md
+   - apps/docs/development-guide.md
+   - apps/docs/project-overview.md
    - .github/instructions/**
 5. Validate required test scope for touched areas:
    - Backend API: pytest tests/test_api.py tests/test_api_health.py tests/test_api_definitions.py
@@ -70,8 +70,8 @@ Then include:
 - Residual risks and testing gaps (if any)
 
 ## References
-- docs/api-contracts.md
-- docs/development-guide.md
-- docs/architecture-api.md
+- apps/docs/api-contracts.md
+- apps/docs/development-guide.md
+- apps/docs/architecture-api.md
 - apps/ARCHITECTURE.md
 - AGENTS.md

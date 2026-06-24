@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { apiFetch } from '../utils/api';
+import { useActiveTechnology } from './ActiveTechnologyContext';
 
 type TechRef = {
   uri: string;
@@ -48,8 +49,21 @@ const noteColorStyle = (color?: string): React.CSSProperties => ({
   ['--lt-sticky-note-bg' as any]: color || '#fde68a',
 });
 
+const fieldControlClass =
+  'w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm transition placeholder:text-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary disabled:cursor-not-allowed disabled:opacity-60';
+const primaryButtonClass =
+  'inline-flex items-center rounded-md border border-lt-primary bg-lt-primary px-3 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary disabled:cursor-not-allowed disabled:opacity-50';
+const secondaryButtonClass =
+  'inline-flex items-center rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary disabled:cursor-not-allowed disabled:opacity-50';
+const outlinePrimaryButtonClass =
+  'inline-flex items-center rounded-md border border-lt-primaryBorder bg-lt-primarySoft px-3 py-2 text-sm font-medium text-lt-primary shadow-sm transition hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary disabled:cursor-not-allowed disabled:opacity-50';
+const toggleActiveClass =
+  'inline-flex items-center rounded-md border border-lt-primary bg-lt-primary px-3 py-1.5 text-sm font-medium text-white shadow-sm transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary';
+const toggleInactiveClass =
+  'inline-flex items-center rounded-md border border-lt-primaryBorder bg-lt-primarySoft px-3 py-1.5 text-sm font-medium text-lt-primary shadow-sm transition hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary';
 
 const StickyNotesPanel: React.FC = () => {
+  const { activeTechnology } = useActiveTechnology();
   const [notes, setNotes] = useState<StickyNote[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -116,12 +130,26 @@ const StickyNotesPanel: React.FC = () => {
     fetchStatuses();
   }, []);
 
+  const scopedTechnologyUri = useMemo(() => {
+    const candidate = (activeTechnology?.iri || '').trim();
+    if (!candidate) {
+      return '';
+    }
+    if (candidate.startsWith('http://') || candidate.startsWith('https://')) {
+      return candidate;
+    }
+    return '';
+  }, [activeTechnology?.iri]);
+
   useEffect(() => {
     const fetchNotes = async () => {
       setLoading(true);
       setError(null);
       try {
-        const data = await apiFetch<StickyNote[]>('/api/stickynotes');
+        const endpoint = scopedTechnologyUri
+          ? `/api/stickynotes?technologyUri=${encodeURIComponent(scopedTechnologyUri)}`
+          : '/api/stickynotes';
+        const data = await apiFetch<StickyNote[]>(endpoint);
         setNotes(data);
       } catch (e: any) {
         setError(e?.message || 'Kon sticky notes niet ophalen');
@@ -130,7 +158,7 @@ const StickyNotesPanel: React.FC = () => {
       }
     };
     fetchNotes();
-  }, []);
+  }, [scopedTechnologyUri]);
 
   const boards = useMemo(
     () => Array.from(new Set(notes.map((n) => n.board.name).filter(Boolean))).sort(),
@@ -333,6 +361,12 @@ const StickyNotesPanel: React.FC = () => {
 
   return (
     <div className="lt-panel-shell lt-sticky-shell">
+      {activeTechnology ? (
+        <div className="mb-3 rounded-md border border-sky-200 bg-sky-50 px-3 py-2 text-sm text-sky-900" role="status">
+          Contextfilter actief: <strong>{activeTechnology.naam}</strong>
+        </div>
+      ) : null}
+
       <div className="lt-sticky-summary-grid">
         <div className="lt-sticky-summary-card">
           <div className="lt-sticky-summary-label">Totaal</div>
@@ -352,18 +386,26 @@ const StickyNotesPanel: React.FC = () => {
         </div>
       </div>
 
+      {filtered.length === 0 && !loading ? (
+        <div className="rounded-md border border-slate-300 bg-slate-50 px-3 py-2 text-sm text-slate-700" role="status">
+          {activeTechnology
+            ? `Geen sticky notes gevonden voor ${activeTechnology.naam} met de huidige filters.`
+            : 'Geen sticky notes gevonden met de huidige filters.'}
+        </div>
+      ) : null}
+
       <div className="lt-sticky-filters">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Zoek op tekst, sectie, status, technologie..."
-          className="form-control form-control-sm"
+          className={fieldControlClass}
         />
 
         <select
           value={boardFilter}
           onChange={(e) => setBoardFilter(e.target.value)}
-          className="form-select form-select-sm"
+          className={fieldControlClass}
         >
           <option value="all">Alle boards</option>
           {boards.map((b) => (
@@ -376,7 +418,7 @@ const StickyNotesPanel: React.FC = () => {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="form-select form-select-sm"
+          className={fieldControlClass}
         >
           <option value="all">Alle statussen</option>
           {statuses.map((s) => (
@@ -389,7 +431,7 @@ const StickyNotesPanel: React.FC = () => {
         <select
           value={linkFilter}
           onChange={(e) => setLinkFilter(e.target.value as 'all' | 'linked' | 'candidates' | 'unlinked')}
-          className="form-select form-select-sm"
+          className={fieldControlClass}
         >
           <option value="all">Alle koppelingen</option>
           <option value="linked">Definitief gekoppeld</option>
@@ -402,14 +444,14 @@ const StickyNotesPanel: React.FC = () => {
         <button
           type="button"
           onClick={() => setViewMode('table')}
-          className={`btn btn-sm ${viewMode === 'table' ? 'btn-primary' : 'btn-outline-primary'}`}
+          className={viewMode === 'table' ? toggleActiveClass : toggleInactiveClass}
         >
           Tabel
         </button>
         <button
           type="button"
           onClick={() => setViewMode('whiteboard')}
-          className={`btn btn-sm ${viewMode === 'whiteboard' ? 'btn-primary' : 'btn-outline-primary'}`}
+          className={viewMode === 'whiteboard' ? toggleActiveClass : toggleInactiveClass}
         >
           Whiteboard
         </button>
@@ -417,7 +459,7 @@ const StickyNotesPanel: React.FC = () => {
 
       {viewMode === 'table' ? (
         <div className="lt-sticky-table-wrap">
-          <table className="table table-sm table-hover align-middle mb-0">
+          <table className="mb-0 min-w-full border-collapse text-sm align-middle">
             <thead>
               <tr>
                 <th className="lt-sticky-cell">Sticky</th>
@@ -559,7 +601,7 @@ const StickyNotesPanel: React.FC = () => {
                   {selectedNote.board.name} / {selectedNote.section || 'onbekende sectie'}
                 </div>
               </div>
-              <button type="button" className="btn btn-sm btn-outline-secondary" onClick={closeDrawer}>
+              <button type="button" className={secondaryButtonClass} onClick={closeDrawer}>
                 Sluiten
               </button>
             </div>
@@ -581,7 +623,7 @@ const StickyNotesPanel: React.FC = () => {
                     <select
                       value={statusDraft}
                       onChange={(e) => setStatusDraft(e.target.value)}
-                      className="form-select form-select-sm"
+                      className={fieldControlClass}
                       disabled={saving}
                     >
                       <option value="">Kies status</option>
@@ -593,7 +635,7 @@ const StickyNotesPanel: React.FC = () => {
                     </select>
                     <button
                       type="button"
-                      className="btn btn-sm btn-primary"
+                      className={primaryButtonClass}
                       disabled={saving || !statusDraft}
                       onClick={() => patchReview({ statusIri: statusDraft })}
                     >
@@ -611,7 +653,7 @@ const StickyNotesPanel: React.FC = () => {
                         setDefinitiveTechNameDraft(e.target.value);
                         setDefinitiveTechDraft('');
                       }}
-                      className="form-control form-control-sm"
+                      className={fieldControlClass}
                       placeholder="Typ 2+ letters van technologie naam"
                       disabled={saving}
                     />
@@ -642,13 +684,13 @@ const StickyNotesPanel: React.FC = () => {
                       <input
                         value={definitiveTechDraft}
                         onChange={(e) => setDefinitiveTechDraft(e.target.value)}
-                        className="form-control form-control-sm"
+                        className={fieldControlClass}
                         placeholder="Geselecteerde URI (of handmatig invullen)"
                         disabled={saving}
                       />
                       <button
                         type="button"
-                        className="btn btn-sm btn-primary"
+                        className={primaryButtonClass}
                         disabled={saving || !definitiveTechDraft.trim()}
                         onClick={() =>
                           patchReview({ definitiveTechnologyUri: definitiveTechDraft.trim() })
@@ -675,7 +717,7 @@ const StickyNotesPanel: React.FC = () => {
                           <div className="lt-sticky-candidate-actions">
                             <button
                               type="button"
-                              className="btn btn-sm btn-outline-primary"
+                              className={outlinePrimaryButtonClass}
                               disabled={saving}
                               onClick={() =>
                                 patchReview({
@@ -705,7 +747,7 @@ const StickyNotesPanel: React.FC = () => {
                   <textarea
                     value={omschrijvingDraft}
                     onChange={(e) => setOmschrijvingDraft(e.target.value)}
-                    className="form-control form-control-sm"
+                    className={fieldControlClass}
                     rows={4}
                     placeholder="Beschrijf hoe deze sticky note is afgehandeld..."
                     disabled={saving}
@@ -713,7 +755,7 @@ const StickyNotesPanel: React.FC = () => {
                   <div className="lt-sticky-actions-right">
                     <button
                       type="button"
-                      className="btn btn-sm btn-primary"
+                      className={primaryButtonClass}
                       disabled={saving}
                       onClick={() => patchReview({ omschrijvingAfhandeling: omschrijvingDraft })}
                     >

@@ -1,7 +1,7 @@
 
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { apiFetch } from '../utils/api';
 
 type Enumeration = {
@@ -68,6 +68,7 @@ type EnumerationResponse = {
 type LegalTechnology = {
   subtype?: 'Methode' | 'Standaard' | 'Tool';
   id?: string;
+  iri?: string;
   abbrevation?: string;
   versienummer?: string;
   versiedatum?: string;
@@ -94,6 +95,8 @@ type LegalTechnology = {
 type EditLegalTechnology = Omit<Partial<LegalTechnology>, 'documentatie'> & {
   documentatie?: Partial<Documentatie> | null;
 };
+
+type ImportMode = 'replace' | 'fill-empty';
 
 const STICKY_STATUS_COLORS: Record<string, string> = {
   Opgenomen: '#16a34a',
@@ -141,6 +144,15 @@ const normalizeDateValue = (value?: string) => {
     return '';
   }
   return value.slice(0, 10);
+};
+
+const parseVersionFromApiId = (id?: string): string => {
+  const raw = (id || '').trim();
+  if (!raw || !raw.includes('--v--')) {
+    return '';
+  }
+  const [, version] = raw.split('--v--', 2);
+  return (version || '').trim();
 };
 
 const initialState: LegalTechnology = {
@@ -254,6 +266,278 @@ const normalizeForForm = (tech: EditLegalTechnology): LegalTechnology => {
   };
 };
 
+const isRecord = (value: unknown): value is Record<string, unknown> => {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+};
+
+const normalizeString = (value: unknown) => (typeof value === 'string' ? value.trim() : '');
+
+const normalizeStringArray = (value: unknown) => {
+  if (!Array.isArray(value)) {
+    return [] as string[];
+  }
+
+  return value.map(item => normalizeString(item)).filter(Boolean);
+};
+
+const normalizeImportedTechnology = (value: unknown): EditLegalTechnology => {
+  if (!isRecord(value)) {
+    throw new Error('Het JSON-bestand bevat geen geldig object.');
+  }
+
+  const ondersteuningVoor = Array.isArray(value.ondersteuning_voor)
+    ? value.ondersteuning_voor.filter(isRecord).map(item => ({
+        beschouwingsniveau: normalizeString(item.beschouwingsniveau),
+        modelsoort: normalizeString(item.modelsoort),
+      }))
+    : [];
+
+  const geschiktVoorTaak = Array.isArray(value.geschikt_voor_taak)
+    ? value.geschikt_voor_taak.filter(isRecord).map(item => ({
+        omschrijving: normalizeString(item.omschrijving),
+        taaktype: normalizeString(item.taaktype),
+      }))
+    : [];
+
+  const bronverwijzing = Array.isArray(value.bronverwijzing)
+    ? value.bronverwijzing.filter(isRecord).map(item => ({
+        titel: normalizeString(item.titel),
+        locatie: normalizeString(item.locatie),
+        verwijzing: normalizeString(item.verwijzing),
+      }))
+    : [];
+
+  const documentatie = isRecord(value.documentatie)
+    ? {
+        beoogdGebruik: normalizeString(value.documentatie.beoogdGebruik),
+        toegevoegdeWaarde: normalizeString(value.documentatie.toegevoegdeWaarde),
+        onderdelen: normalizeString(value.documentatie.onderdelen),
+        ontwikkelingEnBeheer: normalizeString(value.documentatie.ontwikkelingEnBeheer),
+      }
+    : undefined;
+
+  const versiebeschrijving = isRecord(value.versiebeschrijving)
+    ? {
+        versienummer: normalizeString(value.versiebeschrijving.versienummer),
+        versiedatum: normalizeString(value.versiebeschrijving.versiedatum),
+      }
+    : undefined;
+
+  return {
+    id: normalizeString(value.id),
+    iri: normalizeString(value.iri),
+    subtype: ['Methode', 'Standaard', 'Tool'].includes(normalizeString(value.subtype))
+      ? (normalizeString(value.subtype) as LegalTechnology['subtype'])
+      : undefined,
+    abbrevation: normalizeString(value.abbrevation),
+    versienummer: normalizeString(value.versienummer),
+    versiedatum: normalizeString(value.versiedatum),
+    versiebeschrijving,
+    naam: normalizeString(value.naam),
+    omschrijving: normalizeString(value.omschrijving),
+    gebruiksstatus: normalizeString(value.gebruiksstatus),
+    licentievorm: normalizeString(value.licentievorm),
+    geboden_functionaliteit: normalizeStringArray(value.geboden_functionaliteit),
+    beoogde_gebruikers: normalizeStringArray(value.beoogde_gebruikers),
+    ondersteuning_voor: ondersteuningVoor,
+    geschikt_voor_taak: geschiktVoorTaak,
+    documentatie,
+    bronverwijzing,
+    normstatus: normalizeString(value.normstatus),
+    beheerder: normalizeString(value.beheerder),
+    leverancier: normalizeString(value.leverancier),
+    type_technologie: normalizeStringArray(value.type_technologie),
+    technologietype: normalizeString(value.technologietype),
+    taaktype: normalizeString(value.taaktype),
+    bijgewerkt_op: normalizeString(value.bijgewerkt_op),
+  };
+};
+
+const mergeImportedWithForm = (current: LegalTechnology, imported: EditLegalTechnology, mode: ImportMode): LegalTechnology => {
+  if (mode === 'replace') {
+    return normalizeForForm({
+      ...imported,
+      id: imported.id || current.id,
+      iri: imported.iri || current.iri,
+      subtype: imported.subtype || current.subtype,
+      abbrevation: imported.abbrevation || current.abbrevation,
+    });
+  }
+
+  const currentDocumentatie = current.documentatie || {
+    beoogdGebruik: '',
+    toegevoegdeWaarde: '',
+    onderdelen: '',
+    ontwikkelingEnBeheer: '',
+  };
+  const importedDocumentatie = imported.documentatie || {};
+  const currentVersiebeschrijving = current.versiebeschrijving || {
+    versienummer: '1.0',
+    versiedatum: '',
+  };
+  const importedVersiebeschrijving = imported.versiebeschrijving || {};
+
+  return normalizeForForm({
+    ...current,
+    id: imported.id || current.id,
+    iri: imported.iri || current.iri,
+    subtype: imported.subtype || current.subtype,
+    abbrevation: imported.abbrevation || current.abbrevation,
+    versienummer: imported.versienummer || importedVersiebeschrijving.versienummer || current.versienummer,
+    versiedatum: imported.versiedatum || importedVersiebeschrijving.versiedatum || current.versiedatum,
+    versiebeschrijving: {
+      versienummer: importedVersiebeschrijving.versienummer || imported.versienummer || currentVersiebeschrijving.versienummer,
+      versiedatum: importedVersiebeschrijving.versiedatum || imported.versiedatum || currentVersiebeschrijving.versiedatum,
+    },
+    naam: imported.naam || current.naam,
+    omschrijving: imported.omschrijving || current.omschrijving,
+    gebruiksstatus: imported.gebruiksstatus || current.gebruiksstatus,
+    licentievorm: imported.licentievorm || current.licentievorm,
+    geboden_functionaliteit: imported.geboden_functionaliteit && imported.geboden_functionaliteit.length > 0
+      ? imported.geboden_functionaliteit
+      : current.geboden_functionaliteit,
+    beoogde_gebruikers: imported.beoogde_gebruikers && imported.beoogde_gebruikers.length > 0
+      ? imported.beoogde_gebruikers
+      : current.beoogde_gebruikers,
+    ondersteuning_voor: imported.ondersteuning_voor && imported.ondersteuning_voor.length > 0
+      ? imported.ondersteuning_voor
+      : current.ondersteuning_voor,
+    geschikt_voor_taak: imported.geschikt_voor_taak && imported.geschikt_voor_taak.length > 0
+      ? imported.geschikt_voor_taak
+      : current.geschikt_voor_taak,
+    documentatie: {
+      beoogdGebruik: normalizeString(importedDocumentatie.beoogdGebruik) || currentDocumentatie.beoogdGebruik,
+      toegevoegdeWaarde: normalizeString(importedDocumentatie.toegevoegdeWaarde) || currentDocumentatie.toegevoegdeWaarde,
+      onderdelen: normalizeString(importedDocumentatie.onderdelen) || currentDocumentatie.onderdelen,
+      ontwikkelingEnBeheer: normalizeString(importedDocumentatie.ontwikkelingEnBeheer) || currentDocumentatie.ontwikkelingEnBeheer,
+    },
+    bronverwijzing: imported.bronverwijzing && imported.bronverwijzing.length > 0
+      ? imported.bronverwijzing
+      : current.bronverwijzing,
+    normstatus: imported.normstatus || current.normstatus,
+    beheerder: imported.beheerder || current.beheerder,
+    leverancier: imported.leverancier || current.leverancier,
+    type_technologie: imported.type_technologie && imported.type_technologie.length > 0
+      ? imported.type_technologie
+      : current.type_technologie,
+    technologietype: imported.technologietype || current.technologietype,
+    taaktype: imported.taaktype || current.taaktype,
+    bijgewerkt_op: imported.bijgewerkt_op || current.bijgewerkt_op,
+  });
+};
+
+const VALIDATION_ENUMS = {
+  gebruiksstatus: ['Work in progress', 'Voorstel', 'In gebruik'],
+  licentievorm: ['Volledig open', 'Open onder voorwaarden', 'Gesloten'],
+  beschouwingsniveau: ['Tekstueel', 'Semantisch', 'Ontologisch', 'Logisch', 'Technisch'],
+  modelsoort: ['Descriptief', 'Normatief'],
+  functionaliteit: [
+    'Geautomatiseerd beslissen',
+    'Compliance ondersteuning',
+    'Contract: geautomatiseerde contractgeneratie',
+    'Contract: analyse/redactie/beoordeling',
+    'Juridisch expertsysteem',
+    'Wetgeving: wetgevingsredactie',
+    'Wetgeving: uitvoering van wet- en regelgeving',
+    'Wetgeving: modellering van wet- en regelgeving',
+    'Procespraktijk: procesanalyse',
+    'Procespraktijk: opstellen van processtukken',
+    'Procespraktijk: voorspelling van rechterlijke uitspraak',
+    'Zoeken: jurisprudentie',
+    'Zoeken: wet- en regelgeving',
+  ],
+  gebruikers: [
+    'Burgers en bedrijven',
+    'Rechtbanken',
+    'Opsporingsinstanties',
+    'Juristen',
+    'Beleidsmedewerkers',
+    'Wetgevers',
+    'Advocaten',
+    'Uitvoeringsorganisaties',
+    'Commerciële organisaties',
+    'Regelanalist',
+    'Softwareontwikkelaars',
+  ],
+  taaktype: [
+    'Opstellen regeltekst',
+    'Opdracht orientering',
+    'Verzamelen bronmateriaal',
+    'Analyseren regeltekst',
+    'Interpreteren en expliciteren',
+    'Begrip definiëren',
+    'Specificeren gegevens(behoefte)',
+    'Specificeren regels',
+    'Specificeren processen',
+    'Valideren specificaties',
+    'Geautomatiseerde regeluitvoering',
+    'Beslisondersteuning',
+    'Evaluatie',
+  ],
+  normstatus: ['Idee', 'Voorstel', 'Best practice', 'Industrie', 'Wettelijk'],
+  typeTechnologie: ['Markup (annotatie)', 'Markup (publicatie)', 'DSL', 'Machine learning', 'Regelexecutie'],
+};
+
+const validateImportedTechnology = (imported: EditLegalTechnology) => {
+  const errors: string[] = [];
+
+  if (!normalizeString(imported.naam)) errors.push('naam ontbreekt');
+  if (!normalizeString(imported.omschrijving)) errors.push('omschrijving ontbreekt');
+  if (!normalizeString(imported.gebruiksstatus)) errors.push('gebruiksstatus ontbreekt');
+  if (!normalizeString(imported.licentievorm)) errors.push('licentievorm ontbreekt');
+  if (!Array.isArray(imported.geschikt_voor_taak) || imported.geschikt_voor_taak.length === 0) {
+    errors.push('geschikt_voor_taak ontbreekt');
+  }
+  if (!imported.versiebeschrijving || !normalizeString(imported.versiebeschrijving.versienummer)) {
+    errors.push('versiebeschrijving.versienummer ontbreekt');
+  }
+
+  if (imported.gebruiksstatus && !VALIDATION_ENUMS.gebruiksstatus.includes(imported.gebruiksstatus)) {
+    errors.push(`ongeldige gebruiksstatus: ${imported.gebruiksstatus}`);
+  }
+  if (imported.licentievorm && !VALIDATION_ENUMS.licentievorm.includes(imported.licentievorm)) {
+    errors.push(`ongeldige licentievorm: ${imported.licentievorm}`);
+  }
+  if (imported.normstatus && !VALIDATION_ENUMS.normstatus.includes(imported.normstatus)) {
+    errors.push(`ongeldige normstatus: ${imported.normstatus}`);
+  }
+
+  (imported.geboden_functionaliteit || []).forEach(value => {
+    if (value && !VALIDATION_ENUMS.functionaliteit.includes(value)) {
+      errors.push(`ongeldige functionaliteit: ${value}`);
+    }
+  });
+
+  (imported.beoogde_gebruikers || []).forEach(value => {
+    if (value && !VALIDATION_ENUMS.gebruikers.includes(value)) {
+      errors.push(`ongeldige gebruiker: ${value}`);
+    }
+  });
+
+  (imported.type_technologie || []).forEach(value => {
+    if (value && !VALIDATION_ENUMS.typeTechnologie.includes(value)) {
+      errors.push(`ongeldig type_technologie: ${value}`);
+    }
+  });
+
+  (imported.ondersteuning_voor || []).forEach(item => {
+    if (item.beschouwingsniveau && !VALIDATION_ENUMS.beschouwingsniveau.includes(item.beschouwingsniveau)) {
+      errors.push(`ongeldige beschouwingsniveau: ${item.beschouwingsniveau}`);
+    }
+    if (item.modelsoort && !VALIDATION_ENUMS.modelsoort.includes(item.modelsoort)) {
+      errors.push(`ongeldige modelsoort: ${item.modelsoort}`);
+    }
+  });
+
+  (imported.geschikt_voor_taak || []).forEach(item => {
+    if (item.taaktype && !VALIDATION_ENUMS.taaktype.includes(item.taaktype)) {
+      errors.push(`ongeldige taaktype: ${item.taaktype}`);
+    }
+  });
+
+  return errors;
+};
+
 // Use a simple event system for demo purposes.
 // Keep the latest payload so conditionally mounted forms can still prefill.
 const listeners: ((tech: EditLegalTechnology) => void)[] = [];
@@ -296,6 +580,11 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
   const [loadingSuggestions, setLoadingSuggestions] = useState(false);
   const [savingSticky, setSavingSticky] = useState(false);
   const [stickyActionError, setStickyActionError] = useState<string | null>(null);
+  const [importDialogOpen, setImportDialogOpen] = useState(false);
+  const [pendingImportedTech, setPendingImportedTech] = useState<EditLegalTechnology | null>(null);
+  const [pendingImportFileName, setPendingImportFileName] = useState('');
+  const replaceImportButtonRef = useRef<HTMLButtonElement | null>(null);
+  const importInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     // Load enumerations
@@ -658,6 +947,84 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
     });
   };
 
+  const handleImportTechnology = () => {
+    importInputRef.current?.click();
+  };
+
+  const closeImportDialog = () => {
+    setImportDialogOpen(false);
+    setPendingImportedTech(null);
+    setPendingImportFileName('');
+  };
+
+  const confirmImportMode = (mode: ImportMode) => {
+    if (!pendingImportedTech) {
+      closeImportDialog();
+      return;
+    }
+
+    setForm(current => mergeImportedWithForm(current, pendingImportedTech, mode));
+    setSelectedTechnologyUri(resolveTechnologyUri(pendingImportedTech));
+    setSuccess('JSON geïmporteerd in het formulier.');
+    setError(null);
+    closeImportDialog();
+  };
+
+  useEffect(() => {
+    if (!importDialogOpen) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    replaceImportButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeImportDialog();
+        return;
+      }
+
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        confirmImportMode('replace');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [importDialogOpen, pendingImportedTech]);
+
+  const handleImportFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) {
+      return;
+    }
+
+    try {
+      const text = await file.text();
+      const imported = normalizeImportedTechnology(JSON.parse(text) as unknown);
+      const validationErrors = validateImportedTechnology(imported);
+      if (validationErrors.length > 0) {
+        throw new Error(`JSON kan niet worden geïmporteerd: ${validationErrors.join('; ')}`);
+      }
+
+      setPendingImportedTech(imported);
+      setPendingImportFileName(file.name || 'geselecteerd bestand');
+      setImportDialogOpen(true);
+      setError(null);
+    } catch (err: any) {
+      setError(err?.message || 'Kon JSON-bestand niet importeren');
+      setSuccess(null);
+    } finally {
+      e.target.value = '';
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -701,11 +1068,25 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
       const payload = rawPayload;
 
       if (form.id) {
-        await apiFetch<LegalTechnology>(`/api/legaltechnologies/${form.id}`, {
+        const currentVersion = parseVersionFromApiId(form.id);
+        const nextVersion = ((form.versiebeschrijving?.versienummer || form.versienummer || '') as string).trim();
+
+        let removePreviousVersion = true;
+        if (currentVersion && nextVersion && currentVersion !== nextVersion) {
+          const shouldRemovePrevious = window.confirm(
+            `Je wijzigt het versienummer van ${currentVersion} naar ${nextVersion}.\n\nKlik OK om de oude versie te verwijderen.\nKlik Annuleren om de oude versie te behouden.`,
+          );
+          removePreviousVersion = shouldRemovePrevious;
+        }
+
+        await apiFetch<LegalTechnology>(
+          `/api/legaltechnologies/${form.id}?removePreviousVersion=${removePreviousVersion ? 'true' : 'false'}`,
+          {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
-        });
+          },
+        );
         setSuccess('Bewerkt!');
       } else {
         await apiFetch<LegalTechnology>('/api/legaltechnologies', {
@@ -733,7 +1114,7 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
           <form onSubmit={handleSubmit} className="p-4 bg-white rounded shadow-sm">
 
       {/* Form header */}
-      <div className="d-flex align-items-start justify-content-between mb-4 pb-3 border-bottom">
+      <div className="d-flex align-items-start justify-content-between mb-4 pb-3 border-bottom gap-3 flex-wrap">
         <div>
           <h4 className="mb-0 fw-semibold text-primary">
             {form.id ? 'Juridische technologie bewerken' : 'Nieuwe juridische technologie'}
@@ -742,11 +1123,23 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
             <small className="text-muted font-monospace">{form.id}</small>
           )}
         </div>
-        {form.id && (
-          <span className="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle px-3 py-2">
-            {form.subtype ?? 'JuridischeTechnologie'}
-          </span>
-        )}
+        <div className="d-flex align-items-center gap-2 ms-auto flex-wrap">
+          {form.id && (
+            <span className="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle px-3 py-2">
+              {form.subtype ?? 'JuridischeTechnologie'}
+            </span>
+          )}
+          <button type="button" className="btn btn-outline-secondary" onClick={handleImportTechnology}>
+            JSON importeren
+          </button>
+          <input
+            ref={importInputRef}
+            type="file"
+            accept="application/json,.json"
+            className="d-none"
+            onChange={handleImportFileChange}
+          />
+        </div>
       </div>
 
       {/* Type selector — segmented button group */}
@@ -1445,6 +1838,49 @@ const LegalTechnologyForm: React.FC<LegalTechnologyFormProps> = ({ onSuccess }) 
           </div>
         </aside>
       </div>
+
+      {importDialogOpen && pendingImportedTech && (
+        <>
+          <div className="modal fade show d-block" tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="import-mode-title">
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="import-mode-title">Kies importmodus</h5>
+                  <button type="button" className="btn-close" aria-label="Sluiten" onClick={closeImportDialog} />
+                </div>
+                <div className="modal-body">
+                  <p className="mb-2">
+                    Bestand: <strong>{pendingImportFileName}</strong>
+                  </p>
+                  <p className="mb-0 text-muted">
+                    Wil je alle velden overschrijven met JSON-data, of alleen lege velden aanvullen?
+                  </p>
+                  <p className="mb-0 mt-2 text-muted small">Tip: Enter bevestigt &#39;Alles vervangen&#39;, Esc annuleert.</p>
+                </div>
+                <div className="modal-footer d-flex justify-content-between flex-wrap gap-2">
+                  <button type="button" className="btn btn-outline-secondary" onClick={closeImportDialog}>
+                    Annuleren
+                  </button>
+                  <div className="d-flex gap-2 flex-wrap">
+                    <button type="button" className="btn btn-outline-primary" onClick={() => confirmImportMode('fill-empty')}>
+                      Alleen lege velden aanvullen
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      ref={replaceImportButtonRef}
+                      onClick={() => confirmImportMode('replace')}
+                    >
+                      Alles vervangen
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="modal-backdrop fade show" onClick={closeImportDialog} />
+        </>
+      )}
 
       {editingSticky && (
         <>

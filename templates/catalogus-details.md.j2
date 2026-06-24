@@ -1,0 +1,175 @@
+## Technologieën
+
+{% if technologies %}
+{% for tech in technologies %}
+{% set gs = tech.gebruiksstatus if tech.gebruiksstatus else {} %}
+{% set lv = tech.licentievorm if tech.licentievorm else {} %}
+{% set bh = tech.beheerder if tech.beheerder else {} %}
+{% set le = tech.leverancier if tech.leverancier else {} %}
+{% set ns = tech.normstatus if tech.normstatus else {} %}
+{% set tt = tech.typeTechnologie if tech.typeTechnologie else {} %}
+{% set gg = tech.gebruikersgroepen if tech.gebruikersgroepen else [] %}
+{% set fv = tech.functionaliteiten if tech.functionaliteiten else [] %}
+
+<section id="{{ tech.anchor }}">
+
+### {{ tech.naam | default(tech.id) }}
+
+#### Profiel
+
+<dl>
+  <dt>Type</dt>
+  <dd>{{ tech.typeLabel | default('') }}</dd>
+  <dt>Status</dt>
+  <dd>{{ gs.label | default(gs.id | default('')) }}</dd>
+  <dt>Licentie</dt>
+  <dd>{{ lv.label | default(lv.id | default('')) }}</dd>
+  <dt>Versie</dt>
+  <dd>{{ tech.versienummer | default('') }}{% if tech.versiedatum %} ({{ tech.versiedatum }}){% endif %}</dd>
+  <dt>Bijgewerkt op</dt>
+  <dd>{{ tech.bijgewerktOp | default('') }}</dd>
+  {% if tech.typeLabel == "Standaard" %}
+  <dt>Normstatus</dt>
+  <dd>{{ ns.label | default(ns.id | default('')) }}</dd>
+  {% endif %}
+  {% if tech.typeLabel == "Tool" %}
+  <dt>Type technologie</dt>
+  <dd>{{ tt.label | default(tt.id | default('')) }}</dd>
+  {% endif %}
+  <dt>URI</dt>
+  <dd><a href="{{ tech.uri }}">{{ tech.uri }}</a></dd>
+  <dt>Gebruiksgroepen</dt>
+  <dd>
+    {% if gg %}
+    {% for group in gg %}
+    {{ group.label | default(group.id | default(group.value | default(group))) }}{% if not loop.last %}, {% endif %}
+    {% endfor %}
+    {% else %}
+    
+    {% endif %}
+  </dd>
+  <dt>Functionaliteiten</dt>
+  <dd>
+    {% if fv %}
+    {% for func in fv %}
+    {{ func.label | default(func.id | default(func.value | default(func))) }}{% if not loop.last %}, {% endif %}
+    {% endfor %}
+    {% else %}
+    
+    {% endif %}
+  </dd>
+</dl>
+
+#### Omschrijving
+
+{{ tech.omschrijving | default('') }}
+
+#### Waarde en onderdelen
+
+{% if tech.documentatie %}
+{% for doc in tech.documentatie %}
+{% if doc.toegevoegdeWaarde %}
+{{ doc.toegevoegdeWaarde }}
+{% endif %}
+
+{% if doc.onderdelen %}
+**Onderdelen:** {{ doc.onderdelen }}
+{% endif %}
+
+{% if doc.ontwikkelingEnBeheer %}
+**Ontwikkeling en beheer:** {{ doc.ontwikkelingEnBeheer }}
+{% endif %}
+
+{% if not loop.last %}
+
+---
+{% endif %}
+{% endfor %}
+{% else %}
+Geen aanvullende documentatie beschikbaar.
+{% endif %}
+
+#### Toepassing
+
+##### Taken
+
+| Taaktype | Omschrijving |
+|---|---|
+{% if tech.taken %}
+{% for taak in tech.taken %}
+| {{ taak.taaktype.label | default(taak.taaktype.id | default(taak.taaktype | default(''))) }} | {{ taak.taak_omschrijving | default('') }} |
+{% endfor %}
+{% else %}
+|  |  |
+{% endif %}
+
+##### Ondersteuningsvormen
+
+| Beschouwingsniveau | Modelsoort |
+|---|---|
+{% if tech.ondersteuningsvormen %}
+{% for ov in tech.ondersteuningsvormen %}
+| {{ ov.beschouwingsniveau.label | default(ov.beschouwingsniveau.id | default(ov.beschouwingsniveau | default(''))) }} | {{ ov.modelsoort.label | default(ov.modelsoort.id | default(ov.modelsoort | default(''))) }} |
+{% endfor %}
+{% else %}
+|  |  |
+{% endif %}
+
+#### Organisatie
+
+{% set has_beheerder = bh and (bh.naam or bh.contactinformatie) %}
+{% set has_leverancier = le and (le.naam or le.contactinformatie) %}
+
+{% if has_beheerder %}
+##### Beheerder
+
+<dl>
+  <dt>Organisatie</dt>
+  <dd>{{ bh.naam | default('') }}</dd>
+  <dt>Contact</dt>
+  <dd>
+    {% if bh.contactinformatie %}
+    <a href="mailto:{{ bh.contactinformatie }}">{{ bh.contactinformatie }}</a>
+    {% endif %}
+  </dd>
+</dl>
+
+{% endif %}
+
+{% if has_leverancier %}
+
+##### Leverancier
+
+<dl>
+  <dt>Organisatie</dt>
+  <dd>{{ le.naam | default('') }}</dd>
+  <dt>Contact</dt>
+  <dd>
+    {% if le.contactinformatie %}
+    <a href="mailto:{{ le.contactinformatie }}">{{ le.contactinformatie }}</a>
+    {% endif %}
+  </dd>
+</dl>
+
+{% endif %}
+
+#### Bronnen
+
+{% if tech.bronnen %}
+{% for bron in tech.bronnen %}
+{% if bron.bron_locatie %}
+- [{{ bron.bron_titel | default(bron.bron_locatie) }}]({{ bron.bron_locatie }}){% if bron.bron_verwijzing %} — {{ bron.bron_verwijzing }}{% endif %}
+{% else %}
+- {{ bron.bron_titel | default('Onbekende bron') }}{% if bron.bron_verwijzing %} — {{ bron.bron_verwijzing }}{% endif %}
+{% endif %}
+{% endfor %}
+{% else %}
+Geen bronnen opgenomen.
+{% endif %}
+
+</section>
+
+{% endfor %}
+{% else %}
+Er zijn geen technologie-details gevonden.
+{% endif %}

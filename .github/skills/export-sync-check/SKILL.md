@@ -83,6 +83,6 @@ Reusable workflow for validating export files and export endpoints after backend
 ## References
 - Runtime and endpoint overview: [apps/README.md](../../../apps/README.md)
 - Architecture boundaries: [apps/ARCHITECTURE.md](../../../apps/ARCHITECTURE.md)
-- API endpoint contract list: [docs/api-contracts.md](../../../docs/api-contracts.md)
-- Dev commands: [docs/development-guide.md](../../../docs/development-guide.md)
+- API endpoint contract list: [apps/docs/api-contracts.md](../../../apps/docs/api-contracts.md)
+- Dev commands: [apps/docs/development-guide.md](../../../apps/docs/development-guide.md)
 - Repo conventions: [AGENTS.md](../../../AGENTS.md)

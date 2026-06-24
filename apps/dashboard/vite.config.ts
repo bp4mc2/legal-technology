@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  test: {
+    environment: 'jsdom',
+  },
   server: {
     port: 3000, // You can change this port if needed
     proxy: {
@@ -12,5 +15,8 @@ export default defineConfig({
         secure: false,
       },
     },
+  },
+  build: {
+    sourcemap: true, // Enable source maps for easier debugging
   },
 });

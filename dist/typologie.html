@@ -1,0 +1,1003 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta charset="utf-8">
+<meta name="generator" content="ReSpec 37.1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel .marker.cddl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+  
+  
+<title>Typologie juridische technologieën</title>
+
+  
+
+  
+
+  
+<script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+@media (prefers-color-scheme:dark){
+#references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+}
+body:has(input[name=color-scheme][value=dark]:checked) #references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2):has(+a.self-link){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+body:has(input[name=color-scheme][value=light]:checked),head:not(:has(meta[name=color-scheme][content~=dark]))+body{color-scheme:light}
+body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
+</style>
+  
+<script src="assets/js/ontology-diagram-data.js"></script>
+  
+<script src="assets/js/ontology-diagram.js"></script>
+  
+<script src="assets/js/technology-overview-filter.js"></script>
+
+  
+<style>
+
+    nav.doc-nav {
+        position: fixed;
+        top: 5rem;
+        right: 1rem;
+
+        width: 18rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+
+        border: 1px solid #d0d0d0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: #fff;
+
+        box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.16);
+    }
+
+    nav.doc-nav ul {
+        margin-bottom: 0;
+        padding-left: 1.2rem;
+    }
+
+    body {
+        padding-right: 21rem;
+    }
+
+    @media (max-width: 1000px) {
+        nav.doc-nav {
+            position: static;
+            width: auto;
+            max-height: none;
+            overflow: visible;
+        }
+
+        body {
+            padding-right: 0;
+        }
+    }
+
+    .page-description {
+      font-size: 1.05rem;
+    }
+
+    .diagram-container {
+      width: 100%;
+      max-width: 100%;
+      height: 650px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    #ontology-diagram {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .diagram-toolbar {
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .diagram-toolbar button {
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+    }    
+  
+</style>
+  
+<link rel="stylesheet" href="assets/css/lto-detail.css">
+
+<meta name="color-scheme" content="light">
+<meta name="description" content="De beschrijving van de typologie van juridische technologieën.">
+<style>
+var:hover{text-decoration:underline;cursor:pointer}
+var.respec-hl{color:var(--color,#000);background-color:var(--bg-color);box-shadow:0 0 0 2px var(--bg-color)}
+@media (prefers-color-scheme:dark){
+var.respec-hl{filter:saturate(.9) brightness(.9)}
+}
+var.respec-hl-c1{--bg-color:#f4d200}
+var.respec-hl-c2{--bg-color:#ff87a2}
+var.respec-hl-c3{--bg-color:#96e885}
+var.respec-hl-c4{--bg-color:#3eeed2}
+var.respec-hl-c5{--bg-color:#eacfb6}
+var.respec-hl-c6{--bg-color:#82ddff}
+var.respec-hl-c7{--bg-color:#ffbcf2}
+@media print{
+var.respec-hl{background:0 0;color:#000;box-shadow:unset}
+}
+</style>
+<style>
+var[data-type]{position:relative}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "specStatus": "base",
+  "shortName": "juridische-technologie-typologie",
+  "editors": [
+    {
+      "name": "Brattinga, Van Dijk, Straver"
+    }
+  ],
+  "maxTocLevel": 4,
+  "publishISODate": "2026-06-24T00:00:00.000Z",
+  "generatedSubtitle": "24 juni 2026"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/base.css"></head>
+
+<body class="h-entry informative"><div class="head">
+    
+    <h1 id="title" class="title">Typologie juridische technologieën</h1> 
+    <p id="w3c-state"> <time class="dt-published" datetime="2026-06-24">24 juni 2026</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        
+        <dt>Laatst gepubliceerde versie:</dt><dd>
+                none
+              </dd>
+        
+        
+        
+        
+        
+        
+        
+        <dt>
+                Redacteur:
+              </dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Brattinga, Van Dijk, Straver</span>
+  </dd>
+        
+        
+        
+        
+        
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">
+    <a href="https://www.w3.org/policies/#copyright">Copyright</a>
+    ©
+    2026
+    
+    <a href="https://www.w3.org/">World Wide Web Consortium</a>.
+    <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
+    <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and
+    <a rel="license" href="https://www.w3.org/copyright/software-license-2023/" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
+  </p>
+    <hr title="Separator for header">
+  </div>
+  <section id="abstract" class="introductory"><h2>Samenvatting</h2>
+    <p>De beschrijving van de typologie van juridische technologieën.</p>
+  </section>
+
+  <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+      This document is merely a <abbr title="World Wide Web Consortium">W3C</abbr>-internal
+       document. It has no official standing
+      of any kind and does not represent consensus of the <abbr title="World Wide Web Consortium">W3C</abbr> Membership.
+    </p>
+    <p>
+      Onderdeel van de documentatie juridische technologie.
+      Gegenereerd op 2026-06-24.
+    </p>
+  </section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#typologie-voor-juridische-technologie"><bdi class="secno">1. </bdi>Typologie voor juridische technologie</a></li><li class="tocline"><a class="tocxref" href="#juridische-technologie-legal-technology"><bdi class="secno">2. </bdi>Juridische technologie ("legal technology")</a></li><li class="tocline"><a class="tocxref" href="#juridische-taken"><bdi class="secno">3. </bdi>"Juridische" taken</a></li><li class="tocline"><a class="tocxref" href="#producten"><bdi class="secno">4. </bdi>Producten</a></li><li class="tocline"><a class="tocxref" href="#beschrijving-van-de-juridische-technologie"><bdi class="secno">5. </bdi>Beschrijving van de juridische technologie</a></li><li class="tocline"><a class="tocxref" href="#welke-vorm-heeft-een-regel"><bdi class="secno">6. </bdi>Welke vorm heeft een "regel"?</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#beschouwingsniveau"><bdi class="secno">6.1 </bdi>beschouwingsniveau</a></li></ol></li></ol></nav>
+
+  <section id="typologie-voor-juridische-technologie"><div class="header-wrapper"><h2 id="x1-typologie-voor-juridische-technologie"><bdi class="secno">1. </bdi>Typologie voor juridische technologie</h2><a class="self-link" href="#typologie-voor-juridische-technologie" aria-label="Permalink for Section 1."></a></div>
+
+    
+
+    <p class="page-description">
+      De beschrijving van de typologie van juridische technologieën.
+    </p>
+
+    <nav class="doc-nav" aria-label="Documentatienavigatie">
+      <strong>Documentatieonderdelen</strong>
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        <li>
+          <strong>Typologie juridische technologieën</strong>
+        </li>
+        <li>
+          <a href="catalogus.html">Catalogus juridische technologieën</a>
+        </li>
+        <li>
+          <a href="begrippenkader.html">Begrippenkader</a>
+        </li>
+        <li>
+          <a href="organisaties.html">Organisaties</a>
+        </li>
+        <li>
+          <a href="ontologie.html">Ontologie</a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+    <p>Deze typologie (of "model") is een manier om juridische technologie te kunnen beschrijven en met elkaar te vergelijken. Het model is afgeleid van de typology of legal technologies, zoals beschikbaar op: https://publications.cohubicol.com/typology</p>
+<p>Potentieel kan deze typologie beschikbaar komt op https://regels.overheid.nl en daarmee een invulling geven aan de (huidige) onderdelen "standaarden" en "regels/methoden".</p>
+<section id="juridische-technologie-legal-technology-0"><div class="header-wrapper"><h2 id="juridische-technologie-legal-technology"><bdi class="secno">2. </bdi>Juridische technologie ("legal technology")</h2><a class="self-link" href="#juridische-technologie-legal-technology" aria-label="Permalink for Section 2."></a></div>
+<p>Onder «juridische technologie» verstaan we een methode, standaard of tool die gebruikt wordt bij de totstandkoming van wet- en regelgeving, de doorvertaling naar de uitvoering en het gebruik in de uitvoering, rechtsgang, en uiteindelijk evaluatie. Met andere woorden: de gehele beleidscyclus.</p>
+<p><img alt="" src="../assets/img/cyclus.svg"></p>
+<p>Hierbij geldt:</p>
+<ul>
+<li>Een <strong>methode</strong> is een gestructureerde, herhaalbare aanpak (stappenplan met technieken en keuzes) om een doel te bereiken of een taak uit te voeren. Een methode beschrijft hoe je te werk gaat (en evt. In welke volgorde) en kan verwijzen naar standaarden als hulpmiddel. Een methode beschrijft hoe een taak wordt uitgevoerd.</li>
+<li>Een (informatie)<strong>standaard</strong> is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) over welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een taak uit te voeren. Een (informatie)standaard beschrijft wat het resultaat van een taak is.</li>
+<li>Een <strong>tool</strong> is een voorziening die ondersteuning biedt om een doel te bereiken of een taak uit te voeren. De beschrijving van een tool geeft aan waarmee een taak wordt uitgevoerd.</li>
+</ul>
+</section><section id="juridische-taken-0"><div class="header-wrapper"><h2 id="juridische-taken"><bdi class="secno">3. </bdi>"Juridische" taken</h2><a class="self-link" href="#juridische-taken" aria-label="Permalink for Section 3."></a></div>
+<p>Onder een «taak» verstaan we een afgebakende hoeveelheid werk die leidt tot een overdraagbaar resultaat en die bijdraagt aan het behalen van een doel. Binnen de context van dit model betreft dit taken die bijdragen aan het doel om tot wet- en regelgeving te komen en/of tot de uitvoering van deze wet- en regelgeving te komen.</p>
+<p>We onderscheiden de volgende juridische taken van wet naar loket, de taken op de rode lijn uit het figuur op de voorgaande pagina. Daarbij zijn de eerste en de laatste taak niet alleen van toepassing op de rode lijn, maar ook daarbuiten:</p>
+<ul>
+<li>Opstellen regeltekst vindt zowel in de uitvoering als bij de wetgever plaatst. De wetgever stelt de wet in formele zin op, de uitvoeringsorganisatie stelt beleidsregels op. Daarnaast nemen we deze taak mee, omdat de andere taken eisen stellen aan de wijze waarop een regeltekst wordt opgesteld.</li>
+<li>Evalueren beleid vindt met name plaats bij de wetgever, maar ook de andere spelers hebben een belangrijke rol bij het evalueren van het beleid. Daarnaast nemen we deze taak mee, omdat het evalueren van het beleid eisen zal stellen aan de (resultaten van) de andere taken.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Taak</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opstellen regeltekst</td>
+<td>Opstellen van juridische tekst als onderdeel van het geschreven recht: de algemeen verbindende voorschriften, inclusief beleidsregels.</td>
+</tr>
+<tr>
+<td>Opdrachtoriëntatie</td>
+<td>Bepalen waaruit de opgave bestaat die opgepakt wordt, dwz: het doel dat voor ogen staat. In geval er nog geen regelgeving is, zal dit doel vermoedelijk als maatschappelijk effect geformuleerd zijn, als de regelgeving er al is, kan het doel de uitvoering van deze (nieuwe of gewijzigde) regelgeving zijn.</td>
+</tr>
+<tr>
+<td>Verzamelen bronmateriaal</td>
+<td>Verzamelen van de relevante bronnen die nodig zijn voor de betreffende opgave. Dit omvat de juridische teksten, maar ook andere teksten die relevant kunnen zijn voor de interpretatie van deze teksten (rechtvinding), zoals de parlementaire geschiedenis, de huidige manier van werken, etc, etc.</td>
+</tr>
+<tr>
+<td>Analyseren regeltekst</td>
+<td>Een gestructureerde manier waarin de betekenis, structuur en bedoeling van een juridische tekst wordt onderzocht, zoals deze feitelijk uit de tekst blijkt. Deze stap omvat strikt genomen nog niet de interpretatie van de juridische tekst. In de praktijk al deze taak in samenhang met de taak interpreteren en expliciteren worden uitgevoerd.</td>
+</tr>
+<tr>
+<td>Interpreteren en expliciteren</td>
+<td>Het interpreteren van een juridische tekst en de betekenis en bedoeling daarvan op een gestructureerde manier vastleggen. Dit lijkt op rechtsvinding (en ook rechtsvorming (!)), maar is in dit geval niet bedoeld voor een individueel geval.</td>
+</tr>
+<tr>
+<td>Begrippen definiëren</td>
+<td>Het gestructureerd beschrijven van de betekenis die met een term wordt bedoeld in een specifieke context.</td>
+</tr>
+<tr>
+<td>Specificeren gegevens(-behoefte)</td>
+<td>Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke gegevens nodig zijn ten behoeve van een wettelijke taak.</td>
+</tr>
+<tr>
+<td>Specificeren regels</td>
+<td>Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke regels uitgevoerd moeten worden ten behoeve van een wettelijke taak. Met "regel" wordt hier een regel bedoeld in de vorm van een algoritme of functie die op basis van aangeboden gegevens komt tot een resultaat (in de vorm van gegevens).</td>
+</tr>
+<tr>
+<td>Specificeren processen</td>
+<td>Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke processen uitgevoerd moeten worden ten behoeve van een wettelijke taak.</td>
+</tr>
+<tr>
+<td>Valideren specificaties</td>
+<td>Het valideren of (gegevens, regel en/of proces-)specificaties overeen komen met de juridische teksten en de interpretatie die aan deze teksten moet worden gegeven.</td>
+</tr>
+<tr>
+<td>Geautomatiseerde regeluitvoering</td>
+<td>Het geautomatiseerd uitvoeren van regels, of delen van regels, zonder menselijke tussenkomst.</td>
+</tr>
+<tr>
+<td>Beslisondersteuning</td>
+<td>Ondersteuning aan ambtenaren bij de uitvoering van regels.</td>
+</tr>
+<tr>
+<td>Evaluatie beleid</td>
+<td>Het gestructureerd beoordelen of de implementatie en uitvoering van wet- en regelgeving in de praktijk overeenkomen met de met de beleidsdoelen beoogde effecten.</td>
+</tr>
+</tbody>
+</table>
+<p>Deze opsomming suggereert een bepaalde volgordelijkheid. Deze is er in de praktijk ook wel, maar hoeft niet zo hard te zijn. Zo is het al mogelijk om begrippen te definiëren zoals deze uit een wet in formele zin af te leiden zijn, terwijl op dat moment de onderliggende regelgeving nog niet beschikbaar is. Het opstellen van de tekst van deze onderliggende regelgeving zou dan pas na het definiëren van deze begrippen volgen (waarop mogelijk ook deze begrippen preciezer kunnen worden gedefinieerd).</p>
+</section><section id="producten-0"><div class="header-wrapper"><h2 id="producten"><bdi class="secno">4. </bdi>Producten</h2><a class="self-link" href="#producten" aria-label="Permalink for Section 4."></a></div>
+<p>Elke taak zoals genoemd in <a href="#juridische-taken">juridische taken</a> heeft informatie nodig, maar lever ook informatie. Deze informatie wordt in de vorm van producten geleverd. Binnen de typologie «product»  beschouwd als een verzameling van afgebakende informatie geleverd door een taak. Een «productt» kan als input dienen voor een volgende «taak». Een product heeft een <a href="#beschouwingsniveau">beschouwingsniveau</a>, dat aangeeft of het vrij vorm van specificatie heeft of uiteindelijk een uitvoerbare vorm.</p>
+<p>We onderscheiden in de levenscyclus van wet naar loket de volgende producten:</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Definitie</th>
+<th>Beschouwingsniveau</th>
+<th>Input voor (taak/taakgroep)</th>
+<th>Output van (taak/taakgroep)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regeltekst / beleidsregels</td>
+<td></td>
+<td>Tekstueel - juridisch vastgesteld</td>
+<td>Opdrachtoriëntatie (TG1) Opstellen regeltekst - Normatief (TG1)</td>
+<td></td>
+</tr>
+<tr>
+<td>Serviceinformatie (annotaties)</td>
+<td></td>
+<td>Tekstueel - juridisch vastgesteld</td>
+<td>Opdrachtoriëntatie (TG1), Analyseren regeltekst (TG2)</td>
+<td>Opstellen regeltekst - Normatief (TG1)</td>
+</tr>
+<tr>
+<td>Teksten en commentaren</td>
+<td></td>
+<td>Tekstueel - interpretatie</td>
+<td>Opdrachtoriëntatie (TG1)</td>
+<td>Opstellen regeltekst - Descriptief (TG1)</td>
+</tr>
+<tr>
+<td>Scope / normatieve vragen</td>
+<td></td>
+<td>Tekstueel - interpretatie</td>
+<td>Verzamelen bronmateriaal (TG1)</td>
+<td>Opdrachtoriëntatie (TG1)</td>
+</tr>
+<tr>
+<td>Juridisch landschap</td>
+<td></td>
+<td>Tekstueel - interpretatie</td>
+<td>Analyseren regeltekst (TG2)</td>
+<td>Verzamelen bronmateriaal (TG1)</td>
+</tr>
+<tr>
+<td>Ordening / groepering / classificatie</td>
+<td></td>
+<td>Semantisch - basis</td>
+<td>Interpreteren en expliciteren (TG2)</td>
+<td>Analyseren regeltekst (TG2)</td>
+</tr>
+<tr>
+<td>Input beleidsregels / instructie</td>
+<td></td>
+<td>Tekstueel - interpretatie</td>
+<td>(Vaststellen ontbrekend uitvoeringsbeleid)</td>
+<td>Interpreteren en expliciteren (TG2)</td>
+</tr>
+<tr>
+<td>Bouwstenen voor modellen</td>
+<td></td>
+<td>Semantisch - detail</td>
+<td>Begrippen, normen en handelingen definiëren (TG2)</td>
+<td>Interpreteren en expliciteren (TG2)</td>
+</tr>
+<tr>
+<td>Conceptueel model</td>
+<td></td>
+<td>Semantisch - detail</td>
+<td>Taakgroep 3 (TG3)</td>
+<td>Begrippen, normen en handelingen definiëren (TG2)</td>
+</tr>
+<tr>
+<td>Logisch model</td>
+<td></td>
+<td>Logisch</td>
+<td>Taakgroep 4 (TG4)</td>
+<td>Specificeren gegevens(-behoefte) (TG3)</td>
+</tr>
+<tr>
+<td>Regelmodel</td>
+<td></td>
+<td>Logisch</td>
+<td>Taakgroep 4 (TG4)</td>
+<td>Specificeren regels (TG3)</td>
+</tr>
+<tr>
+<td>Procesmodel</td>
+<td></td>
+<td>Logisch</td>
+<td>Taakgroep 4 (TG4)</td>
+<td>Specificeren processen (TG3)</td>
+</tr>
+<tr>
+<td>Uitvoeringsspecificaties</td>
+<td></td>
+<td>Ontologisch</td>
+<td>Taakgroep 4 (TG4)</td>
+<td>Taakgroep 3 (TG3)</td>
+</tr>
+<tr>
+<td>Correcte, juiste en uitvoerbare specificaties</td>
+<td></td>
+<td>Logisch</td>
+<td>Implementeren van specificaties (TG4)</td>
+<td>Valideren/verifieren (TG4)</td>
+</tr>
+<tr>
+<td>Systeem waarbinnen regels worden uitgevoerd</td>
+<td></td>
+<td>Technisch</td>
+<td>Regeluitvoering (TG4)</td>
+<td>Implementeren van specificaties (TG4)</td>
+</tr>
+<tr>
+<td>Besluit</td>
+<td></td>
+<td>Tekstueel</td>
+<td>Evaluatie beleid (TG5)</td>
+<td>Regeluitvoering (TG4)</td>
+</tr>
+</tbody>
+</table>
+<p>Schematisch ziet de relatie tussen de taken en producten er als volgt uit: </p>
+<p>```mermaid
+flowchart LR</p>
+<p>%% ===== Taakgroepen/Taken =====</p>
+<p>subgraph TG1["Taakgroep 1 - Tekstueel (juridisch / interpretatie)"]
+    subgraph TG1OR["Opstellen regeltekst"]
+        TG1ORA("Normatief")
+        TG1ORB("Descriptief (MvT/Commentaar/NvT)")
+    end
+    TG1OO("Opdrachtoriëntatie")
+    TG1VB("Verzamelen bronmateriaal")
+  end</p>
+<p>subgraph TG2["Taagroep 2 - Analyse en interpretatie"]
+    TG2AR("Analyseren regeltekst")
+    TG2IE("Interpreteren en expliciteren")
+    TG2BD("Begrippen, normen en handelingen definiëren")
+  end</p>
+<p>VOB(["(Vaststellen ontbrekend uitvoeringsbeleid)"])</p>
+<p>subgraph TG3["Taakgroep 3 - Logisch / modellering"]
+    TG3SG("Specificeren gegevens(-behoefte)")
+    TG3SR("Specificeren regels")
+    TG3SP("Specificeren processen")
+  end</p>
+<p>subgraph TG4["Taagroep 4 - Validatie en uitvoering"]
+    TG4VV("Valideren, verifieren specificaties in de context")
+    TG4IS("Implementeren van specificaties")
+    TG4RU("Regeluitvoering")
+  end</p>
+<p>subgraph TG5["Evaluatie"]
+    TG5EB("Evaluatie beleid")
+  end</p>
+<p>%% ===== RELATIES =====</p>
+<p>TG1ORA --&gt;|Regeltekst / beleidsregels|TG1OO
+  TG1ORA --&gt;|"Serviceinformatie (annotaties)"|TG2AR
+  TG1ORB --&gt;|Teksten en commentaren|TG1OO </p>
+<p>TG1OO --&gt;|Scope / normatieve vragen|TG1VB
+  TG1VB --&gt;|Juridisch landschap|TG2AR</p>
+<p>TG2AR --&gt;|Ordening / Groepering / classificatie|TG2IE
+  TG2IE --&gt;|"Input voor beleidsregels / instructie (loop naar beleid opstellen)"|VOB
+  TG2IE --&gt;|Bouwstenen voor modellen|TG2BD</p>
+<p>%% TG2 --&gt;|Bouwstenen voor modellen|TG3</p>
+<p>TG2BD --&gt;|Conceptueel model|TG3
+  TG3SG --&gt;|Logisch model|TG4
+  TG3SR --&gt;|Regelmodel|TG4
+  TG3SP --&gt;|Procesmodel|TG4  </p>
+<p>TG3 --&gt;|uitvoeringsspecificaties|TG4</p>
+<p>TG4VV --&gt;|Correcte, juiste en uitvoerbare specificaties|TG4IS
+  TG4IS --&gt;|Systeem waarbinnen de regels worden uitgevoerd|TG4RU
+  TG4RU --&gt;|Besluit|TG5
+```</p>
+</section><section id="beschrijving-van-de-juridische-technologie-0"><div class="header-wrapper"><h2 id="beschrijving-van-de-juridische-technologie"><bdi class="secno">5. </bdi>Beschrijving van de juridische technologie</h2><a class="self-link" href="#beschrijving-van-de-juridische-technologie" aria-label="Permalink for Section 5."></a></div>
+<p><img alt="" src="../assets/img/informatiemodel.svg"></p>
+<p>Van elke juridische technologie geven we een beschrijving die bestaat uit drie onderdelen:</p>
+<ol>
+<li>
+<p>De wijze waarop de technologie invulling geeft of ondersteuning biedt aan één of meerdere juridische taken, vastgelegd met een enkel woord of een enkel beschrijvend zinnetje, eventueel met een verwijzing naar (externe) documentatie.</p>
+</li>
+<li>
+<p>Een lijst met kenmerken die de betreffende technologie typeert. Deze lijst bestaat uit de volgende kenmerken:</p>
+<ol>
+<li>Of sprake is van een methode, tool of standaard;</li>
+<li>De naam van de technologie;</li>
+<li>De gebruiksstatus van de technologie (work-in-progress, in gebruik, voorgesteld, etc);</li>
+<li>De normstatus van de technologie (voorstel, best-practice, industrie standaard, wettelijke standaard, etc);</li>
+<li>Het soort technologie (zoals: DSL, markup taal, machine learning, etc);</li>
+<li>De functionaliteit die wordt geboden (search, drafting, analysing, etc);</li>
+<li>De beoogd gebruikers (IT-ers, juristen, rechters, etc);</li>
+<li>Het beschouwingsniveau (tekstueel, semantisch, ontologisch, logisch, technisch) en het soort model (descriptief, normatief) waarvoor de technologie kan worden ingezet;</li>
+<li>De beheerder c.q. leverancier van de technologie;</li>
+<li>De versie van de technologie zoals die is bekeken (nummer en/of datum);</li>
+<li>De datum waarop de technologie is opgenomen in de typologie en de datum waarop deze beschrijving voor het laatst is bijgewerkt.</li>
+</ol>
+</li>
+<li>
+<p>Een tekstuele beschrijving van de technologie, waarin de volgende zaken worden benoemd:</p>
+<ol>
+<li>Een beschrijving van het doel waarvoor de technologie kan worden gebruikt;</li>
+<li>Een omschrijving van de onderdelen waaruit de technologie bestaat;</li>
+<li>De makers/beheerders van de technologie;</li>
+<li>Een overzicht van aanvullende documentatie die over deze technologie bekeken kan worden.</li>
+</ol>
+</li>
+</ol>
+</section><section id="welke-vorm-heeft-een-regel-0"><div class="header-wrapper"><h2 id="welke-vorm-heeft-een-regel"><bdi class="secno">6. </bdi>Welke vorm heeft een "regel"?</h2><a class="self-link" href="#welke-vorm-heeft-een-regel" aria-label="Permalink for Section 6."></a></div>
+<p>De taken waarvoor juridische technologie worden ingezet hebben allemaal min-of-meer te maken met het opstellen, duiden, vertalen of toepassen van regels, in allerlei verschillende vormen. Dit maakt dat de term "regel" pas betekenis krijgt binnen de taak zelf. Niet voor niets is sprake van een cirkel: je kunt niet echt zeggen waar de "regel" in zijn oorsprong ontstaat, hooguit op welk moment een bepaalde verschijningsvorm van die regel ontstaat. Daarbij doorloopt het "leven" van een verschijningsvorm van een regel een aantal stadia:</p>
+<ol>
+<li>De (verschijningsvorm van een) regel is opgetekend;</li>
+<li>De(verschijningsvorm van een)  regel is vastgesteld;</li>
+<li>De (verschijningsvorm van een) regel is bekendgemaakt;</li>
+<li>De (verschijningsvorm van een) regel is in werking;</li>
+<li>De (verschijningsvorm van een) regel is in gebruik;</li>
+<li>De (verschijningsvorm van een) regel is vervallen;</li>
+<li>De (verschijningsvorm van een) is verwijderd.</li>
+</ol>
+<p>Stadia kunnen gecombineerd worden en niet elke verschijningsvorm "haalt" alle stadia. Eenmaal opgetekend, gedraagt een (verschijningsvorm van) een regel zich als een gegeven. De levenscyclus van een verschenen regel lijkt dan ook sterk op de levenscyclus van een gegeven.</p>
+<p>Herleidbaarheid van een regel gaat daarmee feitelijk om de relatie tussen verschijningsvormen van regels. Zo zou je een algoritme die een regel uitvoert kunnen herleiden naar de tekst in wet- en regelgeving waarin die regel is opgetekend. Er is sprake van twee verschijningsvormen van dezelfde regel. Daarbij kunnen de stadia verschillen. Het is zelfs mogelijk dat een algoritme al in gebruik is, terwijl de juridische tekst nog niet eens is opgetekend (bijvoorbeeld bij het doorrekenen van een scenario tijdens beleidsvorming).</p>
+<p>Juridische technologie kan geordend worden naar de vorm die de regel aanneemt die binnen een taak wordt uitgevoerd en waar die juridische technologie ondersteuning aan biedt. We maken daarbij onderscheid tussen het beschouwingsniveau en het soort uitspraak dat met de regel wordt gedaan.</p>
+<blockquote>
+<p>Aandachtspunt: hoe past de DSO-terminologie van juridische regel, toepasbare regel en uitvoerbare regel in dit model?</p>
+</blockquote>
+<section id="beschouwingsniveau-0"><div class="header-wrapper"><h3 id="beschouwingsniveau"><bdi class="secno">6.1 </bdi>beschouwingsniveau</h3><a class="self-link" href="#beschouwingsniveau" aria-label="Permalink for Section 6.1"></a></div>
+<p>We onderkennen vijf beschouwingsniveaus:</p>
+<ul>
+<li><em>Tekstueel</em>: de regel kent een tekstuele vorm. Alle (huidige) juridische teksten en de meeste voor mensen bedoelde instructies kennen deze vorm. Kenmerkend aan een tekstuele vorm is de noodzaak tot interpretatie voordat de regel kan worden toegepast.</li>
+<li><em>Semantisch</em>: de regel kent een vorm die duiding geeft aan de semantiek van de gebruikte woorden. Kenmerkend aan een semantische vorm is eenduidigheid van betekenis binnen een specifieke context, terwijl gelijktijdig er nog steeds interpretatie nodig is voordat die betekenis vast staat. Met andere woorden het is duidelijk dat er sprake is van één betekenis, maar nog niet precies welke.</li>
+<li><em>Ontologisch</em>: de regel kent een vorm die duiding geeft welke feiten er kunnen gelden en hoe feiten afgeleid kunnen worden van reeds vastgestelde feiten. Dergelijke regels zijn eenduidig toepasbaar.</li>
+<li><em>Logisch</em>: de regel kent een vorm die uit te drukken is in uitvoerbare logica.</li>
+<li><em>Technisch</em>: de regel kent een vorm die executeerbaar is voor een specifieke technologie.</li>
+</ul>
+<p>Merk op: er zijn regels die slechts tot op het semantische niveau zijn uit te drukken. Het gaat daarbij om regels waarbij het toepassen van die regel een menselijke interpretatie vereist. Een regel die de ontologische vorm heeft, heeft (in die vorm) nog slechts één mogelijke interpretatie.</p>
+<p>De opsteller van een regelvorm heeft een bepaald doel met dit opstellen. We onderscheiden twee doelen:</p>
+<ul>
+<li>De opsteller wenst voor te schrijven hoe we de werkelijkheid moeten beschouwen, het is een descriptieve beschrijving van die werkelijkheid;</li>
+<li>De opsteller wenst voor te schrijven hoe de werkelijkheid zou moeten zijn, het is een normatieve beschrijving van die werkelijkheid.</li>
+</ul>
+<p>De descriptieve regelvorm vertelt ons door welk "venster" we naar de wereld moeten kijken, de normatieve regelvorm vertelt ons de gevolgen van wat we zien (of dat wat we zien is toegestaan, of juist verboden is, welke gevolgen er zouden moeten zijn, op grond van wat we zien, etc.) Dit brengt ons tot het volgende model, waarin voor elke regelvorm een naam wordt gebruikt:</p>
+<blockquote>
+<p>Aandachtspunten: (1) zijn dit ook de namen die in de praktijk het meeste zullen aanslaan?; (2) hoe passen processen hierbinnen?]. Imperatief? Processen volgen uit de regels, maar dit wil je wel van elkaar onderscheiden! (3) OER-model (Object-event-relationship model. Methodologie van informatiesysteemontwikkeling. Wellicht even naar kijken?</p>
+</blockquote>
+<table>
+<tbody><tr><th>Regelvorm</th><th>Descriptief</th><th>Normatief</th></tr>
+<tr><td>Tekstueel</td><td colspan="2" align="middle">(juridische) regeltekst</td></tr>
+<tr><td>Semantisch</td><td>begrip</td><td>norm</td></tr>
+<tr><td>Ontologisch</td><td>categorie, kenmerk, relatie</td><td>(toepasbare) regel)</td></tr>
+<tr><td>Logisch</td><td>gegevenstype</td><td>(wiskundige/logische) functie</td></tr>
+<tr><td>Technisch</td><td>data-definitie</td><td>code</td></tr>
+</tbody></table>
+
+<p>Het onderscheid tussen descriptieve regels en normatieve regels is tekstueel niet te maken: de tekstuele vorm maakt dit onderscheid niet (expliciet). Daarnaast geldt zowel een horizontale als verticale samenhang:</p>
+<ul>
+<li>Horizontaal kan een normatieve regel alleen in termen van descriptieve regels op hetzelfde niveau worden uitgedrukt, en krijgt de descriptieve regel betekenis door het gebruik in de normatieve regel.</li>
+<li>Verticaal betreft zal een regelvorm op een "lager" niveau de implementatie zijn van dezelfde regel uitgedrukt in een vorm op een "hoger" niveau.</li>
+</ul>
+
+
+
+</section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Terug naar boven">↑</abbr></a>
+  </p><script id="respec-highlight-vars">(() => {
+// @ts-check
+
+if (document.respec) {
+  document.respec.ready.then(setupVarHighlighter);
+} else {
+  setupVarHighlighter();
+}
+
+function setupVarHighlighter() {
+  document
+    .querySelectorAll("var")
+    .forEach(varElem => varElem.addEventListener("click", highlightListener));
+}
+
+/**
+ * @param {MouseEvent} ev
+ */
+function highlightListener(ev) {
+  ev.stopPropagation();
+  const varElem = /** @type {HTMLElement} */ (ev.target);
+  const hightligtedElems = highlightVars(varElem);
+  const resetListener = () => {
+    const hlColor = getHighlightColor(varElem);
+    hightligtedElems.forEach(el => removeHighlight(el, hlColor));
+    [...HL_COLORS.keys()].forEach(key => HL_COLORS.set(key, true));
+  };
+  if (hightligtedElems.length) {
+    document.body.addEventListener("click", resetListener, { once: true });
+  }
+}
+
+// availability of highlight colors. colors from var.css
+const HL_COLORS = new Map([
+  ["respec-hl-c1", true],
+  ["respec-hl-c2", true],
+  ["respec-hl-c3", true],
+  ["respec-hl-c4", true],
+  ["respec-hl-c5", true],
+  ["respec-hl-c6", true],
+  ["respec-hl-c7", true],
+]);
+
+/**
+ * @param {HTMLElement} target
+ */
+function getHighlightColor(target) {
+  // return current colors if applicable
+  const { value } = target.classList;
+  const re = /respec-hl-\w+/;
+  const activeClass = re.test(value) && value.match(re);
+  if (activeClass) return activeClass[0];
+
+  // first color preference
+  if (HL_COLORS.get("respec-hl-c1") === true) return "respec-hl-c1";
+
+  // otherwise get some other available color
+  return [...HL_COLORS.keys()].find(c => HL_COLORS.get(c)) || "respec-hl-c1";
+}
+
+/**
+ * @param {HTMLElement} varElem
+ */
+function highlightVars(varElem) {
+  const textContent = norm(varElem.textContent);
+  const parent = /** @type {HTMLElement} */ (
+    varElem.closest(".algorithm, section")
+  );
+  if (!parent) return [];
+  const highlightColor = getHighlightColor(varElem);
+
+  const varsToHighlight = [...parent.querySelectorAll("var")].filter(
+    el =>
+      norm(el.textContent) === textContent &&
+      el.closest(".algorithm, section") === parent
+  );
+
+  // update availability of highlight color
+  const colorStatus = varsToHighlight[0].classList.contains("respec-hl");
+  HL_COLORS.set(highlightColor, colorStatus);
+
+  // highlight vars
+  if (colorStatus) {
+    varsToHighlight.forEach(el => removeHighlight(el, highlightColor));
+    return [];
+  } else {
+    varsToHighlight.forEach(el => addHighlight(el, highlightColor));
+  }
+  return varsToHighlight;
+}
+
+/**
+ * @param {HTMLElement} el
+ * @param {string} highlightColor
+ */
+function removeHighlight(el, highlightColor) {
+  el.classList.remove("respec-hl", highlightColor);
+  // clean up empty class attributes so they don't come in export
+  if (!el.classList.length) el.removeAttribute("class");
+}
+
+/**
+ * @param {HTMLElement} elem
+ * @param {string} highlightColor
+ */
+function addHighlight(elem, highlightColor) {
+  elem.classList.add("respec-hl", highlightColor);
+}
+
+/**
+ * Same as `norm` from src/core/utils, but our build process doesn't allow
+ * imports in runtime scripts, so duplicated here.
+ * @param {string} str
+ */
+function norm(str) {
+  return str.trim().replace(/\s+/g, " ");
+}
+})()</script><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement | null} */
+  let panel = null;
+  /**
+   * @param {KeyboardEvent|MouseEvent} event
+   */
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (
+      type === "keydown" &&
+      /** @type {KeyboardEvent} */ (event).key !== "Enter"
+    )
+      return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement | null} */
+        const dfn = target.closest("dfn, .index-term");
+        if (!dfn?.id) break;
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        if (!panel) break;
+        const coords = deriveCoordinates(
+          /** @type {MouseEvent|KeyboardEvent} */ (event)
+        );
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        if (panel) {
+          panel.style.left = "";
+          panel.style.top = "";
+          panel.classList.add("docked");
+        }
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+
+    const panel = /** @type {HTMLElement} */ (target.closest(".dfn-panel"));
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement | null} */
+    const caret = panel.querySelector(".caret");
+    if (caret) caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  /**
+   * @param {KeyboardEvent} event
+   */
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement | null} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

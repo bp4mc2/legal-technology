@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Organisaties</title>
+
+  <script class="remove">
+    var respecConfig = {
+      specStatus: "base",
+      shortName: "juridische-technologie-organisaties",
+      editors: [
+        {
+          name: "Brattinga, Van Dijk, Straver"
+        }
+      ],
+      maxTocLevel: 4
+    };
+  </script>
+
+  <script
+    src="https://www.w3.org/Tools/respec/respec-w3c"
+    class="remove"
+    async></script>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="assets/js/ontology-diagram-data.js"></script>
+  <script src="assets/js/ontology-diagram.js"></script>
+  <script src="assets/js/technology-overview-filter.js"></script>
+
+  <style>
+    nav.doc-nav {
+        position: fixed;
+        top: 5rem;
+        right: 1rem;
+
+        width: 18rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+
+        border: 1px solid #d0d0d0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: #fff;
+
+        box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.16);
+    }
+
+    nav.doc-nav ul {
+        margin-bottom: 0;
+        padding-left: 1.2rem;
+    }
+
+    body {
+        padding-right: 21rem;
+    }
+
+    @media (max-width: 1000px) {
+        nav.doc-nav {
+            position: static;
+            width: auto;
+            max-height: none;
+            overflow: visible;
+        }
+
+        body {
+            padding-right: 0;
+        }
+    }
+
+    .page-description {
+      font-size: 1.05rem;
+    }
+
+    .diagram-container {
+      width: 100%;
+      max-width: 100%;
+      height: 650px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    #ontology-diagram {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .diagram-toolbar {
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .diagram-toolbar button {
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+    }    
+  </style>
+  <link rel="stylesheet" href="assets/css/lto-detail.css">
+</head>
+
+<body>
+  <section id="abstract">
+    <p>Overzicht van organisaties die als beheerder, leverancier of andere betrokkene voorkomen.</p>
+  </section>
+
+  <section id="sotd">
+    <p>
+      Onderdeel van de documentatie juridische technologie.
+      Gegenereerd op 2026-06-24.
+    </p>
+  </section>
+
+  <section>
+
+    <h1>Organisaties</h1>
+
+    <p class="page-description">
+      Overzicht van organisaties die als beheerder, leverancier of andere betrokkene voorkomen.
+    </p>
+
+    <nav class="doc-nav" aria-label="Documentatienavigatie">
+      <strong>Documentatieonderdelen</strong>
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        <li>
+          <a href="typologie.html">Typologie juridische technologieën</a>
+        </li>
+        <li>
+          <a href="catalogus.html">Catalogus juridische technologieën</a>
+        </li>
+        <li>
+          <a href="begrippenkader.html">Begrippenkader</a>
+        </li>
+        <li>
+          <strong>Organisaties</strong>
+        </li>
+        <li>
+          <a href="ontologie.html">Ontologie</a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+    <h2 id="organisaties">Organisaties</h2>
+<p>Deze sectie bevat organisaties die optreden als beheerder of leverancier van juridische technologieën.</p>
+<p>Aantal organisaties: 8.</p>
+<h3 id="overzicht">Overzicht</h3>
+<table>
+<thead>
+<tr>
+<th>Organisatie</th>
+<th>Contactinformatie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#europese-unie-raad-van-de-eu</td>
+<td>https://european-union.europa.eu/</td>
+</tr>
+<tr>
+<td>#geonovum</td>
+<td>info@geonovum.nl</td>
+</tr>
+<tr>
+<td>#international-federation-of-library-associations-and-institutions-ifla</td>
+<td>https://www.ifla.org/</td>
+</tr>
+<tr>
+<td>#juriconnect</td>
+<td>info@juriconnect.nl</td>
+</tr>
+<tr>
+<td>#kenniscentrum-voor-beleid-en-regelgeving</td>
+<td>info@kcbr.nl</td>
+</tr>
+<tr>
+<td>#koop</td>
+<td>https://www.koopoverheid.nl/</td>
+</tr>
+<tr>
+<td>#publications-office-of-the-european-union</td>
+<td>https://european-union.europa.eu/contact-eu/write-us_en</td>
+</tr>
+<tr>
+<td>#tno</td>
+<td>www.tno.nl</td>
+</tr>
+</tbody>
+</table>
+<h3 id="organisaties_1">Organisaties</h3>
+<h3 id="europese-unie-raad-van-de-eu-europese-unie-raad-van-de-eu">Europese Unie (Raad van de EU) {#europese-unie-raad-van-de-eu}</h3>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>https://data.bp4mc2.org/id/lto/organisatie/a2938952-581f-4fa3-b4a3-9abcd1822721</code></td>
+</tr>
+<tr>
+<td>Naam</td>
+<td>Europese Unie (Raad van de EU)</td>
+</tr>
+<tr>
+<td>Contactinformatie</td>
+<td>https://european-union.europa.eu/</td>
+</tr>
+</tbody>
+</table>
+<h3 id="geonovum-geonovum">Geonovum {#geonovum}</h3>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>https://data.bp4mc2.org/id/lto/organisatie/f197cc06-88ae-4b82-a8a8-db9029261e59</code></td>
+</tr>
+<tr>
+<td>Naam</td>
+<td>Geonovum</td>
+</tr>
+<tr>
+<td>Contactinformatie</td>
+<td>info@geonovum.nl</td>
+</tr>
+</tbody>
+</table>
+<h3 id="international-federation-of-library-associations-and-institutions-ifla-international-federation-of-library-associations-and-institutions-ifla">International Federation of Library Associations and Institutions (IFLA) {#international-federation-of-library-associations-and-institutions-ifla}</h3>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>https://data.bp4mc2.org/id/lto/organisatie/91bad084-f0ef-40d6-b929-8fa2fa919b2b</code></td>
+</tr>
+<tr>
+<td>Naam</td>
+<td>International Federation of Library Associations and Institutions (IFLA)</td>
+</tr>
+<tr>
+<td>Contactinformatie</td>
+<td>https://www.ifla.org/</td>
+</tr>
+</tbody>
+</table>
+<h3 id="juriconnect-juriconnect">Juriconnect {#juriconnect}</h3>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>https://data.bp4mc2.org/id/lto/organisatie/51ef83a4-f310-42d8-8a47-0817bb3fdb8d</code></td>
+</tr>
+<tr>
+<td>Naam</td>
+<td>Juriconnect</td>
+</tr>
+<tr>
+<td>Contactinformatie</td>
+<td>info@juriconnect.nl</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kenniscentrum-voor-beleid-en-regelgeving-kenniscentrum-voor-beleid-en-regelgeving">Kenniscentrum voor beleid en regelgeving {#kenniscentrum-voor-beleid-en-regelgeving}</h3>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>https://data.bp4mc2.org/id/lto/organisatie/4d4c8c24-532a-4751-8971-1d27c79b0eac</code></td>
+</tr>
+<tr>
+<td>Naam</td>
+<td>Kenniscentrum voor beleid en regelgeving</td>
+</tr>
+<tr>
+<td>Contactinformatie</td>
+<td>info@kcbr.nl</td>
+</tr>
+</tbody>
+</table>
+<h3 id="koop-koop">KOOP {#koop}</h3>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>https://data.bp4mc2.org/id/lto/organisatie/5eff159d-559b-430b-9a82-5a63fbd65e99</code></td>
+</tr>
+<tr>
+<td>Naam</td>
+<td>KOOP</td>
+</tr>
+<tr>
+<td>Contactinformatie</td>
+<td>https://www.koopoverheid.nl/</td>
+</tr>
+</tbody>
+</table>
+<h3 id="publications-office-of-the-european-union-publications-office-of-the-european-union">Publications Office of the European Union {#publications-office-of-the-european-union}</h3>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>https://data.bp4mc2.org/id/lto/organisatie/f9f140f4-48f1-448d-8ef2-e02c14031da8</code></td>
+</tr>
+<tr>
+<td>Naam</td>
+<td>Publications Office of the European Union</td>
+</tr>
+<tr>
+<td>Contactinformatie</td>
+<td>https://european-union.europa.eu/contact-eu/write-us_en</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tno-tno">TNO {#tno}</h3>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>https://data.bp4mc2.org/id/lto/organisatie/8ed6441a-9063-493d-9fca-6cb45a786557</code></td>
+</tr>
+<tr>
+<td>Naam</td>
+<td>TNO</td>
+</tr>
+<tr>
+<td>Contactinformatie</td>
+<td>www.tno.nl</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

@@ -35,8 +35,8 @@
   font-size: 0.8125rem;
 }
 
-/* Card-based section */
-.lt-detail-section > .card-header.lt-detail-section-header {
+/* Detail section header */
+.lt-detail-section-header {
   background: var(--lt-surface-soft);
   border-bottom: 1px solid var(--lt-border);
   padding: 0.6rem 1rem;
@@ -133,7 +133,7 @@
   font-size: 0.9rem;
 }
 
-.lt-detail-sticky-card .btn {
+.lt-detail-sticky-card button {
   white-space: nowrap;
 }
 

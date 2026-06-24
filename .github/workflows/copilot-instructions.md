@@ -1,6 +1,6 @@
 # Copilot Instructions — Legal Tech Typology
 
-Always use docs/typologie.md as the primary framework.
+Always use apps/docs/typologie.md as the primary framework.
 Apply constraints in this order of priority:
 1. Classification
 2. Mapping

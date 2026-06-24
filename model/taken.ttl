@@ -1,10 +1,9 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix skosthes: <http://purl.org/iso25964/skos-thes#>.
-
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
 
 @prefix ltt: <http://bp4mc2.org/ltt#>. # Legal technology task (types)
-
 
 ltt:BegrippenkaderTaken a skos:ConceptScheme;
   rdfs:label "Taken"@nl;
@@ -14,7 +13,7 @@ ltt:BegrippenkaderTaken a skos:ConceptScheme;
 .
 
 ##
-## Bovenliggend begrip
+## Bovenliggend Taak begrip
 ##
 ltt:Taak a skos:Concept;
   rdfs:label "Taak"@nl;
@@ -70,73 +69,83 @@ ltt:AnalyserenRegeltekst a skos:Concept;
 ltt:InterpreterenEnExpliciteren a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Interpreteren en expliciteren"@nl;
-  skos:prefLabel "Interpreteren en expliciteren"@nl
+  skos:prefLabel "Interpreteren en expliciteren"@nl;  
+  skos:definition "Het interpreteren van een juridische tekst en de betekenis en bedoeling daarvan op een gestructureerde manier vastleggen.";
+  skos:scopeNote "Dit lijkt op rechtsvinding (en ook rechtsvorming (!)), maar is in dit geval niet bedoeld voor een individueel geval.";
+  skosthes:broaderGeneric ltt:Taak;
 .
 
 ltt:BegripDefinieren a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Begrip definiëren"@nl;
   skos:prefLabel "Begrip definiëren"@nl;
+  skos:definition "Het gestructureerd beschrijven van de betekenis die met een term wordt bedoeld in een specifieke context.";
+  skosthes:broaderGeneric ltt:Taak;
 .
 
 ltt:SpecificerenGegevensbehoefte a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Specificeren gegevens(behoefte)"@nl;
   skos:prefLabel "Specificeren gegevens(behoefte)"@nl;
+  skos:definition "Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke gegevens nodig zijn ten behoeve van een wettelijke taak.";
+  skosthes:broaderGeneric ltt:Taak;
 .
 
 ltt:SpecificerenRegels a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Specificeren regels"@nl;
   skos:prefLabel "Specificeren regels"@nl;
+  skos:definition "Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke regels nodig zijn ten behoeve van een wettelijke taak.";
+  skos:scopeNote "Met \"regel\" wordt hier een regel bedoeld in de vorm van een algoritme of functie die op basis van aangeboden gegevens komt tot een resultaat (in de vorm van gegevens).";
+  skosthes:broaderGeneric ltt:Taak;
 .
 
 ltt:SpecificerenProcessen a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Specificeren processen"@nl;
   skos:prefLabel "Specificeren processen"@nl;
-.
-
-ltt:LogischModelOpstellen a skos:Concept;
-  skos:inScheme ltt:BegrippenkaderTaken;
-  rdfs:label "Logisch model opstellen"@nl;
-  skos:prefLabel "Logisch model opstellen"@nl;
-.
-
-ltt:RegelmodelOpstellen a skos:Concept;
-  skos:inScheme ltt:BegrippenkaderTaken;
-  rdfs:label "Regelmodel opstellen"@nl;
-  skos:prefLabel "Regelmodel opstellen"@nl;
-.
-
-ltt:ProcesmodelOpstellen a skos:Concept;
-  skos:inScheme ltt:BegrippenkaderTaken;
-  rdfs:label "Procesmodel opstellen"@nl;
-  skos:prefLabel "Procesmodel opstellen"@nl;
+  skos:definition "Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke processen uitgevoerd moeten worden ten behoeve van een wettelijke taak.";
+  skosthes:broaderGeneric ltt:Taak;
 .
 
 ltt:ValiderenSpecificaties a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Valideren specificaties"@nl;
   skos:prefLabel "Valideren specificaties"@nl;
+  skos:definition "Het valideren of (gegevens, regel en/of proces-)specificaties overeen komen met de juridische teksten en de interpretatie die aan deze teksten moet worden gegeven.";
+  skosthes:broaderGeneric ltt:Taak
+.
+
+ltt:ImplementerenSpecificaties a skos:Concept;
+  skos:inScheme ltt:BegrippenkaderTaken;
+  rdfs:label "Implementeren specificaties"@nl;
+  skos:prefLabel "Implementeren specificaties"@nl;
+  skos:definition "Het implementeren van specificaties in een geautomatiseerde regeluitvoering of beslisondersteuning.";
+  skosthes:broaderGeneric ltt:Taak
 .
 
 ltt:GeautomatiseerdeRegeluitvoering a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Geautomatiseerde regeluitvoering"@nl;
   skos:prefLabel "Geautomatiseerde regeluitvoering"@nl;
+  skos:definition "Het geautomatiseerd uitvoeren van regels, of delen van regels, zonder menselijke tussenkomst.";
+  skosthes:broaderGeneric ltt:Taak
 .
 
 ltt:Beslisondersteuning a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Beslisondersteuning"@nl;
   skos:prefLabel "Beslisondersteuning"@nl;
+  skos:definition "Het ondersteunen van besluitvorming door het verstrekken van relevante informatie en analyses.";
+  skosthes:broaderGeneric ltt:Taak
 .
 
 ltt:Evaluatie a skos:Concept;
   skos:inScheme ltt:BegrippenkaderTaken;
   rdfs:label "Evaluatie"@nl;
   skos:prefLabel "Evaluatie"@nl;
+  skos:definition "Het gestructureerd beoordelen of de implementatie en uitvoering van wet- en regelgeving in de praktijk overeenkomen met de met de beleidsdoelen beoogde effecten.";
+  skosthes:broaderGeneric ltt:Taak
 .
 
 ##
@@ -144,6 +153,7 @@ ltt:Evaluatie a skos:Concept;
 ##
 ltt:Groep1 a skos:OrderedCollection;
   rdfs:label "Taakgroep 1";
+  skos:prefLabel "Taakgroep 1 - Tekstuele analyse en interpretatie"@nl;
   skos:memberList (
     ltt:OpstellenRegeltekst
     ltt:Opdrachtorientering
@@ -152,6 +162,7 @@ ltt:Groep1 a skos:OrderedCollection;
 .
 ltt:Groep2 a skos:OrderedCollection;
   rdfs:label "Taakgroep 2";
+  skos:prefLabel "Taakgroep 2 - Analyse en interpretatie"@nl;
   skos:memberList (
     ltt:AnalyserenRegeltekst
     ltt:InterpreterenEnExpliciteren
@@ -160,6 +171,7 @@ ltt:Groep2 a skos:OrderedCollection;
 .
 ltt:Groep3 a skos:OrderedCollection;
   rdfs:label "Taakgroep 3";
+  skos:prefLabel "Taakgroep 3 - Specificeren/Modelleren"@nl;
   skos:memberList (
     ltt:SpecificerenGegevensbehoefte
     ltt:SpecificerenRegels
@@ -168,6 +180,7 @@ ltt:Groep3 a skos:OrderedCollection;
 .
 ltt:Groep4 a skos:OrderedCollection;
   rdfs:label "Taakgroep 4";
+  skos:prefLabel "Taakgroep 4 - Validatie en uitvoering"@nl;
   skos:memberList (
     ltt:ValiderenSpecificaties
     ltt:GeautomatiseerdeRegeluitvoering
@@ -175,3 +188,37 @@ ltt:Groep4 a skos:OrderedCollection;
     ltt:Evaluatie
   )
 .
+
+##
+## Opvolging van taken
+##
+ltt:volgtOp a owl:ObjectProperty ;
+  rdfs:domain skos:Concept ;
+  rdfs:range skos:Concept ;
+  rdfs:label "volgt op"@nl .
+
+# Volgorde van taken binnen een taakgroep
+# Taakgroep 1
+ltt:Opdrachtorientering ltt:volgtOp ltt:OpstellenRegeltekst .
+ltt:VerzamelenBronmateriaal ltt:volgtOp ltt:Opdrachtorientering .
+
+# Taakgroep 2
+ltt:AnalyserenRegeltekst ltt:volgtOp ltt:VerzamelenBronmateriaal .
+ltt:InterpreterenEnExpliciteren ltt:volgtOp ltt:AnalyserenRegeltekst .
+ltt:BegripDefinieren ltt:volgtOp ltt:InterpreterenEnExpliciteren .
+
+# Taakgroep 3
+ltt:SpecificerenGegevensbehoefte ltt:volgtOp ltt:BegripDefinieren .
+ltt:SpecificerenRegels ltt:volgtOp ltt:SpecificerenGegevensbehoefte .
+ltt:SpecificerenProcessen ltt:volgtOp ltt:SpecificerenRegels .
+
+# Taakgroep 4
+ltt:ValiderenSpecificaties ltt:volgtOp ltt:SpecificerenProcessen .
+ltt:ImplementerenSpecificaties ltt:volgtOp ltt:ValiderenSpecificaties .
+ltt:GeautomatiseerdeRegeluitvoering ltt:volgtOp ltt:ImplementerenSpecificaties .
+ltt:Beslisondersteuning ltt:volgtOp ltt:ImplementerenSpecificaties .
+ltt:Evaluatie ltt:volgtOp ltt:GeautomatiseerdeRegeluitvoering, ltt:Beslisondersteuning .
+
+# loop
+ltt:Evaluatie ltt:volgtOp ltt:GeautomatiseerdeRegeluitvoering .
+ltt:Opdrachtorientering ltt:volgtOp ltt:Evaluatie .

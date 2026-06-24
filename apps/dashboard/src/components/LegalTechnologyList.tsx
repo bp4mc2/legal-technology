@@ -37,6 +37,7 @@ type StickyNote = {
 
 type LegalTechnology = {
   id?: string;
+  iri?: string;
   subtype?: 'JuridischeTechnologie' | 'Methode' | 'Standaard' | 'Tool';
   abbrevation?: string;
   versienummer?: string;
@@ -63,17 +64,33 @@ type LegalTechnology = {
 };
 
 const STATUS_COLORS: Record<string, string> = {
-  'In gebruik': 'success',
-  'Voorstel': 'warning text-dark',
-  'Work in progress': 'info text-dark',
+  'In gebruik': 'border-emerald-200 bg-emerald-50 text-emerald-800',
+  'Voorstel': 'border-amber-200 bg-amber-50 text-amber-900',
+  'Work in progress': 'border-sky-200 bg-sky-50 text-sky-900',
 };
 
 const SUBTYPE_COLORS: Record<string, string> = {
-  Methode: 'info',
-  Standaard: 'warning',
-  Tool: 'success',
-  JuridischeTechnologie: 'secondary',
+  Methode: 'border-cyan-200 bg-cyan-100 text-cyan-800',
+  Standaard: 'border-amber-200 bg-amber-100 text-amber-900',
+  Tool: 'border-emerald-200 bg-emerald-100 text-emerald-800',
+  JuridischeTechnologie: 'border-slate-300 bg-slate-100 text-slate-700',
 };
+
+const DEFAULT_BADGE = 'border-slate-300 bg-slate-100 text-slate-700';
+
+const BUTTON_SECONDARY_SM =
+  'inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60';
+const BUTTON_PRIMARY_SM =
+  'inline-flex items-center justify-center rounded-md border border-blue-600 bg-blue-600 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60';
+const BUTTON_OUTLINE_PRIMARY_SM =
+  'inline-flex items-center justify-center rounded-md border border-blue-300 bg-white px-3 py-1.5 text-sm font-medium text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60';
+const BUTTON_OUTLINE_SUCCESS_SM =
+  'inline-flex items-center justify-center rounded-md border border-emerald-300 bg-white px-3 py-1.5 text-sm font-medium text-emerald-700 transition hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60';
+const BUTTON_OUTLINE_DANGER_SM =
+  'inline-flex items-center justify-center rounded-md border border-rose-300 bg-white px-3 py-1.5 text-sm font-medium text-rose-700 transition hover:bg-rose-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60';
+
+const INPUT_SM =
+  'w-full rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 disabled:cursor-not-allowed disabled:bg-slate-100';
 
 const normalizeForCompare = (value?: string) =>
   decodeURIComponent((value || '').trim()).toLowerCase();
@@ -95,15 +112,15 @@ const compactIdentifier = (value?: string) => {
 };
 
 const StatusBadge: React.FC<{ value: string }> = ({ value }) => {
-  const color = STATUS_COLORS[value] ?? 'secondary';
-  return <span className={`badge bg-${color}`}>{value || '-'}</span>;
+  const color = STATUS_COLORS[value] ?? DEFAULT_BADGE;
+  return <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${color}`}>{value || '-'}</span>;
 };
 
 const SubtypeBadge: React.FC<{ value?: string }> = ({ value }) => {
   const key = value ?? 'JuridischeTechnologie';
-  const color = SUBTYPE_COLORS[key] ?? 'secondary';
+  const color = SUBTYPE_COLORS[key] ?? DEFAULT_BADGE;
   const label = key === 'JuridischeTechnologie' ? 'Tech.' : key;
-  return <span className={`badge bg-${color} bg-opacity-75`}>{label}</span>;
+  return <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${color}`}>{label}</span>;
 };
 
 type LegalTechnologyListProps = {
@@ -292,6 +309,7 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
     if (item) {
       setActiveTechnology({
         id: item.id || id,
+        iri: item.iri,
         naam: item.naam,
         omschrijving: item.omschrijving,
         gebruiksstatus: item.gebruiksstatus,
@@ -316,6 +334,7 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
 
     setActiveTechnology({
       id: item.id || id,
+      iri: item.iri,
       naam: item.naam,
       omschrijving: item.omschrijving,
       gebruiksstatus: item.gebruiksstatus,
@@ -329,26 +348,6 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
       taaktypes: (item.geschikt_voor_taak || []).map((entry) => entry.taaktype).filter(Boolean),
       ondersteuningsniveaus: item.ondersteuning_voor || [],
     });
-  };
-
-  const downloadTechTurtle = async (id?: string) => {
-    if (!id) return;
-    try {
-      const turtle = await apiFetchText(`/api/legaltechnologies/${id}/export.ttl`);
-      triggerDownload(turtle, `legal-technology-${id}.ttl`, 'text/turtle;charset=utf-8');
-    } catch (e: any) {
-      setError(e.message);
-    }
-  };
-
-  const downloadTechMarkdown = async (id?: string) => {
-    if (!id) return;
-    try {
-      const markdown = await apiFetchText(`/api/legaltechnologies/${id}/export.md`);
-      triggerDownload(markdown, `legal-technology-${id}.md`, 'text/markdown;charset=utf-8');
-    } catch (e: any) {
-      setError(e.message);
-    }
   };
 
   const handleSearch = (e: React.FormEvent) => {
@@ -437,81 +436,86 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
   return (
     <div className="lt-list-panel">
       <div className="lt-list-toolbar">
-        <h4 className="mb-0 fw-semibold text-primary">Juridische Technologieen</h4>
+        <h4 className="mb-0 text-lg font-semibold text-blue-700">Juridische Technologieen</h4>
         <div className="lt-list-actions">
-          <button className="btn btn-sm btn-outline-secondary" onClick={downloadNamedGraph} disabled={loading || exportBusy}>
+          <button className={BUTTON_SECONDARY_SM} onClick={downloadNamedGraph} disabled={loading || exportBusy}>
             Download named graph
           </button>
-          <button className="btn btn-sm btn-outline-primary" onClick={syncExports} disabled={loading || exportBusy}>
+          <button className={BUTTON_OUTLINE_PRIMARY_SM} onClick={syncExports} disabled={loading || exportBusy}>
             Sync exports
           </button>
-          <button className="btn btn-primary btn-sm" onClick={handleAdd} disabled={loading || exportBusy}>
+          <button className={BUTTON_PRIMARY_SM} onClick={handleAdd} disabled={loading || exportBusy}>
             + Nieuwe technologie
           </button>
         </div>
       </div>
 
-      {error && <div className="alert alert-danger">{error}</div>}
-      {exportMessage && <div className="alert alert-success">{exportMessage}</div>}
+      {error && <div className="mb-3 rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-800">{error}</div>}
+      {exportMessage && <div className="mb-3 rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800">{exportMessage}</div>}
 
-      <form onSubmit={handleSearch} className="d-flex gap-2 mb-3">
+      <form onSubmit={handleSearch} className="mb-3 flex gap-2">
         <input
           type="search"
-          className="form-control form-control-sm"
+          className={INPUT_SM}
           placeholder="Zoek op naam of omschrijving..."
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
-        <button type="submit" className="btn btn-sm btn-outline-primary text-nowrap">
+        <button type="submit" className={`${BUTTON_OUTLINE_PRIMARY_SM} text-nowrap`}>
           Zoeken
         </button>
       </form>
 
       {showForm && (
         <>
-          <div className="modal fade show" tabIndex={-1} style={{ display: 'block' }} role="dialog" aria-modal="true">
-            <div className="modal-dialog modal-xl modal-dialog-scrollable">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title">
-                    {formMode === 'edit' ? 'Juridische technologie bewerken' : 'Nieuwe juridische technologie'}
-                  </h5>
-                  <button type="button" className="btn-close" aria-label="Close" onClick={closeFormModal} />
-                </div>
-                <div className="modal-body">
-                  <LegalTechnologyForm onSuccess={handleFormSuccess} />
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-outline-secondary" onClick={closeFormModal}>
-                    Sluiten
-                  </button>
-                </div>
+          <div className="fixed inset-0 z-[1200] flex items-center justify-center p-4" tabIndex={-1} role="dialog" aria-modal="true">
+            <div className="max-h-[92vh] w-full max-w-6xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lt">
+              <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+                <h5 className="text-base font-semibold text-slate-900">
+                  {formMode === 'edit' ? 'Juridische technologie bewerken' : 'Nieuwe juridische technologie'}
+                </h5>
+                <button
+                  type="button"
+                  aria-label="Close"
+                  onClick={closeFormModal}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-600 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                >
+                  x
+                </button>
+              </div>
+              <div className="max-h-[72vh] overflow-y-auto px-4 py-3">
+                <LegalTechnologyForm onSuccess={handleFormSuccess} />
+              </div>
+              <div className="flex justify-end border-t border-slate-200 px-4 py-3">
+                <button type="button" className={BUTTON_SECONDARY_SM} onClick={closeFormModal}>
+                  Sluiten
+                </button>
               </div>
             </div>
           </div>
-          <div className="modal-backdrop fade show" onClick={closeFormModal} />
+          <div className="fixed inset-0 z-[1190] bg-slate-900/40 backdrop-blur" onClick={closeFormModal} />
         </>
       )}
 
       {variant === 'cards' && selectedCount > 0 && (
-        <div className="lt-list-comparison mt-4 mb-4 p-3">
-          <div className="d-flex align-items-center justify-content-between mb-3">
-            <h5 className="mb-0 fw-semibold text-primary">
+        <div className="lt-list-comparison mb-4 mt-4 p-3">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <h5 className="mb-0 font-semibold text-blue-700">
               Vergelijken: {comparisonItems.length} technologie{comparisonItems.length !== 1 ? 'en' : ''}
             </h5>
-            <button className="btn btn-sm btn-outline-danger" onClick={clearSelection}>
+            <button className={BUTTON_OUTLINE_DANGER_SM} onClick={clearSelection}>
               Vergelijking resetten
             </button>
           </div>
-          <div className="row g-3">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
             {comparisonItems.map(tech => (
-              <div key={tech.id} className="col-md-6 col-xl-3">
-                <div className="card h-100 border-primary">
-                  <div className="card-header bg-primary bg-opacity-10 py-2">
-                    <div className="fw-semibold text-truncate">{tech.naam}</div>
-                    <small className="text-muted">{tech.abbrevation || tech.id}</small>
+              <div key={tech.id}>
+                <div className="h-full rounded-lg border border-blue-200 bg-white shadow-sm">
+                  <div className="border-b border-blue-100 bg-blue-50/70 px-3 py-2">
+                    <div className="truncate font-semibold text-slate-900">{tech.naam}</div>
+                    <small className="text-slate-500">{tech.abbrevation || tech.id}</small>
                   </div>
-                  <div className="card-body small">
+                  <div className="space-y-2 p-3 text-sm">
                     <div className="mb-2"><strong>Naam:</strong> {tech.naam || '-'}</div>
                     <div className="mb-2"><strong>Gebruiksstatus:</strong> <StatusBadge value={tech.gebruiksstatus} /></div>
                     <div className="mb-2"><strong>Licentievorm:</strong> {tech.licentievorm || '-'}</div>
@@ -539,30 +543,30 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
       )}
 
       {loading ? (
-        <div className="text-center py-5 text-muted">
-          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
+        <div className="py-8 text-center text-slate-500">
+          <span className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-slate-600" role="status" aria-hidden="true" />
           Laden...
         </div>
       ) : items.length === 0 ? (
-        <div className="lt-list-empty text-center py-5">
-          <div className="fs-5 mb-1">Geen technologieen gevonden</div>
+        <div className="lt-list-empty py-8 text-center">
+          <div className="mb-1 text-lg">Geen technologieen gevonden</div>
           <small>Gebruik de knop hierboven om een nieuwe technologie toe te voegen.</small>
         </div>
       ) : variant === 'cards' ? (
-        <div className="row g-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
           {items.map((item, idx) => {
             const id = item.id || `idx-${idx}`;
             const checked = selectedSet.has(id);
             const disableCheck = selectedCount >= maxSelection && !checked;
             const stickyCounts = getStickyCounts(item.id);
             return (
-              <div key={id} className="col-md-6 col-xl-4">
-                <div className={`lt-list-card card h-100${checked ? ' is-compare-selected' : ''}`}>
-                  <div className="lt-list-card-header card-header d-flex justify-content-between align-items-start">
-                    <div className="pe-2">
+              <div key={id}>
+                <div className={`lt-list-card flex h-full flex-col${checked ? ' is-compare-selected' : ''}`}>
+                  <div className="lt-list-card-header flex items-start justify-between border-b border-slate-200 px-3 py-2">
+                    <div className="pe-2 min-w-0">
                       <button
                         type="button"
-                        className="btn btn-link p-0 fw-semibold text-decoration-none text-start lt-context-name-link"
+                        className="lt-context-name-link p-0 text-start font-semibold"
                         onClick={() => handleSetContext(id)}
                       >
                         {item.naam}
@@ -571,11 +575,11 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                           <span className="lt-context-name-hint-label">context</span>
                         </span>
                       </button>
-                      <small className="text-muted">{item.abbrevation || id}</small>
+                      <small className="text-slate-500">{item.abbrevation || id}</small>
                     </div>
-                    <div className="form-check form-switch lt-compare-switch m-0">
+                    <div className="lt-compare-switch m-0">
                       <input
-                        className="form-check-input"
+                        className="lt-compare-switch-input h-5 w-10 cursor-pointer appearance-none rounded-full border border-slate-300 bg-slate-100 transition checked:border-emerald-500 checked:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40 disabled:cursor-not-allowed disabled:opacity-55"
                         type="checkbox"
                         checked={checked}
                         disabled={disableCheck}
@@ -594,40 +598,46 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                       />
                     </div>
                   </div>
-                  <div className="card-body">
-                    <div className="d-flex gap-2 mb-2">
+                  <div className="flex-1 px-3 py-3">
+                    <div className="mb-2 flex gap-2">
                       <SubtypeBadge value={item.subtype} />
                       <StatusBadge value={item.gebruiksstatus} />
                     </div>
-                    <div className="d-flex gap-2 mb-2 flex-wrap">
-                      <span className={`badge ${stickyCounts.total > 0 ? 'text-bg-primary' : 'text-bg-light'}`}>
+                    <div className="mb-2 flex flex-wrap gap-2">
+                      <span
+                        className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${
+                          stickyCounts.total > 0
+                            ? 'border-blue-200 bg-blue-50 text-blue-800'
+                            : 'border-slate-300 bg-slate-100 text-slate-700'
+                        }`}
+                      >
                         Sticky notes: {stickyCounts.total}
                       </span>
                       {stickyCounts.definitive > 0 && (
-                        <span className="badge text-bg-success">Definitief: {stickyCounts.definitive}</span>
+                        <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-800">Definitief: {stickyCounts.definitive}</span>
                       )}
                       {stickyCounts.candidate > 0 && (
-                        <span className="badge text-bg-warning text-dark">Kandidaat: {stickyCounts.candidate}</span>
+                        <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-900">Kandidaat: {stickyCounts.candidate}</span>
                       )}
                     </div>
-                    <p className="small text-muted mb-3" style={{ minHeight: 42 }}>
+                    <p className="mb-3 min-h-[42px] text-sm text-slate-500">
                       {item.omschrijving || '-'}
                     </p>
-                    <div className="small mb-1"><strong>Licentie:</strong> {item.licentievorm || '-'}</div>
-                    <div className="small mb-1"><strong>Versie:</strong> {item.versienummer || '-'}</div>
-                    <div className="small mb-0"><strong>Normstatus:</strong> {item.normstatus || '-'}</div>
+                    <div className="mb-1 text-sm"><strong>Licentie:</strong> {item.licentievorm || '-'}</div>
+                    <div className="mb-1 text-sm"><strong>Versie:</strong> {item.versienummer || '-'}</div>
+                    <div className="mb-0 text-sm"><strong>Normstatus:</strong> {item.normstatus || '-'}</div>
                   </div>
-                  <div className="card-footer bg-white d-flex gap-2 flex-wrap">
-                    <button className="btn btn-sm btn-outline-success" onClick={() => handleSetContext(id)}>
+                  <div className="flex flex-wrap gap-2 border-t border-slate-200 bg-white px-3 py-2">
+                    <button className={BUTTON_OUTLINE_SUCCESS_SM} onClick={() => handleSetContext(id)}>
                       Context
                     </button>
-                    <button className="btn btn-sm btn-outline-secondary" onClick={() => handleView(item.id)}>
+                    <button className={BUTTON_SECONDARY_SM} onClick={() => handleView(item.id)}>
                       Details
                     </button>
-                    <button className="btn btn-sm btn-outline-primary" onClick={() => handleEdit(item.id)}>
+                    <button className={BUTTON_OUTLINE_PRIMARY_SM} onClick={() => handleEdit(item.id)}>
                       Bewerken
                     </button>
-                    <button className="btn btn-sm btn-outline-danger" onClick={() => handleDelete(item.id)}>
+                    <button className={BUTTON_OUTLINE_DANGER_SM} onClick={() => handleDelete(item.id)}>
                       Verwijder
                     </button>
                   </div>
@@ -637,27 +647,27 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
           })}
         </div>
       ) : (
-        <div className="table-responsive">
-          <table className="lt-list-table table table-sm table-hover align-middle mb-0">
-            <thead className="table-light">
+        <div className="overflow-x-auto">
+          <table className="lt-list-table min-w-full border-collapse text-sm">
+            <thead className="bg-slate-100 text-slate-700">
               <tr>
-                <th style={{ minWidth: 220 }}>Naam</th>
-                <th>Type</th>
-                <th>Status</th>
-                <th>Licentie</th>
-                <th>Versie</th>
-                <th className="text-end">Acties</th>
+                <th className="px-3 py-2 text-left" style={{ minWidth: 220 }}>Naam</th>
+                <th className="px-3 py-2 text-left">Type</th>
+                <th className="px-3 py-2 text-left">Status</th>
+                <th className="px-3 py-2 text-left">Licentie</th>
+                <th className="px-3 py-2 text-left">Versie</th>
+                <th className="px-3 py-2 text-end">Acties</th>
               </tr>
             </thead>
             <tbody>
               {items.map((item, idx) => {
                 const id = item.id || `idx-${idx}`;
                 return (
-                <tr key={id}>
-                  <td>
+                <tr key={id} className="border-b border-slate-100 align-top hover:bg-slate-50">
+                  <td className="px-3 py-2">
                     <button
                       type="button"
-                      className="btn btn-link p-0 fw-semibold text-decoration-none text-start lt-context-name-link"
+                      className="lt-context-name-link p-0 text-start font-semibold"
                       onClick={() => handleSetContext(id)}
                     >
                       {item.naam}
@@ -666,41 +676,47 @@ const LegalTechnologyList: React.FC<LegalTechnologyListProps> = ({ variant = 'ca
                         <span className="lt-context-name-hint-label">context</span>
                       </span>
                     </button>
-                    <small className="text-muted">{item.abbrevation || id}</small>
+                    <small className="text-slate-500">{item.abbrevation || id}</small>
                     <div className="mt-1">
                       {(() => {
                         const stickyCounts = getStickyCounts(item.id);
                         return (
-                          <div className="d-flex gap-1 flex-wrap">
-                            <span className={`badge ${stickyCounts.total > 0 ? 'text-bg-primary' : 'text-bg-light'}`}>
+                          <div className="flex flex-wrap gap-1">
+                            <span
+                              className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${
+                                stickyCounts.total > 0
+                                  ? 'border-blue-200 bg-blue-50 text-blue-800'
+                                  : 'border-slate-300 bg-slate-100 text-slate-700'
+                              }`}
+                            >
                               Sticky: {stickyCounts.total}
                             </span>
                             {stickyCounts.definitive > 0 && (
-                              <span className="badge text-bg-success">D: {stickyCounts.definitive}</span>
+                              <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-800">D: {stickyCounts.definitive}</span>
                             )}
                             {stickyCounts.candidate > 0 && (
-                              <span className="badge text-bg-warning text-dark">K: {stickyCounts.candidate}</span>
+                              <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-900">K: {stickyCounts.candidate}</span>
                             )}
                           </div>
                         );
                       })()}
                     </div>
                   </td>
-                  <td><SubtypeBadge value={item.subtype} /></td>
-                  <td><StatusBadge value={item.gebruiksstatus} /></td>
-                  <td>{item.licentievorm || '-'}</td>
-                  <td>{item.versienummer || '-'}</td>
-                  <td className="text-end text-nowrap">
-                    <button className="btn btn-sm btn-outline-success me-1" onClick={() => handleSetContext(id)}>
+                  <td className="px-3 py-2"><SubtypeBadge value={item.subtype} /></td>
+                  <td className="px-3 py-2"><StatusBadge value={item.gebruiksstatus} /></td>
+                  <td className="px-3 py-2">{item.licentievorm || '-'}</td>
+                  <td className="px-3 py-2">{item.versienummer || '-'}</td>
+                  <td className="text-nowrap px-3 py-2 text-end">
+                    <button className={`${BUTTON_OUTLINE_SUCCESS_SM} mr-1`} onClick={() => handleSetContext(id)}>
                       Context
                     </button>
-                    <button className="btn btn-sm btn-outline-secondary me-1" onClick={() => handleView(item.id)}>
+                    <button className={`${BUTTON_SECONDARY_SM} mr-1`} onClick={() => handleView(item.id)}>
                       Details
                     </button>
-                    <button className="btn btn-sm btn-outline-primary me-1" onClick={() => handleEdit(item.id)}>
+                    <button className={`${BUTTON_OUTLINE_PRIMARY_SM} mr-1`} onClick={() => handleEdit(item.id)}>
                       Bewerken
                     </button>
-                    <button className="btn btn-sm btn-outline-danger" onClick={() => handleDelete(item.id)}>
+                    <button className={BUTTON_OUTLINE_DANGER_SM} onClick={() => handleDelete(item.id)}>
                       Verwijder
                     </button>
                   </td>

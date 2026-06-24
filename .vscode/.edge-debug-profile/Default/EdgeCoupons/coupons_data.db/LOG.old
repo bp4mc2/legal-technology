@@ -1,0 +1,6 @@
+2026/06/08-08:55:49.934 6e84 Reusing MANIFEST C:\Users\Erwin Straver\projects\wendbare wetsuitvoering\.vscode\.edge-debug-profile\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/06/08-08:55:49.951 6e84 Recovering log #4
+2026/06/08-08:55:49.955 6e84 Reusing old log C:\Users\Erwin Straver\projects\wendbare wetsuitvoering\.vscode\.edge-debug-profile\Default\EdgeCoupons/coupons_data.db/000004.log 
+2026/06/08-08:55:50.118 6790 Level-0 table #8: started
+2026/06/08-08:55:50.124 6790 Level-0 table #8: 682768 bytes OK
+2026/06/08-08:55:50.129 6790 Delete type=0 #4

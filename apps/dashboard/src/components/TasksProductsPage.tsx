@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { apiFetch } from '../utils/api';
-
-const RELATIONS_CONTEXT_EVENT = 'lt-relations-context';
-const RELATIONS_COMMAND_EVENT = 'lt-relations-command';
+import { useRightRail } from './rightRail/RightRailContext';
 
 type TaskType = {
   label: string;
@@ -35,6 +33,7 @@ type TaskTypeView = {
 };
 
 const TasksProductsPage: React.FC = () => {
+  const { setRailState } = useRightRail();
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
   const [items, setItems] = React.useState<LegalTechnology[]>([]);
@@ -163,7 +162,14 @@ const TasksProductsPage: React.FC = () => {
 
         return a.label.localeCompare(b.label, undefined, { sensitivity: 'base' });
       })
-      .map(({ matchesSearch: _unused, ...rest }) => rest);
+      .map((view) => ({
+        label: view.label,
+        groupLabel: view.groupLabel,
+        groupOrder: view.groupOrder,
+        taskOrder: view.taskOrder,
+        technologies: view.technologies,
+        products: view.products,
+      }));
   }, [items, taskTypes, search]);
 
   const taskGroups = React.useMemo(
@@ -185,7 +191,10 @@ const TasksProductsPage: React.FC = () => {
     [taskTypesInSelectedGroup, selectedTaskType],
   );
 
-  const availableProducts = selectedTaskTypeEntry?.products || [];
+  const availableProducts = React.useMemo(
+    () => selectedTaskTypeEntry?.products || [],
+    [selectedTaskTypeEntry],
+  );
 
   const impactedTechnologies = React.useMemo(() => {
     const base = selectedTaskTypeEntry?.technologies || [];
@@ -213,11 +222,9 @@ const TasksProductsPage: React.FC = () => {
   }, [selectedTaskTypeEntry, availableProducts.length, selectedProduct, impactedTechnologies.length]);
 
   React.useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const detail = {
+    setRailState({
+      type: 'relations',
+      context: {
       route: 'tasks-products' as const,
       selection: {
         taskGroupLabel: selectedTaskGroup || undefined,
@@ -234,68 +241,37 @@ const TasksProductsPage: React.FC = () => {
       filters: {
         search,
       },
-    };
+      },
+      commands: {
+        selectFirstTaskgroup: () => {
+          const first = taskGroups[0] || '';
+          setSelectedTaskGroup(first);
+          setSelectedTaskType('');
+          setSelectedProduct('');
+        },
+        resetFilters: () => {
+          setSearch('');
+          setSelectedTaskGroup('');
+          setSelectedTaskType('');
+          setSelectedProduct('');
+        },
+      },
+    });
 
-    window.dispatchEvent(new CustomEvent(RELATIONS_CONTEXT_EVENT, { detail }));
-  }, [selectedTaskGroup, selectedTaskType, selectedProduct, impactedTechnologies, availableProducts.length, warnings.length, search]);
-
-  React.useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const handler = (event: Event) => {
-      const customEvent = event as CustomEvent<{
-        type?: 'selectFirstTaskgroup' | 'resetFilters' | 'selectTaskgroup' | 'selectTasktype' | 'selectProduct';
-        groupLabel?: string;
-        taskTypeLabel?: string;
-        productLabel?: string;
-      }>;
-
-      const payload = customEvent.detail;
-      if (!payload?.type) {
-        return;
-      }
-
-      if (payload.type === 'selectFirstTaskgroup') {
-        const first = taskGroups[0] || '';
-        setSelectedTaskGroup(first);
-        setSelectedTaskType('');
-        setSelectedProduct('');
-        return;
-      }
-
-      if (payload.type === 'resetFilters') {
-        setSearch('');
-        setSelectedTaskGroup('');
-        setSelectedTaskType('');
-        setSelectedProduct('');
-        return;
-      }
-
-      if (payload.type === 'selectTaskgroup') {
-        setSelectedTaskGroup(payload.groupLabel || '');
-        setSelectedTaskType('');
-        setSelectedProduct('');
-        return;
-      }
-
-      if (payload.type === 'selectTasktype') {
-        setSelectedTaskType(payload.taskTypeLabel || '');
-        setSelectedProduct('');
-        return;
-      }
-
-      if (payload.type === 'selectProduct') {
-        setSelectedProduct(payload.productLabel || '');
-      }
-    };
-
-    window.addEventListener(RELATIONS_COMMAND_EVENT, handler as EventListener);
     return () => {
-      window.removeEventListener(RELATIONS_COMMAND_EVENT, handler as EventListener);
+      setRailState(null);
     };
-  }, [taskGroups]);
+  }, [
+    selectedTaskGroup,
+    selectedTaskType,
+    selectedProduct,
+    impactedTechnologies,
+    availableProducts.length,
+    warnings.length,
+    search,
+    taskGroups,
+    setRailState,
+  ]);
 
   React.useEffect(() => {
     if (selectedTaskGroup && !taskGroups.includes(selectedTaskGroup)) {

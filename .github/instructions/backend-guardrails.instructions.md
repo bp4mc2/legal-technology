@@ -8,9 +8,9 @@ applyTo: "apps/{api,cli}/**/*.py"
 Use this instruction for backend changes in API, CLI, and GraphDB integration.
 
 ## Canonical References
-- Development commands: [../../docs/development-guide.md](../../docs/development-guide.md)
-- API boundaries and layering: [../../docs/architecture-api.md](../../docs/architecture-api.md)
-- CLI boundaries and responsibilities: [../../docs/architecture-cli.md](../../docs/architecture-cli.md)
+- Development commands: [../../apps/docs/development-guide.md](../../apps/docs/development-guide.md)
+- API boundaries and layering: [../../apps/docs/architecture-api.md](../../apps/docs/architecture-api.md)
+- CLI boundaries and responsibilities: [../../apps/docs/architecture-cli.md](../../apps/docs/architecture-cli.md)
 - High-level runtime map: [../../apps/README.md](../../apps/README.md)
 - If a referenced canonical doc is missing or contradicts the code, prefer the code as source of truth and flag the doc drift in PR notes.
 

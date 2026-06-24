@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Taxonomieën</title>
+
+  <script class="remove">
+    var respecConfig = {
+      specStatus: "base",
+      shortName: "juridische-technologie-taxonomieen",
+      editors: [
+        {
+          name: "Brattinga, Van Dijk, Straver"
+        }
+      ],
+      maxTocLevel: 4
+    };
+  </script>
+
+  <script
+    src="https://www.w3.org/Tools/respec/respec-w3c"
+    class="remove"
+    async></script>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="assets/js/ontology-diagram-data.js"></script>
+  <script src="assets/js/ontology-diagram.js"></script>
+  <script src="assets/js/technology-overview-filter.js"></script>
+
+  <style>
+    nav.doc-nav {
+        position: fixed;
+        top: 5rem;
+        right: 1rem;
+
+        width: 18rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+
+        border: 1px solid #d0d0d0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: #fff;
+
+        box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.16);
+    }
+
+    nav.doc-nav ul {
+        margin-bottom: 0;
+        padding-left: 1.2rem;
+    }
+
+    body {
+        padding-right: 21rem;
+    }
+
+    @media (max-width: 1000px) {
+        nav.doc-nav {
+            position: static;
+            width: auto;
+            max-height: none;
+            overflow: visible;
+        }
+
+        body {
+            padding-right: 0;
+        }
+    }
+
+    .page-description {
+      font-size: 1.05rem;
+    }
+
+    .diagram-container {
+      width: 100%;
+      max-width: 100%;
+      height: 650px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    #ontology-diagram {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .diagram-toolbar {
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .diagram-toolbar button {
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+    }    
+  </style>
+  <link rel="stylesheet" href="assets/css/lto-detail.css">
+</head>
+
+<body>
+  <section id="abstract">
+    <p>Overzicht van taxonomieën, begrippen en classificaties.</p>
+  </section>
+
+  <section id="sotd">
+    <p>
+      Onderdeel van de documentatie juridische technologie.
+      Gegenereerd op 2026-06-24.
+    </p>
+  </section>
+
+  <section>
+
+    <h1>Taxonomieën</h1>
+
+    <p class="page-description">
+      Overzicht van taxonomieën, begrippen en classificaties.
+    </p>
+
+    <nav class="doc-nav" aria-label="Documentatienavigatie">
+      <strong>Documentatieonderdelen</strong>
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        <li>
+          <a href="typologie.html">Typologie juridische technologieën</a>
+        </li>
+        <li>
+          <a href="catalogus.html">Catalogus juridische technologieën</a>
+        </li>
+        <li>
+          <strong>Taxonomieën</strong>
+        </li>
+        <li>
+          <a href="organisaties.html">Organisaties</a>
+        </li>
+        <li>
+          <a href="ontologie.html">Ontologie</a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+    <h2 id="taxonomieen-en-waardenlijsten">Taxonomieën en waardenlijsten</h2>
+<p>Deze sectie beschrijft de waardenlijsten die worden gebruikt om juridische technologieën te classificeren, zoals gebruiksstatus, licentievorm, functionaliteit, doelgroep en andere categorieën.</p>
+<p>Aantal taxonomieën: 9.</p>
+<h3 id="beschouwingsniveaus-beschouwingsniveaus">Beschouwingsniveaus {#beschouwingsniveaus}</h3>
+<p>Enumeratie van mogelijke beschouwingsniveaus voor juridische technologie.</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logisch</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Ontologisch</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Semantisch</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Technisch</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Tekstueel</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="functionaliteiten-functionaliteiten">Functionaliteiten {#functionaliteiten}</h3>
+<p>Enumeratie van mogelijke functionaliteiten voor juridische technologie.</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compliance ondersteuning</td>
+<td>Ondersteuning bij het aantoonbaar naleven van wet- en regelgeving en interne normen, inclusief controles, signalering en rapportage.</td>
+</tr>
+<tr>
+<td>Contract: analyse/redactie/beoordeling</td>
+<td>Functionaliteiten voor het analyseren van contractinhoud, het (mede) opstellen/redigeren van bepalingen en het beoordelen (review) van concepten en wijzigingen.</td>
+</tr>
+<tr>
+<td>Contract: geautomatiseerde contractgeneratie</td>
+<td>Het automatisch genereren of samenstellen van een contract op basis van invoer, templates en/of clausulebibliotheken.</td>
+</tr>
+<tr>
+<td>Geautomatiseerd beslissen</td>
+<td>Het (geheel of gedeeltelijk) nemen van besluiten door een geautomatiseerd systeem, al dan niet met rechtsgevolgen voor betrokkenen.</td>
+</tr>
+<tr>
+<td>Juridisch expertsysteem</td>
+<td>Een systeem dat juridische kennis (regels en/of heuristieken) toepast om te adviseren, te kwalificeren of beslissingen/uitkomsten te ondersteunen.</td>
+</tr>
+<tr>
+<td>Procespraktijk: opstellen van processtukken</td>
+<td>Het opstellen en redigeren van processtukken (zoals dagvaarding, verzoekschrift, conclusie, pleitnota en incidentele verzoeken).</td>
+</tr>
+<tr>
+<td>Procespraktijk: procesanalyse</td>
+<td>Analyse van procesvoering en procesgegevens (bijv. doorlooptijden, uitkomsten, proceshandelingen en patronen) ter ondersteuning van processtrategie en dossiersturing.</td>
+</tr>
+<tr>
+<td>Procespraktijk: voorspelling van rechterlijke uitspraak</td>
+<td>Het (statistisch of modelmatig) voorspellen van de waarschijnlijke uitkomst van een procedure of de inhoud/strekking van een rechterlijke uitspraak.</td>
+</tr>
+<tr>
+<td>Wetgeving: modellering van wet- en regelgeving</td>
+<td>Het formaliseren of modelleren van wet- en regelgeving (bijv. als regels, logica, metadata of semantische structuur) ten behoeve van interpretatie, toepassing of automatisering.</td>
+</tr>
+<tr>
+<td>Wetgeving: uitvoering van wet- en regelgeving</td>
+<td>Functionaliteiten gericht op uitvoering of implementatie van wettelijke verplichtingen en, waar bedoeld, ondersteuning bij toezicht en handhaving.</td>
+</tr>
+<tr>
+<td>Wetgeving: wetgevingsredactie</td>
+<td>Het (ondersteunen bij het) opstellen en redigeren van wet- en regelgeving, inclusief structuur, definities, verwijzingen en consistentie.</td>
+</tr>
+<tr>
+<td>Zoeken: jurisprudentie</td>
+<td>Het doorzoeken en ontsluiten van jurisprudentie (uitspraken), inclusief filtering, citaties, vindplaatsen en relevante overwegingen.</td>
+</tr>
+<tr>
+<td>Zoeken: wet- en regelgeving</td>
+<td>Het doorzoeken en ontsluiten van wet- en regelgeving, inclusief consolidaties, historische versies, artikelen/leden en kruisverwijzingen.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gebruikersgroepen-gebruikersgroepen">Gebruikersgroepen {#gebruikersgroepen}</h3>
+<p>Enumeratie van mogelijke gebruikersgroepen voor juridische technologie.</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Advocaten</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Beleidsmedewerkers</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Burgers en bedrijven</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Commerciële organisaties</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Juristen</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Opsporingsinstanties</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Rechtbanken</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Regelanalist</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Softwareontwikkelaars</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Uitvoeringsorganisaties</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Wetgevers</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gebruiksstatussen-gebruiksstatussen">Gebruiksstatussen {#gebruiksstatussen}</h3>
+<p>Enumeratie van mogelijke gebruiksstatussen voor juridische technologie.</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In gebruik</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Voorstel</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Work in progress</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="licentievormen-licentievormen">Licentievormen {#licentievormen}</h3>
+<p>Enumeratie van mogelijke licentievormen voor juridische technologie.</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gesloten</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Open onder voorwaarden</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Volledig open</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modelsoorten-modelsoorten">Modelsoorten {#modelsoorten}</h3>
+<p>Enumeratie van mogelijke modelsoorten voor juridische technologie.</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descriptief</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Normatief</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="normstatussen-normstatussen">Normstatussen {#normstatussen}</h3>
+<p>Enumeratie van mogelijke normstatussen voor juridische technologie.</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Best practice</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Idee</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Industrie</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Voorstel</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Wettelijk</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="relatietypen-relatietypen">Relatietypen {#relatietypen}</h3>
+<p>Enumeratie van mogelijke relatietypen tussen juridische technologieën.</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alternatief voor</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Gerelateerd aan</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Vervangt</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Vervolg op</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="technologietypen-technologietypen">Technologietypen {#technologietypen}</h3>
+<p>Enumeratie van mogelijke technologietypen voor juridische technologie.</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSL</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Machine learning</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Markup (annotatie)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Markup (publicatie)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Regelexecutie</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

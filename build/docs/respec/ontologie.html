@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Ontologie</title>
+
+  <script class="remove">
+    var respecConfig = {
+      specStatus: "base",
+      shortName: "juridische-technologie-ontologie",
+      editors: [
+        {
+          name: "Brattinga, Van Dijk, Straver"
+        }
+      ],
+      maxTocLevel: 4
+    };
+  </script>
+
+  <script
+    src="https://www.w3.org/Tools/respec/respec-w3c"
+    class="remove"
+    async></script>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="assets/js/ontology-diagram-data.js"></script>
+  <script src="assets/js/ontology-diagram.js"></script>
+  <script src="assets/js/technology-overview-filter.js"></script>
+
+  <style>
+    nav.doc-nav {
+        position: fixed;
+        top: 5rem;
+        right: 1rem;
+
+        width: 18rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+
+        border: 1px solid #d0d0d0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: #fff;
+
+        box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.16);
+    }
+
+    nav.doc-nav ul {
+        margin-bottom: 0;
+        padding-left: 1.2rem;
+    }
+
+    body {
+        padding-right: 21rem;
+    }
+
+    @media (max-width: 1000px) {
+        nav.doc-nav {
+            position: static;
+            width: auto;
+            max-height: none;
+            overflow: visible;
+        }
+
+        body {
+            padding-right: 0;
+        }
+    }
+
+    .page-description {
+      font-size: 1.05rem;
+    }
+
+    .diagram-container {
+      width: 100%;
+      max-width: 100%;
+      height: 650px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    #ontology-diagram {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .diagram-toolbar {
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .diagram-toolbar button {
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+    }    
+  </style>
+  <link rel="stylesheet" href="assets/css/lto-detail.css">
+</head>
+
+<body>
+  <section id="abstract">
+    <p>Technische beschrijving van klassen, eigenschappen en SHACL-shapes.</p>
+  </section>
+
+  <section id="sotd">
+    <p>
+      Onderdeel van de documentatie juridische technologie.
+      Gegenereerd op 2026-06-24.
+    </p>
+  </section>
+
+  <section>
+
+    <h1>Ontologie</h1>
+
+    <p class="page-description">
+      Technische beschrijving van klassen, eigenschappen en SHACL-shapes.
+    </p>
+
+    <nav class="doc-nav" aria-label="Documentatienavigatie">
+      <strong>Documentatieonderdelen</strong>
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        <li>
+          <a href="typologie.html">Typologie juridische technologieën</a>
+        </li>
+        <li>
+          <a href="catalogus.html">Catalogus juridische technologieën</a>
+        </li>
+        <li>
+          <a href="begrippenkader.html">Begrippenkader</a>
+        </li>
+        <li>
+          <a href="organisaties.html">Organisaties</a>
+        </li>
+        <li>
+          <strong>Ontologie</strong>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+    <h2 id="ontologie">Ontologie</h2>
+<p>Deze sectie beschrijft de onderliggende ontologie waarmee juridische technologieën worden gemodelleerd.</p>
+<p>De ontologie bevat klassen, objecteigenschappen, datatype-eigenschappen en SHACL-shapes. De inhoud van deze sectie is automatisch gegenereerd uit de TBox.</p>
+<p>Ontologieversie: <code>0.2.0</code></p>
+<p>Datum ontologie: <code>2026-03-31</code></p>
+<p>Deze ontologie beschrijft juridische technologieën, hun eigenschappen, relaties en relevante enumeraties.</p>
+<h3 id="klassen">Klassen</h3>
+<p>De volgende klassen zijn opgenomen in de ontologie.</p>
+<h4 id="bronverwijzing-klasse-bronverwijzing">Bronverwijzing {#klasse-bronverwijzing}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Bronverwijzing</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="documentatie-klasse-documentatie">Documentatie {#klasse-documentatie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Documentatie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="juridische-technologie-klasse-juridische-technologie">Juridische technologie {#klasse-juridische-technologie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="methode-klasse-methode">Methode {#klasse-methode}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Methode</code></td>
+</tr>
+<tr>
+<td>Specialisatie van</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ondersteuningsvorm-klasse-ondersteuningsvorm">Ondersteuningsvorm {#klasse-ondersteuningsvorm}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Ondersteuningsvorm</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="organisatie-klasse-organisatie">Organisatie {#klasse-organisatie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Organisatie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="relatie-klasse-relatie">Relatie {#klasse-relatie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Relatie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="standaard-klasse-standaard">Standaard {#klasse-standaard}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Standaard</code></td>
+</tr>
+<tr>
+<td>Specialisatie van</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="taakinvulling-klasse-taakinvulling">Taakinvulling {#klasse-taakinvulling}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Taakinvulling</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="tool-klasse-tool">Tool {#klasse-tool}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Tool</code></td>
+</tr>
+<tr>
+<td>Specialisatie van</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="versiebeschrijving-klasse-versiebeschrijving">Versiebeschrijving {#klasse-versiebeschrijving}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#Versiebeschrijving</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="eigenschappen-relaties">Eigenschappen (relaties)</h3>
+<p>Deze sectie bevat de objecteigenschappen uit de ontologie. Objecteigenschappen leggen relaties tussen resources, bijvoorbeeld tussen een juridische technologie en een organisatie, status, taak of andere technologie.</p>
+<h4 id="beheerder-objecteigenschap-beheerder">beheerder {#objecteigenschap-beheerder}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#beheerder</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>Organisatie <br><code>http://bp4mc2.org/lto#Organisatie</code></td>
+</tr>
+</tbody>
+</table>
+<p>Predicate tussen Methode/Standaard en een herbruikbare Organisatie-resource.</p>
+<h4 id="beoogde-gebruikers-objecteigenschap-beoogde-gebruikers">beoogde gebruikers {#objecteigenschap-beoogde-gebruikers}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#beoogdeGebruikers</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="beschouwingsniveau-objecteigenschap-beschouwingsniveau">beschouwingsniveau {#objecteigenschap-beschouwingsniveau}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#beschouwingsniveau</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Ondersteuningsvorm <br><code>http://bp4mc2.org/lto#Ondersteuningsvorm</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="bron-objecteigenschap-bron">bron {#objecteigenschap-bron}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#bron</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>Bronverwijzing <br><code>http://bp4mc2.org/lto#Bronverwijzing</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="documentatie-objecteigenschap-documentatie">documentatie {#objecteigenschap-documentatie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#documentatie</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>Documentatie <br><code>http://bp4mc2.org/lto#Documentatie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="geboden-functionaliteit-objecteigenschap-geboden-functionaliteit">geboden functionaliteit {#objecteigenschap-geboden-functionaliteit}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#gebodenFunctionaliteit</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="gebruiksstatus-objecteigenschap-gebruiksstatus">gebruiksstatus {#objecteigenschap-gebruiksstatus}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#gebruiksstatus</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="gerelateerde-technologie-objecteigenschap-gerelateerde-technologie">gerelateerde technologie {#objecteigenschap-gerelateerde-technologie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#gerelateerdeTechnologie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="geschikt-voor-taak-objecteigenschap-geschikt-voor-taak">geschikt voor taak {#objecteigenschap-geschikt-voor-taak}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#geschiktVoorTaak</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>Taakinvulling <br><code>http://bp4mc2.org/lto#Taakinvulling</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="input-product-objecteigenschap-input-product">input product {#objecteigenschap-input-product}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#inputProduct</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<p>Afgeleide inverse relatie tussen een taaktype en een product dat als input dient voor die taak. Deze relatie is bedoeld voor inferentie en queries; de canonieke opslagrichting loopt via lto:inputVoorTaak.</p>
+<h4 id="input-voor-taak-objecteigenschap-input-voor-taak">input voor taak {#objecteigenschap-input-voor-taak}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#inputVoorTaak</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<p>Canonieke opslagrelatie tussen een product (als skos:Concept in lto:BegrippenkaderProducten) en een taaktype dat het product als input nodig heeft.</p>
+<h4 id="leverancier-objecteigenschap-leverancier">leverancier {#objecteigenschap-leverancier}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#leverancier</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>Organisatie <br><code>http://bp4mc2.org/lto#Organisatie</code></td>
+</tr>
+</tbody>
+</table>
+<p>Predicate tussen Tool en een herbruikbare Organisatie-resource.</p>
+<h4 id="licentievorm-objecteigenschap-licentievorm">licentievorm {#objecteigenschap-licentievorm}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#licentievorm</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="modelsoort-objecteigenschap-modelsoort">modelsoort {#objecteigenschap-modelsoort}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#modelsoort</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Ondersteuningsvorm <br><code>http://bp4mc2.org/lto#Ondersteuningsvorm</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="normstatus-objecteigenschap-normstatus">normstatus {#objecteigenschap-normstatus}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#normstatus</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Standaard <br><code>http://bp4mc2.org/lto#Standaard</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://bp4mc2.org/lt#Normstatussen</code></td>
+</tr>
+</tbody>
+</table>
+<p>Predicate tussen Standaard en een normstatus uit de Normstatussen-lijst.</p>
+<h4 id="ondersteuning-voor-objecteigenschap-ondersteuning-voor">ondersteuning voor {#objecteigenschap-ondersteuning-voor}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#ondersteuningVoor</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="output-product-objecteigenschap-output-product">output product {#objecteigenschap-output-product}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#outputProduct</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<p>Afgeleide inverse relatie tussen een taaktype en een product dat als output ontstaat uit die taak. Deze relatie is bedoeld voor inferentie en queries; de canonieke opslagrichting loopt via lto:outputVanTaak.</p>
+<h4 id="output-van-taak-objecteigenschap-output-van-taak">output van taak {#objecteigenschap-output-van-taak}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#outputVanTaak</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<p>Canonieke opslagrelatie tussen een product (als skos:Concept in lto:BegrippenkaderProducten) en een taaktype dat het product als output produceert.</p>
+<h4 id="type-relatie-objecteigenschap-type-relatie">type relatie {#objecteigenschap-type-relatie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#typeRelatie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://bp4mc2.org/lt#Relatietypen</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="type-technologie-objecteigenschap-type-technologie">type technologie {#objecteigenschap-type-technologie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#typeTechnologie</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="volgt-op-objecteigenschap-volgt-op">volgt op {#objecteigenschap-volgt-op}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/ltt#volgtOp</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+<tr>
+<td>Bereik</td>
+<td>None <br><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="eigenschappen-waarden">Eigenschappen (waarden)</h3>
+<p>Deze sectie bevat de datatype-eigenschappen uit de ontologie. Datatype-eigenschappen leggen waarden vast, zoals tekst, datum of andere letterlijke waarden.</p>
+<h4 id="beoogd-gebruik-datatypeeigenschap-beoogd-gebruik">beoogd gebruik {#datatypeeigenschap-beoogd-gebruik}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#beoogdGebruik</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#markdown</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="beschrijving-datatypeeigenschap-beschrijving">beschrijving {#datatypeeigenschap-beschrijving}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#beschrijvingRelatie</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="bijgewerkt-op-datatypeeigenschap-bijgewerkt-op">bijgewerkt op {#datatypeeigenschap-bijgewerkt-op}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#bijgewerktOp</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#date</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="contactinformatie-datatypeeigenschap-contactinformatie">contactinformatie {#datatypeeigenschap-contactinformatie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#contactinformatie</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Organisatie <br><code>http://bp4mc2.org/lto#Organisatie</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="naam-datatypeeigenschap-naam">naam {#datatypeeigenschap-naam}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#naam</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="naam-datatypeeigenschap-naam_1">naam {#datatypeeigenschap-naam}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#naamOrganisatie</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Organisatie <br><code>http://bp4mc2.org/lto#Organisatie</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="omschrijving-datatypeeigenschap-omschrijving">omschrijving {#datatypeeigenschap-omschrijving}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#omschrijving</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="onderdelen-datatypeeigenschap-onderdelen">onderdelen {#datatypeeigenschap-onderdelen}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#onderdelen</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#markdown</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ontwikkeling-en-beheer-datatypeeigenschap-ontwikkeling-en-beheer">ontwikkeling en beheer {#datatypeeigenschap-ontwikkeling-en-beheer}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#ontwikkelingEnBeheer</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#markdown</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="toegevoegde-waarde-datatypeeigenschap-toegevoegde-waarde">toegevoegde waarde {#datatypeeigenschap-toegevoegde-waarde}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#toegevoegdeWaarde</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#markdown</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="versiedatum-datatypeeigenschap-versiedatum">versiedatum {#datatypeeigenschap-versiedatum}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#versiedatum</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Versiebeschrijving <br><code>http://bp4mc2.org/lto#Versiebeschrijving</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#date</code></td>
+</tr>
+</tbody>
+</table>
+<p>Datum waarop deze versie van de technologie is uitgebracht</p>
+<h4 id="versienummer-datatypeeigenschap-versienummer">versienummer {#datatypeeigenschap-versienummer}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#versienummer</code></td>
+</tr>
+<tr>
+<td>Domein</td>
+<td>Versiebeschrijving <br><code>http://bp4mc2.org/lto#Versiebeschrijving</code></td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>None <br><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+</tr>
+</tbody>
+</table>
+<p>Het versienummer van deze technologieversie, bijv. '1.0', '2.1', etc.</p>
+<h3 id="shacl-shapes">SHACL-shapes</h3>
+<p>Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de ontologie te valideren. Per shape worden de doelklasse en de bijbehorende property-shapes weergegeven.</p>
+<h4 id="beschouwingsniveaus-shape-beschouwingsniveaus">Beschouwingsniveaus {#shape-beschouwingsniveaus}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#BeschouwingsniveausShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb51</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb51</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bronverwijzing-shape-bronverwijzing">Bronverwijzing {#shape-bronverwijzing}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#BronverwijzingShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Bronverwijzing <br><code>http://bp4mc2.org/lto#Bronverwijzing</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_1">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>titel</td>
+<td><code>http://purl.org/dc/terms/title</code></td>
+<td>max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>locatie</td>
+<td><code>http://xmlns.com/foaf/0.1/page</code></td>
+<td>max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#anyURI</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>verwijzing</td>
+<td><code>http://purl.org/dc/terms/bibliographicCitation</code></td>
+<td>max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="documentatie-shape-documentatie">Documentatie {#shape-documentatie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#DocumentatieShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Documentatie <br><code>http://bp4mc2.org/lto#Documentatie</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_2">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Beoogd gebruik</td>
+<td><code>http://bp4mc2.org/lto#beoogdGebruik</code></td>
+<td>max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#markdown</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Toegevoegde waarde</td>
+<td><code>http://bp4mc2.org/lto#toegevoegdeWaarde</code></td>
+<td>max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#markdown</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>onderdelen</td>
+<td><code>http://bp4mc2.org/lto#onderdelen</code></td>
+<td>max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#markdown</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Ontwikkeling en beheer</td>
+<td><code>http://bp4mc2.org/lto#ontwikkelingEnBeheer</code></td>
+<td>max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#markdown</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="functionaliteiten-shape-functionaliteiten">Functionaliteiten {#shape-functionaliteiten}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#FunctionaliteitenShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_3">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb45</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb45</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gebruikersgroepen-shape-gebruikersgroepen">Gebruikersgroepen {#shape-gebruikersgroepen}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#GebruikersgroepenShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_4">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb41</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb41</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gebruiksstatussen-shape-gebruiksstatussen">Gebruiksstatussen {#shape-gebruiksstatussen}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#GebruiksstatusShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_5">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb43</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb43</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="juridische-technologie-shape-juridische-technologie">Juridische technologie {#shape-juridische-technologie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#JuridischeTechnologieShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Juridische technologie <br><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_6">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>naam</td>
+<td><code>http://bp4mc2.org/lto#naam</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+<td>De naam van de technologie</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>omschrijving</td>
+<td><code>http://bp4mc2.org/lto#omschrijving</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+<td>Een omschrijving van de technologie</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>gebruiksstatus</td>
+<td><code>http://bp4mc2.org/lto#gebruiksstatus</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://bp4mc2.org/lto#GebruiksstatusShape</code></td>
+<td>De status  van het gebruik van de technologie (nog in ontwikkeling, een voorstel, in gebruik, etc)</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>licentievorm</td>
+<td><code>http://bp4mc2.org/lto#licentievorm</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://bp4mc2.org/lto#LicentievormenShape</code></td>
+<td>De mate waarin de technologie vrij is te gebruiken</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>geboden functionaliteit</td>
+<td><code>http://bp4mc2.org/lto#gebodenFunctionaliteit</code></td>
+<td></td>
+<td><code>http://bp4mc2.org/lto#FunctionaliteitenShape</code></td>
+<td>Het soort functionaliteit dat de technologie biedt</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>beoogde gebruikers</td>
+<td><code>http://bp4mc2.org/lto#beoogdeGebruikers</code></td>
+<td></td>
+<td><code>http://bp4mc2.org/lto#GebruikersgroepenShape</code></td>
+<td>De groep van gebruikers die van deze technologie gebruik zou kunnen maken</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>bijgewerkt op</td>
+<td><code>http://bp4mc2.org/lto#bijgewerktOp</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#date</code></td>
+<td>De datum waarop de beschrijving van de technologie voor het laatst is bijgewerkt</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>ondersteuning voor</td>
+<td><code>http://bp4mc2.org/lto#ondersteuningVoor</code></td>
+<td></td>
+<td><code>http://bp4mc2.org/lto#OndersteuningsvormShape</code></td>
+<td>Het beschouwingsniveau en de modelsoort waarvoor de technologie ondersteuning biedt</td>
+</tr>
+<tr>
+<td style="text-align: right;">100</td>
+<td>geschikt voor taak</td>
+<td><code>http://bp4mc2.org/lto#geschiktVoorTaak</code></td>
+<td>min. 1</td>
+<td><code>http://bp4mc2.org/lto#Taakinvulling</code></td>
+<td>Relateert de technologie aan het taaktype waarvoor de technologie kan worden ingezet</td>
+</tr>
+<tr>
+<td style="text-align: right;">101</td>
+<td>beschrijving</td>
+<td><code>http://bp4mc2.org/lto#documentatie</code></td>
+<td>max. 1</td>
+<td><code>http://bp4mc2.org/lto#DocumentatieShape</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">102</td>
+<td>aanvullende documentatie</td>
+<td><code>http://bp4mc2.org/lto#bron</code></td>
+<td></td>
+<td><code>http://bp4mc2.org/lto#Bronverwijzing</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">103</td>
+<td>relatie</td>
+<td><code>http://bp4mc2.org/lto#relatie</code></td>
+<td></td>
+<td><code>http://bp4mc2.org/lto#Relatie</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">104</td>
+<td>versiebeschrijving</td>
+<td><code>http://bp4mc2.org/lto#versiebeschrijving</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://bp4mc2.org/lto#VersiebeschrijvingShape</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="licentievormen-shape-licentievormen">Licentievormen {#shape-licentievormen}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#LicentievormenShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_7">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb39</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb39</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="methode-shape-methode">Methode {#shape-methode}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#MethodeShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Methode <br><code>http://bp4mc2.org/lto#Methode</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_8">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>beheerder</td>
+<td><code>http://bp4mc2.org/lto#beheerder</code></td>
+<td>max. 1</td>
+<td><code>http://bp4mc2.org/lto#Organisatie</code></td>
+<td>De organisatie die verantwoordelijk is voor het beheer van de methode.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="modelsoorten-shape-modelsoorten">Modelsoorten {#shape-modelsoorten}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#ModelsoortenShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_9">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb53</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb53</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="normstatussen-shape-normstatussen">Normstatussen {#shape-normstatussen}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#NormstatussenShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_10">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb49</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb49</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ondersteuningsvorm-shape-ondersteuningsvorm">Ondersteuningsvorm {#shape-ondersteuningsvorm}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#OndersteuningsvormShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Ondersteuningsvorm <br><code>http://bp4mc2.org/lto#Ondersteuningsvorm</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_11">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>beschouwingsniveau</td>
+<td><code>http://bp4mc2.org/lto#beschouwingsniveau</code></td>
+<td>max. 1</td>
+<td><code>http://bp4mc2.org/lto#BeschouwingsniveausShape</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>modelsoort</td>
+<td><code>http://bp4mc2.org/lto#modelsoort</code></td>
+<td>max. 1</td>
+<td><code>http://bp4mc2.org/lto#ModelsoortenShape</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="organisatie-shape-organisatie">Organisatie {#shape-organisatie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#OrganisatieShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Organisatie <br><code>http://bp4mc2.org/lto#Organisatie</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_12">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>naam</td>
+<td><code>http://bp4mc2.org/lto#naamOrganisatie</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+<td>De naam van de organisatie</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>contactinformatie</td>
+<td><code>http://bp4mc2.org/lto#contactinformatie</code></td>
+<td>max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+<td>De contactinformatie van de organisatie</td>
+</tr>
+</tbody>
+</table>
+<h4 id="producten-shape-producten">Producten {#shape-producten}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#ProductenShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_13">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>inScheme</td>
+<td><code>http://www.w3.org/2004/02/skos/core#inScheme</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="relatie-shape-relatie">Relatie {#shape-relatie}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#RelatieShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Relatie <br><code>http://bp4mc2.org/lto#Relatie</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_14">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>type relatie</td>
+<td><code>http://bp4mc2.org/lto#typeRelatie</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://bp4mc2.org/lto#RelatietypenShape</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>beschrijving</td>
+<td><code>http://bp4mc2.org/lto#beschrijvingRelatie</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>gerelateerde technologie</td>
+<td><code>http://bp4mc2.org/lto#gerelateerdeTechnologie</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://bp4mc2.org/lto#JuridischeTechnologie</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="relatietypen-shape-relatietypen">Relatietypen {#shape-relatietypen}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#RelatietypenShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_15">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb61</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb61</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="standaard-shape-standaard">Standaard {#shape-standaard}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#StandaardShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Standaard <br><code>http://bp4mc2.org/lto#Standaard</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_16">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>beheerder</td>
+<td><code>http://bp4mc2.org/lto#beheerder</code></td>
+<td>max. 1</td>
+<td><code>http://bp4mc2.org/lto#Organisatie</code></td>
+<td>De organisatie die verantwoordelijk is voor het beheer van de standaard.</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>normstatus</td>
+<td><code>http://bp4mc2.org/lto#normstatus</code></td>
+<td>max. 1</td>
+<td><code>http://bp4mc2.org/lto#NormstatussenShape</code></td>
+<td>De status van de standaard (bijv. idee, voorstel, best practice, wettelijk).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="taak-productrelaties-shape-taak-productrelaties">Taak-productrelaties {#shape-taak-productrelaties}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#TaakProductRelatiesShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_17">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>inScheme</td>
+<td><code>http://www.w3.org/2004/02/skos/core#inScheme</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb57</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb57</code></td>
+<td></td>
+<td><code>http://bp4mc2.org/lto#ProductenShape</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb59</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb59</code></td>
+<td></td>
+<td><code>http://bp4mc2.org/lto#ProductenShape</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="taakinvulling-shape-taakinvulling">Taakinvulling {#shape-taakinvulling}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#TaakinvullingShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Taakinvulling <br><code>http://bp4mc2.org/lto#Taakinvulling</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_18">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>omschrijving</td>
+<td><code>http://bp4mc2.org/lto#omschrijving</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+<td>Een omschrijving hoe de taak wordt ingevuld met behulp van de betreffende technologie</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>taaktype</td>
+<td><code>http://bp4mc2.org/lto#taaktype</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://bp4mc2.org/lto#TaaktypenShape</code></td>
+<td>Het type taak van deze taakinvulling</td>
+</tr>
+</tbody>
+</table>
+<h4 id="taaktypen-shape-taaktypen">Taaktypen {#shape-taaktypen}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#TaaktypenShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_19">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>inScheme</td>
+<td><code>http://www.w3.org/2004/02/skos/core#inScheme</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="technologietypen-shape-technologietypen">Technologietypen {#shape-technologietypen}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#TechnologietypenShape</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_20">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">None</td>
+<td>n298bd83da4a643ab9449aef8a5b73f6eb47</td>
+<td><code>n298bd83da4a643ab9449aef8a5b73f6eb47</code></td>
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tool-shape-tool">Tool {#shape-tool}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#ToolShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Tool <br><code>http://bp4mc2.org/lto#Tool</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_21">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>leverancier</td>
+<td><code>http://bp4mc2.org/lto#leverancier</code></td>
+<td>max. 1</td>
+<td><code>http://bp4mc2.org/lto#Organisatie</code></td>
+<td>De organisatie die de tool levert.</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>type technologie</td>
+<td><code>http://bp4mc2.org/lto#typeTechnologie</code></td>
+<td></td>
+<td><code>http://bp4mc2.org/lto#TechnologietypenShape</code></td>
+<td>Het type technologie van de tool (bijv. Markup, DSL, Machine learning).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="versiebeschrijving-shape-versiebeschrijving">Versiebeschrijving {#shape-versiebeschrijving}</h4>
+<table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td><code>http://bp4mc2.org/lto#VersiebeschrijvingShape</code></td>
+</tr>
+<tr>
+<td>Doelklasse</td>
+<td>Versiebeschrijving <br><code>http://bp4mc2.org/lto#Versiebeschrijving</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="eigenschappen_22">Eigenschappen</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Volgorde</th>
+<th>Eigenschap</th>
+<th>Pad</th>
+<th>Verplichting</th>
+<th>Waardetype</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>versienummer</td>
+<td><code>http://bp4mc2.org/lto#versienummer</code></td>
+<td>min. 1, max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>versiedatum</td>
+<td><code>http://bp4mc2.org/lto#versiedatum</code></td>
+<td>max. 1</td>
+<td><code>http://www.w3.org/2001/XMLSchema#date</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+
+    <section id="class-diagram">
+<h2>Class diagram</h2>
+
+<div class="diagram-toolbar">
+  <button type="button" id="diagram-fit">Fit</button>
+  <button type="button" id="diagram-layout">Layout opnieuw</button>
+</div>
+
+<div class="diagram-container" id="diagram-container">
+  <div id="ontology-diagram"></div>
+</div>
+
+<aside class="note">
+  Dit diagram wordt interactief in de browser opgebouwd uit de RDF/OWL-gegevens van de ontologie.
+</aside>
+
+</section>
+
+
+</body>
+</html>

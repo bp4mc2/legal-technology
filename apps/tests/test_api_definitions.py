@@ -18,8 +18,8 @@ def test_add_definition(client):
         'label': 'Testdefinitie',
         'definition': 'Een testdefinitie.'
     }
-    response = client.post('/api/definitions', json=data)
-    assert response.status_code in (201, 400)  # 400 als GraphDB niet bereikbaar of data al bestaat
+    response = client.post('/api/definitions', json=data, headers={'X-User-Role': 'Proposer'})
+    assert response.status_code in (201, 503)  # 503 als GraphDB niet bereikbaar
 
 def test_get_definition(client):
     # Dit test alleen de API, niet of de definitie echt bestaat
@@ -35,7 +35,7 @@ def test_update_definition(client):
         'language': 'nl'
     }
     import time
-    client.post('/api/definitions', json=create_data)
+    client.post('/api/definitions', json=create_data, headers={'X-User-Role': 'Proposer'})
     time.sleep(0.5)
     # Update de definitie (inclusief language veld)
     update_data = {
@@ -43,5 +43,5 @@ def test_update_definition(client):
         'definition': 'Aangepaste testdefinitie.',
         'language': 'nl'
     }
-    response = client.put('/api/definitions/http://example.org/def/test', json=update_data)
+    response = client.put('/api/definitions/http://example.org/def/test', json=update_data, headers={'X-User-Role': 'Moderator'})
     assert response.status_code in (200, 404)

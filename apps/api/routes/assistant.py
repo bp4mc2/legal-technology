@@ -1,42 +1,11 @@
 """
 API routes for the natural language assistant.
 """
+from flask import Flask, jsonify, request
 from flask_smorest import Blueprint, abort
 from marshmallow import Schema, fields
-from api.services.assistant_service import process_natural_language_query, get_assistant_status
-
-# Define schemas
-class AssistantQuerySchema(Schema):
-  """Schema for assistant queries"""
-  query = fields.Str(required=True, description="Natural language query")
-  language = fields.Str(
-    load_default='nl',
-    description="Language code: 'nl' for Dutch, 'en' for English"
-  )
-
-
-class AssistantResponseSchema(Schema):
-  """Schema for assistant responses"""
-  intent = fields.Str(description="Detected intent (search, add, edit, delete, show, stats, info, error)")
-  action = fields.Str(description="Action to perform")
-  parameters = fields.Dict(description="Extracted parameters")
-  summary = fields.Str(description="Human-readable summary")
-  error = fields.Str(description="Error message if applicable")
-  timestamp = fields.Str(description="ISO timestamp of response")
-  language = fields.Str(description="Language of the response")
-  provider = fields.Str(description="Configured runtime provider (docker or ollama)")
-
-
-class AssistantStatusSchema(Schema):
-  """Schema for assistant status"""
-  status = fields.Str(description="Overall status (ok or error)")
-  provider = fields.Str(description="Runtime provider (docker or ollama)")
-  runtime = fields.Str(description="Runtime status (running or not_available)")
-  model = fields.Str(description="Configured model name")
-  model_available = fields.Bool(description="Whether Mistral model is available")
-  models = fields.List(fields.Str(), description="List of available models")
-  message = fields.Str(description="Additional message or error details")
-
+# from api.models.assistant import AssistantQuerySchema, AssistantResponseSchema, AssistantStatusSchema
+from api.services.assistant_service import get_assistant_status, list_skills, process_assistant_query
 
 # Create blueprint
 blp = Blueprint(
@@ -48,31 +17,71 @@ blp = Blueprint(
 
 
 @blp.route('/status', methods=['GET'])
-@blp.response(200, AssistantStatusSchema)
-def get_status():
-  """Check if the assistant runtime is available"""
-  return get_assistant_status()
+async def assistant_status():
+    """Async status check for assistant runtime and model availability."""
 
+    force_refresh = request.args.get("refresh") in {"1", "true", "yes"}
+
+    result = await get_assistant_status(
+        force_refresh=force_refresh,
+    )
+
+    return jsonify(result)
+
+
+@blp.route('/skills', methods=['GET'])
+def list_all_skills():
+    q = request.args.get('q', '').strip().lower()
+    skills = list_skills()
+
+    if q:
+        skills = {
+            skill.get("name", ""): skill
+            for skill in skills
+            if q in skill.get("name", "").lower()
+            or q in str(skill.get("meta", {}).get("description", "")).lower()
+        }
+
+    return jsonify(skills)
+
+
+# sync route for processing assistant queries - this can be extended to async if needed
 
 @blp.route('/ask', methods=['POST'])
-@blp.arguments(AssistantQuerySchema)
-@blp.response(200, AssistantResponseSchema)
-def ask(data):
+# @blp.arguments(AssistantQuerySchema)
+# @blp.response(200, AssistantResponseSchema)
+async def ask():
   """
   Process a natural language query and return structured action.
   
   Supports both Dutch and English queries.
   """
+  data = request.get_json(silent=True) or {}
+  
   query = data.get('query', '')
   language = data.get('language', 'nl')
-  
+  context = data.get('context', {})
+    
   if language not in ['nl', 'en']:
     abort(400, message="Language must be 'nl' (Dutch) or 'en' (English)")
   
-  result = process_natural_language_query(query, language)
+  # result = process_natural_language_query(query, language)
+  
+  result = await process_assistant_query(query, language, context)
+  
+  # result = {
+  #   'intent': 'search',
+  #   'action': 'search_concept',
+  #   'parameters': {
+  #     'concept': query
+  #   },
+  #   'summary': f"Search for concept matching '{query}' in language '{language}'",
+  #   'language': language,
+  #   'provider': 'docker'
+  # }
   
   # Check for errors
-  if result.get('intent') == 'error':
-    return result, 503 if 'not available' in result.get('error', '').lower() else 400
+  # if result.get('intent') == 'error':
+  #   return result, 503 if 'not available' in result.get('error', '').lower() else 400
   
-  return result
+  return jsonify(result)

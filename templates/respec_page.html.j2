@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }}</title>
+
+  <script class="remove">
+    var respecConfig = {
+      specStatus: "base",
+      shortName: "juridische-technologie-{{ page.key }}",
+      editors: [
+        {
+          name: "{{ metadata.creator or 'Onbekend' }}"
+        }
+      ],
+      maxTocLevel: 4
+    };
+  </script>
+
+  <script
+    src="https://www.w3.org/Tools/respec/respec-w3c"
+    class="remove"
+    async></script>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="assets/js/ontology-diagram-data.js"></script>
+  <script src="assets/js/ontology-diagram.js"></script>
+  <script src="assets/js/technology-overview-filter.js"></script>
+
+  <style>
+    nav.doc-nav {
+        position: fixed;
+        top: 5rem;
+        right: 1rem;
+
+        width: 18rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+
+        border: 1px solid #d0d0d0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: #fff;
+
+        box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.16);
+    }
+
+    nav.doc-nav ul {
+        margin-bottom: 0;
+        padding-left: 1.2rem;
+    }
+
+    body {
+        padding-right: 21rem;
+    }
+
+    @media (max-width: 1000px) {
+        nav.doc-nav {
+            position: static;
+            width: auto;
+            max-height: none;
+            overflow: visible;
+        }
+
+        body {
+            padding-right: 0;
+        }
+    }
+
+    .page-description {
+      font-size: 1.05rem;
+    }
+
+    .diagram-container {
+      width: 100%;
+      max-width: 100%;
+      height: 650px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    #ontology-diagram {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .diagram-toolbar {
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .diagram-toolbar button {
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+    }    
+  </style>
+  <link rel="stylesheet" href="assets/css/lto-detail.css">
+</head>
+
+<body>
+  <section id="abstract">
+    <p>{{ page.description }}</p>
+  </section>
+
+  <section id="sotd">
+    <p>
+      Onderdeel van de documentatie juridische technologie.
+      Gegenereerd op {{ generated_on }}.
+    </p>
+  </section>
+
+  <section>
+
+    {% set visible_heading = page.heading or page.title %}
+    {% if visible_heading %}
+    <h1>{{ visible_heading }}</h1>
+    {% endif %}
+
+    <p class="page-description">
+      {{ page.description }}
+    </p>
+
+    <nav class="doc-nav" aria-label="Documentatienavigatie">
+      <strong>Documentatieonderdelen</strong>
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        {% for item in pages %}
+        <li>
+          {% if item.key == page.key %}
+          <strong>{{ item.title }}</strong>
+          {% else %}
+          <a href="{{ item.output_file }}">{{ item.title }}</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </section>
+
+  {% for include_item in page.include_files %}
+    {% if include_item.content is defined %}
+    {{ include_item.content }}
+
+    {% endif %}
+  {% endfor %}
+</body>
+</html>

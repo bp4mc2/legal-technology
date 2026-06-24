@@ -1,0 +1,188 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+@prefix lto: <http://bp4mc2.org/lto#>.
+@prefix ltg: <http://bp4mc2.org/ltg#>.
+
+<http://bp4mc2.org/ltg#ontology>
+  a owl:Ontology ;
+  dct:title "Governance en autorisatie ontologie"@nl ;
+  dct:creator "Brattinga, Van Dijk, Straver"@nl ;
+  dct:created "2026-06-02"^^xsd:date ;
+  owl:versionInfo "0.1.0" ;
+  rdfs:comment "Ontologie voor voorstellen, opmerkingen, audit events en role-based autorisatie."@nl ;
+  owl:imports <http://bp4mc2.org/lt#ontology> .
+
+ltg:Voorstel a owl:Class ;
+  rdfs:label "Voorstel"@nl .
+
+ltg:Opmerking a owl:Class ;
+  rdfs:label "Opmerking"@nl .
+
+ltg:AuditEvent a owl:Class ;
+  rdfs:label "Audit event"@nl .
+
+ltg:Rol a owl:Class ;
+  rdfs:label "Rol"@nl .
+
+ltg:Permissie a owl:Class ;
+  rdfs:label "Permissie"@nl .
+
+ltg:voorstelId a owl:DatatypeProperty ;
+  rdfs:label "voorstel id"@nl ;
+  rdfs:domain ltg:Voorstel ;
+  rdfs:range xsd:string .
+
+ltg:voorstelTitel a owl:DatatypeProperty ;
+  rdfs:label "voorstel titel"@nl ;
+  rdfs:domain ltg:Voorstel ;
+  rdfs:range xsd:string .
+
+ltg:voorstelOmschrijving a owl:DatatypeProperty ;
+  rdfs:label "voorstel omschrijving"@nl ;
+  rdfs:domain ltg:Voorstel ;
+  rdfs:range xsd:string .
+
+ltg:entiteitType a owl:DatatypeProperty ;
+  rdfs:label "entiteit type"@nl ;
+  rdfs:range xsd:string .
+
+ltg:entiteitLabel a owl:DatatypeProperty ;
+  rdfs:label "entiteit label"@nl ;
+  rdfs:range xsd:string .
+
+ltg:entiteitId a owl:DatatypeProperty ;
+  rdfs:label "entiteit id"@nl ;
+  rdfs:range xsd:string .
+
+ltg:status a owl:ObjectProperty ;
+  rdfs:label "status"@nl ;
+  rdfs:range skos:Concept .
+
+ltg:ingediendDoor a owl:DatatypeProperty ;
+  rdfs:label "ingediend door"@nl ;
+  rdfs:range xsd:string .
+
+ltg:ingediendOp a owl:DatatypeProperty ;
+  rdfs:label "ingediend op"@nl ;
+  rdfs:range xsd:date .
+
+ltg:reden a owl:DatatypeProperty ;
+  rdfs:label "reden"@nl ;
+  rdfs:range xsd:string .
+
+ltg:commentId a owl:DatatypeProperty ;
+  rdfs:label "opmerking id"@nl ;
+  rdfs:domain ltg:Opmerking ;
+  rdfs:range xsd:string .
+
+ltg:commentTekst a owl:DatatypeProperty ;
+  rdfs:label "opmerking tekst"@nl ;
+  rdfs:domain ltg:Opmerking ;
+  rdfs:range xsd:string .
+
+ltg:afhandeling a owl:DatatypeProperty ;
+  rdfs:label "afhandeling"@nl ;
+  rdfs:domain ltg:Opmerking ;
+  rdfs:range xsd:string .
+
+ltg:auditId a owl:DatatypeProperty ;
+  rdfs:label "audit id"@nl ;
+  rdfs:domain ltg:AuditEvent ;
+  rdfs:range xsd:string .
+
+ltg:tijdstip a owl:DatatypeProperty ;
+  rdfs:label "tijdstip"@nl ;
+  rdfs:domain ltg:AuditEvent ;
+  rdfs:range xsd:dateTime .
+
+ltg:actor a owl:DatatypeProperty ;
+  rdfs:label "actor"@nl ;
+  rdfs:domain ltg:AuditEvent ;
+  rdfs:range xsd:string .
+
+ltg:actie a owl:DatatypeProperty ;
+  rdfs:label "actie"@nl ;
+  rdfs:domain ltg:AuditEvent ;
+  rdfs:range xsd:string .
+
+ltg:oudeWaarde a owl:DatatypeProperty ;
+  rdfs:label "oude waarde"@nl ;
+  rdfs:domain ltg:AuditEvent ;
+  rdfs:range xsd:string .
+
+ltg:nieuweWaarde a owl:DatatypeProperty ;
+  rdfs:label "nieuwe waarde"@nl ;
+  rdfs:domain ltg:AuditEvent ;
+  rdfs:range xsd:string .
+
+ltg:gerelateerdVoorstelId a owl:DatatypeProperty ;
+  rdfs:label "gerelateerd voorstel id"@nl ;
+  rdfs:domain ltg:AuditEvent ;
+  rdfs:range xsd:string .
+
+ltg:rolNaam a owl:DatatypeProperty ;
+  rdfs:label "rol naam"@nl ;
+  rdfs:domain ltg:Rol ;
+  rdfs:range xsd:string .
+
+ltg:permissieNaam a owl:DatatypeProperty ;
+  rdfs:label "permissie naam"@nl ;
+  rdfs:domain ltg:Permissie ;
+  rdfs:range xsd:string .
+
+ltg:heeftPermissie a owl:ObjectProperty ;
+  rdfs:label "heeft permissie"@nl ;
+  rdfs:domain ltg:Rol ;
+  rdfs:range ltg:Permissie .
+
+ltg:VoorstelStatussen a skos:Collection ;
+  rdfs:label "Voorstel statussen"@nl ;
+  skos:prefLabel "Voorstel statussen"@nl ;
+  skos:member ltg:Ingediend, ltg:InBehandeling, ltg:Goedgekeurd, ltg:Afgewezen, ltg:Teruggetrokken .
+
+ltg:OpmerkingStatussen a skos:Collection ;
+  rdfs:label "Opmerking statussen"@nl ;
+  skos:prefLabel "Opmerking statussen"@nl ;
+  skos:member ltg:Nieuw, ltg:CommentInBehandeling, ltg:Geaccepteerd, ltg:CommentAfgewezen, ltg:Opgelost .
+
+ltg:Ingediend a skos:Concept ; skos:prefLabel "Ingediend"@nl .
+ltg:InBehandeling a skos:Concept ; skos:prefLabel "In behandeling"@nl .
+ltg:Goedgekeurd a skos:Concept ; skos:prefLabel "Goedgekeurd"@nl .
+ltg:Afgewezen a skos:Concept ; skos:prefLabel "Afgewezen"@nl .
+ltg:Teruggetrokken a skos:Concept ; skos:prefLabel "Teruggetrokken"@nl .
+ltg:Nieuw a skos:Concept ; skos:prefLabel "Nieuw"@nl .
+ltg:CommentInBehandeling a skos:Concept ; skos:prefLabel "In behandeling"@nl .
+ltg:Geaccepteerd a skos:Concept ; skos:prefLabel "Geaccepteerd"@nl .
+ltg:CommentAfgewezen a skos:Concept ; skos:prefLabel "Afgewezen"@nl .
+ltg:Opgelost a skos:Concept ; skos:prefLabel "Opgelost"@nl .
+
+ltg:VoorstelShape a sh:NodeShape ;
+  sh:targetClass ltg:Voorstel ;
+  sh:property [ sh:path ltg:voorstelId ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:voorstelTitel ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:voorstelOmschrijving ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:entiteitType ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:entiteitLabel ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:status ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path ltg:ingediendDoor ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:ingediendOp ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:date ] .
+
+ltg:OpmerkingShape a sh:NodeShape ;
+  sh:targetClass ltg:Opmerking ;
+  sh:property [ sh:path ltg:commentId ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:commentTekst ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:status ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path ltg:ingediendDoor ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:ingediendOp ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:date ] .
+
+ltg:AuditEventShape a sh:NodeShape ;
+  sh:targetClass ltg:AuditEvent ;
+  sh:property [ sh:path ltg:auditId ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:tijdstip ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path ltg:actor ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path ltg:actie ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .

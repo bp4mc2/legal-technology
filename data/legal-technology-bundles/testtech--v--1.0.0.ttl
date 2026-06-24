@@ -3,190 +3,43 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-_:0bb85ee1b47244ad82cfdd83cfea0684123 <http://bp4mc2.org/lto#versienummer> "1.0.0" .
-_:0bb85ee1b47244ad82cfdd83cfea0684123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
-_:0bb85ee1b47244ad82cfdd83cfea0684124 <http://bp4mc2.org/lto#beoogdGebruik> "Beschrijving voorbeeld"^^<http://www.w3.org/2001/XMLSchema#markdown> .
-_:0bb85ee1b47244ad82cfdd83cfea0684124 <http://bp4mc2.org/lto#onderdelen> "Onderdelen"^^<http://www.w3.org/2001/XMLSchema#markdown> .
-_:0bb85ee1b47244ad82cfdd83cfea0684124 <http://bp4mc2.org/lto#ontwikkelingEnBeheer> "Beheertekst"^^<http://www.w3.org/2001/XMLSchema#markdown> .
-_:0bb85ee1b47244ad82cfdd83cfea0684124 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Toegevoegde waarde"^^<http://www.w3.org/2001/XMLSchema#markdown> .
-_:0bb85ee1b47244ad82cfdd83cfea0684124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
-_:0bb85ee1b47244ad82cfdd83cfea0684125 <http://bp4mc2.org/lto#beschouwingsniveau> <http://example.com/mock-concept> .
-_:0bb85ee1b47244ad82cfdd83cfea0684125 <http://bp4mc2.org/lto#modelsoort> <http://example.com/mock-concept> .
-_:0bb85ee1b47244ad82cfdd83cfea0684125 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#beheerder> <https://data.bp4mc2.org/id/lto/organisatie/org-1> .
+_:a6ee9ed382524b9f9ba5858137f911db10493 <http://bp4mc2.org/lto#versienummer> "1.0.0" .
+_:a6ee9ed382524b9f9ba5858137f911db10493 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Versiebeschrijving> .
+_:a6ee9ed382524b9f9ba5858137f911db10514 <http://bp4mc2.org/lto#beoogdGebruik> "Beschrijving voorbeeld"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:a6ee9ed382524b9f9ba5858137f911db10514 <http://bp4mc2.org/lto#onderdelen> "Onderdelen"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:a6ee9ed382524b9f9ba5858137f911db10514 <http://bp4mc2.org/lto#ontwikkelingEnBeheer> "Beheertekst"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:a6ee9ed382524b9f9ba5858137f911db10514 <http://bp4mc2.org/lto#toegevoegdeWaarde> "Toegevoegde waarde"^^<http://www.w3.org/2001/XMLSchema#markdown> .
+_:a6ee9ed382524b9f9ba5858137f911db10514 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Documentatie> .
+_:a6ee9ed382524b9f9ba5858137f911db10535 <http://bp4mc2.org/lto#beschouwingsniveau> <http://example.com/mock-concept> .
+_:a6ee9ed382524b9f9ba5858137f911db10535 <http://bp4mc2.org/lto#modelsoort> <http://example.com/mock-concept> .
+_:a6ee9ed382524b9f9ba5858137f911db10535 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Ondersteuningsvorm> .
 <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#beoogdeGebruikers> <http://example.com/mock-concept> .
 <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bijgewerktOp> "2024-01-01"^^<http://www.w3.org/2001/XMLSchema#date> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/08edbf5c-949a-44c7-8cac-efa3105984df> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/10fab7ae-f004-4863-9cfd-a673fe6d65ed> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/144237af-a0ec-41d3-93ad-1c374b8351f7> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/275c8a92-31a9-40fb-a78b-049bf560e5c5> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/2ddb14d4-2a8e-4970-9bc3-7dd192c8b1f5> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3e24faac-876d-4302-ba8b-460bc2218def> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/4d1527a0-a8eb-4b04-9ab0-934988b38768> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/57ce7f9a-61a4-4009-b56e-d3253b90e29d> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/5baff091-c359-4454-ab06-814553e00ed4> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/6c8f695f-d10c-4163-ab9f-dbc2deeb08e9> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/75c9bcb5-55d4-49c0-b1e5-3763a6d0b65c> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/a5ca34e3-54ab-4b68-a074-6fc6203daaf2> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ada92eb9-7c57-4687-9e1c-c0f9c88f8ce8> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/d62a4d3f-694e-44cb-bf67-6d286ccc6b26> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e45d5fd2-c997-4eb6-a7b8-9c310b0aba48> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e646be26-1422-4a6b-a37e-03c63624575c> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ef9942a5-99bf-465e-8813-56cc92c72a76> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/f580437c-b7ad-41fb-b092-2b9c9f6f32f6> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#documentatie> _:0bb85ee1b47244ad82cfdd83cfea0684124 .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3ac95192-95b2-4787-a135-1eb6cda61e9f> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#bron> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/7bdaf719-3884-4df7-9986-24c077878c9c> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#documentatie> _:a6ee9ed382524b9f9ba5858137f911db10514 .
 <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#gebodenFunctionaliteit> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://bp4mc2.org/lt#InGebruik> .
 <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#gebruiksstatus> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/139e6a5b-a831-4081-a7c8-6a93cd00ca51> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/1b907821-5606-4c75-bde2-7459af4a40de> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3aebdfe1-f50d-46ee-9cd9-eeba7ea66a8e> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3b30f526-a5c0-448c-961a-e185743423d2> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3cdc885e-fbfb-4e63-91cb-47b37001099e> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/40807c3a-c6b7-4a9b-9b87-10fd6fdcd62c> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/49e17c5f-4e64-4f7b-84e1-72e11524510e> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/4d68619c-7237-4d90-955d-0c7b5bb5a734> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/64240568-dd88-40f0-99ad-bbd1aec32928> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/69a4ecc2-ba13-42c0-8143-54debe51581c> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/91f16a04-03b5-477f-b758-3e58a0ba112c> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/aba3f266-4164-48a1-8ed7-7e15a02ad317> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/c7700081-7156-45e4-9ade-283ccc1a7df0> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/d4917ec9-3d77-4dcd-9165-26a0b5b386ad> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/d7e8f233-61c2-4409-a3e0-f6381dd123d5> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/dddd17e3-b95c-4329-ac5e-591f4aa2d610> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/f358c17d-d6df-489e-9e49-6017633435d2> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/f91bd6c0-895f-412c-a4ed-b0c2f75db55e> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#licentievorm> <http://bp4mc2.org/lt#VolledigOpen> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/868cb63e-78ac-48cd-8acc-f9da64bcf18c> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#geschiktVoorTaak> <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/cf26acd2-e2cd-4b29-9a88-6d9e1bb499fa> .
 <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#licentievorm> <http://example.com/mock-concept> .
 <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#naam> "TestTech" .
 <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#omschrijving> "Omschrijving" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:0bb85ee1b47244ad82cfdd83cfea0684125 .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#versiebeschrijving> _:0bb85ee1b47244ad82cfdd83cfea0684123 .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#ondersteuningVoor> _:a6ee9ed382524b9f9ba5858137f911db10535 .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://bp4mc2.org/lto#versiebeschrijving> _:a6ee9ed382524b9f9ba5858137f911db10493 .
 <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Methode> .
 <https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0> <http://www.w3.org/2000/01/rdf-schema#label> "TestTech"@nl .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/08edbf5c-949a-44c7-8cac-efa3105984df> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/08edbf5c-949a-44c7-8cac-efa3105984df> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/08edbf5c-949a-44c7-8cac-efa3105984df> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/08edbf5c-949a-44c7-8cac-efa3105984df> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/10fab7ae-f004-4863-9cfd-a673fe6d65ed> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/10fab7ae-f004-4863-9cfd-a673fe6d65ed> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/10fab7ae-f004-4863-9cfd-a673fe6d65ed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/10fab7ae-f004-4863-9cfd-a673fe6d65ed> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/144237af-a0ec-41d3-93ad-1c374b8351f7> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/144237af-a0ec-41d3-93ad-1c374b8351f7> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/144237af-a0ec-41d3-93ad-1c374b8351f7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/144237af-a0ec-41d3-93ad-1c374b8351f7> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/275c8a92-31a9-40fb-a78b-049bf560e5c5> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/275c8a92-31a9-40fb-a78b-049bf560e5c5> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/275c8a92-31a9-40fb-a78b-049bf560e5c5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/275c8a92-31a9-40fb-a78b-049bf560e5c5> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/2ddb14d4-2a8e-4970-9bc3-7dd192c8b1f5> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/2ddb14d4-2a8e-4970-9bc3-7dd192c8b1f5> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/2ddb14d4-2a8e-4970-9bc3-7dd192c8b1f5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/2ddb14d4-2a8e-4970-9bc3-7dd192c8b1f5> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3e24faac-876d-4302-ba8b-460bc2218def> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3e24faac-876d-4302-ba8b-460bc2218def> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3e24faac-876d-4302-ba8b-460bc2218def> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3e24faac-876d-4302-ba8b-460bc2218def> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/4d1527a0-a8eb-4b04-9ab0-934988b38768> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/4d1527a0-a8eb-4b04-9ab0-934988b38768> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/4d1527a0-a8eb-4b04-9ab0-934988b38768> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/4d1527a0-a8eb-4b04-9ab0-934988b38768> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/57ce7f9a-61a4-4009-b56e-d3253b90e29d> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/57ce7f9a-61a4-4009-b56e-d3253b90e29d> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/57ce7f9a-61a4-4009-b56e-d3253b90e29d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/57ce7f9a-61a4-4009-b56e-d3253b90e29d> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/5baff091-c359-4454-ab06-814553e00ed4> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/5baff091-c359-4454-ab06-814553e00ed4> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/5baff091-c359-4454-ab06-814553e00ed4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/5baff091-c359-4454-ab06-814553e00ed4> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/6c8f695f-d10c-4163-ab9f-dbc2deeb08e9> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/6c8f695f-d10c-4163-ab9f-dbc2deeb08e9> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/6c8f695f-d10c-4163-ab9f-dbc2deeb08e9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/6c8f695f-d10c-4163-ab9f-dbc2deeb08e9> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/75c9bcb5-55d4-49c0-b1e5-3763a6d0b65c> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/75c9bcb5-55d4-49c0-b1e5-3763a6d0b65c> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/75c9bcb5-55d4-49c0-b1e5-3763a6d0b65c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/75c9bcb5-55d4-49c0-b1e5-3763a6d0b65c> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/a5ca34e3-54ab-4b68-a074-6fc6203daaf2> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/a5ca34e3-54ab-4b68-a074-6fc6203daaf2> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/a5ca34e3-54ab-4b68-a074-6fc6203daaf2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/a5ca34e3-54ab-4b68-a074-6fc6203daaf2> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ada92eb9-7c57-4687-9e1c-c0f9c88f8ce8> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ada92eb9-7c57-4687-9e1c-c0f9c88f8ce8> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ada92eb9-7c57-4687-9e1c-c0f9c88f8ce8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ada92eb9-7c57-4687-9e1c-c0f9c88f8ce8> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/d62a4d3f-694e-44cb-bf67-6d286ccc6b26> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/d62a4d3f-694e-44cb-bf67-6d286ccc6b26> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/d62a4d3f-694e-44cb-bf67-6d286ccc6b26> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/d62a4d3f-694e-44cb-bf67-6d286ccc6b26> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e45d5fd2-c997-4eb6-a7b8-9c310b0aba48> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e45d5fd2-c997-4eb6-a7b8-9c310b0aba48> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e45d5fd2-c997-4eb6-a7b8-9c310b0aba48> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e45d5fd2-c997-4eb6-a7b8-9c310b0aba48> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e646be26-1422-4a6b-a37e-03c63624575c> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e646be26-1422-4a6b-a37e-03c63624575c> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e646be26-1422-4a6b-a37e-03c63624575c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/e646be26-1422-4a6b-a37e-03c63624575c> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ef9942a5-99bf-465e-8813-56cc92c72a76> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ef9942a5-99bf-465e-8813-56cc92c72a76> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ef9942a5-99bf-465e-8813-56cc92c72a76> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/ef9942a5-99bf-465e-8813-56cc92c72a76> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/f580437c-b7ad-41fb-b092-2b9c9f6f32f6> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/f580437c-b7ad-41fb-b092-2b9c9f6f32f6> <http://purl.org/dc/terms/title> "Whitepaper" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/f580437c-b7ad-41fb-b092-2b9c9f6f32f6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/f580437c-b7ad-41fb-b092-2b9c9f6f32f6> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/139e6a5b-a831-4081-a7c8-6a93cd00ca51> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/139e6a5b-a831-4081-a7c8-6a93cd00ca51> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/139e6a5b-a831-4081-a7c8-6a93cd00ca51> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/1b907821-5606-4c75-bde2-7459af4a40de> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/1b907821-5606-4c75-bde2-7459af4a40de> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/1b907821-5606-4c75-bde2-7459af4a40de> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3aebdfe1-f50d-46ee-9cd9-eeba7ea66a8e> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3aebdfe1-f50d-46ee-9cd9-eeba7ea66a8e> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3aebdfe1-f50d-46ee-9cd9-eeba7ea66a8e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3b30f526-a5c0-448c-961a-e185743423d2> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3b30f526-a5c0-448c-961a-e185743423d2> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3b30f526-a5c0-448c-961a-e185743423d2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3cdc885e-fbfb-4e63-91cb-47b37001099e> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3cdc885e-fbfb-4e63-91cb-47b37001099e> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/3cdc885e-fbfb-4e63-91cb-47b37001099e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/40807c3a-c6b7-4a9b-9b87-10fd6fdcd62c> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/40807c3a-c6b7-4a9b-9b87-10fd6fdcd62c> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/40807c3a-c6b7-4a9b-9b87-10fd6fdcd62c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/49e17c5f-4e64-4f7b-84e1-72e11524510e> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/49e17c5f-4e64-4f7b-84e1-72e11524510e> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/49e17c5f-4e64-4f7b-84e1-72e11524510e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/4d68619c-7237-4d90-955d-0c7b5bb5a734> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/4d68619c-7237-4d90-955d-0c7b5bb5a734> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/4d68619c-7237-4d90-955d-0c7b5bb5a734> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/64240568-dd88-40f0-99ad-bbd1aec32928> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/64240568-dd88-40f0-99ad-bbd1aec32928> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/64240568-dd88-40f0-99ad-bbd1aec32928> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/69a4ecc2-ba13-42c0-8143-54debe51581c> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/69a4ecc2-ba13-42c0-8143-54debe51581c> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/69a4ecc2-ba13-42c0-8143-54debe51581c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/91f16a04-03b5-477f-b758-3e58a0ba112c> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/91f16a04-03b5-477f-b758-3e58a0ba112c> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/91f16a04-03b5-477f-b758-3e58a0ba112c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/aba3f266-4164-48a1-8ed7-7e15a02ad317> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/aba3f266-4164-48a1-8ed7-7e15a02ad317> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/aba3f266-4164-48a1-8ed7-7e15a02ad317> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/c7700081-7156-45e4-9ade-283ccc1a7df0> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/c7700081-7156-45e4-9ade-283ccc1a7df0> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/c7700081-7156-45e4-9ade-283ccc1a7df0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/d4917ec9-3d77-4dcd-9165-26a0b5b386ad> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/d4917ec9-3d77-4dcd-9165-26a0b5b386ad> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/d4917ec9-3d77-4dcd-9165-26a0b5b386ad> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/d7e8f233-61c2-4409-a3e0-f6381dd123d5> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/d7e8f233-61c2-4409-a3e0-f6381dd123d5> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/d7e8f233-61c2-4409-a3e0-f6381dd123d5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/dddd17e3-b95c-4329-ac5e-591f4aa2d610> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/dddd17e3-b95c-4329-ac5e-591f4aa2d610> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/dddd17e3-b95c-4329-ac5e-591f4aa2d610> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/f358c17d-d6df-489e-9e49-6017633435d2> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/f358c17d-d6df-489e-9e49-6017633435d2> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/f358c17d-d6df-489e-9e49-6017633435d2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/f91bd6c0-895f-412c-a4ed-b0c2f75db55e> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/f91bd6c0-895f-412c-a4ed-b0c2f75db55e> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
-<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/f91bd6c0-895f-412c-a4ed-b0c2f75db55e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3ac95192-95b2-4787-a135-1eb6cda61e9f> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3ac95192-95b2-4787-a135-1eb6cda61e9f> <http://purl.org/dc/terms/title> "Whitepaper" .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3ac95192-95b2-4787-a135-1eb6cda61e9f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/3ac95192-95b2-4787-a135-1eb6cda61e9f> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/7bdaf719-3884-4df7-9986-24c077878c9c> <http://purl.org/dc/terms/bibliographicCitation> "Whitepaper 2024" .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/7bdaf719-3884-4df7-9986-24c077878c9c> <http://purl.org/dc/terms/title> "Whitepaper" .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/7bdaf719-3884-4df7-9986-24c077878c9c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Bronverwijzing> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/bronverwijzing/7bdaf719-3884-4df7-9986-24c077878c9c> <http://xmlns.com/foaf/0.1/page> "https://example.com"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/868cb63e-78ac-48cd-8acc-f9da64bcf18c> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/868cb63e-78ac-48cd-8acc-f9da64bcf18c> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/868cb63e-78ac-48cd-8acc-f9da64bcf18c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/cf26acd2-e2cd-4b29-9a88-6d9e1bb499fa> <http://bp4mc2.org/lto#omschrijving> "Automatisch genereren van documenten" .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/cf26acd2-e2cd-4b29-9a88-6d9e1bb499fa> <http://bp4mc2.org/lto#taaktype> <http://example.com/mock-concept> .
+<https://data.bp4mc2.org/id/lto/legaltech/testtech/v/1.0.0/taakinvulling/cf26acd2-e2cd-4b29-9a88-6d9e1bb499fa> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bp4mc2.org/lto#Taakinvulling> .

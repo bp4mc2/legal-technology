@@ -8,17 +8,17 @@ applyTo: "apps/{dashboard,dashboard-next}/src/**/*.{ts,tsx,css}"
 Use this instruction when the user asks for Tailwind CSS in dashboard UI work.
 
 ## Canonical References
-- [../../docs/dashboard-design-spec.md](../../docs/dashboard-design-spec.md)
-- [../../docs/development-guide.md](../../docs/development-guide.md)
+- [../../apps/docs/dashboard-design-spec.md](../../apps/docs/dashboard-design-spec.md)
+- [../../apps/docs/development-guide.md](../../apps/docs/development-guide.md)
 - [../../apps/ARCHITECTURE.md](../../apps/ARCHITECTURE.md)
 
 ## Spec Compliance Workflow
-- Before editing, identify the relevant sections in [../../docs/dashboard-design-spec.md](../../docs/dashboard-design-spec.md) (for example layout structure, dedicated views, route mapping, right rail, technology card, governance).
+- Before editing, identify the relevant sections in [../../apps/docs/dashboard-design-spec.md](../../apps/docs/dashboard-design-spec.md) (for example layout structure, dedicated views, route mapping, right rail, technology card, governance).
 - During editing, keep behavior aligned with those sections; do not trade off spec behavior for convenience.
 - Before finishing, include a short note with checked sections and status: compliant, partial, or not applicable.
 
 ## Spec Drift Handling
-- If implementation and spec conflict, prefer [../../docs/dashboard-design-spec.md](../../docs/dashboard-design-spec.md) unless the user explicitly requests a deviation.
+- If implementation and spec conflict, prefer [../../apps/docs/dashboard-design-spec.md](../../apps/docs/dashboard-design-spec.md) unless the user explicitly requests a deviation.
 - If a deviation is requested, implement it and flag: spec update required.
 - If a spec section is ambiguous, ask one targeted clarification question before broad UI changes.
 
@@ -63,7 +63,7 @@ Use this instruction when the user asks for Tailwind CSS in dashboard UI work.
 ## Completion Checklist
 - Tailwind is used as the primary styling approach in touched dashboard UI.
 - No unintended Bootstrap and Tailwind class mixing in the same component.
-- Dashboard behavior remains aligned with the relevant sections in [../../docs/dashboard-design-spec.md](../../docs/dashboard-design-spec.md).
+- Dashboard behavior remains aligned with the relevant sections in [../../apps/docs/dashboard-design-spec.md](../../apps/docs/dashboard-design-spec.md).
 - Accessibility and keyboard behavior are preserved or improved.
 - Mobile and desktop layouts are both verified.
 - Tests and build are run or explicitly documented as skipped.

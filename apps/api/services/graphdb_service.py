@@ -18,7 +18,19 @@ from .bundle_export_service import (
     write_named_graph_export,
     write_organisation_bundle,
 )
-from datetime import date, datetime
+from datetime import date
+from ..utils.legaltech_utils import (
+    normalize_abbrevation,
+    normalize_version,
+    normalize_iso_date,
+    normalize_subtype,
+    build_api_id,
+    parse_api_id,
+    build_tech_iri,
+    parse_tech_iri,
+    resolve_tech_iri_from_id,
+    get_part_iri,
+)
 
 
 _CONCEPT_LABEL_CACHE = {}
@@ -78,82 +90,43 @@ def _stable_concept_identifier(concept_iri):
 
 
 def _normalize_abbrevation(value):
-    raw = str(value or '').strip()
-    if not raw:
-        return ''
-    cleaned = ''.join(ch for ch in raw if ch.isalnum() or ch in ('-', '_'))
-    return cleaned.lower()
+    return normalize_abbrevation(value)
 
 
 def _normalize_version(value):
-    raw = str(value or '').strip()
-    return raw if raw else '1.0.0'
+    return normalize_version(value)
 
 
 def _normalize_iso_date(value, field_name):
-    if value is None:
-        return ''
-    if isinstance(value, date):
-        return value.isoformat()
-
-    raw = str(value).strip()
-    if not raw:
-        return ''
-
-    # Accept full datetime strings but store as xsd:date.
-    date_part = raw[:10]
-    try:
-        return datetime.strptime(date_part, '%Y-%m-%d').date().isoformat()
-    except ValueError as exc:
-        raise ValueError(f"{field_name} must be an ISO date (YYYY-MM-DD)") from exc
+    return normalize_iso_date(value, field_name)
 
 
 def _normalize_subtype(value):
-    subtype = str(value or '').strip()
-    if subtype in _SUBTYPE_CLASS_MAP:
-        return subtype
-    return "Methode"
+    return normalize_subtype(value, _SUBTYPE_CLASS_MAP.keys(), default="Methode")
 
 
 def _build_api_id(abbrevation, version):
-    return f"{abbrevation}--v--{version}"
+    return build_api_id(abbrevation, version)
 
 
 def _parse_api_id(api_id):
-    token = str(api_id or '').strip()
-    if '--v--' in token:
-        abbrevation, version = token.split('--v--', 1)
-        return _normalize_abbrevation(abbrevation), _normalize_version(version)
-    return None, None
+    return parse_api_id(api_id)
 
 
 def _build_tech_iri(abbrevation, version):
-    return f"{_LEGALTECH_BASE_IRI}/{abbrevation}/v/{version}"
+    return build_tech_iri(_LEGALTECH_BASE_IRI, abbrevation, version)
 
 
 def _parse_tech_iri(tech_iri):
-    prefix = f"{_LEGALTECH_BASE_IRI}/"
-    value = str(tech_iri or '')
-    if not value.startswith(prefix):
-        return None, None
-    tail = value[len(prefix):]
-    if '/v/' not in tail:
-        return None, None
-    abbrevation, version = tail.split('/v/', 1)
-    if '/' in version:
-        return None, None
-    return _normalize_abbrevation(abbrevation), _normalize_version(version)
+    return parse_tech_iri(tech_iri, _LEGALTECH_BASE_IRI)
 
 
 def _resolve_tech_iri_from_id(api_id):
-    abbrevation, version = _parse_api_id(api_id)
-    if abbrevation and version:
-        return _build_tech_iri(abbrevation, version)
-    return f"{_LEGALTECH_BASE_IRI}/{api_id}"
+    return resolve_tech_iri_from_id(_LEGALTECH_BASE_IRI, api_id)
 
 
 def _get_part_iri(tech_iri, part, unique_suffix):
-    return f"{tech_iri}/{part}/{unique_suffix}"
+    return get_part_iri(tech_iri, part, unique_suffix)
 
 
 def _get_concept_label(concept_iri):
@@ -410,7 +383,7 @@ def list_legal_technologies():
             lto:omschrijving ?omschrijving ;
             lto:gebruiksstatus ?gebruiksstatus ;
             lto:licentievorm ?licentievorm ;
-            lto:bijgewerktOp ?bijgewerktOp .
+            OPTIONAL { ?tech lto:bijgewerktOp ?bijgewerktOp . }
             OPTIONAL { ?tech lto:afkorting ?abbrevation . }
             OPTIONAL {
               ?tech lto:versiebeschrijving ?versie .
@@ -1071,7 +1044,7 @@ def search_legal_technologies(query):
               lto:omschrijving ?omschrijving ;
               lto:gebruiksstatus ?gebruiksstatus ;
               lto:licentievorm ?licentievorm ;
-              lto:bijgewerktOp ?bijgewerktOp .
+        OPTIONAL {{ ?tech lto:bijgewerktOp ?bijgewerktOp . }}
         OPTIONAL {{ ?tech lto:afkorting ?abbrevation . }}
         OPTIONAL {{
           ?tech lto:versiebeschrijving ?versie .
@@ -1442,7 +1415,7 @@ def get_legal_technology(id):
               lto:omschrijving ?omschrijving ;
               lto:gebruiksstatus ?gebruiksstatus ;
               lto:licentievorm ?licentievorm ;
-              lto:bijgewerktOp ?bijgewerktOp .
+                OPTIONAL {{ ?tech lto:bijgewerktOp ?bijgewerktOp . }}
                 OPTIONAL {{ ?tech lto:afkorting ?abbrevation . }}
         OPTIONAL {{ ?tech lto:normstatus ?normstatus . }}
                 OPTIONAL {{

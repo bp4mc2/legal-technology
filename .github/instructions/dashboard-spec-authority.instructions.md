@@ -8,11 +8,11 @@ applyTo: "apps/{dashboard,dashboard-next}/src/**/*.{ts,tsx,css}"
 Use this instruction for all dashboard UI work.
 
 ## Primary Baseline
-- [../../docs/dashboard-design-spec.md](../../docs/dashboard-design-spec.md) is the primary product and UI baseline.
+- [../../apps/docs/dashboard-design-spec.md](../../apps/docs/dashboard-design-spec.md) is the primary product and UI baseline.
 
 ## Instruction Precedence
 Apply these sources in order:
-1. [../../docs/dashboard-design-spec.md](../../docs/dashboard-design-spec.md)
+1. [../../apps/docs/dashboard-design-spec.md](../../apps/docs/dashboard-design-spec.md)
 2. [tailwind-ui-guardrails.instructions.md](tailwind-ui-guardrails.instructions.md)
 3. [tailwind-component-patterns.instructions.md](tailwind-component-patterns.instructions.md)
 4. Local implementation convenience choices
@@ -39,7 +39,7 @@ Before finishing:
 - If the spec is ambiguous, ask one targeted clarification question before broad UI changes.
 
 ## Route Conformance Rule
-- For route changes in dashboard UI, keep [../../docs/dashboard-design-spec.md](../../docs/dashboard-design-spec.md) route mapping aligned in the same task.
+- For route changes in dashboard UI, keep [../../apps/docs/dashboard-design-spec.md](../../apps/docs/dashboard-design-spec.md) route mapping aligned in the same task.
 - If planned routes are implemented, update or remove the matching gap-list entries.
 
 ## PR Note Template

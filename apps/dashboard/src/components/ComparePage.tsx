@@ -94,24 +94,21 @@ const ComparePage: React.FC = () => {
     };
   }, []);
 
-  if (selectedIds.length < 2) {
-    return (
-      <div className="page-card page-card--md">
-        <h2 className="page-heading">Vergelijken</h2>
-        <p className="text-muted mb-0">Selecteer minimaal 2 technologieen om te vergelijken.</p>
-      </div>
-    );
-  }
-
   const items = selectedIds.map((id) => details[id] || selectedItems.find((item) => item.id === id));
   const matrixRows = buildCompareMatrixRows(items);
   const diffCount = matrixRows.filter((row) => row.hasDiff).length;
+
+  const panelClass = 'rounded-lt border border-lt-border bg-lt-card p-5 shadow-lt sm:p-6';
+  const headingClass = 'text-lg font-semibold text-lt-heading';
+  const subheadingClass = 'text-sm font-semibold uppercase tracking-wide text-slate-600';
+  const mutedTextClass = 'text-sm text-lt-muted';
+  const activeGroupButtonClass =
+    'inline-flex items-center rounded-md border border-lt-primaryBorder bg-lt-primarySoft px-3 py-1.5 text-sm font-medium text-lt-primary shadow-sm transition hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary';
 
   // Column membership: for each item index, is it in the active taakgroep?
   const activeColumnMask = React.useMemo<boolean[]>(() => {
     if (!activeGroupLabel) return items.map(() => false);
     return items.map((item) => {
-      const techName = item?.naam || item?.id || '';
       const taaktypes = (item?.geschikt_voor_taak || []).map((e) => (e.taaktype || '').trim()).filter(Boolean);
       if (taaktypes.length === 0) {
         return activeGroupLabel === 'Overige taakgroepen';
@@ -154,78 +151,99 @@ const ComparePage: React.FC = () => {
       .sort((a, b) => a.groupLabel.localeCompare(b.groupLabel, undefined, { sensitivity: 'base' }));
   }, [items, taskTypeMeta]);
 
-  return (
-    <div className="page-card page-card--xxl">
-      <h2 className="page-heading">Vergelijken</h2>
-      {loading ? <p className="text-muted">Vergelijkingsgegevens laden...</p> : null}
+  if (selectedIds.length < 2) {
+    return (
+      <section className={panelClass}>
+        <h2 className={headingClass}>Vergelijken</h2>
+        <p className="mt-3 text-sm text-lt-muted">Selecteer minimaal 2 technologieen om te vergelijken.</p>
+      </section>
+    );
+  }
 
-      <div className="mb-3">
-        <h3 className="h6 mb-2">Geselecteerde technologieen (lijst)</h3>
-        <div className="d-flex flex-wrap gap-2">
+  return (
+    <section className={panelClass}>
+      <h2 className={headingClass}>Vergelijken</h2>
+      {loading ? <p className="mt-3 text-sm text-lt-muted">Vergelijkingsgegevens laden...</p> : null}
+
+      <section className="mt-5">
+        <h3 className={subheadingClass}>Geselecteerde technologieen (lijst)</h3>
+        <div className="mt-3 flex flex-wrap gap-2">
           {items.map((item, idx) => (
-            <span key={`${selectedIds[idx]}-chip`} className="badge text-bg-light border p-2">
+            <span
+              key={`${selectedIds[idx]}-chip`}
+              className="inline-flex items-center rounded-full border border-lt-primaryBorder bg-lt-primarySoft px-3 py-1.5 text-sm font-medium text-lt-text"
+            >
               {item?.naam || selectedIds[idx]}
             </span>
           ))}
         </div>
-      </div>
+      </section>
 
-      <div className="mb-3">
-        <div className="d-flex align-items-center justify-content-between mb-2">
-          <h3 className="h6 mb-0">Groepering op taakgroepen</h3>
+      <section className="mt-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <h3 className={subheadingClass}>Groepering op taakgroepen</h3>
           {activeGroupLabel ? (
             <button
               type="button"
-              className="btn btn-sm btn-outline-secondary"
+              className={activeGroupButtonClass}
               onClick={() => setActiveGroupLabel(null)}
             >
               Filter wissen: <strong>{activeGroupLabel}</strong>
             </button>
           ) : (
-            <span className="small text-muted">Klik een taakgroep om kolommen te markeren</span>
+            <span className={mutedTextClass}>Klik een taakgroep om kolommen te markeren</span>
           )}
         </div>
-        <div className="row g-2">
+        <div className="mt-3 grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3">
           {groupedByTaakgroep.map((group) => {
             const isActive = activeGroupLabel === group.groupLabel;
             return (
-              <div key={group.groupLabel} className="col-md-6 col-xl-4">
-                <button
-                  type="button"
-                  className={`compare-taakgroep-card w-100 text-start border rounded p-2 h-100${
-                    isActive ? ' is-active' : ''
-                  }`}
-                  onClick={() => setActiveGroupLabel(isActive ? null : group.groupLabel)}
-                  aria-pressed={isActive}
-                >
-                  <div className="fw-semibold mb-1">{group.groupLabel}</div>
-                  <div className="small text-muted">{group.technologies.join(', ') || 'Geen technologieen'}</div>
-                </button>
-              </div>
+              <button
+                key={group.groupLabel}
+                type="button"
+                className={`h-full rounded-lg border p-3 text-left shadow-sm transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary ${
+                  isActive
+                    ? 'border-lt-primaryBorder bg-lt-primarySoft'
+                    : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
+                }`}
+                onClick={() => setActiveGroupLabel(isActive ? null : group.groupLabel)}
+                aria-pressed={isActive}
+              >
+                <div className="text-sm font-semibold text-slate-800">{group.groupLabel}</div>
+                <div className="mt-1 text-sm text-lt-muted">{group.technologies.join(', ') || 'Geen technologieen'}</div>
+              </button>
             );
           })}
         </div>
-      </div>
+      </section>
 
-      <p className="text-muted mb-3">
+      <p className="mt-6 text-sm text-lt-muted">
         Afwijkende eigenschappen: <strong>{diffCount}</strong> van <strong>{matrixRows.length}</strong>
       </p>
 
-      <div className="table-responsive">
-        <table className="table table-bordered align-middle compare-matrix-table">
-          <thead>
+      <div className="mt-3 overflow-x-auto rounded-lg border border-slate-200 bg-white">
+        <table className="min-w-full border-collapse text-sm">
+          <thead className="bg-slate-50">
             <tr>
-              <th>Eigenschap</th>
+              <th className="sticky left-0 z-10 border-b border-slate-200 bg-slate-50 px-3 py-2 text-left font-semibold text-slate-700">
+                Eigenschap
+              </th>
               {items.map((item, idx) => {
                 const colHighlight = anyColumnActive && activeColumnMask[idx];
                 const colDim = anyColumnActive && !activeColumnMask[idx];
                 return (
                   <th
                     key={selectedIds[idx]}
-                    className={`compare-col-header${colHighlight ? ' is-col-highlight' : ''}${colDim ? ' is-col-dim' : ''}`}
+                    className={`border-b border-slate-200 px-3 py-2 text-left font-semibold ${
+                      colHighlight
+                        ? 'bg-lt-primarySoft text-lt-primary'
+                        : colDim
+                          ? 'bg-slate-100 text-slate-400'
+                          : 'bg-slate-50 text-slate-700'
+                    }`}
                   >
                     {item?.naam || selectedIds[idx]}
-                    {colHighlight ? <span className="compare-col-active-badge ms-1">●</span> : null}
+                    {colHighlight ? <span className="ml-1 text-xs">●</span> : null}
                   </th>
                 );
               })}
@@ -233,21 +251,32 @@ const ComparePage: React.FC = () => {
           </thead>
           <tbody>
             {matrixRows.map((row) => (
-              <tr key={row.key} className={`compare-matrix-row${row.hasDiff ? ' is-diff' : ''}`}>
-                <th scope="row">
+              <tr key={row.key} className={row.hasDiff ? 'bg-amber-50/40' : 'bg-white'}>
+                <th
+                  scope="row"
+                  className={`sticky left-0 z-10 border-b border-slate-200 px-3 py-2 text-left font-semibold ${
+                    row.hasDiff ? 'bg-amber-100/70 text-amber-900' : 'bg-white text-slate-700'
+                  }`}
+                >
                   {row.label}
-                  {row.hasDiff ? <span className="compare-diff-chip ms-2">Afwijking</span> : null}
+                  {row.hasDiff ? (
+                    <span className="ml-2 inline-flex items-center rounded-full border border-amber-300 bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-900">
+                      Afwijking
+                    </span>
+                  ) : null}
                 </th>
                 {row.values.map((value, idx) => {
                   const colHighlight = anyColumnActive && activeColumnMask[idx];
                   const colDim = anyColumnActive && !activeColumnMask[idx];
                   const cellDiff = row.diffMask[idx];
                   const cls = [
-                    'compare-matrix-cell',
-                    cellDiff ? 'is-diff' : '',
-                    colHighlight ? 'is-col-highlight' : '',
-                    colDim ? 'is-col-dim' : '',
-                  ].filter(Boolean).join(' ');
+                    'border-b border-slate-200 px-3 py-2 align-top',
+                    cellDiff ? 'bg-amber-100/60 text-amber-900' : 'text-slate-700',
+                    colHighlight ? 'bg-lt-primarySoft/70' : '',
+                    colDim ? 'bg-slate-100 text-slate-400' : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ');
                   return (
                     <td key={`${row.key}-${selectedIds[idx]}`} className={cls}>
                       {value}
@@ -259,7 +288,7 @@ const ComparePage: React.FC = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
   );
 };
 

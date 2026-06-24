@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useActiveTechnology } from './ActiveTechnologyContext';
+import { apiFetch } from '../utils/api';
 
 type ProposalStatus = 'Ingediend' | 'In behandeling' | 'Goedgekeurd' | 'Afgewezen' | 'Teruggetrokken';
 type EntityType = 'Technologie' | 'Definitie' | 'Relatie';
@@ -18,60 +19,17 @@ type Proposal = {
   reason?: string;
 };
 
-const MOCK_PROPOSALS: Proposal[] = [
-  {
-    id: 'vst-001',
-    title: 'Status wijziging: LegalKM naar "In gebruik"',
-    description: 'Voorstel om de gebruiksstatus van LegalKM te wijzigen van Concept naar In gebruik na succesvolle pilot.',
-    entityType: 'Technologie',
-    entityLabel: 'LegalKM',
-    entityId: 'legalkm',
-    status: 'In behandeling',
-    submittedBy: 'B. de Vries',
-    submittedAt: '2026-05-28',
-    reason: 'Pilotresultaten positief beoordeeld door gebruikersgroep.',
-  },
-  {
-    id: 'vst-002',
-    title: 'Toevoeging: nieuwe definitie "Procesautomatisering"',
-    description: 'Definitie voor procesautomatisering ontbreekt in het begrippenregister.',
-    entityType: 'Definitie',
-    entityLabel: 'Procesautomatisering',
-    status: 'Ingediend',
-    submittedBy: 'A. Janssen',
-    submittedAt: '2026-05-30',
-  },
-  {
-    id: 'vst-003',
-    title: 'Relatie verwijderen: DocuWare - Archivering',
-    description: 'De relatie tussen DocuWare en het taaktype Archivering is niet meer actueel.',
-    entityType: 'Relatie',
-    entityLabel: 'DocuWare → Archivering',
-    status: 'Goedgekeurd',
-    submittedBy: 'C. Bakker',
-    submittedAt: '2026-05-20',
-    reason: 'Goedgekeurd na overleg met kennisbeheer.',
-  },
-  {
-    id: 'vst-004',
-    title: 'Versienummer bijwerken: ClauseBase 3.1 → 3.2',
-    description: 'Nieuwste versie van ClauseBase is beschikbaar, versienummer moet worden bijgewerkt.',
-    entityType: 'Technologie',
-    entityLabel: 'ClauseBase',
-    entityId: 'clausebase',
-    status: 'Afgewezen',
-    submittedBy: 'B. de Vries',
-    submittedAt: '2026-05-15',
-    reason: 'Versienummer vereist verificatie bij leverancier. Terugverwezen.',
-  },
-];
+type GovernancePermissions = {
+  role: string;
+  actions: Record<string, boolean>;
+};
 
 const STATUS_BADGE: Record<ProposalStatus, string> = {
-  Ingediend: 'text-bg-primary',
-  'In behandeling': 'text-bg-warning',
-  Goedgekeurd: 'text-bg-success',
-  Afgewezen: 'text-bg-danger',
-  Teruggetrokken: 'text-bg-secondary',
+  Ingediend: 'border-blue-200 bg-blue-100 text-blue-800',
+  'In behandeling': 'border-amber-200 bg-amber-100 text-amber-900',
+  Goedgekeurd: 'border-emerald-200 bg-emerald-100 text-emerald-800',
+  Afgewezen: 'border-rose-200 bg-rose-100 text-rose-800',
+  Teruggetrokken: 'border-slate-300 bg-slate-100 text-slate-700',
 };
 
 const ALL_STATUSES: ProposalStatus[] = [
@@ -87,60 +45,174 @@ const ProposalsPage: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState<ProposalStatus | 'all'>('all');
   const [entityTypeFilter, setEntityTypeFilter] = useState<EntityType | 'all'>('all');
   const [search, setSearch] = useState('');
-
-  const filtered = MOCK_PROPOSALS.filter((p) => {
-    const matchesStatus = statusFilter === 'all' || p.status === statusFilter;
-    const matchesType = entityTypeFilter === 'all' || p.entityType === entityTypeFilter;
-    const matchesSearch =
-      !search ||
-      p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.entityLabel.toLowerCase().includes(search.toLowerCase()) ||
-      p.description.toLowerCase().includes(search.toLowerCase());
-    return matchesStatus && matchesType && matchesSearch;
-  });
+  const [proposals, setProposals] = useState<Proposal[]>([]);
+  const [permissions, setPermissions] = useState<GovernancePermissions>({ role: 'Viewer', actions: {} });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [busyProposalId, setBusyProposalId] = useState<string | null>(null);
 
   const hasFilters = statusFilter !== 'all' || entityTypeFilter !== 'all' || !!search;
 
+  const queryString = useMemo(() => {
+    const params = new URLSearchParams();
+    if (statusFilter !== 'all') {
+      params.set('status', statusFilter);
+    }
+    if (entityTypeFilter !== 'all') {
+      params.set('entityType', entityTypeFilter);
+    }
+    if (search.trim()) {
+      params.set('q', search.trim());
+    }
+    return params.toString();
+  }, [statusFilter, entityTypeFilter, search]);
+
+  const loadProposals = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const [fetchedProposals, fetchedPermissions] = await Promise.all([
+        apiFetch<Proposal[]>(`/api/governance/proposals${queryString ? `?${queryString}` : ''}`),
+        apiFetch<GovernancePermissions>('/api/governance/permissions'),
+      ]);
+      setProposals(fetchedProposals);
+      setPermissions(fetchedPermissions);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Onbekende fout bij laden van voorstellen.');
+    } finally {
+      setLoading(false);
+    }
+  }, [queryString]);
+
+  useEffect(() => {
+    void loadProposals();
+  }, [loadProposals]);
+
+  const canCreate = !!permissions.actions['proposal.create'];
+  const canApprove = !!permissions.actions['proposal.approve'];
+  const canReject = !!permissions.actions['proposal.reject'];
+
+  const submitProposal = async () => {
+    if (!canCreate) {
+      return;
+    }
+
+    const title = window.prompt('Titel van het voorstel');
+    if (!title) {
+      return;
+    }
+    const description = window.prompt('Omschrijving van het voorstel');
+    if (!description) {
+      return;
+    }
+
+    try {
+      await apiFetch<Proposal>('/api/governance/proposals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title,
+          description,
+          entityType: activeTechnology ? 'Technologie' : 'Definitie',
+          entityLabel: activeTechnology?.naam || 'Onbekende entiteit',
+          entityId: activeTechnology?.id,
+          reason: 'Aangemaakt vanuit dashboard governance view',
+        }),
+      });
+      await loadProposals();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Voorstel indienen mislukt.');
+    }
+  };
+
+  const updateStatus = async (proposalId: string, nextStatus: ProposalStatus) => {
+    setBusyProposalId(proposalId);
+    setError(null);
+    try {
+      await apiFetch<Proposal>(`/api/governance/proposals/${encodeURIComponent(proposalId)}/status`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: nextStatus }),
+      });
+      await loadProposals();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Statuswijziging mislukt.');
+    } finally {
+      setBusyProposalId(null);
+    }
+  };
+
+  const filtered = proposals;
+
+  const panelClass = 'rounded-lt border border-lt-border bg-lt-card p-5 shadow-lt sm:p-6';
+  const primaryButtonClass =
+    'inline-flex items-center rounded-md border border-lt-primary bg-lt-primary px-3 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary disabled:cursor-not-allowed disabled:opacity-50';
+  const secondaryButtonClass =
+    'inline-flex items-center rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary disabled:cursor-not-allowed disabled:opacity-50';
+  const successButtonClass =
+    'inline-flex items-center rounded-md border border-emerald-300 bg-white px-2.5 py-1.5 text-xs font-medium text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary disabled:cursor-not-allowed disabled:opacity-50';
+  const dangerButtonClass =
+    'inline-flex items-center rounded-md border border-rose-300 bg-white px-2.5 py-1.5 text-xs font-medium text-rose-700 shadow-sm transition hover:bg-rose-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary disabled:cursor-not-allowed disabled:opacity-50';
+  const fieldLabelClass = 'mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-600';
+  const fieldControlClass =
+    'w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm transition placeholder:text-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lt-primary';
+
   return (
-    <div className="page-card page-card--xxl">
-      <div className="d-flex align-items-center justify-content-between mb-3">
-        <h2 className="page-heading mb-0">Voorstellen</h2>
+    <section className={panelClass}>
+      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-lg font-semibold text-lt-heading">Voorstellen</h2>
         <button
           type="button"
-          className="btn btn-sm btn-primary"
-          disabled
-          aria-disabled="true"
+          className={primaryButtonClass}
+          onClick={() => {
+            void submitProposal();
+          }}
+          disabled={!canCreate || loading}
+          aria-disabled={!canCreate || loading}
           title="Rol vereist: Proposer of hoger"
         >
           + Voorstel indienen
         </button>
       </div>
 
+      {error ? (
+        <div
+          className="rounded-md border border-rose-300 bg-rose-50 px-3 py-2 text-sm text-rose-800"
+          role="alert"
+        >
+          {error}
+        </div>
+      ) : null}
+
       {activeTechnology ? (
-        <div className="alert alert-info d-flex align-items-center gap-2 py-2 mb-3" role="status">
+        <div
+          className="mt-3 flex flex-wrap items-center gap-2 rounded-md border border-sky-200 bg-sky-50 px-3 py-2 text-sm text-sky-900"
+          role="status"
+        >
           <span>
             Actieve context: <strong>{activeTechnology.naam}</strong>
           </span>
           <Link
             to={`/legaltechnologies/${encodeURIComponent(activeTechnology.id)}`}
-            className="ms-2 small"
+            className="text-sm font-medium text-blue-700 underline underline-offset-2"
           >
             Open detailpagina
           </Link>
         </div>
       ) : null}
 
-      <div className="d-flex flex-wrap gap-2 mb-3">
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-[220px,220px,minmax(0,300px)]">
         <div>
           <label
-            className="lt-filter-label form-label small mb-1"
+            className={fieldLabelClass}
             htmlFor="proposals-status-filter"
           >
             Status
           </label>
           <select
             id="proposals-status-filter"
-            className="form-select form-select-sm"
+            className={fieldControlClass}
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value as ProposalStatus | 'all')}
           >
@@ -155,14 +227,14 @@ const ProposalsPage: React.FC = () => {
 
         <div>
           <label
-            className="lt-filter-label form-label small mb-1"
+            className={fieldLabelClass}
             htmlFor="proposals-type-filter"
           >
             Entiteitstype
           </label>
           <select
             id="proposals-type-filter"
-            className="form-select form-select-sm"
+            className={fieldControlClass}
             value={entityTypeFilter}
             onChange={(e) => setEntityTypeFilter(e.target.value as EntityType | 'all')}
           >
@@ -173,14 +245,14 @@ const ProposalsPage: React.FC = () => {
           </select>
         </div>
 
-        <div className="flex-grow-1" style={{ maxWidth: 300 }}>
-          <label className="lt-filter-label form-label small mb-1" htmlFor="proposals-search">
+        <div>
+          <label className={fieldLabelClass} htmlFor="proposals-search">
             Zoeken
           </label>
           <input
             id="proposals-search"
             type="search"
-            className="form-control form-control-sm"
+            className={fieldControlClass}
             placeholder="Zoek op titel of entiteit..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -188,13 +260,15 @@ const ProposalsPage: React.FC = () => {
         </div>
       </div>
 
-      {filtered.length === 0 ? (
-        <div className="text-center py-5 text-muted">
-          <p className="mb-2">Geen voorstellen gevonden die voldoen aan de filters.</p>
+      {loading ? (
+        <div className="py-3 text-sm text-lt-muted">Voorstellen laden...</div>
+      ) : filtered.length === 0 ? (
+        <div className="py-8 text-center text-lt-muted">
+          <p className="mb-2 text-sm">Geen voorstellen gevonden die voldoen aan de filters.</p>
           {hasFilters ? (
             <button
               type="button"
-              className="btn btn-sm btn-outline-secondary"
+              className={secondaryButtonClass}
               onClick={() => {
                 setStatusFilter('all');
                 setEntityTypeFilter('all');
@@ -206,74 +280,82 @@ const ProposalsPage: React.FC = () => {
           ) : null}
         </div>
       ) : (
-        <div className="table-responsive">
-          <table className="table table-sm table-hover align-middle">
-            <thead>
+        <div className="mt-2 overflow-x-auto rounded-lg border border-slate-200 bg-white">
+          <table className="min-w-full border-collapse text-sm">
+            <thead className="bg-slate-50">
               <tr>
-                <th>Voorstel</th>
-                <th>Type</th>
-                <th>Entiteit</th>
-                <th>Status</th>
-                <th>Ingediend</th>
-                <th>Acties</th>
+                <th className="border-b border-slate-200 px-3 py-2 text-left font-semibold text-slate-700">Voorstel</th>
+                <th className="border-b border-slate-200 px-3 py-2 text-left font-semibold text-slate-700">Type</th>
+                <th className="border-b border-slate-200 px-3 py-2 text-left font-semibold text-slate-700">Entiteit</th>
+                <th className="border-b border-slate-200 px-3 py-2 text-left font-semibold text-slate-700">Status</th>
+                <th className="border-b border-slate-200 px-3 py-2 text-left font-semibold text-slate-700">Ingediend</th>
+                <th className="border-b border-slate-200 px-3 py-2 text-left font-semibold text-slate-700">Acties</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((proposal) => (
-                <tr key={proposal.id}>
-                  <td>
-                    <div className="fw-medium small">{proposal.title}</div>
-                    <div className="text-muted" style={{ fontSize: '0.75rem' }}>
+                <tr key={proposal.id} className="border-b border-slate-200 last:border-b-0">
+                  <td className="px-3 py-2 align-top">
+                    <div className="text-sm font-semibold text-slate-800">{proposal.title}</div>
+                    <div className="text-xs text-lt-muted">
                       {proposal.description.length > 80
                         ? `${proposal.description.slice(0, 80)}\u2026`
                         : proposal.description}
                     </div>
                     {proposal.reason ? (
-                      <div className="text-muted fst-italic" style={{ fontSize: '0.75rem' }}>
+                      <div className="text-xs italic text-lt-muted">
                         Reden: {proposal.reason}
                       </div>
                     ) : null}
                   </td>
-                  <td>
-                    <span className="badge text-bg-light border small">{proposal.entityType}</span>
+                  <td className="px-3 py-2 align-top">
+                    <span className="inline-flex items-center rounded-full border border-slate-300 bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700">
+                      {proposal.entityType}
+                    </span>
                   </td>
-                  <td>
+                  <td className="px-3 py-2 align-top">
                     {proposal.entityId ? (
                       <Link
                         to={`/legaltechnologies/${encodeURIComponent(proposal.entityId)}`}
-                        className="small"
+                        className="text-sm font-semibold text-blue-700 underline underline-offset-2"
                       >
                         {proposal.entityLabel}
                       </Link>
                     ) : (
-                      <span className="small">{proposal.entityLabel}</span>
+                      <span className="text-sm text-slate-700">{proposal.entityLabel}</span>
                     )}
                   </td>
-                  <td>
-                    <span className={`badge ${STATUS_BADGE[proposal.status]}`}>
+                  <td className="px-3 py-2 align-top">
+                    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${STATUS_BADGE[proposal.status]}`}>
                       {proposal.status}
                     </span>
                   </td>
-                  <td>
-                    <div className="small text-muted">{proposal.submittedAt}</div>
-                    <div className="small text-muted">{proposal.submittedBy}</div>
+                  <td className="px-3 py-2 align-top">
+                    <div className="text-xs text-lt-muted">{proposal.submittedAt}</div>
+                    <div className="text-xs text-lt-muted">{proposal.submittedBy}</div>
                   </td>
-                  <td>
-                    <div className="d-flex gap-1">
+                  <td className="px-3 py-2 align-top">
+                    <div className="flex flex-wrap gap-2">
                       <button
                         type="button"
-                        className="btn btn-sm btn-outline-success"
-                        disabled
-                        aria-disabled="true"
+                        className={successButtonClass}
+                        onClick={() => {
+                          void updateStatus(proposal.id, 'Goedgekeurd');
+                        }}
+                        disabled={!canApprove || proposal.status !== 'In behandeling' || busyProposalId === proposal.id}
+                        aria-disabled={!canApprove || proposal.status !== 'In behandeling' || busyProposalId === proposal.id}
                         title="Rol vereist: Moderator of hoger"
                       >
                         Goedkeuren
                       </button>
                       <button
                         type="button"
-                        className="btn btn-sm btn-outline-danger"
-                        disabled
-                        aria-disabled="true"
+                        className={dangerButtonClass}
+                        onClick={() => {
+                          void updateStatus(proposal.id, 'Afgewezen');
+                        }}
+                        disabled={!canReject || proposal.status !== 'In behandeling' || busyProposalId === proposal.id}
+                        aria-disabled={!canReject || proposal.status !== 'In behandeling' || busyProposalId === proposal.id}
                         title="Rol vereist: Moderator of hoger"
                       >
                         Afwijzen
@@ -287,15 +369,15 @@ const ProposalsPage: React.FC = () => {
         </div>
       )}
 
-      <div className="d-flex align-items-center gap-2 mt-2">
-        <Link to="/governance/audit-log" className="btn btn-sm btn-outline-secondary">
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <Link to="/governance/audit-log" className={secondaryButtonClass}>
           Bekijk Auditlog
         </Link>
-        <Link to="/governance/comments" className="btn btn-sm btn-outline-secondary">
+        <Link to="/governance/comments" className={secondaryButtonClass}>
           Ga naar Opmerkingen
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 

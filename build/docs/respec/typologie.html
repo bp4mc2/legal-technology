@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Typologie juridische technologieën</title>
+
+  <script class="remove">
+    var respecConfig = {
+      specStatus: "base",
+      shortName: "juridische-technologie-typologie",
+      editors: [
+        {
+          name: "Brattinga, Van Dijk, Straver"
+        }
+      ],
+      maxTocLevel: 4
+    };
+  </script>
+
+  <script
+    src="https://www.w3.org/Tools/respec/respec-w3c"
+    class="remove"
+    async></script>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="assets/js/ontology-diagram-data.js"></script>
+  <script src="assets/js/ontology-diagram.js"></script>
+  <script src="assets/js/technology-overview-filter.js"></script>
+
+  <style>
+    nav.doc-nav {
+        position: fixed;
+        top: 5rem;
+        right: 1rem;
+
+        width: 18rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+
+        border: 1px solid #d0d0d0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: #fff;
+
+        box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.16);
+    }
+
+    nav.doc-nav ul {
+        margin-bottom: 0;
+        padding-left: 1.2rem;
+    }
+
+    body {
+        padding-right: 21rem;
+    }
+
+    @media (max-width: 1000px) {
+        nav.doc-nav {
+            position: static;
+            width: auto;
+            max-height: none;
+            overflow: visible;
+        }
+
+        body {
+            padding-right: 0;
+        }
+    }
+
+    .page-description {
+      font-size: 1.05rem;
+    }
+
+    .diagram-container {
+      width: 100%;
+      max-width: 100%;
+      height: 650px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    #ontology-diagram {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .diagram-toolbar {
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .diagram-toolbar button {
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+    }    
+  </style>
+  <link rel="stylesheet" href="assets/css/lto-detail.css">
+</head>
+
+<body>
+  <section id="abstract">
+    <p>De beschrijving van de typologie van juridische technologieën.</p>
+  </section>
+
+  <section id="sotd">
+    <p>
+      Onderdeel van de documentatie juridische technologie.
+      Gegenereerd op 2026-06-24.
+    </p>
+  </section>
+
+  <section>
+
+    <h1>Typologie voor juridische technologie</h1>
+
+    <p class="page-description">
+      De beschrijving van de typologie van juridische technologieën.
+    </p>
+
+    <nav class="doc-nav" aria-label="Documentatienavigatie">
+      <strong>Documentatieonderdelen</strong>
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        <li>
+          <strong>Typologie juridische technologieën</strong>
+        </li>
+        <li>
+          <a href="catalogus.html">Catalogus juridische technologieën</a>
+        </li>
+        <li>
+          <a href="begrippenkader.html">Begrippenkader</a>
+        </li>
+        <li>
+          <a href="organisaties.html">Organisaties</a>
+        </li>
+        <li>
+          <a href="ontologie.html">Ontologie</a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+    <p>Deze typologie (of "model") is een manier om juridische technologie te kunnen beschrijven en met elkaar te vergelijken. Het model is afgeleid van de typology of legal technologies, zoals beschikbaar op: https://publications.cohubicol.com/typology</p>
+<p>Potentieel kan deze typologie beschikbaar komt op https://regels.overheid.nl en daarmee een invulling geven aan de (huidige) onderdelen "standaarden" en "regels/methoden".</p>
+<h2 id="juridische-technologie-legal-technology">Juridische technologie ("legal technology")</h2>
+<p>Onder «juridische technologie» verstaan we een methode, standaard of tool die gebruikt wordt bij de totstandkoming van wet- en regelgeving, de doorvertaling naar de uitvoering en het gebruik in de uitvoering, rechtsgang, en uiteindelijk evaluatie. Met andere woorden: de gehele beleidscyclus.</p>
+<p><img alt="" src="../assets/img/cyclus.svg" /></p>
+<p>Hierbij geldt:</p>
+<ul>
+<li>Een <strong>methode</strong> is een gestructureerde, herhaalbare aanpak (stappenplan met technieken en keuzes) om een doel te bereiken of een taak uit te voeren. Een methode beschrijft hoe je te werk gaat (en evt. In welke volgorde) en kan verwijzen naar standaarden als hulpmiddel. Een methode beschrijft hoe een taak wordt uitgevoerd.</li>
+<li>Een (informatie)<strong>standaard</strong> is een gedocumenteerde set van afspraken (regels/eisen/definities/specificaties) over welke informatie uitgewisseld of vastgelegd wordt om een doel te bereiken of een taak uit te voeren. Een (informatie)standaard beschrijft wat het resultaat van een taak is.</li>
+<li>Een <strong>tool</strong> is een voorziening die ondersteuning biedt om een doel te bereiken of een taak uit te voeren. De beschrijving van een tool geeft aan waarmee een taak wordt uitgevoerd.</li>
+</ul>
+<h2 id="juridische-taken">"Juridische" taken</h2>
+<p>Onder een «taak» verstaan we een afgebakende hoeveelheid werk die leidt tot een overdraagbaar resultaat en die bijdraagt aan het behalen van een doel. Binnen de context van dit model betreft dit taken die bijdragen aan het doel om tot wet- en regelgeving te komen en/of tot de uitvoering van deze wet- en regelgeving te komen.</p>
+<p>We onderscheiden de volgende juridische taken van wet naar loket, de taken op de rode lijn uit het figuur op de voorgaande pagina. Daarbij zijn de eerste en de laatste taak niet alleen van toepassing op de rode lijn, maar ook daarbuiten:</p>
+<ul>
+<li>Opstellen regeltekst vindt zowel in de uitvoering als bij de wetgever plaatst. De wetgever stelt de wet in formele zin op, de uitvoeringsorganisatie stelt beleidsregels op. Daarnaast nemen we deze taak mee, omdat de andere taken eisen stellen aan de wijze waarop een regeltekst wordt opgesteld.</li>
+<li>Evalueren beleid vindt met name plaats bij de wetgever, maar ook de andere spelers hebben een belangrijke rol bij het evalueren van het beleid. Daarnaast nemen we deze taak mee, omdat het evalueren van het beleid eisen zal stellen aan de (resultaten van) de andere taken.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Taak</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opstellen regeltekst</td>
+<td>Opstellen van juridische tekst als onderdeel van het geschreven recht: de algemeen verbindende voorschriften, inclusief beleidsregels.</td>
+</tr>
+<tr>
+<td>Opdrachtoriëntatie</td>
+<td>Bepalen waaruit de opgave bestaat die opgepakt wordt, dwz: het doel dat voor ogen staat. In geval er nog geen regelgeving is, zal dit doel vermoedelijk als maatschappelijk effect geformuleerd zijn, als de regelgeving er al is, kan het doel de uitvoering van deze (nieuwe of gewijzigde) regelgeving zijn.</td>
+</tr>
+<tr>
+<td>Verzamelen bronmateriaal</td>
+<td>Verzamelen van de relevante bronnen die nodig zijn voor de betreffende opgave. Dit omvat de juridische teksten, maar ook andere teksten die relevant kunnen zijn voor de interpretatie van deze teksten (rechtvinding), zoals de parlementaire geschiedenis, de huidige manier van werken, etc, etc.</td>
+</tr>
+<tr>
+<td>Analyseren regeltekst</td>
+<td>Een gestructureerde manier waarin de betekenis, structuur en bedoeling van een juridische tekst wordt onderzocht, zoals deze feitelijk uit de tekst blijkt. Deze stap omvat strikt genomen nog niet de interpretatie van de juridische tekst. In de praktijk al deze taak in samenhang met de taak interpreteren en expliciteren worden uitgevoerd.</td>
+</tr>
+<tr>
+<td>Interpreteren en expliciteren</td>
+<td>Het interpreteren van een juridische tekst en de betekenis en bedoeling daarvan op een gestructureerde manier vastleggen. Dit lijkt op rechtsvinding (en ook rechtsvorming (!)), maar is in dit geval niet bedoeld voor een individueel geval.</td>
+</tr>
+<tr>
+<td>Begrippen definiëren</td>
+<td>Het gestructureerd beschrijven van de betekenis die met een term wordt bedoeld in een specifieke context.</td>
+</tr>
+<tr>
+<td>Specificeren gegevens(-behoefte)</td>
+<td>Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke gegevens nodig zijn ten behoeve van een wettelijke taak.</td>
+</tr>
+<tr>
+<td>Specificeren regels</td>
+<td>Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke regels uitgevoerd moeten worden ten behoeve van een wettelijke taak. Met "regel" wordt hier een regel bedoeld in de vorm van een algoritme of functie die op basis van aangeboden gegevens komt tot een resultaat (in de vorm van gegevens).</td>
+</tr>
+<tr>
+<td>Specificeren processen</td>
+<td>Het uitvoerbaar maken van wet- en regelgeving door te specificeren welke processen uitgevoerd moeten worden ten behoeve van een wettelijke taak.</td>
+</tr>
+<tr>
+<td>Valideren specificaties</td>
+<td>Het valideren of (gegevens, regel en/of proces-)specificaties overeen komen met de juridische teksten en de interpretatie die aan deze teksten moet worden gegeven.</td>
+</tr>
+<tr>
+<td>Geautomatiseerde regeluitvoering</td>
+<td>Het geautomatiseerd uitvoeren van regels, of delen van regels, zonder menselijke tussenkomst.</td>
+</tr>
+<tr>
+<td>Beslisondersteuning</td>
+<td>Ondersteuning aan ambtenaren bij de uitvoering van regels.</td>
+</tr>
+<tr>
+<td>Evaluatie beleid</td>
+<td>Het gestructureerd beoordelen of de implementatie en uitvoering van wet- en regelgeving in de praktijk overeenkomen met de met de beleidsdoelen beoogde effecten.</td>
+</tr>
+</tbody>
+</table>
+<p>Deze opsomming suggereert een bepaalde volgordelijkheid. Deze is er in de praktijk ook wel, maar hoeft niet zo hard te zijn. Zo is het al mogelijk om begrippen te definiëren zoals deze uit een wet in formele zin af te leiden zijn, terwijl op dat moment de onderliggende regelgeving nog niet beschikbaar is. Het opstellen van de tekst van deze onderliggende regelgeving zou dan pas na het definiëren van deze begrippen volgen (waarop mogelijk ook deze begrippen preciezer kunnen worden gedefinieerd).</p>
+<h2 id="producten">Producten</h2>
+<p>Elke taak zoals genoemd in <a href="#juridische-taken">juridische taken</a> heeft informatie nodig, maar lever ook informatie. Deze informatie wordt in de vorm van producten geleverd. Binnen de typologie «product»  beschouwd als een verzameling van afgebakende informatie geleverd door een taak. Een «productt» kan als input dienen voor een volgende «taak». Een product heeft een <a href="#beschouwingsniveau">beschouwingsniveau</a>, dat aangeeft of het vrij vorm van specificatie heeft of uiteindelijk een uitvoerbare vorm.</p>
+<p>We onderscheiden in de levenscyclus van wet naar loket de volgende producten:</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Definitie</th>
+<th>Beschouwingsniveau</th>
+<th>Input voor (taak/taakgroep)</th>
+<th>Output van (taak/taakgroep)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regeltekst / beleidsregels</td>
+<td></td>
+<td>Tekstueel - juridisch vastgesteld</td>
+<td>Opdrachtoriëntatie (TG1) Opstellen regeltekst - Normatief (TG1)</td>
+<td></td>
+</tr>
+<tr>
+<td>Serviceinformatie (annotaties)</td>
+<td></td>
+<td>Tekstueel - juridisch vastgesteld</td>
+<td>Opdrachtoriëntatie (TG1), Analyseren regeltekst (TG2)</td>
+<td>Opstellen regeltekst - Normatief (TG1)</td>
+</tr>
+<tr>
+<td>Teksten en commentaren</td>
+<td></td>
+<td>Tekstueel - interpretatie</td>
+<td>Opdrachtoriëntatie (TG1)</td>
+<td>Opstellen regeltekst - Descriptief (TG1)</td>
+</tr>
+<tr>
+<td>Scope / normatieve vragen</td>
+<td></td>
+<td>Tekstueel - interpretatie</td>
+<td>Verzamelen bronmateriaal (TG1)</td>
+<td>Opdrachtoriëntatie (TG1)</td>
+</tr>
+<tr>
+<td>Juridisch landschap</td>
+<td></td>
+<td>Tekstueel - interpretatie</td>
+<td>Analyseren regeltekst (TG2)</td>
+<td>Verzamelen bronmateriaal (TG1)</td>
+</tr>
+<tr>
+<td>Ordening / groepering / classificatie</td>
+<td></td>
+<td>Semantisch - basis</td>
+<td>Interpreteren en expliciteren (TG2)</td>
+<td>Analyseren regeltekst (TG2)</td>
+</tr>
+<tr>
+<td>Input beleidsregels / instructie</td>
+<td></td>
+<td>Tekstueel - interpretatie</td>
+<td>(Vaststellen ontbrekend uitvoeringsbeleid)</td>
+<td>Interpreteren en expliciteren (TG2)</td>
+</tr>
+<tr>
+<td>Bouwstenen voor modellen</td>
+<td></td>
+<td>Semantisch - detail</td>
+<td>Begrippen, normen en handelingen definiëren (TG2)</td>
+<td>Interpreteren en expliciteren (TG2)</td>
+</tr>
+<tr>
+<td>Conceptueel model</td>
+<td></td>
+<td>Semantisch - detail</td>
+<td>Taakgroep 3 (TG3)</td>
+<td>Begrippen, normen en handelingen definiëren (TG2)</td>
+</tr>
+<tr>
+<td>Logisch model</td>
+<td></td>
+<td>Logisch</td>
+<td>Taakgroep 4 (TG4)</td>
+<td>Specificeren gegevens(-behoefte) (TG3)</td>
+</tr>
+<tr>
+<td>Regelmodel</td>
+<td></td>
+<td>Logisch</td>
+<td>Taakgroep 4 (TG4)</td>
+<td>Specificeren regels (TG3)</td>
+</tr>
+<tr>
+<td>Procesmodel</td>
+<td></td>
+<td>Logisch</td>
+<td>Taakgroep 4 (TG4)</td>
+<td>Specificeren processen (TG3)</td>
+</tr>
+<tr>
+<td>Uitvoeringsspecificaties</td>
+<td></td>
+<td>Ontologisch</td>
+<td>Taakgroep 4 (TG4)</td>
+<td>Taakgroep 3 (TG3)</td>
+</tr>
+<tr>
+<td>Correcte, juiste en uitvoerbare specificaties</td>
+<td></td>
+<td>Logisch</td>
+<td>Implementeren van specificaties (TG4)</td>
+<td>Valideren/verifieren (TG4)</td>
+</tr>
+<tr>
+<td>Systeem waarbinnen regels worden uitgevoerd</td>
+<td></td>
+<td>Technisch</td>
+<td>Regeluitvoering (TG4)</td>
+<td>Implementeren van specificaties (TG4)</td>
+</tr>
+<tr>
+<td>Besluit</td>
+<td></td>
+<td>Tekstueel</td>
+<td>Evaluatie beleid (TG5)</td>
+<td>Regeluitvoering (TG4)</td>
+</tr>
+</tbody>
+</table>
+<p>Schematisch ziet de relatie tussen de taken en producten er als volgt uit: </p>
+<p>```mermaid
+flowchart LR</p>
+<p>%% ===== Taakgroepen/Taken =====</p>
+<p>subgraph TG1["Taakgroep 1 - Tekstueel (juridisch / interpretatie)"]
+    subgraph TG1OR["Opstellen regeltekst"]
+        TG1ORA("Normatief")
+        TG1ORB("Descriptief (MvT/Commentaar/NvT)")
+    end
+    TG1OO("Opdrachtoriëntatie")
+    TG1VB("Verzamelen bronmateriaal")
+  end</p>
+<p>subgraph TG2["Taagroep 2 - Analyse en interpretatie"]
+    TG2AR("Analyseren regeltekst")
+    TG2IE("Interpreteren en expliciteren")
+    TG2BD("Begrippen, normen en handelingen definiëren")
+  end</p>
+<p>VOB(["(Vaststellen ontbrekend uitvoeringsbeleid)"])</p>
+<p>subgraph TG3["Taakgroep 3 - Logisch / modellering"]
+    TG3SG("Specificeren gegevens(-behoefte)")
+    TG3SR("Specificeren regels")
+    TG3SP("Specificeren processen")
+  end</p>
+<p>subgraph TG4["Taagroep 4 - Validatie en uitvoering"]
+    TG4VV("Valideren, verifieren specificaties in de context")
+    TG4IS("Implementeren van specificaties")
+    TG4RU("Regeluitvoering")
+  end</p>
+<p>subgraph TG5["Evaluatie"]
+    TG5EB("Evaluatie beleid")
+  end</p>
+<p>%% ===== RELATIES =====</p>
+<p>TG1ORA --&gt;|Regeltekst / beleidsregels|TG1OO
+  TG1ORA --&gt;|"Serviceinformatie (annotaties)"|TG2AR
+  TG1ORB --&gt;|Teksten en commentaren|TG1OO </p>
+<p>TG1OO --&gt;|Scope / normatieve vragen|TG1VB
+  TG1VB --&gt;|Juridisch landschap|TG2AR</p>
+<p>TG2AR --&gt;|Ordening / Groepering / classificatie|TG2IE
+  TG2IE --&gt;|"Input voor beleidsregels / instructie (loop naar beleid opstellen)"|VOB
+  TG2IE --&gt;|Bouwstenen voor modellen|TG2BD</p>
+<p>%% TG2 --&gt;|Bouwstenen voor modellen|TG3</p>
+<p>TG2BD --&gt;|Conceptueel model|TG3
+  TG3SG --&gt;|Logisch model|TG4
+  TG3SR --&gt;|Regelmodel|TG4
+  TG3SP --&gt;|Procesmodel|TG4  </p>
+<p>TG3 --&gt;|uitvoeringsspecificaties|TG4</p>
+<p>TG4VV --&gt;|Correcte, juiste en uitvoerbare specificaties|TG4IS
+  TG4IS --&gt;|Systeem waarbinnen de regels worden uitgevoerd|TG4RU
+  TG4RU --&gt;|Besluit|TG5
+```</p>
+<h2 id="beschrijving-van-de-juridische-technologie">Beschrijving van de juridische technologie</h2>
+<p><img alt="" src="../assets/img/informatiemodel.svg" /></p>
+<p>Van elke juridische technologie geven we een beschrijving die bestaat uit drie onderdelen:</p>
+<ol>
+<li>
+<p>De wijze waarop de technologie invulling geeft of ondersteuning biedt aan één of meerdere juridische taken, vastgelegd met een enkel woord of een enkel beschrijvend zinnetje, eventueel met een verwijzing naar (externe) documentatie.</p>
+</li>
+<li>
+<p>Een lijst met kenmerken die de betreffende technologie typeert. Deze lijst bestaat uit de volgende kenmerken:</p>
+<ol>
+<li>Of sprake is van een methode, tool of standaard;</li>
+<li>De naam van de technologie;</li>
+<li>De gebruiksstatus van de technologie (work-in-progress, in gebruik, voorgesteld, etc);</li>
+<li>De normstatus van de technologie (voorstel, best-practice, industrie standaard, wettelijke standaard, etc);</li>
+<li>Het soort technologie (zoals: DSL, markup taal, machine learning, etc);</li>
+<li>De functionaliteit die wordt geboden (search, drafting, analysing, etc);</li>
+<li>De beoogd gebruikers (IT-ers, juristen, rechters, etc);</li>
+<li>Het beschouwingsniveau (tekstueel, semantisch, ontologisch, logisch, technisch) en het soort model (descriptief, normatief) waarvoor de technologie kan worden ingezet;</li>
+<li>De beheerder c.q. leverancier van de technologie;</li>
+<li>De versie van de technologie zoals die is bekeken (nummer en/of datum);</li>
+<li>De datum waarop de technologie is opgenomen in de typologie en de datum waarop deze beschrijving voor het laatst is bijgewerkt.</li>
+</ol>
+</li>
+<li>
+<p>Een tekstuele beschrijving van de technologie, waarin de volgende zaken worden benoemd:</p>
+<ol>
+<li>Een beschrijving van het doel waarvoor de technologie kan worden gebruikt;</li>
+<li>Een omschrijving van de onderdelen waaruit de technologie bestaat;</li>
+<li>De makers/beheerders van de technologie;</li>
+<li>Een overzicht van aanvullende documentatie die over deze technologie bekeken kan worden.</li>
+</ol>
+</li>
+</ol>
+<h2 id="welke-vorm-heeft-een-regel">Welke vorm heeft een "regel"?</h2>
+<p>De taken waarvoor juridische technologie worden ingezet hebben allemaal min-of-meer te maken met het opstellen, duiden, vertalen of toepassen van regels, in allerlei verschillende vormen. Dit maakt dat de term "regel" pas betekenis krijgt binnen de taak zelf. Niet voor niets is sprake van een cirkel: je kunt niet echt zeggen waar de "regel" in zijn oorsprong ontstaat, hooguit op welk moment een bepaalde verschijningsvorm van die regel ontstaat. Daarbij doorloopt het "leven" van een verschijningsvorm van een regel een aantal stadia:</p>
+<ol>
+<li>De (verschijningsvorm van een) regel is opgetekend;</li>
+<li>De(verschijningsvorm van een)  regel is vastgesteld;</li>
+<li>De (verschijningsvorm van een) regel is bekendgemaakt;</li>
+<li>De (verschijningsvorm van een) regel is in werking;</li>
+<li>De (verschijningsvorm van een) regel is in gebruik;</li>
+<li>De (verschijningsvorm van een) regel is vervallen;</li>
+<li>De (verschijningsvorm van een) is verwijderd.</li>
+</ol>
+<p>Stadia kunnen gecombineerd worden en niet elke verschijningsvorm "haalt" alle stadia. Eenmaal opgetekend, gedraagt een (verschijningsvorm van) een regel zich als een gegeven. De levenscyclus van een verschenen regel lijkt dan ook sterk op de levenscyclus van een gegeven.</p>
+<p>Herleidbaarheid van een regel gaat daarmee feitelijk om de relatie tussen verschijningsvormen van regels. Zo zou je een algoritme die een regel uitvoert kunnen herleiden naar de tekst in wet- en regelgeving waarin die regel is opgetekend. Er is sprake van twee verschijningsvormen van dezelfde regel. Daarbij kunnen de stadia verschillen. Het is zelfs mogelijk dat een algoritme al in gebruik is, terwijl de juridische tekst nog niet eens is opgetekend (bijvoorbeeld bij het doorrekenen van een scenario tijdens beleidsvorming).</p>
+<p>Juridische technologie kan geordend worden naar de vorm die de regel aanneemt die binnen een taak wordt uitgevoerd en waar die juridische technologie ondersteuning aan biedt. We maken daarbij onderscheid tussen het beschouwingsniveau en het soort uitspraak dat met de regel wordt gedaan.</p>
+<blockquote>
+<p>Aandachtspunt: hoe past de DSO-terminologie van juridische regel, toepasbare regel en uitvoerbare regel in dit model?</p>
+</blockquote>
+<h3 id="beschouwingsniveau">beschouwingsniveau</h3>
+<p>We onderkennen vijf beschouwingsniveaus:</p>
+<ul>
+<li><em>Tekstueel</em>: de regel kent een tekstuele vorm. Alle (huidige) juridische teksten en de meeste voor mensen bedoelde instructies kennen deze vorm. Kenmerkend aan een tekstuele vorm is de noodzaak tot interpretatie voordat de regel kan worden toegepast.</li>
+<li><em>Semantisch</em>: de regel kent een vorm die duiding geeft aan de semantiek van de gebruikte woorden. Kenmerkend aan een semantische vorm is eenduidigheid van betekenis binnen een specifieke context, terwijl gelijktijdig er nog steeds interpretatie nodig is voordat die betekenis vast staat. Met andere woorden het is duidelijk dat er sprake is van één betekenis, maar nog niet precies welke.</li>
+<li><em>Ontologisch</em>: de regel kent een vorm die duiding geeft welke feiten er kunnen gelden en hoe feiten afgeleid kunnen worden van reeds vastgestelde feiten. Dergelijke regels zijn eenduidig toepasbaar.</li>
+<li><em>Logisch</em>: de regel kent een vorm die uit te drukken is in uitvoerbare logica.</li>
+<li><em>Technisch</em>: de regel kent een vorm die executeerbaar is voor een specifieke technologie.</li>
+</ul>
+<p>Merk op: er zijn regels die slechts tot op het semantische niveau zijn uit te drukken. Het gaat daarbij om regels waarbij het toepassen van die regel een menselijke interpretatie vereist. Een regel die de ontologische vorm heeft, heeft (in die vorm) nog slechts één mogelijke interpretatie.</p>
+<p>De opsteller van een regelvorm heeft een bepaald doel met dit opstellen. We onderscheiden twee doelen:</p>
+<ul>
+<li>De opsteller wenst voor te schrijven hoe we de werkelijkheid moeten beschouwen, het is een descriptieve beschrijving van die werkelijkheid;</li>
+<li>De opsteller wenst voor te schrijven hoe de werkelijkheid zou moeten zijn, het is een normatieve beschrijving van die werkelijkheid.</li>
+</ul>
+<p>De descriptieve regelvorm vertelt ons door welk "venster" we naar de wereld moeten kijken, de normatieve regelvorm vertelt ons de gevolgen van wat we zien (of dat wat we zien is toegestaan, of juist verboden is, welke gevolgen er zouden moeten zijn, op grond van wat we zien, etc.) Dit brengt ons tot het volgende model, waarin voor elke regelvorm een naam wordt gebruikt:</p>
+<blockquote>
+<p>Aandachtspunten: (1) zijn dit ook de namen die in de praktijk het meeste zullen aanslaan?; (2) hoe passen processen hierbinnen?]. Imperatief? Processen volgen uit de regels, maar dit wil je wel van elkaar onderscheiden! (3) OER-model (Object-event-relationship model. Methodologie van informatiesysteemontwikkeling. Wellicht even naar kijken?</p>
+</blockquote>
+<table>
+<tr><th>Regelvorm</th><th>Descriptief</th><th>Normatief</th></tr>
+<tr><td>Tekstueel</td><td colspan=2 align=middle>(juridische) regeltekst</td></tr>
+<tr><td>Semantisch</td><td>begrip</td><td>norm</td></tr>
+<tr><td>Ontologisch</td><td>categorie, kenmerk, relatie</td><td>(toepasbare) regel)</td></tr>
+<tr><td>Logisch</td><td>gegevenstype</td><td>(wiskundige/logische) functie</td></tr>
+<tr><td>Technisch</td><td>data-definitie</td><td>code</td></tr>
+</table>
+
+<p>Het onderscheid tussen descriptieve regels en normatieve regels is tekstueel niet te maken: de tekstuele vorm maakt dit onderscheid niet (expliciet). Daarnaast geldt zowel een horizontale als verticale samenhang:</p>
+<ul>
+<li>Horizontaal kan een normatieve regel alleen in termen van descriptieve regels op hetzelfde niveau worden uitgedrukt, en krijgt de descriptieve regel betekenis door het gebruik in de normatieve regel.</li>
+<li>Verticaal betreft zal een regelvorm op een "lager" niveau de implementatie zijn van dezelfde regel uitgedrukt in een vorm op een "hoger" niveau.</li>
+</ul>
+
+</body>
+</html>

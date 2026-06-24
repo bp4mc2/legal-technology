@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { apiFetch, apiFetchText } from '../utils/api';
 import { useActiveTechnology } from './ActiveTechnologyContext';
 
@@ -83,16 +83,32 @@ type LegalTechnology = {
 };
 
 const STATUS_BADGE: Record<string, string> = {
-  'In gebruik': 'success',
-  'Voorstel': 'warning text-dark',
-  'Work in progress': 'info text-dark',
+  'In gebruik': 'border border-emerald-200 bg-emerald-50 text-emerald-800',
+  'Voorstel': 'border border-amber-200 bg-amber-50 text-amber-900',
+  'Work in progress': 'border border-sky-200 bg-sky-50 text-sky-900',
 };
 
 const SUBTYPE_BADGE: Record<string, string> = {
-  Methode: 'primary',
-  Standaard: 'warning text-dark',
-  Tool: 'success',
+  Methode: 'border border-blue-200 bg-blue-50 text-blue-800',
+  Standaard: 'border border-amber-200 bg-amber-50 text-amber-900',
+  Tool: 'border border-emerald-200 bg-emerald-50 text-emerald-800',
 };
+
+const DEFAULT_BADGE = 'border border-slate-200 bg-slate-100 text-slate-700';
+
+const BUTTON_SECONDARY_SM =
+  'inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60';
+const BUTTON_PRIMARY_SM =
+  'inline-flex items-center justify-center rounded-md border border-blue-600 bg-blue-600 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60';
+const BUTTON_OUTLINE_PRIMARY_SM =
+  'inline-flex items-center justify-center rounded-md border border-blue-300 bg-white px-3 py-1.5 text-sm font-medium text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60';
+const BUTTON_OUTLINE_SUCCESS_SM =
+  'inline-flex items-center justify-center rounded-md border border-emerald-300 bg-white px-3 py-1.5 text-sm font-medium text-emerald-700 transition hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60';
+
+const INPUT_SM =
+  'w-full rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 disabled:cursor-not-allowed disabled:bg-slate-100';
+const SELECT_SM = INPUT_SM;
+const TEXTAREA_SM = INPUT_SM;
 
 const STICKY_STATUS_COLORS: Record<string, string> = {
   Opgenomen: '#16a34a',
@@ -109,21 +125,24 @@ const stickyNoteColorStyle = (color?: string): React.CSSProperties => ({
   ['--lt-detail-note-bg' as any]: color || '#fde68a',
 });
 
-const normalizeForCompare = (value?: string) =>
-  decodeURIComponent((value || '').trim()).toLowerCase();
-
-const uriMatchesTechnology = (uri: string | undefined, technologyKeys: Set<string>) => {
-  const normalizedUri = normalizeForCompare(uri);
-  return Boolean(normalizedUri) && technologyKeys.has(normalizedUri);
-};
-
 function TagList({ items, bg = 'primary' }: { items: string[]; bg?: string }) {
   const visible = items.filter(Boolean);
-  if (!visible.length) return <span className="text-muted">–</span>;
+  const tones: Record<string, string> = {
+    primary: 'border-blue-200 bg-blue-50 text-blue-800',
+    warning: 'border-amber-200 bg-amber-50 text-amber-900',
+    success: 'border-emerald-200 bg-emerald-50 text-emerald-800',
+    secondary: 'border-slate-200 bg-slate-100 text-slate-700',
+  };
+  if (!visible.length) return <span className="text-slate-500">–</span>;
   return (
-    <div className="d-flex flex-wrap gap-1">
+    <div className="flex flex-wrap gap-1.5">
       {visible.map((v, i) => (
-        <span key={i} className={`badge bg-${bg} bg-opacity-10 border text-${bg.startsWith('warning') ? 'dark' : bg} fw-normal lt-detail-accent-badge`}>
+        <span
+          key={i}
+          className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${
+            tones[bg] || tones.secondary
+          } lt-detail-accent-badge`}
+        >
           {v}
         </span>
       ))}
@@ -143,16 +162,16 @@ function Section({
   badge?: string;
 }) {
   return (
-    <div id={id} className="card border-0 shadow-sm mb-3 lt-detail-section">
-      <div className="card-header lt-detail-section-header">
-        <span className="fw-semibold">{title}</span>
+    <div id={id} className="mb-3 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm lt-detail-section">
+      <div className="flex items-center border-b border-slate-200 bg-slate-50 px-4 py-2.5 lt-detail-section-header">
+        <span className="font-semibold text-slate-800">{title}</span>
         {badge && (
-          <span className="badge bg-light text-secondary border fw-normal ms-2 lt-detail-section-badge">
+          <span className="ml-2 inline-flex items-center rounded-full border border-slate-300 bg-white px-2 py-0.5 text-xs font-medium text-slate-600 lt-detail-section-badge">
             {badge}
           </span>
         )}
       </div>
-      <div className="card-body">{children}</div>
+      <div className="px-4 py-3">{children}</div>
     </div>
   );
 }
@@ -176,10 +195,7 @@ export default function LegalTechnologyDetailPage() {
   const [tech, setTech] = useState<LegalTechnology | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [contextOpen, setContextOpen] = useState(true);
   const [stickyNotes, setStickyNotes] = useState<StickyNote[]>([]);
-  const [stickyLoading, setStickyLoading] = useState(false);
-  const [stickyError, setStickyError] = useState<string | null>(null);
   const [allStickyStatuses, setAllStickyStatuses] = useState<{ label: string; iri: string }[]>([]);
   const [allStickyStatusIriByLabel, setAllStickyStatusIriByLabel] = useState<Record<string, string>>({});
 
@@ -208,6 +224,7 @@ export default function LegalTechnologyDetailPage() {
         setTech(data);
         setActiveTechnology({
           id: data.id || id,
+          iri: data.iri,
           naam: data.naam,
           omschrijving: data.omschrijving,
           gebruiksstatus: data.gebruiksstatus,
@@ -224,7 +241,7 @@ export default function LegalTechnologyDetailPage() {
       })
       .catch(e => setError(e.message))
       .finally(() => setLoading(false));
-  }, [id]);
+  }, [id, setActiveTechnology]);
 
   useEffect(() => {
     const fetchStickyStatuses = async () => {
@@ -271,8 +288,6 @@ export default function LegalTechnologyDetailPage() {
     }
 
     const fetchStickyNotes = async () => {
-      setStickyLoading(true);
-      setStickyError(null);
       try {
         const technologyUri =
           (tech?.iri || '').trim() ||
@@ -284,40 +299,13 @@ export default function LegalTechnologyDetailPage() {
 
         const data = await apiFetch<StickyNote[]>(endpoint);
         setStickyNotes(data);
-      } catch (e: any) {
-        setStickyError(e?.message || 'Kon sticky notes niet ophalen');
-      } finally {
-        setStickyLoading(false);
+      } catch {
+        setStickyNotes([]);
       }
     };
 
     fetchStickyNotes();
   }, [tech?.id, tech?.iri, id]);
-
-  const technologyMatchKeys = useMemo(() => {
-    const keys = new Set<string>();
-    const routeUriCandidate =
-      (id || '').startsWith('http://') || (id || '').startsWith('https://') ? id : undefined;
-    const candidates = [routeUriCandidate, tech?.iri];
-    candidates.forEach((candidate) => {
-      const normalized = normalizeForCompare(candidate);
-      if (normalized) {
-        keys.add(normalized);
-      }
-    });
-    return keys;
-  }, [id, tech?.iri]);
-
-  const relatedStickyNotes = useMemo(() => {
-    return stickyNotes.filter((note) => {
-      if (uriMatchesTechnology(note.linkedTechnology?.uri, technologyMatchKeys)) {
-        return true;
-      }
-      return note.candidateTechnologies.some((candidate) =>
-        uriMatchesTechnology(candidate.uri, technologyMatchKeys),
-      );
-    });
-  }, [stickyNotes, technologyMatchKeys]);
 
   const stickyStatusIriByLabel = useMemo(() => {
     const mapping: Record<string, string> = { ...allStickyStatusIriByLabel };
@@ -337,22 +325,6 @@ export default function LegalTechnologyDetailPage() {
     return Array.from(new Set(stickyNotes.map((note) => note.status).filter(Boolean))).sort();
   }, [allStickyStatuses, stickyNotes]);
 
-  const stickySummary = useMemo(() => {
-    const definitive = relatedStickyNotes.filter((note) =>
-      uriMatchesTechnology(note.linkedTechnology?.uri, technologyMatchKeys),
-    ).length;
-    const candidate = relatedStickyNotes.filter((note) =>
-      note.candidateTechnologies.some((candidateTechnology) =>
-        uriMatchesTechnology(candidateTechnology.uri, technologyMatchKeys),
-      ),
-    ).length;
-    return {
-      total: relatedStickyNotes.length,
-      definitive,
-      candidate,
-    };
-  }, [relatedStickyNotes, technologyMatchKeys]);
-
   const applyUpdatedStickyNote = (updated: StickyNote) => {
     setStickyNotes((previous) =>
       previous.map((note) => (note.uri === updated.uri ? updated : note)),
@@ -362,16 +334,6 @@ export default function LegalTechnologyDetailPage() {
     setDefinitiveTechDraft(updated.linkedTechnology?.uri || '');
     setDefinitiveTechNameDraft(updated.linkedTechnology?.name || '');
     setOmschrijvingDraft(updated.omschrijvingAfhandeling || '');
-  };
-
-  const openStickyEditor = (note: StickyNote) => {
-    setEditingSticky(note);
-    setStatusDraft(note.statusIri || '');
-    setDefinitiveTechDraft(note.linkedTechnology?.uri || '');
-    setDefinitiveTechNameDraft(note.linkedTechnology?.name || '');
-    setOmschrijvingDraft(note.omschrijvingAfhandeling || '');
-    setTechSuggestions([]);
-    setStickyActionError(null);
   };
 
   const closeStickyEditor = () => {
@@ -452,8 +414,12 @@ export default function LegalTechnologyDetailPage() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center py-5 text-muted">
-        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
+      <div className="flex items-center justify-center py-10 text-slate-500">
+        <span
+          className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-slate-600"
+          role="status"
+          aria-hidden="true"
+        />
         Laden…
       </div>
     );
@@ -462,16 +428,16 @@ export default function LegalTechnologyDetailPage() {
   if (error) {
     return (
       <div className="p-3 lt-detail-error-wrap">
-        <div className="alert alert-danger">{error}</div>
-        <button className="btn btn-outline-secondary btn-sm" onClick={() => navigate(-1)}>← Terug</button>
+        <div className="mb-3 rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-800">{error}</div>
+        <button className={BUTTON_SECONDARY_SM} onClick={() => navigate(-1)}>← Terug</button>
       </div>
     );
   }
 
   if (!tech) return null;
 
-  const subtypeBadge = SUBTYPE_BADGE[tech.subtype ?? ''] ?? 'secondary';
-  const statusBadge = STATUS_BADGE[tech.gebruiksstatus] ?? 'secondary';
+  const subtypeBadge = SUBTYPE_BADGE[tech.subtype ?? ''] ?? DEFAULT_BADGE;
+  const statusBadge = STATUS_BADGE[tech.gebruiksstatus] ?? DEFAULT_BADGE;
 
   return (
     <div className="page-card page-card--xxl lt-detail-page">
@@ -479,48 +445,48 @@ export default function LegalTechnologyDetailPage() {
       {/* Terug */}
       <a
         href="#"
-        className="lt-detail-back-link"
+        className="inline-block text-sm text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 lt-detail-back-link"
         onClick={e => { e.preventDefault(); navigate(-1); }}
       >
         ← Terug naar overzicht
       </a>
 
       {/* Header */}
-      <div className="lt-detail-header d-flex justify-content-between align-items-start">
+      <div className="mb-6 flex flex-col gap-3 border-b border-slate-200 pb-4 sm:flex-row sm:items-start sm:justify-between lt-detail-header">
         <div>
-          <div className="d-flex flex-wrap gap-2 mb-2">
-            {tech.subtype && <span className={`badge bg-${subtypeBadge}`}>{tech.subtype}</span>}
-            <span className={`badge bg-${statusBadge}`}>{tech.gebruiksstatus || 'Onbekend'}</span>
-            {tech.normstatus && <span className="badge bg-secondary">{tech.normstatus}</span>}
+          <div className="mb-2 flex flex-wrap gap-2">
+            {tech.subtype && <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${subtypeBadge}`}>{tech.subtype}</span>}
+            <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${statusBadge}`}>{tech.gebruiksstatus || 'Onbekend'}</span>
+            {tech.normstatus && <span className="inline-flex items-center rounded-full border border-slate-300 bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700">{tech.normstatus}</span>}
           </div>
-          <h2 className="mb-1 fw-bold text-primary">{tech.naam}</h2>
-          <div className="text-muted small">
+          <h2 className="mb-1 text-2xl font-bold text-blue-700">{tech.naam}</h2>
+          <div className="text-sm text-slate-500">
             {tech.abbrevation && <span>{tech.abbrevation}</span>}
             {tech.abbrevation && tech.versienummer && <span> · </span>}
             {tech.versienummer && <span>versie {tech.versienummer}</span>}
             {tech.versiedatum && <span> ({tech.versiedatum})</span>}
           </div>
           {tech.bronverwijzing && tech.bronverwijzing.filter(b => b.locatie).length > 0 && (
-            <div className="mt-2 d-flex flex-wrap gap-3 small">
+            <div className="mt-2 flex flex-wrap gap-3 text-sm">
               {tech.bronverwijzing.filter(b => b.locatie).map((b, i) => (
-                <a key={i} href={b.locatie} target="_blank" rel="noopener noreferrer" className="text-primary">
+                <a key={i} href={b.locatie} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline-offset-2 hover:underline">
                   {b.titel || b.locatie}
                 </a>
               ))}
             </div>
           )}
         </div>
-        <div className="d-flex gap-2 flex-shrink-0 ms-3 mt-1">
+        <div className="mt-1 flex shrink-0 gap-2 sm:ml-3">
           <button
             type="button"
-            className="btn btn-sm btn-outline-secondary lt-detail-action-btn"
+            className={`${BUTTON_SECONDARY_SM} lt-detail-action-btn`}
             disabled
           >
             ⊙ Details
           </button>
           <button
             type="button"
-            className="btn btn-sm btn-outline-secondary lt-detail-action-btn"
+            className={`${BUTTON_SECONDARY_SM} lt-detail-action-btn`}
             onClick={() => navigate(`/legaltechnologies/${encodeURIComponent(id!)}/edit`)}
           >
             ✎ Bewerken
@@ -529,40 +495,54 @@ export default function LegalTechnologyDetailPage() {
       </div>
 
       {/* Twee kolommen */}
-      <div className="row g-4 lt-detail-main-row">
+      <div className="grid grid-cols-1 gap-4 lt-detail-main-row">
 
         {/* Links: secties */}
-        <div className="col-12">
+        <div>
 
           {/* Omschrijving + Documentatie */}
           <Section title="Omschrijving" id="omschrijving">
-            <p className="lh-lg">{tech.omschrijving || <span className="text-muted">–</span>}</p>
+            <p className="leading-relaxed">{tech.omschrijving || <span className="text-slate-500">–</span>}</p>
             {tech.documentatie && Object.values(tech.documentatie).some(Boolean) && (
-              <div className="d-flex flex-column gap-3 mt-1">
+              <div className="mt-1 flex flex-col gap-3">
                 {tech.documentatie.beoogdGebruik && (
                   <div>
-                    <div className="fw-semibold mb-1">Beoogd gebruik</div>
-                    <p className="mb-0 lh-lg">{tech.documentatie.beoogdGebruik}</p>
+                    <div className="mb-1 font-semibold">Beoogd gebruik</div>
+                    <p className="mb-0 leading-relaxed">{tech.documentatie.beoogdGebruik}</p>
                   </div>
                 )}
                 {tech.documentatie.toegevoegdeWaarde && (
                   <div>
-                    <div className="fw-semibold mb-1">Toegevoegde waarde</div>
-                    <p className="mb-0 lh-lg">{tech.documentatie.toegevoegdeWaarde}</p>
+                    <div className="mb-1 font-semibold">Toegevoegde waarde</div>
+                    <p className="mb-0 leading-relaxed">{tech.documentatie.toegevoegdeWaarde}</p>
                   </div>
                 )}
                 {tech.documentatie.onderdelen && (
                   <div>
-                    <div className="fw-semibold mb-1">Onderdelen</div>
-                    <p className="mb-0 lh-lg">{tech.documentatie.onderdelen}</p>
+                    <div className="mb-1 font-semibold">Onderdelen</div>
+                    <p className="mb-0 leading-relaxed">{tech.documentatie.onderdelen}</p>
                   </div>
                 )}
                 {tech.documentatie.ontwikkelingEnBeheer && (
                   <div>
-                    <div className="fw-semibold mb-1">Ontwikkeling &amp; beheer</div>
-                    <p className="mb-0 lh-lg">{tech.documentatie.ontwikkelingEnBeheer}</p>
+                    <div className="mb-1 font-semibold">Ontwikkeling &amp; beheer</div>
+                    <p className="mb-0 leading-relaxed">{tech.documentatie.ontwikkelingEnBeheer}</p>
                   </div>
                 )}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  <Link
+                    to={`/documentation?section=catalogus&technology=${encodeURIComponent(tech.id || id || '')}`}
+                    className={BUTTON_OUTLINE_PRIMARY_SM}
+                  >
+                    Open catalogussectie
+                  </Link>
+                  <Link
+                    to="/documentation?section=ontologie"
+                    className={BUTTON_SECONDARY_SM}
+                  >
+                    Open ontologie
+                  </Link>
+                </div>
               </div>
             )}
           </Section>
@@ -576,7 +556,7 @@ export default function LegalTechnologyDetailPage() {
             <TagList items={tech.geboden_functionaliteit?.filter(Boolean) ?? []} bg="primary" />
             {(tech.technologietype || tech.type_technologie?.filter(Boolean).length) ? (
               <div className="mt-3">
-                <div className="fw-semibold small mb-1">Technologietype</div>
+                <div className="mb-1 text-sm font-semibold">Technologietype</div>
                 <TagList items={[tech.technologietype ?? '', ...(tech.type_technologie ?? [])].filter(Boolean)} bg="primary" />
               </div>
             ) : null}
@@ -589,25 +569,25 @@ export default function LegalTechnologyDetailPage() {
             badge={`${tech.ondersteuning_voor?.length ?? 0} item${(tech.ondersteuning_voor?.length ?? 0) !== 1 ? 's' : ''}`}
           >
             {tech.ondersteuning_voor?.length > 0 ? (
-              <div className="table-responsive">
-                <table className="table table-sm table-hover align-middle mb-0">
-                  <thead className="table-light">
+              <div className="overflow-x-auto">
+                <table className="min-w-full border-collapse text-sm">
+                  <thead className="bg-slate-100 text-slate-700">
                     <tr>
-                      <th className="text-uppercase small fw-semibold">Beschouwingsniveau</th>
-                      <th className="text-uppercase small fw-semibold">Modelsoort</th>
+                      <th className="border-b border-slate-200 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide">Beschouwingsniveau</th>
+                      <th className="border-b border-slate-200 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide">Modelsoort</th>
                     </tr>
                   </thead>
                   <tbody>
                     {tech.ondersteuning_voor.map((o, i) => (
-                      <tr key={i}>
-                        <td>{o.beschouwingsniveau || '–'}</td>
-                        <td>{o.modelsoort || '–'}</td>
+                      <tr key={i} className="border-b border-slate-100 last:border-b-0">
+                        <td className="px-3 py-2">{o.beschouwingsniveau || '–'}</td>
+                        <td className="px-3 py-2">{o.modelsoort || '–'}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-            ) : <p className="text-muted">–</p>}
+            ) : <p className="text-slate-500">–</p>}
           </Section>
 
           {/* Geschikt voor taak */}
@@ -617,15 +597,15 @@ export default function LegalTechnologyDetailPage() {
             badge={`${tech.geschikt_voor_taak?.filter(t => t.taaktype).length ?? 0} taaktype${(tech.geschikt_voor_taak?.filter(t => t.taaktype).length ?? 0) !== 1 ? 'n' : ''}`}
           >
             {tech.geschikt_voor_taak?.length > 0 ? (
-              <div className="d-flex flex-column gap-2">
+              <div className="flex flex-col gap-2">
                 {tech.geschikt_voor_taak.map((t, i) => (
-                  <div key={i} className="card border-0 bg-light px-3 py-2">
-                    <div className="fw-semibold text-primary small">{t.taaktype || '–'}</div>
-                    {t.omschrijving && <div className="text-muted small mt-1">{t.omschrijving}</div>}
+                  <div key={i} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                    <div className="text-sm font-semibold text-blue-700">{t.taaktype || '–'}</div>
+                    {t.omschrijving && <div className="mt-1 text-sm text-slate-500">{t.omschrijving}</div>}
                   </div>
                 ))}
               </div>
-            ) : <p className="text-muted">–</p>}
+            ) : <p className="text-slate-500">–</p>}
           </Section>
 
           {/* Bronverwijzingen */}
@@ -635,26 +615,26 @@ export default function LegalTechnologyDetailPage() {
             badge={`${tech.bronverwijzing?.length ?? 0} bron${(tech.bronverwijzing?.length ?? 0) !== 1 ? 'nen' : ''}`}
           >
             {(tech.bronverwijzing?.length ?? 0) > 0 ? (
-              <ul className="mb-0">
+              <ul className="mb-0 list-disc space-y-1 pl-5">
                 {tech.bronverwijzing?.map((b, i) => (
                   <li key={i}>
                     {b.locatie
-                      ? <a href={b.locatie} target="_blank" rel="noopener noreferrer" className="text-primary">{b.titel || b.locatie}</a>
+                      ? <a href={b.locatie} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline-offset-2 hover:underline">{b.titel || b.locatie}</a>
                       : b.titel || '–'
                     }
-                    {b.verwijzing && <span className="text-muted ms-2 small">{b.verwijzing}</span>}
+                    {b.verwijzing && <span className="ml-2 text-sm text-slate-500">{b.verwijzing}</span>}
                   </li>
                 ))}
               </ul>
-            ) : <p className="text-muted">–</p>}
+            ) : <p className="text-slate-500">–</p>}
           </Section>
 
-          <div className="d-flex gap-2 mt-3 pt-3 border-top">
-            <button className="btn btn-sm btn-outline-primary" onClick={downloadTurtle}>Download Turtle</button>
-            <button className="btn btn-sm btn-outline-success" onClick={downloadMarkdown}>Download Markdown</button>
+          <div className="mt-3 flex gap-2 border-t border-slate-200 pt-3">
+            <button className={BUTTON_OUTLINE_PRIMARY_SM} onClick={downloadTurtle}>Download Turtle</button>
+            <button className={BUTTON_OUTLINE_SUCCESS_SM} onClick={downloadMarkdown}>Download Markdown</button>
           </div>
 
-          <div className="text-muted small mt-3">Bijgewerkt op {tech.bijgewerkt_op || '–'}</div>
+          <div className="mt-3 text-sm text-slate-500">Bijgewerkt op {tech.bijgewerkt_op || '–'}</div>
         </div>
 
       </div>
@@ -676,7 +656,7 @@ export default function LegalTechnologyDetailPage() {
               </div>
               <button
                 type="button"
-                className="btn btn-sm btn-outline-secondary"
+                className={BUTTON_SECONDARY_SM}
                 onClick={closeStickyEditor}
               >
                 Sluiten
@@ -695,7 +675,7 @@ export default function LegalTechnologyDetailPage() {
               </div>
 
               <section className="lt-detail-sticky-editor-form">
-                <div className="fw-semibold mb-2">Aanpassen</div>
+                <div className="mb-2 font-semibold">Aanpassen</div>
 
                 <label className="lt-detail-form-group">
                   <span className="lt-detail-form-label">Status</span>
@@ -703,7 +683,7 @@ export default function LegalTechnologyDetailPage() {
                     <select
                       value={statusDraft}
                       onChange={(event) => setStatusDraft(event.target.value)}
-                      className="form-select form-select-sm"
+                      className={SELECT_SM}
                       disabled={savingSticky}
                     >
                       <option value="">Kies status</option>
@@ -715,7 +695,7 @@ export default function LegalTechnologyDetailPage() {
                     </select>
                     <button
                       type="button"
-                      className="btn btn-sm btn-primary"
+                      className={BUTTON_PRIMARY_SM}
                       disabled={savingSticky || !statusDraft}
                       onClick={() => patchStickyReview({ statusIri: statusDraft })}
                     >
@@ -733,7 +713,7 @@ export default function LegalTechnologyDetailPage() {
                         setDefinitiveTechNameDraft(event.target.value);
                         setDefinitiveTechDraft('');
                       }}
-                      className="form-control form-control-sm"
+                      className={INPUT_SM}
                       placeholder="Typ 2+ letters van technologie naam"
                       disabled={savingSticky}
                     />
@@ -766,13 +746,13 @@ export default function LegalTechnologyDetailPage() {
                       <input
                         value={definitiveTechDraft}
                         onChange={(event) => setDefinitiveTechDraft(event.target.value)}
-                        className="form-control form-control-sm"
+                        className={INPUT_SM}
                         placeholder="Geselecteerde URI (of handmatig invullen)"
                         disabled={savingSticky}
                       />
                       <button
                         type="button"
-                        className="btn btn-sm btn-primary"
+                        className={BUTTON_PRIMARY_SM}
                         disabled={savingSticky || !definitiveTechDraft.trim()}
                         onClick={() =>
                           patchStickyReview({ definitiveTechnologyUri: definitiveTechDraft.trim() })
@@ -786,7 +766,7 @@ export default function LegalTechnologyDetailPage() {
 
                 {editingSticky.candidateTechnologies.length > 0 && (
                   <div>
-                    <div className="lt-detail-subkicker mb-2">Kandidaat definitief maken</div>
+                    <div className="mb-2 lt-detail-subkicker">Kandidaat definitief maken</div>
                     <div className="lt-detail-sticky-candidate-list">
                       {editingSticky.candidateTechnologies.map((candidate) => (
                         <div key={`${editingSticky.uri}-${candidate.uri}`} className="lt-detail-candidate-card">
@@ -798,7 +778,7 @@ export default function LegalTechnologyDetailPage() {
                           </div>
                           <button
                             type="button"
-                            className="btn btn-sm btn-outline-primary"
+                            className={BUTTON_OUTLINE_PRIMARY_SM}
                             disabled={savingSticky}
                             onClick={() =>
                               patchStickyReview({
@@ -819,7 +799,7 @@ export default function LegalTechnologyDetailPage() {
                   <textarea
                     value={omschrijvingDraft}
                     onChange={(event) => setOmschrijvingDraft(event.target.value)}
-                    className="form-control form-control-sm"
+                    className={TEXTAREA_SM}
                     rows={4}
                     placeholder="Beschrijf hoe deze sticky note is afgehandeld..."
                     disabled={savingSticky}
@@ -827,7 +807,7 @@ export default function LegalTechnologyDetailPage() {
                   <div className="lt-detail-actions-end">
                     <button
                       type="button"
-                      className="btn btn-sm btn-primary"
+                      className={BUTTON_PRIMARY_SM}
                       disabled={savingSticky}
                       onClick={() =>
                         patchStickyReview({ omschrijvingAfhandeling: omschrijvingDraft })
@@ -839,7 +819,7 @@ export default function LegalTechnologyDetailPage() {
                 </label>
 
                 {stickyActionError && (
-                  <div className="alert alert-danger py-2 px-3 mt-2 mb-0">{stickyActionError}</div>
+                  <div className="mb-0 mt-2 rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-800">{stickyActionError}</div>
                 )}
               </section>
             </div>

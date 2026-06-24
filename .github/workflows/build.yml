@@ -42,24 +42,28 @@ jobs:
         run: |
           npx playwright install --with-deps chromium
 
-      - name: Generate Markdown (into media/)
+      - name: Generate documentation sources (into build/docs)
         run: |
           python tools/generate_respec.py
 
-      # ReSpec CLI maakt statische snapshot.
-      # --localhost + relatieve src is belangrijk. [1](https://github.com/speced/respec/issues/4695)
-      - name: Build static HTML (ReSpec snapshot)
+      - name: Build static HTML pages (ReSpec snapshots)
         run: |
-          mkdir -p dist
-          npx respec \
-            --src media/index.html \
-            --out dist/index.html \
-            --localhost \
-            --use-local \
-            --timeout 60 \
-            --verbose
+          mkdir -p dist dist/assets
+          find dist -maxdepth 1 -name '*.html' -delete
+          rm -rf dist/site
+          for src in build/docs/respec/*.html; do
+            out="dist/$(basename "$src")"
+            npx respec \
+              --src "$src" \
+              --out "$out" \
+              --localhost \
+              --use-local \
+              --timeout 60 \
+              --verbose
+          done
+          cp -R build/docs/assets/. dist/assets/
 
-      # PDF maken via Playwright van dist/index.html (statisch). [2](https://respec.org/docs/src.html)[4](https://github-wiki-see.page/m/gnab/remark/wiki/configuration)
+      # PDF maken via Playwright van dist/index.html (statisch).
       - name: Build PDF (Playwright)
         run: |
           node tools/pdf.js

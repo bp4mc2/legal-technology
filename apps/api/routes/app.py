@@ -11,7 +11,12 @@ from api.routes.definition import blp as definition_blp
 from api.routes.organisation import blp as organisation_blp
 from api.routes.assistant import blp as assistant_blp
 from api.routes.sticky_notes import blp as sticky_notes_blp
+from api.routes.governance import blp as governance_blp
+from api.routes.capability import blp as capability_blp
+# from api.services.assistant_service import get_assistant_status_async
 from api.services.graphdb_service import get_stats
+from api.services.graphdb_client import GraphDBClientError
+import logging
 
 app = Flask(__name__)
 app.config["API_TITLE"] = "Juridische Technologie API"
@@ -28,6 +33,11 @@ api = Api(app)
 
 blp = Blueprint("health", "health", url_prefix="/api")
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
+)
+
 @blp.route("/health")
 @blp.response(200, description="API is healthy")
 def health():
@@ -42,6 +52,14 @@ api.register_blueprint(definition_blp)
 api.register_blueprint(organisation_blp)
 api.register_blueprint(assistant_blp)
 api.register_blueprint(sticky_notes_blp)
+api.register_blueprint(governance_blp)
+api.register_blueprint(capability_blp)
+
+@app.errorhandler(GraphDBClientError)
+def handle_graphdb_client_error(error):
+    payload = error.to_response_payload()
+    payload["status"] = "error"
+    return jsonify(payload), 503
 
 # Register /api/stats at the app level
 @app.route('/api/stats')
@@ -58,6 +76,7 @@ def root():
             '/api/health': 'Health check',
             '/api/assistant/status': 'Controleer status van de natural language assistent',
             '/api/assistant/ask': 'Stel een vraag in natuurlijke taal (POST)',
+            '/api/assistant/skills': 'Lijst van ondersteunde vaardigheden en acties van de assistent',
             '/api/legaltechnologies/search': 'Zoek juridische technologieën',
             '/api/legaltechnologies': 'Voeg toe (POST), lijst (GET)',
             '/api/legaltechnologies/<id>': 'Ophalen (GET), bijwerken (PUT), verwijderen (DELETE)',
@@ -72,6 +91,14 @@ def root():
             '/api/definitions': 'Lijst, toevoegen van SKOS-definities',
             '/api/definitions/<id>': 'Ophalen, bijwerken van SKOS-definities',
             '/api/stickynotes': 'Lijst sticky notes met optionele filters (board, status, q, linkMode)',
+            '/api/governance/proposals': 'Lijst en voeg voorstellen toe (GET/POST)',
+            '/api/governance/proposals/<proposal_id>/status': 'Werk voorstelstatus bij (PATCH)',
+            '/api/governance/comments': 'Lijst en voeg opmerkingen toe (GET/POST)',
+            '/api/governance/comments/<comment_id>/status': 'Werk opmerkingstatus bij (PATCH)',
+            '/api/governance/comments/<comment_id>/escalate': 'Escaleer opmerking naar voorstel (POST)',
+            '/api/governance/audit-log': 'Lijst audit events met filters (GET)',
+            '/api/governance/permissions': 'Rolgebonden governance permissies voor huidige request (GET)',
+            '/api/capabilities': 'Lijst van capabilities (taaktypes met inputs/outputs) afgeleid uit de policy cycle',
             '/api/stats': 'Statistieken over technologieën'
         },
         'docs': 'Zie /api/docs voor documentatie.'

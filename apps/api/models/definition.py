@@ -1,5 +1,9 @@
 from marshmallow import Schema, fields
 
+class SKOSConceptRefSchema(Schema):
+    """Reference to a SKOS concept with only URI and label"""
+    uri = fields.Str(required=True, description="URI of the referenced concept")
+    label = fields.Str(required=True, description="Label of the referenced concept")
 
 class DefinitionSchema(Schema):
     """SKOS Definition schema as per ontology and terms.ttl"""
@@ -10,10 +14,9 @@ class DefinitionSchema(Schema):
     scopeNote = fields.List(fields.Str(), description="SKOS scopeNote (scope information)")
     editorialNote = fields.List(fields.Str(), description="SKOS editorialNote (editorial notes)")
     language = fields.Str(required=False, description="Language tag (e.g. 'nl', 'en')")
-    related = fields.List(fields.Dict(), description="Related concepts")
-    broaderGeneric = fields.List(fields.Dict(), description="Broader generic concepts")
-    narrowerGeneric = fields.List(fields.Dict(), description="Narrower generic concepts")
-
+    related = fields.List(fields.Nested(SKOSConceptRefSchema), description="Related concepts")
+    broaderGeneric = fields.List(fields.Nested(SKOSConceptRefSchema), description="Broader generic concepts")
+    narrowerGeneric = fields.List(fields.Nested(SKOSConceptRefSchema), description="Narrower generic concepts")
 
 class DefinitionCreateSchema(Schema):
     """Create SKOS Definition as per ontology and terms.ttl"""

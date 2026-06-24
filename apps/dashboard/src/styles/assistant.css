@@ -69,7 +69,7 @@
   min-width: 160px;
 }
 
-.lt-assistant-submit.btn:disabled {
+.lt-assistant-submit:disabled {
   opacity: 0.65;
 }
 

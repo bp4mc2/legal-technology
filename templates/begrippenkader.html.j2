@@ -1,0 +1,223 @@
+<section id="begrippenkader">
+    <h2>Begrippenkader</h2>
+
+    <nav class="lt-tabbladen" role="tablist" aria-label="Overzicht secties">
+        <button
+            type="button"
+            id="tab-definities"
+            class="lt-tabbladen__tab lt-tabbladen__tab--actief"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-definities"
+        >
+            Definities
+        </button>
+
+        <button
+            type="button"
+            id="tab-enumeraties"
+            class="lt-tabbladen__tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-enumeraties"
+            tabindex="-1"
+        >
+            Enumeraties
+        </button>
+    </nav>
+
+    <section class="lt-tabpanel lt-tabpanel--actief" id="panel-definities" role="tabpanel" aria-label="Definities">
+        <h3>Definities</h3>
+
+        <div class="lt-overzicht-toolbar">
+            <div class="lt-overzicht-zoek">
+            <input type="search" id="def-zoek"
+                    placeholder="Zoek op term of definitie…"
+                    aria-label="Zoek definitie">
+            </div>
+            <select id="def-cat" aria-label="Filter op categorie">
+            <option value="">Alle categorieën</option>
+            <option>Governance</option>
+            <option>Technologie</option>
+            <option>Juridisch</option>
+            <option>Proces</option>
+            </select>
+            <span class="lt-overzicht-count" id="def-count" aria-live="polite"></span>
+        </div>
+
+        <table class="lt-def-tabel" id="def-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+            <tr>
+                <th scope="col" aria-sort="ascending">Concept</th>
+                <th scope="col" aria-sort="none">Kenmerken</th>
+                <th scope="col">Definitie</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for term in terms %}
+                <tr>
+                    <td class="lt-def-term" title="{{ term.uri }}">
+                    {{ term.label }}
+                    </td>
+                    <td class="lt-def-cat">
+                        {% if term.related %}
+                            <span class="lt-badge lt-badge--def-related">Gerelateerd: {{ term.relatedLabel }}</span>
+                        {% endif %}
+                        {%if term.broader %}
+                            <span class="lt-badge lt-badge--def-broader">Broader: {{ term.broaderLabel }}</span>
+                        {% endif %}
+                        {%if term.narrower %}
+                            <span class="lt-badge lt-badge--def-narrower">Narrower: {{ term.narrowerLabel }}</span>
+                        {% endif %}
+                    </td> 
+                    <td class="lt-def-def">
+                    {{ term.definition }}  
+                    </td>
+                </tr>
+                {% endfor %}
+            <!-- Lege toestand -->
+            <!-- <tr><td colspan="3" class="lt-def-leeg">Geen definities gevonden.</td></tr> -->
+            </tbody>
+        </table>
+    </section>
+
+    <section class="lt-tabpanel" id="panel-enumeraties" role="tabpanel" aria-label="Enumeraties">
+    <h3>Enumeraties</h3>
+    <div class="lt-overzicht-toolbar">
+        <div class="lt-overzicht-zoek">
+        <input type="search" id="enum-zoek"
+                placeholder="Zoek op collectienaam of waarde…"
+                aria-label="Zoek enumeratie">
+        </div>
+        <select id="enum-type" aria-label="Filter op type">
+        <option value="">Alle typen</option>
+        <option>Gebruiksstatus</option>
+        <option>Licentievorm</option>
+        <option>Taaktype</option>
+        </select>
+        <span class="lt-overzicht-count" id="enum-count" aria-live="polite"></span>
+    </div>
+
+    <div class="lt-enum-lijst">
+        {% for key, enum in enumerations.items() %}
+
+        <div class="lt-enum-kaart" data-type="{{ enum["label"] }}" id="enum-{{ enum["id"] }}">
+        <div class="lt-enum-header"
+            onclick="this.closest('.lt-enum-kaart').classList.toggle('lt-enum-kaart--open')"
+            role="button" aria-expanded="true"
+            aria-controls="enum-{{ enum["id"] }}-body">
+            <div class="lt-enum-header-links">
+            <div class="lt-enum-naam">{{ enum["label"] }}</div>
+            <div class="lt-enum-uri">{{ enum["uri"] }}</div>
+            </div>
+            <div class="lt-enum-meta">
+            <span class="lt-badge lt-badge--def-related">{{ enum["label"] }}</span>
+            <span class="lt-enum-telling">{{ enum["items"]|length }} waarden</span>
+            <span class="lt-enum-chevron" aria-hidden="true">&#8964;</span>
+            </div>
+        </div>
+        <div class="lt-enum-body" id="enum-{{ enum["id"] }}-body">
+            <table class="lt-enum-tabel">
+            <colgroup><col><col><col></colgroup>
+            <thead>
+                <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Concept</th>
+                <th scope="col">Definitie</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in enum["items"] %}
+                <tr>
+                <td class="lt-val-label">{{ item["label"] }}</td>
+                <td class="lt-val-concept">{{ item["concept"] }}</td>
+                <td class="lt-val-def">
+                    {{ item["definition"] }}
+                </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        </div>
+        {% endfor %}
+        <!-- Lege toestand -->
+        <!-- <p class="lt-enum-leeg">Geen enumeraties gevonden.</p> -->
+
+    </div>
+
+    </section>
+
+</section>
+<script>
+(async function () {
+  // Wacht tot ReSpec klaar is als dit een ReSpec-document is.
+  if (document.respec?.ready) {
+    await document.respec.ready;
+  } else if (document.respecIsReady) {
+    await document.respecIsReady;
+  }
+
+  initTabs();
+
+  function initTabs() {
+    const tablists = document.querySelectorAll('[role="tablist"]');
+
+    tablists.forEach((tablist) => {
+      const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+
+      function activateTab(tab) {
+        const targetId = tab.getAttribute('aria-controls');
+        const targetPanel = document.getElementById(targetId);
+        if (!targetPanel) return;
+
+        tabs.forEach((t) => {
+          const selected = t === tab;
+          t.setAttribute('aria-selected', selected ? 'true' : 'false');
+          t.setAttribute('tabindex', selected ? '0' : '-1');
+          t.classList.toggle('lt-tabbladen__tab--actief', selected);
+
+          const panelId = t.getAttribute('aria-controls');
+          const panel = panelId ? document.getElementById(panelId) : null;
+          if (panel) {
+            panel.hidden = !selected;
+            panel.classList.toggle('lt-tabpanel--actief', selected);
+          }
+        });
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab));
+
+        tab.addEventListener('keydown', (event) => {
+          let nextIndex = null;
+
+          switch (event.key) {
+            case 'ArrowRight':
+            case 'Right':
+              nextIndex = (index + 1) % tabs.length;
+              break;
+            case 'ArrowLeft':
+            case 'Left':
+              nextIndex = (index - 1 + tabs.length) % tabs.length;
+              break;
+            case 'Home':
+              nextIndex = 0;
+              break;
+            case 'End':
+              nextIndex = tabs.length - 1;
+              break;
+            default:
+              return;
+          }
+
+          event.preventDefault();
+          tabs[nextIndex].focus();
+          activateTab(tabs[nextIndex]);
+        });
+      });
+    });
+  }
+})();
+</script>
