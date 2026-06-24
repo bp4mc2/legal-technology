@@ -414,7 +414,7 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
-| None | n298bd83da4a643ab9449aef8a5b73f6eb51 | `n298bd83da4a643ab9449aef8a5b73f6eb51` |  |  | None |
+| None | nb458dd71355740279717bc6377596d0bb51 | `nb458dd71355740279717bc6377596d0bb51` |  |  | None |
 
 
 #### Bronverwijzing {#shape-bronverwijzing}
@@ -463,7 +463,7 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
-| None | n298bd83da4a643ab9449aef8a5b73f6eb45 | `n298bd83da4a643ab9449aef8a5b73f6eb45` |  |  | None |
+| None | nb458dd71355740279717bc6377596d0bb45 | `nb458dd71355740279717bc6377596d0bb45` |  |  | None |
 
 
 #### Gebruikersgroepen {#shape-gebruikersgroepen}
@@ -477,7 +477,7 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
-| None | n298bd83da4a643ab9449aef8a5b73f6eb41 | `n298bd83da4a643ab9449aef8a5b73f6eb41` |  |  | None |
+| None | nb458dd71355740279717bc6377596d0bb41 | `nb458dd71355740279717bc6377596d0bb41` |  |  | None |
 
 
 #### Gebruiksstatussen {#shape-gebruiksstatussen}
@@ -491,7 +491,7 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
-| None | n298bd83da4a643ab9449aef8a5b73f6eb43 | `n298bd83da4a643ab9449aef8a5b73f6eb43` |  |  | None |
+| None | nb458dd71355740279717bc6377596d0bb43 | `nb458dd71355740279717bc6377596d0bb43` |  |  | None |
 
 
 #### Juridische technologie {#shape-juridische-technologie}
@@ -532,7 +532,7 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
-| None | n298bd83da4a643ab9449aef8a5b73f6eb39 | `n298bd83da4a643ab9449aef8a5b73f6eb39` |  |  | None |
+| None | nb458dd71355740279717bc6377596d0bb39 | `nb458dd71355740279717bc6377596d0bb39` |  |  | None |
 
 
 #### Methode {#shape-methode}
@@ -561,7 +561,7 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
-| None | n298bd83da4a643ab9449aef8a5b73f6eb53 | `n298bd83da4a643ab9449aef8a5b73f6eb53` |  |  | None |
+| None | nb458dd71355740279717bc6377596d0bb53 | `nb458dd71355740279717bc6377596d0bb53` |  |  | None |
 
 
 #### Normstatussen {#shape-normstatussen}
@@ -575,7 +575,7 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
-| None | n298bd83da4a643ab9449aef8a5b73f6eb49 | `n298bd83da4a643ab9449aef8a5b73f6eb49` |  |  | None |
+| None | nb458dd71355740279717bc6377596d0bb49 | `nb458dd71355740279717bc6377596d0bb49` |  |  | None |
 
 
 #### Ondersteuningsvorm {#shape-ondersteuningsvorm}
@@ -652,7 +652,7 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
-| None | n298bd83da4a643ab9449aef8a5b73f6eb61 | `n298bd83da4a643ab9449aef8a5b73f6eb61` |  |  | None |
+| None | nb458dd71355740279717bc6377596d0bb61 | `nb458dd71355740279717bc6377596d0bb61` |  |  | None |
 
 
 #### Standaard {#shape-standaard}
@@ -683,8 +683,8 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
 | None | inScheme | `http://www.w3.org/2004/02/skos/core#inScheme` |  |  | None |
-| None | n298bd83da4a643ab9449aef8a5b73f6eb57 | `n298bd83da4a643ab9449aef8a5b73f6eb57` |  | `http://bp4mc2.org/lto#ProductenShape` | None |
-| None | n298bd83da4a643ab9449aef8a5b73f6eb59 | `n298bd83da4a643ab9449aef8a5b73f6eb59` |  | `http://bp4mc2.org/lto#ProductenShape` | None |
+| None | nb458dd71355740279717bc6377596d0bb57 | `nb458dd71355740279717bc6377596d0bb57` |  | `http://bp4mc2.org/lto#ProductenShape` | None |
+| None | nb458dd71355740279717bc6377596d0bb59 | `nb458dd71355740279717bc6377596d0bb59` |  | `http://bp4mc2.org/lto#ProductenShape` | None |
 
 
 #### Taakinvulling {#shape-taakinvulling}
@@ -728,7 +728,7 @@ Deze sectie beschrijft de SHACL-shapes die worden gebruikt om instanties van de 
 
 | Volgorde | Eigenschap | Pad | Verplichting | Waardetype | Beschrijving |
 |---:|---|---|---|---|---|
-| None | n298bd83da4a643ab9449aef8a5b73f6eb47 | `n298bd83da4a643ab9449aef8a5b73f6eb47` |  |  | None |
+| None | nb458dd71355740279717bc6377596d0bb47 | `nb458dd71355740279717bc6377596d0bb47` |  |  | None |
 
 
 #### Tool {#shape-tool}

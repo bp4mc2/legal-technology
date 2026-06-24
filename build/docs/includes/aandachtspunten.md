@@ -1,6 +1,6 @@
 # Overzicht van gewenste functionaliteiten en specificaties
 
-## 1. Bronmetadata en bronverwijzingen
+## Bronmetadata en bronverwijzingen
 
 - Vastleggen van metadata voor verschillende typen bronnen:
   - normatieve bronnen
@@ -13,7 +13,7 @@
 
 ---
 
-## 2. Annotaties en machineleesbare regelgeving
+## Annotaties en machineleesbare regelgeving
 
 - Service-informatie (“annotaties”) kunnen vastleggen bij juridische bronnen:
   - tijdens het opstellen van tekst
@@ -29,7 +29,7 @@
 
 ---
 
-## 3. Verantwoording, interpretatie en validatie
+## Verantwoording, interpretatie en validatie
 
 - Verantwoording kunnen vastleggen, bijvoorbeeld:
   - expertkennis / vakkennis als interpretatie
@@ -52,7 +52,7 @@
 
 ---
 
-## 4. Specificaties en publicatie
+## Specificaties en publicatie
 
 - Specificaties vastleggen, waaronder de vraag:
 
@@ -63,7 +63,7 @@
 
 ---
 
-## 5. AI-toepassingen en kennisontsluiting
+## AI-toepassingen en kennisontsluiting
 
 - AI-toepassingen mogelijk maken door knowledge graphs te kunnen ontsluiten, bijvoorbeeld op basis van:
   - UFO

@@ -37,10 +37,9 @@ BEGRIPPEN_FILE = MODEL_DIR / "begrippen.ttl"
 ABOX_FILE = DATA_DIR / "all-legal-technologies.ttl"
 
 OUTPUT_FILES = {
-    "catalogus-overzicht": BUILD_INCLUDE_DIR / "catalogus-overzicht.md",
-    "catalogus-details": BUILD_INCLUDE_DIR / "catalogus-details.md",
+    # "catalogus-overzicht": BUILD_INCLUDE_DIR / "catalogus-overzicht.md",
+    # "catalogus-details": BUILD_INCLUDE_DIR / "catalogus-details.md",
     "begrippenkader": BUILD_INCLUDE_DIR / "begrippenkader.html",
-    "organisaties": BUILD_INCLUDE_DIR / "organisaties.md",
     "ontologie": BUILD_INCLUDE_DIR / "ontologie.md",
     "generatieverantwoording": BUILD_INCLUDE_DIR / "generatieverantwoording.md",
     "catalogus-details": BUILD_INCLUDE_DIR / "catalogus-details.html",
@@ -53,7 +52,6 @@ OUTPUT_HTML_FILES = {
     "typologie": BUILD_RESPEC_DIR / "typologie.html",
     "catalogus": BUILD_RESPEC_DIR / "catalogus.html",
     "begrippenkader": BUILD_RESPEC_DIR / "begrippenkader.html",
-    "organisaties": BUILD_RESPEC_DIR / "organisaties.html",
     "ontologie": BUILD_RESPEC_DIR / "ontologie.html"
 }
 
@@ -753,29 +751,6 @@ def render_markdown(markdown_text: str) -> str:
         print("Markdown library not found. Returning original text.")
         return markdown_text
 
-# def inline_include_files(include_files):
-#     result = []
-
-#     for include_item in include_files:
-#         item = dict(include_item)
-#         include_path = item.get("path")
-#         content_format = item.get("format")
-
-#         if include_path and "content" not in item:
-#             source_path = (BUILD_RESPEC_DIR / include_path).resolve()            
-#             raw_content = source_path.read_text(encoding="utf-8")
-#             # ✅ HIER zit de fix
-#             if content_format == "markdown":
-#                 item["content"] = render_markdown(raw_content)
-#             else:
-#                 item["content"] = raw_content
-
-
-#         result.append(item)
-
-#     return result
-
-
 def inline_include_files(include_files):
     """
     Bestaande helper, maar nu alleen nog verantwoordelijk voor
@@ -1065,16 +1040,6 @@ def main():
             "output_file": "begrippenkader.html",
         },
         {
-            "key": "organisaties",
-            "title": "Organisaties",
-            "description": "Overzicht van organisaties die als beheerder, leverancier of andere betrokkene voorkomen.",
-            "heading": None,
-            "include_files": [
-                {"path": "../includes/organisaties.md", "format": "markdown", "provides_page_heading": True},
-            ],
-            "output_file": "organisaties.html",
-        },
-        {
             "key": "ontologie",
             "title": "Ontologie",
             "description": "Technische beschrijving van klassen, eigenschappen en SHACL-shapes.",
@@ -1104,8 +1069,8 @@ def main():
         "respec_index.html.j2",
         OUTPUT_HTML_FILES["index"],
         pages=pages,
-        generation_justification=OUTPUT_FILES["generatieverantwoording"].read_text(encoding="utf-8"),
-        aandachtspunten=OUTPUT_FILES["aandachtspunten"].read_text(encoding="utf-8"),
+        generation_justification="../includes/generatieverantwoording.md",
+        aandachtspunten="../includes/aandachtspunten.md",
         **common_context,
     )
 

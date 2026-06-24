@@ -167,7 +167,7 @@ Van elke juridische technologie geven we een beschrijving die bestaat uit drie o
 
 ## Welke vorm heeft een "regel"?
 
-De taken waarvoor juridische technologie worden ingezet hebben allemaal min-of-meer te maken met het opstellen, duiden, vertalen of toepassen van regels, in allerlei verschillende vormen. Dit maakt dat de term "regel" pas betekenis krijgt binnen de taak zelf. Niet voor niets is sprake van een cirkel: je kunt niet echt zeggen waar de "regel" in zijn oorsprong ontstaat, hooguit op welk moment een bepaalde verschijningsvorm van die regel ontstaat. Daarbij doorloopt het "leven" van een verschijningsvorm van een regel een aantal stadia:
+De taken waarvoor juridische technologie wordt ingezet hebben allemaal min-of-meer te maken met het opstellen, duiden, vertalen of toepassen van regels, in allerlei verschillende vormen. Dit maakt dat de term "regel" pas betekenis krijgt binnen de taak zelf. Niet voor niets is sprake van een cirkel: je kunt niet echt zeggen waar de "regel" in zijn oorsprong ontstaat, hooguit op welk moment een bepaalde verschijningsvorm van die regel ontstaat. Daarbij doorloopt het "leven" van een verschijningsvorm van een regel een aantal stadia:
 
 1.	De (verschijningsvorm van een) regel is opgetekend;
 2.	De(verschijningsvorm van een)  regel is vastgesteld;
@@ -175,15 +175,17 @@ De taken waarvoor juridische technologie worden ingezet hebben allemaal min-of-m
 4.	De (verschijningsvorm van een) regel is in werking;
 5.	De (verschijningsvorm van een) regel is in gebruik;
 6.	De (verschijningsvorm van een) regel is vervallen;
-7.	De (verschijningsvorm van een) is verwijderd.
+7.	De (verschijningsvorm van een) regel is verwijderd.
 
 Stadia kunnen gecombineerd worden en niet elke verschijningsvorm "haalt" alle stadia. Eenmaal opgetekend, gedraagt een (verschijningsvorm van) een regel zich als een gegeven. De levenscyclus van een verschenen regel lijkt dan ook sterk op de levenscyclus van een gegeven.
 
 Herleidbaarheid van een regel gaat daarmee feitelijk om de relatie tussen verschijningsvormen van regels. Zo zou je een algoritme die een regel uitvoert kunnen herleiden naar de tekst in wet- en regelgeving waarin die regel is opgetekend. Er is sprake van twee verschijningsvormen van dezelfde regel. Daarbij kunnen de stadia verschillen. Het is zelfs mogelijk dat een algoritme al in gebruik is, terwijl de juridische tekst nog niet eens is opgetekend (bijvoorbeeld bij het doorrekenen van een scenario tijdens beleidsvorming).
+> dan is er op z'n minst een concept-tekst toch, want waar is het algoritme anders op gebaseerd?
 
 Juridische technologie kan geordend worden naar de vorm die de regel aanneemt die binnen een taak wordt uitgevoerd en waar die juridische technologie ondersteuning aan biedt. We maken daarbij onderscheid tussen het beschouwingsniveau en het soort uitspraak dat met de regel wordt gedaan.
 
 > Aandachtspunt: hoe past de DSO-terminologie van juridische regel, toepasbare regel en uitvoerbare regel in dit model?
+> de uitvoerbare regel is de executeerbare toepasbare regel, de kjar die automatiesch van de DMN xml gemaakt wordt. De technische laag dus.
 
 ### beschouwingsniveau
 

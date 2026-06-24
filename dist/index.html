@@ -85,6 +85,51 @@ body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
 <meta name="description" content="Deze documentatie beschrijft juridische technologieën, taxonomieën,
       organisaties en de onderliggende ontologie.">
 <style>
+.hljs,body:has(input[name=color-scheme][value=light]:checked) .hljs,head:not(:has(meta[name=color-scheme][content~=dark]))+body .hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+}
+body:has(input[name=color-scheme][value=dark]:checked) .hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
 var:hover{text-decoration:underline;cursor:pointer}
 var.respec-hl{color:var(--color,#000);background-color:var(--bg-color);box-shadow:0 0 0 2px var(--bg-color)}
 @media (prefers-color-scheme:dark){
@@ -182,7 +227,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <p>
       Gegenereerd op 2026-06-24.
     </p>
-  </section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#startpunt"><bdi class="secno">1. </bdi>Startpunt</a></li></ol></nav>
+  </section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#startpunt"><bdi class="secno">1. </bdi>Startpunt</a></li><li class="tocline"><a class="tocxref" href="#aandachtspunten"><bdi class="secno">2. </bdi>Overzicht van gewenste functionaliteiten en specificaties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bronmetadata-en-bronverwijzingen"><bdi class="secno">2.1 </bdi>Bronmetadata en bronverwijzingen</a></li><li class="tocline"><a class="tocxref" href="#annotaties-en-machineleesbare-regelgeving"><bdi class="secno">2.2 </bdi>Annotaties en machineleesbare regelgeving</a></li><li class="tocline"><a class="tocxref" href="#verantwoording-interpretatie-en-validatie"><bdi class="secno">2.3 </bdi>Verantwoording, interpretatie en validatie</a></li><li class="tocline"><a class="tocxref" href="#specificaties-en-publicatie"><bdi class="secno">2.4 </bdi>Specificaties en publicatie</a></li><li class="tocline"><a class="tocxref" href="#ai-toepassingen-en-kennisontsluiting"><bdi class="secno">2.5 </bdi>AI-toepassingen en kennisontsluiting</a></li></ol></li><li class="tocline"><a class="tocxref" href="#summary"><bdi class="secno">3. </bdi>Generatieverantwoording</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bronbestanden"><bdi class="secno">3.1 </bdi>Bronbestanden</a></li><li class="tocline"><a class="tocxref" href="#generatie"><bdi class="secno">3.2 </bdi>Generatie</a></li><li class="tocline"><a class="tocxref" href="#statistieken"><bdi class="secno">3.3 </bdi>Statistieken</a></li><li class="tocline"><a class="tocxref" href="#werkwijze"><bdi class="secno">3.4 </bdi>Werkwijze</a></li><li class="tocline"><a class="tocxref" href="#opmerkingen"><bdi class="secno">3.5 </bdi>Opmerkingen</a></li><li class="tocline"><a class="tocxref" href="#reproduceerbaarheid"><bdi class="secno">3.6 </bdi>Reproduceerbaarheid</a></li></ol></li></ol></nav>
 
   <section id="startpunt"><div class="header-wrapper"><h2 id="x1-startpunt"><bdi class="secno">1. </bdi>Startpunt</h2><a class="self-link" href="#startpunt" aria-label="Permalink for Section 1."></a></div>
     
@@ -207,21 +252,187 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         — Overzicht van begrippen, definities en classificaties.
       </li>
       <li>
-        <a href="organisaties.html">Organisaties</a>
-        — Overzicht van organisaties die als beheerder, leverancier of andere betrokkene voorkomen.
-      </li>
-      <li>
         <a href="ontologie.html">Ontologie</a>
         — Technische beschrijving van klassen, eigenschappen en SHACL-shapes.
       </li>
     </ul>
   </section>
 
-  <section id="aandachtspunten" data-include="" data-include-format="markdown" class="respec-offending-element" title="Alle secties moeten beginnen met een `h2-6` element.">
-  </section>
+  <section id="aandachtspunten"><div class="header-wrapper"><h2 id="x2-overzicht-van-gewenste-functionaliteiten-en-specificaties"><bdi class="secno">2. </bdi>Overzicht van gewenste functionaliteiten en specificaties</h2><a class="self-link" href="#aandachtspunten" aria-label="Permalink for Section 2."></a></div>
+<section id="bronmetadata-en-bronverwijzingen"><div class="header-wrapper"><h3 id="x2-1-bronmetadata-en-bronverwijzingen"><bdi class="secno">2.1 </bdi>Bronmetadata en bronverwijzingen</h3><a class="self-link" href="#bronmetadata-en-bronverwijzingen" aria-label="Permalink for Section 2.1"></a></div>
+<ul>
+<li><p>Vastleggen van metadata voor verschillende typen bronnen:</p>
+<ul>
+<li>normatieve bronnen</li>
+<li>interpretatieve bronnen</li>
+<li>interne bronnen</li>
+</ul>
+</li>
+<li><p>Vastleggen van een thesaurus van bronnen (met TOOI), zodat per type bron beter kan worden beoordeeld wat nodig is.</p>
+</li>
+<li><p>Kunnen verwijzen <strong>naar</strong> en <strong>tussen</strong> verschillende typen bronnen.</p>
+</li>
+</ul>
+<hr>
+</section><section id="annotaties-en-machineleesbare-regelgeving"><div class="header-wrapper"><h3 id="x2-2-annotaties-en-machineleesbare-regelgeving"><bdi class="secno">2.2 </bdi>Annotaties en machineleesbare regelgeving</h3><a class="self-link" href="#annotaties-en-machineleesbare-regelgeving" aria-label="Permalink for Section 2.2"></a></div>
+<ul>
+<li><p>Service-informatie (“annotaties”) kunnen vastleggen bij juridische bronnen:</p>
+<ul>
+<li>tijdens het opstellen van tekst</li>
+<li>later in het proces</li>
+</ul>
+</li>
+<li><p>Dit vormt een basis voor <strong>machineleesbare regelgeving</strong>.</p>
+</li>
+<li><p>Bestendige verwijzingen naar conceptregelgeving kunnen aangeven.</p>
+</li>
+<li><p>Bestendig service-informatie kunnen annoteren in conceptregelgeving.</p>
+<blockquote>
+<p>Belangrijk: verwijzingen en annotaties mogen <strong>niet verloren gaan</strong> zodra een concept definitief wordt.</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+</section><section id="verantwoording-interpretatie-en-validatie"><div class="header-wrapper"><h3 id="x2-3-verantwoording-interpretatie-en-validatie"><bdi class="secno">2.3 </bdi>Verantwoording, interpretatie en validatie</h3><a class="self-link" href="#verantwoording-interpretatie-en-validatie" aria-label="Permalink for Section 2.3"></a></div>
+<ul>
+<li><p>Verantwoording kunnen vastleggen, bijvoorbeeld:</p>
+<ul>
+<li>expertkennis / vakkennis als interpretatie</li>
+<li>validatieresultaten</li>
+</ul>
+</li>
+<li><p>Discretionaire bevoegdheid expliciet kunnen duiden:</p>
+<ul>
+<li>waar zit deze bevoegdheid?</li>
+<li>hoe is deze ingevuld?</li>
+</ul>
+</li>
+<li><p>Semantische herleidbaarheid van interpretaties kunnen vastleggen, bijvoorbeeld via een semantische laag voor regels
+(“MetaNormenModel”).</p>
+</li>
+<li><p>Daarmee kunnen gestructureerde analyses beter met elkaar worden verbonden, zoals:</p>
+<ul>
+<li>JAS</li>
+<li>JRM</li>
+<li>Flint</li>
+<li>RMM</li>
+</ul>
+</li>
+<li><p>Dit heeft ook een relatie met <strong>LOMO</strong>.</p>
+</li>
+</ul>
+<hr>
+</section><section id="specificaties-en-publicatie"><div class="header-wrapper"><h3 id="x2-4-specificaties-en-publicatie"><bdi class="secno">2.4 </bdi>Specificaties en publicatie</h3><a class="self-link" href="#specificaties-en-publicatie" aria-label="Permalink for Section 2.4"></a></div>
+<ul>
+<li><p>Specificaties vastleggen, waaronder de vraag:</p>
+<p><strong>Wat is een voorkeursformaat om deze te publiceren?</strong></p>
+</li>
+<li><p>Uitgangspunt volgens Steven Gort:</p>
+<ul>
+<li><strong>DMN</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+</section><section id="ai-toepassingen-en-kennisontsluiting"><div class="header-wrapper"><h3 id="x2-5-ai-toepassingen-en-kennisontsluiting"><bdi class="secno">2.5 </bdi>AI-toepassingen en kennisontsluiting</h3><a class="self-link" href="#ai-toepassingen-en-kennisontsluiting" aria-label="Permalink for Section 2.5"></a></div>
+<ul>
+<li>AI-toepassingen mogelijk maken door knowledge graphs te kunnen ontsluiten, bijvoorbeeld op basis van:<ul>
+<li>UFO</li>
+<li>OntoUML</li>
+<li>gUFO</li>
+<li>andere vergelijkbare modellen</li>
+</ul>
+</li>
+</ul>
+</section></section>
 
-  <section id="summary" data-include="" data-include-format="markdown" class="respec-offending-element" title="Alle secties moeten beginnen met een `h2-6` element.">
-  </section>
+  <section id="summary"><div class="header-wrapper"><h2 id="x3-generatieverantwoording"><bdi class="secno">3. </bdi>Generatieverantwoording</h2><a class="self-link" href="#summary" aria-label="Permalink for Section 3."></a></div>
+<p>Dit document is automatisch gegenereerd uit RDF/Turtle-bronnen. De inhoud van de catalogus, taxonomieën, organisaties en ontologie wordt direct afgeleid uit deze bronbestanden.</p>
+<section id="bronbestanden"><div class="header-wrapper"><h3 id="x3-1-bronbestanden"><bdi class="secno">3.1 </bdi>Bronbestanden</h3><a class="self-link" href="#bronbestanden" aria-label="Permalink for Section 3.1"></a></div>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Bestand</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TBox</td>
+<td><code>C:\Users\Erwin Straver\projects\wendbare wetsuitvoering\model\juridische technologie.ttl</code></td>
+</tr>
+<tr>
+<td>ABox</td>
+<td><code>C:\Users\Erwin Straver\projects\wendbare wetsuitvoering\data\all-legal-technologies.ttl</code></td>
+</tr>
+</tbody></table>
+</section><section id="generatie"><div class="header-wrapper"><h3 id="x3-2-generatie"><bdi class="secno">3.2 </bdi>Generatie</h3><a class="self-link" href="#generatie" aria-label="Permalink for Section 3.2"></a></div>
+<p>De documentatie is gegenereerd met behulp van:</p>
+<ul>
+<li>Python (RDFLib voor het parsen van RDF/Turtle)</li>
+<li>SPARQL-queries voor het selecteren van gegevens</li>
+<li>Jinja2-templates voor het genereren van Markdown</li>
+<li>ReSpec voor de uiteindelijke weergave van het document</li>
+</ul>
+<p>Datum van generatie: <code>2026-06-24</code></p>
+<p>Ontologieversie: <code>0.2.0</code></p>
+<p>Datum van de ontologie: <code>2026-03-31</code></p>
+</section><section id="statistieken"><div class="header-wrapper"><h3 id="x3-3-statistieken"><bdi class="secno">3.3 </bdi>Statistieken</h3><a class="self-link" href="#statistieken" aria-label="Permalink for Section 3.3"></a></div>
+<table>
+<thead>
+<tr>
+<th>Onderdeel</th>
+<th>Aantal</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Juridische technologieën</td>
+<td>57</td>
+</tr>
+<tr>
+<td>Taxonomieën</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Organisaties</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Klassen</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Objecteigenschappen</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Datatype-eigenschappen</td>
+<td>12</td>
+</tr>
+<tr>
+<td>SHACL-shapes</td>
+<td>23</td>
+</tr>
+</tbody></table>
+</section><section id="werkwijze"><div class="header-wrapper"><h3 id="x3-4-werkwijze"><bdi class="secno">3.4 </bdi>Werkwijze</h3><a class="self-link" href="#werkwijze" aria-label="Permalink for Section 3.4"></a></div>
+<p>De generatie van dit document volgt de volgende stappen:</p>
+<ol>
+<li>Het laden van de TBox en ABox in een RDF graph.</li>
+<li>Het uitvoeren van SPARQL-queries om gegevens te verzamelen.</li>
+<li>Het opbouwen van Python-datastructuren op basis van de query-resultaten.</li>
+<li>Het renderen van Markdown-fragmenten met behulp van Jinja2.</li>
+<li>Het opnemen van deze fragmenten in het ReSpec-document via <code>data-include</code>.</li>
+</ol>
+</section><section id="opmerkingen"><div class="header-wrapper"><h3 id="x3-5-opmerkingen"><bdi class="secno">3.5 </bdi>Opmerkingen</h3><a class="self-link" href="#opmerkingen" aria-label="Permalink for Section 3.5"></a></div>
+<ul>
+<li>Handmatige wijzigingen in de gegenereerde Markdown-bestanden kunnen bij een volgende generatie worden overschreven.</li>
+<li>De inhoud van dit document is afhankelijk van de kwaliteit en volledigheid van de RDF-bronnen.</li>
+<li>Onvolledige of ontbrekende gegevens in de TBox of ABox kunnen leiden tot lege velden in dit document.</li>
+</ul>
+</section><section id="reproduceerbaarheid"><div class="header-wrapper"><h3 id="x3-6-reproduceerbaarheid"><bdi class="secno">3.6 </bdi>Reproduceerbaarheid</h3><a class="self-link" href="#reproduceerbaarheid" aria-label="Permalink for Section 3.6"></a></div>
+<p>De generatie van dit document kan opnieuw worden uitgevoerd met:</p>
+<pre><code class="bash hljs" aria-busy="false">python generate_respec.py
+</code></pre>
+</section></section>
     
 
 
